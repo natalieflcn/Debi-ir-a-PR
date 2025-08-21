@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainLayout from "./pages/layouts/MainLayout";
-import ExplorerLayout from "./pages/layouts/ExplorerLayout";
-import AdminLayout from "./pages/layouts/AdminLayout";
+import MainLayout from "./ui/layouts/MainLayout";
+import ExplorerLayout from "./ui/layouts/ExplorerLayout";
+import AdminLayout from "./ui/layouts/AdminLayout";
 import Workflow from "./pages/guest/Workflow";
 import About from "./pages/guest/About";
 import Resources from "./pages/guest/Resources";
@@ -26,48 +26,46 @@ import EditHuntItemDetails from "./pages/admin/EditHuntItemDetails";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="how-it-works" element={<Workflow />} />
-            <Route path="about" element={<About />} />
-            <Route path="resources" element={<Resources />} />
-            <Route path="create-account" element={<CreateAccount />} />
-            <Route path="login" element={<Login />} />
-          </Route>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="how-it-works" element={<Workflow />} />
+          <Route path="about" element={<About />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="create-account" element={<CreateAccount />} />
+          <Route path="login" element={<Login />} />
+        </Route>
 
-          <Route element={<ExplorerLayout />}>
-            <Route path="dashboard" element={<ExplorerDashboard />} />
-            <Route path="hunt/:huntId" element={<HuntDetails />} />
-            <Route
-              path="hunt/:huntId/:huntItemId"
-              element={<HuntItemDetails />}
-            />
-            <Route path="profile" element={<ExplorerProfile />} />
-            <Route path="memories" element={<Memories />} />
-            <Route path="memories/:huntId" element={<MemoryDetail />} />
-          </Route>
+        <Route element={<ExplorerLayout />}>
+          <Route path="dashboard" element={<ExplorerDashboard />} />
+          <Route path="hunt/:huntId" element={<HuntDetails />} />
+          <Route
+            path="hunt/:huntId/:huntItemId"
+            element={<HuntItemDetails />}
+          />
+          <Route path="profile" element={<ExplorerProfile />} />
+          <Route path="memories" element={<Memories />} />
+          <Route path="memories/:huntId" element={<MemoryDetail />} />
+        </Route>
 
-          <Route path="admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="users" element={<ManageUsers />} />
-            <Route path="user/:userId" element={<UserDetails />} />
-            <Route path="hunts" element={<ManageHunts />} />
-            <Route path="hunt/:huntId" element={<EditHuntDetails />} />
-            <Route
-              path="hunt/:huntId/huntItemId"
-              element={<EditHuntItemDetails />}
-            />
-            <Route path="create" element={<CreateHunt />} />
-            <Route path="profile" element={<AdminProfile />} />
-          </Route>
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="users" element={<ManageUsers />} />
+          <Route path="user/:userId" element={<UserDetails />} />
+          <Route path="hunts" element={<ManageHunts />} />
+          <Route path="hunt/:huntId" element={<EditHuntDetails />} />
+          <Route
+            path="hunt/:huntId/huntItemId"
+            element={<EditHuntItemDetails />}
+          />
+          <Route path="create" element={<CreateHunt />} />
+          <Route path="profile" element={<AdminProfile />} />
+        </Route>
 
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
