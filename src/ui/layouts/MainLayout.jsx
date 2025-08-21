@@ -1,4 +1,4 @@
-import NavBar from "../../components/layouts/NavBar";
+import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
 
 function MainLayout() {
@@ -11,8 +11,8 @@ function MainLayout() {
 
   return (
     <div>
-      Main Layout
       <NavBar type="main" menuItems={menuItems} />
+      Main Layout
       <MainContent />
     </div>
   );
