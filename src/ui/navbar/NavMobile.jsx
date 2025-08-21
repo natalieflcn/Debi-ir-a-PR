@@ -6,7 +6,8 @@ import { NavLink } from "react-router-dom";
 
 const StyledNavMobile = styled.ul`
   display: flex;
-
+  font-weight: 500;
+  color: #191d23;
   @media (min-width: 768px) {
     display: none;
   }
@@ -36,7 +37,6 @@ const MobileMenu = styled.ul`
   top: 0;
   padding: 2.75rem 2rem;
   gap: 2rem;
-  list-style: none;
   background-color: white;
 
   opacity: ${({ $isOpen }) => ($isOpen ? `1` : `0`)};

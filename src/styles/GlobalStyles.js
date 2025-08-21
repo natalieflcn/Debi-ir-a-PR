@@ -1,4 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import DtMF from "../../public/fonts/DtMF.ttf";
+import MuseoSansNormal from "../../public/fonts/MuseoSans_300.otf";
+import MuseoSansHeavy from "../../public/fonts/MuseoSans_500.otf";
+import MuseoSansBold from "../../public/fonts/MuseoSans_700.otf";
+import MuseoSansBoldest from "../../public/fonts/MuseoSans_900.otf";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -48,12 +53,87 @@ table {
 	border-spacing: 0;
 }
 
+// Fonts
+@font-face {
+    font-family: 'DtMF';
+    src: url(${DtMF}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url(${MuseoSansNormal}) format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url(${MuseoSansHeavy}) format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url(${MuseoSansBold}) format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url(${MuseoSansBoldest}) format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 // Custom CSS Variables
 body {
   background-color: #428fc1;
   color: #fef5d9;
   //red = #ed333c
+  //#fdf8e8
+  //#191d23
 }
+
+// Formatting
+body {
+  font-family: 'Museo', sans-serif;
+  font-weight: 300;
+}
+
+// prettier-ignore
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  // TODO add custom color later
+}
+
+a, a:visited, a:hover, a:active{
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 `;
 
 export default GlobalStyles;

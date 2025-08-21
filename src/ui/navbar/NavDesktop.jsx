@@ -4,9 +4,11 @@ import User from "./User";
 
 const StyledNavDesktop = styled.ul`
   display: none;
-  list-style: none;
   justify-content: space-around;
   flex: 1;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
 
   @media (min-width: 768px) {
     display: flex;
@@ -14,10 +16,14 @@ const StyledNavDesktop = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin: 0 1rem;
+  margin: 0 rem;
 
   a {
     text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
   }
 `;
 

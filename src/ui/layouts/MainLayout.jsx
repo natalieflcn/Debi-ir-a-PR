@@ -12,7 +12,7 @@ function MainLayout() {
   return (
     <div>
       <NavBar type="main" menuItems={menuItems} />
-      Main Layout
+      Main Layout 123455
       <MainContent />
     </div>
   );
