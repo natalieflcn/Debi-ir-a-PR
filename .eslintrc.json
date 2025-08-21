@@ -1,11 +1,7 @@
 {
   "ignorePatterns": ["dist"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:react-refresh/recommended",
-    "react-app"
-  ],
+  "extends": ["eslint:recommended", "react-app"],
+  "plugins": ["react-refresh"],
   "env": {
     "browser": true,
     "es2020": true
