@@ -5,6 +5,12 @@ const StyledLogo = styled.h1`
   font-family: DtMF;
   letter-spacing: 0.1rem;
   padding: 1.5rem 2rem;
+
+  a:hover,
+  a:active {
+    color: var(--color-red-200);
+    text-shadow: 0px 0px 3px var(--color-red-400);
+  }
 `;
 
 const Debi = styled.p`
@@ -20,8 +26,8 @@ function Logo() {
     <div>
       <StyledLogo>
         <NavLink to="/">
-          <Debi>Debí</Debi>
-          <IrAPR>ir a PR</IrAPR>
+          <Debi>DeBÍ</Debi>
+          <IrAPR>iR a PR</IrAPR>
         </NavLink>
       </StyledLogo>
     </div>

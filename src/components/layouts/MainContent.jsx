@@ -4,7 +4,6 @@ function MainContent() {
   return (
     <main>
       <Outlet />
-      footer
     </main>
   );
 }

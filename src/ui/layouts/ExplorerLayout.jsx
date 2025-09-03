@@ -1,5 +1,6 @@
 import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
+import Footer from "../elements/Footer";
 
 function ExplorerLayout() {
   const menuItems = [
@@ -13,6 +14,7 @@ function ExplorerLayout() {
       Explorer Layout
       <NavBar type="explorer" menuItems={menuItems} />
       <MainContent />
+      <Footer />
     </div>
   );
 }

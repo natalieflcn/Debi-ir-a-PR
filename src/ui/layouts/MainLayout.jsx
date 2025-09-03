@@ -1,10 +1,11 @@
 import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
+import Footer from "../elements/Footer";
 
 function MainLayout() {
   const menuItems = [
     { label: "Home", link: "/" },
-    { label: "How it Works", link: "/how-it-works" },
+    { label: "How It Works", link: "/how-it-works" },
     { label: "About", link: "/about" },
     { label: "Resources", link: "/resources" },
   ];
@@ -12,8 +13,8 @@ function MainLayout() {
   return (
     <div>
       <NavBar type="main" menuItems={menuItems} />
-      Main Layout 123455
       <MainContent />
+      <Footer />
     </div>
   );
 }

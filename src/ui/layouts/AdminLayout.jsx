@@ -1,5 +1,6 @@
 import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
+import Footer from "../elements/Footer";
 
 function AdminLayout() {
   const menuItems = [
@@ -14,6 +15,7 @@ function AdminLayout() {
       Admin Layout
       <NavBar type="admin" menuItems={menuItems} />
       <MainContent />
+      <Footer />
     </div>
   );
 }

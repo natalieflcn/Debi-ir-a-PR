@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../elements/Button";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import User from "./User";
 
 const StyledNavMobile = styled.ul`
   display: flex;
@@ -13,31 +14,47 @@ const StyledNavMobile = styled.ul`
   }
 `;
 
+const StyledButton = styled(Button)`
+  background-color: var(--color-red-200);
+  position: relative;
+  bottom: 1rem;
+`;
+
 const Hamburger = styled(BiMenuAltRight)`
+  bottom: 1.6rem;
   width: 1rem;
   height: 1rem;
-  color: white;
+  color: var(--color-light-0);
 `;
 
 const CloseMenu = styled(BiX)`
   display: ${({ $isOpen }) => ($isOpen ? `` : `none`)};
-  position: fixed;
+  position: relative;
+  bottom: 1.6rem;
   z-index: 1;
   width: 2rem;
   height: 2rem;
-  color: black;
+  color: var(--color-dark-200);
 `;
 
 const MobileMenu = styled.ul`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   padding: 2.75rem 2rem;
   gap: 2rem;
-  background-color: white;
+  font-weight: 700;
+  background-color: var(--color-light-0);
+  color: var(--color-blue-200);
+
+  a:hover,
+  a:active {
+    color: var(--color-red-200);
+  }
 
   opacity: ${({ $isOpen }) => ($isOpen ? `1` : `0`)};
   transform: ${({ $isOpen }) =>
@@ -48,10 +65,6 @@ const MobileMenu = styled.ul`
 
 const MenuItem = styled.li`
   margin: 0 1rem;
-
-  a {
-    text-decoration: none;
-  }
 `;
 
 function NavMobile({ menuItems }) {
@@ -63,9 +76,11 @@ function NavMobile({ menuItems }) {
 
   return (
     <StyledNavMobile>
-      <Button onClick={handleClick}>
-        <Hamburger />
-      </Button>
+      {!isOpen && (
+        <StyledButton onClick={handleClick}>
+          <Hamburger />
+        </StyledButton>
+      )}
 
       <CloseMenu $isOpen={isOpen} onClick={handleClick} />
 
@@ -77,6 +92,7 @@ function NavMobile({ menuItems }) {
             </NavLink>
           </MenuItem>
         ))}
+        <User />
       </MobileMenu>
     </StyledNavMobile>
   );

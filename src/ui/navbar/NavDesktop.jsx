@@ -18,14 +18,13 @@ const StyledNavDesktop = styled.ul`
 const MenuItem = styled.li`
   margin: 0 rem;
 
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: red;
+  a:hover,
+  a:active {
+    color: var(--color-red-200);
+    text-shadow: 0px 0px 3px var(--color-red-400);
   }
 `;
+//create inset text shadow to make words appear bolder
 
 function NavDesktop({ menuItems }) {
   return (

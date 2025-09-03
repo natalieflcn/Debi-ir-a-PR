@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
-import DtMF from "../../public/fonts/DtMF.ttf";
-import MuseoSansNormal from "../../public/fonts/MuseoSans_300.otf";
-import MuseoSansHeavy from "../../public/fonts/MuseoSans_500.otf";
-import MuseoSansBold from "../../public/fonts/MuseoSans_700.otf";
-import MuseoSansBoldest from "../../public/fonts/MuseoSans_900.otf";
+import DtMF from "/fonts/DtMF.ttf";
+import MuseoSansNormal from "/fonts/MuseoSans_300.otf";
+import MuseoSansHeavy from "/fonts/MuseoSans_500.otf";
+import MuseoSansBold from "/fonts/MuseoSans_700.otf";
+import MuseoSansBoldest from "/fonts/MuseoSans_900.otf";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -90,18 +90,50 @@ table {
 }
 
 // Custom CSS Variables
-body {
-  background-color: #428fc1;
-  color: #fef5d9;
-  //red = #ed333c
-  //#fdf8e8
-  //#191d23
+:root {
+  --color-blue-0: #b5d2e7;
+  --color-blue-100: #7eb0d4;
+  --color-blue-200: #428fc1;
+  --color-blue-300: #255777;
+  --color-blue-400: #0b2434;
+
+  --color-red-0: #ffb8b2;
+  --color-red-100: #f97f7a;
+  --color-red-200: #ed333c;
+  --color-red-300: #6d2317;
+  --color-red-400: #41080b;
+
+  --color-yellow-0: #fdfbc6;
+  --color-yellow-100: #fcf895;
+  --color-yellow-200: #fcf355;
+  --color-yellow-300: #9c9731;
+  --color-yellow-400: #474411;
+
+  --color-green-0: #bbd2b4;
+  --color-green-100: #8ab17d;
+  --color-green-200: #599046;
+  --color-green-300: #345728;
+  --color-green-400: #13240d;
+
+  --color-light-0: #fffbf0;
+  --color-light-100: #fef5d9;
+  --color-light-200:#bdb6a1;
+
+  --color-dark-0: #6b6e73;
+  --color-dark-100: #404449;
+  --color-dark-200: #191d23;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+
+  --border-radius-sm: 5px;
 }
 
 // Formatting
 body {
   font-family: 'Museo', sans-serif;
   font-weight: 300;
+  background-color: var(--color-blue-200);
+  color: var(--color-light-100)
 }
 
 // prettier-ignore
