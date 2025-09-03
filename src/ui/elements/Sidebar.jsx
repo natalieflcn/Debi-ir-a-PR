@@ -11,7 +11,8 @@ const StyledSidebar = styled.aside`
   padding: 3rem;
   width: 21rem;
   background-color: var(--color-light-200);
-  border-radius: 1rem;
+  box-shadow: 3px 3px 2px var(--color-red-200);
+  border-radius: var(--border-radius-lg);
   list-style: none;
   @media (max-width: 798px) {
     display: none;
@@ -20,7 +21,9 @@ const StyledSidebar = styled.aside`
 
 const MenuItem = styled.li`
   ${({ as }) => variants[as]}
+
   text-transform: uppercase;
+  transition: all 0.2s;
 
   &:hover {
     color: var(--color-yellow-200);
@@ -44,7 +47,7 @@ const variants = {
     }
   `,
 
-  h2: css`
+  h3: css`
     font-family: Museo, sans-serif;
     font-weight: 900;
     font-size: 1.25rem;

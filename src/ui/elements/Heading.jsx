@@ -7,18 +7,23 @@ const variants = {
   `,
 
   h2: css`
+    font-family: DtMF;
+    font-size: 2rem;
+  `,
+
+  h3: css`
     font-family: Museo, sans-serif;
     font-weight: 900;
     font-size: 3rem;
   `,
 
-  h3: css`
+  h4: css`
     font-family: Museo, sans-serif;
     font-weight: 700;
     font-size: 2rem;
   `,
 
-  h4: css`
+  h5: css`
     font-family: Museo, sans-serif;
     font-weight: 500;
     font-size: 3rem;

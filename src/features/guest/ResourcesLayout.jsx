@@ -1,30 +1,41 @@
-import Heading from "../../ui/elements/Heading";
 import Sidebar from "../../ui/elements/Sidebar";
 import Row from "../../ui/elements/Row";
 import styled from "styled-components";
+import Panel from "../../ui/elements/Panel";
 
 const StyledResourcesLayout = styled.div`
   display: grid;
 `;
 
+const StyledPanels = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-self: start;
+  gap: 1rem;
+  --panel-bg-color: var(--color-light-100);
+  --panel-heading-color: var(--color-blue-200);
+  --panel-color: var(--color-dark-200);
+`;
+
 const menuItems = [
   { label: "Learn More About the Island", heading: "h1", link: "/resources" },
-  { label: "Brush Up on Your Spanish", heading: "h2", link: "/resources" },
+  { label: "Brush Up on Your Spanish", heading: "h3", link: "/resources" },
   {
-    label: "Understand Puerto Rican History",
-    heading: "h2",
+    label: "Dive into Puerto Rican History",
+    heading: "h3",
     link: "/resources",
   },
   { label: "Support the Island", heading: "h1", link: "/resources" },
   {
     label: "Donate to Puerto Rican Organizations",
-    heading: "h2",
+    heading: "h3",
     link: "/resources",
   },
-  { label: "Sign Petition", heading: "h2", link: "/resources" },
+  { label: "Sign Petition", heading: "h3", link: "/resources" },
   {
     label: "Keep Up with Puerto Rican News",
-    heading: "h2",
+    heading: "h3",
     link: "/resources",
   },
 ];
@@ -33,24 +44,13 @@ function ResourcesLayout() {
     <StyledResourcesLayout>
       <Row direction="horizontal">
         <Sidebar menuItems={menuItems} />
-        <Row>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resourcescccccc</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resources</Heading>
-        </Row>
+        <StyledPanels>
+          {menuItems.map((item) => (
+            <Panel heading={item.label} headingType={item.heading}>
+              Panel content
+            </Panel>
+          ))}
+        </StyledPanels>
       </Row>
     </StyledResourcesLayout>
   );

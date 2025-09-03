@@ -17,10 +17,12 @@ const StyledNavDesktop = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  a:hover,
-  a:active {
+  transition: all 0.2s;
+
+  &:hover,
+  &:active {
     color: var(--color-red-200);
-    text-shadow: 0px 0px 3px var(--color-red-400);
+    text-shadow: 3px 3px 1px var(--color-blue-300);
   }
 `;
 //create inset text shadow to make words appear bolder

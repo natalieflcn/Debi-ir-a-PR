@@ -5,11 +5,12 @@ const StyledLogo = styled.h1`
   font-family: DtMF;
   letter-spacing: 0.1rem;
   margin-right: 6rem;
+  transition: all 0.25s;
 
-  a:hover,
-  a:active {
+  &:hover,
+  &:active {
     color: var(--color-red-200);
-    text-shadow: 0px 0px 3px var(--color-red-400);
+    text-shadow: 3px 3px 1px var(--color-blue-300);
   }
 `;
 

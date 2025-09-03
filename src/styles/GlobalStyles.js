@@ -126,6 +126,8 @@ table {
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
 
   --border-radius-sm: 5px;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
 }
 
 // Formatting
