@@ -9,6 +9,7 @@ const StyledNavMobile = styled.ul`
   display: flex;
   font-weight: 500;
   color: #191d23;
+
   @media (min-width: 768px) {
     display: none;
   }
@@ -45,16 +46,11 @@ const MobileMenu = styled.ul`
   left: 0;
   right: 0;
   top: 0;
-  padding: 2.75rem 2rem;
+  padding: 2.75rem 3rem;
   gap: 2rem;
   font-weight: 700;
   background-color: var(--color-light-0);
   color: var(--color-blue-200);
-
-  a:hover,
-  a:active {
-    color: var(--color-red-200);
-  }
 
   opacity: ${({ $isOpen }) => ($isOpen ? `1` : `0`)};
   transform: ${({ $isOpen }) =>
@@ -64,7 +60,10 @@ const MobileMenu = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin: 0 1rem;
+  a:hover,
+  a:active {
+    color: var(--color-red-200);
+  }
 `;
 
 function NavMobile({ menuItems }) {

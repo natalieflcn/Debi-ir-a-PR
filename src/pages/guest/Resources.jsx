@@ -1,5 +1,12 @@
+import ResourcesLayout from "../../features/guest/ResourcesLayout";
+import Row from "../../ui/elements/Row";
+
 function Resources() {
-  return <div>Resources</div>;
+  return (
+    <>
+      <ResourcesLayout />
+    </>
+  );
 }
 
 export default Resources;

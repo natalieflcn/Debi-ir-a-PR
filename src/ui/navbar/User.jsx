@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-const StyledUser = styled.div`
-  padding: 0 1rem;
-`;
+const StyledUser = styled.div``;
 
 function User() {
   return <StyledUser>Logout</StyledUser>;

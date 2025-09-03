@@ -1,0 +1,32 @@
+import styled, { css } from "styled-components";
+
+const variants = {
+  h1: css`
+    font-family: DtMF;
+    font-size: 3rem;
+  `,
+
+  h2: css`
+    font-family: Museo, sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+  `,
+
+  h3: css`
+    font-family: Museo, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+  `,
+
+  h4: css`
+    font-family: Museo, sans-serif;
+    font-weight: 500;
+    font-size: 3rem;
+  `,
+};
+
+const Heading = styled.h1`
+  ${({ as }) => variants[as]}
+`;
+
+export default Heading;

@@ -4,7 +4,7 @@ import User from "./User";
 
 const StyledNavDesktop = styled.ul`
   display: none;
-  justify-content: space-around;
+  justify-content: space-between;
   flex: 1;
   font-size: 1.25rem;
   font-weight: 900;
@@ -16,8 +16,6 @@ const StyledNavDesktop = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin: 0 rem;
-
   a:hover,
   a:active {
     color: var(--color-red-200);
