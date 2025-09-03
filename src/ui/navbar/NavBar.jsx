@@ -7,11 +7,16 @@ import NavMobile from "./NavMobile";
 const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   align-items: center;
-  margin-bottom: 4rem;
+  padding: 1.5rem 0;
 
-  @media (max-width: 768px) {
-    margin-bottom: 2rem;
+  background-color: var(--color-blue-200);
+
+  @media (max-width: 798px) {
+    padding-bottom: 2rem;
   }
 `;
 

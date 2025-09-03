@@ -117,7 +117,7 @@ table {
 
   --color-light-0: #fffbf0;
   --color-light-100: #fef5d9;
-  --color-light-200:#bdb6a1;
+  --color-light-200:#ebdeca;
 
   --color-dark-0: #6b6e73;
   --color-dark-100: #404449;

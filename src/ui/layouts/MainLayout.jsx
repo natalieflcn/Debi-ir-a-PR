@@ -4,7 +4,7 @@ import Footer from "../elements/Footer";
 import styled from "styled-components";
 
 const StyledMainLayout = styled.div`
-  padding: 4rem 5rem 6rem;
+  padding: 1rem 5rem 6rem;
 
   @media (max-width: 768px) {
     padding: 2rem 2rem 3rem;
