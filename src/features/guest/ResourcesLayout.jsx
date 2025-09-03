@@ -8,9 +8,13 @@ const StyledResourcesLayout = styled.div`
 `;
 
 const menuItems = [
-  { label: "Learn More About the Island", heading: "h1", link: "/" },
-  { label: "Brush Up on Your Spanish", heading: "h2", link: "/how-it-works" },
-  { label: "Understand Puerto Rican History", heading: "h2", link: "/about" },
+  { label: "Learn More About the Island", heading: "h1", link: "/resources" },
+  { label: "Brush Up on Your Spanish", heading: "h2", link: "/resources" },
+  {
+    label: "Understand Puerto Rican History",
+    heading: "h2",
+    link: "/resources",
+  },
   { label: "Support the Island", heading: "h1", link: "/resources" },
   {
     label: "Donate to Puerto Rican Organizations",
@@ -33,7 +37,7 @@ function ResourcesLayout() {
           <Heading as="h1">Resources</Heading>
           <Heading as="h1">Resources</Heading>
           <Heading as="h1">Resources</Heading>
-          <Heading as="h1">Resourcescccccccccccccccccccccccccccccc</Heading>
+          <Heading as="h1">Resourcescccccc</Heading>
           <Heading as="h1">Resources</Heading>
           <Heading as="h1">Resources</Heading>
           <Heading as="h1">Resources</Heading>

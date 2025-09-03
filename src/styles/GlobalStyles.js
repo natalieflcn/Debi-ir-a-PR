@@ -103,11 +103,11 @@ table {
   --color-red-300: #6d2317;
   --color-red-400: #41080b;
 
-  --color-yellow-0: #fdfbc6;
-  --color-yellow-100: #fcf895;
-  --color-yellow-200: #fcf355;
-  --color-yellow-300: #9c9731;
-  --color-yellow-400: #474411;
+  --color-yellow-0: #f1dfb5;
+  --color-yellow-100: #e7c67a;
+  --color-yellow-200:  #dcad2b;
+  --color-yellow-300: #886a16;
+  --color-yellow-400: #3c2d05;
 
   --color-green-0: #bbd2b4;
   --color-green-100: #8ab17d;
