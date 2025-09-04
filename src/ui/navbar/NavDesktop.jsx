@@ -6,7 +6,6 @@ const StyledNavDesktop = styled.ul`
   display: none;
   justify-content: space-between;
   flex: 1;
-
   font-size: 1.25rem;
   font-weight: 900;
   text-transform: uppercase;

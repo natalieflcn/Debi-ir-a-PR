@@ -1,18 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Heading from "./Heading";
-import { BiPlus } from "react-icons/bi";
+import { BiMinus, BiPlus } from "react-icons/bi";
 import Row from "./Row";
 import Button from "./Button";
+import { useState } from "react";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
-  width: 100%;
+  width: 99%;
   padding: 2rem;
   border-radius: var(--border-radius-md);
   background-color: var(--panel-bg-color);
   color: var(--panel-color);
   box-shadow: 2px 2px 1px var(--color-red-100);
-  transition: all 0.25s;
+  transition: all 0.3s;
 
   &:hover {
     background-color: var(--panel-bg-highlight);
@@ -22,6 +23,7 @@ const StyledPanel = styled.div`
   h2 {
     color: var(--panel-heading-color);
     text-shadow: 1px 2px 1px var(--color-red-100);
+    transition: all 0.4s;
   }
 
   &:hover h2 {
@@ -30,18 +32,25 @@ const StyledPanel = styled.div`
   }
 `;
 
+const StyledHeading = styled(Heading)`
+  margin-bottom: ${({ $isOpen }) => ($isOpen ? `1rem` : `0rem`)};
+  text-transform: uppercase;
+`;
+
 const StyledButton = styled(Button)`
   position: relative;
   bottom: 0.5rem;
-  background-color: var(--color-red-200);
-  transition: background-color 0.2s;
+  background-color: ${({ $isOpen }) =>
+    $isOpen ? `var(--color-blue-200)` : `var(--color-red-200)`};
+  transition: all 0.3s;
 
   &:hover {
-    background-color: var(--color-red-100);
+    background-color: ${({ $isOpen }) =>
+      $isOpen ? `var(--color-blue-100)` : `var(--color-red-100)`};
   }
 `;
 
-const TogglePanel = styled(BiPlus)`
+const TogglePanel = css`
   position: relative;
   bottom: 0.35rem;
   right: 0.35rem;
@@ -51,16 +60,32 @@ const TogglePanel = styled(BiPlus)`
   opacity: 90%;
 `;
 
-function Panel({ heading, headingType }) {
+const OpenPanel = styled(BiPlus)`
+  ${TogglePanel}
+`;
+
+const ClosePanel = styled(BiMinus)`
+  ${TogglePanel}
+`;
+
+function Panel({ heading, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleClick() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <StyledPanel heading={headingType}>
+    <StyledPanel>
       <Row direction="horizontal">
-        <Heading as="h2">{heading.toUpperCase()}</Heading>
-        <StyledButton>
-          <TogglePanel />
+        <StyledHeading as="h2" $isOpen={isOpen}>
+          {heading}
+        </StyledHeading>
+        <StyledButton onClick={handleClick} $isOpen={isOpen}>
+          {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>
-      this is a panel
+      {isOpen ? children : ""}
     </StyledPanel>
   );
 }

@@ -6,12 +6,13 @@ import NavMobile from "./NavMobile";
 
 const StyledNav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: sticky;
   top: 0;
   z-index: 10;
+
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1.5rem;
 
   background-color: var(--color-blue-200);
 
