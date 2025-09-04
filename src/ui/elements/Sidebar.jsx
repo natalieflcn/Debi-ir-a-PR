@@ -5,6 +5,9 @@ import React from "react";
 
 const StyledSidebar = styled.aside`
   display: flex;
+  position: sticky;
+
+  top: 8.5rem;
   align-self: flex-start;
   flex-direction: column;
   gap: 2rem;
@@ -22,6 +25,13 @@ const StyledSidebar = styled.aside`
     display: none;
   }
 `;
+
+// const StyledNavLink = styled(NavLink)`
+//   &.active {
+//     color: var(--color-red-200);
+//   }
+// `;
+
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
   font-size: 1.75rem;

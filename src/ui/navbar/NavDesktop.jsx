@@ -25,14 +25,19 @@ const MenuItem = styled.li`
     text-shadow: 3px 3px 1px var(--color-blue-300);
   }
 `;
-//create inset text shadow to make words appear bolder
+
+const StyledNavLink = styled(NavLink)`
+  &.active {
+    color: var(--color-red-200);
+  }
+`;
 
 function NavDesktop({ menuItems }) {
   return (
     <StyledNavDesktop>
       {menuItems.map((item) => (
         <MenuItem key={item.label}>
-          <NavLink to={item.link}>{item.label}</NavLink>
+          <StyledNavLink to={item.link}>{item.label}</StyledNavLink>
         </MenuItem>
       ))}
       <User />
