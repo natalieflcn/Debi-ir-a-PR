@@ -4,10 +4,11 @@ import Footer from "../elements/Footer";
 import styled from "styled-components";
 
 const StyledMainLayout = styled.div`
-  padding: 1rem 5rem 6rem;
+  padding: 1rem 5rem 2rem;
 
   @media (max-width: 768px) {
-    padding: 2rem 2rem 3rem;
+    width: 85%;
+    padding: 0rem 2rem 2rem;
   }
 `;
 
@@ -20,11 +21,13 @@ const menuItems = [
 
 function MainLayout() {
   return (
-    <StyledMainLayout>
+    <>
       <NavBar type="main" menuItems={menuItems} />
-      <MainContent />
-      <Footer />
-    </StyledMainLayout>
+      <StyledMainLayout>
+        <MainContent />
+        <Footer />
+      </StyledMainLayout>
+    </>
   );
 }
 

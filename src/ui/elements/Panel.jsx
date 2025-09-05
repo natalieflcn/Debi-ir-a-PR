@@ -12,23 +12,27 @@ const StyledPanel = styled.div`
   border-radius: var(--border-radius-md);
   background-color: var(--panel-bg-color);
   color: var(--panel-color);
-  box-shadow: 2px 2px 1px var(--color-red-100);
+  box-shadow: 2px 2px 1px var(--panel-box-color);
   transition: all 0.3s;
 
   &:hover {
     background-color: var(--panel-bg-highlight);
-    box-shadow: 2px 2px 1px var(--panel-shadow);
+    box-shadow: 2px 2px 1px var(--panel-shadow-highlight);
   }
 
   h2 {
     color: var(--panel-heading-color);
-    text-shadow: 1px 2px 1px var(--color-red-100);
+    text-shadow: 1px 2px 2px var(--panel-box-color);
     transition: all 0.4s;
   }
 
   &:hover h2 {
     color: var(--panel-heading-highlight);
     text-shadow: 1px 2px 1px var(--panel-shadow-highlight);
+  }
+
+  @media (max-width: 798px) {
+    width: 97%;
   }
 `;
 
@@ -68,20 +72,14 @@ const ClosePanel = styled(BiMinus)`
   ${TogglePanel}
 `;
 
-function Panel({ heading, children }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function handleClick() {
-    setIsOpen(!isOpen);
-  }
-
+function Panel({ heading, onClick, isOpen, children }) {
   return (
     <StyledPanel>
       <Row direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}
         </StyledHeading>
-        <StyledButton onClick={handleClick} $isOpen={isOpen}>
+        <StyledButton onClick={onClick} $isOpen={isOpen}>
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>

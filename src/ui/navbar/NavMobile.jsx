@@ -47,7 +47,7 @@ const MobileMenu = styled.ul`
   right: 0;
   top: 0;
   padding: 2.75rem 3rem;
-  gap: 2rem;
+  gap: 3rem;
   font-weight: 700;
   background-color: var(--color-light-0);
   color: var(--color-blue-200);

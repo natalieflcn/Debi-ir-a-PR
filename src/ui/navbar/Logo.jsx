@@ -16,10 +16,18 @@ const StyledLogo = styled.h1`
 
 const Debi = styled.p`
   font-size: 2.75rem;
+
+  @media (max-width: 798px) {
+    font-size: 2.4rem;
+  }
 `;
 
 const IrAPR = styled.p`
   font-size: 1.65rem;
+
+  @media (max-width: 798px) {
+    font-size: 1.45rem;
+  }
 `;
 
 function Logo() {

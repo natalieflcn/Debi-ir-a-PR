@@ -10,14 +10,15 @@ const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 10;
-
   align-items: center;
-  padding: 1.5rem;
-
+  padding: 2rem 5rem;
   background-color: var(--color-blue-200);
 
   @media (max-width: 798px) {
-    padding-bottom: 2rem;
+    width: 85%;
+    position: relative;
+    justify-content: space-between;
+    padding: 2rem 2rem;
   }
 `;
 
