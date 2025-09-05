@@ -20,7 +20,7 @@ const menuItems = [
       {
         label: "Dive into Puerto Rican History",
         link: "/resources",
-        content: "This panel educates you about why PR is dying",
+        content: `<p>Dive into Puerto Rico’s rich history and the journey of how this small, vibrant island has captured the world’s attention.</p><p>Known as <span>La Isla del Encanto</span> (The Island of Enchantment), Puerto Rico shines with beauty, culture, and passion–in spite of the profound challenges the island has survived. The joy, love, and unbreakable spirit of Puerto Ricans remain at the heart of the island’s identity.</p><p>Explore the stories of what Puerto Rico has endured and overcome throughout history.</p>`,
       },
     ],
   },
