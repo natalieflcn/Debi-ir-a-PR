@@ -9,7 +9,7 @@ const StyledPanelGroup = styled.div`
   flex-grow: 1;
   align-self: start;
   gap: 1rem;
-  --panel-bg-color: var(--color-light-200);
+  /* --panel-bg-color: var(--color-light-200);
   --panel-heading-color: var(--color-blue-200);
   --panel-color: var(--color-dark-200);
   --panel-box-color: var(--color-red-200);
@@ -17,13 +17,13 @@ const StyledPanelGroup = styled.div`
   --panel-bg-highlight: var(--color-light-100);
   --panel-heading-highlight: var(--color-red-200);
   --panel-shadow-highlight: var(--color-blue-200);
-  --panel-box-higlight: var(--color-red-300);
+  --panel-box-higlight: var(--color-red-300); */
 `;
 
 const StyledHeading = styled(Heading)`
   font-size: 2.45rem;
-  color: var(--color-yellow-200);
-  text-shadow: 3px 2px 1px var(--color-red-300);
+  color: ${({ $colors }) => $colors["--heading-color"]};
+  text-shadow: 3px 2px 1px ${({ $colors }) => $colors["--heading-shadow"]};
   text-transform: uppercase;
 
   &:not(:first-of-type) {
@@ -35,7 +35,7 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-function PanelGroup({ menuItems }) {
+function PanelGroup({ menuItems, components, colors }) {
   const [isOpenName, setIsOpenName] = useState(null);
 
   function handleClick(i) {
@@ -47,7 +47,9 @@ function PanelGroup({ menuItems }) {
     <StyledPanelGroup>
       {menuItems.map((menuSection) => (
         <React.Fragment key={menuSection.label}>
-          <StyledHeading as="h2">{menuSection.label}</StyledHeading>
+          <StyledHeading as="h2" $colors={colors}>
+            {menuSection.label}
+          </StyledHeading>
 
           {menuSection.items.map((item) => (
             <Panel
@@ -55,6 +57,8 @@ function PanelGroup({ menuItems }) {
               key={item.label}
               onClick={() => handleClick(item.label)}
               isOpen={isOpenName === item.label}
+              components={components}
+              colors={colors}
             >
               {item.content}
             </Panel>

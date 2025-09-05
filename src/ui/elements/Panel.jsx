@@ -12,25 +12,28 @@ const StyledPanel = styled.div`
   max-width: 51rem;
   padding: 2rem;
   border-radius: var(--border-radius-md);
-  background-color: var(--panel-bg-color);
-  color: var(--panel-color);
-  box-shadow: 2px 2px 1px var(--panel-box-color);
+  background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
+  color: ${({ $colors }) => $colors["--panel-color"]};
+  box-shadow: 2px 2px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
   transition: all 0.3s;
 
   &:hover {
-    background-color: var(--panel-bg-highlight);
-    box-shadow: 2px 2px 1px var(--panel-shadow-highlight);
+    background-color: ${({ $colors }) => $colors["--panel-bg-highlight"]};
+    box-shadow: 2px 2px 1px
+      ${({ $colors }) => $colors["--panel-shadow-highlight"]};
   }
 
   h2 {
-    color: var(--panel-heading-color);
-    text-shadow: 2px 2px 1px var(--panel-box-color);
+    color: ${({ $colors }) => $colors["--panel-heading-color"]};
+    text-shadow: 2px 2px 1px
+      ${({ $colors }) => $colors["--panel-heading-highlight"]};
     transition: all 0.4s;
   }
 
   &:hover h2 {
-    color: var(--panel-heading-highlight);
-    text-shadow: 1px 2px 1px var(--panel-shadow-highlight);
+    color: ${({ $colors }) => $colors["--panel-heading-highlight"]};
+    text-shadow: 1px 2px 1px
+      ${({ $colors }) => $colors["--panel-shadow-highlight"]};
   }
 
   @media (max-width: 798px) {
@@ -46,13 +49,13 @@ const StyledHeading = styled(Heading)`
 const StyledButton = styled(Button)`
   position: relative;
   bottom: 0.5rem;
-  background-color: ${({ $isOpen }) =>
-    $isOpen ? `var(--color-blue-200)` : `var(--color-red-200)`};
+  background-color: ${({ $isOpen, $colors }) =>
+    $isOpen ? $colors["--btn-open"] : $colors["--btn-close"]};
   transition: all 0.3s;
 
   &:hover {
-    background-color: ${({ $isOpen }) =>
-      $isOpen ? `var(--color-blue-100)` : `var(--color-red-100)`};
+    background-color: ${({ $isOpen, $colors }) =>
+      $isOpen ? $colors["--btn-open-hover"] : $colors["--btn-close-hover"]};
   }
 
   @media (max-width: 798px) {
@@ -84,38 +87,19 @@ const StyledContent = styled.div`
   line-height: 1.5rem;
 `;
 
-const StyledBold = styled.span`
-  font-weight: 500;
-  color: var(--color-red-200);
-`;
-
-const StyledParagraph = styled.p`
-  margin-bottom: 1rem;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-`;
-
-function Panel({ heading, onClick, isOpen, children }) {
+function Panel({ heading, onClick, isOpen, components, colors, children }) {
   return (
-    <StyledPanel>
+    <StyledPanel $colors={colors}>
       <Row direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}
         </StyledHeading>
-        <StyledButton onClick={onClick} $isOpen={isOpen}>
+        <StyledButton onClick={onClick} $isOpen={isOpen} $colors={colors}>
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>
       <StyledContent>
-        <ReactMarkdown
-          rehypePlugins={[rehypeRaw]}
-          components={{
-            span: ({ node, ...props }) => <StyledBold {...props} />,
-            p: ({ node, ...props }) => <StyledParagraph {...props} />,
-          }}
-        >
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components}>
           {isOpen ? children : ""}
         </ReactMarkdown>
       </StyledContent>

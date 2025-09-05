@@ -2,6 +2,10 @@ import Sidebar from "../../ui/elements/Sidebar";
 import Row from "../../ui/elements/Row";
 import styled from "styled-components";
 import PanelGroup from "../../ui/elements/PanelGroup";
+import {
+  ResourcesColors,
+  ResourcesComponents,
+} from "../../styles/ResourcesStyles";
 
 const StyledResourcesLayout = styled.div`
   display: grid;
@@ -20,7 +24,8 @@ const menuItems = [
       {
         label: "Dive into Puerto Rican History",
         link: "/resources",
-        content: `<p>Dive into Puerto Rico’s rich history and the journey of how this small, vibrant island has captured the world’s attention.</p><p>Known as <span>La Isla del Encanto</span> (The Island of Enchantment), Puerto Rico shines with beauty, culture, and passion–in spite of the profound challenges the island has survived. The joy, love, and unbreakable spirit of Puerto Ricans remain at the heart of the island’s identity.</p><p>Explore the stories of what Puerto Rico has endured and overcome throughout history.</p>`,
+        content: `<p>Dive into Puerto Rico’s rich history and the journey of how this small, vibrant island has captured the world’s attention.</p><p>Known as <span>La Isla del Encanto</span> (The Island of Enchantment), Puerto Rico shines with beauty, culture, and passion–in spite of the profound challenges the island has survived. The joy, love, and unbreakable spirit of Puerto Ricans remain at the heart of the island’s identity.</p><p>Explore the stories of what Puerto Rico has endured and overcome throughout history.</p><p><h2>Puerto Rico is Dying: Here's Why</h2>video</p><p><h2>How the U.S. Stole Puerto Rico</h2>video</p><p><h2>History of the Puerto Rican Flag</h2>video</p><h2>Additional Literature</h2><p>If you’re interested in learning more about Puerto Rico’s struggles and the resilience of its people, these books honor their strength and perseverance.</p><p><h3>War Against All Puerto Ricans<h3>Through oral histories, personal interviews, eyewitness accounts, congressional testimony, and recently declassified FBI files, War Against All Puerto Ricans tells the story of a forgotten revolution and its context in Puerto Rico's history, from the US invasion in 1898 to the modern-day struggle for self-determination.</p><p><h3>The Battle for Paradise<h3>In the rubble of Hurricane Maria, Puerto Ricans and ultrarich "Puertopians" are locked in a pitched struggle over how to remake the island. In this vital and startling investigation, bestselling author and activist Naomi Klein uncovers how the forces of shock politics and disaster capitalism seek to undermine the nation's radical, resilient vision for a "just recovery."</p><p><h3>Aftershocks of Disaster<h3>No disaster is a singular event. Aftershocks of Disaster examines the lasting effects of Hurricane Maria in Puerto Rico, not just the effects of the wind or the rain, but delving into what followed: state failure, social abandonment, capitalization on human misery, and the collective trauma produced by the botched response. The book links the devastation to colonialism.</p><p><h3>Matters of Choice: Puerto Rican Women's Struggle for Reproductive Freedom<h3>Drawing upon her twenty-five years of research on sterilized Puerto Rican women from five different families in Brooklyn, Lopez untangles the interplay between how women make fertility decisions and their social, economic, cultural, and historical constraints. Weaving together the voices of these women, she covers the history of sterilization and eugenics, societal pressures to have fewer children, a lack of adequate health care, patterns of gender inequality, and misinformation provided by doctors and family members.</p><p><h3>The Story of Las Carpetas<h3>By exposing the systematic repression and chronicling the resilience of individuals and families impacted, The Story of Las Carpetas connects past injustices to today’s ongoing battles for privacy and civil liberties. The chilling parallels to modern-day surveillance reveal lessons that resonate beyond Puerto Rico, highlighting a universal struggle against invasive state powers. Listeners will feel the weight of surveillance’s psychological toll and the collective trauma it imprinted on generations, leading them to reflect on the value of freedom and the courage required to safeguard it.
+</p>`, //need to figure out how to incorporate images, videos, and headings into this markdown text
       },
     ],
   },
@@ -62,7 +67,11 @@ function ResourcesLayout() {
     <StyledResourcesLayout>
       <Row direction="horizontal">
         <Sidebar menuItems={menuItems} />
-        <PanelGroup menuItems={menuItems} />
+        <PanelGroup
+          menuItems={menuItems}
+          components={ResourcesComponents}
+          colors={ResourcesColors}
+        />
       </Row>
     </StyledResourcesLayout>
   );
