@@ -13,6 +13,15 @@ const StyledParagraph = styled.p`
   }
 `;
 
+const StyledHeading3 = styled.h3`
+  font-family: "DTmF";
+  font-size: 2rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+  color: var(--color-yellow-200);
+  text-shadow: 2px 2px 1px var(--color-red-300);
+`;
+
 export const ResourcesColors = {
   "--heading-color": `var(--color-yellow-200)`,
   "--heading-shadow": `var(--color-red-300)`,
@@ -34,10 +43,13 @@ export const ResourcesColors = {
 };
 
 export const ResourcesComponents = {
-  span: ({ children, ...props }) => (
+  span: ({ node, children, ...props }) => (
     <StyledBold {...props}>{children}</StyledBold>
   ),
-  p: ({ children, ...props }) => (
+  p: ({ node, children, ...props }) => (
     <StyledParagraph {...props}>{children}</StyledParagraph>
+  ),
+  h3: ({ node, children, ...props }) => (
+    <StyledHeading3>{children}</StyledHeading3>
   ),
 };
