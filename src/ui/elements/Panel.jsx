@@ -15,7 +15,7 @@ const StyledPanel = styled.div`
   background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
   color: ${({ $colors }) => $colors["--panel-color"]};
   box-shadow: 2px 2px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
-  transition: all 0.3s;
+  transition: background-color, color, box-shadow 0.3s;
 
   &:hover {
     background-color: ${({ $colors }) => $colors["--panel-bg-highlight"]};
@@ -48,10 +48,11 @@ const StyledHeading = styled(Heading)`
 
 const StyledButton = styled(Button)`
   position: relative;
-  bottom: 0.5rem;
+  /* bottom: ${({ $isOpen }) => ($isOpen ? `0.5rem` : `0.5rem`)}; */
+  bottom: 1rem;
   background-color: ${({ $isOpen, $colors }) =>
     $isOpen ? $colors["--btn-open"] : $colors["--btn-close"]};
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: ${({ $isOpen, $colors }) =>
@@ -61,6 +62,7 @@ const StyledButton = styled(Button)`
   @media (max-width: 798px) {
     align-self: flex-start;
     justify-self: flex-end;
+    bottom: 0;
   }
 `;
 
