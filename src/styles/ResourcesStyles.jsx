@@ -1,10 +1,35 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import SpinnerMini from "../ui/elements/SpinnerMini";
 
-const StyledFrame = styled.iframe`
+const LoadingFrame = function ({ src, ...props }) {
+  const [isLoadingFrame, setIsLoadingFrame] = useState(true);
+
+  return (
+    <StyledFrameWrapper $isLoadingFrame={isLoadingFrame}>
+      {isLoadingFrame && <StyledSpinnerMini />}
+      <StyledFrame
+        src={src}
+        onLoad={() => setIsLoadingFrame(false)}
+        $isLoadingFrame={isLoadingFrame}
+        {...props}
+      ></StyledFrame>
+    </StyledFrameWrapper>
+  );
+};
+
+const StyledFrameWrapper = styled.div`
   margin-bottom: 1rem;
   width: 100%;
+  height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)};
   aspect-ratio: 16 / 9;
+`;
+
+const StyledFrame = styled.iframe`
+  width: 100%;
+  height: 100%;
+  visibility: ${({ $isLoadingFrame }) =>
+    $isLoadingFrame ? `hidden` : `visible`};
 `;
 
 const StyledFigure = styled.figure`
@@ -72,6 +97,10 @@ const StyledBold = styled.span`
   color: var(--color-red-200);
 `;
 
+const StyledSpinnerMini = styled(SpinnerMini)`
+  margin: 11.25rem 0.5rem;
+`;
+
 export const ResourcesColors = {
   "--heading-color": `var(--color-yellow-200)`,
   "--heading-shadow": `var(--color-red-300)`,
@@ -105,9 +134,7 @@ export const ResourcesComponents = {
   h4: ({ node, children, ...props }) => (
     <StyledHeading4 {...props}>{children}</StyledHeading4>
   ),
-  iframe: ({ node, children, ...props }) => (
-    <StyledFrame {...props}>{children}</StyledFrame>
-  ),
+  iframe: ({ node, children, ...props }) => <LoadingFrame {...props} />,
   figure: ({ node, children, ...props }) => (
     <StyledFigure {...props}>{children}</StyledFigure>
   ),

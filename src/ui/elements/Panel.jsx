@@ -48,11 +48,10 @@ const StyledHeading = styled(Heading)`
 
 const StyledButton = styled(Button)`
   position: relative;
-  /* bottom: ${({ $isOpen }) => ($isOpen ? `0.5rem` : `0.5rem`)}; */
-  bottom: 1rem;
   background-color: ${({ $isOpen, $colors }) =>
     $isOpen ? $colors["--btn-open"] : $colors["--btn-close"]};
   transition: background-color 0.3s;
+  align-self: flex-start;
 
   &:hover {
     background-color: ${({ $isOpen, $colors }) =>
@@ -60,7 +59,6 @@ const StyledButton = styled(Button)`
   }
 
   @media (max-width: 798px) {
-    align-self: flex-start;
     justify-self: flex-end;
     bottom: 0;
   }
