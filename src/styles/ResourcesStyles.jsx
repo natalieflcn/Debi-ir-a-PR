@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import SpinnerMini from "../ui/elements/SpinnerMini";
 
+// Dive into Puerto Rican History
 const LoadingFrame = function ({ src, ...props }) {
   const [isLoadingFrame, setIsLoadingFrame] = useState(true);
 
@@ -23,11 +24,16 @@ const StyledFrameWrapper = styled.div`
   width: 100%;
   height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)};
   aspect-ratio: 16 / 9;
+
+  @media (max-width: 798px) {
+    height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `50%` : ``)};
+  }
 `;
 
 const StyledFrame = styled.iframe`
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   visibility: ${({ $isLoadingFrame }) =>
     $isLoadingFrame ? `hidden` : `visible`};
 `;
@@ -43,6 +49,7 @@ const StyledFigure = styled.figure`
     margin-right: 1.5rem;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    box-shadow: 2px 2px 1px var(--color-yellow-200);
   }
 
   & figcaption {
@@ -65,6 +72,9 @@ const StyledFigure = styled.figure`
   }
 `;
 
+// Donate to Puerto Rican Organizations
+
+// General Formatting
 const StyledHeading3 = styled.h3`
   margin-bottom: 1rem;
   font-family: "DTmF";
@@ -99,6 +109,10 @@ const StyledBold = styled.span`
 
 const StyledSpinnerMini = styled(SpinnerMini)`
   margin: 11.25rem 0.5rem;
+
+  @media (max-width: 798px) {
+    margin: 4rem 0rem;
+  }
 `;
 
 export const ResourcesColors = {
@@ -121,7 +135,7 @@ export const ResourcesColors = {
   "--btn-close-hover": `var(--color-red-100)`,
 };
 
-export const ResourcesComponents = {
+const ResourcesHistoryComponents = {
   span: ({ node, children, ...props }) => (
     <StyledBold {...props}>{children}</StyledBold>
   ),
@@ -139,3 +153,5 @@ export const ResourcesComponents = {
     <StyledFigure {...props}>{children}</StyledFigure>
   ),
 };
+
+export const ResourcesComponents = [0, ResourcesHistoryComponents, 2, 3, 4];

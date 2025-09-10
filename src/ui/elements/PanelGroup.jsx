@@ -43,6 +43,7 @@ function PanelGroup({ menuItems, components, colors }) {
     else setIsOpenName(null);
   }
 
+  console.log(components);
   return (
     <StyledPanelGroup>
       {menuItems.map((menuSection) => (
@@ -57,7 +58,7 @@ function PanelGroup({ menuItems, components, colors }) {
               key={item.label}
               onClick={() => handleClick(item.label)}
               isOpen={isOpenName === item.label}
-              components={components}
+              components={components[item.id]}
               colors={colors}
             >
               {item.content}
