@@ -81,7 +81,6 @@ const StyledDonateFigure = styled.figure`
   img {
     width: 9rem;
     height: 50%;
-    margin-right: 1.5rem;
     border-radius: 4px;
   }
 
@@ -91,45 +90,12 @@ const StyledDonateFigure = styled.figure`
     margin: 0.5rem 0;
   }
 
+  figcaption {
+    margin-left: 1.5rem;
+  }
+
   a {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
     margin: 0.1rem 0.1rem 1rem;
-    padding: 0.8rem 0;
-    border-radius: 5px;
-    color: var(--color-light-0);
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: all 0.4s;
-
-    &:first-of-type {
-      background-color: var(--color-red-200);
-
-      &:hover {
-        box-shadow: 4px 4px 1px var(--color-blue-200);
-        background-color: var(--color-red-100);
-      }
-    }
-
-    &:last-of-type {
-      margin-right: 0.5rem;
-      background-color: var(--color-blue-200);
-
-      &:hover {
-        box-shadow: 4px 4px 1px var(--color-red-200);
-        background-color: var(--color-blue-100);
-      }
-    }
-  }
-
-  &:hover h4 {
-    color: var(--color-red-200);
-    transition: all 0.5s;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
   }
 `;
 
@@ -175,7 +141,107 @@ const StyledGallery = styled.div`
   }
 `;
 
+// End Act 20-22-60
+const StyledImg = styled.img`
+  width: 100%;
+  border-radius: 4px;
+`;
+
+const StyledActFigure = styled.figure`
+  display: flex;
+  margin-top: 1rem;
+  align-items: flex-end;
+
+  img {
+    width: 45%;
+    border-radius: 5px;
+    margin-right: 1.5rem;
+  }
+
+  h4 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    align-self: flex-start;
+  }
+
+  a {
+    margin-top: 1rem;
+  }
+`;
+
+// Keep Up with Puerto Rican News
+const StyledNewsFigure = styled.figure`
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 50%;
+    border-radius: 4px;
+  }
+
+  h4 {
+    text-transform: none;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    margin-top: 1rem;
+  }
+`;
+
 // General Formatting
+const StyledLink = styled.a`
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0.8rem 0;
+  border-radius: 5px;
+  color: var(--color-light-0);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.4s;
+
+  &:first-of-type {
+    background-color: var(--color-red-200);
+
+    &:hover {
+      box-shadow: 4px 4px 1px var(--color-blue-200);
+      background-color: var(--color-red-100);
+    }
+  }
+
+  &:last-of-type {
+    background-color: var(--color-blue-200);
+
+    &:hover {
+      box-shadow: 4px 4px 1px var(--color-red-200);
+      background-color: var(--color-blue-100);
+    }
+  }
+
+  &:hover h4 {
+    color: var(--color-red-200);
+    transition: all 0.5s;
+  }
+
+  @media (max-width: 798px) {
+    flex-direction: column;
+
+    img {
+      align-self: center;
+      margin-bottom: 0.5rem;
+    }
+
+    figcaption {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0;
+    }
+  }
+`;
+
 const StyledHeading3 = styled.h3`
   margin-bottom: 1rem;
   font-family: "DTmF";
@@ -274,12 +340,51 @@ const ResourcesDonateComponents = {
   span: ({ node, children, ...props }) => (
     <StyledBold {...props}>{children}</StyledBold>
   ),
+  a: ({ node, children, ...props }) => (
+    <StyledLink {...props}>{children}</StyledLink>
+  ),
+};
+
+const ResourcesActComponents = {
+  p: ({ node, children, ...props }) => (
+    <StyledParagraph {...props}>{children}</StyledParagraph>
+  ),
+  span: ({ node, children, ...props }) => (
+    <StyledBold {...props}>{children}</StyledBold>
+  ),
+  img: ({ node, children, ...props }) => (
+    <StyledImg {...props}>{children}</StyledImg>
+  ),
+  figure: ({ node, children, ...props }) => (
+    <StyledActFigure {...props}>{children}</StyledActFigure>
+  ),
+  h4: ({ node, children, ...props }) => (
+    <StyledHeading4 {...props}>{children}</StyledHeading4>
+  ),
+  a: ({ node, children, ...props }) => (
+    <StyledLink {...props}>{children}</StyledLink>
+  ),
+};
+
+export const ResourcesNewsComponents = {
+  figure: ({ node, children, ...props }) => (
+    <StyledNewsFigure {...props}>{children}</StyledNewsFigure>
+  ),
+  h4: ({ node, children, ...props }) => (
+    <StyledHeading4 {...props}>{children}</StyledHeading4>
+  ),
+  p: ({ node, children, ...props }) => (
+    <StyledParagraph {...props}>{children}</StyledParagraph>
+  ),
+  a: ({ node, children, ...props }) => (
+    <StyledLink {...props}>{children}</StyledLink>
+  ),
 };
 
 export const ResourcesComponents = [
   0,
   ResourcesHistoryComponents,
   ResourcesDonateComponents,
-  3,
-  4,
+  ResourcesActComponents,
+  ResourcesNewsComponents,
 ];
