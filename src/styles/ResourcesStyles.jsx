@@ -84,25 +84,23 @@ const StyledDonateFigure = styled.figure`
     margin-right: 1.5rem;
     border-radius: 4px;
   }
+
   div {
     display: flex;
     gap: 1rem;
     margin: 0.5rem 0;
   }
 
-  button {
+  a {
     display: flex;
     flex-grow: 1;
-    align-items: center;
     justify-content: center;
     margin: 0.1rem 0.1rem 1rem;
-
-    padding: 1.4rem 0;
+    padding: 0.8rem 0;
     border-radius: 5px;
     color: var(--color-light-0);
     font-weight: 700;
     text-transform: uppercase;
-
     transition: all 0.4s;
 
     &:first-of-type {
