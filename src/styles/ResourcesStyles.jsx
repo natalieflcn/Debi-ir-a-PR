@@ -1,25 +1,26 @@
 import { useState } from "react";
 import styled from "styled-components";
 import SpinnerMini from "../ui/elements/SpinnerMini";
+import Button from "../ui/elements/Button";
 
 // Dive into Puerto Rican History
 const LoadingFrame = function ({ src, ...props }) {
   const [isLoadingFrame, setIsLoadingFrame] = useState(true);
 
   return (
-    <StyledFrameWrapper $isLoadingFrame={isLoadingFrame}>
+    <StyledHistoryFrameWrapper $isLoadingFrame={isLoadingFrame}>
       {isLoadingFrame && <StyledSpinnerMini />}
-      <StyledFrame
+      <StyledHistoryFrame
         src={src}
         onLoad={() => setIsLoadingFrame(false)}
         $isLoadingFrame={isLoadingFrame}
         {...props}
-      ></StyledFrame>
-    </StyledFrameWrapper>
+      ></StyledHistoryFrame>
+    </StyledHistoryFrameWrapper>
   );
 };
 
-const StyledFrameWrapper = styled.div`
+const StyledHistoryFrameWrapper = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)};
@@ -30,7 +31,7 @@ const StyledFrameWrapper = styled.div`
   }
 `;
 
-const StyledFrame = styled.iframe`
+const StyledHistoryFrame = styled.iframe`
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -38,7 +39,7 @@ const StyledFrame = styled.iframe`
     $isLoadingFrame ? `hidden` : `visible`};
 `;
 
-const StyledFigure = styled.figure`
+const StyledHistoryFigure = styled.figure`
   display: flex;
   margin: 1.5rem 0;
 
@@ -73,6 +74,108 @@ const StyledFigure = styled.figure`
 `;
 
 // Donate to Puerto Rican Organizations
+const StyledDonateFigure = styled.figure`
+  display: flex;
+  margin: 1.5rem 0 1rem;
+
+  img {
+    width: 9rem;
+    height: 50%;
+    margin-right: 1.5rem;
+    border-radius: 4px;
+  }
+  div {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  button {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 0.1rem 0.1rem 1rem;
+
+    padding: 1.4rem 0;
+    border-radius: 5px;
+    color: var(--color-light-0);
+    font-weight: 700;
+    text-transform: uppercase;
+
+    transition: all 0.4s;
+
+    &:first-of-type {
+      background-color: var(--color-red-200);
+
+      &:hover {
+        box-shadow: 4px 4px 1px var(--color-blue-200);
+        background-color: var(--color-red-100);
+      }
+    }
+
+    &:last-of-type {
+      margin-right: 0.5rem;
+      background-color: var(--color-blue-200);
+
+      &:hover {
+        box-shadow: 4px 4px 1px var(--color-red-200);
+        background-color: var(--color-blue-100);
+      }
+    }
+  }
+
+  &:hover h4 {
+    color: var(--color-red-200);
+    transition: all 0.5s;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+
+const StyledGallery = styled.div`
+  display: grid;
+  --g: 8px;
+  clip-path: inset(1px);
+  margin-bottom: 1.5rem;
+
+  img {
+    --_p: calc(-1 * var(--g));
+    grid-area: 1/1;
+    width: 100%;
+    aspect-ratio: 16/8;
+    cursor: pointer;
+    transition: 0.7s 0.2s;
+    border-radius: 6px;
+  }
+
+  img:first-child {
+    clip-path: polygon(0 0, calc(100% + var(--_p)) 0, 0 calc(100% + var(--_p)));
+  }
+
+  img:last-child {
+    clip-path: polygon(
+      100% 100%,
+      100% calc(0% - var(--_p)),
+      calc(0% - var(--_p)) 100%
+    );
+  }
+
+  &:hover > img:last-child,
+  &:hover > img:first-child:hover {
+    --_p: calc(50% - var(--g));
+  }
+  &:hover > img:first-child,
+  &:hover > img:first-child:hover + img {
+    --_p: calc(-50% - var(--g));
+  }
+
+  @media (max-width: 798px) {
+    --g: 4px;
+  }
+`;
 
 // General Formatting
 const StyledHeading3 = styled.h3`
@@ -150,13 +253,28 @@ const ResourcesHistoryComponents = {
   ),
   iframe: ({ node, children, ...props }) => <LoadingFrame {...props} />,
   figure: ({ node, children, ...props }) => (
-    <StyledFigure {...props}>{children}</StyledFigure>
+    <StyledHistoryFigure {...props}>{children}</StyledHistoryFigure>
   ),
 };
 
 const ResourcesDonateComponents = {
   p: ({ node, children, ...props }) => (
     <StyledParagraph {...props}>{children}</StyledParagraph>
+  ),
+  h4: ({ node, children, ...props }) => (
+    <StyledHeading4 {...props}>{children}</StyledHeading4>
+  ),
+  figure: ({ node, children, ...props }) => (
+    <StyledDonateFigure {...props}>{children}</StyledDonateFigure>
+  ),
+  div: ({ node, children, ...props }) => (
+    <StyledGallery>{children}</StyledGallery>
+  ),
+  button: ({ node, children, ...props }) => (
+    <Button {...props}>{children}</Button>
+  ),
+  span: ({ node, children, ...props }) => (
+    <StyledBold {...props}>{children}</StyledBold>
   ),
 };
 
