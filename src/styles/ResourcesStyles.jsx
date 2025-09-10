@@ -95,7 +95,28 @@ const StyledDonateFigure = styled.figure`
   }
 
   a {
-    margin: 0.1rem 0.1rem 1rem;
+    margin: 0.1rem 0.5rem 0.5rem 0;
+  }
+
+  @media (max-width: 798px) {
+    flex-direction: column;
+
+    img {
+      align-self: center;
+      margin-bottom: 0.5rem;
+    }
+
+    figcaption {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0;
+
+      a {
+        margin: 0.3rem;
+      }
+    }
   }
 `;
 
@@ -167,6 +188,32 @@ const StyledActFigure = styled.figure`
   a {
     margin-top: 1rem;
   }
+
+  @media (max-width: 798px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      align-self: center;
+      margin: 0 0 1.5rem 0;
+    }
+
+    figcaption {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0;
+
+      a {
+        margin: 0.3rem;
+      }
+    }
+
+    h4 {
+      align-self: center;
+    }
+  }
 `;
 
 // Keep Up with Puerto Rican News
@@ -186,6 +233,32 @@ const StyledNewsFigure = styled.figure`
 
   a {
     margin-top: 1rem;
+  }
+
+  @media (max-width: 798px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      align-self: center;
+      margin: 0 0 0.25rem 0;
+    }
+
+    figcaption {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0;
+
+      a {
+        margin: 0.3rem;
+      }
+    }
+
+    h4 {
+      align-self: center;
+    }
   }
 `;
 
@@ -222,23 +295,6 @@ const StyledLink = styled.a`
   &:hover h4 {
     color: var(--color-red-200);
     transition: all 0.5s;
-  }
-
-  @media (max-width: 798px) {
-    flex-direction: column;
-
-    img {
-      align-self: center;
-      margin-bottom: 0.5rem;
-    }
-
-    figcaption {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 0;
-    }
   }
 `;
 
@@ -388,3 +444,5 @@ export const ResourcesComponents = [
   ResourcesActComponents,
   ResourcesNewsComponents,
 ];
+
+//1920x1080 imag

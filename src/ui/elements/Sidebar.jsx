@@ -26,12 +26,6 @@ const StyledSidebar = styled.aside`
   }
 `;
 
-// const StyledNavLink = styled(NavLink)`
-//   &.active {
-//     color: var(--color-red-200);
-//   }
-// `;
-
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
   font-size: 1.75rem;
@@ -65,15 +59,30 @@ const MenuItem = styled.li`
   }
 `;
 
+function handleSidebarClick(onIsOpen) {
+  onIsOpen(panelId);
+
+  const panel = document.getElementById(panelId);
+  if (panel) {
+    // panel.scrollIntoView({ behavior: "smooth", block: "start" });
+    console.log(panelId, panel);
+  }
+}
+
 function Sidebar({ menuItems }) {
   return (
     <StyledSidebar>
       {menuItems.map((menuSection) => (
         <React.Fragment key={menuSection.label}>
-          <MenuHeading>{menuSection.label}</MenuHeading>
+          <MenuHeading onClick={() => handleSidebarClick(menuSection.label)}>
+            {menuSection.label}
+          </MenuHeading>
 
           {menuSection.items.map((item) => (
-            <MenuItem key={item.label}>
+            <MenuItem
+              key={item.label}
+              onClick={() => handleSidebarClick(item.label)}
+            >
               <NavLink to={item.link}>{item.label}</NavLink>
             </MenuItem>
           ))}

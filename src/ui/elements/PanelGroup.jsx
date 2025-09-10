@@ -9,15 +9,6 @@ const StyledPanelGroup = styled.div`
   flex-grow: 1;
   align-self: start;
   gap: 1rem;
-  /* --panel-bg-color: var(--color-light-200);
-  --panel-heading-color: var(--color-blue-200);
-  --panel-color: var(--color-dark-200);
-  --panel-box-color: var(--color-red-200);
-
-  --panel-bg-highlight: var(--color-light-100);
-  --panel-heading-highlight: var(--color-red-200);
-  --panel-shadow-highlight: var(--color-blue-200);
-  --panel-box-higlight: var(--color-red-300); */
 `;
 
 const StyledHeading = styled(Heading)`
