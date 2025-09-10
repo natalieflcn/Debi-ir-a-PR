@@ -38,20 +38,7 @@ const menuItems = [
         id: 2,
         label: "Donate to Puerto Rican Organizations",
         link: "/resources",
-        content: `<figure>While most people imagine Puerto Rico to be a tropical paradise; an island where there’s never a bad day to stretch on the beach, take a sip of coquito, and relax to the sound of coquis…</figure>(image)(image) Many communities are still living with the long-lasting effects of Hurricane María and the relentless storms that have followed. Frequent blackouts, abandoned homes, rising costs of living, and an unlivable minimum wage continue to challenge the resilience of Puerto Ricans. The island may have the world’s admiration, but it also needs the world’s support. Here are some organizations making a direct impact, where your donation can truly help:
-
-        (Image)
-Fundación Comunitaria de Puerto Rico
- Since 1985, this foundation has been dedicated to fostering community development across the island. Working with individuals, corporations, and nonprofits, they support initiatives in housing, economic growth, education, food and water access, and renewable energy.
- 👉 Donate Now – Learn More
-(Image)
-Comedores Sociales de Puerto Rico
- This organization fights hunger and food insecurity by taking a community-first approach. Through mutual aid centers and community kitchens, they empower neighborhoods to feed themselves and build resilience from the ground up.
- 👉 Donate Now – Learn More
-(Image)
-PRxPR
- Founded by Puerto Ricans in the diaspora after Hurricanes María and Irma, PRxPR ensures that 100% of donations go directly to affected communities. Their focus is on food and agriculture, clean water, and renewable energy projects that create long-term sustainability.
- 👉 Donate Now – Learn More
+        content: `<figure><img src="src/assets/images/guest/PuertoRicanParadise.webp"><figcaption>While most people imagine Puerto Rico to be a tropical paradise; an island where there’s never a bad day to stretch on the beach, take a sip of coquito, and relax to the sound of coquis…</figcaption></figure><figure><figcaption>Many communities are still living with the long-lasting effects of Hurricane María and the relentless storms that have followed. Frequent blackouts, abandoned homes, rising costs of living, and an unlivable minimum wage continue to challenge the resilience of Puerto Ricans.</figcaption><img src="src/assets/images/guest/HurricaneMaria.webp"><p>The island may have the world’s admiration, but it also needs the world’s support.<p/><p>Here are some organizations making a direct impact, where your donation can truly help:</p><figure><img src="src/assets/images/guest/FundacionComunitaria.png"><figcaption><h4>Fundación Comunitaria de Puerto Rico</h4><p>Since 1985, this foundation has been dedicated to fostering community development across the island. Working with individuals, corporations, and nonprofits, they support initiatives in housing, economic growth, education, food and water access, and renewable energy.</p><div><button>Donate Now</button><button>Learn More</button></div><figcaption></figure><figure><img src="src/assets/images/guest/ComedoresSociales.png"><figcaption><h4>Comedores Sociales de Puerto Rico</h4><p>This organization fights hunger and food insecurity by taking a community-first approach. Through mutual aid centers and community kitchens, they empower neighborhoods to feed themselves and build resilience from the ground up.</p><div><button>Donate Now</button><button>Learn More</button></div></figcaption><figure><img src="src/assets/images/guest/PRxPR.png"><figcaption><h4>PRxPR</h4><p>Founded by Puerto Ricans in the diaspora after Hurricanes María and Irma, PRxPR ensures that 100% of donations go directly to affected communities. Their focus is on food and agriculture, clean water, and renewable energy projects that create long-term sustainability.</p><div><button>Donate Now</button><button>Learn More</button></div></figcaption></figure>
 `,
       },
       {

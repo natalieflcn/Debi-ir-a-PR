@@ -154,4 +154,16 @@ const ResourcesHistoryComponents = {
   ),
 };
 
-export const ResourcesComponents = [0, ResourcesHistoryComponents, 2, 3, 4];
+const ResourcesDonateComponents = {
+  p: ({ node, children, ...props }) => (
+    <StyledParagraph {...props}>{children}</StyledParagraph>
+  ),
+};
+
+export const ResourcesComponents = [
+  0,
+  ResourcesHistoryComponents,
+  ResourcesDonateComponents,
+  3,
+  4,
+];

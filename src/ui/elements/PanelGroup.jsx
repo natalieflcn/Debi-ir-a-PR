@@ -43,7 +43,6 @@ function PanelGroup({ menuItems, components, colors }) {
     else setIsOpenName(null);
   }
 
-  console.log(components);
   return (
     <StyledPanelGroup>
       {menuItems.map((menuSection) => (
