@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Panel from "./Panel";
 import styled from "styled-components";
 import Heading from "./Heading";
@@ -26,12 +26,11 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-function PanelGroup({ menuItems, components, colors }) {
-  const [isOpenName, setIsOpenName] = useState(null);
-
+function PanelGroup({ menuItems, components, isOpen, setIsOpen, colors }) {
   function handleClick(i) {
-    if (isOpenName !== i) setIsOpenName(i);
-    else setIsOpenName(null);
+    if (isOpen !== i) {
+      setIsOpen(i);
+    } else setIsOpen(null);
   }
 
   return (
@@ -47,7 +46,7 @@ function PanelGroup({ menuItems, components, colors }) {
               heading={item.label}
               key={item.label}
               onClick={() => handleClick(item.label)}
-              isOpen={isOpenName === item.label}
+              isOpen={isOpen === item.label}
               components={components[item.id]}
               colors={colors}
             >

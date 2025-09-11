@@ -5,12 +5,14 @@ import Row from "./Row";
 import Button from "./Button";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import { useEffect, useRef } from "react";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
   width: 99%;
   max-width: 51rem;
   padding: 2rem;
+  scroll-margin-top: 9.4rem;
   border-radius: var(--border-radius-md);
   background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
   color: ${({ $colors }) => $colors["--panel-color"]};
@@ -88,8 +90,21 @@ const StyledContent = styled.div`
 `;
 
 function Panel({ heading, onClick, isOpen, components, colors, children }) {
+  const panel = useRef({});
+
+  useEffect(
+    function () {
+      if (isOpen && panel.current)
+        panel.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    },
+    [isOpen]
+  );
+
   return (
-    <StyledPanel $colors={colors}>
+    <StyledPanel $colors={colors} ref={panel}>
       <Row direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}

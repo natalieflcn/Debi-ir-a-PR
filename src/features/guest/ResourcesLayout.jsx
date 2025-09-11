@@ -6,6 +6,7 @@ import {
   ResourcesColors,
   ResourcesComponents,
 } from "../../styles/ResourcesStyles";
+import { useState } from "react";
 
 const StyledResourcesLayout = styled.div`
   display: grid;
@@ -69,14 +70,18 @@ const menuItems = [
 //need to work on About page
 
 function ResourcesLayout() {
+  const [isOpen, setIsOpen] = useState(null);
+
   return (
     <StyledResourcesLayout>
       <Row direction="horizontal">
-        <Sidebar menuItems={menuItems} />
+        <Sidebar menuItems={menuItems} isOpen={isOpen} onIsOpen={setIsOpen} />
         <PanelGroup
           menuItems={menuItems}
           components={ResourcesComponents}
           colors={ResourcesColors}
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
         />
       </Row>
     </StyledResourcesLayout>

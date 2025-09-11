@@ -57,31 +57,29 @@ const MenuItem = styled.li`
     text-shadow: 2px 2px 1px var(--color-red-300);
     border-left: 2px solid var(--color-yellow-400);
   }
+
+  ${({ $isActive }) =>
+    $isActive &&
+    ` color: var(--color-yellow-200);
+    border-left: 2px solid var(--color-yellow-400);`}
 `;
 
-function handleSidebarClick(onIsOpen) {
-  onIsOpen(panelId);
-
-  const panel = document.getElementById(panelId);
-  if (panel) {
-    // panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    console.log(panelId, panel);
+function Sidebar({ menuItems, isOpen, onIsOpen }) {
+  function handleSidebarClick(label) {
+    onIsOpen(label);
   }
-}
 
-function Sidebar({ menuItems }) {
   return (
     <StyledSidebar>
       {menuItems.map((menuSection) => (
         <React.Fragment key={menuSection.label}>
-          <MenuHeading onClick={() => handleSidebarClick(menuSection.label)}>
-            {menuSection.label}
-          </MenuHeading>
+          <MenuHeading>{menuSection.label}</MenuHeading>
 
           {menuSection.items.map((item) => (
             <MenuItem
               key={item.label}
               onClick={() => handleSidebarClick(item.label)}
+              $isActive={isOpen === item.label}
             >
               <NavLink to={item.link}>{item.label}</NavLink>
             </MenuItem>
