@@ -5,7 +5,7 @@ import Row from "./Row";
 import Button from "./Button";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
@@ -89,22 +89,12 @@ const StyledContent = styled.div`
   line-height: 1.5rem;
 `;
 
-function Panel({ heading, onClick, isOpen, components, colors, children }) {
-  const panel = useRef({});
-
-  useEffect(
-    function () {
-      if (isOpen && panel.current)
-        panel.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-    },
-    [isOpen]
-  );
-
+const Panel = forwardRef(function Panel(
+  { heading, onClick, isOpen, components, colors, children },
+  ref
+) {
   return (
-    <StyledPanel $colors={colors} ref={panel}>
+    <StyledPanel $colors={colors} ref={ref}>
       <Row direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}
@@ -120,6 +110,6 @@ function Panel({ heading, onClick, isOpen, components, colors, children }) {
       </StyledContent>
     </StyledPanel>
   );
-}
+});
 
 export default Panel;

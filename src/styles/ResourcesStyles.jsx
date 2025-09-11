@@ -224,6 +224,7 @@ const StyledNewsFigure = styled.figure`
   img {
     width: 50%;
     border-radius: 4px;
+    margin-left: 1rem;
   }
 
   h4 {
@@ -245,14 +246,13 @@ const StyledNewsFigure = styled.figure`
     }
 
     figcaption {
-      text-align: center;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
       margin: 0;
 
       a {
-        margin: 0.3rem;
+        margin: 0.3rem 0;
       }
     }
 

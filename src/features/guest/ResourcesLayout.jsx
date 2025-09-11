@@ -53,7 +53,7 @@ const menuItems = [
         id: 4,
         label: "Keep Up with Puerto Rican News",
         link: "/resources",
-        content: `<figure><img src="src/assets/images/guest/SanJuan.jpg"><figcaption><h4>Want to stay up to date about what’s going on in Puerto Rico?</h4><p>Keep up with the latest news, breaking stories, and more about the island.</p><p>From cultural highlights and community efforts to political developments and ongoing challenges, staying informed helps us better understand Puerto Rico’s reality and support its people.</p><a href="https://www.the-independent.com/topic/puerto-rico">Visit Independent News</a></figcaption></figure>`,
+        content: `<figure><figcaption><h4>Want to stay up to date about what’s going on in Puerto Rico?</h4><p>Keep up with the latest news, breaking stories, and more about the island.</p><p>From cultural highlights and community efforts to political developments and ongoing challenges, staying informed helps us better understand Puerto Rico’s reality and support its people.</p><a href="https://www.the-independent.com/topic/puerto-rico">Visit Independent News</a></figcaption><img src="src/assets/images/guest/SanJuan.jpg"></figure>`,
       },
     ],
   },

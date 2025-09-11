@@ -1,3 +1,5 @@
+import { Component, forwardRef } from "react";
+import { PiDropSimple } from "react-icons/pi";
 import styled, { css } from "styled-components";
 
 const variants = {

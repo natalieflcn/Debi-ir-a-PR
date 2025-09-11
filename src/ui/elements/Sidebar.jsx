@@ -73,7 +73,9 @@ function Sidebar({ menuItems, isOpen, onIsOpen }) {
     <StyledSidebar>
       {menuItems.map((menuSection) => (
         <React.Fragment key={menuSection.label}>
-          <MenuHeading>{menuSection.label}</MenuHeading>
+          <MenuHeading onClick={() => handleSidebarClick(menuSection.label)}>
+            {menuSection.label}
+          </MenuHeading>
 
           {menuSection.items.map((item) => (
             <MenuItem
