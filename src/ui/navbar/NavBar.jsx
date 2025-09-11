@@ -13,7 +13,7 @@ const StyledNav = styled.nav`
   align-items: center;
   padding: 2rem 5rem;
   background-color: var(--color-blue-200);
-
+  background-image: url("public/images/BlueOverlay.png");
   @media (max-width: 798px) {
     width: 85%;
     position: relative;

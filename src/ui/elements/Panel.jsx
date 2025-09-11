@@ -17,6 +17,7 @@ const StyledPanel = styled.div`
   background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
   color: ${({ $colors }) => $colors["--panel-color"]};
   box-shadow: 2px 2px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
+  background-image: url("public/images/CreamOverlay.png");
   transition: background-color, color, box-shadow 0.3s;
 
   &:hover {
