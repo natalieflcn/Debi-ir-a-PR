@@ -4,7 +4,7 @@ import SpinnerMini from "../ui/elements/SpinnerMini";
 import Button from "../ui/elements/Button";
 
 // Dive into Puerto Rican History
-const LoadingFrame = function ({ src, ...props }) {
+const ResourceFrame = function ({ src, ...props }) {
   const [isLoadingFrame, setIsLoadingFrame] = useState(true);
 
   return (
@@ -217,7 +217,7 @@ const StyledActFigure = styled.figure`
 `;
 
 // Keep Up with Puerto Rican News
-const StyledNewsFigure = styled.figure`
+export const StyledNewsFigure = styled.figure`
   display: flex;
   gap: 1rem;
 
@@ -280,6 +280,7 @@ const StyledLink = styled.a`
     &:hover {
       box-shadow: 4px 4px 1px var(--color-blue-200);
       background-color: var(--color-red-100);
+      color: var(--color-light-0);
     }
   }
 
@@ -289,6 +290,7 @@ const StyledLink = styled.a`
     &:hover {
       box-shadow: 4px 4px 1px var(--color-red-200);
       background-color: var(--color-blue-100);
+      color: var(--color-light-0);
     }
   }
 
@@ -317,6 +319,7 @@ const StyledHeading4 = styled.h4`
   color: var(--color-red-400);
 `;
 
+//TODO DONE
 const StyledParagraph = styled.p`
   margin-bottom: 1rem;
 
@@ -349,7 +352,7 @@ export const ResourcesColors = {
 
   "--panel-bg-highlight": `var(--color-light-100)`,
   "--panel-heading-highlight": `var(--color-red-200)`,
-  "--panel-shadow-highlight": `var(--color-blue-200)`,
+  "--panel-shadow-highlight": `var(--color-blue-100)`,
   "--panel-box-highlight": `var(--color-red-300)`,
 
   "--btn-open": `var(--color-blue-200)`,
@@ -371,7 +374,7 @@ const ResourcesHistoryComponents = {
   h4: ({ node, children, ...props }) => (
     <StyledHeading4 {...props}>{children}</StyledHeading4>
   ),
-  iframe: ({ node, children, ...props }) => <LoadingFrame {...props} />,
+  iframe: ({ node, children, ...props }) => <ResourceFrame {...props} />,
   figure: ({ node, children, ...props }) => (
     <StyledHistoryFigure {...props}>{children}</StyledHistoryFigure>
   ),
@@ -437,12 +440,12 @@ export const ResourcesNewsComponents = {
   ),
 };
 
-export const ResourcesComponents = [
-  0,
-  ResourcesHistoryComponents,
-  ResourcesDonateComponents,
-  ResourcesActComponents,
-  ResourcesNewsComponents,
-];
+// export const ResourcesComponents = [
+//   0,
+//   ResourcesHistoryComponents,
+//   ResourcesDonateComponents,
+//   ResourcesActComponents,
+//   ResourcesNewsComponents,
+// ];
 
 //1920x1080 imag

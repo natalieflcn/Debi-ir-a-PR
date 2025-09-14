@@ -5,7 +5,7 @@ import Row from "./Row";
 import Button from "./Button";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef } from "react";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
@@ -91,7 +91,7 @@ const StyledContent = styled.div`
 `;
 
 const Panel = forwardRef(function Panel(
-  { heading, onClick, isOpen, components, colors, children },
+  { heading, onClick, isOpen, colors, children },
   ref
 ) {
   return (
@@ -104,11 +104,7 @@ const Panel = forwardRef(function Panel(
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>
-      <StyledContent>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components}>
-          {isOpen ? children : ""}
-        </ReactMarkdown>
-      </StyledContent>
+      <StyledContent>{isOpen ? children : ""}</StyledContent>
     </StyledPanel>
   );
 });

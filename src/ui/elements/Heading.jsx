@@ -35,6 +35,7 @@ const variants = {
     font-family: Museo, sans-serif;
     font-weight: 700;
     font-size: 2rem;
+    line-height: 2rem;
 
     @media (max-width: 798px) {
       font-size: 1rem;
@@ -42,6 +43,16 @@ const variants = {
   `,
 
   h5: css`
+    font-family: "Museo";
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    @media (max-width: 798px) {
+      font-size: 1rem;
+    }
+  `,
+
+  h6: css`
     font-family: Museo, sans-serif;
     font-weight: 500;
     font-size: 3rem;
@@ -54,6 +65,7 @@ const variants = {
 
 const Heading = styled.h1`
   ${({ as }) => variants[as]}
+  ${({ $css }) => $css && css($css)}
 `;
 
 export default Heading;

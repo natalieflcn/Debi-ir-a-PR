@@ -1,5 +1,4 @@
-import ResourcesLayout from "../../features/guest/ResourcesLayout";
-import Row from "../../ui/elements/Row";
+import ResourcesLayout from "../../features/guest/layouts/ResourcesLayout";
 
 function Resources() {
   return (

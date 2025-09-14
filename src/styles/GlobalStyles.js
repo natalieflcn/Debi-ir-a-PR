@@ -135,7 +135,6 @@ body {
   font-family: 'Museo', sans-serif;
   font-weight: 300;
   background-color: var(--color-blue-200);
-  
   color: var(--color-light-100);
 }
 
@@ -145,7 +144,7 @@ body::before{
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   background-image: url("public/images/BlueOverlay.png");
 }
 // prettier-ignore
@@ -177,6 +176,15 @@ a, a:visited, a:hover, a:active{
 ul {
   list-style: none;
 }
+
+p { 
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 
 `;
 

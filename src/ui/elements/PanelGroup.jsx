@@ -28,7 +28,7 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-function PanelGroup({ menuItems, components, isOpen, setIsOpen, colors }) {
+function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
   const panelRefs = useRef({});
   const headingRefs = useRef({});
 
@@ -92,7 +92,6 @@ function PanelGroup({ menuItems, components, isOpen, setIsOpen, colors }) {
               key={item.label}
               onClick={() => handleClick(item.label)}
               isOpen={isOpen === item.label}
-              components={components[item.id]}
               colors={colors}
               ref={(panel) => (panelRefs.current[item.label] = panel)}
             >
