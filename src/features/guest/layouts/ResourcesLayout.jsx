@@ -2,13 +2,14 @@ import Sidebar from "../../../ui/elements/Sidebar";
 import Row from "../../../ui/elements/Row";
 import styled, { css } from "styled-components";
 import PanelGroup from "../../../ui/elements/PanelGroup";
-import {
-  ResourcesColors,
-  StyledNewsFigure,
-} from "../../../styles/ResourcesStyles";
+import { ResourcesColors } from "../../../styles/ResourcesStyles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
+import Button from "../../../ui/elements/Button";
+import Link from "../../../ui/elements/Link";
+import { PuertoRicanNewsWrapper } from "./resourcesLayout.styles";
 
+// Styled Components
 const StyledResourcesLayout = styled.div`
   display: grid;
 `;
@@ -350,34 +351,34 @@ const menuItems = [
         label: "Keep Up with Puerto Rican News",
         link: "/resources",
         content: (
-          <StyledNewsFigure>
-            <figure>
-              <figcaption>
-                <Heading
-                  as="h4"
-                  $css={css`
-                    color: var(--color-red-400);
-                  `}
-                >
-                  Want to stay up to date about what’s going on in Puerto Rico?
-                </Heading>
-                <p>
-                  Keep up with the latest news, breaking stories, and more about
-                  the island.
-                </p>
-                <p>
-                  From cultural highlights and community efforts to political
-                  developments and ongoing challenges, staying informed helps us
-                  better understand Puerto Rico’s reality and support its
-                  people.
-                </p>
-                <a href="https://www.the-independent.com/topic/puerto-rico">
+          <PuertoRicanNewsWrapper>
+            <img src="src/assets/images/guest/SanJuan.jpg" />
+            <Row>
+              <Heading
+                as="h5"
+                $css={css`
+                  color: var(--color-red-400);
+                  text-transform: none;
+                `}
+              >
+                Want to stay up to date about what’s going on in Puerto Rico?
+              </Heading>
+              <p>
+                Keep up with the latest news, breaking stories, and more about
+                the island.
+              </p>
+              <p>
+                From cultural highlights and community efforts to political
+                developments and ongoing challenges, staying informed helps us
+                better understand Puerto Rico’s reality and support its people.
+              </p>
+              <Link href="https://www.the-independent.com/topic/puerto-rico">
+                <Button size="large" variation="secondary">
                   Visit Independent News
-                </a>
-              </figcaption>
-              <img src="src/assets/images/guest/SanJuan.jpg" />
-            </figure>
-          </StyledNewsFigure>
+                </Button>
+              </Link>
+            </Row>
+          </PuertoRicanNewsWrapper>
         ),
       },
     ],

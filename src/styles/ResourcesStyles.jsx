@@ -216,52 +216,6 @@ const StyledActFigure = styled.figure`
   }
 `;
 
-// Keep Up with Puerto Rican News
-export const StyledNewsFigure = styled.figure`
-  display: flex;
-  gap: 1rem;
-
-  img {
-    width: 50%;
-    border-radius: 4px;
-    margin-left: 1rem;
-  }
-
-  h4 {
-    text-transform: none;
-    margin-bottom: 1rem;
-  }
-
-  a {
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 798px) {
-    flex-direction: column;
-
-    img {
-      width: 100%;
-      align-self: center;
-      margin: 0 0 0.25rem 0;
-    }
-
-    figcaption {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 0;
-
-      a {
-        margin: 0.3rem 0;
-      }
-    }
-
-    h4 {
-      align-self: center;
-    }
-  }
-`;
-
 // General Formatting
 const StyledLink = styled.a`
   display: flex;
@@ -269,7 +223,6 @@ const StyledLink = styled.a`
   justify-content: center;
   padding: 0.8rem 0;
   border-radius: 5px;
-  color: var(--color-light-0);
   font-weight: 700;
   text-transform: uppercase;
   transition: all 0.4s;
@@ -426,9 +379,6 @@ const ResourcesActComponents = {
 };
 
 export const ResourcesNewsComponents = {
-  figure: ({ node, children, ...props }) => (
-    <StyledNewsFigure {...props}>{children}</StyledNewsFigure>
-  ),
   h4: ({ node, children, ...props }) => (
     <StyledHeading4 {...props}>{children}</StyledHeading4>
   ),

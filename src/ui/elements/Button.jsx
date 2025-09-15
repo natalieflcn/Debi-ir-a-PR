@@ -16,6 +16,7 @@ const sizes = {
   `,
   medium: css`
     font-weight: 700;
+    font-size: 1rem;
     padding: 0.8rem 0;
     border-radius: var(--border-radius-md);
     /* box-shadow: var(--shadow-md); */
@@ -23,9 +24,10 @@ const sizes = {
   large: css`
     flex-grow: 1;
     justify-content: center;
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     padding: 1.2rem 2.4rem;
     font-weight: 700;
+    border-radius: var(--border-radius-lg);
     /* box-shadow: var(--shadow-lg); */
   `,
 };
@@ -38,17 +40,17 @@ const variations = {
 
     &:hover {
       background-color: var(--color-red-100);
-      box-shadow: 1px 1px 2px var(--color-red-300);
+      box-shadow: 2px 2px 2px var(--color-red-300);
     }
   `,
   secondary: css`
-    color: var(--color-blue-200);
-    background: var(--color-blue-100);
+    color: var(--color-light-0);
+    background: var(--color-blue-200);
     box-shadow: 1px 1px 2px var(--color-blue-400);
 
     &:hover {
       background-color: var(--color-blue-100);
-      box-shadow: 1px 1px 2px var(--color-blue-300);
+      box-shadow: 2px 2px 2px var(--color-blue-300);
     }
   `,
 };
@@ -59,6 +61,7 @@ const Button = styled.button`
 
   ${({ size }) => sizes[size]}
   ${({ variation }) => variations[variation]}
+  ${({ $css }) => css({ $css })}
 `;
 
 export default Button;

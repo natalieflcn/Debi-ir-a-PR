@@ -123,13 +123,9 @@ table {
   --color-dark-100: #404449;
   --color-dark-200: #191d23;
 
-  /* --shadow-sm: 1px 1px 2px var(--color-dark-200);
-  --shadow-md: 2px 2px 2px var(--color-dark-200)
-  --shadow-lg: 3px 3px 3px var(--color-dark-200) */
-
   --border-radius-sm: 5px;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 1rem;
+  --border-radius-md: 7px;
+  --border-radius-lg: 9px;
 }
 
 // Formatting

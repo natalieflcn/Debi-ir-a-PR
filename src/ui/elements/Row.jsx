@@ -7,7 +7,7 @@ const variants = {
   `,
   vertical: css`
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   `,
 };
 const Row = styled.div`
