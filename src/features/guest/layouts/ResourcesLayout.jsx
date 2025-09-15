@@ -2,12 +2,16 @@ import Sidebar from "../../../ui/elements/Sidebar";
 import Row from "../../../ui/elements/Row";
 import styled, { css } from "styled-components";
 import PanelGroup from "../../../ui/elements/PanelGroup";
-import { ResourcesColors } from "../../../styles/ResourcesStyles";
+import {
+  EndActWrapper,
+  ResourcesColors,
+} from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
 import Button from "../../../ui/elements/Button";
 import Link from "../../../ui/elements/Link";
 import { PuertoRicanNewsWrapper } from "./resourcesLayout.styles";
+import Image from "../../../ui/elements/Image";
 
 // Styled Components
 const StyledResourcesLayout = styled.div`
@@ -285,27 +289,27 @@ const menuItems = [
         label: "End Act 20-22-60",
         link: "/resources",
         content: (
-          <>
-            <p>
+          <EndActWrapper>
+            <Row>
               As a U.S. territory, Puerto Rico has been dealt a marginalized and
               unequal form of representation in Congress. Unlike the 50 states,
               Puerto Rico has no voting power in the decisions that directly
               shape its future. Yet, Congress holds ultimate authority over the
               island and can override its laws, disregarding what any of the
               local Puerto Ricans have to say about the matter.
-            </p>
-            <img src="src/assets/images/guest/PRProtest.jpg" />
-            <p>
+            </Row>
+            <Image src="src/assets/images/guest/PRProtest.jpg" $width="50%" />
+            <Row>
               This imbalance of power has paved the way for laws that primarily
               benefit U.S. investors at the cost of the well-being of native
               Puerto Ricans.
-            </p>
-            <p>
+            </Row>
+            <Row>
               <span>In 2012, Act 20</span> was introduced to attract businesses
               by offering major tax incentives for companies exporting services
               from Puerto Rico to clients abroad in the states.
-            </p>
-            <p>
+            </Row>
+            <Row>
               <span>Act 22</span> went even further—granting wealthy individuals
               who relocated to Puerto Rico a 100% tax exemption on passive
               income from interest, dividends, and capital gains. While this
@@ -315,18 +319,18 @@ const menuItems = [
               real estate market where property values and rents have
               skyrocketed, making homeownership and affordable housing
               increasingly out of reach.
-            </p>
-            <p>
+            </Row>
+            <Row>
               <span>Now combined under Act 60 in 2019</span>, these laws allow
               wealthy non-residents to dramatically cut their tax burdens,
               paying far less in taxes than native Puerto Ricans. While framed
               as economic development, much of this wealth never reaches local
               communities. Instead, it accelerates gentrification, deepens
               inequality, and intensifies the housing crisis.
-            </p>
-            <figure>
+            </Row>
+            <Row>
               <img src="src/assets/images/guest/PRxDC.jpg" />
-              <figcaption>
+              <Row direction="vertical">
                 <h4>So, now what?</h4>
                 <p>
                   <span>What can we do?</span>
@@ -339,11 +343,15 @@ const menuItems = [
                   And we can take action—starting with this petition to ensure
                   the island can be heard.
                 </p>
-                <a>Sign Petition on Change.org</a>
-                <a>Sign Petition on ActionNetwork.org</a>
-              </figcaption>
-            </figure>
-          </>
+                <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
+                  Sign Petition on Change.org
+                </Link>
+                <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
+                  Sign Petition on ActionNetwork.org
+                </Link>
+              </Row>
+            </Row>
+          </EndActWrapper>
         ),
       },
       {
