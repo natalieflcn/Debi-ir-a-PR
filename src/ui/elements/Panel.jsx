@@ -87,15 +87,15 @@ const Panel = forwardRef(function Panel(
 ) {
   return (
     <StyledPanel $colors={colors} ref={ref}>
-      <Row direction="horizontal">
+      <Row $direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}
         </StyledHeading>
         <StyledButton
-          size="small"
-          variation={isOpen ? "secondary" : "primary"}
           onClick={onClick}
           $isOpen={isOpen}
+          $size="small"
+          $variation={isOpen ? "secondary" : "primary"}
         >
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>

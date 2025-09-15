@@ -123,9 +123,9 @@ table {
   --color-dark-100: #404449;
   --color-dark-200: #191d23;
 
-  --border-radius-sm: 5px;
-  --border-radius-md: 7px;
-  --border-radius-lg: 9px;
+  --border-radius-sm: 3px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 7px;
 }
 
 // Formatting

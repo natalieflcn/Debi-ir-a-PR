@@ -62,11 +62,11 @@ const year = new Date().getFullYear();
 function Footer() {
   return (
     <StyledFooter>
-      <Row direction="horizontal">
+      <Row $direction="horizontal">
         CReaTeD By NaTaLie FaLCoN <span>&copy;</span> <span>{year}</span>
       </Row>
 
-      <Row direction="horizontal">
+      <Row $direction="horizontal">
         <NavLink to="https://github.com/natalieflcn">
           <StyledGitHub />
         </NavLink>

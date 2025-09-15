@@ -76,7 +76,7 @@ function NavMobile({ menuItems }) {
   return (
     <StyledNavMobile>
       {!isOpen && (
-        <StyledButton size="small" variation="primary" onClick={handleClick}>
+        <StyledButton $size="small" $variation="primary" onClick={handleClick}>
           <Hamburger />
         </StyledButton>
       )}

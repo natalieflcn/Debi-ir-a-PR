@@ -25,7 +25,7 @@ const sizes = {
     flex-grow: 1;
     justify-content: center;
     /* font-size: 1.6rem; */
-    padding: 1rem 2rem;
+    padding: 0.7rem 2rem;
     font-weight: 700;
     border-radius: var(--border-radius-lg);
     /* box-shadow: var(--shadow-lg); */
@@ -59,8 +59,8 @@ const Button = styled.button`
   text-transform: uppercase;
   transition: all 0.3s;
 
-  ${({ size }) => sizes[size]}
-  ${({ variation }) => variations[variation]}
+  ${({ $size }) => sizes[$size]}
+  ${({ $variation }) => variations[$variation]}
   ${({ $css }) => css({ $css })}
 `;
 

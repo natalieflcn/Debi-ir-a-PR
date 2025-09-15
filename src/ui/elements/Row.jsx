@@ -4,15 +4,17 @@ const variants = {
   horizontal: css`
     justify-content: space-between;
     align-items: center;
+    gap: ${({ $gap }) => $gap || 0};
   `,
   vertical: css`
     flex-direction: column;
-    gap: 1rem;
+    gap: ${({ $gap }) => $gap || `1rem`};
   `,
 };
 const Row = styled.div`
   display: flex;
-  ${({ direction }) => variants[direction || "vertical"]}
+  gap: ${({ $gap }) => $gap};
+  ${({ $direction }) => variants[$direction || "vertical"]};
 `;
 
 export default Row;

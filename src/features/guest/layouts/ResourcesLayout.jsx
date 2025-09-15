@@ -3,8 +3,10 @@ import Row from "../../../ui/elements/Row";
 import styled, { css } from "styled-components";
 import PanelGroup from "../../../ui/elements/PanelGroup";
 import {
+  CharityOrganizationsWrapper,
   EndActWrapper,
   ResourcesColors,
+  SlicedPhotos,
 } from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
@@ -197,92 +199,159 @@ const menuItems = [
         label: "Donate to Puerto Rican Organizations",
         link: "/resources",
         content: (
-          <>
-            <p>
+          <CharityOrganizationsWrapper>
+            <Row>
               While most people imagine Puerto Rico to be a tropical paradise;
               an island where there’s never a bad day to stretch on the beach,
               take a sip of coquito, and relax to the sound of coquis…
-            </p>
-            <div>
+            </Row>
+            <SlicedPhotos>
               <img src="src/assets/images/guest/PuertoRicanParadise.jpg" />
               <img src="src/assets/images/guest/PRBlackout.jpg" />
-            </div>
-            <p>
+            </SlicedPhotos>
+            <Row>
               Many communities are still living with the long-lasting effects of
               Hurricane María and the relentless storms that have followed.
               Frequent blackouts, abandoned homes, rising costs of living, and
               an unlivable minimum wage continue to challenge the resilience of
               Puerto Ricans.
-            </p>
-            <p>
+            </Row>
+            <Row>
               <Bold>
                 The island may have the world’s admiration, but it also needs
                 the world’s support.
               </Bold>
-            </p>
-            <p>
+            </Row>
+            <Row>
               Here are some organizations making a direct impact, where your
               donation can truly help:
-            </p>
-            <figure>
-              <img src="src/assets/images/guest/FundacionComunitaria.png" />
-              <figcaption>
-                <h4>Fundación Comunitaria de Puerto Rico</h4>
-                <p>
-                  Since 1985, this foundation has been dedicated to fostering
-                  community development across the island. Working with
-                  individuals, corporations, and nonprofits, they support
-                  initiatives in housing, economic growth, education, food and
-                  water access, and renewable energy.
-                </p>
-                <div>
-                  <a href="https://www.fcpr.org/donations/donate-now/">
-                    Donate Now
-                  </a>
-                  <a href="https://www.obama.org/programs/my-brothers-keeper-alliance/about/communities-were-serving/puerto-rico-community-foundation/">
-                    Learn More
-                  </a>
-                </div>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src="src/assets/images/guest/ComedoresSociales.png" />
-              <figcaption>
-                <h4>Comedores Sociales de Puerto Rico</h4>
-                <p>
-                  This organization fights hunger and food insecurity by taking
-                  a community-first approach. Through mutual aid centers and
-                  community kitchens, they empower neighborhoods to feed
-                  themselves and build resilience from the ground up.
-                </p>
-                <div>
-                  <a href="https://www.gofundme.com/charity/comedores-sociales-de-puerto-rico-inc/donate">
-                    Donate Now
-                  </a>
-                  <a href="https://comedoressocialesdepuertorico.pro/">
-                    Learn More
-                  </a>
-                </div>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src="src/assets/images/guest/PRxPR.png" />
-              <figcaption>
-                <h4>PRxPR</h4>
-                <p>
-                  Founded by Puerto Ricans in the diaspora after Hurricanes
-                  María and Irma, PRxPR ensures that 100% of donations go
-                  directly to affected communities. Their focus is on food and
-                  agriculture, clean water, and renewable energy projects that
-                  create long-term sustainability.
-                </p>
-                <div>
-                  <a href="https://fundly.com/prxpr">Donate Now</a>
-                  <a href="https://www.prxpr.org/funds-at-work/">Learn More</a>
-                </div>
-              </figcaption>
-            </figure>
-          </>
+            </Row>
+            <Row $gap="3rem">
+              <Row $direction="horizontal">
+                <Image
+                  src="src/assets/images/guest/FundacionComunitaria.png"
+                  $width="9rem"
+                  $css={css`
+                    margin-right: 1.5rem;
+                    align-self: flex-start;
+                  `}
+                />
+                <Row>
+                  <Row $gap="0.25rem">
+                    <Heading
+                      as="h5"
+                      $css={css`
+                        color: var(--color-red-300);
+                      `}
+                    >
+                      Fundación Comunitaria de Puerto Rico
+                    </Heading>
+                    <p>
+                      Since 1985, this foundation has been dedicated to
+                      fostering community development across the island. Working
+                      with individuals, corporations, and nonprofits, they
+                      support initiatives in housing, economic growth,
+                      education, food and water access, and renewable energy.
+                    </p>
+                  </Row>
+                  <Row $direction="horiztonal" $gap="1rem">
+                    <Link href="https://www.fcpr.org/donations/donate-now/">
+                      <Button $size="large" $variation="primary">
+                        Donate Now
+                      </Button>
+                    </Link>
+                    <Link href="https://www.obama.org/programs/my-brothers-keeper-alliance/about/communities-were-serving/puerto-rico-community-foundation/">
+                      <Button $size="large" $variation="secondary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </Row>
+                </Row>
+              </Row>
+              <Row $direction="horizontal">
+                <Image
+                  src="src/assets/images/guest/ComedoresSociales.png"
+                  $width="9rem"
+                  $css={css`
+                    margin-right: 1.5rem;
+                    align-self: flex-start;
+                  `}
+                />
+                <Row>
+                  <Row $gap="0.25rem">
+                    <Heading
+                      as="h5"
+                      $css={css`
+                        color: var(--color-red-300);
+                      `}
+                    >
+                      Comedores Sociales de Puerto Rico
+                    </Heading>
+                    <p>
+                      This organization fights hunger and food insecurity by
+                      taking a community-first approach. Through mutual aid
+                      centers and community kitchens, they empower neighborhoods
+                      to feed themselves and build resilience from the ground
+                      up.
+                    </p>
+                  </Row>
+                  <Row $direction="horizontal" $gap="1rem">
+                    <Link href="https://www.gofundme.com/charity/comedores-sociales-de-puerto-rico-inc/donate">
+                      <Button $size="large" $variation="primary">
+                        Donate Now
+                      </Button>
+                    </Link>
+                    <Link href="https://comedoressocialesdepuertorico.pro/">
+                      <Button $size="large" $variation="secondary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </Row>
+                </Row>
+              </Row>
+              <Row $direction="horizontal">
+                <Image
+                  src="src/assets/images/guest/PRxPR.png"
+                  $width="9rem"
+                  $css={css`
+                    margin-right: 1.5rem;
+                    align-self: flex-start;
+                  `}
+                />
+                <Row>
+                  <Row $gap="0.25rem">
+                    <Heading
+                      as="h5"
+                      $css={css`
+                        color: var(--color-red-300);
+                      `}
+                    >
+                      PRxPR
+                    </Heading>
+                    <p>
+                      Founded by Puerto Ricans in the diaspora after Hurricanes
+                      María and Irma, PRxPR ensures that 100% of donations go
+                      directly to affected communities. Their focus is on food
+                      and agriculture, clean water, and renewable energy
+                      projects that create long-term sustainability.
+                    </p>
+                  </Row>
+                  <Row $direction="horizontal" $gap="1rem">
+                    <Link href="https://fundly.com/prxpr">
+                      <Button $size="large" $variation="primary">
+                        Donate Now
+                      </Button>
+                    </Link>
+                    <Link href="https://www.prxpr.org/funds-at-work/">
+                      <Button $size="large" $variation="secondary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </Row>
+                </Row>
+              </Row>
+            </Row>
+          </CharityOrganizationsWrapper>
         ),
       },
       {
@@ -336,7 +405,7 @@ const menuItems = [
                 inequality, and intensifies the housing crisis.
               </p>
             </Row>
-            <Row direction="horiztonal">
+            <Row $direction="horiztonal">
               <Image
                 src="src/assets/images/guest/PRxDC.jpg"
                 $width="43%"
@@ -426,7 +495,7 @@ function ResourcesLayout() {
 
   return (
     <StyledResourcesLayout>
-      <Row direction="horizontal">
+      <Row $direction="horizontal">
         <Sidebar menuItems={menuItems} isOpen={isOpen} onIsOpen={setIsOpen} />
         <PanelGroup
           menuItems={menuItems}
