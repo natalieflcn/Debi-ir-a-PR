@@ -3,8 +3,6 @@ import Heading from "./Heading";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import Row from "./Row";
 import Button from "./Button";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import { forwardRef } from "react";
 
 const StyledPanel = styled.div`
@@ -51,15 +49,8 @@ const StyledHeading = styled(Heading)`
 
 const StyledButton = styled(Button)`
   position: relative;
-  background-color: ${({ $isOpen, $colors }) =>
-    $isOpen ? $colors["--btn-open"] : $colors["--btn-close"]};
-  transition: background-color 0.3s;
-  align-self: flex-start;
 
-  &:hover {
-    background-color: ${({ $isOpen, $colors }) =>
-      $isOpen ? $colors["--btn-open-hover"] : $colors["--btn-close-hover"]};
-  }
+  align-self: flex-start;
 
   @media (max-width: 798px) {
     justify-self: flex-end;
@@ -71,8 +62,8 @@ const TogglePanel = css`
   position: relative;
   bottom: 0.35rem;
   right: 0.35rem;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.7rem;
+  height: 1.7rem;
   color: var(--color-light-0);
   opacity: 90%;
 `;
@@ -100,7 +91,12 @@ const Panel = forwardRef(function Panel(
         <StyledHeading as="h2" $isOpen={isOpen}>
           {heading}
         </StyledHeading>
-        <StyledButton onClick={onClick} $isOpen={isOpen} $colors={colors}>
+        <StyledButton
+          size="small"
+          variation={isOpen ? "secondary" : "primary"}
+          onClick={onClick}
+          $isOpen={isOpen}
+        >
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>

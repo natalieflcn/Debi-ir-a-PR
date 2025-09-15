@@ -123,7 +123,9 @@ table {
   --color-dark-100: #404449;
   --color-dark-200: #191d23;
 
-  --shadow-sm: 1px 1px 2px rgba(0,0,0,0.4);
+  /* --shadow-sm: 1px 1px 2px var(--color-dark-200);
+  --shadow-md: 2px 2px 2px var(--color-dark-200)
+  --shadow-lg: 3px 3px 3px var(--color-dark-200) */
 
   --border-radius-sm: 5px;
   --border-radius-md: 0.5rem;
@@ -155,6 +157,7 @@ input, button, textarea, select {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 *:disabled {
@@ -177,13 +180,7 @@ ul {
   list-style: none;
 }
 
-p { 
-  margin-bottom: 1rem;
 
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}
 
 
 `;

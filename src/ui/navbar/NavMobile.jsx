@@ -1,5 +1,5 @@
 import { BiMenuAltRight, BiX } from "react-icons/bi";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "../elements/Button";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -16,9 +16,8 @@ const StyledNavMobile = styled.ul`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: var(--color-red-200);
   position: relative;
-  bottom: 1rem;
+  bottom: 0.8rem;
 `;
 
 const Hamburger = styled(BiMenuAltRight)`
@@ -30,8 +29,9 @@ const Hamburger = styled(BiMenuAltRight)`
 
 const CloseMenu = styled(BiX)`
   display: ${({ $isOpen }) => ($isOpen ? `` : `none`)};
-  position: relative;
-  bottom: 1.6rem;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
   z-index: 1;
   width: 2rem;
   height: 2rem;
@@ -76,7 +76,7 @@ function NavMobile({ menuItems }) {
   return (
     <StyledNavMobile>
       {!isOpen && (
-        <StyledButton onClick={handleClick}>
+        <StyledButton size="small" variation="primary" onClick={handleClick}>
           <Hamburger />
         </StyledButton>
       )}

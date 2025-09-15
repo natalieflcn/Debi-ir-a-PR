@@ -1,15 +1,64 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+// small button
+// medium button
+// large button (full panel length)
+// embed link prop into button
+// pass in colors, margin, assign default
+
+const sizes = {
+  small: css`
+    padding: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: var(--border-radius-sm);
+    /* box-shadow: 1px 1px 2px black; */
+  `,
+  medium: css`
+    font-weight: 700;
+    padding: 0.8rem 0;
+    border-radius: var(--border-radius-md);
+    /* box-shadow: var(--shadow-md); */
+  `,
+  large: css`
+    flex-grow: 1;
+    justify-content: center;
+    font-size: 1.6rem;
+    padding: 1.2rem 2.4rem;
+    font-weight: 700;
+    /* box-shadow: var(--shadow-lg); */
+  `,
+};
+
+const variations = {
+  primary: css`
+    color: var(--color-light-0);
+    background-color: var(--color-red-200);
+    box-shadow: 1px 1px 2px var(--color-red-400);
+
+    &:hover {
+      background-color: var(--color-red-100);
+      box-shadow: 1px 1px 2px var(--color-red-300);
+    }
+  `,
+  secondary: css`
+    color: var(--color-blue-200);
+    background: var(--color-blue-100);
+    box-shadow: 1px 1px 2px var(--color-blue-400);
+
+    &:hover {
+      background-color: var(--color-blue-100);
+      box-shadow: 1px 1px 2px var(--color-blue-300);
+    }
+  `,
+};
 
 const Button = styled.button`
-  /* small button type, need to add variants later */
-  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
 
-  padding: 0.5rem;
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-sm);
-
-  height: 2rem;
-  width: 2rem;
+  ${({ size }) => sizes[size]}
+  ${({ variation }) => variations[variation]}
 `;
 
 export default Button;
