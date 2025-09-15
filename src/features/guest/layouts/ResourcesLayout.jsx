@@ -12,6 +12,7 @@ import Button from "../../../ui/elements/Button";
 import Link from "../../../ui/elements/Link";
 import { PuertoRicanNewsWrapper } from "./resourcesLayout.styles";
 import Image from "../../../ui/elements/Image";
+import Bold from "../../../ui/elements/Bold";
 
 // Styled Components
 const StyledResourcesLayout = styled.div`
@@ -214,10 +215,10 @@ const menuItems = [
               Puerto Ricans.
             </p>
             <p>
-              <span>
+              <Bold>
                 The island may have the world’s admiration, but it also needs
                 the world’s support.
-              </span>
+              </Bold>
             </p>
             <p>
               Here are some organizations making a direct impact, where your
@@ -298,42 +299,55 @@ const menuItems = [
               island and can override its laws, disregarding what any of the
               local Puerto Ricans have to say about the matter.
             </Row>
-            <Image src="src/assets/images/guest/PRProtest.jpg" $width="50%" />
+            <Image src="src/assets/images/guest/PRProtest.jpg" />
             <Row>
               This imbalance of power has paved the way for laws that primarily
               benefit U.S. investors at the cost of the well-being of native
               Puerto Ricans.
             </Row>
             <Row>
-              <span>In 2012, Act 20</span> was introduced to attract businesses
-              by offering major tax incentives for companies exporting services
-              from Puerto Rico to clients abroad in the states.
+              <p>
+                <Bold>In 2012, Act 20</Bold> was introduced to attract
+                businesses by offering major tax incentives for companies
+                exporting services from Puerto Rico to clients abroad in the
+                states.
+              </p>
             </Row>
             <Row>
-              <span>Act 22</span> went even further—granting wealthy individuals
-              who relocated to Puerto Rico a 100% tax exemption on passive
-              income from interest, dividends, and capital gains. While this
-              offer is lucrative for investors, it has been heavily criticized
-              for driving up housing prices, fueling displacement, and worsening
-              inequality amongst the natives. Locals are left competing in a
-              real estate market where property values and rents have
-              skyrocketed, making homeownership and affordable housing
-              increasingly out of reach.
+              <p>
+                <Bold>Act 22</Bold> went even further—granting wealthy
+                individuals who relocated to Puerto Rico a 100% tax exemption on
+                passive income from interest, dividends, and capital gains.
+                While this offer is lucrative for investors, it has been heavily
+                criticized for driving up housing prices, fueling displacement,
+                and worsening inequality amongst the natives. Locals are left
+                competing in a real estate market where property values and
+                rents have skyrocketed, making homeownership and affordable
+                housing increasingly out of reach.
+              </p>
             </Row>
             <Row>
-              <span>Now combined under Act 60 in 2019</span>, these laws allow
-              wealthy non-residents to dramatically cut their tax burdens,
-              paying far less in taxes than native Puerto Ricans. While framed
-              as economic development, much of this wealth never reaches local
-              communities. Instead, it accelerates gentrification, deepens
-              inequality, and intensifies the housing crisis.
+              <p>
+                <Bold>Now combined under Act 60 in 2019</Bold>, these laws allow
+                wealthy non-residents to dramatically cut their tax burdens,
+                paying far less in taxes than native Puerto Ricans. While framed
+                as economic development, much of this wealth never reaches local
+                communities. Instead, it accelerates gentrification, deepens
+                inequality, and intensifies the housing crisis.
+              </p>
             </Row>
-            <Row>
-              <img src="src/assets/images/guest/PRxDC.jpg" />
-              <Row direction="vertical">
-                <h4>So, now what?</h4>
+            <Row direction="horiztonal">
+              <Image
+                src="src/assets/images/guest/PRxDC.jpg"
+                $width="43%"
+                $css={css`
+                  margin-right: 1.25rem;
+                `}
+              />
+              <Row>
+                <Heading as="h4">So, now what?</Heading>
                 <p>
-                  <span>What can we do?</span>
+                  <Bold>What can we do?</Bold>
                 </p>
                 <p>
                   We can continue spreading awareness about the harm these laws
@@ -344,10 +358,14 @@ const menuItems = [
                   the island can be heard.
                 </p>
                 <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
-                  Sign Petition on Change.org
+                  <Button size="large" variation="primary">
+                    Sign Petition on Change.org
+                  </Button>
                 </Link>
                 <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
-                  Sign Petition on ActionNetwork.org
+                  <Button size="large" variation="secondary">
+                    Sign Petition on ActionNetwork.org
+                  </Button>
                 </Link>
               </Row>
             </Row>
