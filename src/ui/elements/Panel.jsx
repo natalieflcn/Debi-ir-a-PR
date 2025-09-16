@@ -8,7 +8,7 @@ import { forwardRef } from "react";
 const StyledPanel = styled.div`
   box-sizing: border-box;
   width: 99%;
-  max-width: 51rem;
+  /* width: 51rem; */
   padding: 2rem;
   scroll-margin-top: 9.4rem;
   border-radius: var(--border-radius-lg);
@@ -31,6 +31,7 @@ const StyledPanel = styled.div`
   }
 
   @media (max-width: 798px) {
+    width: 99%;
     padding: 1.5rem;
   }
 `;

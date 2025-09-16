@@ -11,8 +11,7 @@ const StyledSidebar = styled.aside`
   align-self: flex-start;
   flex-direction: column;
   gap: 2rem;
-  grid: 1/-1;
-  margin-right: 2.5rem;
+  /* grid: 1/-1; */
   padding: 3rem;
   width: 21rem;
   background-color: var(--color-light-200);

@@ -2,13 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Panel from "./Panel";
 import styled from "styled-components";
 import Heading from "./Heading";
-import { smoothScrollTo } from "../../utils/helpers";
 
 const StyledPanelGroup = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  align-self: start;
   gap: 1rem;
 `;
 

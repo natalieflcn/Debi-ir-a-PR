@@ -1,8 +1,7 @@
 import AboutLayout from "../../features/guest/layouts/AboutLayout";
-import ResourcesLayout from "../../features/guest/layouts/ResourcesLayout";
 
 function About() {
-  return <ResourcesLayout />;
+  return <AboutLayout />;
 }
 
 export default About;

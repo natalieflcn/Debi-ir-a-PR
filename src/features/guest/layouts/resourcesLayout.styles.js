@@ -71,6 +71,10 @@ export const CharityOrganizationsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  h6 {
+    color: var(--color-red-300);
+  }
 `;
 
 // End Act 20-22-60 Panel
@@ -79,16 +83,24 @@ export const EndActWrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   font-size: 1rem;
+
+  h5 {
+    color: var(--color-red-400);
+  }
 `;
 
 // Keep Up with Puerto Rican News Panel
 export const PuertoRicanNewsWrapper = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 
   img {
     width: 47%;
     border-radius: var(--border-radius-sm);
+  }
+
+  h6 {
+    color: var(--color-red-400);
   }
 
   @media (max-width: 798px) {

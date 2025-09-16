@@ -12,12 +12,12 @@ import {
   HistoryWrapper,
   ResourcesColors,
   SlicedPhotos,
+  PuertoRicanNewsWrapper,
 } from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
 import Button from "../../../ui/elements/Button";
 import Link from "../../../ui/elements/Link";
-import { PuertoRicanNewsWrapper } from "./resourcesLayout.styles";
 import Image from "../../../ui/elements/Image";
 import Bold from "../../../ui/elements/Bold";
 
@@ -318,12 +318,7 @@ const menuItems = [
                 <Row>
                   <Row $gap="0.25rem">
                     <Link href="https://www.fcpr.org/">
-                      <Heading
-                        as="h5"
-                        $css={css`
-                          color: var(--color-red-300);
-                        `}
-                      >
+                      <Heading as="h6">
                         Fundación Comunitaria de Puerto Rico
                       </Heading>
                     </Link>
@@ -363,12 +358,7 @@ const menuItems = [
                 <Row>
                   <Row $gap="0.25rem">
                     <Link href="https://www.comedoressocialespr.org/">
-                      <Heading
-                        as="h5"
-                        $css={css`
-                          color: var(--color-red-300);
-                        `}
-                      >
+                      <Heading as="h6">
                         Comedores Sociales de Puerto Rico
                       </Heading>
                     </Link>
@@ -408,14 +398,7 @@ const menuItems = [
                 <Row>
                   <Row $gap="0.25rem">
                     <Link href="https://www.prxpr.org/">
-                      <Heading
-                        as="h5"
-                        $css={css`
-                          color: var(--color-red-300);
-                        `}
-                      >
-                        PRxPR
-                      </Heading>
+                      <Heading as="h6">PRxPR</Heading>
                     </Link>
                     <p>
                       Founded by Puerto Ricans in the diaspora after Hurricanes
@@ -503,9 +486,7 @@ const menuItems = [
                 `}
               />
               <Row>
-                <Heading as="h5" $css={{ color: css`var(--color-red-300)` }}>
-                  So, now what?
-                </Heading>
+                <Heading as="h5">So, now what?</Heading>
                 <p>
                   <Bold>What can we do?</Bold>
                 </p>
@@ -541,13 +522,7 @@ const menuItems = [
             <Image src="src/assets/images/guest/SanJuan.jpg" />
 
             <Row>
-              <Heading
-                as="h6"
-                $css={css`
-                  color: var(--color-red-400);
-                  text-transform: none;
-                `}
-              >
+              <Heading as="h6">
                 Want to stay up to date about what’s going on in Puerto Rico?
               </Heading>
               <p>
@@ -577,7 +552,7 @@ function ResourcesLayout() {
 
   return (
     <StyledResourcesLayout>
-      <Row $direction="horizontal">
+      <Row $direction="horizontal" $gap="2rem">
         <Sidebar menuItems={menuItems} isOpen={isOpen} onIsOpen={setIsOpen} />
         <PanelGroup
           menuItems={menuItems}
