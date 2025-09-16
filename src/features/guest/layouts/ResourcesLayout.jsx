@@ -13,6 +13,8 @@ import {
   ResourcesColors,
   SlicedPhotos,
   PuertoRicanNewsWrapper,
+  OrganizationSection,
+  ActCallToAction,
 } from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
@@ -304,7 +306,7 @@ const menuItems = [
               donation can truly help:
             </Row>
             <Row $gap="3rem">
-              <Row $direction="horizontal">
+              <OrganizationSection>
                 <Link href="https://www.fcpr.org/">
                   <Image
                     src="src/assets/images/guest/FundacionComunitaria.png"
@@ -316,7 +318,7 @@ const menuItems = [
                   />
                 </Link>
                 <Row>
-                  <Row $gap="0.25rem">
+                  <Row $gap="0.5rem">
                     <Link href="https://www.fcpr.org/">
                       <Heading as="h6">
                         Fundación Comunitaria de Puerto Rico
@@ -343,8 +345,8 @@ const menuItems = [
                     </Link>
                   </Row>
                 </Row>
-              </Row>
-              <Row $direction="horizontal">
+              </OrganizationSection>
+              <OrganizationSection>
                 <Link href="https://www.comedoressocialespr.org/">
                   <Image
                     src="src/assets/images/guest/ComedoresSociales.png"
@@ -356,7 +358,7 @@ const menuItems = [
                   />
                 </Link>
                 <Row>
-                  <Row $gap="0.25rem">
+                  <Row $gap="0.5rem">
                     <Link href="https://www.comedoressocialespr.org/">
                       <Heading as="h6">
                         Comedores Sociales de Puerto Rico
@@ -383,8 +385,8 @@ const menuItems = [
                     </Link>
                   </Row>
                 </Row>
-              </Row>
-              <Row $direction="horizontal">
+              </OrganizationSection>
+              <OrganizationSection>
                 <Link href="https://www.prxpr.org/">
                   <Image
                     src="src/assets/images/guest/PRxPR.png"
@@ -396,7 +398,7 @@ const menuItems = [
                   />
                 </Link>
                 <Row>
-                  <Row $gap="0.25rem">
+                  <Row $gap="0.5rem">
                     <Link href="https://www.prxpr.org/">
                       <Heading as="h6">PRxPR</Heading>
                     </Link>
@@ -421,7 +423,7 @@ const menuItems = [
                     </Link>
                   </Row>
                 </Row>
-              </Row>
+              </OrganizationSection>
             </Row>
           </CharityOrganizationsWrapper>
         ),
@@ -477,7 +479,7 @@ const menuItems = [
                 inequality, and intensifies the housing crisis.
               </p>
             </Row>
-            <Row $direction="horiztonal">
+            <ActCallToAction>
               <Image
                 src="src/assets/images/guest/PRxDC.jpg"
                 $width="43%"
@@ -509,7 +511,7 @@ const menuItems = [
                   </Button>
                 </Link>
               </Row>
-            </Row>
+            </ActCallToAction>
           </EndActWrapper>
         ),
       },

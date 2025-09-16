@@ -27,7 +27,7 @@ const variants = {
     line-height: 2rem;
 
     @media (max-width: 798px) {
-      font-size: 3rem;
+      font-size: 1%.7;
     }
   `,
 
@@ -47,7 +47,7 @@ const variants = {
     font-size: 1.7rem;
 
     @media (max-width: 798px) {
-      font-size: 1rem;
+      font-size: 1.7rem;
     }
   `,
 
@@ -55,10 +55,6 @@ const variants = {
     font-family: Museo, sans-serif;
     font-weight: 700;
     font-size: 1.25rem;
-
-    @media (max-width: 798px) {
-      font-size: 1rem;
-    }
   `,
 };
 
