@@ -11,7 +11,7 @@ const StyledPanel = styled.div`
   max-width: 51rem;
   padding: 2rem;
   scroll-margin-top: 9.4rem;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-lg);
   background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
   color: ${({ $colors }) => $colors["--panel-color"]};
   box-shadow: 2px 2px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
@@ -24,17 +24,10 @@ const StyledPanel = styled.div`
       ${({ $colors }) => $colors["--panel-shadow-highlight"]};
   }
 
-  h2 {
-    color: ${({ $colors }) => $colors["--panel-heading-color"]};
-    text-shadow: 2px 2px 1px
-      ${({ $colors }) => $colors["--panel-heading-highlight"]};
-    transition: all 0.4s;
-  }
-
   &:hover h2 {
     color: ${({ $colors }) => $colors["--panel-heading-highlight"]};
-    text-shadow: 1px 2px 1px
-      ${({ $colors }) => $colors["--panel-shadow-highlight"]};
+    text-shadow: ${({ $colors }) =>
+      `1px 2px 1px ${$colors["--panel-shadow-highlight"]}`};
   }
 
   @media (max-width: 798px) {
@@ -43,13 +36,16 @@ const StyledPanel = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  margin-bottom: ${({ $isOpen }) => ($isOpen ? `1rem` : `0rem`)};
   text-transform: uppercase;
+  color: ${({ $colors }) => $colors["--panel-heading-color"]};
+  text-shadow: 2px 2px 1px
+    ${({ $colors }) => $colors["--panel-heading-highlight"]};
+  transition: all 0.4s;
+  margin-bottom: ${({ $isOpen }) => $isOpen && `1rem`};
 `;
 
 const StyledButton = styled(Button)`
   position: relative;
-
   align-self: flex-start;
 
   @media (max-width: 798px) {
@@ -77,6 +73,7 @@ const ClosePanel = styled(BiMinus)`
 `;
 
 const StyledContent = styled.div`
+  /* margin-top: 1rem; */
   max-width: inherit;
   line-height: 1.5rem;
 `;
@@ -86,9 +83,9 @@ const Panel = forwardRef(function Panel(
   ref
 ) {
   return (
-    <StyledPanel $colors={colors} ref={ref}>
+    <StyledPanel ref={ref} $colors={colors}>
       <Row $direction="horizontal">
-        <StyledHeading as="h2" $isOpen={isOpen}>
+        <StyledHeading as="h2" $isOpen={isOpen} $colors={colors}>
           {heading}
         </StyledHeading>
         <StyledButton

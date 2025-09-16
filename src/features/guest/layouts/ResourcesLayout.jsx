@@ -5,6 +5,11 @@ import PanelGroup from "../../../ui/elements/PanelGroup";
 import {
   CharityOrganizationsWrapper,
   EndActWrapper,
+  HistoryBookSection,
+  HistoryFrame,
+  HistorySpinnerMini,
+  HistoryVideoSection,
+  HistoryWrapper,
   ResourcesColors,
   SlicedPhotos,
 } from "../../guest/layouts/resourcesLayout.styles";
@@ -21,6 +26,24 @@ const StyledResourcesLayout = styled.div`
   display: grid;
 `;
 
+// Helper Components
+const LoadingFrame = function ({ src, ...props }) {
+  const [isLoadingFrame, setIsLoadingFrame] = useState(true);
+
+  return (
+    <HistoryVideoSection $isLoadingFrame={isLoadingFrame}>
+      {isLoadingFrame && <HistorySpinnerMini />}
+      <HistoryFrame
+        src={src}
+        onLoad={() => setIsLoadingFrame(false)}
+        $isLoadingFrame={isLoadingFrame}
+        {...props}
+      ></HistoryFrame>
+    </HistoryVideoSection>
+  );
+};
+
+// Content
 const menuItems = [
   {
     label: "Learn More About the Island",
@@ -37,155 +60,209 @@ const menuItems = [
         label: "Dive into Puerto Rican History",
         link: "/resources",
         content: (
-          <>
-            <p>
-              Dive into Puerto Rico’s rich history and the journey of how this
-              small, vibrant island has captured the world’s attention.
-            </p>
-            <p>
-              Known as <span>La Isla del Encanto</span> (The Island of
-              Enchantment), Puerto Rico shines with beauty, culture, and
-              passion–in spite of the profound challenges the island has
-              survived. The joy, love, and unbreakable spirit of Puerto Ricans
-              remain at the heart of the island’s identity.
-            </p>
-            <p>
-              Explore the stories of what Puerto Rico has endured and overcome
-              throughout history.
-            </p>
-            <h3>Puerto Rico is Dying: Here's Why</h3>
-            <iframe src="https://www.youtube.com/embed/6sPRFvWOBwo"></iframe>
-            <p>
-              <span>Puerto Rico is paradise.</span> Beaches, lush mountains,
-              rich culture.
-            </p>
-            <p>
-              But beneath the beauty, there is pain that goes unseen. Nearly
-              half of the population lives below the poverty line – This U.S.
-              territory is the poorest, most unequal part of the United States,
-              and the gap between the wealthy and the poor continues to grow.
-            </p>
-            <p>
-              A Puerto Rico without Puerto Ricans is near and this is the story
-              of why.
-            </p>
-            <h3>How the U.S. Stole Puerto Rico</h3>
-            <iframe src="https://www.youtube.com/embed/xb9E8fvMPOA"></iframe>
-            <p>
-              After nearly 400 years of Spanish rule, Puerto Ricans hoped for
-              liberation – instead, they became a colony of a foreign power that
-              didn’t even speak their language.
-            </p>
-            <p>Surveillance, sabotage, and air strikes on its own citizens.</p>
-            <p>
-              Unfold the history of how the United States stole and kept its
-              prized colony in the Caribbean – <span>Puerto Rico</span>.
-            </p>
-            <h3>History of the Puerto Rican Flag</h3>
-            <iframe src="https://www.youtube.com/embed/3KLMtxRxTCo"></iframe>
-            <p>
-              Ever wonder why Puerto Ricans display their flag with such
-              unshakable pride?
-            </p>
-            <p>
-              Take a peek of the flag’s transformations—and why it will always
-              be waved with love and resilience.
-            </p>
-            <h3>Additional Literature</h3>
-            <p>
-              If you’re interested in learning more about Puerto Rico’s
-              struggles and the resilience of its people, these books honor
-              their strength and perseverance.
-            </p>
-            <a
-              href="https://www.goodreads.com/book/show/22928891-war-against-all-puerto-ricans"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img src="src/assets/images/guest/WarAgainstAllPuertoRicansCover.png" />
-                <figcaption>
-                  <h4>War Against All Puerto Ricans</h4>Through oral histories,
-                  personal interviews, eyewitness accounts, congressional
-                  testimony, and recently declassified FBI files, War Against
-                  All Puerto Ricans tells the story of a forgotten revolution
-                  and its context in Puerto Rico's history, from the US invasion
-                  in 1898 to the modern-day struggle for self-determination.
-                </figcaption>
-              </figure>
-            </a>
-            <a
-              href="https://www.goodreads.com/book/show/39791088-the-battle-for-paradise"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img src="src/assets/images/guest/TheBattleForParadiseCover.png" />
-                <figcaption>
-                  <h4>The Battle for Paradise</h4>In the rubble of Hurricane
-                  Maria, Puerto Ricans and ultrarich "Puertopians" are locked in
-                  a pitched struggle over how to remake the island. In this
-                  investigation, activist Naomi Klein uncovers how the forces of
-                  shock politics and disaster capitalism seek to undermine the
-                  nation's radical, resilient vision for a "just recovery."
-                </figcaption>
-              </figure>
-            </a>
-            <a
-              href="https://www.goodreads.com/book/show/45156634-aftershocks-of-disaster"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img src="src/assets/images/guest/AftershocksOfDisasterCover.png" />
-                <figcaption>
-                  <h4>Aftershocks of Disaster</h4>No disaster is a singular
-                  event. Aftershocks of Disaster examines the lasting effects of
-                  Hurricane Maria in Puerto Rico, not just the effects of the
-                  wind or the rain, but delving into what followed: state
-                  failure, social abandonment, capitalization on human misery,
-                  and the collective trauma produced by the botched response.
-                </figcaption>
-              </figure>
-            </a>
-            <a
-              href="https://www.goodreads.com/book/show/8962015-matters-of-choice"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img src="src/assets/images/guest/MattersOfChoiceCover.png" />
-                <figcaption>
-                  <h4>Matters of Choice</h4>Drawing upon her twenty-five years
-                  of research on sterilized Puerto Rican women from five
-                  different families in Brooklyn, Lopez...[weaves] together the
-                  voices of these women, [and] she covers the history of
-                  sterilization and eugenics, societal pressures to have fewer
-                  children, a lack of adequate health care, patterns of gender
-                  inequality, and misinformation provided by doctors and family
-                  members.
-                </figcaption>
-              </figure>
-            </a>
-            <a
-              href="https://www.goodreads.com/book/show/240619474-the-story-of-las-carpetas"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img src="src/assets/images/guest/LasCarpetasCover.png" />
-                <figcaption>
-                  <h4>The Story of Las Carpetas</h4>By exposing the systematic
-                  repression and chronicling the resilience of individuals and
-                  families impacted, The Story of Las Carpetas connects past
-                  injustices to today’s ongoing battles for privacy and civil
-                  liberties. The chilling parallels to modern-day surveillance
-                  reveal lessons that resonate beyond Puerto Rico, highlighting
-                  a universal struggle against invasive state powers.
-                </figcaption>
-              </figure>
-            </a>
-          </>
+          <HistoryWrapper>
+            <Row>
+              <Row>
+                Dive into Puerto Rico’s rich history and the journey of how this
+                small, vibrant island has captured the world’s attention.
+              </Row>
+              <Row>
+                <p>
+                  Known as <Bold>La Isla del Encanto</Bold> (The Island of
+                  Enchantment), Puerto Rico shines with beauty, culture, and
+                  passion–in spite of the profound challenges the island has
+                  survived. The joy, love, and unbreakable spirit of Puerto
+                  Ricans remain at the heart of the island’s identity.
+                </p>
+              </Row>
+              <Row>
+                Explore the stories of what Puerto Rico has endured and overcome
+                throughout history.
+              </Row>
+
+              <Row>
+                <Heading as="h3">Puerto Rico is Dying: Here's Why</Heading>
+                <LoadingFrame src="https://www.youtube.com/embed/6sPRFvWOBwo" />
+                <p>
+                  <Bold>Puerto Rico is paradise.</Bold> Beaches, lush mountains,
+                  rich culture.
+                </p>
+                <p>
+                  But beneath the beauty, there is pain that goes unseen. Nearly
+                  half of the population lives below the poverty line – This
+                  U.S. territory is the poorest, most unequal part of the United
+                  States, and the gap between the wealthy and the poor continues
+                  to grow.
+                </p>
+                <p>
+                  A Puerto Rico without Puerto Ricans is near and this is the
+                  story of why.
+                </p>
+              </Row>
+
+              <Row>
+                <Heading as="h3">How the U.S. Stole Puerto Rico</Heading>
+                <LoadingFrame src="https://www.youtube.com/embed/xb9E8fvMPOA" />
+                <p>
+                  After nearly 400 years of Spanish rule, Puerto Ricans hoped
+                  for liberation – instead, they became a colony of a foreign
+                  power that didn’t even speak their language.
+                </p>
+                <p>
+                  Surveillance, sabotage, and air strikes on its own citizens.
+                </p>
+                <p>
+                  Unfold the history of how the United States stole and kept its
+                  prized colony in the Caribbean – <Bold>Puerto Rico</Bold>.
+                </p>
+              </Row>
+
+              <Row>
+                <Heading as="h3">History of the Puerto Rican Flag</Heading>
+                <LoadingFrame src="https://www.youtube.com/embed/3KLMtxRxTCo" />
+                <p>
+                  Ever wonder why Puerto Ricans display their flag with such
+                  unshakable pride?
+                </p>
+                <p>
+                  Take a peek of the flag’s transformations—and why it will
+                  always be waved with love and resilience.
+                </p>
+              </Row>
+
+              <Row>
+                <Heading as="h3">Additional Literature</Heading>
+                <p>
+                  If you’re interested in learning more about Puerto Rico’s
+                  struggles and the resilience of its people, these books honor
+                  their strength and perseverance.
+                </p>
+
+                <HistoryBookSection>
+                  <Link
+                    href="https://www.goodreads.com/book/show/22928891-war-against-all-puerto-ricans"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="src/assets/images/guest/WarAgainstAllPuertoRicansCover.png" />
+                  </Link>
+                  <figcaption>
+                    <Link
+                      href="https://www.goodreads.com/book/show/22928891-war-against-all-puerto-ricans"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Heading as="h6">War Against All Puerto Ricans</Heading>
+                    </Link>
+                    <p>
+                      Through oral histories, personal interviews, eyewitness
+                      accounts, congressional testimony, and recently
+                      declassified FBI files, War Against All Puerto Ricans
+                      tells the story of a forgotten revolution and its context
+                      in Puerto Rico's history, from the US invasion in 1898 to
+                      the modern-day struggle for self-determination.
+                    </p>
+                  </figcaption>
+                </HistoryBookSection>
+
+                <HistoryBookSection>
+                  <Link
+                    href="https://www.goodreads.com/book/show/39791088-the-battle-for-paradise"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="src/assets/images/guest/TheBattleForParadiseCover.png" />
+                  </Link>
+                  <figcaption>
+                    <Link
+                      href="https://www.goodreads.com/book/show/39791088-the-battle-for-paradise"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Heading as="h6">The Battle for Paradise</Heading>
+                    </Link>
+                    In the rubble of Hurricane Maria, Puerto Ricans and
+                    ultrarich "Puertopians" are locked in a pitched struggle
+                    over how to remake the island. In this investigation,
+                    activist Naomi Klein uncovers how the forces of shock
+                    politics and disaster capitalism seek to undermine the
+                    nation's radical, resilient vision for a "just recovery."
+                  </figcaption>
+                </HistoryBookSection>
+
+                <HistoryBookSection>
+                  <Link
+                    href="https://www.goodreads.com/book/show/45156634-aftershocks-of-disaster"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="src/assets/images/guest/AftershocksOfDisasterCover.png" />
+                  </Link>
+                  <figcaption>
+                    <Link
+                      href="https://www.goodreads.com/book/show/45156634-aftershocks-of-disaster"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Heading as="h6">Aftershocks of Disaster</Heading>
+                    </Link>
+                    No disaster is a singular event. Aftershocks of Disaster
+                    examines the lasting effects of Hurricane Maria in Puerto
+                    Rico, not just the effects of the wind or the rain, but
+                    delving into what followed: state failure, social
+                    abandonment, capitalization on human misery, and the
+                    collective trauma produced by the botched response.
+                  </figcaption>
+                </HistoryBookSection>
+
+                <HistoryBookSection>
+                  <Link
+                    href="https://www.goodreads.com/book/show/8962015-matters-of-choice"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="src/assets/images/guest/MattersOfChoiceCover.png" />
+                  </Link>
+                  <figcaption>
+                    <Link
+                      href="https://www.goodreads.com/book/show/8962015-matters-of-choice"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Heading as="h6">Matters of Choice</Heading>
+                    </Link>
+                    Drawing upon her twenty-five years of research on sterilized
+                    Puerto Rican women from five different families in Brooklyn,
+                    Lopez...[weaves] together the voices of these women, [and]
+                    she covers the history of sterilization and eugenics,
+                    societal pressures to have fewer children, a lack of
+                    adequate health care, patterns of gender inequality, and
+                    misinformation provided by doctors and family members.
+                  </figcaption>
+                </HistoryBookSection>
+
+                <HistoryBookSection>
+                  <Link
+                    href="https://www.goodreads.com/book/show/240619474-the-story-of-las-carpetas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="src/assets/images/guest/LasCarpetasCover.png" />
+                  </Link>
+                  <figcaption>
+                    <Heading as="h6">The Story of Las Carpetas</Heading>By
+                    exposing the systematic repression and chronicling the
+                    resilience of individuals and families impacted, The Story
+                    of Las Carpetas connects past injustices to today’s ongoing
+                    battles for privacy and civil liberties. The chilling
+                    parallels to modern-day surveillance reveal lessons that
+                    resonate beyond Puerto Rico, highlighting a universal
+                    struggle against invasive state powers.
+                  </figcaption>
+                </HistoryBookSection>
+              </Row>
+            </Row>
+          </HistoryWrapper>
         ),
       },
     ],
@@ -228,24 +305,28 @@ const menuItems = [
             </Row>
             <Row $gap="3rem">
               <Row $direction="horizontal">
-                <Image
-                  src="src/assets/images/guest/FundacionComunitaria.png"
-                  $width="9rem"
-                  $css={css`
-                    margin-right: 1.5rem;
-                    align-self: flex-start;
-                  `}
-                />
+                <Link href="https://www.fcpr.org/">
+                  <Image
+                    src="src/assets/images/guest/FundacionComunitaria.png"
+                    $width="9rem"
+                    $css={css`
+                      margin-right: 1.5rem;
+                      align-self: flex-start;
+                    `}
+                  />
+                </Link>
                 <Row>
                   <Row $gap="0.25rem">
-                    <Heading
-                      as="h5"
-                      $css={css`
-                        color: var(--color-red-300);
-                      `}
-                    >
-                      Fundación Comunitaria de Puerto Rico
-                    </Heading>
+                    <Link href="https://www.fcpr.org/">
+                      <Heading
+                        as="h5"
+                        $css={css`
+                          color: var(--color-red-300);
+                        `}
+                      >
+                        Fundación Comunitaria de Puerto Rico
+                      </Heading>
+                    </Link>
                     <p>
                       Since 1985, this foundation has been dedicated to
                       fostering community development across the island. Working
@@ -269,24 +350,28 @@ const menuItems = [
                 </Row>
               </Row>
               <Row $direction="horizontal">
-                <Image
-                  src="src/assets/images/guest/ComedoresSociales.png"
-                  $width="9rem"
-                  $css={css`
-                    margin-right: 1.5rem;
-                    align-self: flex-start;
-                  `}
-                />
+                <Link href="https://www.comedoressocialespr.org/">
+                  <Image
+                    src="src/assets/images/guest/ComedoresSociales.png"
+                    $width="9rem"
+                    $css={css`
+                      margin-right: 1.5rem;
+                      align-self: flex-start;
+                    `}
+                  />
+                </Link>
                 <Row>
                   <Row $gap="0.25rem">
-                    <Heading
-                      as="h5"
-                      $css={css`
-                        color: var(--color-red-300);
-                      `}
-                    >
-                      Comedores Sociales de Puerto Rico
-                    </Heading>
+                    <Link href="https://www.comedoressocialespr.org/">
+                      <Heading
+                        as="h5"
+                        $css={css`
+                          color: var(--color-red-300);
+                        `}
+                      >
+                        Comedores Sociales de Puerto Rico
+                      </Heading>
+                    </Link>
                     <p>
                       This organization fights hunger and food insecurity by
                       taking a community-first approach. Through mutual aid
@@ -310,24 +395,28 @@ const menuItems = [
                 </Row>
               </Row>
               <Row $direction="horizontal">
-                <Image
-                  src="src/assets/images/guest/PRxPR.png"
-                  $width="9rem"
-                  $css={css`
-                    margin-right: 1.5rem;
-                    align-self: flex-start;
-                  `}
-                />
+                <Link href="https://www.prxpr.org/">
+                  <Image
+                    src="src/assets/images/guest/PRxPR.png"
+                    $width="9rem"
+                    $css={css`
+                      margin-right: 1.5rem;
+                      align-self: flex-start;
+                    `}
+                  />
+                </Link>
                 <Row>
                   <Row $gap="0.25rem">
-                    <Heading
-                      as="h5"
-                      $css={css`
-                        color: var(--color-red-300);
-                      `}
-                    >
-                      PRxPR
-                    </Heading>
+                    <Link href="https://www.prxpr.org/">
+                      <Heading
+                        as="h5"
+                        $css={css`
+                          color: var(--color-red-300);
+                        `}
+                      >
+                        PRxPR
+                      </Heading>
+                    </Link>
                     <p>
                       Founded by Puerto Ricans in the diaspora after Hurricanes
                       María and Irma, PRxPR ensures that 100% of donations go
@@ -414,7 +503,9 @@ const menuItems = [
                 `}
               />
               <Row>
-                <Heading as="h4">So, now what?</Heading>
+                <Heading as="h5" $css={{ color: css`var(--color-red-300)` }}>
+                  So, now what?
+                </Heading>
                 <p>
                   <Bold>What can we do?</Bold>
                 </p>
@@ -427,12 +518,12 @@ const menuItems = [
                   the island can be heard.
                 </p>
                 <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
-                  <Button size="large" variation="primary">
+                  <Button $size="large" $variation="primary">
                     Sign Petition on Change.org
                   </Button>
                 </Link>
                 <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
-                  <Button size="large" variation="secondary">
+                  <Button $size="large" $variation="secondary">
                     Sign Petition on ActionNetwork.org
                   </Button>
                 </Link>
@@ -447,10 +538,11 @@ const menuItems = [
         link: "/resources",
         content: (
           <PuertoRicanNewsWrapper>
-            <img src="src/assets/images/guest/SanJuan.jpg" />
+            <Image src="src/assets/images/guest/SanJuan.jpg" />
+
             <Row>
               <Heading
-                as="h5"
+                as="h6"
                 $css={css`
                   color: var(--color-red-400);
                   text-transform: none;
@@ -468,7 +560,7 @@ const menuItems = [
                 better understand Puerto Rico’s reality and support its people.
               </p>
               <Link href="https://www.the-independent.com/topic/puerto-rico">
-                <Button size="large" variation="secondary">
+                <Button $size="large" $variation="secondary">
                   Visit Independent News
                 </Button>
               </Link>
@@ -479,16 +571,6 @@ const menuItems = [
     ],
   },
 ];
-
-//TODO
-//need to polish mobile view
-//need to connect sidebar menu items to links on panel headings
-//need to keep one panel open at a time
-//need to create content for each panel item
-//need to indicate which panel item is active
-
-//need to create footer
-//need to work on About page
 
 function ResourcesLayout() {
   const [isOpen, setIsOpen] = useState(null);
@@ -509,3 +591,7 @@ function ResourcesLayout() {
 }
 
 export default ResourcesLayout;
+
+// hyperlink heading and photos with organization info
+// fix diving into pr history
+// begin creating about page

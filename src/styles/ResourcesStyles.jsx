@@ -64,7 +64,7 @@ const StyledHistoryFigure = styled.figure`
   }
 
   &:hover img {
-    box-shadow: 2px 2px 2px var(--color-red-200);
+    box-shadow: 3px 2px 2px var(--color-red-200);
     transition: all 0.5s;
   }
 
@@ -217,48 +217,47 @@ const StyledActFigure = styled.figure`
 `;
 
 // General Formatting
-const StyledLink = styled.a`
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 0.8rem 0;
-  border-radius: 5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: all 0.4s;
+// const StyledLink = styled.a`
+//   display: flex;
+//   flex-grow: 1;
+//   justify-content: center;
+//   padding: 0.8rem 0;
+//   border-radius: 5px;
+//   font-weight: 700;
+//   text-transform: uppercase;
 
-  &:first-of-type {
-    background-color: var(--color-red-200);
+//   &:first-of-type {
+//     background-color: var(--color-red-200);
 
-    &:hover {
-      box-shadow: 4px 4px 1px var(--color-blue-200);
-      background-color: var(--color-red-100);
-      color: var(--color-light-0);
-    }
-  }
+//     &:hover {
+//       box-shadow: 4px 4px 1px var(--color-blue-200);
+//       background-color: var(--color-red-100);
+//       color: var(--color-light-0);
+//     }
+//   }
 
-  &:last-of-type {
-    background-color: var(--color-blue-200);
+//   &:last-of-type {
+//     background-color: var(--color-blue-200);
 
-    &:hover {
-      box-shadow: 4px 4px 1px var(--color-red-200);
-      background-color: var(--color-blue-100);
-      color: var(--color-light-0);
-    }
-  }
+//     &:hover {
+//       box-shadow: 4px 4px 1px var(--color-red-200);
+//       background-color: var(--color-blue-100);
+//       color: var(--color-light-0);
+//     }
+//   }
 
-  &:hover h4 {
-    color: var(--color-red-200);
-    transition: all 0.5s;
-  }
-`;
+//   &:hover h4 {
+//     color: var(--color-red-200);
+//     transition: all 0.5s;
+//   }
+// `;
 
 const StyledHeading3 = styled.h3`
   margin-bottom: 1rem;
   font-family: "DTmF";
   font-size: 2rem;
   line-height: 2rem;
-  text-transform: uppercase;
+
   color: var(--color-yellow-200);
   text-shadow: 2px 2px 1px var(--color-red-300);
 `;

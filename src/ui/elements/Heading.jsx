@@ -1,11 +1,10 @@
-import { Component, forwardRef } from "react";
-import { PiDropSimple } from "react-icons/pi";
 import styled, { css } from "styled-components";
 
 const variants = {
   h1: css`
     font-family: DtMF;
     font-size: 3rem;
+    line-height: 2rem;
 
     @media (max-width: 798px) {
       font-size: 2.25rem;
@@ -15,6 +14,7 @@ const variants = {
   h2: css`
     font-family: DtMF;
     font-size: 2rem;
+    line-height: 2rem;
 
     @media (max-width: 798px) {
       font-size: 1.7rem;
@@ -22,9 +22,9 @@ const variants = {
   `,
 
   h3: css`
-    font-family: Museo, sans-serif;
-    font-weight: 900;
-    font-size: 3rem;
+    font-family: DtMF;
+    font-size: 1.9rem;
+    line-height: 2rem;
 
     @media (max-width: 798px) {
       font-size: 3rem;
@@ -33,19 +33,18 @@ const variants = {
 
   h4: css`
     font-family: Museo, sans-serif;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 2rem;
-    line-height: 2rem;
 
     @media (max-width: 798px) {
-      font-size: 1rem;
+      font-size: 3rem;
     }
   `,
 
   h5: css`
-    font-family: "Museo";
-    font-size: 1.25rem;
+    font-family: Museo, sans-serif;
     font-weight: 700;
+    font-size: 1.7rem;
 
     @media (max-width: 798px) {
       font-size: 1rem;
@@ -54,11 +53,11 @@ const variants = {
 
   h6: css`
     font-family: Museo, sans-serif;
-    font-weight: 500;
-    font-size: 3rem;
+    font-weight: 700;
+    font-size: 1.25rem;
 
     @media (max-width: 798px) {
-      font-size: 2rem;
+      font-size: 1rem;
     }
   `,
 };

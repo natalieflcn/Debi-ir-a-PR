@@ -1,4 +1,85 @@
+import { useState } from "react";
 import styled from "styled-components";
+import SpinnerMini from "../../../ui/elements/SpinnerMini";
+// STYLED COMPONENTS
+
+// Dive into Puerto Rican History Panel
+export const HistoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h3 {
+    color: var(--color-yellow-200);
+    text-shadow: 2px 3px 1px var(--color-red-300);
+    text-transform: uppercase;
+  }
+`;
+
+export const HistoryFrame = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-lg);
+  visibility: ${({ $isLoadingFrame }) =>
+    $isLoadingFrame ? `hidden` : `visible`};
+`;
+
+export const HistoryVideoSection = styled.div`
+  width: 100%;
+  height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)};
+  aspect-ratio: 16 / 9;
+
+  @media (max-width: 798px) {
+    height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `50%` : ``)};
+  }
+`;
+
+export const HistoryBookSection = styled.figure`
+  display: flex;
+  margin-bottom: 1.5rem;
+
+  h6 {
+    color: var(--color-red-400);
+    margin-bottom: 0.25rem;
+    transition: all 0.5s;
+  }
+
+  img {
+    width: 6.2rem;
+    aspect-ratio: 3/4;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 3px 2px 1px var(--color-yellow-200);
+    margin-right: 1.5rem;
+    transition: all 0.5s;
+  }
+
+  &:hover h6 {
+    color: var(--color-red-200);
+  }
+
+  &:hover img {
+    box-shadow: 2px 2px 2px var(--color-red-200);
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+
+// Donate to Puerto Rican Organizations Panel
+export const CharityOrganizationsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+// End Act 20-22-60 Panel
+export const EndActWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+`;
 
 // Keep Up with Puerto Rican News Panel
 export const PuertoRicanNewsWrapper = styled.div`
@@ -20,23 +101,12 @@ export const PuertoRicanNewsWrapper = styled.div`
   }
 `;
 
-// End Act 20-22-60 Panel
-export const EndActWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-size: 1rem;
-`;
+// HELPER COMPONENTS
+export const HistorySpinnerMini = styled(SpinnerMini)`
+  margin: 11.25rem 0.5rem;
 
-// Donate to Puerto Rican Organizations Panel
-export const CharityOrganizationsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  div {
-    /* display: flex; */
-    /* gap: 1rem; */
+  @media (max-width: 798px) {
+    margin: 4rem 0rem;
   }
 `;
 
@@ -81,6 +151,7 @@ export const SlicedPhotos = styled.div`
   }
 `;
 
+// COLOR PALETTE
 export const ResourcesColors = {
   "--heading-color": `var(--color-yellow-200)`,
   "--heading-shadow": `var(--color-red-300)`,

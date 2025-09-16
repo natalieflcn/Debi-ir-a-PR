@@ -5,8 +5,12 @@ const StyledLink = styled.a`
   flex-grow: 1;
 `;
 
-function Link({ href, children }) {
-  return <StyledLink href={href}>{children}</StyledLink>;
+function Link({ href, children, ...props }) {
+  return (
+    <StyledLink href={href} {...props}>
+      {children}
+    </StyledLink>
+  );
 }
 
 export default Link;
