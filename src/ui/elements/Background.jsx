@@ -8,6 +8,10 @@ const StyledBackground = styled.div`
   height: 100vh;
   pointer-events: none;
   z-index: 2;
+
+  @media (max-width: 798px) {
+    z-index: 0;
+  }
 `;
 
 function Background({ children }) {

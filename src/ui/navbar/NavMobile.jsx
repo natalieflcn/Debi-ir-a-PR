@@ -7,6 +7,8 @@ import User from "./User";
 
 const StyledNavMobile = styled.ul`
   display: flex;
+  position: relative;
+  z-index: 100;
   font-weight: 500;
   color: #191d23;
 
@@ -32,7 +34,7 @@ const CloseMenu = styled(BiX)`
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 1;
+  z-index: 5;
   width: 2rem;
   height: 2rem;
   color: var(--color-dark-200);
@@ -40,6 +42,7 @@ const CloseMenu = styled(BiX)`
 
 const MobileMenu = styled.ul`
   display: flex;
+  /* z-index: 10000; */
   flex-direction: column;
   justify-content: space-evenly;
   position: fixed;
