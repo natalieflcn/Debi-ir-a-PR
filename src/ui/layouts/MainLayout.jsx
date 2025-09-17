@@ -2,6 +2,7 @@ import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
 import Footer from "../elements/Footer";
 import styled from "styled-components";
+import Background from "../elements/Background";
 
 const StyledMainLayout = styled.div`
   padding: 1rem 5rem 2rem;
@@ -22,6 +23,7 @@ const menuItems = [
 function MainLayout() {
   return (
     <>
+      <Background />
       <NavBar type="main" menuItems={menuItems} />
       <StyledMainLayout>
         <MainContent />

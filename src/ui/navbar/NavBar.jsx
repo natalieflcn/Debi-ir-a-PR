@@ -9,11 +9,12 @@ const StyledNav = styled.nav`
   justify-content: space-around;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1;
   align-items: center;
   padding: 2rem 5rem;
   background-color: var(--color-blue-200);
   background-image: url("public/images/BlueOverlay.png");
+
   @media (max-width: 798px) {
     width: 85%;
     position: relative;

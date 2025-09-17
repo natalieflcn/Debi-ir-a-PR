@@ -1,6 +1,7 @@
 import NavBar from "../navbar/NavBar";
 import MainContent from "../../components/layouts/MainContent";
 import Footer from "../elements/Footer";
+import Background from "../elements/Background";
 
 const menuItems = [
   { label: "Dashboard", link: "/dashboard" },
@@ -10,12 +11,12 @@ const menuItems = [
 
 function ExplorerLayout() {
   return (
-    <div>
+    <>
       Explorer Layout
       <NavBar type="explorer" menuItems={menuItems} />
       <MainContent />
       <Footer />
-    </div>
+    </>
   );
 }
 

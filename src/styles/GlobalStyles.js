@@ -142,9 +142,9 @@ body::before{
   width: 100%;
   height: 100%;
   z-index: -1;
-  /* opacity: 0.9; */
+  opacity: 0.9; 
   background-image: url("public/images/BlueOverlay.png");
-}
+} 
 // prettier-ignore
 input, button, textarea, select {
   font: inherit;
@@ -176,9 +176,34 @@ ul {
   list-style: none;
 }
 
+// Animations
+@keyframes glow {
+  0% {
+    opacity: 0;
+  }
 
+  50% {
+    opacity: 1;
+  }
 
+  100% {
+    opacity: 0;
+  }
+}
 
+@keyframes glowEven {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 `;
 
 export default GlobalStyles;
