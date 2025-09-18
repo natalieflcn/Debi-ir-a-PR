@@ -14,7 +14,7 @@ const variants = {
   h2: css`
     font-family: DtMF;
     font-size: 2rem;
-    line-height: 2rem;
+    line-height: 2.25rem;
 
     @media (max-width: 798px) {
       font-size: 1.7rem;

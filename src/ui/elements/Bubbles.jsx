@@ -26,10 +26,10 @@ function bubblePosition(seed) {
   return (Math.sin(seed) * 10250) % 1;
 }
 
-function Bubbles() {
+function Bubbles({ numBubbles }) {
   return (
     <>
-      {Array.from({ length: 150 }).map((_, i) => {
+      {Array.from({ length: numBubbles }).map((_, i) => {
         const left = bubblePosition(i) * 100;
         const top = bubblePosition(i + 50) * 100;
         const delay = Math.random() * 5;

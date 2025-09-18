@@ -7,7 +7,7 @@ const StyledBackground = styled.div`
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  z-index: 2;
+  z-index: 0;
 
   @media (max-width: 798px) {
     z-index: 0;
@@ -17,7 +17,7 @@ const StyledBackground = styled.div`
 function Background({ children }) {
   return (
     <StyledBackground>
-      <Bubbles />
+      <Bubbles numBubbles={150} />
       {children}
     </StyledBackground>
   );
