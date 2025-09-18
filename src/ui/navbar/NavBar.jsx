@@ -11,15 +11,15 @@ const StyledNav = styled.nav`
   top: 0;
   z-index: 1;
   align-items: center;
-  padding: 2rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
   background-color: var(--color-blue-200);
   background-image: url("public/images/BlueOverlay.png");
 
   @media (max-width: 798px) {
-    width: 85%;
     position: relative;
     justify-content: space-between;
-    padding: 2rem 2rem;
   }
 `;
 

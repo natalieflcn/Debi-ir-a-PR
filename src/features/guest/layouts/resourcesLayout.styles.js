@@ -44,8 +44,11 @@ export const HistoryBookSection = styled.figure`
   }
 
   img {
-    width: 6.2rem;
-    aspect-ratio: 3/4;
+    width: 6rem;
+    height: 9rem;
+    /* aspect-ratio: 3/4;
+     */
+    /* height: 100%; */
     border-radius: 0 4px 4px 0;
     box-shadow: 3px 2px 1px var(--color-yellow-200);
     margin-right: 1.5rem;
@@ -65,7 +68,6 @@ export const HistoryBookSection = styled.figure`
   }
 
   @media (max-width: 798px) {
-    flex-direction: column;
     margin-bottom: 1rem;
 
     img {

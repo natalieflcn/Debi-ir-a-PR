@@ -10,6 +10,8 @@ const StyledFooter = styled.footer`
   font-family: DtMF;
   font-size: 1.5rem;
   letter-spacing: 0.07rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
   span {
     font-family: Museo;

@@ -173,7 +173,7 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="src/assets/images/guest/TheBattleForParadiseCover.png" />
+                    <Image src="src/assets/images/guest/TheBattleForParadiseCover.png" />
                   </Link>
                   <figcaption>
                     <Link

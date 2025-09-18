@@ -20,6 +20,10 @@ const Debi = styled.p`
   @media (max-width: 798px) {
     font-size: 2.4rem;
   }
+
+  @media (max-width: 1050px) {
+    font-size: 2rem;
+  }
 `;
 
 const IrAPR = styled.p`
@@ -27,6 +31,10 @@ const IrAPR = styled.p`
 
   @media (max-width: 798px) {
     font-size: 1.45rem;
+  }
+
+  @media (max-width: 1050px) {
+    font-size: 1.2rem;
   }
 `;
 

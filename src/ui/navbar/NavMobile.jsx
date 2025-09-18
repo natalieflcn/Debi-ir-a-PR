@@ -12,7 +12,7 @@ const StyledNavMobile = styled.ul`
   font-weight: 500;
   color: #191d23;
 
-  @media (min-width: 768px) {
+  @media (min-width: 798px) {
     display: none;
   }
 `;
@@ -20,6 +20,7 @@ const StyledNavMobile = styled.ul`
 const StyledButton = styled(Button)`
   position: relative;
   bottom: 0.8rem;
+  right: 0.5rem;
 `;
 
 const Hamburger = styled(BiMenuAltRight)`

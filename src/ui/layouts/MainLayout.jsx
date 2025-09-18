@@ -5,11 +5,12 @@ import styled from "styled-components";
 import Background from "../elements/Background";
 
 const StyledMainLayout = styled.div`
-  padding: 1rem 5rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem 2rem 2rem;
 
-  @media (max-width: 768px) {
-    width: 85%;
-    padding: 0rem 2rem 2rem;
+  @media (max-width: 798px) {
+    /* margin: 1rem auto; */
   }
 `;
 

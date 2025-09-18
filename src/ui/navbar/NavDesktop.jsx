@@ -10,8 +10,12 @@ const StyledNavDesktop = styled.ul`
   font-weight: 900;
   text-transform: uppercase;
 
-  @media (min-width: 768px) {
+  @media (min-width: 798px) {
     display: flex;
+  }
+
+  @media (max-width: 1050px) {
+    font-size: 1rem;
   }
 `;
 
