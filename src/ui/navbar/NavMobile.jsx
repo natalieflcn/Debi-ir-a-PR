@@ -1,5 +1,5 @@
 import { BiMenuAltRight, BiX } from "react-icons/bi";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Button from "../elements/Button";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";

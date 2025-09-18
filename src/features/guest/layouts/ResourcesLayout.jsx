@@ -146,7 +146,10 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="src/assets/images/guest/WarAgainstAllPuertoRicansCover.png" />
+                    <Image
+                      src="src/assets/images/guest/WarAgainstAllPuertoRicansCover.png"
+                      alt="War Against All Puerto Ricans"
+                    />
                   </Link>
                   <figcaption>
                     <Link
@@ -173,7 +176,10 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="src/assets/images/guest/TheBattleForParadiseCover.png" />
+                    <Image
+                      src="src/assets/images/guest/TheBattleForParadiseCover.png"
+                      alt="The Battle for Paradise"
+                    />
                   </Link>
                   <figcaption>
                     <Link
@@ -198,7 +204,10 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="src/assets/images/guest/AftershocksOfDisasterCover.png" />
+                    <Image
+                      src="src/assets/images/guest/AftershocksOfDisasterCover.png"
+                      alt="Aftershocks of Disaster"
+                    />
                   </Link>
                   <figcaption>
                     <Link
@@ -223,7 +232,10 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="src/assets/images/guest/MattersOfChoiceCover.png" />
+                    <Image
+                      src="src/assets/images/guest/MattersOfChoiceCover.png"
+                      alt="Matters of Choice"
+                    />
                   </Link>
                   <figcaption>
                     <Link
@@ -249,7 +261,10 @@ const menuItems = [
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="src/assets/images/guest/LasCarpetasCover.png" />
+                    <Image
+                      src="src/assets/images/guest/LasCarpetasCover.png"
+                      alt="Las Carpetas"
+                    />
                   </Link>
                   <figcaption>
                     <Heading as="h6">The Story of Las Carpetas</Heading>By
@@ -285,8 +300,14 @@ const menuItems = [
               take a sip of coquito, and relax to the sound of coquis…
             </Row>
             <SlicedPhotos>
-              <img src="src/assets/images/guest/PuertoRicanParadise.jpg" />
-              <img src="src/assets/images/guest/PRBlackout.jpg" />
+              <Image
+                src="src/assets/images/guest/PuertoRicanParadise.jpg"
+                alt="A beach on Puerto Rico"
+              />
+              <Image
+                src="src/assets/images/guest/PRBlackout.jpg"
+                alt="A blackout in Puerto Rico"
+              />
             </SlicedPhotos>
             <Row>
               Many communities are still living with the long-lasting effects of
@@ -310,6 +331,7 @@ const menuItems = [
                 <Link href="https://www.fcpr.org/">
                   <Image
                     src="src/assets/images/guest/FundacionComunitaria.png"
+                    alt="Fundacion Comunitaria"
                     $width="9rem"
                     $css={css`
                       margin-right: 1.5rem;
@@ -350,6 +372,7 @@ const menuItems = [
                 <Link href="https://www.comedoressocialespr.org/">
                   <Image
                     src="src/assets/images/guest/ComedoresSociales.png"
+                    alt="Comedores Sociales"
                     $width="9rem"
                     $css={css`
                       margin-right: 1.5rem;
@@ -390,6 +413,7 @@ const menuItems = [
                 <Link href="https://www.prxpr.org/">
                   <Image
                     src="src/assets/images/guest/PRxPR.png"
+                    alt="PRxPR"
                     $width="9rem"
                     $css={css`
                       margin-right: 1.5rem;
@@ -442,7 +466,10 @@ const menuItems = [
               island and can override its laws, disregarding what any of the
               local Puerto Ricans have to say about the matter.
             </Row>
-            <Image src="src/assets/images/guest/PRProtest.jpg" />
+            <Image
+              src="src/assets/images/guest/PRProtest.jpg"
+              alt="A protest in Puerto Rico"
+            />
             <Row>
               This imbalance of power has paved the way for laws that primarily
               benefit U.S. investors at the cost of the well-being of native
@@ -482,6 +509,7 @@ const menuItems = [
             <ActCallToAction>
               <Image
                 src="src/assets/images/guest/PRxDC.jpg"
+                alt="A Puerto Rican flag"
                 $width="43%"
                 $css={css`
                   margin-right: 1.25rem;
@@ -521,7 +549,10 @@ const menuItems = [
         link: "/resources",
         content: (
           <PuertoRicanNewsWrapper>
-            <Image src="src/assets/images/guest/SanJuan.jpg" />
+            <Image
+              src="src/assets/images/guest/SanJuan.jpg"
+              alt="Old San Juan buildings"
+            />
 
             <Row>
               <Heading as="h6">
