@@ -154,13 +154,7 @@ const menuItems = [
         link: "/about",
         content: "Coming Soon",
       },
-      {
-        id: 3,
-        label: "Future Enhancements",
-        link: "/about",
-        content: "Coming Soon",
-      },
-      { id: 4, label: "The Results", link: "/about", content: "Coming Soon" },
+      { id: 3, label: "The Results", link: "/about", content: "Coming Soon" },
     ],
   },
 ];

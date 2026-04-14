@@ -28,7 +28,7 @@ const StyledSidebar = styled.aside`
 
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
-  font-size: 1.75rem;
+  font-size: 1.9rem;
   text-shadow: 3px 3px 1px var(--color-blue-100);
   color: var(--color-red-200);
   transition: all 0.2s;

@@ -60,7 +60,7 @@ export const HistoryBookSection = styled.figure`
   }
 
   &:hover img {
-    box-shadow: 2px 2px 2px var(--color-red-200);
+    box-shadow: 2px 2px 2px var(--color-red-400);
   }
 
   &:last-of-type {
@@ -116,7 +116,7 @@ export const EndActWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  font-size: 1rem;
+  /* font-size: 1rem; */
 
   h5 {
     color: var(--color-red-400);

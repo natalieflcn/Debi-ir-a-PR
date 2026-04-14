@@ -6,8 +6,10 @@ const StyledNavDesktop = styled.ul`
   display: none;
   justify-content: space-between;
   flex: 1;
-  font-size: 1.25rem;
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: NimbusSans;
+  letter-spacing: 0.05rem;
   text-transform: uppercase;
 
   @media (min-width: 798px) {
@@ -25,13 +27,14 @@ const MenuItem = styled.li`
   &:hover,
   &:active {
     color: var(--color-red-200);
-    text-shadow: 3px 3px 1px var(--color-blue-300);
+    text-shadow: 2px 2px 1px var(--color-blue-300);
   }
 `;
 
 const StyledNavLink = styled(NavLink)`
   &.active {
     color: var(--color-red-200);
+    text-shadow: 2px 2px 1px var(--color-blue-300);
   }
 `;
 

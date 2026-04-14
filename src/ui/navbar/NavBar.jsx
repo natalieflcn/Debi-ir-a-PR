@@ -16,6 +16,7 @@ const StyledNav = styled.nav`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 2rem;
+
   background-color: var(--color-blue-200);
   background-image: url("public/images/BlueOverlay.png");
 

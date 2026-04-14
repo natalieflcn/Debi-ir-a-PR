@@ -22,6 +22,7 @@ import Button from "../../../ui/elements/Button";
 import Link from "../../../ui/elements/Link";
 import Image from "../../../ui/elements/Image";
 import Bold from "../../../ui/elements/Bold";
+import SmallText from "../../../ui/elements/SmallText";
 
 // Styled Components
 const StyledResourcesLayout = styled.div`
@@ -64,72 +65,72 @@ const menuItems = [
         content: (
           <HistoryWrapper>
             <Row>
-              <Row>
-                Dive into Puerto Rico’s rich history and the journey of how this
-                small, vibrant island has captured the world’s attention.
-              </Row>
-              <Row>
-                <p>
-                  Known as <Bold>La Isla del Encanto</Bold> (The Island of
-                  Enchantment), Puerto Rico shines with beauty, culture, and
-                  passion–in spite of the profound challenges the island has
-                  survived. The joy, love, and unbreakable spirit of Puerto
-                  Ricans remain at the heart of the island’s identity.
-                </p>
-              </Row>
-              <Row>
-                Explore the stories of what Puerto Rico has endured and overcome
-                throughout history.
-              </Row>
+              Dive into Puerto Rico’s rich history and the journey of how this
+              small, vibrant island has captured the world’s attention.
+            </Row>
 
-              <Row>
+            <Row>
+              <p>
+                Known as <Bold>La Isla del Encanto</Bold> (The Island of
+                Enchantment), Puerto Rico shines with beauty, culture, and
+                passion–in spite of the profound challenges the island has
+                survived. The joy, love, and unbreakable spirit of Puerto Ricans
+                remain at the heart of the island’s identity.
+              </p>
+            </Row>
+            <Row>
+              Explore the stories of what Puerto Rico has endured and overcome
+              throughout history.
+            </Row>
+            <Row $gap="1.5rem">
+              <Row $gap="0.75rem">
                 <Heading as="h3">Puerto Rico is Dying: Here's Why</Heading>
                 <LoadingFrame src="https://www.youtube.com/embed/6sPRFvWOBwo" />
-                <p>
+                <SmallText>
                   <Bold>Puerto Rico is paradise.</Bold> Beaches, lush mountains,
                   rich culture.
-                </p>
-                <p>
+                </SmallText>
+                <SmallText>
                   But beneath the beauty, there is pain that goes unseen. Nearly
                   half of the population lives below the poverty line – This
                   U.S. territory is the poorest, most unequal part of the United
                   States, and the gap between the wealthy and the poor continues
                   to grow.
-                </p>
-                <p>
+                </SmallText>
+                <SmallText>
                   A Puerto Rico without Puerto Ricans is near and this is the
                   story of why.
-                </p>
+                </SmallText>
               </Row>
 
-              <Row>
+              <Row $gap="0.75rem">
                 <Heading as="h3">How the U.S. Stole Puerto Rico</Heading>
                 <LoadingFrame src="https://www.youtube.com/embed/xb9E8fvMPOA" />
-                <p>
+                <SmallText>
                   After nearly 400 years of Spanish rule, Puerto Ricans hoped
                   for liberation – instead, they became a colony of a foreign
                   power that didn’t even speak their language.
-                </p>
-                <p>
+                </SmallText>
+                <SmallText>
                   Surveillance, sabotage, and air strikes on its own citizens.
-                </p>
-                <p>
+                </SmallText>
+                <SmallText>
                   Unfold the history of how the United States stole and kept its
                   prized colony in the Caribbean – <Bold>Puerto Rico</Bold>.
-                </p>
+                </SmallText>
               </Row>
 
-              <Row>
+              <Row $gap="0.75rem">
                 <Heading as="h3">History of the Puerto Rican Flag</Heading>
                 <LoadingFrame src="https://www.youtube.com/embed/3KLMtxRxTCo" />
-                <p>
+                <SmallText>
                   Ever wonder why Puerto Ricans display their flag with such
                   unshakable pride?
-                </p>
-                <p>
+                </SmallText>
+                <SmallText>
                   Take a peek of the flag’s transformations—and why it will
                   always be waved with love and resilience.
-                </p>
+                </SmallText>
               </Row>
 
               <Row>
@@ -159,14 +160,14 @@ const menuItems = [
                     >
                       <Heading as="h6">War Against All Puerto Ricans</Heading>
                     </Link>
-                    <p>
+                    <SmallText>
                       Through oral histories, personal interviews, eyewitness
                       accounts, congressional testimony, and recently
                       declassified FBI files, War Against All Puerto Ricans
                       tells the story of a forgotten revolution and its context
                       in Puerto Rico's history, from the US invasion in 1898 to
                       the modern-day struggle for self-determination.
-                    </p>
+                    </SmallText>
                   </figcaption>
                 </HistoryBookSection>
 
@@ -189,12 +190,14 @@ const menuItems = [
                     >
                       <Heading as="h6">The Battle for Paradise</Heading>
                     </Link>
-                    In the rubble of Hurricane Maria, Puerto Ricans and
-                    ultrarich "Puertopians" are locked in a pitched struggle
-                    over how to remake the island. In this investigation,
-                    activist Naomi Klein uncovers how the forces of shock
-                    politics and disaster capitalism seek to undermine the
-                    nation's radical, resilient vision for a "just recovery."
+                    <SmallText>
+                      In the rubble of Hurricane Maria, Puerto Ricans and
+                      ultrarich "Puertopians" are locked in a pitched struggle
+                      over how to remake the island. In this investigation,
+                      activist Naomi Klein uncovers how the forces of shock
+                      politics and disaster capitalism seek to undermine the
+                      nation's radical, resilient vision for a "just recovery."
+                    </SmallText>
                   </figcaption>
                 </HistoryBookSection>
 
@@ -217,12 +220,14 @@ const menuItems = [
                     >
                       <Heading as="h6">Aftershocks of Disaster</Heading>
                     </Link>
-                    No disaster is a singular event. Aftershocks of Disaster
-                    examines the lasting effects of Hurricane Maria in Puerto
-                    Rico, not just the effects of the wind or the rain, but
-                    delving into what followed: state failure, social
-                    abandonment, capitalization on human misery, and the
-                    collective trauma produced by the botched response.
+                    <SmallText>
+                      No disaster is a singular event. Aftershocks of Disaster
+                      examines the lasting effects of Hurricane Maria in Puerto
+                      Rico, not just the effects of the wind or the rain, but
+                      delving into what followed: state failure, social
+                      abandonment, capitalization on human misery, and the
+                      collective trauma produced by the botched response.
+                    </SmallText>
                   </figcaption>
                 </HistoryBookSection>
 
@@ -245,13 +250,16 @@ const menuItems = [
                     >
                       <Heading as="h6">Matters of Choice</Heading>
                     </Link>
-                    Drawing upon her twenty-five years of research on sterilized
-                    Puerto Rican women from five different families in Brooklyn,
-                    Lopez...[weaves] together the voices of these women, [and]
-                    she covers the history of sterilization and eugenics,
-                    societal pressures to have fewer children, a lack of
-                    adequate health care, patterns of gender inequality, and
-                    misinformation provided by doctors and family members.
+                    <SmallText>
+                      Drawing upon her twenty-five years of research on
+                      sterilized Puerto Rican women from five different families
+                      in Brooklyn, Lopez...[weaves] together the voices of these
+                      women, [and] she covers the history of sterilization and
+                      eugenics, societal pressures to have fewer children, a
+                      lack of adequate health care, patterns of gender
+                      inequality, and misinformation provided by doctors and
+                      family members.
+                    </SmallText>
                   </figcaption>
                 </HistoryBookSection>
 
@@ -267,14 +275,16 @@ const menuItems = [
                     />
                   </Link>
                   <figcaption>
-                    <Heading as="h6">The Story of Las Carpetas</Heading>By
-                    exposing the systematic repression and chronicling the
-                    resilience of individuals and families impacted, The Story
-                    of Las Carpetas connects past injustices to today’s ongoing
-                    battles for privacy and civil liberties. The chilling
-                    parallels to modern-day surveillance reveal lessons that
-                    resonate beyond Puerto Rico, highlighting a universal
-                    struggle against invasive state powers.
+                    <Heading as="h6">The Story of Las Carpetas</Heading>
+                    <SmallText>
+                      By exposing the systematic repression and chronicling the
+                      resilience of individuals and families impacted, The Story
+                      of Las Carpetas connects past injustices to today’s
+                      ongoing battles for privacy and civil liberties. The
+                      chilling parallels to modern-day surveillance reveal
+                      lessons that resonate beyond Puerto Rico, highlighting a
+                      universal struggle against invasive state powers.
+                    </SmallText>
                   </figcaption>
                 </HistoryBookSection>
               </Row>
@@ -295,9 +305,9 @@ const menuItems = [
         content: (
           <CharityOrganizationsWrapper>
             <Row>
-              While most people imagine Puerto Rico to be a tropical paradise;
-              an island where there’s never a bad day to stretch on the beach,
-              take a sip of coquito, and relax to the sound of coquis…
+              While most people imagine Puerto Rico to be an island where
+              there’s never a bad day to stretch on the beach, take a sip of
+              coquito, and relax to the sound of coquis…
             </Row>
             <SlicedPhotos>
               <Image
@@ -310,11 +320,10 @@ const menuItems = [
               />
             </SlicedPhotos>
             <Row>
-              Many communities are still living with the long-lasting effects of
-              Hurricane María and the relentless storms that have followed.
-              Frequent blackouts, abandoned homes, rising costs of living, and
-              an unlivable minimum wage continue to challenge the resilience of
-              Puerto Ricans.
+              …Many communities are still living with the long-lasting effects
+              of Hurricane María and the relentless storms that have followed.
+              Frequent blackouts, abandoned homes, and rising costs of living
+              continue to challenge the resilience of Puerto Ricans.
             </Row>
             <Row>
               <Bold>
@@ -326,7 +335,7 @@ const menuItems = [
               Here are some organizations making a direct impact, where your
               donation can truly help:
             </Row>
-            <Row $gap="3rem">
+            <Row $gap="2.75rem">
               <OrganizationSection>
                 <Link href="https://www.fcpr.org/">
                   <Image
@@ -334,7 +343,7 @@ const menuItems = [
                     alt="Fundacion Comunitaria"
                     $width="9rem"
                     $css={css`
-                      margin-right: 1.5rem;
+                      margin-right: 0.7rem;
                       align-self: flex-start;
                     `}
                   />
@@ -346,13 +355,13 @@ const menuItems = [
                         Fundación Comunitaria de Puerto Rico
                       </Heading>
                     </Link>
-                    <p>
+                    <SmallText>
                       Since 1985, this foundation has been dedicated to
                       fostering community development across the island. Working
                       with individuals, corporations, and nonprofits, they
                       support initiatives in housing, economic growth,
                       education, food and water access, and renewable energy.
-                    </p>
+                    </SmallText>
                   </Row>
                   <Row $direction="horiztonal" $gap="1rem">
                     <Link href="https://www.fcpr.org/donations/donate-now/">
@@ -375,7 +384,7 @@ const menuItems = [
                     alt="Comedores Sociales"
                     $width="9rem"
                     $css={css`
-                      margin-right: 1.5rem;
+                      margin-right: 0.7rem;
                       align-self: flex-start;
                     `}
                   />
@@ -387,13 +396,13 @@ const menuItems = [
                         Comedores Sociales de Puerto Rico
                       </Heading>
                     </Link>
-                    <p>
+                    <SmallText>
                       This organization fights hunger and food insecurity by
                       taking a community-first approach. Through mutual aid
                       centers and community kitchens, they empower neighborhoods
                       to feed themselves and build resilience from the ground
                       up.
-                    </p>
+                    </SmallText>
                   </Row>
                   <Row $direction="horizontal" $gap="1rem">
                     <Link href="https://www.gofundme.com/charity/comedores-sociales-de-puerto-rico-inc/donate">
@@ -416,7 +425,7 @@ const menuItems = [
                     alt="PRxPR"
                     $width="9rem"
                     $css={css`
-                      margin-right: 1.5rem;
+                      margin-right: 0.7rem;
                       align-self: flex-start;
                     `}
                   />
@@ -426,13 +435,13 @@ const menuItems = [
                     <Link href="https://www.prxpr.org/">
                       <Heading as="h6">PRxPR</Heading>
                     </Link>
-                    <p>
+                    <SmallText>
                       Founded by Puerto Ricans in the diaspora after Hurricanes
                       María and Irma, PRxPR ensures that 100% of donations go
                       directly to affected communities. Their focus is on food
                       and agriculture, clean water, and renewable energy
                       projects that create long-term sustainability.
-                    </p>
+                    </SmallText>
                   </Row>
                   <Row $direction="horizontal" $gap="1rem">
                     <Link href="https://fundly.com/prxpr">
@@ -459,12 +468,12 @@ const menuItems = [
         content: (
           <EndActWrapper>
             <Row>
-              As a U.S. territory, Puerto Rico has been dealt a marginalized and
-              unequal form of representation in Congress. Unlike the 50 states,
-              Puerto Rico has no voting power in the decisions that directly
-              shape its future. Yet, Congress holds ultimate authority over the
-              island and can override its laws, disregarding what any of the
-              local Puerto Ricans have to say about the matter.
+              As a U.S. territory, Puerto Rico has been dealt a marginalized
+              form of representation in Congress. Unlike the 50 states, Puerto
+              Rico has no voting power in the decisions that shape its future.
+              Yet, Congress holds ultimate authority over the island,
+              disregarding what any of the local Puerto Ricans have to say about
+              the matter.
             </Row>
             <Image
               src="src/assets/images/guest/PRProtest.jpg"
@@ -477,28 +486,24 @@ const menuItems = [
             </Row>
             <Row>
               <p>
-                <Bold>In 2012, Act 20</Bold> was introduced to attract
-                businesses by offering major tax incentives for companies
-                exporting services from Puerto Rico to clients abroad in the
-                states.
+                <Bold>ACT 20</Bold> was introduced in 2012 to attract businesses
+                by offering major tax incentives for companies exporting
+                services from Puerto Rico to clients abroad in the states.
               </p>
             </Row>
             <Row>
               <p>
-                <Bold>Act 22</Bold> went even further—granting wealthy
+                <Bold>ACT 22</Bold> went even further—granting wealthy
                 individuals who relocated to Puerto Rico a 100% tax exemption on
-                passive income from interest, dividends, and capital gains.
-                While this offer is lucrative for investors, it has been heavily
-                criticized for driving up housing prices, fueling displacement,
-                and worsening inequality amongst the natives. Locals are left
-                competing in a real estate market where property values and
-                rents have skyrocketed, making homeownership and affordable
-                housing increasingly out of reach.
+                passive income. While this offer is lucrative for investors,
+                locals are left competing in a real estate market where property
+                values and rents have skyrocketed, making homeownership and
+                affordable housing increasingly out of reach.
               </p>
             </Row>
             <Row>
               <p>
-                <Bold>Now combined under Act 60 in 2019</Bold>, these laws allow
+                <Bold>ACT 60</Bold> consolidated these laws in 2019 to allow
                 wealthy non-residents to dramatically cut their tax burdens,
                 paying far less in taxes than native Puerto Ricans. While framed
                 as economic development, much of this wealth never reaches local
@@ -517,15 +522,15 @@ const menuItems = [
               />
               <Row>
                 <Heading as="h5">So, now what?</Heading>
-                <p>
-                  <Bold>What can we do?</Bold>
-                </p>
+
+                <Bold>What can we do?</Bold>
+
                 <p>
                   We can continue spreading awareness about the harm these laws
                   cause to Puerto Rican families.
                 </p>
                 <p>
-                  And we can take action—starting with this petition to ensure
+                  And we can take action—starting with these petitions to ensure
                   the island can be heard.
                 </p>
                 <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">

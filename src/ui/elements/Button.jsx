@@ -17,7 +17,7 @@ const sizes = {
   medium: css`
     font-weight: 700;
     font-size: 1rem;
-    padding: 0.8rem 0;
+    padding: 0.8rem 2rem;
     border-radius: var(--border-radius-md);
     /* box-shadow: var(--shadow-md); */
   `,
@@ -27,6 +27,7 @@ const sizes = {
     /* font-size: 1.6rem; */
     padding: 0.75rem 2rem;
     font-weight: 700;
+    letter-spacing: 0.02rem;
     border-radius: var(--border-radius-lg);
     /* box-shadow: var(--shadow-lg); */
   `,

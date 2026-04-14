@@ -8,13 +8,15 @@ const StyledPanelGroup = styled.div`
   flex-direction: column;
   flex-grow: 1;
   gap: 1rem;
+  font-size: 1.1rem;
 `;
 
 const StyledHeading = styled(Heading)`
-  font-size: 2.45rem;
+  font-size: 2.75rem;
+  line-height: 2.85rem;
   scroll-margin-top: 9.5rem;
   color: ${({ $colors }) => $colors["--heading-color"]};
-  text-shadow: 3px 2px 1px ${({ $colors }) => $colors["--heading-shadow"]};
+  text-shadow: 4px 3px 1px ${({ $colors }) => $colors["--heading-shadow"]};
   text-transform: uppercase;
 
   &:not(:first-of-type) {
@@ -52,7 +54,7 @@ function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
       }
       // smoothScrollTo(panelRefs.current[isOpen], 80, 1000); -- implement smooth scrolling in future
     },
-    [isOpen]
+    [isOpen],
   );
 
   function handleClick(i) {

@@ -13,7 +13,7 @@ const variants = {
 
   h2: css`
     font-family: DtMF;
-    font-size: 2rem;
+    font-size: 2.1rem;
     line-height: 2.25rem;
 
     @media (max-width: 798px) {
@@ -54,7 +54,7 @@ const variants = {
   h6: css`
     font-family: Museo, sans-serif;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   `,
 };
 
