@@ -25,8 +25,9 @@ const sizes = {
     flex-grow: 1;
     justify-content: center;
     /* font-size: 1.6rem; */
-    padding: 0.75rem 2rem;
+    padding: 0.7rem 1.8rem;
     font-weight: 700;
+    margin: 0.1rem;
     letter-spacing: 0.02rem;
     border-radius: var(--border-radius-lg);
     /* box-shadow: var(--shadow-lg); */

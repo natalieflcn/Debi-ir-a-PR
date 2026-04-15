@@ -3,7 +3,7 @@ import Heading from "./Heading";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import Row from "./Row";
 import Button from "./Button";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
@@ -81,11 +81,16 @@ const StyledContent = styled.div`
   max-width: inherit;
   line-height: 1.5rem;
 
-  max-height: ${({ $isOpen }) => ($isOpen ? "100%" : "0px")};
+  /* max-height: ${({ $isOpen }) => ($isOpen ? "100%" : "0px")}; */
   overflow: hidden;
+  /* transition:
+    max-height ${({ $isOpen }) => ($isOpen ? "0.1s ease-out" : "0.3s ease")},
+    opacity ${({ $isOpen }) => ($isOpen ? "0.3s ease-out" : "0.4s ease")}; */
+
+  max-height: 0;
   transition:
-    max-height 0.3s ease,
-    opacity 0.4s ease;
+    max-height 0.4s ease-out,
+    opacity 0.3s ease-out;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   line-height: 1.5rem;
 `;
@@ -94,6 +99,19 @@ const Panel = forwardRef(function Panel(
   { heading, onClick, isOpen, colors, children },
   ref,
 ) {
+  const contentRef = useRef();
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    if (isOpen) {
+      contentRef.current.style.maxHeight =
+        contentRef.current.scrollHeight + "px";
+    } else {
+      contentRef.current.style.maxHeight = "0px";
+    }
+  }, [isOpen]);
+
   return (
     <StyledPanel ref={ref} $colors={colors}>
       <Row $direction="horizontal">
@@ -109,7 +127,9 @@ const Panel = forwardRef(function Panel(
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>
-      <StyledContent $isOpen={isOpen}>{children}</StyledContent>
+      <StyledContent $isOpen={isOpen} ref={contentRef}>
+        {children}
+      </StyledContent>
     </StyledPanel>
   );
 });

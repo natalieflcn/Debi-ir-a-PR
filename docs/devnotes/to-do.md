@@ -14,8 +14,10 @@
       - [ ] Design Idea?: Add ants crawling around panels
     - [x] Tighten up content on Resources page
     - [x] Replace LoadingFrame component with React Lite YouTube Embed library
-    - [ ] Smooth out opening/closing animation of panels
+    - [x] Smooth out opening/closing animation of panels
     - [x] External links should open in a separate page
     - [ ] Add content to 'Brush Up on Your Spanish'
+      - [ ] Create Table reusable component
+      - [ ] Create content and draft ten Puerto Rican slang words
 
   - [ ] About Page

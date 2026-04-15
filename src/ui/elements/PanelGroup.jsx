@@ -35,25 +35,28 @@ function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
   // useEffect hook to scroll to panel – either if panel is opened from the PanelGroup or triggered from the Sidebar
   useEffect(
     function () {
-      if (isOpen) {
-        // Scrolls to panel that is opened from the sidebar
-        if (panelRefs.current[isOpen]) {
+      if (!isOpen) return;
+      // Scrolls to panel that is opened from the sidebar
+
+      if (panelRefs.current[isOpen]) {
+        setTimeout(() => {
           panelRefs.current[isOpen].scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
+        }, 400);
 
-          // Scrolls to heading that is triggered from the sidebar
-        } else if (headingRefs.current[isOpen]) {
-          console.log("working");
-          headingRefs.current[isOpen].scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        // Scrolls to heading that is triggered from the sidebar
+      } else if (headingRefs.current[isOpen]) {
+        console.log("working");
+        headingRefs.current[isOpen].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }
-      // smoothScrollTo(panelRefs.current[isOpen], 80, 1000); -- implement smooth scrolling in future
     },
+    // smoothScrollTo(panelRefs.current[isOpen], 80, 1000); -- implement smooth scrolling in future
+
     [isOpen],
   );
 

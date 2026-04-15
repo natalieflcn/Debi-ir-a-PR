@@ -26,10 +26,30 @@ import SmallText from "../../../ui/elements/SmallText";
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+import Table from "../../../ui/elements/Table";
 // Styled Components
 const StyledResourcesLayout = styled.div`
   display: grid;
 `;
+
+const tableData = {
+  columns: [
+    { heading: "Spanish", key: "spanish" },
+    { heading: "English", key: "english" },
+  ],
+  rows: [
+    { spanish: "hola1", english: "hello1" },
+    { spanish: "hola2", english: "hello2" },
+    { spanish: "hola3", english: "hello3" },
+    { spanish: "hola4", english: "hello4" },
+    { spanish: "hola5", english: "hello5" },
+    { spanish: "hola6", english: "hello6" },
+    { spanish: "hola7", english: "hello7" },
+    { spanish: "hola8", english: "hello8" },
+    { spanish: "hola9", english: "hello9" },
+    { spanish: "hola10", english: "hello10" },
+  ],
+};
 
 // Content
 const menuItems = [
@@ -41,7 +61,9 @@ const menuItems = [
         id: 0,
         label: "Brush Up on Your Spanish",
         link: "/resources",
-        content: "This panel teaches your Boricua Spanish",
+        content: (
+          <Table columns={tableData.columns} rows={tableData.rows}></Table>
+        ),
       },
       {
         id: 1,
@@ -440,7 +462,11 @@ const menuItems = [
                       projects that create long-term sustainability.
                     </SmallText>
                   </Row>
-                  <Row $direction="horizontal" $gap="1rem">
+                  <Row
+                    $direction="horizontal"
+                    $gap="1rem"
+                    $css="margin-bottom:1rem;"
+                  >
                     <Link href="https://fundly.com/prxpr">
                       <Button $size="large" $variation="primary">
                         Donate Now
