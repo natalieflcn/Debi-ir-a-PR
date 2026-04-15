@@ -80,6 +80,14 @@ const StyledContent = styled.div`
   /* margin-top: 1rem; */
   max-width: inherit;
   line-height: 1.5rem;
+
+  max-height: ${({ $isOpen }) => ($isOpen ? "100%" : "0px")};
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.4s ease;
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  line-height: 1.5rem;
 `;
 
 const Panel = forwardRef(function Panel(
@@ -101,7 +109,7 @@ const Panel = forwardRef(function Panel(
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
       </Row>
-      <StyledContent>{isOpen ? children : ""}</StyledContent>
+      <StyledContent $isOpen={isOpen}>{children}</StyledContent>
     </StyledPanel>
   );
 });

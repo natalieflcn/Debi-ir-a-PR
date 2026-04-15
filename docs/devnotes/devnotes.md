@@ -21,7 +21,7 @@
 - [ ] Improve the current UX/UI of the non-user experience
   - [ ] Change page layout design for Resources page
   - [ ] Change page layout design for About page
-  - [ ] Fix navigation bar -- content bleeds through the nav bar depending on screen size, zoom, and scroll position
+  - [x] Fix navigation bar -- content bleeds through the nav bar depending on screen size, zoom, and scroll position
 
 ---
 
