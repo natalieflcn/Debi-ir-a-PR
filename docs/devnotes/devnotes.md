@@ -35,6 +35,8 @@
 
 ## Technical Notes
 
+- React Lite YouTube Embed
+
 ---
 
 ## Additional Notes

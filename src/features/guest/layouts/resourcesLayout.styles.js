@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SpinnerMini from "../../../ui/elements/SpinnerMini";
+
 // STYLED COMPONENTS
 
 // Dive into Puerto Rican History Panel

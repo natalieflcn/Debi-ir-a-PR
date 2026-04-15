@@ -24,27 +24,12 @@ import Image from "../../../ui/elements/Image";
 import Bold from "../../../ui/elements/Bold";
 import SmallText from "../../../ui/elements/SmallText";
 
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 // Styled Components
 const StyledResourcesLayout = styled.div`
   display: grid;
 `;
-
-// Helper Components
-const LoadingFrame = function ({ src, ...props }) {
-  const [isLoadingFrame, setIsLoadingFrame] = useState(true);
-
-  return (
-    <HistoryVideoSection $isLoadingFrame={isLoadingFrame}>
-      {isLoadingFrame && <HistorySpinnerMini />}
-      <HistoryFrame
-        src={src}
-        onLoad={() => setIsLoadingFrame(false)}
-        $isLoadingFrame={isLoadingFrame}
-        {...props}
-      ></HistoryFrame>
-    </HistoryVideoSection>
-  );
-};
 
 // Content
 const menuItems = [
@@ -85,7 +70,11 @@ const menuItems = [
             <Row $gap="1.5rem">
               <Row $gap="0.75rem">
                 <Heading as="h3">Puerto Rico is Dying: Here's Why</Heading>
-                <LoadingFrame src="https://www.youtube.com/embed/6sPRFvWOBwo" />
+                <LiteYouTubeEmbed
+                  id="6sPRFvWOBwo"
+                  title="Puerto Rico is Dying: Here's Why"
+                  lazyLoad={true}
+                />
                 <SmallText>
                   <Bold>Puerto Rico is paradise.</Bold> Beaches, lush mountains,
                   rich culture.
@@ -105,7 +94,11 @@ const menuItems = [
 
               <Row $gap="0.75rem">
                 <Heading as="h3">How the U.S. Stole Puerto Rico</Heading>
-                <LoadingFrame src="https://www.youtube.com/embed/xb9E8fvMPOA" />
+                <LiteYouTubeEmbed
+                  id="xb9E8fvMPOA"
+                  title="How the U.S. Stole Puerto Rico"
+                  lazyLoad={true}
+                />
                 <SmallText>
                   After nearly 400 years of Spanish rule, Puerto Ricans hoped
                   for liberation – instead, they became a colony of a foreign
@@ -122,7 +115,11 @@ const menuItems = [
 
               <Row $gap="0.75rem">
                 <Heading as="h3">History of the Puerto Rican Flag</Heading>
-                <LoadingFrame src="https://www.youtube.com/embed/3KLMtxRxTCo" />
+                <LiteYouTubeEmbed
+                  id="3KLMtxRxTCo"
+                  title="History of the Puerto Rican Flag"
+                  lazyLoad={true}
+                />
                 <SmallText>
                   Ever wonder why Puerto Ricans display their flag with such
                   unshakable pride?

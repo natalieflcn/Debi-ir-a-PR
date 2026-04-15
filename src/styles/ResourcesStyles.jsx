@@ -4,30 +4,15 @@ import SpinnerMini from "../ui/elements/SpinnerMini";
 import Button from "../ui/elements/Button";
 
 // Dive into Puerto Rican History
-const ResourceFrame = function ({ src, ...props }) {
-  const [isLoadingFrame, setIsLoadingFrame] = useState(true);
-
-  return (
-    <StyledHistoryFrameWrapper $isLoadingFrame={isLoadingFrame}>
-      {isLoadingFrame && <StyledSpinnerMini />}
-      <StyledHistoryFrame
-        src={src}
-        onLoad={() => setIsLoadingFrame(false)}
-        $isLoadingFrame={isLoadingFrame}
-        {...props}
-      ></StyledHistoryFrame>
-    </StyledHistoryFrameWrapper>
-  );
-};
 
 const StyledHistoryFrameWrapper = styled.div`
   margin-bottom: 1rem;
   width: 100%;
-  height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)};
+  /* height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `25rem` : ``)}; */
   aspect-ratio: 16 / 9;
 
   @media (max-width: 798px) {
-    height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `50%` : ``)};
+    /* height: ${({ $isLoadingFrame }) => ($isLoadingFrame ? `50%` : ``)}; */
   }
 `;
 
@@ -35,8 +20,8 @@ const StyledHistoryFrame = styled.iframe`
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  visibility: ${({ $isLoadingFrame }) =>
-    $isLoadingFrame ? `hidden` : `visible`};
+  /* visibility: ${({ $isLoadingFrame }) =>
+    $isLoadingFrame ? `hidden` : `visible`}; */
 `;
 
 const StyledHistoryFigure = styled.figure`
