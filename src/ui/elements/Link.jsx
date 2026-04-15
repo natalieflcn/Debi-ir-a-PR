@@ -7,7 +7,7 @@ const StyledLink = styled.a`
 
 function Link({ href, children, ...props }) {
   return (
-    <StyledLink href={href} {...props}>
+    <StyledLink href={href} target="_blank" {...props}>
       {children}
     </StyledLink>
   );

@@ -10,8 +10,12 @@
 - [~] Improve UX/UI design for current pages
   - [ ] Resources Page
     - [~] Decide how to modernize current panel system of information
+      - [ ] Design Idea?: Add a lizard crawling around sidebar
+      - [ ] Design Idea?: Add ants crawling around panels
     - [x] Tighten up content on Resources page
-    - [ ] Make open/close animation of panels smoother
-    - [ ] External links should open in a separate page
-    - [ ] Load the YouTube videos upon page load, instead of reloading each time the panel opens
+    - [ ] Replace LoadingFrame component with React Lite YouTube Embed library
+    - [ ] Smooth out opening/closing animation of panels
+    - [x] External links should open in a separate page
+    - [ ] Add content to 'Brush Up on Your Spanish'
+
   - [ ] About Page

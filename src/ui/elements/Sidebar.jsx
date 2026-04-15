@@ -54,14 +54,14 @@ const MenuItem = styled.li`
 
   &:hover {
     color: var(--color-yellow-200);
-    text-shadow: 2px 2px 1px var(--color-red-300);
-    border-left: 2px solid var(--color-yellow-400);
+    text-shadow: 1px 2px 1px var(--color-red-300);
+    border-left: 2px solid var(--color-red-300);
   }
 
   ${({ $isActive }) =>
     $isActive &&
     ` color: var(--color-yellow-200);
-    border-left: 2px solid var(--color-yellow-400);`}
+    border-left: 2px solid var(--color-red-300);`}
 `;
 
 function Sidebar({ menuItems, isOpen, onIsOpen }) {

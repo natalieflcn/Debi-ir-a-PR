@@ -12,22 +12,26 @@ const StyledPanel = styled.div`
   padding: 2rem;
   scroll-margin-top: 9.4rem;
   border-radius: var(--border-radius-lg);
-  background-color: ${({ $colors }) => $colors["--panel-bg-color"]};
-  color: ${({ $colors }) => $colors["--panel-color"]};
-  box-shadow: 2px 2px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
+  /* background-color: ${({ $colors }) => $colors["--panel-bg-color"]}; */
+  color: ${({ $colors }) => $colors["--panel-text-color"]};
+  box-shadow: 2px 3px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
+  background-repeat: ${({ $isOpen }) => $isOpen && `round`};
   background-image: url("public/images/CreamOverlay.png");
-  transition: background-color, color, box-shadow 0.3s;
+  transition:
+    background-color,
+    color,
+    box-shadow 0.3s;
 
   &:hover {
-    background-color: ${({ $colors }) => $colors["--panel-bg-highlight"]};
+    /* background-color: ${({ $colors }) => $colors["--panel-bg-highlight"]}; */
     box-shadow: 2px 2px 1px
-      ${({ $colors }) => $colors["--panel-shadow-highlight"]};
+      ${({ $colors }) => $colors["--panel-heading-hover-shadow"]};
   }
 
   &:hover h2 {
-    color: ${({ $colors }) => $colors["--panel-heading-highlight"]};
+    color: ${({ $colors }) => $colors["--panel-heading-hover-color"]};
     text-shadow: ${({ $colors }) =>
-      `1px 2px 1px ${$colors["--panel-shadow-highlight"]}`};
+      `2px 2px 1px ${$colors["--panel-heading-hover-shadow"]}`};
   }
 
   @media (max-width: 798px) {
@@ -39,8 +43,7 @@ const StyledPanel = styled.div`
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
   color: ${({ $colors }) => $colors["--panel-heading-color"]};
-  text-shadow: 2px 2px 1px
-    ${({ $colors }) => $colors["--panel-heading-highlight"]};
+  text-shadow: 2px 1px 1px ${({ $colors }) => $colors["--panel-heading-shadow"]};
   transition: all 0.4s;
   margin-bottom: ${({ $isOpen }) => $isOpen && `1rem`};
 `;
@@ -81,7 +84,7 @@ const StyledContent = styled.div`
 
 const Panel = forwardRef(function Panel(
   { heading, onClick, isOpen, colors, children },
-  ref
+  ref,
 ) {
   return (
     <StyledPanel ref={ref} $colors={colors}>
