@@ -34,8 +34,16 @@ const StyledResourcesLayout = styled.div`
 
 const tableData = {
   columns: [
-    { heading: "Spanish", key: "spanish" },
-    { heading: "English", key: "english" },
+    {
+      heading: "Spanish",
+      key: "spanish",
+      headingColor: "--color-red-200",
+    },
+    {
+      heading: "English",
+      key: "english",
+      headingColor: "--color-blue-200",
+    },
   ],
   rows: [
     { spanish: "hola1", english: "hello1" },

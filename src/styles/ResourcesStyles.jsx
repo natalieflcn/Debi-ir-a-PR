@@ -2,9 +2,30 @@ import { useState } from "react";
 import styled from "styled-components";
 import SpinnerMini from "../ui/elements/SpinnerMini";
 import Button from "../ui/elements/Button";
+import Table from "../ui/elements/Table";
+
+// Brush Up On Your Spanish
+const StyledTable = styled(Table)`
+  table {
+    background-color: var(--color-light-0);
+  }
+
+  th {
+  }
+`;
+
+// buen provecho
+// vamos a chinchorrear
+// diantre
+// que es la que hay
+// en verdad
+// vamos a janguear
+// hay mucho tapon
+// bochinche
+// eso es embuste
+// nos vemos ahorita
 
 // Dive into Puerto Rican History
-
 const StyledHistoryFrameWrapper = styled.div`
   margin-bottom: 1rem;
   width: 100%;
