@@ -1,8 +1,41 @@
 import styled from "styled-components";
 import SpinnerMini from "../../../ui/elements/SpinnerMini";
+import Table from "../../../ui/elements/Table";
 
 // STYLED COMPONENTS
 
+// Brush Up On Your Spanish
+export const SpanishWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  table {
+    box-shadow: 2px 2px 3px var(--color-yellow-300);
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  th {
+    color: var(--color-red-200);
+
+    background-color: var(--color-yellow-100);
+    &:nth-child(even) {
+      color: var(--color-blue-200);
+      background-color: var(--color-light-100);
+    }
+  }
+
+  td {
+    border-bottom: 1px dashed var(--color-yellow-300);
+    background-color: var(--color-yellow-0);
+
+    &:nth-child(even) {
+      background-color: var(--color-light-0);
+    }
+  }
+`;
 // Dive into Puerto Rican History Panel
 export const HistoryWrapper = styled.div`
   display: flex;

@@ -15,6 +15,7 @@ import {
   PuertoRicanNewsWrapper,
   OrganizationSection,
   ActCallToAction,
+  SpanishWrapper,
 } from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../ui/elements/Heading";
@@ -46,16 +47,16 @@ const tableData = {
     },
   ],
   rows: [
-    { spanish: "hola1", english: "hello1" },
-    { spanish: "hola2", english: "hello2" },
-    { spanish: "hola3", english: "hello3" },
-    { spanish: "hola4", english: "hello4" },
-    { spanish: "hola5", english: "hello5" },
-    { spanish: "hola6", english: "hello6" },
-    { spanish: "hola7", english: "hello7" },
-    { spanish: "hola8", english: "hello8" },
-    { spanish: "hola9", english: "hello9" },
-    { spanish: "hola10", english: "hello10" },
+    { spanish: "Qué es la qué hay?", english: "What's up?" },
+    { spanish: "Buen provecho!", english: "Enjoy your meal!" },
+    { spanish: "Vamos a chincorrear!", english: "Let's go bar hopping!" },
+    { spanish: "Diantre!", english: "Damn!" },
+    { spanish: "En verdad?", english: "For real?" },
+    { spanish: "Bonchinche", english: "Gossip" },
+    { spanish: "Eso es embuste!", english: "That's a lie!" },
+    { spanish: "Vamos a janguear!", english: "Let's hang out!" },
+    { spanish: "Hay mucho tapón.", english: "There's a lot of traffic." },
+    { spanish: "Nos vemos ahorita!", english: "We'll see each other soon!" },
   ],
 };
 
@@ -70,7 +71,17 @@ const menuItems = [
         label: "Brush Up on Your Spanish",
         link: "/resources",
         content: (
-          <Table columns={tableData.columns} rows={tableData.rows}></Table>
+          <SpanishWrapper>
+            <Row>
+              Visiting the island soon? Brush up on your Spanish with this cheat
+              sheet!
+            </Row>
+            <Table columns={tableData.columns} rows={tableData.rows}></Table>
+            <Row>
+              These are common words and phrases that you’ll hear in Puerto Rico
+              or from the Puerto Rican diaspora.{" "}
+            </Row>
+          </SpanishWrapper>
         ),
       },
       {

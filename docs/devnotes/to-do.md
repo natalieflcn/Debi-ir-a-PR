@@ -8,7 +8,7 @@
   - [x] (roadmap.md) Draft high-level roadmap for project
   - [x] (devnotes.md) Draft intended features and React concepts to implement into project
 - [~] Improve UX/UI design for current pages
-  - [ ] Resources Page
+  - [ ] Complete Resources Page
     - [~] Decide how to modernize current panel system of information
       - [ ] Design Idea?: Add a lizard crawling around sidebar
       - [ ] Design Idea?: Add ants crawling around panels
@@ -19,5 +19,16 @@
     - [ ] Add content to 'Brush Up on Your Spanish'
       - [ ] Create Table reusable component
       - [ ] Create content and draft ten Puerto Rican slang words
+    - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations'
+    - [ ] If a panel is open, the panel heading should be highlighted as well
 
-  - [ ] About Page
+  - [ ] Complete current About Page
+
+  - [ ] Review current codebase and assess what can be improved so far
+  - [ ] Draft mock-ups for the rest of the landing site
+    - [ ] 'How It Works' page
+    - [ ] 'Home' page
+
+  - [ ] Add coding portfolio icon to footer
+  - [ ] Implement 'How It Works' page
+  - [ ] Implement 'Home' page

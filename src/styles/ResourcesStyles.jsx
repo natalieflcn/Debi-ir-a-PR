@@ -7,10 +7,34 @@ import Table from "../ui/elements/Table";
 // Brush Up On Your Spanish
 const StyledTable = styled(Table)`
   table {
-    background-color: var(--color-light-0);
+    box-shadow: 2px 2px 3px var(--color-yellow-300);
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
   }
 
   th {
+    color: ${({ $headingColor }) => `var(${$headingColor})`};
+
+    background-color: var(--color-yellow-100);
+    &:nth-child(even) {
+      background-color: var(--color-light-100);
+    }
+  }
+
+  td {
+    border-bottom: 1px dashed var(--color-yellow-300);
+    background-color: var(--color-yellow-0);
+
+    &:nth-child(even) {
+      background-color: var(--color-light-0);
+    }
+  }
+`;
+
+const StyledSpanishWrapper = styled.div`
+  table {
+    background-color: var(--color-light-0);
   }
 `;
 

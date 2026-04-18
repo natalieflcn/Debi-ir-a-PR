@@ -8,12 +8,7 @@ const StyledTable = styled.table`
   text-align: center;
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 1rem;
-
-  box-shadow: 2px 2px 3px var(--color-yellow-300);
-  tbody tr:last-child td {
-    border-bottom: none;
-  }
+  /* margin-bottom: 1rem; */
 `;
 
 const StyledTableHeading = styled.th`
@@ -24,26 +19,15 @@ const StyledTableHeading = styled.th`
   font-weight: bold;
   font-size: 1.5rem;
   font-family: NimbusSans;
-  color: ${({ $headingColor }) => `var(${$headingColor})`};
-
-  background-color: var(--color-yellow-100);
-  &:nth-child(even) {
-    background-color: var(--color-light-100);
-  }
 `;
 
 const StyledTableData = styled.td`
   padding: 0.75rem;
-  border-bottom: 1px dashed var(--color-yellow-300);
-  background-color: var(--color-yellow-0);
-
-  &:nth-child(even) {
-    background-color: var(--color-light-0);
-  }
 `;
 // function Table({ tableData }) {
 
 function Table({ columns, rows }) {
+  console.log(columns, rows);
   return (
     <StyledTable>
       <thead>
