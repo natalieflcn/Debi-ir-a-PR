@@ -27,7 +27,6 @@ const StyledPanel = styled.div`
     box-shadow: 2px 2px 1px
       ${({ $colors }) => $colors["--panel-heading-hover-shadow"]};
   }
-
   &:hover h2 {
     color: ${({ $colors }) => $colors["--panel-heading-hover-color"]};
     text-shadow: ${({ $colors }) =>
@@ -42,8 +41,16 @@ const StyledPanel = styled.div`
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
-  color: ${({ $colors }) => $colors["--panel-heading-color"]};
-  text-shadow: 2px 1px 1px ${({ $colors }) => $colors["--panel-heading-shadow"]};
+  /* color: ${({ $colors }) => $colors["--panel-heading-color"]}; */
+  color: ${({ $isOpen, $colors }) =>
+    $isOpen
+      ? $colors["--panel-heading-hover-color"]
+      : $colors["--panel-heading-color"]};
+  text-shadow: 2px 2px 1px
+    ${({ $isOpen, $colors }) =>
+      $isOpen
+        ? $colors["--panel-heading-hover-shadow"]
+        : $colors["--panel-heading-shadow"]};
   transition: all 0.4s;
   margin-bottom: ${({ $isOpen }) => $isOpen && `1rem`};
 `;

@@ -32,15 +32,10 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 ## Milestones
 
-### Phase 1: Create the Landing Page for Debí ir a PR
-
-- [ ] Modernize the current UI/UX of the Resources and About page
-- [ ] Create the How it Works and Home pages
-
 ### Phase 1: Frontend Foundation (React)
 
-- [ ] App structure & setup
-- [ ] Create the landing page for the platfotm
+- [x] App structure & setup
+- [~] Create the landing page for the platfotm
 - [ ] Build core pages (UI only with static data)
 - [ ] Implement routing with React Router
 - [ ] Develop a reusable component system
