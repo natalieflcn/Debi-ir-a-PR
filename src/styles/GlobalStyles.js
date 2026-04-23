@@ -144,7 +144,7 @@ body::before{
   height: 100%;
   z-index: -1;
   /* opacity: 0.9;  */
-  background-image: url("public/images/BlueOverlay.png");
+  background-image: url('src/assets/images/ui/BlueOverlay.png');
 } 
 // prettier-ignore
 input, button, textarea, select {

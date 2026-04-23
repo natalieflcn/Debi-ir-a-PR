@@ -1,14 +1,11 @@
-import Sidebar from "../../../shared/components/Sidebar";
-import Row from "../../../shared/components/Row";
+import Sidebar from "../../../shared/components/layout/Sidebar";
+import Row from "../../../shared/components/layout/Row";
 import styled, { css } from "styled-components";
-import PanelGroup from "../../../shared/components/PanelGroup";
+import PanelGroup from "../../../shared/components/layout/PanelGroup";
 import {
   CharityOrganizationsWrapper,
   EndActWrapper,
   HistoryBookSection,
-  HistoryFrame,
-  HistorySpinnerMini,
-  HistoryVideoSection,
   HistoryWrapper,
   ResourcesColors,
   SlicedPhotos,
@@ -186,7 +183,7 @@ const menuItems = [
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src="src/assets/images/guest/WarAgainstAllPuertoRicansCover.png"
+                      src="src/assets/images/content/WarAgainstAllPuertoRicansCover.png"
                       alt="War Against All Puerto Ricans"
                     />
                   </Link>
@@ -216,7 +213,7 @@ const menuItems = [
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src="src/assets/images/guest/TheBattleForParadiseCover.png"
+                      src="src/assets/images/content/TheBattleForParadiseCover.png"
                       alt="The Battle for Paradise"
                     />
                   </Link>
@@ -246,7 +243,7 @@ const menuItems = [
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src="src/assets/images/guest/AftershocksOfDisasterCover.png"
+                      src="src/assets/images/content/AftershocksOfDisasterCover.png"
                       alt="Aftershocks of Disaster"
                     />
                   </Link>
@@ -276,7 +273,7 @@ const menuItems = [
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src="src/assets/images/guest/MattersOfChoiceCover.png"
+                      src="src/assets/images/content/MattersOfChoiceCover.png"
                       alt="Matters of Choice"
                     />
                   </Link>
@@ -308,7 +305,7 @@ const menuItems = [
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src="src/assets/images/guest/LasCarpetasCover.png"
+                      src="src/assets/images/content/LasCarpetasCover.png"
                       alt="Las Carpetas"
                     />
                   </Link>
@@ -349,11 +346,11 @@ const menuItems = [
             </Row>
             <SlicedPhotos>
               <Image
-                src="src/assets/images/guest/PuertoRicanParadise.jpg"
+                src="src/assets/images/content/PuertoRicanParadise.jpg"
                 alt="A beach on Puerto Rico"
               />
               <Image
-                src="src/assets/images/guest/PRBlackout.jpg"
+                src="src/assets/images/content/PRBlackout.jpg"
                 alt="A blackout in Puerto Rico"
               />
             </SlicedPhotos>
@@ -377,7 +374,7 @@ const menuItems = [
               <OrganizationSection>
                 <Link href="https://www.fcpr.org/">
                   <Image
-                    src="src/assets/images/guest/FundacionComunitaria.png"
+                    src="src/assets/images/content/FundacionComunitaria.png"
                     alt="Fundacion Comunitaria"
                     $width="9rem"
                     $css={css`
@@ -418,7 +415,7 @@ const menuItems = [
               <OrganizationSection>
                 <Link href="https://www.comedoressocialespr.org/">
                   <Image
-                    src="src/assets/images/guest/ComedoresSociales.png"
+                    src="src/assets/images/content/ComedoresSociales.png"
                     alt="Comedores Sociales"
                     $width="9rem"
                     $css={css`
@@ -459,7 +456,7 @@ const menuItems = [
               <OrganizationSection>
                 <Link href="https://www.prxpr.org/">
                   <Image
-                    src="src/assets/images/guest/PRxPR.png"
+                    src="src/assets/images/content/PRxPR.png"
                     alt="PRxPR"
                     $width="9rem"
                     $css={css`
@@ -518,7 +515,7 @@ const menuItems = [
               the matter.
             </Row>
             <Image
-              src="src/assets/images/guest/PRProtest.jpg"
+              src="src/assets/images/content/PRProtest.jpg"
               alt="A protest in Puerto Rico"
             />
             <Row>
@@ -555,7 +552,7 @@ const menuItems = [
             </Row>
             <ActCallToAction>
               <Image
-                src="src/assets/images/guest/PRxDC.jpg"
+                src="src/assets/images/content/PRxDC.jpg"
                 alt="A Puerto Rican flag"
                 $width="43%"
                 $css={css`
@@ -597,7 +594,7 @@ const menuItems = [
         content: (
           <PuertoRicanNewsWrapper>
             <Image
-              src="src/assets/images/guest/SanJuan.jpg"
+              src="src/assets/images/content/SanJuan.jpg"
               alt="Old San Juan buildings"
             />
 

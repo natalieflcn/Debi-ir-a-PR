@@ -26,6 +26,7 @@
 ### Goals
 
 - [~] Refactor current codebase
+  - [~] Revise file structure into feature-driven approach
   - [ ] Extract all styling decisions from React components
   - [ ] Organize all styled components
   - [ ] Delete unused fonts, add new typography options

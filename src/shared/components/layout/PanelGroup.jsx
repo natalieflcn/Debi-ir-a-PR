@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Panel from "./Panel";
 import styled from "styled-components";
-import Heading from "./Heading";
+import Heading from "../typography/Heading";
 
 const StyledPanelGroup = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
-import PanelGroup from "../../../shared/components/PanelGroup";
-import Row from "../../../shared/components/Row";
-import Sidebar from "../../../shared/components/Sidebar";
+import PanelGroup from "../../../shared/components/layout/PanelGroup";
+import Row from "../../../shared/components/layout/Row";
+import Sidebar from "../../../shared/components/layout/Sidebar";
 import { useState } from "react";
 import { AboutColors } from "./aboutLayout.styles";
 import styled, { css } from "styled-components";

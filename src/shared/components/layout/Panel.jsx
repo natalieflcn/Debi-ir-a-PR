@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
-import Heading from "./Heading";
+import Heading from "../typography/Heading";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import Row from "./Row";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 import { forwardRef, useEffect, useRef } from "react";
+import CreamOverlay from "../../../assets/images/ui/CreamOverlay.png";
 
 const StyledPanel = styled.div`
   box-sizing: border-box;
@@ -16,7 +17,7 @@ const StyledPanel = styled.div`
   color: ${({ $colors }) => $colors["--panel-text-color"]};
   box-shadow: 2px 3px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
   background-repeat: ${({ $isOpen }) => $isOpen && `round`};
-  background-image: url("public/images/CreamOverlay.png");
+  background-image: url(${CreamOverlay});
   transition:
     background-color,
     color,

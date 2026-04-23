@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
-import Background from "../../shared/components/Background";
-import Bubbles from "../../shared/components/Bubbles";
+import Bubbles from "../decorative/Bubbles";
+import BlueOverlay from "../../../assets/images/ui/BlueOverlay.png";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -18,7 +18,7 @@ const StyledNav = styled.nav`
   padding: 2rem 2rem;
 
   background-color: var(--color-blue-200);
-  background-image: url("public/images/BlueOverlay.png");
+  background-image: url(${BlueOverlay});
 
   @media (max-width: 798px) {
     position: relative;

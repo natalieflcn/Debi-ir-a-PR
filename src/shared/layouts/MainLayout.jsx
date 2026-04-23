@@ -1,4 +1,4 @@
-import NavBar from "../navbar/NavBar";
+import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
 import styled from "styled-components";

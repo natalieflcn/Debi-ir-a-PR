@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import Heading from "./Heading";
+import Heading from "../typography/Heading";
 import React from "react";
+import CreamOverlay from "../../../assets/images/ui/CreamOverlay.png";
 
 const StyledSidebar = styled.aside`
   display: flex;
@@ -19,7 +20,7 @@ const StyledSidebar = styled.aside`
   border-radius: var(--border-radius-lg);
   list-style: none;
   text-transform: uppercase;
-  background-image: url("public/images/CreamOverlay.png");
+  background-image: url(${CreamOverlay});
 
   @media (max-width: 798px) {
     display: none;
