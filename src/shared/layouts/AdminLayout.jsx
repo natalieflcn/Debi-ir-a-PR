@@ -1,6 +1,6 @@
-import NavBar from "../navbar/NavBar";
+import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
-import Footer from "../../shared/components/Footer";
+import Footer from "../components/layout/Footer";
 
 const menuItems = [
   { label: "Dashboard", link: "/admin" },

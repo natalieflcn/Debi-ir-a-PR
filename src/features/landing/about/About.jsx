@@ -1,4 +1,4 @@
-import AboutLayout from "../layouts/AboutLayout";
+import AboutLayout from "./AboutLayout";
 
 function About() {
   return <AboutLayout />;

@@ -2,9 +2,9 @@ import PanelGroup from "../../../shared/components/PanelGroup";
 import Row from "../../../shared/components/Row";
 import Sidebar from "../../../shared/components/Sidebar";
 import { useState } from "react";
-import { AboutColors } from "../../guest/layouts/aboutLayout.styles";
+import { AboutColors } from "./aboutLayout.styles";
 import styled, { css } from "styled-components";
-import Tile from "../../../shared/components/Tile";
+import Tile from "../../../shared/components/ui/Tile";
 import Heading from "../../../shared/components/Heading";
 
 // Styled Components

@@ -16,13 +16,13 @@ import {
   OrganizationSection,
   ActCallToAction,
   SpanishWrapper,
-} from "../../guest/layouts/resourcesLayout.styles";
+} from "./resourcesLayout.styles";
 import { useState } from "react";
 import Heading from "../../../shared/components/Heading";
 import Button from "../../../shared/components/Button";
 import Link from "../../../shared/components/Link";
 import Image from "../../../shared/components/Image";
-import Bold from "../../../shared/components/Bold";
+import Bold from "../../../shared/components/typography/Bold";
 import SmallText from "../../../shared/components/SmallText";
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";

@@ -1,4 +1,4 @@
-import ResourcesLayout from "../layouts/ResourcesLayout";
+import ResourcesLayout from "./ResourcesLayout";
 
 function Resources() {
   return (

@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-import DtMF from "/fonts/DtMF.ttf";
+import DtMF from "../assets/fonts/DtMF.ttf";
 
-import MuseoSansNormal from "/fonts/MuseoSans_300.otf";
-import MuseoSansHeavy from "/fonts/MuseoSans_500.otf";
-import MuseoSansBold from "/fonts/MuseoSans_700.otf";
-import MuseoSansBoldest from "/fonts/MuseoSans_900.otf";
+import MuseoSansNormal from "../assets/fonts/MuseoSans_300.otf";
+import MuseoSansHeavy from "../assets/fonts/MuseoSans_500.otf";
+import MuseoSansBold from "../assets/fonts/MuseoSans_700.otf";
+import MuseoSansBoldest from "../assets/fonts/MuseoSans_900.otf";
 
 const GlobalStyles = createGlobalStyle`
 

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import Heading from "./Heading";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import Row from "./Row";
-import Button from "./Button";
+import Button from "./ui/Button";
 import { forwardRef, useEffect, useRef } from "react";
 
 const StyledPanel = styled.div`
