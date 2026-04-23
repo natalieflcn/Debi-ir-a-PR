@@ -16,9 +16,10 @@ const StyledTableHeading = styled.th`
   text-transform: uppercase;
 
   border-bottom: 2px dashed var(--color-yellow-300);
-  font-weight: bold;
+  font-weight: 900;
   font-size: 1.5rem;
-  font-family: NimbusSans;
+  font-family: Museo;
+  letter-spacing: -0.02rem;
 `;
 
 const StyledTableData = styled.td`

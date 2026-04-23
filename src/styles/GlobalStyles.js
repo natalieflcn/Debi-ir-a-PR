@@ -1,15 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import DtMF from "/fonts/DtMF.ttf";
-import DMSansLight from "/fonts/DMSans-300.ttf";
-import DMSansMedium from "/fonts/DMSans-500.ttf";
-import DMSansBold from "/fonts/DMSans-700.ttf";
-import DMSansBlack from "/fonts/DMSans-900.ttf";
+
 import MuseoSansNormal from "/fonts/MuseoSans_300.otf";
 import MuseoSansHeavy from "/fonts/MuseoSans_500.otf";
 import MuseoSansBold from "/fonts/MuseoSans_700.otf";
 import MuseoSansBoldest from "/fonts/MuseoSans_900.otf";
-import NimbusSansRegular from "/fonts/NimbusSans-Regular.otf";
-import NimbusSansBold from "/fonts/NimbusSans-Bold.ttf";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -64,48 +59,6 @@ table {
     font-family: 'DtMF';
     src: url(${DtMF}) format('truetype');
     font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DMSans';
-    src: url(${DMSansLight}) format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NimbusSans';
-    src: url(${NimbusSansRegular}) format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NimbusSans';
-    src: url(${NimbusSansBold}) format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DMSans';
-    src: url(${DMSansMedium}) format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DMSans';
-    src: url(${DMSansBold}) format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DMSans';
-    src: url(${DMSansBlack}) format('truetype');
-    font-weight: 900;
     font-style: normal;
 }
 
@@ -178,7 +131,7 @@ table {
 
 // Formatting
 body {
-  font-family: 'MuseoSans', sans-serif;
+  font-family:  sans-serif, Helvetica;
   font-weight: 300;
   background-color: var(--color-blue-200);
   color: var(--color-light-100);

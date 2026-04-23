@@ -26,7 +26,7 @@ const menuItems = [
     items: [
       {
         id: 0,
-        label: "Summary",
+        label: "Mission",
         link: "/about",
         content: (
           <Row>

@@ -6,10 +6,10 @@ const StyledNavDesktop = styled.ul`
   display: none;
   justify-content: space-between;
   flex: 1;
-  font-size: 1.4rem;
-  font-weight: bold;
-  font-family: NimbusSans;
-  letter-spacing: 0.05rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-family: Museo;
+  letter-spacing: -0.02rem;
   text-transform: uppercase;
 
   @media (min-width: 798px) {

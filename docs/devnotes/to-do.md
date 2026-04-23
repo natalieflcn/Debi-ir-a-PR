@@ -19,31 +19,18 @@
   - [x] Add content to 'Brush Up on Your Spanish'
     - [x] Create Table reusable component
     - [x] Create content and draft ten Puerto Rican slang words/phrases
-  - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations'
-  - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
   - [x] If a panel is open, the panel heading should be highlighted as well
-
-- [ ] Complete current About Page
-  - [ ] Draft mock-ups for panels
-  - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
-
-- [ ] Review current codebase and assess what can be improved so far
-- [ ] Draft mock-ups for the rest of the landing site
-  - [ ] 'How It Works' page
-  - [ ] 'Home' page
-
-- [ ] Add coding portfolio icon to footer
-- [ ] Implement 'How It Works' page
-- [ ] Implement 'Home' page
-- [ ] Make sure the landing site is responsive for all devices
-  - [ ] Large devices (desktops)
-  - [ ] Medium devices (tablets)
-  - [ ] Small devices (phones)
 
 ## Week: April 21 – April 25
 
 ### Goals
 
+- [~] Refactor current codebase
+  - [ ] Extract all styling decisions from React components
+  - [ ] Organize all styled components
+  - [ ] Delete unused fonts, add new typography options
+  - [ ] Reassess current color palette, background overlays, and typography hierarchy
+  - [ ] Use the IntersectionObsever API to implement scrolling to panels
 - [~] Complete Resources Page
   - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations'
   - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
@@ -52,9 +39,10 @@
   - [ ] Draft mock-ups for panels
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
 
-- [ ] Review current codebase and assess what can be improved so far
+- [ ] Review current UX/UI design and assess what can be improved
   - [ ] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
   - [ ] Create drop-down menus for About and Resources nav items
+
 - [ ] Draft mock-ups for the rest of the landing site
   - [ ] 'How It Works' page
   - [ ] 'Home' page
@@ -62,6 +50,7 @@
 - [ ] Add coding portfolio icon to footer
 - [ ] Implement 'How It Works' page
 - [ ] Implement 'Home' page
+
 - [ ] Make sure the landing site is responsive for all devices
   - [ ] Large devices (desktops)
   - [ ] Medium devices (tablets)

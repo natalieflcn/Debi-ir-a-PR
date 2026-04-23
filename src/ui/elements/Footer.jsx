@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
   margin: 0 auto;
 
   span {
-    font-family: Museo;
+    font-family: Museo, sans-serif;
     font-size: 1rem;
     align-self: center;
     margin-left: 0.5rem;
