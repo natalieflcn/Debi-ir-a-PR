@@ -1,4 +1,4 @@
-import AboutLayout from "../../features/guest/layouts/AboutLayout";
+import AboutLayout from "../layouts/AboutLayout";
 
 function About() {
   return <AboutLayout />;

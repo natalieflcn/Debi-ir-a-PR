@@ -1,4 +1,4 @@
-import ResourcesLayout from "../../features/guest/layouts/ResourcesLayout";
+import ResourcesLayout from "../layouts/ResourcesLayout";
 
 function Resources() {
   return (

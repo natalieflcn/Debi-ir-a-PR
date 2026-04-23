@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
-import Background from "../elements/Background";
-import Bubbles from "../elements/Bubbles";
+import Background from "../../shared/components/Background";
+import Bubbles from "../../shared/components/Bubbles";
 
 const StyledNav = styled.nav`
   display: flex;

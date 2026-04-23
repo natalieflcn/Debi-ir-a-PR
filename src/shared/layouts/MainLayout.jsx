@@ -1,8 +1,8 @@
 import NavBar from "../navbar/NavBar";
-import MainContent from "../../components/layouts/MainContent";
-import Footer from "../elements/Footer";
+import MainContent from "./MainContent";
+import Footer from "../../shared/components/Footer";
 import styled from "styled-components";
-import Background from "../elements/Background";
+import Background from "../../shared/components/Background";
 
 const StyledMainLayout = styled.div`
   position: relative;

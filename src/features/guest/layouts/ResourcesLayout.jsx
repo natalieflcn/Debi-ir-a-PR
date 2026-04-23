@@ -1,7 +1,7 @@
-import Sidebar from "../../../ui/elements/Sidebar";
-import Row from "../../../ui/elements/Row";
+import Sidebar from "../../../shared/components/Sidebar";
+import Row from "../../../shared/components/Row";
 import styled, { css } from "styled-components";
-import PanelGroup from "../../../ui/elements/PanelGroup";
+import PanelGroup from "../../../shared/components/PanelGroup";
 import {
   CharityOrganizationsWrapper,
   EndActWrapper,
@@ -18,16 +18,16 @@ import {
   SpanishWrapper,
 } from "../../guest/layouts/resourcesLayout.styles";
 import { useState } from "react";
-import Heading from "../../../ui/elements/Heading";
-import Button from "../../../ui/elements/Button";
-import Link from "../../../ui/elements/Link";
-import Image from "../../../ui/elements/Image";
-import Bold from "../../../ui/elements/Bold";
-import SmallText from "../../../ui/elements/SmallText";
+import Heading from "../../../shared/components/Heading";
+import Button from "../../../shared/components/Button";
+import Link from "../../../shared/components/Link";
+import Image from "../../../shared/components/Image";
+import Bold from "../../../shared/components/Bold";
+import SmallText from "../../../shared/components/SmallText";
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import Table from "../../../ui/elements/Table";
+import Table from "../../../shared/components/Table";
 // Styled Components
 const StyledResourcesLayout = styled.div`
   display: grid;

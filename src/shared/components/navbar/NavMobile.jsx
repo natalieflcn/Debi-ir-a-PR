@@ -1,6 +1,6 @@
 import { BiMenuAltRight, BiX } from "react-icons/bi";
 import styled from "styled-components";
-import Button from "../elements/Button";
+import Button from "../../shared/components/Button";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import User from "./User";
@@ -59,7 +59,8 @@ const MobileMenu = styled.ul`
   opacity: ${({ $isOpen }) => ($isOpen ? `1` : `0`)};
   transform: ${({ $isOpen }) =>
     $isOpen ? `translateY(0%)` : `translateY(-100%)`};
-  transition: transform 1100ms cubic-bezier(0.3, 0.9, 0.5, 0.9),
+  transition:
+    transform 1100ms cubic-bezier(0.3, 0.9, 0.5, 0.9),
     opacity 300ms ease-in-out;
 `;
 

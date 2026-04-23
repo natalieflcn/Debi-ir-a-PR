@@ -1,11 +1,11 @@
-import PanelGroup from "../../../ui/elements/PanelGroup";
-import Row from "../../../ui/elements/Row";
-import Sidebar from "../../../ui/elements/Sidebar";
+import PanelGroup from "../../../shared/components/PanelGroup";
+import Row from "../../../shared/components/Row";
+import Sidebar from "../../../shared/components/Sidebar";
 import { useState } from "react";
 import { AboutColors } from "../../guest/layouts/aboutLayout.styles";
 import styled, { css } from "styled-components";
-import Tile from "../../../ui/elements/Tile";
-import Heading from "../../../ui/elements/Heading";
+import Tile from "../../../shared/components/Tile";
+import Heading from "../../../shared/components/Heading";
 
 // Styled Components
 const StyledAboutLayout = styled.div`

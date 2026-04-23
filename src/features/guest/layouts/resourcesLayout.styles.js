@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import SpinnerMini from "../../../ui/elements/SpinnerMini";
-import Table from "../../../ui/elements/Table";
+import SpinnerMini from "../../../shared/components/SpinnerMini";
+import Table from "../../../shared/components/Table";
 
 // STYLED COMPONENTS
 
