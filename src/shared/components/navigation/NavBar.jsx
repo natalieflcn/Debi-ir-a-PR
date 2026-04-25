@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Logo from "./Logo";
+import Logo from "../brand/Logo";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
 import Bubbles from "../decorative/Bubbles";

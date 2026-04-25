@@ -22,6 +22,8 @@
   - [ ] Extract all styling from all React components, allowing them to become more reusable and flexible
   - [ ] Organize all styled components respectively
   - [ ] Reassess current color palette and typography choices
+  - [ ] Extract routing from app.jsx into /router
+    - [ ] Lazy load admin, explorer, and ambassador routes
 - [ ] Improve the current UX/UI design of the non-user interface and make the experience more intimate, embodying the essence of PR
   - [x] Fix navigation bar -- content bleeds through the nav bar depending on screen size, zoom, and scroll position
   - [ ] Use the IntersectionObsever API to implement scrolling to panels

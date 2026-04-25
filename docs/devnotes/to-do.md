@@ -26,12 +26,31 @@
 ### Goals
 
 - [~] Refactor current codebase
-  - [~] Revise file structure into feature-driven approach
+  - [x] Revise file structure into feature-driven approach
   - [ ] Extract all styling decisions from React components
   - [ ] Organize all styled components
+    - [ ] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
+    - [ ] Only have dedicated styled component files for complex files (+40 lines)
+    - [ ] Adjust themes of styled components via props
+    - [ ] Export component color palette/styling options into separate themes folder in styles (i.e. styles/themes/resourcesTheme.js)
+    - [ ] Create variants for reused styles and co-locate them in styled components files
+    - [ ] Clean up all $css prop pattern in styled components, only expose intentional CSS properties of the component
   - [ ] Delete unused fonts, add new typography options
   - [ ] Reassess current color palette, background overlays, and typography hierarchy
+  - [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
+  - [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin)
   - [ ] Use the IntersectionObsever API to implement scrolling to panels
+  - [ ] Refactor current React Router implementation into /router folder
+
+### Additional Notes
+
+- Use styles/themes folder for color palettes, spacing scales, typography scales, static configuration
+- In the future, create a Theme Context/Provider to control dark/light mode switching, role-based color schemes, dynamic theming
+
+## Week: April 27 – May 6
+
+### Goals
+
 - [~] Complete Resources Page
   - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations'
   - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
@@ -44,15 +63,15 @@
   - [ ] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
   - [ ] Create drop-down menus for About and Resources nav items
 
-- [ ] Draft mock-ups for the rest of the landing site
-  - [ ] 'How It Works' page
-  - [ ] 'Home' page
-
 - [ ] Add coding portfolio icon to footer
-- [ ] Implement 'How It Works' page
-- [ ] Implement 'Home' page
 
-- [ ] Make sure the landing site is responsive for all devices
+- [ ] Make sure the current pages of the landing site are responsive for all devices
   - [ ] Large devices (desktops)
   - [ ] Medium devices (tablets)
   - [ ] Small devices (phones)
+
+- [ ] Draft mock-ups for the rest of the landing site
+  - [ ] 'How It Works' page
+  - [ ] 'Home' page
+- [ ] Implement 'How It Works' page
+- [ ] Implement 'Home' page

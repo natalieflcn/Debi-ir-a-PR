@@ -4,7 +4,7 @@ import Sidebar from "../../../shared/components/layout/Sidebar";
 import { useState } from "react";
 import { AboutColors } from "./aboutLayout.styles";
 import styled, { css } from "styled-components";
-import Tile from "../../../shared/components/ui/Tile";
+import Tile from "../../../shared/components/layout/Tile";
 import Heading from "../../../shared/components/typography/Heading";
 
 // Styled Components
