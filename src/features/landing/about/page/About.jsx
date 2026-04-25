@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import AboutLayout from "../AboutLayout";
+import PanelGroup from "../../../../shared/components/layout/PanelGroup";
+import aboutData from "../data/aboutData";
+import { useState } from "react";
+import Sidebar from "../../../../shared/components/layout/Sidebar";
+import { AboutColors } from "../../../../styles/themes/aboutTheme";
 
 const StyledAbout = styled.div`
   display: flex;
@@ -9,7 +13,19 @@ const StyledAbout = styled.div`
 `;
 
 function About() {
-  return <AboutLayout />;
+  const [isOpen, setIsOpen] = useState(null);
+
+  return (
+    <StyledAbout>
+      <PanelGroup
+        menuSections={aboutData}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        colors={AboutColors}
+      />
+      <Sidebar menuSections={aboutData} onIsOpen={setIsOpen} isOpen={isOpen} />
+    </StyledAbout>
+  );
 }
 
 export default About;

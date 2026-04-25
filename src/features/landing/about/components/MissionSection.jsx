@@ -26,7 +26,7 @@ export default function MissionSection() {
       {sectionItems.map((item) => (
         <Row key={item.id} $gap="0.5rem">
           <Heading>{item.heading}</Heading>
-          <Card $bg="white">{item.body}</Card> //TODO fix css styles
+          <Card $bg="white">{item.body}</Card>
         </Row>
       ))}
     </Row>

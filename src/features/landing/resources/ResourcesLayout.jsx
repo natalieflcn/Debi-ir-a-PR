@@ -630,9 +630,13 @@ function ResourcesLayout() {
   return (
     <StyledResourcesLayout>
       <Row $direction="horizontal" $gap="2rem">
-        <Sidebar menuItems={menuItems} isOpen={isOpen} onIsOpen={setIsOpen} />
+        <Sidebar
+          menuSections={menuItems}
+          isOpen={isOpen}
+          onIsOpen={setIsOpen}
+        />
         <PanelGroup
-          menuItems={menuItems}
+          menuSections={menuItems}
           colors={ResourcesColors}
           setIsOpen={setIsOpen}
           isOpen={isOpen}

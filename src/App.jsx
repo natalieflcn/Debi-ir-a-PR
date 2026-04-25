@@ -4,7 +4,7 @@ import ExplorerLayout from "./shared/layouts/ExplorerLayout";
 import AdminLayout from "./shared/layouts/AdminLayout";
 import Workflow from "./features/landing/workflow/Workflow";
 import About from "./features/landing/about/page/About";
-import Resources from "./features/landing/resources/Resources";
+
 import CreateAccount from "./features/auth/components/CreateAccount";
 import Login from "./features/auth/components/Login";
 import ExplorerProfile from "./features/explorer/pages/ExplorerProfile";
@@ -24,6 +24,7 @@ import UserDetails from "./features/admin/userManagement/UserDetails";
 import EditHuntDetails from "./features/admin/explorationManagement/EditHuntDetails";
 import EditHuntItemDetails from "./features/admin/explorationManagement/EditHuntItemDetails";
 import GlobalStyles from "./styles/GlobalStyles";
+import Resources from "./features/landing/resources/page/Resources";
 
 function App() {
   return (
