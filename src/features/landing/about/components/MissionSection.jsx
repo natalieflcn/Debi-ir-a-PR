@@ -1,5 +1,5 @@
 import Row from "../../../../shared/components/layout/Row";
-import Tile from "../../../../shared/components/layout/Tile";
+import Card from "../../../../shared/components/layout/Card";
 import Heading from "../../../../shared/components/typography/Heading";
 
 const sectionItems = [
@@ -26,7 +26,7 @@ export default function MissionSection() {
       {sectionItems.map((item) => (
         <Row key={item.id} $gap="0.5rem">
           <Heading>{item.heading}</Heading>
-          <Tile $bg="white">{item.body}</Tile>
+          <Card $bg="white">{item.body}</Card> //TODO fix css styles
         </Row>
       ))}
     </Row>

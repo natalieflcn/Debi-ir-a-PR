@@ -8,7 +8,7 @@ import styled, { css } from "styled-components";
 import Heading from "../../../shared/components/typography/Heading";
 
 import Row from "../../../shared/components/layout/Row";
-import Tile from "../../../shared/components/layout/Tile";
+import Card from "../../../shared/components/layout/Card";
 import aboutData from "./data/aboutData";
 
 // Styled Components
@@ -36,7 +36,7 @@ const menuItems = [
           <Row>
             <Row $gap="0.5rem">
               <Heading>For Puerto Rico</Heading>
-              <Tile
+              <Card
                 $css={css`
                   background-color: white;
                 `}
@@ -46,12 +46,12 @@ const menuItems = [
                 visitor seeking inspiration on where to go or a local wanting a
                 fresh way to experience the island, the app transforms
                 exploration into an adventure.
-              </Tile>
+              </Card>
             </Row>
 
             <Row $gap="0.5rem">
               <Heading>For Tourists</Heading>
-              <Tile
+              <Card
                 $css={css`
                   background-color: white;
                 `}
@@ -60,12 +60,12 @@ const menuItems = [
                 destinations—beyond the usual beaches and resorts—encouraging
                 users to create lasting memories through cultural landmarks,
                 small businesses, and natural wonders.
-              </Tile>
+              </Card>
             </Row>
 
             <Row $gap="0.5rem">
               <Heading>For Puerto Ricans</Heading>
-              <Tile
+              <Card
                 $css={css`
                   background-color: white;
                 `}
@@ -77,7 +77,7 @@ const menuItems = [
                 love most. This not only helps promote hidden treasures across
                 the island but also gives users a more authentic,
                 community-driven way to explore.
-              </Tile>
+              </Card>
             </Row>
           </Row>
         ),
@@ -88,7 +88,7 @@ const menuItems = [
         link: "/about",
         content: (
           <Row $direction="horizontal" $gap="1rem">
-            <Tile>
+            <Card>
               As an Explorer
               <ul>
                 <li>
@@ -108,8 +108,8 @@ const menuItems = [
                   others to explore.
                 </li>
               </ul>
-            </Tile>
-            <Tile>
+            </Card>
+            <Card>
               As a Team Member
               <ul>
                 <li>
@@ -121,7 +121,7 @@ const menuItems = [
                   and favorite hidden spots.
                 </li>
               </ul>
-            </Tile>
+            </Card>
           </Row>
         ),
       },
@@ -132,25 +132,25 @@ const menuItems = [
         content: (
           <Row>
             <Row $direction="horizontal">
-              <Tile>React</Tile>
-              <Tile>React Router</Tile>
-              <Tile>React Icons</Tile>
-              <Tile>node.js</Tile>
-              <Tile>Express</Tile>
+              <Card>React</Card>
+              <Card>React Router</Card>
+              <Card>React Icons</Card>
+              <Card>node.js</Card>
+              <Card>Express</Card>
             </Row>
             <Row>
               <Heading>Third Party Libraries and Services</Heading>
-              <Tile>
+              <Card>
                 <ul>
                   <li>React Router</li>
                   <li>React Icons</li>
                   <li>Mongoose</li>
                 </ul>
-              </Tile>
+              </Card>
             </Row>
             <Row>
               <Heading>Architecture and Engineering Focus</Heading>
-              <Tile>
+              <Card>
                 <ul>
                   <li>MVC System Architecture</li>
                   <li>
@@ -159,7 +159,7 @@ const menuItems = [
                   </li>
                   <li>Modular code structure</li>
                 </ul>
-              </Tile>
+              </Card>
             </Row>
           </Row>
         ),

@@ -12,7 +12,7 @@ const variants = {
   `,
 };
 
-const Tile = styled.div`
+const Card = styled.div`
   display: flex;
   border-radius: 5px;
   padding: 1rem;
@@ -22,4 +22,4 @@ const Tile = styled.div`
   ${({ $css }) => $css}
 `;
 
-export default Tile;
+export default Card;

@@ -27,8 +27,8 @@
 
 - [~] Refactor current codebase
   - [x] Revise file structure into feature-driven approach
-  - [ ] Convert static data from JSX into pure JSON and extract into separate JS files
-  - [ ] Extract all styling decisions from React components
+  - [~] Convert static data from JSX into pure JSON and extract into separate JS files
+  - [~] Extract all styling decisions from React components
   - [ ] Extract font declarations into typography.css
   - [ ] Extract animations into animations.css
   - [ ] Organize all styled components

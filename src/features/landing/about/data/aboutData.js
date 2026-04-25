@@ -1,4 +1,10 @@
+import ChallengesSection from "../components/ChallengesSection";
+import KeyFeaturesSection from "../components/KeyFeaturesSection";
+import LessonsSection from "../components/LessonsSection";
 import MissionSection from "../components/MissionSection";
+import MotivationSection from "../components/MotivationSection";
+import TechStackSection from "../components/TechStackSection";
+import TheResultsSection from "../components/TheResultsSection";
 
 const aboutData = [
   {
@@ -16,13 +22,13 @@ const aboutData = [
         id: "key-features",
         heading: "Key Features",
         link: "/about",
-        content: MissionSection,
+        content: KeyFeaturesSection,
       },
       {
         id: "tech-stack",
         heading: "Tech Stack",
         link: "/about",
-        content: MissionSection,
+        content: TechStackSection,
       },
     ],
   },
@@ -35,25 +41,25 @@ const aboutData = [
         id: "motivation",
         heading: "Motivation",
         link: "/about",
-        content: MissionSection,
+        content: MotivationSection,
       },
       {
         id: "challenges-and-solutions",
         heading: "Challenges and Solutions",
         link: "/about",
-        content: MissionSection,
+        content: ChallengesSection,
       },
       {
         id: "lessons-learned",
         heading: "Lessons Learned",
         link: "/about",
-        content: MissionSection,
+        content: LessonsSection,
       },
       {
         id: "the-results",
         heading: "The Results",
         link: "/about",
-        content: MissionSection,
+        content: TheResultsSection,
       },
     ],
   },
