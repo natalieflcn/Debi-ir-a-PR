@@ -3,7 +3,7 @@ import MainLayout from "./shared/layouts/MainLayout";
 import ExplorerLayout from "./shared/layouts/ExplorerLayout";
 import AdminLayout from "./shared/layouts/AdminLayout";
 import Workflow from "./features/landing/workflow/Workflow";
-import About from "./features/landing/about/About";
+import About from "./features/landing/about/page/About";
 import Resources from "./features/landing/resources/Resources";
 import CreateAccount from "./features/auth/components/CreateAccount";
 import Login from "./features/auth/components/Login";

@@ -1,11 +1,15 @@
 import PanelGroup from "../../../shared/components/layout/PanelGroup";
-import Row from "../../../shared/components/layout/Row";
+
 import Sidebar from "../../../shared/components/layout/Sidebar";
 import { useState } from "react";
-import { AboutColors } from "./aboutLayout.styles";
+import { AboutColors } from "../../../styles/themes/aboutTheme";
 import styled, { css } from "styled-components";
-import Tile from "../../../shared/components/layout/Tile";
+
 import Heading from "../../../shared/components/typography/Heading";
+
+import Row from "../../../shared/components/layout/Row";
+import Tile from "../../../shared/components/layout/Tile";
+import aboutData from "./data/aboutData";
 
 // Styled Components
 const StyledAboutLayout = styled.div`
@@ -15,18 +19,18 @@ const StyledAboutLayout = styled.div`
   width: 100%;
 `;
 
-const StyledSidebar = styled(Sidebar)`
-  align-self: flex-end;
-`;
-// Content
+// const StyledSidebar = styled(Sidebar)`
+//   align-self: flex-end;
+// `;
+
 const menuItems = [
   {
-    label: "About Debí ir a Puerto Rico",
+    heading: "About Debí ir a Puerto Rico",
     link: "/about",
-    items: [
+    sections: [
       {
         id: 0,
-        label: "Mission",
+        heading: "Mission",
         link: "/about",
         content: (
           <Row>
@@ -80,7 +84,7 @@ const menuItems = [
       },
       {
         id: 1,
-        label: "Key Features",
+        heading: "Key Features",
         link: "/about",
         content: (
           <Row $direction="horizontal" $gap="1rem">
@@ -123,7 +127,7 @@ const menuItems = [
       },
       {
         id: 2,
-        label: "Tech Stack",
+        heading: "Tech Stack",
         link: "/about",
         content: (
           <Row>
@@ -163,12 +167,12 @@ const menuItems = [
     ],
   },
   {
-    label: "The Process",
+    heading: "The Process",
     link: "/about",
-    items: [
+    sections: [
       {
         id: 0,
-        label: "Motivation",
+        heading: "Motivation",
         link: "/about",
         content: (
           <Row>
@@ -202,17 +206,17 @@ const menuItems = [
       },
       {
         id: 1,
-        label: "Challenges and Solutions",
+        heading: "Challenges and Solutions",
         link: "/about",
         content: "Coming Soon",
       },
       {
         id: 2,
-        label: "Lessons Learned",
+        heading: "Lessons Learned",
         link: "/about",
         content: "Coming Soon",
       },
-      { id: 3, label: "The Results", link: "/about", content: "Coming Soon" },
+      { id: 3, heading: "The Results", link: "/about", content: "Coming Soon" },
     ],
   },
 ];
@@ -223,12 +227,12 @@ function AboutLayout() {
   return (
     <StyledAboutLayout>
       <PanelGroup
-        menuItems={menuItems}
+        menuSections={aboutData}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         colors={AboutColors}
       />
-      <Sidebar menuItems={menuItems} onIsOpen={setIsOpen} isOpen={isOpen} />
+      <Sidebar menuSections={aboutData} onIsOpen={setIsOpen} isOpen={isOpen} />
     </StyledAboutLayout>
   );
 }

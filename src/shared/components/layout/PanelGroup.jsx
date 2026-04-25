@@ -28,7 +28,7 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
+function PanelGroup({ menuSections, isOpen, setIsOpen, colors }) {
   const panelRefs = useRef({});
   const headingRefs = useRef({});
 
@@ -66,9 +66,9 @@ function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
     } else setIsOpen(null);
   }
 
-  function handleSidebarHeadingClick(label) {
-    console.log(label);
-    headingRefs.current[label].scrollIntoView({
+  function handleSidebarHeadingClick(heading) {
+    console.log(heading);
+    headingRefs.current[heading].scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -76,31 +76,35 @@ function PanelGroup({ menuItems, isOpen, setIsOpen, colors }) {
 
   return (
     <StyledPanelGroup>
-      {menuItems.map((menuSection) => (
-        <React.Fragment key={menuSection.label}>
+      {menuSections.map((menuSection) => (
+        <React.Fragment key={menuSection.id}>
           <StyledHeading
             as="h2"
             $colors={colors}
-            onClick={() => handleSidebarHeadingClick(menuSection.label)}
+            onClick={() => handleSidebarHeadingClick(menuSection.heading)}
             ref={(heading) =>
-              (headingRefs.current[menuSection.label] = heading)
+              (headingRefs.current[menuSection.heading] = heading)
             }
           >
-            {menuSection.label}
+            {menuSection.heading}
           </StyledHeading>
 
-          {menuSection.items.map((item) => (
-            <Panel
-              heading={item.label}
-              key={item.label}
-              onClick={() => handleClick(item.label)}
-              isOpen={isOpen === item.label}
-              colors={colors}
-              ref={(panel) => (panelRefs.current[item.label] = panel)}
-            >
-              {item.content}
-            </Panel>
-          ))}
+          {menuSection.sections.map((section) => {
+            const Content = section.content;
+
+            return (
+              <Panel
+                heading={section.heading}
+                key={section.id}
+                onClick={() => handleClick(section.heading)}
+                isOpen={isOpen === section.heading}
+                colors={colors}
+                ref={(panel) => (panelRefs.current[section.section] = panel)}
+              >
+                <Content />
+              </Panel>
+            );
+          })}
         </React.Fragment>
       ))}
     </StyledPanelGroup>

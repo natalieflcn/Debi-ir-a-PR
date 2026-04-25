@@ -65,26 +65,26 @@ const MenuItem = styled.li`
     border-left: 2px solid var(--color-red-300);`}
 `;
 
-function Sidebar({ menuItems, isOpen, onIsOpen }) {
-  function handleSidebarClick(label) {
-    onIsOpen(label);
+function Sidebar({ menuSections, isOpen, onIsOpen }) {
+  function handleSidebarClick(heading) {
+    onIsOpen(heading);
   }
 
   return (
     <StyledSidebar>
-      {menuItems.map((menuSection) => (
-        <React.Fragment key={menuSection.label}>
-          <MenuHeading onClick={() => handleSidebarClick(menuSection.label)}>
-            {menuSection.label}
+      {menuSections.map((menuSection) => (
+        <React.Fragment key={menuSection.id}>
+          <MenuHeading onClick={() => handleSidebarClick(menuSection.heading)}>
+            {menuSection.heading}
           </MenuHeading>
 
-          {menuSection.items.map((item) => (
+          {menuSection.sections.map((section) => (
             <MenuItem
-              key={item.label}
-              onClick={() => handleSidebarClick(item.label)}
-              $isActive={isOpen === item.label}
+              key={section.id}
+              onClick={() => handleSidebarClick(section.heading)}
+              $isActive={isOpen === section.heading}
             >
-              <NavLink to={item.link}>{item.label}</NavLink>
+              <NavLink to={section.link}>{section.heading}</NavLink>
             </MenuItem>
           ))}
         </React.Fragment>

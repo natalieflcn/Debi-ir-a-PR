@@ -27,7 +27,10 @@
 
 - [~] Refactor current codebase
   - [x] Revise file structure into feature-driven approach
+  - [ ] Convert static data from JSX into pure JSON and extract into separate JS files
   - [ ] Extract all styling decisions from React components
+  - [ ] Extract font declarations into typography.css
+  - [ ] Extract animations into animations.css
   - [ ] Organize all styled components
     - [ ] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
     - [ ] Only have dedicated styled component files for complex files (+40 lines)

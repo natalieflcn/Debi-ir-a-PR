@@ -12,12 +12,13 @@ const StyledNavDesktop = styled.ul`
   letter-spacing: -0.02rem;
   text-transform: uppercase;
 
-  @media (min-width: 798px) {
-    display: flex;
-  }
-
+  // TODO fix media queries later
   @media (max-width: 1050px) {
     font-size: 1rem;
+  }
+
+  @media (min-width: 798px) {
+    display: flex;
   }
 `;
 

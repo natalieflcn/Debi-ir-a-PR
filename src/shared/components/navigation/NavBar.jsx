@@ -1,17 +1,16 @@
 import styled from "styled-components";
-
 import Logo from "../brand/Logo";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
 import Bubbles from "../decorative/Bubbles";
 import BlueOverlay from "../../../assets/images/ui/BlueOverlay.png";
 
-const StyledNav = styled.nav`
+const StyledNavBar = styled.nav`
   display: flex;
-  justify-content: space-around;
   position: sticky;
   top: 0;
   z-index: 2;
+  justify-content: space-around;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -29,12 +28,12 @@ const StyledNav = styled.nav`
 function NavBar({ menuItems }) {
   //TODO create state based on whether desktop or mobile nav is open, render menu depending on this condition
   return (
-    <StyledNav>
+    <StyledNavBar>
       <Bubbles numBubbles={25} />
       <Logo />
       <NavDesktop menuItems={menuItems} />
       <NavMobile menuItems={menuItems}></NavMobile>
-    </StyledNav>
+    </StyledNavBar>
   );
 }
 

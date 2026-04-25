@@ -5,12 +5,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import User from "./User";
 
+//TODO revise this later, when creating mobile version...
 const StyledNavMobile = styled.ul`
   display: flex;
   position: relative;
   z-index: 100;
   font-weight: 500;
-  color: #191d23;
 
   @media (min-width: 798px) {
     display: none;
