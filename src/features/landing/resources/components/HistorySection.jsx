@@ -7,6 +7,7 @@ import Link from "../../../../shared/components/ui/Link";
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+import { parseBold } from "../../../../shared/utils/helpers";
 
 const videos = [
   {
@@ -16,7 +17,7 @@ const videos = [
       {
         id: 0,
         sentence:
-          "Puerto Rico is paradise. Beaches, lush mountains, rich culture.",
+          "**Puerto Rico is paradise. Beaches, lush mountains, rich culture.**",
       },
       {
         id: 1,
@@ -47,7 +48,7 @@ const videos = [
       {
         id: 2,
         sentence:
-          "Unfold the history of how the United States stole and kept its prized colony in the Caribbean – Puerto Rico",
+          "Unfold the history of how the United States stole and kept its prized colony in the Caribbean – **Puerto Rico.**",
       },
     ],
   },
@@ -210,7 +211,9 @@ const VideoSection = function ({ id, title, description }) {
       <Heading as="h3">{title}</Heading>
       <LiteYouTubeEmbed id={id} title={title} lazyLoad={true} />
       {description.map((description) => (
-        <SmallText key={description.id}>{description.sentence}</SmallText>
+        <SmallText key={description.id}>
+          {parseBold(description.sentence)}
+        </SmallText>
       ))}
     </StyledVideoSection>
   );

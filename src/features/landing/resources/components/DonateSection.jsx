@@ -1,12 +1,16 @@
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
-import { SlicedPhotos } from "../resourcesLayout.styles";
 import Bold from "../../../../shared/components/typography/Bold";
 import Link from "../../../../shared/components/ui/Link";
 import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import Button from "../../../../shared/components/ui/Button";
+import {
+  SlicedPhotos,
+  StyledDonateSection,
+  StyledOrganization,
+} from "./donateSection.styles";
 
 const organizations = [
   {
@@ -42,38 +46,6 @@ const organizations = [
       "Founded by Puerto Ricans in the diaspora after Hurricanes María and Irma, PRxPR ensures that 100% of donations go directly to affected communities. Their focus is on food and agriculture, clean water, and renewable energy projects that create long-term sustainability.",
   },
 ];
-
-const StyledDonateSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h6 {
-    color: var(--color-red-300);
-  }
-
-  @media (max-width: 798px) {
-    img {
-      width: 97%;
-      margin-right: 0;
-    }
-  }
-`;
-
-const StyledOrganization = styled.div`
-  display: flex;
-  gap: 1rem;
-
-  @media (max-width: 798px) {
-    display: flex;
-    flex-direction: column;
-
-    div {
-      flex-direction: column;
-      align-items: normal;
-    }
-  }
-`;
 
 const Introduction = function () {
   return (

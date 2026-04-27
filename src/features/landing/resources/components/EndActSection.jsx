@@ -1,10 +1,14 @@
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
 import Link from "../../../../shared/components/ui/Link";
 import Button from "../../../../shared/components/ui/Button";
+import {
+  StyledActSectionCTA,
+  StyledEndActSection,
+} from "./endActSection.styles";
 
 const acts = [
   {
@@ -26,35 +30,6 @@ const acts = [
       "consolidated these laws in 2019 to allow wealthy non-residents to dramatically cut their tax burdens, paying far less in taxes than native Puerto Ricans. While framed as economic development, much of this wealth never reaches local communities. Instead, it accelerates gentrification, deepens inequality, and intensifies the housing crisis.",
   },
 ];
-
-const StyledEndActSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  /* font-size: 1rem; */
-
-  h5 {
-    color: var(--color-red-400);
-  }
-
-  @media (max-width: 798px) {
-    flex-direction: column;
-
-    img {
-      width: 100%;
-      height: 50%;
-    }
-  }
-`;
-
-const StyledActSectionCTA = styled.figure`
-  display: flex;
-
-  @media (max-width: 798px) {
-    flex-direction: column;
-    gap: 1rem;
-  }
-`;
 
 const ActSectionCTA = function () {
   return (
