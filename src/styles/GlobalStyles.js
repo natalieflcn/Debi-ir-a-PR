@@ -139,6 +139,11 @@ ul {
   list-style: none;
 }
 
+.yt-lite {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  
 // Animations
 @keyframes glow {
   0% {

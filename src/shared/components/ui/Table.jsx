@@ -28,7 +28,6 @@ const StyledTableData = styled.td`
 // function Table({ tableData }) {
 
 function Table({ columns, rows }) {
-  console.log(columns, rows);
   return (
     <StyledTable>
       <thead>
@@ -45,7 +44,7 @@ function Table({ columns, rows }) {
         {rows.map((row, i) => (
           <tr key={i}>
             {columns.map((col) => (
-              <StyledTableData key={col.key}>{row[col.key]}</StyledTableData>
+              <StyledTableData key={col.id}>{row[col.id]}</StyledTableData>
             ))}
           </tr>
         ))}

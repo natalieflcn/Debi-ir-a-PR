@@ -7,7 +7,9 @@ import { ResourcesColors } from "../../../../styles/themes/resourcesTheme";
 import resourcesData from "../data/resourcesData";
 
 const StyledResources = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 `;
 
 function Resources() {

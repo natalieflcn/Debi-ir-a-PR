@@ -32,6 +32,14 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 ## Milestones
 
+### Phase 0: Refactor Original Codebase
+
+- [~] Eradicate all bad practices
+- [x] Redesign file structure with feature-based approach
+- [~] Clean all components of any styling, organize styles into variants and themes
+- [ ] Redesign UX/UI of current landing pages implementation
+- [ ] Ensure app has retained responsiveness for all devices
+
 ### Phase 1: Frontend Foundation (React)
 
 - [x] App structure & setup
