@@ -125,7 +125,7 @@ const StyledHistorySection = styled.div`
 
   h3 {
     color: var(--color-yellow-200);
-    text-shadow: 2px 3px 1px var(--color-red-300);
+    text-shadow: 3px 3px 1px var(--color-red-300);
     text-transform: uppercase;
   }
 `;

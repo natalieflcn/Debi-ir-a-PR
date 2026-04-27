@@ -11,12 +11,11 @@ const menuItems = [
 
 function AdminLayout() {
   return (
-    <div>
-      Admin Layout
+    <>
       <NavBar type="admin" menuItems={menuItems} />
       <MainContent />
       <Footer />
-    </div>
+    </>
   );
 }
 

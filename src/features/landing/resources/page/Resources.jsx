@@ -1,10 +1,9 @@
-import { useState } from "react";
-import styled from "styled-components";
-import Row from "../../../../shared/components/layout/Row";
 import Sidebar from "../../../../shared/components/layout/Sidebar";
 import PanelGroup from "../../../../shared/components/layout/PanelGroup";
-import { ResourcesColors } from "../../../../styles/themes/resourcesTheme";
 import resourcesData from "../data/resourcesData";
+import styled from "styled-components";
+import { ResourcesTheme } from "../../../../styles/themes/resourcesTheme";
+import { useState } from "react";
 
 const StyledResources = styled.div`
   display: flex;
@@ -17,19 +16,17 @@ function Resources() {
 
   return (
     <StyledResources>
-      <Row $direction="horizontal" $gap="2rem">
-        <Sidebar
-          menuSections={resourcesData}
-          isOpen={isOpen}
-          onIsOpen={setIsOpen}
-        />
-        <PanelGroup
-          menuSections={resourcesData}
-          colors={ResourcesColors}
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-        />
-      </Row>
+      <Sidebar
+        menuSections={resourcesData}
+        isOpen={isOpen}
+        onIsOpen={setIsOpen}
+      />
+      <PanelGroup
+        menuSections={resourcesData}
+        theme={ResourcesTheme}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+      />
     </StyledResources>
   );
 }

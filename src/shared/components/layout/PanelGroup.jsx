@@ -15,8 +15,8 @@ const StyledHeading = styled(Heading)`
   font-size: 2.75rem;
   line-height: 2.85rem;
   scroll-margin-top: 9.5rem;
-  color: ${({ $colors }) => $colors["--heading-color"]};
-  text-shadow: 4px 3px 1px ${({ $colors }) => $colors["--heading-shadow"]};
+  color: ${({ $theme }) => $theme["--heading-color"]};
+  text-shadow: 3px 3px 1px ${({ $theme }) => $theme["--heading-shadow"]};
   text-transform: uppercase;
 
   &:not(:first-of-type) {
@@ -28,7 +28,7 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-function PanelGroup({ menuSections, isOpen, setIsOpen, colors }) {
+function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
   const panelRefs = useRef({});
   const headingRefs = useRef({});
 
@@ -80,7 +80,7 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, colors }) {
         <React.Fragment key={menuSection.id}>
           <StyledHeading
             as="h2"
-            $colors={colors}
+            $theme={theme}
             onClick={() => handleSidebarHeadingClick(menuSection.heading)}
             ref={(heading) =>
               (headingRefs.current[menuSection.heading] = heading)
@@ -98,7 +98,7 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, colors }) {
                 key={section.id}
                 onClick={() => handleClick(section.heading)}
                 isOpen={isOpen === section.heading}
-                colors={colors}
+                theme={theme}
                 ref={(panel) => (panelRefs.current[section.section] = panel)}
               >
                 <Content />

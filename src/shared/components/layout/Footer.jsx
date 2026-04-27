@@ -1,23 +1,22 @@
-import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
-import styled from "styled-components";
 import Row from "./Row";
-import { NavLink } from "react-router-dom";
+import Link from "../ui/Link";
+import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
+import { SlGlobe } from "react-icons/sl";
+import styled from "styled-components";
 
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   padding-top: 2rem;
   font-family: DtMF;
-  font-size: 1.5rem;
-  letter-spacing: 0.07rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing-dtmf-normal);
 
   span {
-    font-family: Museo, sans-serif;
-    font-size: 1rem;
     align-self: center;
     margin-left: 0.5rem;
+    font-family: Museo, sans-serif;
+    font-size: var(--font-size-sm);
   }
 
   @media (max-width: 798px) {
@@ -33,6 +32,8 @@ const StyledFooter = styled.footer`
 
 const StyledGitHub = styled(BiLogoGithub)`
   margin-right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transition: all 0.2s;
 
   &:hover {
@@ -47,6 +48,24 @@ const StyledGitHub = styled(BiLogoGithub)`
 `;
 
 const StyledLinkedIn = styled(BiLogoLinkedin)`
+  margin-right: 1.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-blue-100);
+  }
+
+  @media (max-width: 798px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+`;
+
+const StyledPortfolio = styled(SlGlobe)`
+  width: 1.25rem;
+  height: 1.25rem;
   transition: all 0.2s;
 
   &:hover {
@@ -69,13 +88,17 @@ function Footer() {
       </Row>
 
       <Row $direction="horizontal">
-        <NavLink to="https://github.com/natalieflcn">
+        <Link to="https://github.com/natalieflcn">
           <StyledGitHub />
-        </NavLink>
+        </Link>
 
-        <NavLink to="https://www.linkedin.com/in/nataliedfalcon/">
+        <Link to="https://www.linkedin.com/in/natalieflcn/">
           <StyledLinkedIn />
-        </NavLink>
+        </Link>
+
+        <Link to="https://www.instagram/indyvox/">
+          <StyledPortfolio />
+        </Link>
       </Row>
     </StyledFooter>
   );

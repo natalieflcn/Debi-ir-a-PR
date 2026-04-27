@@ -13,9 +13,9 @@ const StyledPanel = styled.div`
   padding: 2rem;
   scroll-margin-top: 9.4rem;
   border-radius: var(--border-radius-lg);
-  /* background-color: ${({ $colors }) => $colors["--panel-bg-color"]}; */
-  color: ${({ $colors }) => $colors["--panel-text-color"]};
-  box-shadow: 2px 3px 1px ${({ $colors }) => $colors["--panel-box-shadow"]};
+  /* background-color: ${({ $theme }) => $theme["--panel-bg-color"]}; */
+  color: ${({ $theme }) => $theme["--panel-text-color"]};
+  box-shadow: 2px 3px 1px ${({ $theme }) => $theme["--panel-box-shadow"]};
   background-repeat: ${({ $isOpen }) => $isOpen && `round`};
   background-image: url(${CreamOverlay});
   transition:
@@ -24,14 +24,14 @@ const StyledPanel = styled.div`
     box-shadow 0.3s;
 
   &:hover {
-    /* background-color: ${({ $colors }) => $colors["--panel-bg-highlight"]}; */
+    /* background-color: ${({ $theme }) => $theme["--panel-bg-highlight"]}; */
     box-shadow: 2px 2px 1px
-      ${({ $colors }) => $colors["--panel-heading-hover-shadow"]};
+      ${({ $theme }) => $theme["--panel-heading-hover-shadow"]};
   }
   &:hover h2 {
-    color: ${({ $colors }) => $colors["--panel-heading-hover-color"]};
-    text-shadow: ${({ $colors }) =>
-      `2px 2px 1px ${$colors["--panel-heading-hover-shadow"]}`};
+    color: ${({ $theme }) => $theme["--panel-heading-hover-color"]};
+    text-shadow: ${({ $theme }) =>
+      `2px 2px 1px ${$theme["--panel-heading-hover-shadow"]}`};
   }
 
   @media (max-width: 798px) {
@@ -42,16 +42,16 @@ const StyledPanel = styled.div`
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
-  /* color: ${({ $colors }) => $colors["--panel-heading-color"]}; */
-  color: ${({ $isOpen, $colors }) =>
+  /* color: ${({ $theme }) => $theme["--panel-heading-color"]}; */
+  color: ${({ $isOpen, $theme }) =>
     $isOpen
-      ? $colors["--panel-heading-hover-color"]
-      : $colors["--panel-heading-color"]};
+      ? $theme["--panel-heading-hover-color"]
+      : $theme["--panel-heading-color"]};
   text-shadow: 2px 2px 1px
-    ${({ $isOpen, $colors }) =>
+    ${({ $isOpen, $theme }) =>
       $isOpen
-        ? $colors["--panel-heading-hover-shadow"]
-        : $colors["--panel-heading-shadow"]};
+        ? $theme["--panel-heading-hover-shadow"]
+        : $theme["--panel-heading-shadow"]};
   transition: all 0.4s;
   margin-bottom: ${({ $isOpen }) => $isOpen && `1rem`};
 `;
@@ -104,7 +104,7 @@ const StyledContent = styled.div`
 `;
 
 const Panel = forwardRef(function Panel(
-  { heading, onClick, isOpen, colors, children },
+  { heading, onClick, isOpen, theme, children },
   ref,
 ) {
   const contentRef = useRef();
@@ -121,9 +121,9 @@ const Panel = forwardRef(function Panel(
   }, [isOpen]);
 
   return (
-    <StyledPanel ref={ref} $colors={colors}>
+    <StyledPanel ref={ref} $theme={theme}>
       <Row $direction="horizontal">
-        <StyledHeading as="h2" $isOpen={isOpen} $colors={colors}>
+        <StyledHeading as="h2" $isOpen={isOpen} $theme={theme}>
           {heading}
         </StyledHeading>
         <StyledButton

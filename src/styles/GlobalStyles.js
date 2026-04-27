@@ -1,10 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import "./variables.css";
-import DtMF from "../assets/fonts/DtMF.ttf";
-import MuseoSansNormal from "../assets/fonts/MuseoSans_300.otf";
-import MuseoSansHeavy from "../assets/fonts/MuseoSans_500.otf";
-import MuseoSansBold from "../assets/fonts/MuseoSans_700.otf";
-import MuseoSansBoldest from "../assets/fonts/MuseoSans_900.otf";
+import "./animations.css";
+import "./typography.css";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -30,6 +27,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -53,60 +51,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-// Fonts
-@font-face {
-    font-family: 'DtMF';
-    src: url(${DtMF}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: 'Museo';
-  src: url(${MuseoSansNormal}) format('opentype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: 'Museo';
-  src: url(${MuseoSansHeavy}) format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: 'Museo';
-  src: url(${MuseoSansBold}) format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: 'Museo';
-  src: url(${MuseoSansBoldest}) format('opentype');
-    font-weight: 900;
-    font-style: normal;
-}
-
-// Formatting
-body {
-  font-family:  sans-serif, Helvetica;
-  font-weight: 300;
-  background-color: var(--color-blue-200);
-  color: var(--color-light-100);
-}
-
-body::before{
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  /* opacity: 0.9;  */
-  background-image: url('src/assets/images/ui/BlueOverlay.png');
-} 
 
 // prettier-ignore
 input, button, textarea, select {
@@ -139,39 +83,28 @@ ul {
   list-style: none;
 }
 
+// My Global Styles
+body {
+  font-family:  sans-serif, Helvetica;
+  font-weight: 300;
+  background-color: var(--color-blue-200);
+  color: var(--color-light-100);
+}
+
+body::before{
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.9; 
+  background-image: url('src/assets/images/ui/BlueOverlay.png');
+} 
+
 .yt-lite {
     width: 100%;
     aspect-ratio: 16 / 9;
   }
-  
-// Animations
-@keyframes glow {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes glowEven {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
 `;
 
 export default GlobalStyles;

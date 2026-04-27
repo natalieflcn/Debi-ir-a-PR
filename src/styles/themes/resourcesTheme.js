@@ -1,4 +1,4 @@
-export const ResourcesColors = {
+export const ResourcesTheme = {
   "--heading-color": `var(--color-yellow-200)`,
   "--heading-shadow": `var(--color-red-300)`,
 

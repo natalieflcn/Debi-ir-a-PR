@@ -4,7 +4,6 @@ export const StyledEndActSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* font-size: 1rem; */
 
   h5 {
     color: var(--color-red-400);

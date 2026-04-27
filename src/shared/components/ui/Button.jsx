@@ -28,7 +28,7 @@ const sizes = {
     padding: 0.7rem 1.8rem;
     font-weight: 700;
     margin: 0.1rem;
-    letter-spacing: 0.02rem;
+
     border-radius: var(--border-radius-lg);
     /* box-shadow: var(--shadow-lg); */
   `,

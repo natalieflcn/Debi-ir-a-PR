@@ -3,6 +3,10 @@ import styled from "styled-components";
 const StyledLink = styled.a`
   display: flex;
   flex-grow: 1;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 function Link({ href, children, ...props }) {

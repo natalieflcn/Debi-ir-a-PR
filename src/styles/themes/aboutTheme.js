@@ -1,5 +1,5 @@
 // COLOR PALETTE
-export const AboutColors = {
+export const AboutTheme = {
   "--heading-color": `var(--color-yellow-200)`,
   "--heading-shadow": `var(--color-red-300)`,
 

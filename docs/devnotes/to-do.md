@@ -27,13 +27,13 @@
 
 - [~] Refactor current codebase
   - [x] Revise file structure into feature-driven approach
-  - [~] Convert static data from JSX into pure JSON and extract into separate JS files
+  - [x] Convert static data from JSX into pure JSON and extract into separate JS files
     - [x] About page
-    - [~] Resources page
+    - [x] Resources page
   - [~] Extract all styling decisions from React components
-    - [ ] Note: Abstract Link styles into Button
-  - [ ] Extract font declarations into typography.css TODO
-  - [ ] Extract animations into animations.css TODO
+    - [~] Note: Abstract Link styles into Button
+  - [x] Extract font declarations into typography.css TODO
+  - [x] Extract animations into animations.css TODO
   - [ ] Organize all styled components
     - [ ] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
     - [ ] Only have dedicated styled component files for complex files (+40 lines)

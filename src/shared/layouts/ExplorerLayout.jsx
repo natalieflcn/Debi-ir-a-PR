@@ -11,7 +11,6 @@ const menuItems = [
 function ExplorerLayout() {
   return (
     <>
-      Explorer Layout
       <NavBar type="explorer" menuItems={menuItems} />
       <MainContent />
       <Footer />

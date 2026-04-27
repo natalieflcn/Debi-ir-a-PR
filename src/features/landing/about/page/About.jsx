@@ -3,7 +3,7 @@ import PanelGroup from "../../../../shared/components/layout/PanelGroup";
 import aboutData from "../data/aboutData";
 import { useState } from "react";
 import Sidebar from "../../../../shared/components/layout/Sidebar";
-import { AboutColors } from "../../../../styles/themes/aboutTheme";
+import { AboutTheme } from "../../../../styles/themes/aboutTheme";
 
 const StyledAbout = styled.div`
   display: flex;
@@ -21,9 +21,14 @@ function About() {
         menuSections={aboutData}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        colors={AboutColors}
+        theme={AboutTheme}
       />
-      <Sidebar menuSections={aboutData} onIsOpen={setIsOpen} isOpen={isOpen} />
+      <Sidebar
+        menuSections={aboutData}
+        onIsOpen={setIsOpen}
+        isOpen={isOpen}
+        theme={AboutTheme}
+      />
     </StyledAbout>
   );
 }
