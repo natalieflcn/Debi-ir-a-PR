@@ -19,7 +19,9 @@ export const StyledDonateSection = styled.div`
 
 export const StyledOrganization = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  padding-bottom: 0.2rem;
+  padding-right: 0.2rem;
 
   @media (max-width: 798px) {
     display: flex;

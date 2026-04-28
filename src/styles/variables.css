@@ -55,6 +55,9 @@
   --box-shadow-sm: 0px 0px 5px;
   --box-shadow-md: 0px 0px 10px;
   --box-shadow-lg: 0px 0px 15px;
+  --box-shadow-offset-sm: 1px 1px 1px;
+  --box-shadow-offset-md: 2px 2px 2px;
+  --box-shadow-offset-lg: 3px 3px 3px;
 
   /* Text-Shadow */
   --text-shadow-sm: 1px 2px 1px;

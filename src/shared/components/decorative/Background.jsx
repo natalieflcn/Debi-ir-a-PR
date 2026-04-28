@@ -6,8 +6,8 @@ const StyledBackground = styled.div`
   inset: 0;
   width: 100%;
   height: 100vh;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
 
   @media (max-width: 798px) {
     z-index: 0;

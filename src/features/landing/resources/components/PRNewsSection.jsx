@@ -7,12 +7,9 @@ import Button from "../../../../shared/components/ui/Button";
 
 const StyledPRNewsSection = styled.div`
   display: flex;
-  gap: 1.5rem;
-
-  img {
-    width: 47%;
-    border-radius: var(--border-radius-sm);
-  }
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.2rem;
 
   h6 {
     color: var(--color-red-400);
@@ -34,7 +31,11 @@ export default function PRNewsSection() {
       <Image
         src="src/assets/images/content/SanJuan.jpg"
         alt="Old San Juan buildings"
+        $width="47%"
+        $objectFit="cover"
+        $borderRadius="var(--border-radius-sm)"
       />
+
       <Row>
         <Heading as="h6">
           Want to stay up to date about what’s going on in Puerto Rico?
@@ -49,7 +50,7 @@ export default function PRNewsSection() {
           understand Puerto Rico’s reality and support its people.
         </p>
         <Link href="https://www.the-independent.com/topic/puerto-rico">
-          <Button $size="large" $variation="secondary">
+          <Button $size="medium" $variation="secondary">
             Visit Independent News
           </Button>
         </Link>

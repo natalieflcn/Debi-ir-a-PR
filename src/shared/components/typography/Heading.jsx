@@ -5,6 +5,7 @@ const variants = {
     font-family: DtMF;
     font-size: var(--font-size-xl);
     line-height: var(--line-height-xl);
+    letter-spacing: var(--letter-spacing-dtmf-normal);
 
     ${({ $shadowColor }) =>
       $shadowColor &&

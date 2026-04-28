@@ -38,9 +38,7 @@ const ActSectionCTA = function () {
         src="src/assets/images/content/PRxDC.jpg"
         alt="A Puerto Rican flag"
         $width="43%"
-        $css={css`
-          margin-right: 1.25rem;
-        `}
+        $objectFit="cover"
       />
       <Row>
         <Heading as="h5">So, now what?</Heading>
@@ -55,12 +53,12 @@ const ActSectionCTA = function () {
         </Row>
 
         <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
-          <Button $size="large" $variation="primary">
+          <Button $size="medium" $variation="primary">
             Sign Petition on Change.org
           </Button>
         </Link>
         <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
-          <Button $size="large" $variation="secondary">
+          <Button $size="medium" $variation="secondary">
             Sign Petition on ActionNetwork.org
           </Button>
         </Link>

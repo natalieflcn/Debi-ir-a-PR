@@ -98,10 +98,6 @@ export default function DonateSection() {
                 src={organization.logo}
                 alt={organization.name}
                 $width="9rem"
-                $css={css`
-                  margin-right: 0.7rem;
-                  align-self: flex-start;
-                `}
               />
             </Link>
             <Row>
@@ -117,12 +113,12 @@ export default function DonateSection() {
                 $css="margin-bottom:1rem;"
               >
                 <Link href={organization.donate}>
-                  <Button $size="large" $variation="primary">
+                  <Button $size="medium" $variation="primary">
                     Donate Now
                   </Button>
                 </Link>
                 <Link href={organization.learnMore}>
-                  <Button $size="large" $variation="secondary">
+                  <Button $size="medium" $variation="secondary">
                     Learn More
                   </Button>
                 </Link>

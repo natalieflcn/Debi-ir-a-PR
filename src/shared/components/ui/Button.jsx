@@ -1,36 +1,31 @@
 import styled, { css } from "styled-components";
 
-// small button
-// medium button
-// large button (full panel length)
-// embed link prop into button
-// pass in colors, margin, assign default
-
 const sizes = {
   small: css`
     padding: 0.5rem;
     height: 2rem;
     width: 2rem;
-    border-radius: var(--border-radius-sm);
-    /* box-shadow: 1px 1px 2px black; */
+    border-radius: ${({ $borderRadius }) =>
+      $borderRadius || "var(--border-radius-sm)"};
+    --shadow-offset: var(--box-shadow-offset-sm);
   `,
   medium: css`
+    justify-content: center;
+    flex-grow: 1;
+    padding: 1rem 1rem;
     font-weight: 700;
-    font-size: 1rem;
-    padding: 0.8rem 2rem;
-    border-radius: var(--border-radius-md);
-    /* box-shadow: var(--shadow-md); */
+    border-radius: ${({ $borderRadius }) =>
+      $borderRadius || "var(--border-radius-md)"};
+    --shadow-offset: var(--box-shadow-offset-md);
   `,
   large: css`
-    flex-grow: 1;
     justify-content: center;
-    /* font-size: 1.6rem; */
-    padding: 0.7rem 1.8rem;
-    font-weight: 700;
-    margin: 0.1rem;
-
-    border-radius: var(--border-radius-lg);
-    /* box-shadow: var(--shadow-lg); */
+    flex-grow: 1;
+    padding: 1.5rem 2rem;
+    font-weight: 900;
+    border-radius: ${({ $borderRadius }) =>
+      $borderRadius || "var(--border-radius-lg)"};
+    --shadow-offset: var(--box-shadow-offset-lg);
   `,
 };
 
@@ -38,21 +33,21 @@ const variations = {
   primary: css`
     color: var(--color-light-0);
     background-color: var(--color-red-200);
-    box-shadow: 1px 1px 2px var(--color-red-400);
+    box-shadow: var(--shadow-offset) var(--color-red-400);
 
     &:hover {
       background-color: var(--color-red-100);
-      box-shadow: 2px 2px 2px var(--color-red-300);
+      box-shadow: var(--shadow-offset) var(--color-red-300);
     }
   `,
   secondary: css`
     color: var(--color-light-0);
     background: var(--color-blue-200);
-    box-shadow: 1px 1px 2px var(--color-blue-400);
+    box-shadow: var(--shadow-offset) var(--color-blue-300);
 
     &:hover {
       background-color: var(--color-blue-100);
-      box-shadow: 2px 2px 2px var(--color-blue-300);
+      box-shadow: var(--shadow-offset) var(--color-blue-300);
     }
   `,
 };
@@ -63,7 +58,6 @@ const Button = styled.button`
 
   ${({ $size }) => sizes[$size]}
   ${({ $variation }) => variations[$variation]}
-  ${({ $css }) => css({ $css })}
 `;
 
 export default Button;
