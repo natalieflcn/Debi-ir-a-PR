@@ -1,26 +1,24 @@
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Heading from "../typography/Heading";
 import React from "react";
-import CreamOverlay from "../../../assets/images/ui/CreamOverlay.png";
 
 const StyledSidebar = styled.aside`
   display: flex;
-  position: sticky;
-
-  top: 8.5rem;
-  align-self: flex-start;
   flex-direction: column;
+  align-self: flex-start;
   gap: 2rem;
-  /* grid: 1/-1; */
+  position: sticky;
+  top: 8.5rem;
   padding: 3rem;
-  width: 21rem;
-  background-color: var(--color-light-200);
-  box-shadow: 3px 3px 2px var(--color-red-200);
-  border-radius: var(--border-radius-lg);
   list-style: none;
   text-transform: uppercase;
-  background-image: url(${CreamOverlay});
+
+  width: 21rem;
+  background: ${({ $theme }) => $theme.sidebarBackground};
+  box-shadow: var(--box-shadow-offset-lg)
+    ${({ $theme }) => $theme.sidebarShadow};
+  border-radius: var(--border-radius-lg);
 
   @media (max-width: 798px) {
     display: none;
@@ -29,9 +27,10 @@ const StyledSidebar = styled.aside`
 
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
-  font-size: 1.9rem;
-  text-shadow: 2px 2px 1px var(--color-blue-100);
-  color: var(--color-red-200);
+  font-size: var(--font-size-lg);
+  text-shadow: var(--text-shadow-md)
+    ${({ $theme }) => $theme.sidebarHeadingShadow};
+  color: ${({ $theme }) => $theme.sidebarHeadingColor};
   transition: all 0.2s;
 
   &:not(:first-child) {
@@ -39,42 +38,49 @@ const MenuHeading = styled(Heading)`
   }
 
   &:hover {
-    color: var(--color-yellow-200);
-    text-shadow: 2px 2px 1px var(--color-red-300);
+    color: ${({ $theme }) => $theme.sidebarHeadingHoverColor};
+    text-shadow: var(--text-shadow-md)
+      ${({ $theme }) => $theme.sidebarHeadingHoverShadow};
   }
 `;
 
 const MenuItem = styled.li`
-  font-family: Museo, sans-serif;
-  font-weight: 900;
-  font-size: 1.25rem;
   padding-left: 1.5rem;
-  border-left: 2px solid var(--color-blue-100);
-  color: var(--color-blue-200);
+  border-left: 2px solid ${({ $theme }) => $theme.sidebarMenuItemBorder};
+  font-family: Museo, sans-serif;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-boldest);
+  color: ${({ $theme }) => $theme.sidebarMenuItemColor};
   transition: all 0.2s;
 
   &:hover {
-    color: var(--color-yellow-200);
-    text-shadow: 1px 2px 1px var(--color-red-300);
-    border-left: 2px solid var(--color-red-300);
+    border-left: 2px solid ${({ $theme }) => $theme.sidebarMenuItemBorderHover};
+    color: ${({ $theme }) => $theme.sidebarMenuItemHoverColor};
+    text-shadow: var(--text-shadow-sm)
+      ${({ $theme }) => $theme.sidebarMenuItemHoverShadow};
   }
 
-  ${({ $isActive }) =>
+  ${({ $isActive, $theme }) =>
     $isActive &&
-    ` color: var(--color-yellow-200);
-    border-left: 2px solid var(--color-red-300);`}
+    css`
+      color: ${$theme.sidebarMenuItemActiveColor};
+      border-left: 2px solid ${$theme.sidebarMenuItemBorderActive};
+    `};
 `;
 
-function Sidebar({ menuSections, isOpen, onIsOpen }) {
-  function handleSidebarClick(heading) {
-    onIsOpen(heading);
+function Sidebar({ menuSections, isOpen, onIsOpen, theme }) {
+  function handleSidebarClick(menuItem) {
+    onIsOpen(menuItem);
   }
 
   return (
-    <StyledSidebar>
+    <StyledSidebar $theme={theme}>
       {menuSections.map((menuSection) => (
         <React.Fragment key={menuSection.id}>
-          <MenuHeading onClick={() => handleSidebarClick(menuSection.heading)}>
+          <MenuHeading
+            onClick={() => handleSidebarClick(menuSection.heading)}
+            $theme={theme}
+          >
             {menuSection.heading}
           </MenuHeading>
 
@@ -83,6 +89,7 @@ function Sidebar({ menuSections, isOpen, onIsOpen }) {
               key={section.id}
               onClick={() => handleSidebarClick(section.heading)}
               $isActive={isOpen === section.heading}
+              $theme={theme}
             >
               <NavLink to={section.link}>{section.heading}</NavLink>
             </MenuItem>

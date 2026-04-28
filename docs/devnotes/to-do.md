@@ -44,22 +44,23 @@
 
 ### Goals
 
-- [ ] Organize all styled components
+- [ ] Organize all styled components TODO 0
   - [ ] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
   - [ ] Only have dedicated styled component files for complex files (+40 lines)
   - [ ] Adjust themes of styled components via props
   - [ ] Export component color palette/styling options into separate themes folder in styles (i.e. styles/themes/resourcesTheme.js)
   - [~] Create variants for reused styles and co-locate them in styled components files
   - [ ] Clean up all $css prop pattern in styled components, only expose intentional CSS properties of the component
-  - [~] Delete unused fonts, add new typography options
-  - [ ] Reassess current color palette, background overlays, and typography hierarchy
-  - [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
-  - [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO
-  - [ ] Use the IntersectionObsever API to implement scrolling to panels
-  - [ ] Refactor current React Router implementation into /router folder
+- [~] Delete unused fonts, add new typography options
+- [ ] Reassess current color palette, background overlays, and typography hierarchy
+- [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
+- [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 1
+- [ ] Use the IntersectionObsever API to implement scrolling to panels TODO3
+- [ ] Refactor current React Router implementation into /router folder TODO2
+
 - [~] Complete Resources Page
-  - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations'
-  - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
+  - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations' TODO 4
+  - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 5
 
 - [ ] Complete current About Page
   - [ ] Draft mock-ups for panels

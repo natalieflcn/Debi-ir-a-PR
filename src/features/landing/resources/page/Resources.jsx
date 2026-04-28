@@ -20,12 +20,13 @@ function Resources() {
         menuSections={resourcesData}
         isOpen={isOpen}
         onIsOpen={setIsOpen}
+        theme={ResourcesTheme}
       />
       <PanelGroup
         menuSections={resourcesData}
-        theme={ResourcesTheme}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
+        theme={ResourcesTheme}
       />
     </StyledResources>
   );

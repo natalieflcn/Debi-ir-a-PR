@@ -88,15 +88,15 @@ function Footer() {
       </Row>
 
       <Row $direction="horizontal">
-        <Link to="https://github.com/natalieflcn">
+        <Link href="https://github.com/natalieflcn">
           <StyledGitHub />
         </Link>
 
-        <Link to="https://www.linkedin.com/in/natalieflcn/">
+        <Link href="https://www.linkedin.com/in/natalieflcn/">
           <StyledLinkedIn />
         </Link>
 
-        <Link to="https://www.instagram/indyvox/">
+        <Link href="https://www.instagram/indyvox/">
           <StyledPortfolio />
         </Link>
       </Row>
