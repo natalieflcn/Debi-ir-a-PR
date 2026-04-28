@@ -8,11 +8,11 @@ const rotate = keyframes`
 `;
 
 const SpinnerMini = styled(BiLoaderAlt)`
+  margin: 4rem auto;
   width: 100%;
   height: 2.4rem;
-  margin: 4rem auto;
-  animation: ${rotate} 1.5s infinite linear;
   color: var(--color-blue-0);
+  animation: ${rotate} 1.5s infinite linear;
 `;
 
 export default SpinnerMini;

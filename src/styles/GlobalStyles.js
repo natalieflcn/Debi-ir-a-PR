@@ -102,9 +102,10 @@ body::before{
 } 
 
 .yt-lite {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-  }
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;    border-radius: var(--border-radius-md);
+}
 `;
 
 export default GlobalStyles;

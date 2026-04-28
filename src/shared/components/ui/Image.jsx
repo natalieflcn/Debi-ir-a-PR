@@ -1,14 +1,22 @@
 import styled, { css } from "styled-components";
 
 const StyledImage = styled.img`
-  border-radius: 5px;
   width: ${({ $width }) => $width || "100%"};
+  border-radius: ${({ $borderRadius }) =>
+    $borderRadius || "var(--border-radius-md)"};
+
   ${({ $css }) => $css && css($css)}
 `;
 
-function Image({ src, alt, $width, $css }) {
+function Image({ src, alt, $width, $borderRadius, $css }) {
   return (
-    <StyledImage src={src} alt={alt} $width={$width} $css={$css}></StyledImage>
+    <StyledImage
+      src={src}
+      alt={alt}
+      $width={$width}
+      $borderRadius={$borderRadius}
+      $css={$css}
+    />
   );
 }
 

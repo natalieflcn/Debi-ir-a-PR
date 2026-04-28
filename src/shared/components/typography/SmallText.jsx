@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledSmallText = styled.strong`
   display: inline;
-  font-size: 1rem;
+  font-size: var(--font-size-xs);
 `;
 
 function SmallText({ children }) {

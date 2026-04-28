@@ -44,9 +44,9 @@ const sectionItems = [
 
 export default function KeyFeaturesSection() {
   return (
-    <Row $direction="horizontal" $gap="1rem">
+    <Row $direction="horizontal" $gap="var(--row-gap-lg)">
       {sectionItems.map((section) => (
-        <Card key={section.id} $gap="0.5rem">
+        <Card key={section.id} $gap="var(--row-gap-sm)" $cardShadow="inset">
           <Heading key={section.id}>As an {section.heading}</Heading>
 
           {section.items.map((item) => (

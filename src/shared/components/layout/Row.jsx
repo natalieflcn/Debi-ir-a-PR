@@ -11,6 +11,7 @@ const variants = {
     gap: ${({ $gap }) => $gap || `1rem`};
   `,
 };
+
 const Row = styled.div`
   display: flex;
   gap: ${({ $gap }) => $gap};

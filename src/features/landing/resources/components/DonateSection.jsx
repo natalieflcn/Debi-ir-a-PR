@@ -90,7 +90,7 @@ export default function DonateSection() {
   return (
     <StyledDonateSection>
       <Introduction />
-      <Row $gap="2.75rem">
+      <Row $gap="var(--row-gap-2xl)">
         {organizations.map((organization) => (
           <StyledOrganization key={organization.id}>
             <Link href={organization.website}>
@@ -105,7 +105,7 @@ export default function DonateSection() {
               />
             </Link>
             <Row>
-              <Row $gap="0.5rem">
+              <Row $gap="var(--row-gap-sm)">
                 <Link href={organization.website}>
                   <Heading as="h6">{organization.name}</Heading>
                 </Link>
@@ -113,7 +113,7 @@ export default function DonateSection() {
               </Row>
               <Row
                 $direction="horizontal"
-                $gap="1rem"
+                $gap="var(--row-gap-md)"
                 $css="margin-bottom:1rem;"
               >
                 <Link href={organization.donate}>

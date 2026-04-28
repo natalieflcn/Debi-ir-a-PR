@@ -239,7 +239,7 @@ export default function HistorySection() {
   return (
     <StyledHistorySection>
       <Introduction />
-      <Row $gap="1.5rem">
+      <Row $gap="var(--row-gap-lg)">
         {videos.map((video) => (
           <VideoSection
             key={video.id}

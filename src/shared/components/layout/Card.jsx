@@ -1,25 +1,41 @@
 import styled, { css } from "styled-components";
 
 const variants = {
-  horizontal: css`
-    justify-content: space-between;
-    align-items: center;
-    gap: ${({ $gap }) => $gap || 0};
+  insetSM: css`
+    box-shadow: var(--box-shadow-sm) inset
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
-  vertical: css`
-    flex-direction: column;
-    gap: ${({ $gap }) => $gap || `1rem`};
+  insetMD: css`
+    box-shadow: var(--box-shadow-md) inset
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
+  `,
+  insetLG: css`
+    box-shadow: var(--box-shadow-lg) inset
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
+  `,
+  outsetSM: css`
+    box-shadow: var(--box-shadow-lg)
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
+  `,
+  outsetMD: css`
+    box-shadow: var(--box-shadow-md)
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
+  `,
+  outsetLG: css`
+    box-shadow: var(--box-shadow-lg)
+      ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
 };
 
 const Card = styled.div`
   display: flex;
-  border-radius: 5px;
+  flex-direction: column;
   padding: 1rem;
-  box-shadow: 0px 0px 5px inset var(--color-yellow-400);
+  border-radius: var(--border-radius-md);
+
   gap: ${({ $gap }) => $gap};
-  ${({ $direction }) => variants[$direction || "vertical"]};
-  ${({ $css }) => $css}
+  background: ${({ $cardColor }) => $cardColor};
+  ${({ $cardShadow }) => variants[$cardShadow] || variants["insetSM"]};
 `;
 
 export default Card;
