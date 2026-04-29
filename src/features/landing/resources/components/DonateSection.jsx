@@ -1,4 +1,3 @@
-import { css } from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
@@ -103,15 +102,13 @@ export default function DonateSection() {
             <Row>
               <Row $gap="var(--row-gap-sm)">
                 <Link href={organization.website}>
-                  <Heading as="h6">{organization.name}</Heading>
+                  <Heading as="h6" $color="var(--color-red-400)">
+                    {organization.name}
+                  </Heading>
                 </Link>
                 <SmallText>{organization.description}</SmallText>
               </Row>
-              <Row
-                $direction="horizontal"
-                $gap="var(--row-gap-md)"
-                $css="margin-bottom:1rem;"
-              >
+              <Row $direction="horizontal" $gap="var(--row-gap-md)">
                 <Link href={organization.donate}>
                   <Button $size="medium" $variation="primary">
                     Donate Now

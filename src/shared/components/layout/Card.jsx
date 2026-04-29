@@ -14,7 +14,7 @@ const variants = {
       ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
   outsetSM: css`
-    box-shadow: var(--box-shadow-lg)
+    box-shadow: var(--box-shadow-sm)
       ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
   outsetMD: css`

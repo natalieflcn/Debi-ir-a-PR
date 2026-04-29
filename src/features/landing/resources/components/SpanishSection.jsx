@@ -28,7 +28,7 @@ const spanishVocab = {
 };
 
 const spanishTableTheme = {
-  boxShadow: "var(--box-shadow-offset-lg)",
+  boxShadow: "var(--box-shadow-lg)",
   shadowColor: "var(--color-yellow-300)",
   headerBackground: "var(--color-yellow-100)",
   headerColor: "var(--color-red-200)",

@@ -3,6 +3,7 @@ import {
   OpenPanel,
   StyledButton,
   StyledContent,
+  StyledContentInner,
   StyledHeading,
   StyledPanel,
 } from "./panel.styles";
@@ -42,7 +43,7 @@ const Panel = forwardRef(function Panel(
         </StyledButton>
       </Row>
       <StyledContent $isOpen={isOpen} ref={contentRef}>
-        {children}
+        <StyledContentInner>{children}</StyledContentInner>
       </StyledContent>
     </StyledPanel>
   );

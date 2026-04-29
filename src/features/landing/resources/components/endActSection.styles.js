@@ -4,12 +4,6 @@ export const StyledEndActSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-bottom: 0.5rem;
-  padding-right: 0.2rem;
-
-  h5 {
-    color: var(--color-red-400);
-  }
 
   @media (max-width: 798px) {
     flex-direction: column;

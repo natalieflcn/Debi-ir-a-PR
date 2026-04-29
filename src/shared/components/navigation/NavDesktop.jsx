@@ -6,7 +6,7 @@ const StyledNavDesktop = styled.ul`
   display: none;
   justify-content: space-between;
   flex: 1;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-boldest);
   font-family: Museo;
   letter-spacing: var(--letter-spacing-museo-tight);

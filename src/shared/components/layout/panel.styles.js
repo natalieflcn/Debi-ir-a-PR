@@ -7,7 +7,7 @@ export const StyledPanel = styled.div`
   box-sizing: border-box;
   width: 99%;
   max-width: 51rem;
-  padding: 2rem;
+  padding: 1.75rem;
   border-radius: var(--border-radius-lg);
   transition: all 0.3s ease-in;
   scroll-margin-top: 9.4rem;
@@ -36,9 +36,10 @@ export const StyledPanel = styled.div`
 `;
 
 export const StyledHeading = styled(Heading)`
-  font-size: var(--font-size-lg);
+  padding: 0 0.5rem 0 0.5rem;
+  font-size: var(--font-size-xl);
   text-transform: uppercase;
-  margin-bottom: ${({ $isOpen }) => $isOpen && `1rem`};
+  margin-bottom: ${({ $isOpen }) => $isOpen && `0.5rem`};
   color: ${({ $isOpen, $theme }) =>
     $isOpen ? $theme.panelHeadingHoverColor : $theme.panelHeadingColor};
   text-shadow: var(--text-shadow-md)
@@ -76,12 +77,19 @@ export const ClosePanel = styled(BiMinus)`
 `;
 
 export const StyledContent = styled.div`
-  overflow: hidden;
+  /* overflow: hidden; */
   max-width: inherit;
   max-height: 0;
   line-height: var(--line-height-md);
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
+  overflow: hidden;
   transition:
     max-height 0.4s ease-out,
     opacity 0.3s ease-out;
+`;
+
+export const StyledContentInner = styled.div`
+  padding: 0.5rem;
+  overflow: visible;
 `;

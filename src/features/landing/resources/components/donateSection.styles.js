@@ -5,10 +5,6 @@ export const StyledDonateSection = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  h6 {
-    color: var(--color-red-300);
-  }
-
   @media (max-width: 798px) {
     img {
       width: 97%;
@@ -20,8 +16,6 @@ export const StyledDonateSection = styled.div`
 export const StyledOrganization = styled.div`
   display: flex;
   gap: 2rem;
-  padding-bottom: 0.2rem;
-  padding-right: 0.2rem;
 
   @media (max-width: 798px) {
     display: flex;
@@ -38,6 +32,7 @@ export const SlicedPhotos = styled.div`
   display: grid;
   --g: 8px;
   clip-path: inset(1px);
+  margin: 0rem -1.5rem;
 
   img {
     --_p: calc(-1 * var(--g));
@@ -46,7 +41,6 @@ export const SlicedPhotos = styled.div`
     aspect-ratio: 16/8;
     cursor: pointer;
     transition: 0.7s 0.2s;
-    border-radius: var(--border-radius-lg);
   }
 
   img:first-child {

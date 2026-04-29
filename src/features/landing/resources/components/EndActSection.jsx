@@ -1,4 +1,3 @@
-import { css } from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
@@ -41,7 +40,9 @@ const ActSectionCTA = function () {
         $objectFit="cover"
       />
       <Row>
-        <Heading as="h5">So, now what?</Heading>
+        <Heading as="h5" $color="var(--color-red-400)">
+          So, now what?
+        </Heading>
         <Bold>What can we do?</Bold>
         <Row>
           We can continue spreading awareness about the harm these laws cause to

@@ -46,7 +46,7 @@ export default function KeyFeaturesSection() {
   return (
     <Row $direction="horizontal" $gap="var(--row-gap-lg)">
       {sectionItems.map((section) => (
-        <Card key={section.id} $gap="var(--row-gap-sm)" $cardShadow="inset">
+        <Card key={section.id} $gap="var(--row-gap-sm)" $cardShadow="outsetSM">
           <Heading key={section.id}>As an {section.heading}</Heading>
 
           {section.items.map((item) => (

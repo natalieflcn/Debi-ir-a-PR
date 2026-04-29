@@ -12,7 +12,7 @@ const StyledPanelGroup = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   line-height: var(--line-height-3xl);
   text-transform: uppercase;
 

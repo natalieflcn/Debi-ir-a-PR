@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
@@ -8,6 +7,11 @@ import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { parseBold } from "../../../../shared/utils/helpers";
+import {
+  StyledBookSection,
+  StyledHistorySection,
+  StyledVideoSection,
+} from "./historySection.styles";
 
 const videos = [
   {
@@ -118,69 +122,6 @@ const books = [
   },
 ];
 
-const StyledHistorySection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h3 {
-    color: var(--color-yellow-200);
-    text-shadow: 3px 3px 1px var(--color-red-300);
-    text-transform: uppercase;
-  }
-`;
-
-const StyledVideoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`;
-
-const StyledBookSection = styled.figure`
-  display: flex;
-  margin-bottom: 1.5rem;
-
-  h6 {
-    color: var(--color-red-400);
-    margin-bottom: 0.25rem;
-    transition: all 0.5s;
-  }
-
-  img {
-    width: 6rem;
-    height: 9rem;
-    /* aspect-ratio: 3/4;
-     */
-    /* height: 100%; */
-    border-radius: 0 4px 4px 0;
-    box-shadow: 3px 2px 1px var(--color-yellow-200);
-    margin-right: 1.5rem;
-    transition: all 0.5s;
-  }
-
-  &:hover h6 {
-    color: var(--color-red-200);
-  }
-
-  &:hover img {
-    box-shadow: 2px 2px 2px var(--color-red-400);
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 798px) {
-    margin-bottom: 1rem;
-
-    img {
-      width: 7rem;
-      height: 12rem;
-      margin-bottom: 1rem;
-    }
-  }
-`;
-
 const Introduction = function () {
   return (
     <>
@@ -208,7 +149,9 @@ const Introduction = function () {
 const VideoSection = function ({ id, title, description }) {
   return (
     <StyledVideoSection key={id}>
-      <Heading as="h3">{title}</Heading>
+      <Heading as="h4" $color="var(--color-red-300)">
+        {title}
+      </Heading>
       <LiteYouTubeEmbed id={id} title={title} lazyLoad={true} />
       {description.map((description) => (
         <SmallText key={description.id}>
@@ -222,15 +165,27 @@ const VideoSection = function ({ id, title, description }) {
 const BookSection = function ({ title, image, goodreadsURL, description }) {
   return (
     <StyledBookSection>
-      <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
-        <Image src={image} alt={title} />
-      </Link>
-      <figcaption>
+      <Row $direction="horizontal" $gap="var(--row-gap-lg)">
         <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
-          <Heading as="h6">{title}</Heading>
+          <Image
+            src={image}
+            alt={title}
+            $width="6rem"
+            $height="9rem"
+            $borderRadius="0 4px 4px 0"
+          />
         </Link>
-        <SmallText>{description}</SmallText>
-      </figcaption>
+        <figcaption>
+          <Row $gap="var(--row-gap-sm)" $direction="vertical">
+            <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
+              <Heading as="h6" $color="var(--color-red-300)">
+                {title}
+              </Heading>
+            </Link>
+            <SmallText>{description}</SmallText>
+          </Row>
+        </figcaption>
+      </Row>
     </StyledBookSection>
   );
 };
@@ -251,21 +206,25 @@ export default function HistorySection() {
       </Row>
 
       <Row>
-        <Heading as="h3">Additional Literature</Heading>
+        <Heading as="h4" $color="var(--color-red-300)">
+          Additional Literature
+        </Heading>
         <p>
           If you’re interested in learning more about Puerto Rico’s struggles
           and the resilience of its people, these books honor their strength and
           perseverance.
         </p>
-        {books.map((book) => (
-          <BookSection
-            key={book.id}
-            title={book.title}
-            image={book.image}
-            goodreadsURL={book.goodreadsURL}
-            description={book.description}
-          />
-        ))}
+        <Row $gap="var(--row-gap-xl)">
+          {books.map((book) => (
+            <BookSection
+              key={book.id}
+              title={book.title}
+              image={book.image}
+              goodreadsURL={book.goodreadsURL}
+              description={book.description}
+            />
+          ))}
+        </Row>
       </Row>
     </StyledHistorySection>
   );

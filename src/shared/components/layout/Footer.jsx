@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   padding-top: 2rem;
   font-family: DtMF;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-xl);
   letter-spacing: var(--letter-spacing-dtmf-normal);
 
   span {

@@ -8,12 +8,6 @@ import Button from "../../../../shared/components/ui/Button";
 const StyledPRNewsSection = styled.div`
   display: flex;
   gap: 1rem;
-  padding-bottom: 0.5rem;
-  padding-right: 0.2rem;
-
-  h6 {
-    color: var(--color-red-400);
-  }
 
   @media (max-width: 798px) {
     flex-direction: column;
@@ -37,7 +31,7 @@ export default function PRNewsSection() {
       />
 
       <Row>
-        <Heading as="h6">
+        <Heading as="h6" $color="var(--color-red-400)">
           Want to stay up to date about what’s going on in Puerto Rico?
         </Heading>
         <p>

@@ -26,7 +26,7 @@ const StyledTable = styled.table`
 const StyledTableHeading = styled.th`
   padding: 1rem;
   font-weight: var(--font-weight-boldest);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-family: Museo;
   letter-spacing: var(--letter-spacing-museo-tight);
   text-transform: uppercase;

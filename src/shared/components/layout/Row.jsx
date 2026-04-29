@@ -15,6 +15,7 @@ const variants = {
 const Row = styled.div`
   display: flex;
   gap: ${({ $gap }) => $gap};
+  padding: ${({ $padding }) => $padding || 0};
   ${({ $direction }) => variants[$direction || "vertical"]};
 `;
 

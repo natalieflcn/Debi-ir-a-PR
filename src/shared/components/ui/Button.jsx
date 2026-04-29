@@ -12,7 +12,7 @@ const sizes = {
   medium: css`
     justify-content: center;
     flex-grow: 1;
-    padding: 1rem 1rem;
+    padding: 0.8rem 1rem;
     font-weight: 700;
     border-radius: ${({ $borderRadius }) =>
       $borderRadius || "var(--border-radius-md)"};

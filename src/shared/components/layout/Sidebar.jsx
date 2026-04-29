@@ -13,8 +13,8 @@ const StyledSidebar = styled.aside`
   padding: 3rem;
   list-style: none;
   text-transform: uppercase;
-
   width: 21rem;
+
   background: ${({ $theme }) => $theme.sidebarBackground};
   box-shadow: var(--box-shadow-offset-lg)
     ${({ $theme }) => $theme.sidebarShadow};
@@ -27,7 +27,7 @@ const StyledSidebar = styled.aside`
 
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   text-shadow: var(--text-shadow-md)
     ${({ $theme }) => $theme.sidebarHeadingShadow};
   color: ${({ $theme }) => $theme.sidebarHeadingColor};
@@ -48,7 +48,7 @@ const MenuItem = styled.li`
   padding-left: 1.5rem;
   border-left: 2px solid ${({ $theme }) => $theme.sidebarMenuItemBorder};
   font-family: Museo, sans-serif;
-  font-size: var(--font-size-normal);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-boldest);
   color: ${({ $theme }) => $theme.sidebarMenuItemColor};
   transition: all 0.2s;
