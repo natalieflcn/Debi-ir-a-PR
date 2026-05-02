@@ -44,7 +44,7 @@ export default function PRNewsSection() {
           understand Puerto Rico’s reality and support its people.
         </p>
         <Link href="https://www.the-independent.com/topic/puerto-rico">
-          <Button $size="medium" $variation="secondary">
+          <Button $size="medium" $variation="tree">
             Visit Independent News
           </Button>
         </Link>

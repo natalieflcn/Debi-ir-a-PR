@@ -29,7 +29,7 @@ const StyledNavLink = styled(NavLink)`
   &:active,
   &.active {
     color: var(--color-red-200);
-    text-shadow: var(--text-shadow-md) var(--color-blue-300);
+    text-shadow: var(--text-shadow-offset-md) var(--color-blue-300);
   }
 `;
 

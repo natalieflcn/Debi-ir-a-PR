@@ -10,7 +10,7 @@ const variants = {
     ${({ $shadowColor }) =>
       $shadowColor &&
       css`
-        text-shadow: var(--text-shadow-md) ${$shadowColor};
+        text-shadow: var(--text-shadow-offset-md) ${$shadowColor};
       `}
 
     @media (max-width: 798px) {
@@ -72,7 +72,7 @@ const Heading = styled.h1`
   ${({ $shadowColor }) =>
     $shadowColor &&
     css`
-      text-shadow: var(--text-shadow-md) ${$shadowColor};
+      text-shadow: var(--text-shadow-offset-md) ${$shadowColor};
     `}
 `;
 

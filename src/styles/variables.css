@@ -18,10 +18,15 @@
   --color-yellow-300: #886a16;
   --color-yellow-400: #3c2d05;
 
+  --color-brown-100: #cba280;
+  --color-brown-200: #58221e;
+  --color-brown-300: #381d12;
+  --color-brown-400: #1a0d0b;
+
   --color-green-0: #bbd2b4;
   --color-green-100: #8ab17d;
   --color-green-200: #599046;
-  --color-green-300: #345728;
+  --color-green-300: #396c28;
   --color-green-400: #13240d;
 
   --color-light-0: #fffbf0;
@@ -57,13 +62,16 @@
   --box-shadow-md: 0px 0px 8px;
   --box-shadow-lg: 0px 0px 10px;
   --box-shadow-offset-sm: 1px 1px 1px;
-  --box-shadow-offset-md: 2px 2px 2px;
-  --box-shadow-offset-lg: 3px 3px 2px;
+  --box-shadow-offset-md: 2px 2px 1px;
+  --box-shadow-offset-lg: 3px 3px 1px;
 
   /* Text-Shadow */
-  --text-shadow-sm: 1px 2px 1px;
-  --text-shadow-md: 2px 2px 1px;
-  --text-shadow-lg: 3px 3px 2px;
+  --text-shadow-sm: 0px 0px 5px;
+  --text-shadow-md: 0px 0px 8px;
+  --text-shadow-lg: 0px 0px 15px;
+  --text-shadow-offset-sm: 1px 2px 1px;
+  --text-shadow-offset-md: 2px 2px 1px;
+  --text-shadow-offset-lg: 3px 3px 1px;
 
   /* Border Radius */
   --border-radius-none: 0px;

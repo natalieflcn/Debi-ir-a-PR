@@ -61,10 +61,12 @@
 - [~] Complete Resources Page
   - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations' TODO 4
   - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 5
+  - [ ] Leaves rustling when panel opens on Resources
 
 - [ ] Complete current About Page
   - [ ] Draft mock-ups for panels
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
+  - [ ] Paper crumbling when panel opens on About
 
 - [ ] Review current UX/UI design and assess what can be improved
   - [ ] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page

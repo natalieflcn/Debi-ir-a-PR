@@ -19,7 +19,8 @@ const StyledHeading = styled(Heading)`
   scroll-margin-top: 9.5rem;
 
   color: ${({ $theme }) => $theme.headingColor};
-  text-shadow: var(--text-shadow-lg) ${({ $theme }) => $theme.headingShadow};
+  text-shadow: var(--text-shadow-offset-lg)
+    ${({ $theme }) => $theme.headingShadow};
 
   &:not(:first-of-type) {
     margin-top: 1rem;

@@ -15,7 +15,7 @@ const StyledSidebar = styled.aside`
   text-transform: uppercase;
   width: 21rem;
 
-  background: ${({ $theme }) => $theme.sidebarBackground};
+  background: url(${({ $theme }) => $theme.panelBackground});
   box-shadow: var(--box-shadow-offset-lg)
     ${({ $theme }) => $theme.sidebarShadow};
   border-radius: var(--border-radius-lg);
@@ -28,7 +28,7 @@ const StyledSidebar = styled.aside`
 const MenuHeading = styled(Heading)`
   font-family: DtMF;
   font-size: var(--font-size-xl);
-  text-shadow: var(--text-shadow-md)
+  text-shadow: var(--text-shadow-offset-md)
     ${({ $theme }) => $theme.sidebarHeadingShadow};
   color: ${({ $theme }) => $theme.sidebarHeadingColor};
   transition: all 0.2s;
@@ -39,8 +39,9 @@ const MenuHeading = styled(Heading)`
 
   &:hover {
     color: ${({ $theme }) => $theme.sidebarHeadingHoverColor};
-    text-shadow: var(--text-shadow-md)
+    text-shadow: var(--text-shadow-offset-md)
       ${({ $theme }) => $theme.sidebarHeadingHoverShadow};
+    cursor: pointer;
   }
 `;
 
@@ -56,7 +57,7 @@ const MenuItem = styled.li`
   &:hover {
     border-left: 2px solid ${({ $theme }) => $theme.sidebarMenuItemBorderHover};
     color: ${({ $theme }) => $theme.sidebarMenuItemHoverColor};
-    text-shadow: var(--text-shadow-sm)
+    text-shadow: var(--text-shadow-offset-sm)
       ${({ $theme }) => $theme.sidebarMenuItemHoverShadow};
   }
 
@@ -65,6 +66,8 @@ const MenuItem = styled.li`
     css`
       color: ${$theme.sidebarMenuItemActiveColor};
       border-left: 2px solid ${$theme.sidebarMenuItemBorderActive};
+      text-shadow: var(--text-shadow-offset-sm)
+        ${({ $theme }) => $theme.sidebarMenuItemHoverShadow};
     `};
 `;
 

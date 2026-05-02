@@ -10,7 +10,7 @@ const StyledLogo = styled.h1`
   &:hover,
   &:active {
     color: var(--color-red-200);
-    text-shadow: var(--text-shadow-lg) var(--color-blue-300);
+    text-shadow: var(--text-shadow-offset-lg) var(--color-blue-300);
   }
 `;
 

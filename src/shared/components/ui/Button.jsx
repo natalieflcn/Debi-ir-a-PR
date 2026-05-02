@@ -33,21 +33,32 @@ const variations = {
   primary: css`
     color: var(--color-light-0);
     background-color: var(--color-red-200);
-    box-shadow: var(--shadow-offset) var(--color-red-400);
+    box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
 
     &:hover {
       background-color: var(--color-red-100);
-      box-shadow: var(--shadow-offset) var(--color-red-300);
+      box-shadow: var(--box-shadow-offset-md) var(--color-red-300);
     }
   `,
   secondary: css`
     color: var(--color-light-0);
     background: var(--color-blue-200);
-    box-shadow: var(--shadow-offset) var(--color-blue-300);
+    box-shadow: var(--box-shadow-offset-md) var(--color-blue-300);
 
     &:hover {
       background-color: var(--color-blue-100);
-      box-shadow: var(--shadow-offset) var(--color-blue-300);
+      box-shadow: var(--box-shadow-offset-md) var(--color-blue-300);
+    }
+  `,
+  tree: css`
+    color: var(--color-light-0);
+    background: var(--color-brown-300);
+    box-shadow: var(--box-shadow-offset-md) var(--color-brown-100);
+
+    &:hover {
+      color: var(--color-brown-100);
+      background-color: var(--color-brown-100);
+      box-shadow: var(--box-shadow-offset-md) var(--color-brown-400);
     }
   `,
 };
