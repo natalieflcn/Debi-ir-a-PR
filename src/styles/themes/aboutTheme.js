@@ -3,7 +3,7 @@ export const AboutTheme = {
   headingColor: `var(--color-yellow-200)`,
   headingShadow: `var(--color-red-300)`,
 
-  panelBackground: `var(--color-light-200)`,
+  panelBackground: "url(/src/assets/images/ui/4.png)",
   panelBoxShadow: `var(--color-red-200)`,
   panelBoxHoverColor: `var(--color-blue-100)`,
   panelHeadingColor: `var(--color-blue-200)`,
@@ -12,7 +12,7 @@ export const AboutTheme = {
   panelHeadingHoverShadow: `var(--color-blue-100)`,
   panelTextColor: `var(--color-dark-200)`,
 
-  sidebarBackground: `var(--color-light-200)`,
+  sidebarBackground: "url(/src/assets/images/ui/4.png)",
   sidebarShadow: `var(--color-red-200)`,
   sidebarHeadingColor: `var(--color-blue-200)`,
   sidebarHeadingShadow: `var(--color-blue-100)`,

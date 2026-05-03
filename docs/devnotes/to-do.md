@@ -44,13 +44,13 @@
 
 ### Goals
 
-- [ ] Organize all styled components TODO 0
-  - [ ] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
-  - [ ] Only have dedicated styled component files for complex files (+40 lines)
-  - [ ] Adjust themes of styled components via props
-  - [ ] Export component color palette/styling options into separate themes folder in styles (i.e. styles/themes/resourcesTheme.js)
-  - [~] Create variants for reused styles and co-locate them in styled components files
-  - [ ] Clean up all $css prop pattern in styled components, only expose intentional CSS properties of the component
+- [x] Organize all styled components
+  - [x] Keep styled components in component files for styles that won't get reused OR if style doesn't exceed 50 lines (i.e. layout wrappers)
+  - [x] Only have dedicated styled component files for complex files (+40 lines)
+  - [x] Adjust themes of styled components via props
+  - [x] Export component color palette/styling options into separate themes folder in styles (i.e. styles/themes/resourcesTheme.js)
+  - [x] Create variants for reused styles and co-locate them in styled components files
+  - [x] Clean up all $css prop pattern in styled components, only expose intentional CSS properties of the component
 - [~] Delete unused fonts, add new typography options
 - [ ] Reassess current color palette, background overlays, and typography hierarchy
 - [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
@@ -67,6 +67,7 @@
   - [ ] Draft mock-ups for panels
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
   - [ ] Paper crumbling when panel opens on About
+  - [ ] Adjust Panel and Sidebar to accept background-image property
 
 - [ ] Review current UX/UI design and assess what can be improved
   - [ ] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page

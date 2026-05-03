@@ -224,16 +224,18 @@ export default function HistorySection({ theme }) {
         <Card
           $cardColor={theme.cardBackground}
           $cardShadow="insetLG"
-          $gap="var(--row-gap-md)"
+          $gap="var(--row-gap-lg)"
         >
-          <Heading as="h4" $color="var(--color-brown-200)">
-            Additional Literature
-          </Heading>
-          <p>
-            If you’re interested in learning more about Puerto Rico’s struggles
-            and the resilience of its people, these books honor their strength
-            and perseverance.
-          </p>
+          <Row $gap="var(--row-gap-sm)">
+            <Heading as="h4" $color="var(--color-brown-200)">
+              Additional Literature
+            </Heading>
+            <p>
+              If you’re interested in learning more about Puerto Rico’s
+              struggles and the resilience of its people, these books honor
+              their strength and perseverance.
+            </p>
+          </Row>
 
           <Row $gap="var(--row-gap-xl)">
             {books.map((book) => (

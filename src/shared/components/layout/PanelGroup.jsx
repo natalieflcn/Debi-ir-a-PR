@@ -91,7 +91,7 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
             {menuSection.heading}
           </StyledHeading>
 
-          {menuSection.sections.map((section) => {
+          {menuSection.sections.map((section, index) => {
             const Content = section.content;
 
             return (
@@ -101,6 +101,7 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
                 isOpen={isOpen === section.heading}
                 onClick={() => handlePanelGroupHeadingClick(section.heading)}
                 theme={theme}
+                index={index}
                 ref={(panel) => (panelRefs.current[section.section] = panel)}
               >
                 <Content theme={theme} />

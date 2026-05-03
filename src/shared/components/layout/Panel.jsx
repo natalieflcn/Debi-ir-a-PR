@@ -11,7 +11,7 @@ import { forwardRef, useEffect, useRef } from "react";
 import Row from "./Row";
 
 const Panel = forwardRef(function Panel(
-  { heading, onClick, isOpen, theme, children },
+  { heading, onClick, isOpen, theme, children, index },
   ref,
 ) {
   const contentRef = useRef();
@@ -28,7 +28,7 @@ const Panel = forwardRef(function Panel(
   }, [isOpen]);
 
   return (
-    <StyledPanel ref={ref} $theme={theme}>
+    <StyledPanel ref={ref} $index={index} $theme={theme}>
       <Row $direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen} $theme={theme}>
           {heading}

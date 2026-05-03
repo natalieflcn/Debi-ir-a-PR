@@ -12,11 +12,18 @@ export const StyledPanel = styled.div`
   transition: all 0.3s ease-in;
   scroll-margin-top: 9.4rem;
 
-  background: ${({ $theme }) => $theme.panelBackground};
-  /* background-repeat: ${({ $isOpen }) => $isOpen && `round`}; */
+  /* background: ${({ $theme }) => $theme.panelBackground};
+  background-repeat: ${({ $isOpen }) => $isOpen && `round`}; 
 
-  background-size: auto; 
-  background-repeat: repeat;
+   background-size: auto; 
+  background-repeat: repeat;  */
+
+  background-image: ${({ $theme }) => $theme.panelBackground};
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-position: ${({ $index }) =>
+    $index % 2 === 0 ? " bottom" : "top"};
 
   color: ${({ $theme }) => $theme.panelTextColor};
   box-shadow: var(--box-shadow-offset-lg)

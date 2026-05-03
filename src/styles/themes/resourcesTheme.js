@@ -3,7 +3,7 @@ export const ResourcesTheme = {
   headingShadow: `var(--color-brown-400)`,
 
   panelBackground: "url(/src/assets/images/ui/TreeBark.png)",
-  panelBoxShadow: `var(--color-light-200)`,
+  panelBoxShadow: `var(--color-brown-100)`,
   panelBoxHoverColor: `var(--color-brown-100)`,
   panelBoxHoverShadow: `var(--color-light-100)`,
 
@@ -16,7 +16,7 @@ export const ResourcesTheme = {
   panelButtonVariation: "treeBark",
   panelActiveButtonVariation: "treeBarkInverted",
   sidebarBackground: "url(/src/assets/images/ui/TreeBark.png)",
-  sidebarShadow: `var(--color-light-200)`,
+  sidebarShadow: `var(--color-brown-100)`,
   sidebarHeadingColor: `var(--color-green-200)`,
   sidebarHeadingShadow: `var(--color-brown-300)`,
   sidebarHeadingHoverColor: `var(--color-green-300)`,
