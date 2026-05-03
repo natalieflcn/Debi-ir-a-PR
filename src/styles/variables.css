@@ -60,10 +60,13 @@
   /* Box-Shadow */
   --box-shadow-sm: 0px 0px 5px;
   --box-shadow-md: 0px 0px 8px;
-  --box-shadow-lg: 0px 0px 10px;
+  --box-shadow-lg: 0px 0px 12px;
   --box-shadow-offset-sm: 1px 1px 1px;
   --box-shadow-offset-md: 2px 2px 1px;
   --box-shadow-offset-lg: 3px 3px 1px;
+  --box-shadow-inset-sm: 1px 1px 1px inset;
+  --box-shadow-inset-md: 2px 2px 1px inset;
+  --box-shadow-inset-lg: 5px 5px 5px inset;
 
   /* Text-Shadow */
   --text-shadow-sm: 0px 0px 5px;

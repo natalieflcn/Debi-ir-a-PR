@@ -103,7 +103,7 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
                 theme={theme}
                 ref={(panel) => (panelRefs.current[section.section] = panel)}
               >
-                <Content />
+                <Content theme={theme} />
               </Panel>
             );
           })}

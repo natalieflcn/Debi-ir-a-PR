@@ -2,15 +2,15 @@ import styled, { css } from "styled-components";
 
 const variants = {
   insetSM: css`
-    box-shadow: var(--box-shadow-sm) inset
+    box-shadow: var(--box-shadow-inset-sm)
       ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
   insetMD: css`
-    box-shadow: var(--box-shadow-md) inset
+    box-shadow: var(--box-shadow-inset-md)
       ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
   insetLG: css`
-    box-shadow: var(--box-shadow-lg) inset
+    box-shadow: var(--box-shadow-inset-lg)
       ${({ $shadowColor }) => $shadowColor || "var(--color-yellow-400)"};
   `,
   outsetSM: css`

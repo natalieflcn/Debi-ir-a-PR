@@ -12,7 +12,7 @@ export const StyledPanel = styled.div`
   transition: all 0.3s ease-in;
   scroll-margin-top: 9.4rem;
 
-  background: url(${({ $theme }) => $theme.panelBackground});
+  background: ${({ $theme }) => $theme.panelBackground};
   /* background-repeat: ${({ $isOpen }) => $isOpen && `round`}; */
 
   background-size: auto; 

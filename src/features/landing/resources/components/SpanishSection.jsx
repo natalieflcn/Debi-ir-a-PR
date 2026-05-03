@@ -1,5 +1,6 @@
 import Row from "../../../../shared/components/layout/Row";
 import Table from "../../../../shared/components/ui/Table";
+import Card from "../../../../shared/components/layout/Card";
 import styled from "styled-components";
 
 const spanishVocab = {
@@ -16,7 +17,7 @@ const spanishVocab = {
   rows: [
     { spanish: "Qué es la qué hay?", english: "What's up?" },
     { spanish: "Buen provecho!", english: "Enjoy your meal!" },
-    { spanish: "Vamos a chincorrear!", english: "Let's go bar hopping!" },
+    { spanish: "Vamos a chinchorrear!", english: "Let's go bar hopping!" },
     { spanish: "Diantre!", english: "Damn!" },
     { spanish: "En verdad?", english: "For real?" },
     { spanish: "Bonchinche", english: "Gossip" },
@@ -28,8 +29,8 @@ const spanishVocab = {
 };
 
 const spanishTableTheme = {
-  boxShadow: "var(--box-shadow-lg)",
-  shadowColor: "var(--color-yellow-300)",
+  boxShadow: "var(--box-shadow-offset-lg)",
+  shadowColor: "var(--color-brown-400)",
   headerBackground: "var(--color-yellow-100)",
   headerColor: "var(--color-red-200)",
   headerBackgroundAlt: "var(--color-light-100)",
@@ -45,22 +46,26 @@ const StyledSpanishSection = styled.div`
   gap: 1rem;
 `;
 
-export default function SpanishSection() {
+export default function SpanishSection({ theme }) {
   return (
     <StyledSpanishSection>
-      <Row>
-        Visiting the island soon? Brush up on your Spanish with this cheat
-        sheet!
-      </Row>
+      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+        <Row>
+          Visiting the island soon? Brush up on your Spanish with this cheat
+          sheet!
+        </Row>
+      </Card>
       <Table
         columns={spanishVocab.columns}
         rows={spanishVocab.rows}
         $theme={spanishTableTheme}
       ></Table>
-      <Row>
-        These are common words and phrases that you’ll hear in Puerto Rico or
-        from the Puerto Rican diaspora.
-      </Row>
+      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+        <Row>
+          These are common words and phrases that you’ll hear in Puerto Rico or
+          from the Puerto Rican diaspora.
+        </Row>
+      </Card>
     </StyledSpanishSection>
   );
 }

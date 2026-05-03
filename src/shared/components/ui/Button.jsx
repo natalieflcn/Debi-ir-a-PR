@@ -50,15 +50,37 @@ const variations = {
       box-shadow: var(--box-shadow-offset-md) var(--color-blue-300);
     }
   `,
-  tree: css`
+  treeBark: css`
     color: var(--color-light-0);
     background: var(--color-brown-300);
     box-shadow: var(--box-shadow-offset-md) var(--color-brown-100);
 
     &:hover {
-      color: var(--color-brown-100);
+      color: var(--color-light-0);
       background-color: var(--color-brown-100);
-      box-shadow: var(--box-shadow-offset-md) var(--color-brown-400);
+      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+    }
+  `,
+  treeBarkInverted: css`
+    color: var(--color-light-0);
+    background-color: var(--color-brown-100);
+    box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+
+    &:hover {
+      color: var(--color-light-0);
+      background: var(--color-brown-300);
+      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+    }
+  `,
+  treeLeaf: css`
+    color: var(--color-light-0);
+    background-color: var(--color-green-300);
+    box-shadow: var(--box-shadow-offset-md) var(--color-green-400);
+
+    &:hover {
+      color: var(--color-light-0);
+      background: var(--color-green-200);
+      box-shadow: var(--box-shadow-offset-sm) var(--color-green-300);
     }
   `,
 };
@@ -66,6 +88,11 @@ const variations = {
 const Button = styled.button`
   text-transform: uppercase;
   transition: all 0.3s;
+
+  svg {
+    fill: currentColor;
+    color: inherit;
+  }
 
   ${({ $size }) => sizes[$size]}
   ${({ $variation }) => variations[$variation]}

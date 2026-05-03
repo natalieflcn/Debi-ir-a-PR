@@ -6,9 +6,18 @@ const StyledImage = styled.img`
   height: ${({ $height }) => $height || "auto%"};
   border-radius: ${({ $borderRadius }) =>
     $borderRadius || "var(--border-radius-md)"};
+  box-shadow: ${({ $imageShadow }) => $imageShadow || "none"};
 `;
 
-function Image({ src, alt, $width, $height, $borderRadius, $objectFit }) {
+function Image({
+  src,
+  alt,
+  $width,
+  $height,
+  $borderRadius,
+  $objectFit,
+  $imageShadow,
+}) {
   return (
     <StyledImage
       src={src}
@@ -17,6 +26,7 @@ function Image({ src, alt, $width, $height, $borderRadius, $objectFit }) {
       $height={$height}
       $borderRadius={$borderRadius}
       $objectFit={$objectFit}
+      $imageShadow={$imageShadow}
     />
   );
 }

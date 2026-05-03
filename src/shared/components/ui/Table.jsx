@@ -13,7 +13,7 @@ const defaultTheme = {
 };
 
 const StyledTable = styled.table`
-  width: 99%;
+  width: 100%;
   justify-items: center;
   justify-self: center;
   overflow: hidden;

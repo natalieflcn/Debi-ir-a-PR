@@ -15,7 +15,7 @@ const StyledSidebar = styled.aside`
   text-transform: uppercase;
   width: 21rem;
 
-  background: url(${({ $theme }) => $theme.panelBackground});
+  background: ${({ $theme }) => $theme.panelBackground};
   box-shadow: var(--box-shadow-offset-lg)
     ${({ $theme }) => $theme.sidebarShadow};
   border-radius: var(--border-radius-lg);

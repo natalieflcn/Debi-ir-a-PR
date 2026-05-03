@@ -1,5 +1,6 @@
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
+import Card from "../../../../shared/components/layout/Card";
 import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
 import Link from "../../../../shared/components/ui/Link";
@@ -30,7 +31,7 @@ const acts = [
   },
 ];
 
-const ActSectionCTA = function () {
+const ActSectionCTA = function ({ theme }) {
   return (
     <StyledActSectionCTA>
       <Image
@@ -38,63 +39,76 @@ const ActSectionCTA = function () {
         alt="A Puerto Rican flag"
         $width="43%"
         $objectFit="cover"
+        $imageShadow={theme.imageShadow}
       />
-      <Row>
-        <Heading as="h5" $color="var(--color-red-400)">
-          So, now what?
-        </Heading>
-        <Bold>What can we do?</Bold>
-        <Row>
-          We can continue spreading awareness about the harm these laws cause to
-          Puerto Rican families.
-        </Row>
-        <Row>
-          And we can take action—starting with these petitions to ensure the
-          island can be heard.
-        </Row>
 
-        <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
-          <Button $size="medium" $variation="primary">
-            Sign Petition on Change.org
-          </Button>
-        </Link>
-        <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
-          <Button $size="medium" $variation="secondary">
-            Sign Petition on ActionNetwork.org
-          </Button>
-        </Link>
-      </Row>
+      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+        <Row>
+          <Heading as="h5" $color="var(--color-red-400)">
+            So, now what?
+          </Heading>
+          <Bold>What can we do?</Bold>
+          <Row>
+            We can continue spreading awareness about the harm these laws cause
+            to Puerto Rican families.
+          </Row>
+          <Row>
+            And we can take action—starting with these petitions to ensure the
+            island can be heard.
+          </Row>
+
+          <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
+            <Button $size="medium" $variation="primary">
+              Sign Petition on Change.org
+            </Button>
+          </Link>
+          <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
+            <Button $size="medium" $variation="treeLeaf">
+              Sign Petition on ActionNetwork.org
+            </Button>
+          </Link>
+        </Row>
+      </Card>
     </StyledActSectionCTA>
   );
 };
 
-export default function EndActSection() {
+export default function EndActSection({ theme }) {
   return (
-    <StyledEndActSection>
-      <Row>
-        As a U.S. territory, Puerto Rico has been dealt a marginalized form of
-        representation in Congress. Unlike the 50 states, Puerto Rico has no
-        voting power in the decisions that shape its future. Yet, Congress holds
-        ultimate authority over the island, disregarding what any of the local
-        Puerto Ricans have to say about the matter.
-      </Row>
+    <StyledEndActSection theme={theme}>
+      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+        <Row>
+          As a U.S. territory, Puerto Rico has been dealt a marginalized form of
+          representation in Congress. Unlike the 50 states, Puerto Rico has no
+          voting power in the decisions that shape its future. Yet, Congress
+          holds ultimate authority over the island, disregarding what any of the
+          local Puerto Ricans have to say about the matter.
+        </Row>
+      </Card>
       <Image
         src="src/assets/images/content/PRProtest.jpg"
         alt="A protest in Puerto Rico"
+        $imageShadow={theme.imageShadow}
       />
-      <Row>
-        This imbalance of power has paved the way for laws that primarily
-        benefit U.S. investors at the cost of the well-being of native Puerto
-        Ricans.
-      </Row>
-      {acts.map((act) => (
-        <p key={act.id}>
-          <Bold>{act.name} </Bold>
-          {act.description}
-        </p>
-      ))}
 
-      <ActSectionCTA />
+      <Card
+        $cardColor={theme.cardBackground}
+        $cardShadow="insetLG"
+        $gap="var(--row-gap-md)"
+      >
+        <Row>
+          This imbalance of power has paved the way for laws that primarily
+          benefit U.S. investors at the cost of the well-being of native Puerto
+          Ricans.
+        </Row>
+        {acts.map((act) => (
+          <p key={act.id}>
+            <Bold>{act.name} </Bold>
+            {act.description}
+          </p>
+        ))}
+      </Card>
+      <ActSectionCTA theme={theme} />
     </StyledEndActSection>
   );
 }

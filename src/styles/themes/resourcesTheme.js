@@ -2,7 +2,7 @@ export const ResourcesTheme = {
   headingColor: `var(--color-light-200)`,
   headingShadow: `var(--color-brown-200)`,
 
-  panelBackground: "/src/assets/images/ui/TreeBark2.png",
+  panelBackground: "url(/src/assets/images/ui/TreeBark.png)",
   panelBoxShadow: `var(--color-light-200)`,
   panelBoxHoverColor: `var(--color-brown-100)`,
   panelBoxHoverShadow: `var(--color-light-100)`,
@@ -13,8 +13,9 @@ export const ResourcesTheme = {
   panelHeadingHoverShadow: `var(--color-green-400)`,
   panelTextColor: `var(--color-dark-200)`,
 
-  panelButtonVariation: "tree",
-  sidebarBackground: "/src/assets/images/ui/TreeBark2.png",
+  panelButtonVariation: "treeBark",
+  panelActiveButtonVariation: "treeBarkInverted",
+  sidebarBackground: "url(/src/assets/images/ui/TreeBark.png)",
   sidebarShadow: `var(--color-light-200)`,
   sidebarHeadingColor: `var(--color-light-200)`,
   sidebarHeadingShadow: `var(--color-brown-300)`,
@@ -27,4 +28,7 @@ export const ResourcesTheme = {
   sidebarMenuItemBorderHover: `var(--color-green-200)`,
   sidebarMenuItemActiveColor: `var(--color-green-200)`,
   sidebarMenuItemBorderActive: `var(--color-green-200)`,
+
+  cardBackground: "url(/src/assets/images/ui/TreeInterior.png)",
+  imageShadow: `var(--box-shadow-lg) var(--color-brown-400)`,
 };
