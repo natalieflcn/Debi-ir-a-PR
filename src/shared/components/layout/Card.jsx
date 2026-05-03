@@ -30,7 +30,7 @@ const variants = {
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: var(--border-radius-md);
 
   gap: ${({ $gap }) => $gap};

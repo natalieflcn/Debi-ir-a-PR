@@ -32,12 +32,14 @@ export const SlicedPhotos = styled.div`
   display: grid;
   --g: 8px;
   clip-path: inset(1px);
-  margin: 0rem -1.5rem;
+  margin: 0 auto;
+  justify-self: center;
+  width: 95%;
 
   img {
     --_p: calc(-1 * var(--g));
     grid-area: 1/1;
-    width: 100%;
+
     aspect-ratio: 16/8;
     cursor: pointer;
     transition: 0.7s 0.2s;

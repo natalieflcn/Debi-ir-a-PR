@@ -12,6 +12,7 @@ import {
   StyledHistorySection,
   StyledVideoSection,
 } from "./historySection.styles";
+import Card from "../../../../shared/components/layout/Card";
 
 const videos = [
   {
@@ -122,43 +123,55 @@ const books = [
   },
 ];
 
-const Introduction = function () {
+const Introduction = function ({ theme }) {
   return (
     <>
-      <Row>
-        Dive into Puerto Rico’s rich history and the journey of how this small,
-        vibrant island has captured the world’s attention.
-      </Row>
+      <Card
+        $cardColor={theme.cardBackground}
+        $cardShadow="insetLG"
+        $gap="var(--row-gap-md)"
+      >
+        <Row>
+          Dive into Puerto Rico’s rich history and the journey of how this
+          small, vibrant island has captured the world’s attention.
+        </Row>
 
-      <Row>
-        <p>
-          Known as <Bold>La Isla del Encanto</Bold> (The Island of Enchantment),
-          Puerto Rico shines with beauty, culture, and passion–in spite of the
-          profound challenges the island has survived. The joy, love, and
-          unbreakable spirit of Puerto Ricans remain at the heart of the
-          island’s identity.
-        </p>
-      </Row>
-      <Row>
-        Explore the stories of what Puerto Rico has endured and overcome
-        throughout history.
-      </Row>
+        <Row>
+          <p>
+            Known as <Bold>La Isla del Encanto</Bold> (The Island of
+            Enchantment), Puerto Rico shines with beauty, culture, and
+            passion–in spite of the profound challenges the island has survived.
+            The joy, love, and unbreakable spirit of Puerto Ricans remain at the
+            heart of the island’s identity.
+          </p>
+        </Row>
+        <Row>
+          Explore the stories of what Puerto Rico has endured and overcome
+          throughout history.
+        </Row>
+      </Card>
     </>
   );
 };
-const VideoSection = function ({ id, title, description }) {
+const VideoSection = function ({ id, title, description, theme }) {
   return (
-    <StyledVideoSection key={id}>
-      <Heading as="h4" $color="var(--color-red-300)">
-        {title}
-      </Heading>
-      <LiteYouTubeEmbed id={id} title={title} lazyLoad={true} />
-      {description.map((description) => (
-        <SmallText key={description.id}>
-          {parseBold(description.sentence)}
-        </SmallText>
-      ))}
-    </StyledVideoSection>
+    <Card
+      $cardColor={theme.cardBackground}
+      $cardShadow="insetLG"
+      $gap="var(--row-gap-md)"
+    >
+      <StyledVideoSection key={id}>
+        <Heading as="h4" $color="var(--color-brown-200)">
+          {title}
+        </Heading>
+        <LiteYouTubeEmbed id={id} title={title} lazyLoad={true} />
+        {description.map((description) => (
+          <SmallText key={description.id}>
+            {parseBold(description.sentence)}
+          </SmallText>
+        ))}
+      </StyledVideoSection>
+    </Card>
   );
 };
 
@@ -173,12 +186,13 @@ const BookSection = function ({ title, image, goodreadsURL, description }) {
             $width="6rem"
             $height="9rem"
             $borderRadius="0 4px 4px 0"
+            $imageShadow="var(--box-shadow-offset-lg) var(--color-brown-200)"
           />
         </Link>
         <figcaption>
           <Row $gap="var(--row-gap-sm)" $direction="vertical">
             <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
-              <Heading as="h6" $color="var(--color-red-300)">
+              <Heading as="h6" $color="var(--color-brown-300)">
                 {title}
               </Heading>
             </Link>
@@ -190,10 +204,10 @@ const BookSection = function ({ title, image, goodreadsURL, description }) {
   );
 };
 
-export default function HistorySection() {
+export default function HistorySection({ theme }) {
   return (
     <StyledHistorySection>
-      <Introduction />
+      <Introduction theme={theme} />
       <Row $gap="var(--row-gap-lg)">
         {videos.map((video) => (
           <VideoSection
@@ -201,30 +215,38 @@ export default function HistorySection() {
             id={video.id}
             title={video.title}
             description={video.description}
+            theme={theme}
           />
         ))}
       </Row>
 
       <Row>
-        <Heading as="h4" $color="var(--color-red-300)">
-          Additional Literature
-        </Heading>
-        <p>
-          If you’re interested in learning more about Puerto Rico’s struggles
-          and the resilience of its people, these books honor their strength and
-          perseverance.
-        </p>
-        <Row $gap="var(--row-gap-xl)">
-          {books.map((book) => (
-            <BookSection
-              key={book.id}
-              title={book.title}
-              image={book.image}
-              goodreadsURL={book.goodreadsURL}
-              description={book.description}
-            />
-          ))}
-        </Row>
+        <Card
+          $cardColor={theme.cardBackground}
+          $cardShadow="insetLG"
+          $gap="var(--row-gap-md)"
+        >
+          <Heading as="h4" $color="var(--color-brown-200)">
+            Additional Literature
+          </Heading>
+          <p>
+            If you’re interested in learning more about Puerto Rico’s struggles
+            and the resilience of its people, these books honor their strength
+            and perseverance.
+          </p>
+
+          <Row $gap="var(--row-gap-xl)">
+            {books.map((book) => (
+              <BookSection
+                key={book.id}
+                title={book.title}
+                image={book.image}
+                goodreadsURL={book.goodreadsURL}
+                description={book.description}
+              />
+            ))}
+          </Row>
+        </Card>
       </Row>
     </StyledHistorySection>
   );

@@ -42,7 +42,11 @@ const ActSectionCTA = function ({ theme }) {
         $imageShadow={theme.imageShadow}
       />
 
-      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+      <Card
+        $cardColor={theme.cardBackground}
+        $cardShadow="insetLG"
+        $gap="--row-gap-md"
+      >
         <Row>
           <Heading as="h5" $color="var(--color-red-400)">
             So, now what?
@@ -75,7 +79,7 @@ const ActSectionCTA = function ({ theme }) {
 
 export default function EndActSection({ theme }) {
   return (
-    <StyledEndActSection theme={theme}>
+    <StyledEndActSection>
       <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
         <Row>
           As a U.S. territory, Puerto Rico has been dealt a marginalized form of

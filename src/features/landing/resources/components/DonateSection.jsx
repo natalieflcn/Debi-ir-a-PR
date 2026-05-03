@@ -10,6 +10,7 @@ import {
   StyledDonateSection,
   StyledOrganization,
 } from "./donateSection.styles";
+import Card from "../../../../shared/components/layout/Card";
 
 const organizations = [
   {
@@ -46,82 +47,95 @@ const organizations = [
   },
 ];
 
-const Introduction = function () {
+const Introduction = function ({ theme }) {
   return (
     <>
-      <Row>
-        While most people imagine Puerto Rico to be an island where there’s
-        never a bad day to stretch on the beach, take a sip of coquito, and
-        relax to the sound of coquis…
-      </Row>
+      <Card
+        $cardColor={theme.cardBackground}
+        $cardShadow="insetLG"
+        $gap="var(--row-gap-md)"
+      >
+        <Row>
+          While most people imagine Puerto Rico to be an island where there’s
+          never a bad day to stretch on the beach, take a sip of coquito, and
+          relax to the sound of coquis…
+        </Row>
 
-      <SlicedPhotos>
-        <Image
-          src="src/assets/images/content/PuertoRicanParadise.jpg"
-          alt="A beach on Puerto Rico"
-        />
-        <Image
-          src="src/assets/images/content/PRBlackout.jpg"
-          alt="A blackout in Puerto Rico"
-        />
-      </SlicedPhotos>
-      <Row>
-        …Many communities are still living with the long-lasting effects of
-        Hurricane María and the relentless storms that have followed. Frequent
-        blackouts, abandoned homes, and rising costs of living continue to
-        challenge the resilience of Puerto Ricans.
-      </Row>
-      <Row>
-        <Bold>
-          The island may have the world’s admiration, but it also needs the
-          world’s support.
-        </Bold>
-      </Row>
-      <Row>
-        Here are some organizations making a direct impact, where your donation
-        can truly help:
-      </Row>
+        <SlicedPhotos>
+          <Image
+            src="src/assets/images/content/PuertoRicanParadise.jpg"
+            alt="A beach on Puerto Rico"
+          />
+          <Image
+            src="src/assets/images/content/PRBlackout.jpg"
+            alt="A blackout in Puerto Rico"
+          />
+        </SlicedPhotos>
+        <Row>
+          …Many communities are still living with the long-lasting effects of
+          Hurricane María and the relentless storms that have followed. Frequent
+          blackouts, abandoned homes, and rising costs of living continue to
+          challenge the resilience of Puerto Ricans.
+        </Row>
+        <Row>
+          <Bold>
+            The island may have the world’s admiration, but it also needs the
+            world’s support.
+          </Bold>
+        </Row>
+
+        <Row>
+          Here are some organizations making a direct impact, where your
+          donation can truly help:
+        </Row>
+      </Card>
     </>
   );
 };
 
-export default function DonateSection() {
+export default function DonateSection({ theme }) {
   return (
     <StyledDonateSection>
-      <Introduction />
+      <Introduction theme={theme} />
       <Row $gap="var(--row-gap-2xl)">
         {organizations.map((organization) => (
-          <StyledOrganization key={organization.id}>
-            <Link href={organization.website}>
-              <Image
-                src={organization.logo}
-                alt={organization.name}
-                $width="9rem"
-              />
-            </Link>
-            <Row>
-              <Row $gap="var(--row-gap-sm)">
-                <Link href={organization.website}>
-                  <Heading as="h6" $color="var(--color-red-400)">
-                    {organization.name}
-                  </Heading>
-                </Link>
-                <SmallText>{organization.description}</SmallText>
+          <Card
+            $cardColor={theme.cardBackground}
+            $cardShadow="insetLG"
+            $gap="var(--row-gap-sm)"
+          >
+            <StyledOrganization key={organization.id}>
+              <Link href={organization.website}>
+                <Image
+                  src={organization.logo}
+                  alt={organization.name}
+                  $width="9rem"
+                />
+              </Link>
+              <Row>
+                <Row $gap="var(--row-gap-sm)">
+                  <Link href={organization.website}>
+                    <Heading as="h6" $color="var(--color-brown-400)">
+                      {organization.name}
+                    </Heading>
+                  </Link>
+                  <SmallText>{organization.description}</SmallText>
+                </Row>
+                <Row $direction="horizontal" $gap="var(--row-gap-md)">
+                  <Link href={organization.donate}>
+                    <Button $size="medium" $variation="primary">
+                      Donate Now
+                    </Button>
+                  </Link>
+                  <Link href={organization.learnMore}>
+                    <Button $size="medium" $variation="treeLeaf">
+                      Learn More
+                    </Button>
+                  </Link>
+                </Row>
               </Row>
-              <Row $direction="horizontal" $gap="var(--row-gap-md)">
-                <Link href={organization.donate}>
-                  <Button $size="medium" $variation="primary">
-                    Donate Now
-                  </Button>
-                </Link>
-                <Link href={organization.learnMore}>
-                  <Button $size="medium" $variation="secondary">
-                    Learn More
-                  </Button>
-                </Link>
-              </Row>
-            </Row>
-          </StyledOrganization>
+            </StyledOrganization>
+          </Card>
         ))}
       </Row>
     </StyledDonateSection>

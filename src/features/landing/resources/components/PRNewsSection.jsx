@@ -22,7 +22,7 @@ const StyledPRNewsSection = styled.div`
 
 export default function PRNewsSection({ theme }) {
   return (
-    <StyledPRNewsSection theme={theme}>
+    <StyledPRNewsSection>
       <Image
         src="src/assets/images/content/SanJuan.jpg"
         alt="Old San Juan buildings"
@@ -32,7 +32,11 @@ export default function PRNewsSection({ theme }) {
         $imageShadow={theme.imageShadow}
       />
 
-      <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
+      <Card
+        $cardColor={theme.cardBackground}
+        $cardShadow="insetLG"
+        $gap="--row-gap-md"
+      >
         <Row>
           <Heading as="h6" $color="var(--color-brown-400)">
             Want to stay up to date about what’s going on in Puerto Rico?

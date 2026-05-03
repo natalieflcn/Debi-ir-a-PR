@@ -15,8 +15,11 @@ export const StyledVideoSection = styled.div`
 export const StyledBookSection = styled.figure`
   display: flex;
 
+  h6 {
+    transition: all 0.5s;
+  }
+
   img {
-    box-shadow: var(--box-shadow-offset-lg) var(--color-yellow-300);
     transition: all 0.5s;
   }
 
@@ -25,7 +28,7 @@ export const StyledBookSection = styled.figure`
   }
 
   &:hover img {
-    box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
+    box-shadow: var(--box-shadow-offset-md) var(--color-red-200);
   }
 
   @media (max-width: 798px) {
