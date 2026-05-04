@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./shared/layouts/MainLayout";
 import ExplorerLayout from "./shared/layouts/ExplorerLayout";
 import AdminLayout from "./shared/layouts/AdminLayout";
-import Workflow from "./features/landing/workflow/Workflow";
+import Workflow from "./features/landing/workflow/page/Workflow";
 import About from "./features/landing/about/page/About";
 
 import CreateAccount from "./features/auth/components/CreateAccount";
