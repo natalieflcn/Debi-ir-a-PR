@@ -106,6 +106,9 @@ body::before{
   width: 100%;
   aspect-ratio: 16 / 9;    border-radius: var(--border-radius-md);
 }
+
+
+
 `;
 
 export default GlobalStyles;

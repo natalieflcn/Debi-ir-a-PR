@@ -1,16 +1,34 @@
 import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
+import Bold from "../../../../shared/components/typography/Bold";
+import Image from "../../../../shared/components/ui/Image";
 
 const sectionItems = [
   {
     id: "main-tech-stack",
     heading: "Main Technology Stack",
     items: [
-      { id: 0, content: "React" },
-      { id: 1, content: "Node.js" },
-      { id: 2, content: "Express" },
-      { id: 3, content: "MongoDB" },
+      {
+        id: 0,
+        content: "React",
+        logo: "src/assets/images/content/ReactLogo.png",
+      },
+      {
+        id: 1,
+        content: "Node.js",
+        logo: "src/assets/images/content/NodeJSLogo.png",
+      },
+      {
+        id: 2,
+        content: "Express",
+        logo: "src/assets/images/content/ExpressLogo.png",
+      },
+      {
+        id: 3,
+        content: "MongoDB",
+        logo: "src/assets/images/content/MongoDBLogo.svg",
+      },
     ],
   },
   {
@@ -41,20 +59,43 @@ const sectionItems = [
 export default function TechStackSection() {
   return (
     <Row>
-      <Heading>{sectionItems[0].heading}</Heading>
+      <Heading as="h4" $color="var(--color-red-300)">
+        {sectionItems[0].heading}
+      </Heading>
       <Row $direction="horizontal">
         {sectionItems[0].items.map((item) => (
-          <Card key={item.id}>{item.content}</Card>
+          <Card
+            key={item.id}
+            $cardColor="var(--color-light-200)"
+            $cardShadow="outsetSM"
+            $gap="var(--gap-sm)"
+            $align="center"
+          >
+            <Image src={item.logo} $width="4rem" $height="5rem" />
+            <Bold $color="var(--color-dark-200)">{item.content}</Bold>
+          </Card>
         ))}
       </Row>
 
       {sectionItems.slice(1).map((section) => (
         <Row key={section.id}>
-          <Heading>{section.heading}</Heading>
-          <Card>
-            {section.items.map((item) => (
-              <Row key={item.id}>{item.content}</Row>
-            ))}
+          <Heading as="h4" $color="var(--color-red-300)">
+            {section.heading}
+          </Heading>
+          <Card $cardColor="var(--color-light-200)">
+            <Row $gap="var(--gap-md)">
+              {section.items.map((item) => (
+                <Row
+                  key={item.id}
+                  $direction="horizontal"
+                  $align="flex-start"
+                  $gap="var(--gap-md)"
+                >
+                  <Image src="src/assets/images/ui/PRSun.png" $width="25px" />
+                  {item.content}
+                </Row>
+              ))}
+            </Row>
           </Card>
         </Row>
       ))}

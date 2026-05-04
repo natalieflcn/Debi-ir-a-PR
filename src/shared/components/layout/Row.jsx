@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const variants = {
   horizontal: css`
-    justify-content: space-between;
+    justify-content: ${({ $align }) => $align || "space-between"};
     align-items: center;
     gap: ${({ $gap }) => $gap || 0};
   `,

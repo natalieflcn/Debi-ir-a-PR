@@ -50,6 +50,26 @@ const variations = {
       box-shadow: var(--box-shadow-offset-md) var(--color-blue-300);
     }
   `,
+  darkBlue: css`
+    color: var(--color-light-0);
+    background: var(--color-blue-300);
+    box-shadow: var(--box-shadow-offset-md) var(--color-blue-400);
+
+    &:hover {
+      background-color: var(--color-blue-100);
+      box-shadow: var(--box-shadow-offset-md) var(--color-blue-300);
+    }
+  `,
+  darkRed: css`
+    color: var(--color-light-0);
+    background-color: var(--color-red-300);
+    box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
+
+    &:hover {
+      background-color: var(--color-red-100);
+      box-shadow: var(--box-shadow-offset-md) var(--color-red-300);
+    }
+  `,
   treeBark: css`
     color: var(--color-light-0);
     background: var(--color-brown-300);

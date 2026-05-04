@@ -32,6 +32,7 @@ const Card = styled.div`
   flex-direction: column;
   padding: 1.5rem;
   border-radius: var(--border-radius-md);
+  align-items: ${({ $align }) => $align || ""};
 
   gap: ${({ $gap }) => $gap};
   background: ${({ $cardColor }) => $cardColor};
