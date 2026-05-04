@@ -66,7 +66,7 @@ export default function TechStackSection() {
         {sectionItems[0].items.map((item) => (
           <Card
             key={item.id}
-            $cardColor="var(--color-light-200)"
+            $cardColor="var(--color-light-0)"
             $cardShadow="outsetSM"
             $gap="var(--gap-sm)"
             $align="center"
@@ -82,7 +82,7 @@ export default function TechStackSection() {
           <Heading as="h4" $color="var(--color-red-300)">
             {section.heading}
           </Heading>
-          <Card $cardColor="var(--color-light-200)">
+          <Card $cardColor="var(--color-light-0)">
             <Row $gap="var(--gap-md)">
               {section.items.map((item) => (
                 <Row

@@ -1,4 +1,6 @@
+import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
+import Image from "../../../../shared/components/ui/Image";
 
 const sectionItems = [
   {
@@ -26,9 +28,24 @@ const sectionItems = [
 export default function MotivationSection() {
   return (
     <Row>
-      {sectionItems.map((section) => (
-        <Row key={section.id}>{section.content}</Row>
-      ))}
+      <Card $cardColor="var(--color-light-0)" $gap="var(--gap-md)">
+        <Row>{sectionItems[0].content} </Row>
+        <Row>{sectionItems[1].content}</Row>
+      </Card>
+
+      <Card $cardColor="var(--color-light-0)">
+        <Row $direction="horizontal" $gap="var(--gap-md)">
+          <Image src="src/assets/images/content/TEMP.png" $width="40%" />{" "}
+          {sectionItems[2].content}
+        </Row>
+      </Card>
+
+      <Card $cardColor="var(--color-light-0)">
+        {sectionItems[3].content}
+        <Row $align="center">
+          <Image src="src/assets/images/content/TEMP.png" $width="40%" />{" "}
+        </Row>
+      </Card>
     </Row>
   );
 }

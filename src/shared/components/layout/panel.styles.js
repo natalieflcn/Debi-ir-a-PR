@@ -19,8 +19,8 @@ export const StyledPanel = styled.div`
   background-repeat: repeat;  */
 
   background-image: ${({ $theme }) => $theme.panelBackground};
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: auto;
+  background-repeat: repeat;
   /* background-position: center; */
   background-position: ${({ $index }) =>
     $index % 2 === 0 ? " bottom" : "top"};
