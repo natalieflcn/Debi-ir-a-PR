@@ -45,7 +45,7 @@ const ActSectionCTA = function ({ theme }) {
       <Card
         $cardColor={theme.cardBackground}
         $cardShadow="insetLG"
-        $gap="--row-gap-md"
+        $gap="--gap-md"
       >
         <Row>
           <Heading as="h5" $color="var(--color-red-400)">
@@ -98,7 +98,7 @@ export default function EndActSection({ theme }) {
       <Card
         $cardColor={theme.cardBackground}
         $cardShadow="insetLG"
-        $gap="var(--row-gap-md)"
+        $gap="var(--gap-md)"
       >
         <Row>
           This imbalance of power has paved the way for laws that primarily

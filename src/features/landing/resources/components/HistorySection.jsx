@@ -129,7 +129,7 @@ const Introduction = function ({ theme }) {
       <Card
         $cardColor={theme.cardBackground}
         $cardShadow="insetLG"
-        $gap="var(--row-gap-md)"
+        $gap="var(--gap-md)"
       >
         <Row>
           Dive into Puerto Rico’s rich history and the journey of how this
@@ -158,7 +158,7 @@ const VideoSection = function ({ id, title, description, theme }) {
     <Card
       $cardColor={theme.cardBackground}
       $cardShadow="insetLG"
-      $gap="var(--row-gap-md)"
+      $gap="var(--gap-md)"
     >
       <StyledVideoSection key={id}>
         <Heading as="h4" $color="var(--color-brown-200)">
@@ -178,7 +178,7 @@ const VideoSection = function ({ id, title, description, theme }) {
 const BookSection = function ({ title, image, goodreadsURL, description }) {
   return (
     <StyledBookSection>
-      <Row $direction="horizontal" $gap="var(--row-gap-lg)">
+      <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
           <Image
             src={image}
@@ -190,7 +190,7 @@ const BookSection = function ({ title, image, goodreadsURL, description }) {
           />
         </Link>
         <figcaption>
-          <Row $gap="var(--row-gap-sm)" $direction="vertical">
+          <Row $gap="var(--gap-sm)" $direction="vertical">
             <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
               <Heading as="h6" $color="var(--color-brown-300)">
                 {title}
@@ -208,7 +208,7 @@ export default function HistorySection({ theme }) {
   return (
     <StyledHistorySection>
       <Introduction theme={theme} />
-      <Row $gap="var(--row-gap-lg)">
+      <Row $gap="var(--gap-lg)">
         {videos.map((video) => (
           <VideoSection
             key={video.id}
@@ -224,9 +224,9 @@ export default function HistorySection({ theme }) {
         <Card
           $cardColor={theme.cardBackground}
           $cardShadow="insetLG"
-          $gap="var(--row-gap-lg)"
+          $gap="var(--gap-lg)"
         >
-          <Row $gap="var(--row-gap-sm)">
+          <Row $gap="var(--gap-sm)">
             <Heading as="h4" $color="var(--color-brown-200)">
               Additional Literature
             </Heading>
@@ -237,7 +237,7 @@ export default function HistorySection({ theme }) {
             </p>
           </Row>
 
-          <Row $gap="var(--row-gap-xl)">
+          <Row $gap="var(--gap-xl)">
             {books.map((book) => (
               <BookSection
                 key={book.id}

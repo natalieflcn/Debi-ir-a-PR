@@ -10,7 +10,7 @@
   --color-red-100: #f97f7a;
   --color-red-200: #ed333c;
   --color-red-300: #6d2317;
-  --color-red-400: #41080b;
+  --color-red-400: #470509;
 
   --color-yellow-0: #f1dfb5;
   --color-yellow-100: #e7c67a;
@@ -91,10 +91,10 @@
   --line-height-2xl: 2.5rem;
   --line-height-3xl: 2.75rem;
 
-  /* Row Gap */
-  --row-gap-sm: 0.5rem;
-  --row-gap-md: 1rem;
-  --row-gap-lg: 1.5rem;
-  --row-gap-xl: 2rem;
-  --row-gap-2xl: 2.5rem;
+  /* Row Gap, Card Gap */
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --gap-lg: 1.5rem;
+  --gap-xl: 2rem;
+  --gap-2xl: 2.5rem;
 }

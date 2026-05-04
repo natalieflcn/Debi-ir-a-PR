@@ -35,7 +35,7 @@ export default function PRNewsSection({ theme }) {
       <Card
         $cardColor={theme.cardBackground}
         $cardShadow="insetLG"
-        $gap="--row-gap-md"
+        $gap="--gap-md"
       >
         <Row>
           <Heading as="h6" $color="var(--color-brown-400)">

@@ -83,6 +83,28 @@ const variations = {
       box-shadow: var(--box-shadow-offset-sm) var(--color-green-300);
     }
   `,
+  scrapPaper: css`
+    color: var(--color-light-0);
+    background-color: var(--color-red-200);
+    box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
+
+    &:hover {
+      color: var(--color-light-0);
+      background: var(--color-red-300);
+      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+    }
+  `,
+  scrapPaperInverted: css`
+    color: var(--color-light-0);
+    background-color: var(--color-red-300);
+    box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+
+    &:hover {
+      color: var(--color-light-0);
+      background-color: var(--color-red-200);
+      box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
+    }
+  `,
 };
 
 const Button = styled.button`

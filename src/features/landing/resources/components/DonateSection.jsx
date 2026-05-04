@@ -53,7 +53,7 @@ const Introduction = function ({ theme }) {
       <Card
         $cardColor={theme.cardBackground}
         $cardShadow="insetLG"
-        $gap="var(--row-gap-md)"
+        $gap="var(--gap-md)"
       >
         <Row>
           While most people imagine Puerto Rico to be an island where there’s
@@ -97,14 +97,15 @@ export default function DonateSection({ theme }) {
   return (
     <StyledDonateSection>
       <Introduction theme={theme} />
-      <Row $gap="var(--row-gap-2xl)">
+      <Row $gap="var(--gap-2xl)">
         {organizations.map((organization) => (
           <Card
             $cardColor={theme.cardBackground}
             $cardShadow="insetLG"
-            $gap="var(--row-gap-sm)"
+            $gap="var(--gap-sm)"
+            key={organization.id}
           >
-            <StyledOrganization key={organization.id}>
+            <StyledOrganization>
               <Link href={organization.website}>
                 <Image
                   src={organization.logo}
@@ -113,7 +114,7 @@ export default function DonateSection({ theme }) {
                 />
               </Link>
               <Row>
-                <Row $gap="var(--row-gap-sm)">
+                <Row $gap="var(--gap-sm)">
                   <Link href={organization.website}>
                     <Heading as="h6" $color="var(--color-brown-400)">
                       {organization.name}
@@ -121,7 +122,7 @@ export default function DonateSection({ theme }) {
                   </Link>
                   <SmallText>{organization.description}</SmallText>
                 </Row>
-                <Row $direction="horizontal" $gap="var(--row-gap-md)">
+                <Row $direction="horizontal" $gap="var(--gap-md)">
                   <Link href={organization.donate}>
                     <Button $size="medium" $variation="primary">
                       Donate Now

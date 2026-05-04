@@ -53,7 +53,7 @@ export const StyledHeading = styled(Heading)`
   margin-bottom: ${({ $isOpen }) => $isOpen && `0.5rem`};
   color: ${({ $isOpen, $theme }) =>
     $isOpen ? $theme.panelHeadingHoverColor : $theme.panelHeadingColor};
-  text-shadow: var(--text-shadow-offset-lg)
+  text-shadow: var(--text-shadow-offset-sm)
     ${({ $isOpen, $theme }) =>
       $isOpen ? $theme.panelHeadingHoverShadow : $theme.panelHeadingShadow};
   transition: all 0.4s;
