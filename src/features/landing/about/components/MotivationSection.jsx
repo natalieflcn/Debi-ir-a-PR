@@ -16,10 +16,15 @@ const sectionItems = [
   {
     id: 2,
     content:
-      " Debi ir a PR is inspired by my deep love for Puerto Rico, the island my father is from. I wanted to create something that celebrates its beauty while inviting others to participate in the same joy and connection I’ve been fortunate enough to experience.",
+      "Debi ir a PR is inspired by my deep love for Puerto Rico, the island my father is from.",
   },
   {
     id: 3,
+    content:
+      "I wanted to create something that celebrates its beauty while inviting others to participate in the same joy and connection I’ve been fortunate enough to experience.",
+  },
+  {
+    id: 4,
     content:
       "The design draws inspiration from Bad Bunny’s album DTmF (Debí Tirar Más Fotos), blending the vibrant colors from Puerto Rico’s flag and the rich essence of its landscapes to capture the spirit of the island.",
   },
@@ -35,13 +40,16 @@ export default function MotivationSection() {
 
       <Card $cardColor="var(--color-light-0)">
         <Row $direction="horizontal" $gap="var(--gap-md)">
-          <Image src="src/assets/images/content/TEMP.png" $width="40%" />{" "}
-          {sectionItems[2].content}
+          <Image src="src/assets/images/content/TEMP.png" $width="40%" />
+          <Row $gap="var(--gap-md)">
+            <Row>{sectionItems[2].content}</Row>
+            <Row>{sectionItems[3].content}</Row>
+          </Row>
         </Row>
       </Card>
 
       <Card $cardColor="var(--color-light-0)">
-        {sectionItems[3].content}
+        {sectionItems[4].content}
         <Row $align="center">
           <Image src="src/assets/images/content/TEMP.png" $width="40%" />{" "}
         </Row>

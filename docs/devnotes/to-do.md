@@ -51,8 +51,8 @@
   - [x] Export component color palette/styling options into separate themes folder in styles (i.e. styles/themes/resourcesTheme.js)
   - [x] Create variants for reused styles and co-locate them in styled components files
   - [x] Clean up all $css prop pattern in styled components, only expose intentional CSS properties of the component
-- [~] Delete unused fonts, add new typography options
-- [ ] Reassess current color palette, background overlays, and typography hierarchy
+- [x] Delete unused fonts
+- [x] Reassess current color palette, background overlays, and typography hierarchy
 - [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
 - [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 1
 - [ ] Use the IntersectionObsever API to implement scrolling to panels TODO3
@@ -63,25 +63,21 @@
   - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 5
   - [ ] Leaves rustling when panel opens on Resources
 
-- [ ] Complete current About Page
-  - [ ] Draft mock-ups for panels
+- [~] Complete current About Page
+  - [x] Draft mock-ups for panels
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
-  - [ ] Paper crumbling when panel opens on About
-  - [ ] Adjust Panel and Sidebar to accept background-image property
+  - [ ] Paper crumbling sound when panel opens on About
 
-- [ ] Review current UX/UI design and assess what can be improved
-  - [ ] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
-  - [ ] Create drop-down menus for About and Resources nav items
+- [x] Review current UX/UI design and assess what can be improved
+  - [x] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
 
-- [ ] Add coding portfolio icon to footer
+- [x] Add coding portfolio icon to footer
 
-- [ ] Make sure the current pages of the landing site are responsive for all devices
+- [ ] Implement the rest of the landing site
+  - [~] 'How It Works' page
+  - [ ] 'Home' page
+
+- [ ] Make sure the pages of the landing site are responsive for all devices
   - [ ] Large devices (desktops)
   - [ ] Medium devices (tablets)
   - [ ] Small devices (phones)
-
-- [ ] Draft mock-ups for the rest of the landing site
-  - [ ] 'How It Works' page
-  - [ ] 'Home' page
-- [ ] Implement 'How It Works' page
-- [ ] Implement 'Home' page

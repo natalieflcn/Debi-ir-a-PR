@@ -45,6 +45,7 @@ const variants = {
     font-size: var(--font-size-lg);
     letter-spacing: var(--letter-spacing-museo-tight);
     text-transform: uppercase;
+    line-height: var(--line-height-lg);
 
     @media (max-width: 798px) {
       font-size: 3rem;
@@ -55,6 +56,7 @@ const variants = {
     font-family: Museo, sans-serif;
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
 
     @media (max-width: 798px) {
       font-size: 1.7rem;
