@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
-import Bold from "../../../../shared/components/typography/Bold";
 import Row from "../../../../shared/components/layout/Row";
+import Button from "../../../../shared/components/ui/Button";
 import Card from "../../../../shared/components/layout/Card";
 import workflowData from "../data/workflowData";
 import Image from "../../../../shared/components/ui/Image";
@@ -64,7 +64,6 @@ function Workflow() {
             <StyledStep $index={index} key={step.id}>
               <Image src="src/assets/images/content/TEMP.png" $width="25%" />
               <StyledCard
-                // $cardColor="var(--color-light-0)"
                 $cardShadow="outsetLG"
                 $cardColor='url("src/assets/images/ui/WorkflowCard.png")'
               >
@@ -85,8 +84,8 @@ function Workflow() {
                   >
                     {step.heading}
                   </Heading>
-                  {step.description.map((sentence) => (
-                    <Heading as="h6" $color="var(--color-dark-100)">
+                  {step.description.map((sentence, index) => (
+                    <Heading as="h6" $color="var(--color-dark-100)" key={index}>
                       {sentence}
                     </Heading>
                   ))}
@@ -94,6 +93,29 @@ function Workflow() {
               </StyledCard>
             </StyledStep>
           ))}
+          <Card
+            $cardColor={`url("src/assets/images/ui/Sand.png")`}
+            $align="center"
+            $cardShadow="outsetMD"
+          >
+            <Row $gap="var(--gap-md)">
+              <Heading
+                as="h4"
+                $color="var(--color-yellow-200)"
+                $shadowColor="var(--color-brown-400)"
+              >
+                {section.CTA.description}
+              </Heading>
+              <Row $direction="horizontal" $gap="var(--gap-lg)">
+                <Button $size="medium" $variation="secondary">
+                  {section.CTA.primaryLink.label}
+                </Button>
+                <Button $size="medium" $variation="primary">
+                  {section.CTA.secondaryLink.label}
+                </Button>
+              </Row>
+            </Row>
+          </Card>
         </Card>
       ))}
     </Row>

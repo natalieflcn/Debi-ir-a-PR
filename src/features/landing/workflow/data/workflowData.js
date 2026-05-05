@@ -2,7 +2,7 @@ const workflowData = [
   {
     id: "for-explorers",
     heading: "For Explorers",
-    cardColor: "var(--color-blue-300)",
+    cardColor: `url("src/assets/images/ui/BlueWaves.png")`,
     tagline: "Discover Puerto Rico beyond the Expedia tours",
     description:
       "As an Explorer, you'll uncover hidden gems, support local businesses, and earn badges as you go.",
@@ -49,7 +49,7 @@ const workflowData = [
       },
     ],
     CTA: {
-      description: "Your next adventure is waiting.",
+      description: "Your next adventure is waiting",
       primaryLink: { label: "Create Account", href: "/create-account" },
       secondaryLink: { label: "Log In", href: "/login" },
     },
@@ -57,7 +57,7 @@ const workflowData = [
   {
     id: "for-ambassadors",
     heading: "For Ambassadors",
-    cardColor: "var(--color-red-300)",
+    cardColor: `url("src/assets/images/ui/RedSand.png")`,
     tagline: "Passionate about Puerto Rico?",
     description: [
       "As an Ambassador, you'll shape how the world experiences the island — putting your favorite spots on the map for thousands of Explorers.",
@@ -95,7 +95,7 @@ const workflowData = [
       },
     ],
     CTA: {
-      description: "Help People Love Puerto Rico in the Right Places.",
+      description: "Help People Love Puerto Rico in the Right Places",
       primaryLink: { label: "Create Account", href: "/create-account" },
       secondaryLink: { label: "Log In", href: "/login" },
     },

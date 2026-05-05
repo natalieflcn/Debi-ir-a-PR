@@ -74,7 +74,7 @@
 - [x] Add coding portfolio icon to footer
 
 - [ ] Implement the rest of the landing site
-  - [~] 'How It Works' page
+  - [x] 'How It Works' page
   - [ ] 'Home' page
 
 - [ ] Make sure the pages of the landing site are responsive for all devices
