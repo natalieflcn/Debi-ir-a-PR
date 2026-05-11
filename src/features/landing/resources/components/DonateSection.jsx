@@ -123,16 +123,13 @@ export default function DonateSection({ theme }) {
                   <SmallText>{organization.description}</SmallText>
                 </Row>
                 <Row $direction="horizontal" $gap="var(--gap-md)">
-                  <Link href={organization.donate}>
-                    <Button $size="medium" $variation="primary">
-                      Donate Now
-                    </Button>
-                  </Link>
-                  <Link href={organization.learnMore}>
-                    <Button $size="medium" $variation="treeLeaf">
-                      Learn More
-                    </Button>
-                  </Link>
+                  <Button $size="medium" $variation="primary">
+                    <Link href={organization.donate}>Donate Now</Link>
+                  </Button>
+
+                  <Button $size="medium" $variation="treeLeaf">
+                    <Link href={organization.learnMore}>Learn More</Link>
+                  </Button>
                 </Row>
               </Row>
             </StyledOrganization>

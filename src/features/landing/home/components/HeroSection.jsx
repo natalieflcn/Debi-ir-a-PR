@@ -1,48 +1,69 @@
 import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
+import Bold from "../../../../shared/components/typography/Bold";
+import Link from "../../../../shared/components/ui/Link";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
-
-const StyledHeroSectionBackground = styled.div`
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
-
-  background-image: url("src/assets/images/ui/PRBeachOverlay.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  min-height: 90vh;
-`;
-
-const StyledHeroSectionContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 5rem;
-`;
+import {
+  StyledHeroHeading,
+  StyledHeroLogin,
+  StyledHeroPeriod,
+  StyledHeroSectionBackground,
+  StyledHeroSectionContent,
+} from "./heroSection.styles";
 
 function HeroSection() {
   return (
     <StyledHeroSectionBackground>
       <StyledHeroSectionContent>
-        <Heading as="h2">Your next Puerto Rico adventure starts here.</Heading>
-        <Heading as="h2">Skip the resort.</Heading>
-        <Heading as="h2">Meet the island.</Heading>
-        <p>
-          We'll bring you to the spots Puerto Ricans actually love — the
-          restaurants, landmarks, beaches, and hidden corners that most visitors
-          never find.
-        </p>
-        <p>The beaches are just the beginning.</p>
-        <Row $direction="horizontal" $align="left">
-          <Button>Become an Explorer</Button>
-          <Button>How It Works</Button>
+        <Row $gap="var(--gap-md)">
+          <Heading as="h5">
+            YOuR NeXT PUeRTO RiCO aDVENTURE STaRTS HERe.
+          </Heading>
+          <Row>
+            <StyledHeroHeading
+              as="h2"
+              $color="var(--color-red-200)"
+              $shadowColor="var(--color-red-400)"
+            >
+              SKiP THe RESoRT<StyledHeroPeriod>.</StyledHeroPeriod>
+            </StyledHeroHeading>
+          </Row>
+          <Row>
+            <StyledHeroHeading
+              as="h2"
+              $color="var(--color-blue-100)"
+              $shadowColor="var(--color-blue-400)"
+            >
+              MeET THe iSLAND<StyledHeroPeriod>.</StyledHeroPeriod>
+            </StyledHeroHeading>
+          </Row>
         </Row>
-        <Row $direction="horizontal" $align="left">
-          <p>Already exploring?</p>
-          <p>Login</p>
+
+        <Row $gap="var(--gap-sm)">
+          <p>
+            We'll bring you to the spots Puerto Ricans actually love — the
+            restaurants, landmarks, beaches, and hidden gems that most visitors
+            never find.
+          </p>
+          <Bold $color="var(--color-light-100)">
+            The beaches are just the beginning.
+          </Bold>
+        </Row>
+
+        <Row>
+          <Row $direction="horizontal" $align="left" $gap="var(--gap-md)">
+            <Button $variation="secondary" $size="small">
+              Become an Explorer
+            </Button>
+            <Button $variation="primary" $size="small">
+              How It Works
+            </Button>
+          </Row>
+          <Row $direction="horizontal" $align="left" $gap="var(--gap-xs)">
+            <Bold $color="var(--color-light-100)">Already exploring?</Bold>
+            <StyledHeroLogin href="instagram.com">Login</StyledHeroLogin>
+          </Row>
         </Row>
       </StyledHeroSectionContent>
     </StyledHeroSectionBackground>

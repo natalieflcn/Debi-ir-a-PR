@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const sizes = {
-  small: css`
+  square: css`
     padding: 0.5rem;
     height: 2rem;
     width: 2rem;
@@ -9,8 +9,16 @@ const sizes = {
       $borderRadius || "var(--border-radius-sm)"};
     --shadow-offset: var(--box-shadow-offset-sm);
   `,
-  medium: css`
+  small: css`
     justify-content: center;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    border-radius: ${({ $borderRadius }) =>
+      $borderRadius || "var(--border-radius-md)"};
+    --shadow-offset: var(--box-shadow-offset-md);
+  `,
+  medium: css`
+    justify-items: center;
     flex-grow: 1;
     padding: 0.8rem 1rem;
     font-weight: 700;

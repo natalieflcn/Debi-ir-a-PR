@@ -36,7 +36,7 @@ const Panel = forwardRef(function Panel(
         <StyledButton
           onClick={onClick}
           $isOpen={isOpen}
-          $size="small"
+          $size="square"
           $variation={
             isOpen
               ? theme.panelActiveButtonVariation

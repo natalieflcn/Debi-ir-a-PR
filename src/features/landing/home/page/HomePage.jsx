@@ -9,6 +9,7 @@ const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-2xl);
+  font-weight: var(--font-weight-medium);
 `;
 
 function HomePage() {

@@ -92,6 +92,7 @@
   --line-height-3xl: 2.75rem;
 
   /* Row Gap, Card Gap */
+  --gap-xs: 0.25rem;
   --gap-sm: 0.5rem;
   --gap-md: 1rem;
   --gap-lg: 1.5rem;
