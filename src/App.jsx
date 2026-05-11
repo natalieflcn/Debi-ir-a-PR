@@ -13,7 +13,7 @@ import AdminDashboard from "./features/admin/dashboard/AdminDashboard";
 import ManageUsers from "./features/admin/userManagement/ManageUsers";
 import ManageHunts from "./features/admin/explorationManagement/ManageHunts";
 import AdminProfile from "./features/admin/profile/AdminProfile";
-import HomePage from "./features/landing/home/HomePage";
+import HomePage from "./features/landing/home/page/HomePage";
 import ExplorerDashboard from "./features/explorer/pages/ExplorerDashboard";
 import CreateHunt from "./features/admin/explorationManagement/CreateHunt";
 import PageNotFound from "./shared/components/feedback/PageNotFound";

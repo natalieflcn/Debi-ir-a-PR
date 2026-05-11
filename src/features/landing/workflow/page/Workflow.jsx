@@ -97,14 +97,15 @@ function Workflow() {
             $cardColor={`url("src/assets/images/ui/Sand.png")`}
             $align="center"
             $cardShadow="outsetMD"
+            $shadowColor="var(--color-light-0)"
           >
             <Row $gap="var(--gap-md)">
               <Heading
-                as="h4"
+                as="h3"
                 $color="var(--color-yellow-200)"
                 $shadowColor="var(--color-brown-400)"
               >
-                {section.CTA.description}
+                {section.CTA.description.toUpperCase()}
               </Heading>
               <Row $direction="horizontal" $gap="var(--gap-lg)">
                 <Button $size="medium" $variation="secondary">
