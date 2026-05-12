@@ -1,43 +1,66 @@
 import Heading from "../../../../shared/components/typography/Heading";
 import Card from "../../../../shared/components/layout/Card";
+import Image from "../../../../shared/components/ui/Image";
 import Row from "../../../../shared/components/layout/Row";
+import styled from "styled-components";
+import meetPuertoRicoData from "../data/meetPuertoRicoData";
+
+const StyledHowItWorksSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+`;
+
+const StyledMeetPuertoRicoCard = styled.div`
+  color: var(--color-dark-200);
+`;
+const MeetPuertoRicoCard = function ({ image, spotData }) {
+  return (
+    <StyledMeetPuertoRicoCard>
+      <Row>
+        <Image src={image} />
+        <Card $cardColor="var(--color-light-0)" $cardShadow="outsetSM">
+          {spotData}
+        </Card>
+      </Row>
+    </StyledMeetPuertoRicoCard>
+  );
+};
 
 function HowItWorksSection() {
   return (
-    <div>
-      <Heading as="h2">Explore the Real Puerto Rico</Heading>
-      <p>So many ways to meet Puerto Rico.</p>
-      <Row $direction="horizontal">
-        <Card>
-          Eat where Puerto Ricans eat – family-owned restaurants, roadside
-          lechoneras, third-generation fondas.
-        </Card>
-        <Card>
-          Walk through history in places that have outlasted everything on the
-          island.
-        </Card>
-        <Card>
-          Drink from the island – neighborhood barras, salsa joints, rum bars
-          with no sign
-        </Card>
+    <StyledHowItWorksSection>
+      <Row>
+        <Heading as="h2">EXPLoRE THe REaL PuERTO RiCO</Heading>
+
+        <p>We've curated so many ways for you to meet Puerto Rico.</p>
       </Row>
-      <Row $direction="horizontal">
-        <Card>
-          find the hidden beaches, the unmarked trails, the waterfalls that no
-          resort will ever take you to
-        </Card>
-        <Card>
-          Find the most exciting things to do on the island during your stay.
-          ride, paddle, dance cook, small experiences led by people who grew up
-          doing them
-        </Card>
-        <Card>...and so much more!</Card>
+
+      <Row $direction="horizontal" $gap="var(--gap-xl)">
+        {meetPuertoRicoData.slice(0, 3).map((spot) => (
+          <MeetPuertoRicoCard
+            key={spot.id}
+            image={spot.image}
+            spotData={spot.description}
+          />
+        ))}
       </Row>
+
+      <Row $direction="horizontal" $gap="var(--gap-xl)">
+        {meetPuertoRicoData.slice(3).map((spot) => (
+          <MeetPuertoRicoCard
+            key={spot.id}
+            image={spot.image}
+            spotData={spot.description}
+          />
+        ))}
+      </Row>
+
       <p>
         Every exploration is a curated journey through a corner of the island —
         built by people who know it best.
       </p>
-    </div>
+    </StyledHowItWorksSection>
   );
 }
 

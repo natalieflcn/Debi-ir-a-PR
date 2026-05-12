@@ -54,6 +54,18 @@
 - [x] Delete unused fonts
 - [x] Reassess current color palette, background overlays, and typography hierarchy
 - [x] Uninstall unused dependencies (i.e. React Markdown, Rehype Raw)
+
+- [x] Review current UX/UI design and assess what can be improved
+  - [x] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
+
+- [x] Add coding portfolio icon to footer
+
+- [~] Implement the rest of the landing site
+  - [x] 'How It Works' page
+  - [~] 'Home' page
+
+## Week: May 11 – May 15
+
 - [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 1
 - [ ] Use the IntersectionObsever API to implement scrolling to panels TODO3
 - [ ] Refactor current React Router implementation into /router folder TODO2
@@ -68,16 +80,13 @@
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
   - [ ] Paper crumbling sound when panel opens on About
 
-- [x] Review current UX/UI design and assess what can be improved
-  - [x] Fix styling on Panel/Sidebar headings to better emphasize the hierarchy between headings on page
-
-- [x] Add coding portfolio icon to footer
-
 - [ ] Implement the rest of the landing site
   - [x] 'How It Works' page
-  - [ ] 'Home' page
+  - [~] 'Home' page
 
 - [ ] Make sure the pages of the landing site are responsive for all devices
   - [ ] Large devices (desktops)
   - [ ] Medium devices (tablets)
   - [ ] Small devices (phones)
+
+- [ ] Refactor Workflow.jsx into sub-components

@@ -1,7 +1,5 @@
-import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
 import Bold from "../../../../shared/components/typography/Bold";
-import Link from "../../../../shared/components/ui/Link";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import {
