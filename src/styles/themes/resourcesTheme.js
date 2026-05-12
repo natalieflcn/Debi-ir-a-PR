@@ -1,3 +1,5 @@
+import leavesRustling from "../../assets/audios/LeavesRustling.mp3";
+
 export const ResourcesTheme = {
   headingColor: `var(--color-green-300)`,
   headingShadow: `var(--color-brown-400)`,
@@ -31,4 +33,6 @@ export const ResourcesTheme = {
 
   cardBackground: "url(/src/assets/images/ui/TreeInterior.png)",
   imageShadow: `var(--box-shadow-lg) var(--color-brown-400)`,
+
+  buttonAudio: leavesRustling,
 };

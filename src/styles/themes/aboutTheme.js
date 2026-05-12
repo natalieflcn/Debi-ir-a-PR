@@ -1,4 +1,5 @@
-// COLOR PALETTE
+import TearPaper from "../../assets/audios/TearPaper.mp3";
+
 export const AboutTheme = {
   headingColor: `var(--color-red-200)`,
   headingShadow: `var(--color-brown-400)`,
@@ -32,4 +33,6 @@ export const AboutTheme = {
 
   cardBackground: "url(/src/assets/images/ui/ScrapPaper.png)",
   imageShadow: `var(--box-shadow-lg) var(--color-brown-400)`,
+
+  buttonAudio: TearPaper,
 };

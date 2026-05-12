@@ -66,24 +66,24 @@
 
 ## Week: May 11 – May 15
 
-- [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 1
-- [ ] Use the IntersectionObsever API to implement scrolling to panels TODO3
-- [ ] Refactor current React Router implementation into /router folder TODO2
+- [ ] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 4
+- [ ] Use the IntersectionObsever API to implement scrolling to panels TODO 6
+- [ ] Refactor current React Router implementation into /router folder TODO 5
 
 - [~] Complete Resources Page
-  - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations' TODO 4
-  - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 5
-  - [ ] Leaves rustling when panel opens on Resources
+  - [ ] Incorporate use-sound hook to add sound of coquis when hovering over image in 'Donate to Puerto Rican Organizations' TODO 3
+  - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
+  - [ ] Leaves rustling when panel opens on Resources TODO 1
 
 - [~] Complete current About Page
   - [x] Draft mock-ups for panels
   - Note: Save 'Challenges and Solutions', 'Lessons Learned', and 'The Results' for the end of the project
-  - [ ] Paper crumbling sound when panel opens on About
+  - [ ] Paper crumbling sound when panel opens on About TODO 2
 
-- [ ] Implement the rest of the landing site
+- [x] Implement the rest of the landing site
   - [x] 'How It Works' page
     - [x] Refactor Workflow.jsx into sub-components
-  - [~] 'Home' page
+  - [x] 'Home' page
 
 - [ ] Make sure the pages of the landing site are responsive for all devices
   - [ ] Large devices (desktops)

@@ -11,6 +11,7 @@ import {
   StyledOrganization,
 } from "./donateSection.styles";
 import Card from "../../../../shared/components/layout/Card";
+import { useRef } from "react";
 
 const organizations = [
   {
@@ -61,16 +62,19 @@ const Introduction = function ({ theme }) {
           relax to the sound of coquis…
         </Row>
 
-        <SlicedPhotos>
-          <Image
-            src="src/assets/images/content/PuertoRicanParadise.jpg"
-            alt="A beach on Puerto Rico"
-          />
-          <Image
-            src="src/assets/images/content/PRBlackout.jpg"
-            alt="A blackout in Puerto Rico"
-          />
-        </SlicedPhotos>
+        <CoquiSlicedPhotos>
+          <SlicedPhotos>
+            <Image
+              src="src/assets/images/content/PuertoRicanParadise.jpg"
+              alt="A beach on Puerto Rico"
+            />
+            <Image
+              src="src/assets/images/content/PRBlackout.jpg"
+              alt="A blackout in Puerto Rico"
+            />
+          </SlicedPhotos>
+        </CoquiSlicedPhotos>
+
         <Row>
           …Many communities are still living with the long-lasting effects of
           Hurricane María and the relentless storms that have followed. Frequent
@@ -90,6 +94,27 @@ const Introduction = function ({ theme }) {
         </Row>
       </Card>
     </>
+  );
+};
+
+const CoquiSlicedPhotos = function ({ children }) {
+  const audioRef = useRef(new Audio("src/assets/audios/Coqui.mp3"));
+
+  const handleMouseEnter = () => {
+    audioRef.current.loop = true;
+    audioRef.current.play();
+  };
+
+  const handleMouseLeave = () => audioRef.current.pause();
+  audioRef.current.currentTime = 0;
+
+  return (
+    <SlicedPhotos
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </SlicedPhotos>
   );
 };
 

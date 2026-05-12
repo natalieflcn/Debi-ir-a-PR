@@ -10,6 +10,11 @@ import {
 import { forwardRef, useEffect, useRef } from "react";
 import Row from "./Row";
 
+function playPanelButtonAudio(buttonAudio) {
+  if (!buttonAudio) return;
+  new Audio(buttonAudio).play();
+}
+
 const Panel = forwardRef(function Panel(
   { heading, onClick, isOpen, theme, children, index },
   ref,
@@ -22,10 +27,11 @@ const Panel = forwardRef(function Panel(
     if (isOpen) {
       contentRef.current.style.maxHeight =
         contentRef.current.scrollHeight + "px";
+      if (theme.buttonAudio) playPanelButtonAudio(theme.buttonAudio);
     } else {
       contentRef.current.style.maxHeight = "0px";
     }
-  }, [isOpen]);
+  }, [isOpen, theme.buttonAudio]);
 
   return (
     <StyledPanel ref={ref} $index={index} $theme={theme}>

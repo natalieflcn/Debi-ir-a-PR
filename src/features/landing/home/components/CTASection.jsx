@@ -3,7 +3,6 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
-import Bold from "../../../../shared/components/typography/Bold";
 
 const StyledCTASection = styled.div`
   display: flex;
@@ -26,7 +25,7 @@ function CTASection() {
           Stop planning. Start discovering.
         </Heading>
         <Row $direction="horizontal" $gap="var(--gap-md)" $align="left">
-          <Button $size="small" $variation="darkBlue">
+          <Button $size="small" $variation="secondary">
             Become an Explorer
           </Button>
           <Button $size="small" $variation="yellow">
