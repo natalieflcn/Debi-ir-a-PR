@@ -37,7 +37,12 @@ const WorkFlowCard = function ({ section, index }) {
       </Row>
 
       {section.sections.map((step, stepIndex) => (
-        <WorkflowStep step={step} stepIndex={stepIndex} index={index} />
+        <WorkflowStep
+          step={step}
+          stepIndex={stepIndex}
+          index={index}
+          key={stepIndex}
+        />
       ))}
 
       <Card

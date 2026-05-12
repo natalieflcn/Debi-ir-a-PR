@@ -82,11 +82,10 @@
 
 - [ ] Implement the rest of the landing site
   - [x] 'How It Works' page
+    - [x] Refactor Workflow.jsx into sub-components
   - [~] 'Home' page
 
 - [ ] Make sure the pages of the landing site are responsive for all devices
   - [ ] Large devices (desktops)
   - [ ] Medium devices (tablets)
   - [ ] Small devices (phones)
-
-- [ ] Refactor Workflow.jsx into sub-components

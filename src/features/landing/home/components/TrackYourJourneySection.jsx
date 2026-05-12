@@ -1,25 +1,37 @@
+import styled from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
+import Image from "../../../../shared/components/ui/Image";
+
+const StyledTrackYourJourneySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+`;
 
 function TrackYourJourneySection() {
   return (
-    <div>
+    <StyledTrackYourJourneySection>
       <Row $direction="horizontal">
         <Row>
-          <Heading as="h2">Track Your Journey</Heading>
-          <p>Every visit counts.</p>
-          <p>Track every step.</p>
-          <p>Earn the badges.</p>
+          <Heading as="h2">TRacK YOuR JoURNEY</Heading>
+          <Row $gap="var(--gap-xs)">
+            <Heading as="h5">Every visit counts.</Heading>
+            <Heading as="h5">Track every step.</Heading>
+            <Heading as="h5">Earn the badges.</Heading>
+          </Row>
           <p>
             Check in at each location, watch your progress, and earn a badge
             when you complete an exploration. Show off your collection on your
             profile and see how much of the island you've truly experienced.
           </p>
         </Row>
-        <Row>hiiiiiiiiiiiiii</Row>
+        <Row>
+          <Image src="src/assets/images/content/TEMP.png"></Image>
+        </Row>
       </Row>
-      <p>32 of 76 spots explored</p>
-    </div>
+      <Heading as="h6">32 of 76 spots explored</Heading>
+    </StyledTrackYourJourneySection>
   );
 }
 

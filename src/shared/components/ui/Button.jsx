@@ -78,6 +78,16 @@ const variations = {
       box-shadow: var(--box-shadow-offset-md) var(--color-red-300);
     }
   `,
+  yellow: css`
+    color: var(--color-light-0);
+    background-color: var(--color-yellow-200);
+    box-shadow: var(--box-shadow-offset-md) var(--color-yellow-400);
+
+    &:hover {
+      background-color: var(--color-yellow-100);
+      box-shadow: var(--box-shadow-offset-md) var(--color-yellow-300);
+    }
+  `,
   treeBark: css`
     color: var(--color-light-0);
     background: var(--color-brown-300);

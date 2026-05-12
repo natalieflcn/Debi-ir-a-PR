@@ -6,7 +6,7 @@ function Workflow() {
   return (
     <Row $gap="var(--gap-xl)">
       {workflowData.map((section, index) => (
-        <WorkFlowCard section={section} index={index} />
+        <WorkFlowCard section={section} index={index} key={index} />
       ))}
     </Row>
   );
