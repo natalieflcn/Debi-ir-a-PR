@@ -8,21 +8,21 @@ import About from "./features/landing/about/page/About";
 import CreateAccount from "./features/auth/components/CreateAccount";
 import Login from "./features/auth/components/Login";
 import ExplorerProfile from "./features/explorer/pages/ExplorerProfile";
-import Memories from "./features/explorer/pages/Memories";
+
 import AdminDashboard from "./features/admin/dashboard/AdminDashboard";
 import ManageUsers from "./features/admin/userManagement/ManageUsers";
-import ManageHunts from "./features/admin/explorationManagement/ManageHunts";
+import ManageExplorations from "./features/admin/explorationManagement/ManageExplorations";
 import AdminProfile from "./features/admin/profile/AdminProfile";
 import HomePage from "./features/landing/home/page/HomePage";
 import ExplorerDashboard from "./features/explorer/pages/ExplorerDashboard";
-import CreateHunt from "./features/admin/explorationManagement/CreateHunt";
+import CreateExploration from "./features/admin/explorationManagement/CreateExploration";
 import PageNotFound from "./shared/components/feedback/PageNotFound";
-import HuntDetails from "./features/explorer/pages/HuntDetails";
-import HuntItemDetails from "./features/explorer/pages/HuntItemDetails";
-import MemoryDetail from "./features/explorer/pages/MemoryDetail";
+import ExplorationDetails from "./features/explorer/pages/ExplorationDetails";
+import ExplorationItemDetails from "./features/explorer/pages/ExplorationItemDetails";
+
 import UserDetails from "./features/admin/userManagement/UserDetails";
-import EditHuntDetails from "./features/admin/explorationManagement/EditHuntDetails";
-import EditHuntItemDetails from "./features/admin/explorationManagement/EditHuntItemDetails";
+import EditExplorationDetails from "./features/admin/explorationManagement/EditExplorationDetails";
+import EditExplorationItemDetails from "./features/admin/explorationManagement/EditExplorationItemDetails";
 import GlobalStyles from "./styles/GlobalStyles";
 import Resources from "./features/landing/resources/page/Resources";
 
@@ -43,27 +43,31 @@ function App() {
 
           <Route element={<ExplorerLayout />}>
             <Route path="dashboard" element={<ExplorerDashboard />} />
-            <Route path="hunt/:huntId" element={<HuntDetails />} />
             <Route
-              path="hunt/:huntId/:huntItemId"
-              element={<HuntItemDetails />}
+              path="exploration/:explorationId"
+              element={<ExplorationDetails />}
+            />
+            <Route
+              path="exploration/:explorationId/:explorationItemId"
+              element={<ExplorationItemDetails />}
             />
             <Route path="profile" element={<ExplorerProfile />} />
-            <Route path="memories" element={<Memories />} />
-            <Route path="memories/:huntId" element={<MemoryDetail />} />
           </Route>
 
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="users" element={<ManageUsers />} />
             <Route path="user/:userId" element={<UserDetails />} />
-            <Route path="hunts" element={<ManageHunts />} />
-            <Route path="hunt/:huntId" element={<EditHuntDetails />} />
+            <Route path="explorations" element={<ManageExplorations />} />
             <Route
-              path="hunt/:huntId/huntItemId"
-              element={<EditHuntItemDetails />}
+              path="exploration/:explorationId"
+              element={<EditExplorationDetails />}
             />
-            <Route path="create" element={<CreateHunt />} />
+            <Route
+              path="exploration/:explorationId/explorationItemId"
+              element={<EditExplorationItemDetails />}
+            />
+            <Route path="create" element={<CreateExploration />} />
             <Route path="profile" element={<AdminProfile />} />
           </Route>
 

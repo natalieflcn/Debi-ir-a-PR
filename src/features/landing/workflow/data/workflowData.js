@@ -2,7 +2,7 @@ const workflowData = [
   {
     id: "for-explorers",
     heading: "For Explorers",
-    cardColor: `url("src/assets/images/ui/BlueWaves.png")`,
+    cardColor: `url("src/assets/images/ui/BlueWaves.gif")`,
     tagline: "Discover Puerto Rico beyond the Expedia tours",
     description:
       "As an Explorer, you'll uncover hidden gems, support local businesses, and earn badges as you go.",
@@ -57,7 +57,7 @@ const workflowData = [
   {
     id: "for-ambassadors",
     heading: "For Ambassadors",
-    cardColor: `url("src/assets/images/ui/RedSand.png")`,
+    cardColor: `url("src/assets/images/ui/RedSand.gif")`,
     tagline: "Passionate about Puerto Rico?",
     description: [
       "As an Ambassador, you'll shape how the world experiences the island — putting your favorite spots on the map for thousands of Explorers.",
