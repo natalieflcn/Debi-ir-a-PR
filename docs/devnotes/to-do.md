@@ -66,7 +66,7 @@
 
 ## Week: May 11 – May 15
 
-- [x] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin) TODO 1
+- [x] Rename files to reflect new user-role names and platform definitions (Explorers, Explorations, Ambassadors, Admin)
 - [ ] Use the IntersectionObsever API to implement scrolling to panels TODO 3
 - [ ] Refactor current React Router implementation into /router folder TODO 2
 
