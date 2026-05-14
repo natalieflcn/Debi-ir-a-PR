@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledLogo = styled.h1`
-  margin-right: 6rem;
+  /* margin-right: 5rem; */
   font-family: DtMF;
   letter-spacing: var(--letter-spacing-dtmf-tight);
   transition: all 0.25s;

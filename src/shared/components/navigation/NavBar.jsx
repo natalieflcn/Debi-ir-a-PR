@@ -19,7 +19,8 @@ const StyledNavBar = styled.nav`
   /* position: sticky; */
   /* top: 0; */
   /* z-index: 2; */
-  justify-content: space-around;
+  /* justify-items: space-between; */
+  gap: 4rem;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;

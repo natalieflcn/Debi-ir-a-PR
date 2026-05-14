@@ -21,6 +21,7 @@ const PublicRoutes = (
     <Route path="how-it-works" element={<Workflow />} />
     <Route path="about" element={<About />} />
     <Route path="resources" element={<Resources />} />
+
     <Route path="create-account" element={<CreateAccount />} />
     <Route path="login" element={<Login />} />
   </>

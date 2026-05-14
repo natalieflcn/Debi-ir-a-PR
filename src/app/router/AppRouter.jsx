@@ -8,6 +8,7 @@ import ExplorerRoutes from "./ExplorerRoutes";
 import AdminRoutes from "./AdminRoutes";
 import { Suspense } from "react";
 import SpinnerMini from "../../shared/components/ui/SpinnerMini";
+import AmbassadorRoutes from "./AmbassadorRoutes";
 
 function AppRouter() {
   return (
@@ -20,7 +21,9 @@ function AppRouter() {
         {/* {Add Protected Route wrapping around this later} */}
         <Route element={<ExplorerLayout />}>{ExplorerRoutes}</Route>
 
-        {/* {<Route path="ambassador" element={<AmbassadorLayout />}></Route>} */}
+        <Route path="ambassador" element={<AdminLayout />}>
+          {AmbassadorRoutes}
+        </Route>
 
         {/* {Add Protected Route wrapping around this later} */}
         <Route path="admin" element={<AdminLayout />}>

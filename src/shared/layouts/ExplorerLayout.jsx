@@ -4,7 +4,7 @@ import Footer from "../components/layout/Footer";
 
 const menuItems = [
   { label: "Dashboard", link: "/dashboard" },
-  { label: "Memories", link: "/memories" },
+  { label: "Explorations", link: "/explorations" },
   { label: "Profile", link: "/profile" },
 ];
 
