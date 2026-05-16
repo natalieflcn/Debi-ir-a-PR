@@ -10,7 +10,6 @@ export const StyledPanel = styled.div`
   padding: 1.75rem;
   border-radius: var(--border-radius-lg);
   transition: all 0.3s ease-in;
-  scroll-margin-top: 9.4rem;
 
   /* background: ${({ $theme }) => $theme.panelBackground};
   background-repeat: ${({ $isOpen }) => $isOpen && `round`}; 
@@ -47,6 +46,7 @@ export const StyledPanel = styled.div`
 `;
 
 export const StyledHeading = styled(Heading)`
+  scroll-margin-top: 10.3rem;
   padding: 0 0.5rem 0 0.5rem;
   font-size: var(--font-size-xl);
   text-transform: uppercase;

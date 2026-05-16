@@ -20,23 +20,41 @@ const Panel = forwardRef(function Panel(
   ref,
 ) {
   const contentRef = useRef();
+  const headingRef = useRef();
 
+  // Adds height to the panels based on their content and plays audio gimmick when panel opens
   useEffect(() => {
     if (!contentRef.current) return;
 
     if (isOpen) {
       contentRef.current.style.maxHeight =
         contentRef.current.scrollHeight + "px";
+
       if (theme.buttonAudio) playPanelButtonAudio(theme.buttonAudio);
     } else {
       contentRef.current.style.maxHeight = "0px";
     }
   }, [isOpen, theme.buttonAudio]);
 
+  // Scrolls to the top of the panel when content unwinds
+  useEffect(() => {
+    if (!isOpen || !headingRef.current) return;
+
+    // small delay lets the previous panel close first if one was open
+    const timeout = setTimeout(() => {
+      headingRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 400);
+
+    return () => clearTimeout(timeout);
+  }, [isOpen]);
+
   return (
     <StyledPanel ref={ref} $index={index} $theme={theme}>
       <Row $direction="horizontal">
-        <StyledHeading as="h2" $isOpen={isOpen} $theme={theme}>
+        <StyledHeading as="h2" $isOpen={isOpen} $theme={theme} ref={headingRef}>
           {heading}
         </StyledHeading>
         <StyledButton

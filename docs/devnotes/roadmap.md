@@ -44,10 +44,10 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 - [x] App structure & setup
 - [~] Create the landing page for the platfotm
-- [ ] Build core pages (UI only with static data)
-- [ ] Implement routing with React Router
-- [ ] Develop a reusable component system
-- [ ] Use styled components to build a responsive design influenced by Puerto Rican aesthetics
+- [~] Build core pages (UI only with static data)
+- [x] Implement routing with React Router
+- [~] Develop a reusable component system
+- [~] Use styled components to build a responsive design influenced by Puerto Rican aesthetics
 
 ### Phase 2: Backend Foundation (Node + Express)
 

@@ -39,27 +39,16 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
   useEffect(
     function () {
       if (!isOpen) return;
-      // Scrolls to panel that is opened from the sidebar
 
-      if (panelRefs.current[isOpen]) {
-        setTimeout(() => {
-          panelRefs.current[isOpen].scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }, 400);
-
-        // Scrolls to heading that is triggered from the sidebar
-      } else if (headingRefs.current[isOpen]) {
-        console.log("working");
+      // only handles scrolling to section headings triggered from sidebar
+      if (headingRefs.current[isOpen]) {
         headingRefs.current[isOpen].scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
       }
+      // panel scroll is now handled by Panel's own IntersectionObserver
     },
-    // smoothScrollTo(panelRefs.current[isOpen], 80, 1000); -- implement smooth scrolling in future
-
     [isOpen],
   );
 
