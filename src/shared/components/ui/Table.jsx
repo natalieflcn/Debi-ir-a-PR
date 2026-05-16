@@ -69,7 +69,7 @@ function Table({ columns, rows, $theme = defaultTheme }) {
           <tr key={i}>
             {columns.map((col) => (
               <StyledTableData key={col.id} $theme={$theme}>
-                {row[col.id]}
+                {col.render ? col.render(row) : row[col.id]}
               </StyledTableData>
             ))}
           </tr>

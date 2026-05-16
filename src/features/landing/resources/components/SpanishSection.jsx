@@ -2,12 +2,25 @@ import Row from "../../../../shared/components/layout/Row";
 import Table from "../../../../shared/components/ui/Table";
 import Card from "../../../../shared/components/layout/Card";
 import styled from "styled-components";
+import { IoVolumeHigh } from "react-icons/io5";
+
+function playSpanishAudio(spanishAudio) {
+  new Audio(spanishAudio).play();
+}
 
 const spanishVocab = {
   columns: [
     {
       id: "spanish",
       heading: "Spanish",
+      render: (row) => (
+        <SpanishCell>
+          <AudioButton onClick={() => playSpanishAudio(row.audio)}>
+            <IoVolumeHigh />
+          </AudioButton>
+          <span>{row.spanish}</span>
+        </SpanishCell>
+      ),
     },
     {
       id: "english",
@@ -15,16 +28,28 @@ const spanishVocab = {
     },
   ],
   rows: [
-    { spanish: "Qué es la qué hay?", english: "What's up?" },
-    { spanish: "Buen provecho!", english: "Enjoy your meal!" },
-    { spanish: "Vamos a chinchorrear!", english: "Let's go bar hopping!" },
-    { spanish: "Diantre!", english: "Damn!" },
-    { spanish: "En verdad?", english: "For real?" },
-    { spanish: "Bonchinche", english: "Gossip" },
-    { spanish: "Eso es embuste!", english: "That's a lie!" },
-    { spanish: "Vamos a janguear!", english: "Let's hang out!" },
-    { spanish: "Hay mucho tapón.", english: "There's a lot of traffic." },
-    { spanish: "Nos vemos ahorita!", english: "We'll see each other soon!" },
+    { spanish: "Qué es la qué hay?", english: "What's up?", audio: "" },
+    { spanish: "Buen provecho!", english: "Enjoy your meal!", audio: "" },
+    {
+      spanish: "Vamos a chinchorrear!",
+      english: "Let's go bar hopping!",
+      audio: "",
+    },
+    { spanish: "Diantre!", english: "Damn!", audio: "" },
+    { spanish: "En verdad?", english: "For real?", audio: "" },
+    { spanish: "Bonchinche", english: "Gossip", audio: "" },
+    { spanish: "Eso es embuste!", english: "That's a lie!", audio: "" },
+    { spanish: "Vamos a janguear!", english: "Let's hang out!", audio: "" },
+    {
+      spanish: "Hay mucho tapón.",
+      english: "There's a lot of traffic.",
+      audio: "",
+    },
+    {
+      spanish: "Nos vemos ahorita!",
+      english: "We'll see each other soon!",
+      audio: "",
+    },
   ],
 };
 
@@ -46,6 +71,29 @@ const StyledSpanishSection = styled.div`
   gap: 1rem;
 `;
 
+const SpanishCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+const AudioButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-brown-200);
+  font-size: 1.2rem;
+  display: flex;
+  justify-self: flex-start;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-red-200);
+    transform: scale(1.1);
+  }
+`;
+
 export default function SpanishSection({ theme }) {
   return (
     <StyledSpanishSection>
@@ -59,7 +107,7 @@ export default function SpanishSection({ theme }) {
         columns={spanishVocab.columns}
         rows={spanishVocab.rows}
         $theme={spanishTableTheme}
-      ></Table>
+      />
       <Card $cardColor={theme.cardBackground} $cardShadow="insetLG">
         <Row>
           These are common words and phrases that you’ll hear in Puerto Rico or
