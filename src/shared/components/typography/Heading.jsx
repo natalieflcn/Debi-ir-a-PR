@@ -13,8 +13,8 @@ const variants = {
         text-shadow: var(--text-shadow-offset-md) ${$shadowColor};
       `}
 
-    @media (max-width: 798px) {
-      font-size: 1.7rem;
+    @media (max-width: 800px) {
+      font-size: var(--font-size-xl);
     }
   `,
 
@@ -23,8 +23,8 @@ const variants = {
     font-size: var(--font-size-xl);
     line-height: var(--line-height-lg);
 
-    @media (max-width: 798px) {
-      font-size: 1.7rem;
+    @media (max-width: 800px) {
+      font-size: var(--font-size-l);
     }
   `,
 
@@ -34,8 +34,8 @@ const variants = {
     line-height: var(--line-height-lg);
     text-transform: uppercase;
 
-    @media (max-width: 798px) {
-      font-size: 1.7rem;
+    @media (max-width: 800) {
+      font-size: var(--font-size-m);
     }
   `,
 
@@ -47,8 +47,8 @@ const variants = {
     text-transform: uppercase;
     line-height: var(--line-height-lg);
 
-    @media (max-width: 798px) {
-      font-size: 3rem;
+    @media (max-width: 800) {
+      font-size: var(--font-size-m);
     }
   `,
 
@@ -58,8 +58,8 @@ const variants = {
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
 
-    @media (max-width: 798px) {
-      font-size: 1.7rem;
+    @media (max-width: 800) {
+      font-size: var(--font-size-s);
     }
   `,
 };

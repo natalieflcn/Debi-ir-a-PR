@@ -11,8 +11,9 @@ const StyledMainLayout = styled.div`
   z-index: 1;
   max-width: 1200px;
 
-  @media (max-width: 798px) {
-    /* margin: 1rem auto; */
+  @media (max-width: 800px) {
+    padding: 0;
+    /* margin: 0 auto; */
   }
 `;
 

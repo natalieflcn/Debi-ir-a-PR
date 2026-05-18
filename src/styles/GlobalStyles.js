@@ -92,13 +92,22 @@ body {
 }
 
 body::before{
-  content: "";
+  /* content: "";
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
   opacity: 0.9; 
+  background-image: url('src/assets/images/ui/BlueOverlay.png'); */
+
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
   background-image: url('src/assets/images/ui/BlueOverlay.png');
+  background-size: cover;
+  background-position: center;
 } 
 
 .yt-lite {
@@ -108,6 +117,9 @@ body::before{
 }
 
 
+* {
+  outline: 1px solid red;
+}
 
 `;
 

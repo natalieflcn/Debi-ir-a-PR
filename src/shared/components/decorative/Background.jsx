@@ -11,6 +11,7 @@ const StyledBackground = styled.div`
 
   @media (max-width: 798px) {
     z-index: 0;
+    width: 100%;
   }
 `;
 

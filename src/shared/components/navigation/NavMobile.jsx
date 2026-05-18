@@ -13,6 +13,7 @@ const StyledNavMobile = styled.ul`
   font-weight: 500;
 
   @media (min-width: 798px) {
+    width: 100%;
     display: none;
   }
 `;

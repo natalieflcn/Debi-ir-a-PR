@@ -7,7 +7,7 @@ import {
   StyledHeading,
   StyledPanel,
 } from "./panel.styles";
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import Row from "./Row";
 
 function playPanelButtonAudio(buttonAudio) {
@@ -19,12 +19,21 @@ const Panel = forwardRef(function Panel(
   { heading, onClick, isOpen, theme, children, index },
   ref,
 ) {
+  const [screenWidth, setScreenWidth] = useState(window.screen.width);
+
+  const resizePanelHeight = () => {
+    setScreenWidth(window.screen.width);
+    console.log(window.screen.width);
+  };
+
   const contentRef = useRef();
   const headingRef = useRef();
 
   // Adds height to the panels based on their content and plays audio gimmick when panel opens
   useEffect(() => {
     if (!contentRef.current) return;
+
+    window.addEventListener("resize", resizePanelHeight);
 
     if (isOpen) {
       contentRef.current.style.maxHeight =
@@ -34,7 +43,7 @@ const Panel = forwardRef(function Panel(
     } else {
       contentRef.current.style.maxHeight = "0px";
     }
-  }, [isOpen, theme.buttonAudio]);
+  }, [isOpen, theme.buttonAudio, screenWidth]);
 
   // Scrolls to the top of the panel when content unwinds
   useEffect(() => {

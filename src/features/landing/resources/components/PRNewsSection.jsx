@@ -10,9 +10,8 @@ const StyledPRNewsSection = styled.div`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 798px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
-    gap: 1rem;
 
     img {
       width: 100%;

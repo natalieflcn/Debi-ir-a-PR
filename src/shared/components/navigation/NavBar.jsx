@@ -29,9 +29,12 @@ const StyledNavBar = styled.nav`
   /* background-color: var(--color-blue-200); */
   /* background-image: url(${BlueOverlay}); */
 
-  @media (max-width: 798px) {
+  @media (max-width: 800px) {
     position: relative;
-    justify-content: space-between;
+    max-width: 400px;
+    justify-content: space-around;
+    padding: 0;
+    gap: 0;
   }
 `;
 

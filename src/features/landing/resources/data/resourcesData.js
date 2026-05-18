@@ -31,7 +31,7 @@ const resourcesData = [
     sections: [
       {
         id: "donate",
-        heading: "Donate to Puerto Rican Organizations",
+        heading: "Donate to Puerto Rican Groups",
         link: "/resources",
         content: DonateSection,
       },

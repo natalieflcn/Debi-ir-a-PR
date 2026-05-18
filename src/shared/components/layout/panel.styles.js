@@ -38,11 +38,6 @@ export const StyledPanel = styled.div`
     text-shadow: ${({ $theme }) =>
       `var(--text-shadow-offset-md) ${$theme.panelHeadingHoverShadow}`};
   }
-
-  @media (max-width: 798px) {
-    width: 99%;
-    padding: 1.5rem;
-  }
 `;
 
 export const StyledHeading = styled(Heading)`
@@ -57,6 +52,10 @@ export const StyledHeading = styled(Heading)`
     ${({ $isOpen, $theme }) =>
       $isOpen ? $theme.panelHeadingHoverShadow : $theme.panelHeadingShadow};
   transition: all 0.4s;
+
+  @media (max-width: 800px) {
+    font-size: var(--font-size-lg);
+  }
 `;
 
 export const StyledButton = styled(Button)`

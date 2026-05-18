@@ -20,13 +20,18 @@ const StyledFooter = styled.footer`
   }
 
   @media (max-width: 798px) {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     letter-spacing: 0.05rem;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding-top: 1.25rem;
 
     span {
-      margin-left: 0.1rem;
-      font-size: 0.6rem;
+      font-size: var(--font-size-xs);
+      margin-left: 0.3rem;
     }
+
+    flex-direction: column;
   }
 `;
 
@@ -40,8 +45,7 @@ const StyledGitHub = styled(BiLogoGithub)`
     color: var(--color-blue-100);
   }
 
-  @media (max-width: 798px) {
-    margin-right: 0.5rem;
+  @media (max-width: 800px) {
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -57,7 +61,7 @@ const StyledLinkedIn = styled(BiLogoLinkedin)`
     color: var(--color-blue-100);
   }
 
-  @media (max-width: 798px) {
+  @media (max-width: 800px) {
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -72,7 +76,7 @@ const StyledPortfolio = styled(SlGlobe)`
     color: var(--color-blue-100);
   }
 
-  @media (max-width: 798px) {
+  @media (max-width: 800px) {
     width: 1.2rem;
     height: 1.2rem;
   }

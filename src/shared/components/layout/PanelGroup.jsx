@@ -9,6 +9,12 @@ const StyledPanelGroup = styled.div`
   flex-grow: 1;
   gap: 1rem;
   font-size: var(--font-size-sm);
+
+  @media (max-width: 800px) {
+    width: 100%;
+    align-items: center;
+    /* width: 100%; */
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -27,7 +33,8 @@ const StyledHeading = styled(Heading)`
   }
 
   @media (max-width: 798px) {
-    font-size: 1.8rem;
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-lg);
   }
 `;
 
