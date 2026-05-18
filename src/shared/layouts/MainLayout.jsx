@@ -7,7 +7,7 @@ import styled from "styled-components";
 const StyledMainLayout = styled.div`
   position: relative;
   margin: 0 auto;
-  padding: 1rem 2rem 2rem;
+  /* padding: 1rem 2rem 2rem; ?? */
   z-index: 1;
   max-width: 1200px;
 

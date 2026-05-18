@@ -20,7 +20,7 @@ const StyledSidebar = styled.aside`
     ${({ $theme }) => $theme.sidebarShadow};
   border-radius: var(--border-radius-lg);
 
-  @media (max-width: 798px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;

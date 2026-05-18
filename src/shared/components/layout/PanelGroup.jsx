@@ -6,7 +6,7 @@ import Heading from "../typography/Heading";
 const StyledPanelGroup = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   gap: 1rem;
   font-size: var(--font-size-sm);
 
@@ -34,9 +34,19 @@ const StyledHeading = styled(Heading)`
     margin-top: 1rem;
   }
 
-  @media (max-width: 798px) {
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-2xl);
+  }
+
+  @media (max-width: 800px) {
+    text-align: center;
+    max-width: 90%;
+  }
+
+  @media (max-width: 600px) {
     font-size: var(--font-size-xl);
-    line-height: var(--line-height-lg);
+    line-height: var(--line-height-xl);
   }
 `;
 

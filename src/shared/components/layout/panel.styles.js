@@ -56,10 +56,15 @@ export const StyledHeading = styled(Heading)`
     ${({ $isOpen, $theme }) =>
       $isOpen ? $theme.panelHeadingHoverShadow : $theme.panelHeadingShadow};
   transition: all 0.4s;
+  line-height: var(--line-height-lg);
 
-  @media (max-width: 800px) {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-md);
+  @media (max-width: 1000px) {
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 450px) {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-sm);
   }
 `;
 

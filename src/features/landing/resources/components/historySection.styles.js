@@ -31,8 +31,24 @@ export const StyledBookSection = styled.figure`
     box-shadow: var(--box-shadow-offset-md) var(--color-red-200);
   }
 
-  @media (max-width: 798px) {
+  @media (max-width: 900px) {
     margin-bottom: 1rem;
+
+    img {
+      width: 7rem;
+      height: 12rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin-bottom: 1rem;
+
+    div {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
 
     img {
       width: 7rem;

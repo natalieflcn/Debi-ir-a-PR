@@ -9,6 +9,10 @@ const StyledResources = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+  }
 `;
 
 function Resources() {
