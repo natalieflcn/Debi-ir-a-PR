@@ -89,12 +89,12 @@
 - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 2
 - [ ] Make sure the pages of the landing site are responsive for all devices TODO 3
   - [x] Resources Page
-  - [ ] About Page
-  - [ ] How It Works Page
+  - [x] About Page
+  - [~] How It Works Page
   - [ ] Home Page
   - [ ] NOTE: Mobile navigation bar not responding well
 
-- [ ] NOTE: Turn off audio for panels while window is resizing
+- [x] NOTE: Turn off audio for panels while window is resizing
 
 - [ ] Create Explorer core static pages
 - [ ] Create Ambassador core static pages

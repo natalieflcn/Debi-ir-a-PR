@@ -37,12 +37,16 @@ const Panel = forwardRef(function Panel(
     if (isOpen) {
       contentRef.current.style.maxHeight =
         contentRef.current.scrollHeight + "px";
-
-      if (theme.buttonAudio) playPanelButtonAudio(theme.buttonAudio);
     } else {
       contentRef.current.style.maxHeight = "0px";
     }
-  }, [isOpen, theme.buttonAudio, screenWidth]);
+  }, [isOpen, screenWidth]);
+
+  useEffect(() => {
+    if (!contentRef.current || !isOpen) return;
+
+    if (theme.buttonAudio) playPanelButtonAudio(theme.buttonAudio);
+  }, [isOpen, theme.buttonAudio]);
 
   // Scrolls to the top of the panel when content unwinds
   useEffect(() => {
