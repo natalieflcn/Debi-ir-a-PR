@@ -1,12 +1,33 @@
+import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import WorkflowStep from "./WorkflowStep";
 
+const StyledWorkFlowCard = styled(Card)`
+  width: 90%;
+  display: flex;
+  justify-items: center;
+
+  @media (max-width: 500px) {
+    h2,
+    h3,
+    h5 {
+      text-align: center;
+    }
+  }
+`;
+
+const StyledCTA = styled(Card)`
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+`;
+
 const WorkFlowCard = function ({ section, index }) {
   return (
-    <Card
+    <StyledWorkFlowCard
       key={section.id}
       $gap="var(--gap-md)"
       $cardShadow="insetLG"
@@ -45,13 +66,13 @@ const WorkFlowCard = function ({ section, index }) {
         />
       ))}
 
-      <Card
+      <StyledCTA
         $cardColor={`url("src/assets/images/ui/Sand.png")`}
         $align="center"
         $cardShadow="outsetMD"
         $shadowColor="var(--color-light-0)"
       >
-        <Row $gap="var(--gap-md)">
+        <Row $gap="var(--gap-md)" $align="center">
           <Heading
             as="h3"
             $color="var(--color-yellow-200)"
@@ -68,8 +89,8 @@ const WorkFlowCard = function ({ section, index }) {
             </Button>
           </Row>
         </Row>
-      </Card>
-    </Card>
+      </StyledCTA>
+    </StyledWorkFlowCard>
   );
 };
 

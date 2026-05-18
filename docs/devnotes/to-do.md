@@ -90,7 +90,7 @@
 - [ ] Make sure the pages of the landing site are responsive for all devices TODO 3
   - [x] Resources Page
   - [x] About Page
-  - [~] How It Works Page
+  - [x] How It Works Page
   - [ ] Home Page
   - [ ] NOTE: Mobile navigation bar not responding well
 

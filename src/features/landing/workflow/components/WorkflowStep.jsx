@@ -10,6 +10,12 @@ const StyledStep = styled.div`
   flex-direction: ${({ $index }) => ($index % 2 === 0 ? "row" : "row-reverse")};
   gap: var(--gap-lg);
   margin-top: 1rem;
+
+  @media (max-width: 900px) {
+    flex-direction: ${({ $index }) =>
+      $index % 2 === 0 ? "column" : "column-reverse"};
+    align-items: center;
+  }
 `;
 
 const StyledCard = styled(Card)`
@@ -21,6 +27,10 @@ const StyledCard = styled(Card)`
   h2 {
     width: 3%;
     margin-right: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    width: 90%;
   }
 `;
 

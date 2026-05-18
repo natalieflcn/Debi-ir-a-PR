@@ -9,6 +9,7 @@ const variants = {
   vertical: css`
     flex-direction: column;
     gap: ${({ $gap }) => $gap || `1rem`};
+    align-items: ${({ $align }) => $align || "space-between"};
   `,
 };
 

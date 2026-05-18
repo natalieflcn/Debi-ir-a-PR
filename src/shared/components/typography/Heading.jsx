@@ -24,7 +24,7 @@ const variants = {
     line-height: var(--line-height-lg);
 
     @media (max-width: 800px) {
-      font-size: var(--font-size-l);
+      font-size: var(--font-size-lg);
     }
   `,
 
@@ -34,8 +34,8 @@ const variants = {
     line-height: var(--line-height-lg);
     text-transform: uppercase;
 
-    @media (max-width: 800) {
-      font-size: var(--font-size-m);
+    @media (max-width: 800px) {
+      font-size: var(--font-size-md);
     }
   `,
 
@@ -47,8 +47,8 @@ const variants = {
     text-transform: uppercase;
     line-height: var(--line-height-lg);
 
-    @media (max-width: 800) {
-      font-size: var(--font-size-m);
+    @media (max-width: 800px) {
+      font-size: var(--font-size-md);
     }
   `,
 
@@ -59,7 +59,7 @@ const variants = {
     line-height: var(--line-height-md);
 
     @media (max-width: 800) {
-      font-size: var(--font-size-s);
+      font-size: var(--font-size-sm);
     }
   `,
 };
