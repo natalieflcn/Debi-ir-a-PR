@@ -27,6 +27,25 @@ const sectionItems = [
 
 const StyledMissionCard = styled(Card)`
   flex-direction: ${({ $index }) => ($index % 2 === 0 ? "row" : "row-reverse")};
+
+  @media (max-width: 600px) {
+    flex-direction: ${({ $index }) =>
+      $index % 2 === 0 ? "column" : "column-reverse"};
+
+    img {
+      width: 100%;
+    }
+  }
+`;
+
+const StyledHeading = styled(Heading)`
+  @media (max-width: 1000px) {
+    font-size: var(--font-size-md);
+  }
+
+  @media (max-width: 450px) {
+    font-size: var(--font-size-sm);
+  }
 `;
 
 export default function MissionSection() {
@@ -34,9 +53,9 @@ export default function MissionSection() {
     <Row>
       {sectionItems.map((item, index) => (
         <Row key={item.id} $gap="var(--gap-sm)">
-          <Heading as="h4" $color="var(--color-red-300)">
+          <StyledHeading as="h4" $color="var(--color-red-300)">
             {item.heading}
-          </Heading>
+          </StyledHeading>
           <StyledMissionCard
             $cardColor="var(--color-light-0)"
             $index={index}

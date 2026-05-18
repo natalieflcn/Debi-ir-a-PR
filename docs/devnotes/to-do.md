@@ -83,14 +83,18 @@
     - [x] Refactor Workflow.jsx into sub-components
   - [x] 'Home' page
 
-## Week: May 11 – May 15
+## Week: May 16 – May 25
 
 - [x] Fix Panel & PanelGroup scrolling implementation
 - [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 2
 - [ ] Make sure the pages of the landing site are responsive for all devices TODO 3
-  - [ ] Large devices (desktops)
-  - [ ] Medium devices (tablets)
-  - [ ] Small devices (phones)
+  - [x] Resources Page
+  - [ ] About Page
+  - [ ] How It Works Page
+  - [ ] Home Page
+  - [ ] NOTE: Mobile navigation bar not responding well
+
+- [ ] NOTE: Turn off audio for panels while window is resizing
 
 - [ ] Create Explorer core static pages
 - [ ] Create Ambassador core static pages

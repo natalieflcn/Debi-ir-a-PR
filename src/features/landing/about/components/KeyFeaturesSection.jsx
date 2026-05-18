@@ -2,6 +2,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
+import styled from "styled-components";
 
 const sectionItems = [
   {
@@ -46,9 +47,31 @@ const sectionItems = [
   },
 ];
 
+const StyledHeading = styled(Heading)`
+  @media (max-width: 1000px) {
+    font-size: var(--font-size-lg);
+  }
+`;
+
+const StyledRow = styled(Row)`
+  @media (max-width: 1000px) {
+    gap: var(--gap-xs);
+  }
+`;
+
+const StyledKeyFeatures = styled(Row)`
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-xl);
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
 export default function KeyFeaturesSection() {
   return (
-    <Row $direction="horizontal" $gap="var(--gap-lg)">
+    <StyledKeyFeatures>
       {sectionItems.map((section) => (
         <Card
           key={section.id}
@@ -56,14 +79,14 @@ export default function KeyFeaturesSection() {
           $cardShadow="outsetMD"
           $cardColor={section.cardColor}
         >
-          <Row $gap="var(--gap-sm)">
-            <Heading as="h3" $color="var(--color-light-0)">
+          <StyledRow $gap="var(--gap-sm)">
+            <StyledHeading as="h3" $color="var(--color-light-0)">
               As an
-            </Heading>
-            <Heading as="h3" $color="var(--color-light-0)">
+            </StyledHeading>
+            <StyledHeading as="h3" $color="var(--color-light-0)">
               {section.heading.toUpperCase()}
-            </Heading>
-          </Row>
+            </StyledHeading>
+          </StyledRow>
 
           {section.items.map((item) => (
             <Row key={item.id}>{item.content}</Row>
@@ -74,6 +97,6 @@ export default function KeyFeaturesSection() {
           </Button>
         </Card>
       ))}
-    </Row>
+    </StyledKeyFeatures>
   );
 }
