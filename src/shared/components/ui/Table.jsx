@@ -49,6 +49,11 @@ const StyledTableData = styled.td`
   &:nth-child(even) {
     background-color: ${({ $theme }) => $theme.cellBackgroundAlt};
   }
+
+  @media (max-width: 1000px) {
+    font-size: var(--font-size-xs);
+    vertical-align: middle;
+  }
 `;
 
 function Table({ columns, rows, $theme = defaultTheme }) {

@@ -4,13 +4,6 @@ export const StyledDonateSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  @media (max-width: 798px) {
-    img {
-      width: 97%;
-      margin-right: 0;
-    }
-  }
 `;
 
 export const StyledOrganization = styled.div`
@@ -21,26 +14,40 @@ export const StyledOrganization = styled.div`
     display: flex;
     flex-direction: column;
 
+    align-items: center;
+    text-align: center;
+
     div {
-      flex-direction: column;
-      align-items: normal;
+      align-items: center;
     }
   }
 `;
 
 export const SlicedPhotos = styled.div`
   display: grid;
-  --g: 8px;
+  --g: 6px;
   clip-path: inset(1px);
   margin: 0 auto;
   justify-self: center;
-  width: 95%;
+  width: 100%;
 
   img {
+    /* --_p: calc(-1 * var(--g));
+    grid-area: 1/1;
+
+    aspect-ratio: 16/8;
+    cursor: pointer;
+    transition: 0.7s 0.2s; */
+
+    width: 100%;
+    display: block;
+
     --_p: calc(-1 * var(--g));
     grid-area: 1/1;
 
     aspect-ratio: 16/8;
+    object-fit: cover;
+
     cursor: pointer;
     transition: 0.7s 0.2s;
   }

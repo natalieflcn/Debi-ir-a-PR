@@ -19,8 +19,13 @@ export const StyledActSectionCTA = styled.figure`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 798px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     gap: 1rem;
+
+    img {
+      width: 100%;
+      height: 50%;
+    }
   }
 `;

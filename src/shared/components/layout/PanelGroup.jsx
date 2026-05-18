@@ -13,6 +13,8 @@ const StyledPanelGroup = styled.div`
   @media (max-width: 800px) {
     /* width: 100%; */
     align-items: center;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
     /* width: 100%; */
   }
 `;

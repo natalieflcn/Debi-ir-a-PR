@@ -92,6 +92,10 @@ const AudioButton = styled.button`
     color: var(--color-red-200);
     transform: scale(1.1);
   }
+
+  @media (max-width: 1000px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export default function SpanishSection({ theme }) {

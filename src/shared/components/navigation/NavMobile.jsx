@@ -71,7 +71,7 @@ const MobileMenu = styled.ul`
   }
 `;
 
-const MenuItem = styled(NavLink)`
+const MenuItem = styled.li`
   a:hover,
   &a:active &a.active {
     color: var(--color-red-200);

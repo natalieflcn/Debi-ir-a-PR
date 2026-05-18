@@ -44,7 +44,8 @@ const StyledNavBar = styled.nav`
   }
 
   @media (max-width: 800px) {
-    padding: 1.5rem 0;
+    padding: 1.5rem 2rem;
+
     justify-content: space-between;
   }
 `;
