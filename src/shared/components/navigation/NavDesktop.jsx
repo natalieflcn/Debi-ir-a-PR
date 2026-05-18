@@ -13,8 +13,8 @@ const StyledNavDesktop = styled.ul`
   text-transform: uppercase;
 
   // TODO fix media queries later
-  @media (max-width: 1050px) {
-    font-size: 1rem;
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-md);
   }
 
   @media (min-width: 798px) {

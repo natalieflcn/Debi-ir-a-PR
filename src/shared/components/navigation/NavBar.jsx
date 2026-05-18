@@ -7,6 +7,7 @@ import BlueOverlay from "../../../assets/images/ui/BlueOverlay.png";
 
 const StyledNavWrapper = styled.div`
   position: sticky;
+  /* box-sizing: border-box; */
   top: 0;
   z-index: 2;
   width: 100%; // ← full width
@@ -23,18 +24,28 @@ const StyledNavBar = styled.nav`
   gap: 4rem;
   align-items: center;
   max-width: 1200px;
+
   margin: 0 auto;
   padding: 1.5rem 1rem;
 
   /* background-color: var(--color-blue-200); */
   /* background-image: url(${BlueOverlay}); */
 
-  @media (max-width: 800px) {
+  /* @media (max-width: 800px) {
     position: relative;
     max-width: 400px;
     justify-content: space-around;
     padding: 0;
     gap: 0;
+  } */
+
+  @media (max-width: 1200px) {
+    /* width: 90%; */
+  }
+
+  @media (max-width: 800px) {
+    padding: 1.5rem 0;
+    justify-content: space-between;
   }
 `;
 

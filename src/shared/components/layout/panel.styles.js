@@ -38,6 +38,10 @@ export const StyledPanel = styled.div`
     text-shadow: ${({ $theme }) =>
       `var(--text-shadow-offset-md) ${$theme.panelHeadingHoverShadow}`};
   }
+
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `;
 
 export const StyledHeading = styled(Heading)`
@@ -54,7 +58,8 @@ export const StyledHeading = styled(Heading)`
   transition: all 0.4s;
 
   @media (max-width: 800px) {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-md);
   }
 `;
 

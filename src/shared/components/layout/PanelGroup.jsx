@@ -11,7 +11,7 @@ const StyledPanelGroup = styled.div`
   font-size: var(--font-size-sm);
 
   @media (max-width: 800px) {
-    width: 100%;
+    /* width: 100%; */
     align-items: center;
     /* width: 100%; */
   }

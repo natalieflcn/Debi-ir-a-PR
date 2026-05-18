@@ -17,24 +17,24 @@ const StyledLogo = styled.h1`
 const Debi = styled.p`
   font-size: 3rem;
 
-  @media (max-width: 798px) {
-    font-size: 2.4rem;
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-2xl);
   }
 
-  @media (max-width: 1050px) {
-    font-size: 2rem;
+  @media (max-width: 481px) {
+    font-size: var(--font-size-xl);
   }
 `;
 
 const IrAPR = styled.p`
   font-size: 1.85rem;
 
-  @media (max-width: 798px) {
-    font-size: 1.45rem;
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-lg);
   }
 
-  @media (max-width: 1050px) {
-    font-size: 1.2rem;
+  @media (max-width: 481px) {
+    font-size: var(--font-size-md);
   }
 `;
 
