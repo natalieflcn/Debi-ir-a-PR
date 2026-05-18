@@ -10,6 +10,10 @@ const StyledPanelGroup = styled.div`
   gap: 1rem;
   font-size: var(--font-size-sm);
 
+  @media (max-width: 1000px) {
+    margin: 0 auto;
+  }
+
   @media (max-width: 800px) {
     /* width: 100%; */
     align-items: center;

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
@@ -30,6 +31,14 @@ const sectionItems = [
   },
 ];
 
+const StyledInspoSection = styled.div`
+  @media (max-width: 600px) {
+    div {
+      flex-direction: column;
+    }
+  }
+`;
+
 export default function MotivationSection() {
   return (
     <Row>
@@ -38,15 +47,17 @@ export default function MotivationSection() {
         <Row>{sectionItems[1].content}</Row>
       </Card>
 
-      <Card $cardColor="var(--color-light-0)">
-        <Row $direction="horizontal" $gap="var(--gap-md)">
-          <Image src="src/assets/images/content/TEMP.png" $width="40%" />
-          <Row $gap="var(--gap-md)">
-            <Row>{sectionItems[2].content}</Row>
-            <Row>{sectionItems[3].content}</Row>
+      <StyledInspoSection>
+        <Card $cardColor="var(--color-light-0)">
+          <Row $direction="horizontal" $gap="var(--gap-md)">
+            <Image src="src/assets/images/content/TEMP.png" $width="40%" />
+            <Row $gap="var(--gap-md)">
+              <Row>{sectionItems[2].content}</Row>
+              <Row>{sectionItems[3].content}</Row>
+            </Row>
           </Row>
-        </Row>
-      </Card>
+        </Card>
+      </StyledInspoSection>
 
       <Card $cardColor="var(--color-light-0)">
         {sectionItems[4].content}

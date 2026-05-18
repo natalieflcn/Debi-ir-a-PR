@@ -43,6 +43,10 @@ const MenuHeading = styled(Heading)`
       ${({ $theme }) => $theme.sidebarHeadingHoverShadow};
     cursor: pointer;
   }
+
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-lg);
+  }
 `;
 
 const MenuItem = styled.li`

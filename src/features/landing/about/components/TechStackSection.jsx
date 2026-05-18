@@ -3,6 +3,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Bold from "../../../../shared/components/typography/Bold";
 import Image from "../../../../shared/components/ui/Image";
+import styled from "styled-components";
 
 const sectionItems = [
   {
@@ -56,49 +57,71 @@ const sectionItems = [
   },
 ];
 
+const StyledTechStackSection = styled(Row)`
+  @media (max-width: 1000px) {
+    h4 {
+      font-size: var(--font-size-md);
+    }
+  }
+
+  @media (max-width: 450px) {
+    h4 {
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-md);
+    }
+  }
+`;
 export default function TechStackSection() {
   return (
-    <Row>
-      <Heading as="h4" $color="var(--color-red-300)">
-        {sectionItems[0].heading}
-      </Heading>
-      <Row $direction="horizontal">
-        {sectionItems[0].items.map((item) => (
-          <Card
-            key={item.id}
-            $cardColor="var(--color-light-0)"
-            $cardShadow="outsetSM"
-            $gap="var(--gap-sm)"
-            $align="center"
-          >
-            <Image src={item.logo} $width="4rem" $height="5rem" />
-            <Bold $color="var(--color-dark-200)">{item.content}</Bold>
-          </Card>
+    <StyledTechStackSection>
+      <Row>
+        <Heading as="h4" $color="var(--color-red-300)">
+          {sectionItems[0].heading}
+        </Heading>
+
+        <Row
+          $direction="horizontal"
+          $wrap="wrap"
+          $align="space-evenly"
+          $gap="var(--gap-md)"
+        >
+          {sectionItems[0].items.map((item) => (
+            <Card
+              key={item.id}
+              $cardColor="var(--color-light-0)"
+              $cardShadow="outsetSM"
+              $gap="var(--gap-sm)"
+              $align="center"
+            >
+              <Image src={item.logo} $width="4.4rem" $height="5rem" />
+              <Bold $color="var(--color-dark-200)">{item.content}</Bold>
+            </Card>
+          ))}
+        </Row>
+
+        {sectionItems.slice(1).map((section) => (
+          <Row key={section.id}>
+            <Heading as="h4" $color="var(--color-red-300)">
+              {section.heading}
+            </Heading>
+            <Card $cardColor="var(--color-light-0)">
+              <Row $gap="var(--gap-md)">
+                {section.items.map((item) => (
+                  <Row
+                    key={item.id}
+                    $direction="horizontal"
+                    $align="flex-start"
+                    $gap="var(--gap-md)"
+                  >
+                    <Image src="src/assets/images/ui/PRSun.png" $width="25px" />
+                    {item.content}
+                  </Row>
+                ))}
+              </Row>
+            </Card>
+          </Row>
         ))}
       </Row>
-
-      {sectionItems.slice(1).map((section) => (
-        <Row key={section.id}>
-          <Heading as="h4" $color="var(--color-red-300)">
-            {section.heading}
-          </Heading>
-          <Card $cardColor="var(--color-light-0)">
-            <Row $gap="var(--gap-md)">
-              {section.items.map((item) => (
-                <Row
-                  key={item.id}
-                  $direction="horizontal"
-                  $align="flex-start"
-                  $gap="var(--gap-md)"
-                >
-                  <Image src="src/assets/images/ui/PRSun.png" $width="25px" />
-                  {item.content}
-                </Row>
-              ))}
-            </Row>
-          </Card>
-        </Row>
-      ))}
-    </Row>
+    </StyledTechStackSection>
   );
 }

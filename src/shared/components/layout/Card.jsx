@@ -37,6 +37,8 @@ const Card = styled.div`
   gap: ${({ $gap }) => $gap};
   background: ${({ $cardColor }) => $cardColor};
   ${({ $cardShadow }) => variants[$cardShadow] || variants["insetSM"]};
+  height: ${({ $height }) => $height};
+  width: ${({ $width }) => $width};
 `;
 
 export default Card;

@@ -13,6 +13,11 @@ const StyledNavWrapper = styled.div`
   width: 100%; // ← full width
   background-color: var(--color-blue-200);
   background-image: url(${BlueOverlay});
+
+  /* @media (max-width: 600px) {
+    width: 100%;
+    flex-grow: 1;
+  } */
 `;
 
 const StyledNavBar = styled.nav`
@@ -22,14 +27,14 @@ const StyledNavBar = styled.nav`
   /* z-index: 2; */
   /* justify-items: space-between; */
   gap: 4rem;
+  min-width: 0;
   align-items: center;
   max-width: 1200px;
 
   margin: 0 auto;
   padding: 1.5rem 1rem;
 
-  /* background-color: var(--color-blue-200); */
-  /* background-image: url(${BlueOverlay}); */
+  background-image: url(${BlueOverlay});
 
   /* @media (max-width: 800px) {
     position: relative;
@@ -48,6 +53,10 @@ const StyledNavBar = styled.nav`
 
     justify-content: space-between;
   }
+
+  /* @media (max-width: 600px) {
+    min-width: 100%;
+  } */
 `;
 
 function NavBar({ menuItems }) {

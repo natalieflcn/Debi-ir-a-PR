@@ -23,7 +23,6 @@ const Panel = forwardRef(function Panel(
 
   const resizePanelHeight = () => {
     setScreenWidth(window.screen.width);
-    console.log(window.screen.width);
   };
 
   const contentRef = useRef();
