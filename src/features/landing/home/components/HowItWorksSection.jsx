@@ -14,6 +14,15 @@ const StyledHowItWorksSection = styled.div`
 const StyledMeetPuertoRicoCard = styled.div`
   color: var(--color-dark-200);
 `;
+
+const StyledCardsRow = styled(Row)`
+  @media (max-width: 900px) {
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
+  }
+`;
+
 const MeetPuertoRicoCard = function ({ image, spotData }) {
   return (
     <StyledMeetPuertoRicoCard>
@@ -36,7 +45,7 @@ function HowItWorksSection() {
         <p>We've curated so many ways for you to meet Puerto Rico.</p>
       </Row>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+      <StyledCardsRow $direction="horizontal" $gap="var(--gap-xl)">
         {meetPuertoRicoData.slice(0, 3).map((spot) => (
           <MeetPuertoRicoCard
             key={spot.id}
@@ -44,9 +53,9 @@ function HowItWorksSection() {
             spotData={spot.description}
           />
         ))}
-      </Row>
+      </StyledCardsRow>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+      <StyledCardsRow $direction="horizontal" $gap="var(--gap-xl)">
         {meetPuertoRicoData.slice(3).map((spot) => (
           <MeetPuertoRicoCard
             key={spot.id}
@@ -54,7 +63,7 @@ function HowItWorksSection() {
             spotData={spot.description}
           />
         ))}
-      </Row>
+      </StyledCardsRow>
 
       <p>
         Every exploration is a curated journey through a corner of the island —

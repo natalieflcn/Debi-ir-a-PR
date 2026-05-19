@@ -14,6 +14,24 @@ const StyledAmbassadorPitchSection = styled.div`
   color: var(--color-dark-200);
 `;
 
+const StyledCards = styled(Row)`
+  flex-direction: row;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledButtons = styled(Row)`
+  @media (max-width: 900px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
 function AmbassadorPitchSection() {
   return (
     <Card
@@ -56,40 +74,46 @@ function AmbassadorPitchSection() {
           </p>
         </Row>
         <Row $direction="horizontal" $gap="var(--gap-lg)">
-          {ambassadorPitchData.map((section) => (
-            <Card
-              key={section.id}
-              $cardColor="var(--color-light-0)"
-              $cardShadow="outsetSM"
-            >
-              <Row>
-                <Heading
-                  as="h2"
-                  $color="var(--color-red-200)"
-                  $shadowColor="var(--color-red-400)"
-                >
-                  {section.id}
-                </Heading>
+          <StyledCards>
+            {ambassadorPitchData.map((section) => (
+              <Card
+                key={section.id}
+                $cardColor="var(--color-light-0)"
+                $cardShadow="outsetSM"
+              >
+                <Row>
+                  <Heading
+                    as="h2"
+                    $color="var(--color-red-200)"
+                    $shadowColor="var(--color-red-400)"
+                  >
+                    {section.id}
+                  </Heading>
 
-                <Heading as="h6" $color="var(--color-red-400)">
-                  {section.heading}
-                </Heading>
-                {section.description}
-              </Row>
-            </Card>
-          ))}
+                  <Heading as="h6" $color="var(--color-red-400)">
+                    {section.heading}
+                  </Heading>
+                  {section.description}
+                </Row>
+              </Card>
+            ))}
+          </StyledCards>
         </Row>
         <Heading as="h6" $color="var(--color-red-300)">
           Share the island you grew up on.
         </Heading>
-        <Row $direction="horizontal" $gap="var(--gap-md)" $align="left">
+        <StyledButtons
+          $direction="horizontal"
+          $gap="var(--gap-md)"
+          $align="left"
+        >
           <Button $size="small" $variation="primary">
             Become an Ambassador
           </Button>
           <Button $size="small" $variation="darkRed">
             Login as an Ambassador
           </Button>
-        </Row>
+        </StyledButtons>
       </StyledAmbassadorPitchSection>
     </Card>
   );

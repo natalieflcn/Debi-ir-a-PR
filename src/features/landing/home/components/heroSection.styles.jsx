@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
 import Link from "../../../../shared/components/ui/Link";
+import Row from "../../../../shared/components/layout/Row";
 
 export const StyledHeroSectionBackground = styled.div`
   position: relative;
@@ -19,14 +20,30 @@ export const StyledHeroSectionBackground = styled.div`
 export const StyledHeroSectionContent = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: var(--gap-xl);
-  max-width: 1200px;
+  max-width: 90%;
+  left: 60%;
+  transform: translateX(+3%);
   margin: 0 auto;
   padding-top: 2.5rem;
 `;
 
+export const StyledHeroHeadingRow = styled(Row)`
+  gap: var(--gap-md);
+
+  @media (max-width: 1100px) {
+    gap: 0;
+  }
+`;
+
 export const StyledHeroHeading = styled(Heading)`
   font-size: 3.5rem;
+  line-height: var(--line-height-4xl);
+
+  @media (max-width: 1100px) {
+    font-size: var(--font-size-3xl);
+  }
 `;
 
 export const StyledHeroPeriod = styled.span`
@@ -40,5 +57,15 @@ export const StyledHeroLogin = styled(Link)`
   &:hover {
     text-shadow: var(--text-shadow-md) var(--color-light-0);
     /* color: red; */
+  }
+`;
+
+export const StyledHeroButtons = styled(Row)`
+  @media (max-width: 500px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
   }
 `;

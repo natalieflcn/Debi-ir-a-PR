@@ -91,7 +91,7 @@
   - [x] Resources Page
   - [x] About Page
   - [x] How It Works Page
-  - [ ] Home Page
+  - [x] Home Page
   - [ ] NOTE: Mobile navigation bar not responding well
 
 - [x] NOTE: Turn off audio for panels while window is resizing

@@ -9,10 +9,16 @@ const StyledTrackYourJourneySection = styled.div`
   gap: var(--gap-md);
 `;
 
+const StyledRow = styled(Row)`
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
 function TrackYourJourneySection() {
   return (
     <StyledTrackYourJourneySection>
-      <Row $direction="horizontal">
+      <StyledRow $direction="horizontal">
         <Row>
           <Heading as="h2">TRacK YOuR JoURNEY</Heading>
           <Row $gap="var(--gap-xs)">
@@ -29,7 +35,7 @@ function TrackYourJourneySection() {
         <Row>
           <Image src="src/assets/images/content/TEMP.png"></Image>
         </Row>
-      </Row>
+      </StyledRow>
       <Heading as="h6">32 of 76 spots explored</Heading>
     </StyledTrackYourJourneySection>
   );

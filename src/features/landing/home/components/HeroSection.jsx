@@ -3,7 +3,9 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import {
+  StyledHeroButtons,
   StyledHeroHeading,
+  StyledHeroHeadingRow,
   StyledHeroLogin,
   StyledHeroPeriod,
   StyledHeroSectionBackground,
@@ -18,24 +20,26 @@ function HeroSection() {
           <Heading as="h5">
             YOuR NeXT PUeRTO RiCO aDVENTURE STaRTS HERe.
           </Heading>
-          <Row>
-            <StyledHeroHeading
-              as="h2"
-              $color="var(--color-red-200)"
-              $shadowColor="var(--color-red-400)"
-            >
-              SKiP THe RESoRT<StyledHeroPeriod>.</StyledHeroPeriod>
-            </StyledHeroHeading>
-          </Row>
-          <Row>
-            <StyledHeroHeading
-              as="h2"
-              $color="var(--color-blue-100)"
-              $shadowColor="var(--color-blue-400)"
-            >
-              MeET THe iSLAND<StyledHeroPeriod>.</StyledHeroPeriod>
-            </StyledHeroHeading>
-          </Row>
+          <StyledHeroHeadingRow>
+            <Row>
+              <StyledHeroHeading
+                as="h2"
+                $color="var(--color-red-200)"
+                $shadowColor="var(--color-red-400)"
+              >
+                SKiP THe RESoRT<StyledHeroPeriod>.</StyledHeroPeriod>
+              </StyledHeroHeading>
+            </Row>
+            <Row>
+              <StyledHeroHeading
+                as="h2"
+                $color="var(--color-blue-100)"
+                $shadowColor="var(--color-blue-400)"
+              >
+                MeET THe iSLAND<StyledHeroPeriod>.</StyledHeroPeriod>
+              </StyledHeroHeading>
+            </Row>
+          </StyledHeroHeadingRow>
         </Row>
 
         <Row $gap="var(--gap-sm)">
@@ -50,14 +54,18 @@ function HeroSection() {
         </Row>
 
         <Row>
-          <Row $direction="horizontal" $align="left" $gap="var(--gap-md)">
+          <StyledHeroButtons
+            $direction="horizontal"
+            $align="left"
+            $gap="var(--gap-md)"
+          >
             <Button $variation="secondary" $size="small">
               Become an Explorer
             </Button>
             <Button $variation="primary" $size="small">
               How It Works
             </Button>
-          </Row>
+          </StyledHeroButtons>
           <Row $direction="horizontal" $align="left" $gap="var(--gap-xs)">
             <Bold $color="var(--color-light-100)">Already exploring?</Bold>
             <StyledHeroLogin href="instagram.com">Login</StyledHeroLogin>

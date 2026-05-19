@@ -10,6 +10,16 @@ const StyledCTASection = styled.div`
   gap: var(--gap-md);
 `;
 
+const StyledButtonGroup = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
 function CTASection() {
   return (
     <Card $cardColor="url(src/assets/images/ui/Sand.png)">
@@ -24,7 +34,11 @@ function CTASection() {
         <Heading as="h6" $color="var(--color-brown-300)">
           Stop planning. Start discovering.
         </Heading>
-        <Row $direction="horizontal" $gap="var(--gap-md)" $align="left">
+        <StyledButtonGroup
+          $direction="horizontal"
+          $gap="var(--gap-md)"
+          $align="left"
+        >
           <Button $size="small" $variation="secondary">
             Become an Explorer
           </Button>
@@ -34,7 +48,7 @@ function CTASection() {
           <Button $size="small" $variation="primary">
             Login
           </Button>
-        </Row>
+        </StyledButtonGroup>
       </StyledCTASection>
     </Card>
   );
