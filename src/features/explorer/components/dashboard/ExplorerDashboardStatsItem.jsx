@@ -1,11 +1,10 @@
+import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import ExplorerDashboardItem from "../../../../shared/components/layout/DashboardItem";
 
 function ExplorerDashboardStatsItems() {
   return (
     <>
-      <ExplorerDashboardItem>
-        Explorer Dashboard Stats Item
-      </ExplorerDashboardItem>
+      <DashboardItem>Explorer Dashboard Stats Item</DashboardItem>
     </>
   );
 }

@@ -1,6 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ExplorerDashboardItem = styled.div`
+const variations = {
+  center: css`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: var(--gap-md);
+  `,
+};
+
+const DashboardItem = styled.div`
   /* display: flex;
   flex-direction: column; */
   background-color: var(--color-light-0);
@@ -9,6 +19,8 @@ const ExplorerDashboardItem = styled.div`
   color: var(--color-dark-200);
   /* align-items: ${({ $align }) => $align};
   text-align: ${({ $align }) => $align}; */
+
+  ${({ $variation }) => variations[$variation]}
 `;
 
-export default ExplorerDashboardItem;
+export default DashboardItem;
