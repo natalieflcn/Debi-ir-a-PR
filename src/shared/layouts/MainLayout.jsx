@@ -2,22 +2,7 @@ import MainContent from "./MainContent";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
-import styled from "styled-components";
-
-const StyledMainLayout = styled.div`
-  position: relative;
-  margin: 0 auto;
-  padding: 1rem 2rem 2rem;
-  z-index: 1;
-  max-width: 1200px;
-  min-width: 0;
-
-  @media (max-width: 800px) {
-    padding: 0.5rem;
-    width: 100%;
-    /* margin: 0 auto; */
-  }
-`;
+import { StyledLayout } from "./layout.styles";
 
 const menuItems = [
   { label: "Home", link: "/" },
@@ -31,10 +16,10 @@ function MainLayout() {
     <>
       <Background />
       <NavBar type="main" menuItems={menuItems} />
-      <StyledMainLayout>
+      <StyledLayout>
         <MainContent />
         <Footer />
-      </StyledMainLayout>
+      </StyledLayout>
     </>
   );
 }

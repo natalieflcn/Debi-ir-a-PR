@@ -81,6 +81,7 @@
   --border-radius-sm: 3px;
   --border-radius-md: 5px;
   --border-radius-lg: 8px;
+  --border-radius-round: 50%;
 
   /* Line-Height */
   --line-height-xs: 0.5rem;
