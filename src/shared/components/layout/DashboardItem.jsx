@@ -3,24 +3,32 @@ import styled, { css } from "styled-components";
 const variations = {
   center: css`
     display: flex;
-    flex-direction: column;
     text-align: center;
     align-items: center;
-    gap: var(--gap-md);
+    & > button {
+      align-self: stretch;
+    }
+  `,
+  stretch: css`
+    flex-grow: 1;
+    align-self: stretch;
   `,
 };
 
 const DashboardItem = styled.div`
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
   background-color: var(--color-light-0);
   border-radius: var(--border-radius-md);
   padding: 1.5rem;
   color: var(--color-dark-200);
-  /* align-items: ${({ $align }) => $align};
-  text-align: ${({ $align }) => $align}; */
+  box-shadow: var(--box-shadow-md);
+  flex: 1;
 
-  ${({ $variation }) => variations[$variation]}
+  ${({ $flex }) => $flex};
+  ${({ $height }) => $height};
+  ${({ $variation }) => variations[$variation]};
 `;
 
 export default DashboardItem;

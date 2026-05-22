@@ -17,19 +17,23 @@ function ExplorerDashboardBadgeItem() {
   return (
     <StyledExplorerDashboardBadgeItem>
       <DashboardItem $variation="center">
-        <Heading as="h4" $color="var(--color-dark-100)">
-          Most Recent Badge
-        </Heading>
-        <Row $direction="horizontal" $gap="var(--gap-md)">
-          <Image src="src/assets/images/content/TEMP.png" $width="3rem" />
-          <Heading as="h6">Toa Alta Badge</Heading>
+        <Row $gap="var(--gap-lg)">
+          <Heading as="h4" $color="var(--color-dark-100)">
+            Most Recent Badge
+          </Heading>
+          <Row $direction="horizontal" $gap="var(--gap-md)" $align="center">
+            <Image src="src/assets/images/content/TEMP.png" $width="2rem" />
+            <Heading as="h6">Toa Alta Badge</Heading>
+          </Row>
+
+          <Bold $color="var(--color-dark-200)">
+            3 out of 46 badges collected
+          </Bold>
+
+          <Button $variation="primary" $size="small">
+            View Badge Collection
+          </Button>
         </Row>
-
-        <Bold $color="var(--color-dark-200)">3 out of 46 badges collected</Bold>
-
-        <Button $variation="primary" $size="small">
-          View Badge Collection
-        </Button>
       </DashboardItem>
     </StyledExplorerDashboardBadgeItem>
   );

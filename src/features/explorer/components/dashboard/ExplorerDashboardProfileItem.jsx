@@ -4,28 +4,41 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Image from "../../../../shared/components/ui/Image";
 import Button from "../../../../shared/components/ui/Button";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
+import Row from "../../../../shared/components/layout/Row";
 
-const StyledExplorerDashboardProfileItem = styled.div``;
+const StyledExplorerDashboardProfileItem = styled.div`
+  /* width: 100%; */
+`;
 
 function ExplorerDashboardProfileItem() {
   return (
-    <StyledExplorerDashboardProfileItem>
-      <DashboardItem $variation="center">
-        <Heading as="h4" $color="var(--color-dark-100)">
-          First Explorer
-        </Heading>
-        <Image
-          src="src/assets/images/content/TEMP.png"
-          $borderRadius="var(--border-radius-round)"
-          $width="9rem"
-          $imageShadow="var(--box-shadow-sm)"
-        />
-        <Heading as="h6">Natalie Falcon</Heading>
-        <Button $variation="secondary" $size="small">
-          View Profile
-        </Button>
-      </DashboardItem>
-    </StyledExplorerDashboardProfileItem>
+    <DashboardItem $variation="center" $height="60rem">
+      <Row $gap="var(--gap-lg)">
+        <Row $align="center">
+          <Heading as="h4" $color="var(--color-dark-100)">
+            First Explorer
+          </Heading>
+          <Image
+            src="src/assets/images/content/TEMP.png"
+            $borderRadius="var(--border-radius-round)"
+            $width="10rem"
+            $imageShadow="var(--box-shadow-sm)"
+          />
+          <Heading as="h6">Natalie Falcon</Heading>
+        </Row>
+        <Row>
+          <Button $variation="secondary" $size="small">
+            View Profile
+          </Button>
+          <Button $variation="primary" $size="small">
+            Edit Profile
+          </Button>
+          <Button $variation="darkRed" $size="small">
+            Logout
+          </Button>
+        </Row>
+      </Row>
+    </DashboardItem>
   );
 }
 

@@ -19,6 +19,7 @@ const sizes = {
   `,
   medium: css`
     justify-items: center;
+
     flex-grow: 1;
     padding: 0.8rem 1rem;
     font-weight: 700;
@@ -28,6 +29,7 @@ const sizes = {
   `,
   large: css`
     justify-content: center;
+
     flex-grow: 1;
     padding: 1.5rem 2rem;
     font-weight: 900;
@@ -96,18 +98,18 @@ const variations = {
     &:hover {
       color: var(--color-light-0);
       background-color: var(--color-brown-100);
-      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+      box-shadow: var(--box-shadow-offset-inset-md) var(--color-brown-400);
     }
   `,
   treeBarkInverted: css`
     color: var(--color-light-0);
     background-color: var(--color-brown-100);
-    box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+    box-shadow: var(--box-shadow-offset-inset-md) var(--color-brown-400);
 
     &:hover {
       color: var(--color-light-0);
       background: var(--color-brown-300);
-      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+      box-shadow: var(--box-shadow-offset-inset-md) var(--color-brown-400);
     }
   `,
   treeLeaf: css`
@@ -129,13 +131,13 @@ const variations = {
     &:hover {
       color: var(--color-light-0);
       background: var(--color-red-300);
-      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+      box-shadow: var(--box-shadow-offset-inset-md) var(--color-brown-400);
     }
   `,
   scrapPaperInverted: css`
     color: var(--color-light-0);
     background-color: var(--color-red-300);
-    box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
+    box-shadow: var(--box-shadow-offset-inset-md) var(--color-brown-400);
 
     &:hover {
       color: var(--color-light-0);
