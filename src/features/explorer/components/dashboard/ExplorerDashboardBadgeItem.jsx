@@ -10,19 +10,19 @@ import Image from "../../../../shared/components/ui/Image";
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-content: space-between;
 `;
 
 function ExplorerDashboardBadgeItem() {
   return (
-    <StyledExplorerDashboardBadgeItem>
-      <DashboardItem $variation="center">
+    <DashboardItem $variation="center">
+      <StyledExplorerDashboardBadgeItem>
         <Row $gap="var(--gap-lg)">
           <Heading as="h4" $color="var(--color-dark-100)">
             Most Recent Badge
           </Heading>
-          <Row $direction="horizontal" $gap="var(--gap-md)" $align="center">
-            <Image src="src/assets/images/content/TEMP.png" $width="2rem" />
+          <Row $gap="var(--gap-md)" $align="center">
+            <Image src="src/assets/images/content/TEMP.png" $width="5rem" />
             <Heading as="h6">Toa Alta Badge</Heading>
           </Row>
 
@@ -34,8 +34,8 @@ function ExplorerDashboardBadgeItem() {
             View Badge Collection
           </Button>
         </Row>
-      </DashboardItem>
-    </StyledExplorerDashboardBadgeItem>
+      </StyledExplorerDashboardBadgeItem>
+    </DashboardItem>
   );
 }
 

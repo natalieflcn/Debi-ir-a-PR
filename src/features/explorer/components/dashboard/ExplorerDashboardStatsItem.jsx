@@ -35,7 +35,7 @@ const explorerStatsTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-function ExplorerDashboardStatsItems() {
+function ExplorerDashboardStatsItem() {
   return (
     <>
       <DashboardItem>
@@ -52,4 +52,4 @@ function ExplorerDashboardStatsItems() {
   );
 }
 
-export default ExplorerDashboardStatsItems;
+export default ExplorerDashboardStatsItem;

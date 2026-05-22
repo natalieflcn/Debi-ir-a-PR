@@ -12,7 +12,7 @@ const StyledExplorerDashboardProfileItem = styled.div`
 
 function ExplorerDashboardProfileItem() {
   return (
-    <DashboardItem $variation="center" $height="60rem">
+    <DashboardItem $variation="center" $height="10rem">
       <Row $gap="var(--gap-lg)">
         <Row $align="center">
           <Heading as="h4" $color="var(--color-dark-100)">
@@ -21,7 +21,7 @@ function ExplorerDashboardProfileItem() {
           <Image
             src="src/assets/images/content/TEMP.png"
             $borderRadius="var(--border-radius-round)"
-            $width="10rem"
+            $width="8rem"
             $imageShadow="var(--box-shadow-sm)"
           />
           <Heading as="h6">Natalie Falcon</Heading>
@@ -29,12 +29,6 @@ function ExplorerDashboardProfileItem() {
         <Row>
           <Button $variation="secondary" $size="small">
             View Profile
-          </Button>
-          <Button $variation="primary" $size="small">
-            Edit Profile
-          </Button>
-          <Button $variation="darkRed" $size="small">
-            Logout
           </Button>
         </Row>
       </Row>

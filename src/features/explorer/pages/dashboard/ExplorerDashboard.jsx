@@ -8,6 +8,7 @@ import ExplorerDashboardStatsItems from "../../components/dashboard/ExplorerDash
 import Row from "../../../../shared/components/layout/Row";
 import ExplorerDashboardFactsItem from "../../components/dashboard/ExplorerDashboardFactsItem";
 import Heading from "../../../../shared/components/typography/Heading";
+import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashboardStatsItem";
 
 const StyledExplorerDashboard = styled.div`
   display: flex;
@@ -29,19 +30,11 @@ function ExplorerDashboard() {
       <Row $direction="horizontal" $gap="var(--gap-md)">
         <ExplorerDashboardProfileItem></ExplorerDashboardProfileItem>
 
-        <Row>
-          <Row $direction="horizontal" $gap="var(--gap-md)">
-            <ExplorerDashboardBadgeItem></ExplorerDashboardBadgeItem>
+        <ExplorerDashboardBadgeItem></ExplorerDashboardBadgeItem>
 
-            <ExplorerDashboardHistoryItem></ExplorerDashboardHistoryItem>
-          </Row>
-
-          <ExplorerDashboardFactsItem></ExplorerDashboardFactsItem>
-        </Row>
+        <ExplorerDashboardHistoryItem></ExplorerDashboardHistoryItem>
       </Row>
-      <Row>
-        <ExplorerDashboardStatsItems></ExplorerDashboardStatsItems>
-      </Row>
+      <ExplorerDashboardStatsItem></ExplorerDashboardStatsItem>
       <Row>
         <ExplorerDashboardExplorationsItem></ExplorerDashboardExplorationsItem>
 
