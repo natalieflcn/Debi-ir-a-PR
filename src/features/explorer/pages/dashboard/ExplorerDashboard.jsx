@@ -6,7 +6,7 @@ import ExplorerDashboardProfileItem from "../../components/dashboard/ExplorerDas
 import ExplorerDashboardHistoryItem from "../../components/dashboard/ExplorerDashboardHistoryItem";
 import ExplorerDashboardStatsItems from "../../components/dashboard/ExplorerDashboardStatsItem";
 import Row from "../../../../shared/components/layout/Row";
-import ExplorerDashboardFactsItem from "../../components/dashboard/ExplorerDashboardFactsItem";
+
 import Heading from "../../../../shared/components/typography/Heading";
 import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashboardStatsItem";
 
@@ -16,10 +16,47 @@ const StyledExplorerDashboard = styled.div`
   gap: var(--gap-xl);
 `;
 
-const StyledExplorerDashboardRow = styled(Row)`
-  height: 20rem;
-  flex: 1;
-`;
+const TEMPCURRENTEXPLORATIONDATA = [
+  {
+    id: 1,
+    name: "Toa Alta",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+  {
+    id: 2,
+    name: "Toa Alta",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+  {
+    id: 3,
+    name: "Toa Alta",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+];
+
+const TEMPEXPLORATIONDATA = [
+  {
+    id: 1,
+    name: "Bayamon",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+  {
+    id: 2,
+    name: "Bayamon",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+  {
+    id: 3,
+    name: "Bayamon",
+    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
+    progress: 80,
+  },
+];
 
 function ExplorerDashboard() {
   return (
@@ -27,18 +64,23 @@ function ExplorerDashboard() {
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
         WELCOME, NATALIE
       </Heading>
-      <Row $direction="horizontal" $gap="var(--gap-md)">
-        <ExplorerDashboardProfileItem></ExplorerDashboardProfileItem>
 
-        <ExplorerDashboardBadgeItem></ExplorerDashboardBadgeItem>
-
-        <ExplorerDashboardHistoryItem></ExplorerDashboardHistoryItem>
+      <Row $direction="horizontal" $gap="var(--gap-xl)">
+        <ExplorerDashboardProfileItem />
+        <ExplorerDashboardBadgeItem />
+        <ExplorerDashboardHistoryItem />
       </Row>
-      <ExplorerDashboardStatsItem></ExplorerDashboardStatsItem>
-      <Row>
-        <ExplorerDashboardExplorationsItem></ExplorerDashboardExplorationsItem>
 
-        <ExplorerDashboardExplorationsItem></ExplorerDashboardExplorationsItem>
+      <ExplorerDashboardStatsItem />
+
+      <Row $gap="var(--gap-xl)">
+        <ExplorerDashboardExplorationsItem
+          explorationData={TEMPCURRENTEXPLORATIONDATA}
+        />
+
+        <ExplorerDashboardExplorationsItem
+          explorationData={TEMPEXPLORATIONDATA}
+        />
       </Row>
     </StyledExplorerDashboard>
   );
