@@ -5,12 +5,12 @@ import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Button from "../../../../shared/components/ui/Button";
 
-function ExplorerDashboardExplorationsItem({ explorationData }) {
+function ExplorerDashboardExplorationsItem({ explorationData, title }) {
   return (
     <>
       <DashboardItem>
         <Heading as="h4" $color="var(--color-dark-100)">
-          Current Explorations
+          {title}
         </Heading>
         <Row $direction="horizontal" $gap="var(--gap-lg)">
           {explorationData.slice(0, 2).map((exploration) => (

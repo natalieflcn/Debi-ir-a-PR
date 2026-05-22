@@ -75,10 +75,12 @@ function ExplorerDashboard() {
 
       <Row $gap="var(--gap-xl)">
         <ExplorerDashboardExplorationsItem
+          title="Current Explorations"
           explorationData={TEMPCURRENTEXPLORATIONDATA}
         />
 
         <ExplorerDashboardExplorationsItem
+          title="Featured Explorations"
           explorationData={TEMPEXPLORATIONDATA}
         />
       </Row>

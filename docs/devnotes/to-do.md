@@ -97,5 +97,12 @@
 - [x] NOTE: Turn off audio for panels while window is resizing
 
 - [ ] Create Explorer core static pages
+  - [x] Explorer Dashboard page
+  - [ ] Explorations page
+  - [ ] Explorations/Exploration page (not yet started)
+  - [ ] Explorations/Exploration page (started)
+  - [ ] Explorations/Exploration/Location page
+  - [ ] Profile page
+
 - [ ] Create Ambassador core static pages
 - [ ] Create SuperAdmin core static pages

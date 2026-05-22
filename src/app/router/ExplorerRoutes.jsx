@@ -2,6 +2,7 @@
 
 import { lazy } from "react";
 import { Route } from "react-router-dom";
+import Explorations from "../../features/explorer/pages/explorations/Explorations";
 
 const ExplorerDashboard = lazy(
   () => import("@/features/explorer/pages/dashboard/ExplorerDashboard.jsx"),
@@ -19,6 +20,8 @@ const ExplorerProfile = lazy(
 const ExplorerRoutes = (
   <>
     <Route path="dashboard" element={<ExplorerDashboard />} />
+    <Route path="explorations" element={<Explorations />} />
+
     <Route path="exploration/:explorationId" element={<ExplorationDetails />} />
     <Route
       path="exploration/:explorationId/:explorationItemId"
