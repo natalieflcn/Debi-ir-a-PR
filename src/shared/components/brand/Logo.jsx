@@ -6,6 +6,7 @@ const StyledLogo = styled.h1`
   font-family: DtMF;
   letter-spacing: var(--letter-spacing-dtmf-tight);
   transition: all 0.25s;
+  line-height: var(--line-height-xl);
 
   &:hover,
   &:active {

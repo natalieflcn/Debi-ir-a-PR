@@ -3,6 +3,7 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";
+import ExplorationLocationDetails from "../../features/explorer/pages/explorations/ExplorationItemDetails";
 
 const ExplorerDashboard = lazy(
   () => import("@/features/explorer/pages/dashboard/ExplorerDashboard.jsx"),
@@ -25,7 +26,7 @@ const ExplorerRoutes = (
     <Route path="exploration/:explorationId" element={<ExplorationDetails />} />
     <Route
       path="exploration/:explorationId/:explorationItemId"
-      element={<ExplorationItemDetails />}
+      element={<ExplorationLocationDetails />}
     />
     <Route path="profile" element={<ExplorerProfile />} />
   </>

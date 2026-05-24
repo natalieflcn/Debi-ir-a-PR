@@ -25,8 +25,7 @@ const DashboardItem = styled.div`
   color: var(--color-dark-200);
   box-shadow: var(--box-shadow-md);
   flex: 1;
-
-  ${({ $flex }) => $flex};
+  line-height: var(--line-height-sm) ${({ $flex }) => $flex};
   ${({ $height }) => $height};
   ${({ $variation }) => variations[$variation]};
 `;

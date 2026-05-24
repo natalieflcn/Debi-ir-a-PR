@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
-import ExplorationsFilters from "../../../explorations/ExplorationsFilters";
+
+import ExplorationCard from "../../components/explorations/ExplorationCard";
+import ExplorationsFilters from "../../components/explorations/ExplorationsFilters";
+import fakeExplorationData from "./fakeExplorationsData";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -12,18 +15,7 @@ const ExplorationCards = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--gap-lg);
-`;
-const ExplorationCard = styled(Card)`
-  background-image: url("src/assets/images/content/TEMP.png");
-  /* width: 28%; */
-  align-items: flex-start;
-  min-width: 28%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 300px;
-  background-color: var(color-light-0);
-  color: var(--color-dark-200);
+  gap: var(--gap-2xl);
 `;
 
 function Explorations() {
@@ -31,10 +23,15 @@ function Explorations() {
     <StyledExplorations>
       <ExplorationsFilters />
       <ExplorationCards>
-        <ExplorationCard>hii</ExplorationCard>
-        <ExplorationCard>hii</ExplorationCard>
-        <ExplorationCard>hii</ExplorationCard>
-        <ExplorationCard>hii</ExplorationCard>
+        {fakeExplorationData.map((exploration) => (
+          <ExplorationCard
+            name={exploration.name}
+            description={exploration.description}
+            numStops={exploration.numStops}
+            startLocation={exploration.startLocation}
+            tourLink={exploration.tourLink}
+          />
+        ))}
       </ExplorationCards>
     </StyledExplorations>
   );

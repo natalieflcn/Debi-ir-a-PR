@@ -7,32 +7,34 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Row from "../../../../shared/components/layout/Row";
 
 const StyledExplorerDashboardProfileItem = styled.div`
-  /* width: 100%; */
+  /* max-width: 50%; */
 `;
 
 function ExplorerDashboardProfileItem() {
   return (
-    <DashboardItem $variation="center" $height="10rem">
-      <Row $gap="var(--gap-lg)">
-        <Row $align="center">
-          <Heading as="h4" $color="var(--color-dark-100)">
-            First Explorer
-          </Heading>
-          <Image
-            src="src/assets/images/content/TEMP.png"
-            $borderRadius="var(--border-radius-round)"
-            $width="8rem"
-            $imageShadow="var(--box-shadow-sm)"
-          />
-          <Heading as="h6">Natalie Falcon</Heading>
+    <StyledExplorerDashboardProfileItem>
+      <DashboardItem $variation="center" $height="10rem">
+        <Row $gap="var(--gap-lg)">
+          <Row $align="center">
+            <Heading as="h4" $color="var(--color-dark-100)">
+              First Explorer
+            </Heading>
+            <Image
+              src="src/assets/images/content/TEMP.png"
+              $borderRadius="var(--border-radius-round)"
+              $width="8rem"
+              $imageShadow="var(--box-shadow-sm)"
+            />
+            <Heading as="h6">Natalie Falcon</Heading>
+          </Row>
+          <Row>
+            <Button $variation="secondary" $size="small">
+              View Profile
+            </Button>
+          </Row>
         </Row>
-        <Row>
-          <Button $variation="secondary" $size="small">
-            View Profile
-          </Button>
-        </Row>
-      </Row>
-    </DashboardItem>
+      </DashboardItem>
+    </StyledExplorerDashboardProfileItem>
   );
 }
 

@@ -89,6 +89,7 @@ body {
   font-weight: 300;
   background-color: var(--color-blue-200);
   color: var(--color-light-100);
+  line-height: var(--line-height-md);
 }
 
 body::before{

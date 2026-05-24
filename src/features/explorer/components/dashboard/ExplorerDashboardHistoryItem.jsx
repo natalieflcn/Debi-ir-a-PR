@@ -13,7 +13,7 @@ function ExplorerDashboardHistoryItem() {
       <Heading as="h4" $color="var(--color-dark-100)">
         Exploration History
       </Heading>
-      <Row $gap="var(--gap-lg)">
+      <Row $gap="var(--gap-md)">
         <Row $direction="horizontal">
           <Heading as="h6">Places explored this week</Heading>
           <InsetSpan>
@@ -34,6 +34,12 @@ function ExplorerDashboardHistoryItem() {
         </Row>
         <Row $direction="horizontal">
           <Heading as="h6">Explorations completed</Heading>
+          <InsetSpan>
+            <Bold>5</Bold>
+          </InsetSpan>
+        </Row>
+        <Row $direction="horizontal">
+          <Heading as="h6">Explorations started</Heading>
           <InsetSpan>
             <Bold>5</Bold>
           </InsetSpan>

@@ -1,5 +1,5 @@
-import Row from "../../shared/components/layout/Row";
-import Button from "../../shared/components/ui/Button";
+import Row from "../../../../shared/components/layout/Row";
+import Button from "../../../../shared/components/ui/Button";
 
 const explorationsFilters = [
   { id: "featured", name: "Featured" },

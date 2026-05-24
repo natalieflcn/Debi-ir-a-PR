@@ -29,7 +29,7 @@ const MeetPuertoRicoCard = function ({ image, spotData }) {
       <Row>
         <Image src={image} />
         <Card $cardColor="var(--color-light-0)" $cardShadow="outsetSM">
-          {spotData}
+          <p>{spotData}</p>
         </Card>
       </Row>
     </StyledMeetPuertoRicoCard>

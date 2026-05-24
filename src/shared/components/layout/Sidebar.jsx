@@ -32,6 +32,7 @@ const MenuHeading = styled(Heading)`
     ${({ $theme }) => $theme.sidebarHeadingShadow};
   color: ${({ $theme }) => $theme.sidebarHeadingColor};
   transition: all 0.2s;
+  line-height: var(--line-height-lg);
 
   &:not(:first-child) {
     margin-top: 1rem;
