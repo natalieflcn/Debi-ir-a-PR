@@ -44,13 +44,16 @@ export const ExplorationCardHeaderDetails = styled(Row)`
 `;
 export const ExplorationCardBody = styled.div`
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
 `;
 
 export const ExplorationCardAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
-  width: 50%;
+  width: 25%;
   align-self: flex-start;
 `;
 

@@ -54,14 +54,11 @@ function ExplorationCard({}) {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
               varius egestas elit. Nam maximus mi vel lacus pulvinar, non
               blandit lorem venenatis. Sed suscipit leo viverra, condimentum
-              velit non, viverra nisl.
+              velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel
+              lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo
+              viverra, condimentum velit non, viverra nisl.
             </p>
-
-            <Image
-              src="/src/assets/images/content/TEMP.png"
-              $width="80%"
-              $align="center"
-            />
           </ExplorationCardAbout>
 
           <ExplorationCardLocations>
@@ -100,6 +97,44 @@ function ExplorationCard({}) {
             </Row>
           </ExplorationCardLocations>
         </Row>
+        <Row $direction="horizontal">
+          <Image
+            src="/src/assets/images/content/TEMP.png"
+            $align="center"
+            $width="30%"
+          />
+          <Image
+            src="/src/assets/images/content/TEMP.png"
+            $align="center"
+            $width="30%"
+          />
+          <Image
+            src="/src/assets/images/content/TEMP.png"
+            $align="center"
+            $width="30%"
+          />
+        </Row>
+        <Image
+          src="/src/assets/images/content/TEMP.png"
+          $height="25rem"
+          $objectFit="cover"
+          $width="100%"
+        />
+        <Card $cardColor="var(--color-light-100)">
+          <Row $direction="horizontal" $align="space-evenly">
+            <Row $direction="horizontal" $gap="var(--gap-lg)">
+              <Image
+                src="/src/assets/images/content/TEMP.png"
+                $borderRadius="round"
+                $width="4rem"
+              />
+              <Heading as="h6">What are you waiting for?</Heading>
+            </Row>
+            <Button $variation="primary" $size="small">
+              Start Exploring Now
+            </Button>
+          </Row>
+        </Card>
       </ExplorationCardBody>
     </StyledExplorationCard>
   );
