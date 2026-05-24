@@ -20,7 +20,7 @@ function ExplorerDashboardProfileItem() {
               First Explorer
             </Heading>
             <Image
-              src="src/assets/images/content/TEMP.png"
+              src="/src/assets/images/content/TEMP.png"
               $borderRadius="var(--border-radius-round)"
               $width="8rem"
               $imageShadow="var(--box-shadow-sm)"

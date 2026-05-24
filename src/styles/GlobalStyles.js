@@ -114,7 +114,8 @@ body::before{
 .yt-lite {
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 16 / 9;    border-radius: var(--border-radius-md);
+  aspect-ratio: 16 / 9;   
+  border-radius: var(--border-radius-md);
 }
 
 

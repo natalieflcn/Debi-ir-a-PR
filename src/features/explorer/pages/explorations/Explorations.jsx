@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 
-import ExplorationCard from "../../components/explorations/ExplorationCard";
+import ExplorationMiniCard from "../../components/explorations/ExplorationMiniCard";
 import ExplorationsFilters from "../../components/explorations/ExplorationsFilters";
 import fakeExplorationData from "./fakeExplorationsData";
 
@@ -24,7 +24,7 @@ function Explorations() {
       <ExplorationsFilters />
       <ExplorationCards>
         {fakeExplorationData.map((exploration) => (
-          <ExplorationCard
+          <ExplorationMiniCard
             name={exploration.name}
             description={exploration.description}
             numStops={exploration.numStops}

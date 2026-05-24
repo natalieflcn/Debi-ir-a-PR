@@ -25,7 +25,7 @@ function ExplorerDashboardExplorationsItem({ explorationData, title }) {
                 $align="flex-start"
                 $gap="var(--gap-lg)"
               >
-                <Image src="src/assets/images/content/TEMP.png" $width="40%" />
+                <Image src="/src/assets/images/content/TEMP.png" $width="40%" />
                 <Row $gap="var(--gap-2xl)">
                   <Row>
                     <Heading as="h5">{exploration.name}</Heading>

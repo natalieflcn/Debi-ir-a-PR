@@ -1,97 +1,104 @@
-import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 import Heading from "../../../../shared/components/typography/Heading";
 import Bold from "../../../../shared/components/typography/Bold";
 import { IoFlag } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
+import Image from "../../../../shared/components/ui/Image";
 import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
+import {
+  ExplorationCardAbout,
+  ExplorationCardBody,
+  ExplorationCardHeaderDetails,
+  ExplorationCardHeaderImage,
+  ExplorationCardHeading,
+  ExplorationCardLocations,
+  StyledExplorationCard,
+} from "./explorationCard.styles";
 
-const StyledExplorationCard = styled(Card)`
-  align-items: flex-start;
-
-  max-width: 31%;
-  width: 31%;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;
-  flex-grow: 1;
-  position: relative;
-  background-color: var(--color-light-0);
-  color: var(--color-dark-200);
-`;
-
-const ExplorationCardBackground = styled.div`
-  background-image: url("src/assets/images/content/TEMP.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
-  position: relative;
-  height: 15rem;
-  width: 100%;
-`;
-
-const ExplorationCardHeading = styled(Heading)`
-  position: absolute;
-  bottom: 0; /* always sticks to bottom of image */
-  left: 0;
-  right: 0;
-  line-height: var(--line-height-2xl);
-  text-align: right;
-  background-color: rgba(241, 198, 202, 0.8);
-  padding: 0.75rem 1.25rem;
-  width: 85%;
-  border-bottom-right-radius: var(--border-radius-md);
-  border-top-right-radius: var(--border-radius-md);
-`;
-
-const ExplorationCardBody = styled.div`
-  padding: 1.75rem;
-`;
-
-const ExplorationDescription = styled.p`
-  line-height: var(--line-height-md);
-`;
-
-function ExplorationCard({
-  name,
-  description,
-  numStops,
-  startLocation,
-  tourLink,
-}) {
+function ExplorationCard({}) {
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
-      <ExplorationCardBackground>
-        <ExplorationCardHeading
-          as="h3"
-          $color="var(--color-red-200)"
-          $shadowColor="var(--color-brown-400)"
-        >
-          {name}
-        </ExplorationCardHeading>
-      </ExplorationCardBackground>
-
-      <ExplorationCardBody>
-        <Row $gap="var(--gap-lg)">
-          <ExplorationDescription>{description}</ExplorationDescription>
-
-          <Row $direction="horizontal" $align="space-evenly">
+      <ExplorationCardHeaderImage>
+        <ExplorationCardHeaderDetails $gap="var(--gap-lg)">
+          <ExplorationCardHeading
+            as="h2"
+            $color="var(--color-red-200)"
+            $shadowColor="var(--color-brown-400)"
+          >
+            Toa Alta Tour
+          </ExplorationCardHeading>
+          <Row $direction="horizontal" $gap="var(--gap-xl)" $align="center">
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
+              <Bold $color="var(--color-dark-200)">5 stops</Bold>
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoLocationSharp color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{startLocation}, PR</Bold>
+              <Bold $color="var(--color-dark-200)">Toa Alta, PR</Bold>
             </Row>
           </Row>
-
-          <Button $variation="primary" $size="large">
-            Learn More
+          <Button $variation="primary" $size="small">
+            Start Exploring
           </Button>
+        </ExplorationCardHeaderDetails>
+      </ExplorationCardHeaderImage>
+
+      <ExplorationCardBody>
+        <Row $direction="horizontal" $gap="var(--gap-2xl)" $align="flex-start">
+          <ExplorationCardAbout>
+            <Heading as="h3" $color="var(--color-red-300)">
+              ABOUT THIS EXPLORATION
+            </Heading>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              varius egestas elit. Nam maximus mi vel lacus pulvinar, non
+              blandit lorem venenatis. Sed suscipit leo viverra, condimentum
+              velit non, viverra nisl.
+            </p>
+
+            <Image
+              src="/src/assets/images/content/TEMP.png"
+              $width="80%"
+              $align="center"
+            />
+          </ExplorationCardAbout>
+
+          <ExplorationCardLocations>
+            <Heading as="h3" $color="var(--color-red-300)">
+              EXPLORATION LOCATIONS
+            </Heading>
+            <Row
+              $direction="horizontal"
+              $gap="var(--gap-md)"
+              $align="flex-start"
+            >
+              <Heading as="h4" $color="var(--color-red-300)">
+                1
+              </Heading>
+              <Heading as="h5">Rey Chino Food</Heading>
+            </Row>
+            <Row
+              $direction="horizontal"
+              $gap="var(--gap-md)"
+              $align="flex-start"
+            >
+              <Heading as="h4" $color="var(--color-red-300)">
+                1
+              </Heading>
+              <Heading as="h5">Rey Chino Food</Heading>
+            </Row>
+            <Row
+              $direction="horizontal"
+              $gap="var(--gap-md)"
+              $align="flex-start"
+            >
+              <Heading as="h4" $color="var(--color-red-300)">
+                1
+              </Heading>
+              <Heading as="h5">Rey Chino Food</Heading>
+            </Row>
+          </ExplorationCardLocations>
         </Row>
       </ExplorationCardBody>
     </StyledExplorationCard>

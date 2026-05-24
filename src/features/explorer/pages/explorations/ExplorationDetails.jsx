@@ -1,5 +1,7 @@
+import ExplorationCard from "../../components/explorations/ExplorationCard";
+
 function ExplorationDetails() {
-  return <div>San Juan Hunts Individual hunt</div>;
+  return <ExplorationCard>San Juan Hunts Individual hunt</ExplorationCard>;
 }
 
 export default ExplorationDetails;

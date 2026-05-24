@@ -22,7 +22,7 @@ function ExplorerDashboardBadgeItem() {
             Most Recent Badge
           </Heading>
           <Row $gap="var(--gap-md)" $align="center">
-            <Image src="src/assets/images/content/TEMP.png" $width="5rem" />
+            <Image src="/src/assets/images/content/TEMP.png" $width="5rem" />
             <Heading as="h6">Toa Alta Badge</Heading>
           </Row>
 

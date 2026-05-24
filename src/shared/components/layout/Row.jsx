@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const variants = {
   horizontal: css`
     justify-content: ${({ $align }) => $align || "space-between"};
-
+    align-items: center;
     gap: ${({ $gap }) => $gap || 0};
   `,
   vertical: css`
