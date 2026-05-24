@@ -19,7 +19,9 @@ function AppRouter() {
         </Route>
 
         {/* {Add Protected Route wrapping around this later} */}
-        <Route element={<ExplorerLayout />}>{ExplorerRoutes}</Route>
+        <Route path="explorer" element={<ExplorerLayout />}>
+          {ExplorerRoutes}
+        </Route>
 
         <Route path="ambassador" element={<AdminLayout />}>
           {AmbassadorRoutes}

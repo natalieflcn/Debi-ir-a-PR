@@ -5,9 +5,9 @@ import Background from "../components/decorative/Background";
 import { StyledLayout } from "./layout.styles";
 
 const menuItems = [
-  { label: "Dashboard", link: "/dashboard" },
-  { label: "Explorations", link: "/explorations" },
-  { label: "Profile", link: "/profile" },
+  { label: "Dashboard", link: "/explorer/dashboard" },
+  { label: "Explorations", link: "/explorer/explorations" },
+  { label: "Profile", link: "/explorer/profile" },
 ];
 
 function ExplorerLayout() {

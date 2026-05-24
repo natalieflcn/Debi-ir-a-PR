@@ -21,13 +21,19 @@ const ExplorerProfile = lazy(
 const ExplorerRoutes = (
   <>
     <Route path="dashboard" element={<ExplorerDashboard />} />
+
     <Route path="explorations" element={<Explorations />} />
 
-    <Route path="exploration/:explorationId" element={<ExplorationDetails />} />
     <Route
-      path="exploration/:explorationId/:explorationItemId"
+      path="explorations/:explorationId"
+      element={<ExplorationDetails />}
+    />
+
+    <Route
+      path="explorations/:explorationId/:explorationItemId"
       element={<ExplorationLocationDetails />}
     />
+
     <Route path="profile" element={<ExplorerProfile />} />
   </>
 );

@@ -98,7 +98,7 @@
 
 - [ ] Create Explorer core static pages
   - [x] Explorer Dashboard page
-  - [ ] Explorations page
+  - [x] Explorations page
   - [ ] Explorations/Exploration page (not yet started)
   - [ ] Explorations/Exploration page (started)
   - [ ] Explorations/Exploration/Location page
