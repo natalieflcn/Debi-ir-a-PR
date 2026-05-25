@@ -96,7 +96,7 @@
 
 - [x] NOTE: Turn off audio for panels while window is resizing
 
-- [ ] Create Explorer core static pages
+- [ ] Create Explorer core static pages TODO finish today
   - [x] Explorer Dashboard page
   - [x] Explorations page
   - [~] Explorations/Exploration page (not yet started)

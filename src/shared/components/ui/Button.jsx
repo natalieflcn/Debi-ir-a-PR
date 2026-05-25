@@ -9,6 +9,14 @@ const sizes = {
       $borderRadius || "var(--border-radius-sm)"};
     --shadow-offset: var(--box-shadow-offset-sm);
   `,
+  extraSmall: css`
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    border-radius: ${({ $borderRadius }) =>
+      $borderRadius || "var(--border-radius-md)"};
+    --shadow-offset: var(--box-shadow-offset-md);
+  `,
   small: css`
     justify-content: center;
     padding: 1rem 2rem;

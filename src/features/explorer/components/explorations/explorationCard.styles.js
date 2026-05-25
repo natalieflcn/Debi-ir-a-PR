@@ -16,7 +16,7 @@ export const StyledExplorationCard = styled(Card)`
 `;
 
 export const ExplorationCardHeaderImage = styled.div`
-  background-image: url("/src/assets/images/content/TEMP.png");
+  background-image: ${({ $image }) => `url(${$image})`};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -43,20 +43,25 @@ export const ExplorationCardHeaderDetails = styled(Row)`
   border-radius: var(--border-radius-lg);
 `;
 export const ExplorationCardBody = styled.div`
-  padding: 2rem;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-lg);
+  gap: var(--gap-3xl);
 `;
 
 export const ExplorationCardAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
-  width: 25%;
+  width: 28%;
   align-self: flex-start;
 `;
 
 export const ExplorationCardLocations = styled(Row)`
   align-self: flex-start;
+`;
+
+export const LocationHeading = styled(Heading)`
+  width: 2rem;
+  text-align: center;
 `;
