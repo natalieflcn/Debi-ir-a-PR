@@ -7,8 +7,8 @@ import Explorations from "../../features/explorer/pages/explorations/Exploration
 const ExplorerDashboard = lazy(
   () => import("@/features/explorer/pages/dashboard/ExplorerDashboard.jsx"),
 );
-const ExplorationDetails = lazy(
-  () => import("@/features/explorer/pages/explorations/ExplorationDetails"),
+const Exploration = lazy(
+  () => import("@/features/explorer/pages/explorations/Exploration"),
 );
 const ExplorationLocation = lazy(
   () => import("@/features/explorer/pages/explorations/ExplorationLocation"),
@@ -23,10 +23,7 @@ const ExplorerRoutes = (
 
     <Route path="explorations" element={<Explorations />} />
 
-    <Route
-      path="explorations/:explorationId"
-      element={<ExplorationDetails />}
-    />
+    <Route path="explorations/:explorationId" element={<Exploration />} />
 
     <Route
       path="explorations/:explorationId/:explorationItemId"
