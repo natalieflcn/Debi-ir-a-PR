@@ -22,6 +22,10 @@ export const ExplorationLocationHeaderImage = styled.div`
 export const ExplorationLocationHeading = styled(Heading)`
   line-height: var(--line-height-2xl);
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-sm);
 `;
 
 export const ExplorationLocationHeaderDetails = styled(Row)`

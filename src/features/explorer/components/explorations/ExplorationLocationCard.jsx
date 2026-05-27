@@ -1,4 +1,4 @@
-import { IoLocationSharp } from "react-icons/io5";
+import { IoCheckmarkCircleSharp, IoLocationSharp } from "react-icons/io5";
 import Row from "../../../../shared/components/layout/Row";
 import {
   ExplorationLocationAbout,
@@ -16,6 +16,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
+import { FaRegCircle } from "react-icons/fa";
 
 function ExplorationLocationCard({
   explorationLocation = fakeExplorationLocationData,
@@ -34,8 +35,17 @@ function ExplorationLocationCard({
             </ExplorationLocationHeading>
             <ExplorationLocationHeading
               as="h4"
+              $color="var(--color-red-200)"
               $shadowColor="var(--color-brown-400)"
             >
+              {explorationLocation.completed ? (
+                <IoCheckmarkCircleSharp
+                  size={25}
+                  color="var(--color-red-300)"
+                />
+              ) : (
+                <FaRegCircle size={25} />
+              )}{" "}
               {explorationLocation.locationName}
             </ExplorationLocationHeading>
 
@@ -53,7 +63,7 @@ function ExplorationLocationCard({
           <ExplorationLocationAbout>
             <Row $gap="var(--gap-sm)">
               <Heading as="h3" $color="var(--color-red-300)">
-                ABOUT THIS LOCATION
+                ABOUT {explorationLocation.locationName.toUpperCase()}
               </Heading>
               {explorationLocation.description}
             </Row>
@@ -78,16 +88,36 @@ function ExplorationLocationCard({
         <ExplorationLocationVisited $cardColor="var(--color-light-100)">
           <Row $direction="horizontal" $align="space-evenly">
             <Row $direction="horizontal" $gap="var(--gap-lg)">
-              <Image
-                src="/src/assets/images/content/TEMP.png"
-                $borderRadius="round"
-                $width="4rem"
-              />
-              <Heading as="h6">Have you explored this location yet?</Heading>
+              {!explorationLocation.completed && (
+                <Heading as="h6">Have you explored this location yet?</Heading>
+              )}
             </Row>
-            <Button $variation="primary" $size="small">
-              I have explored this location
-            </Button>
+
+            {explorationLocation.completed && (
+              <Row
+                $direction="horizontal"
+                $gap="var(--gap-sm
+              )"
+              >
+                <Heading as="h5" $color="var(--color-red-300)">
+                  Completed!
+                </Heading>
+                <IoCheckmarkCircleSharp
+                  size={40}
+                  color="var(--color-red-300)"
+                />
+              </Row>
+            )}
+
+            {!explorationLocation.completed ? (
+              <Button $variation="primary" $size="small">
+                I have explored this location
+              </Button>
+            ) : (
+              <Button $variation="darkRed" $size="small">
+                I have explored this location
+              </Button>
+            )}
           </Row>
         </ExplorationLocationVisited>
       </ExplorationLocationBody>
