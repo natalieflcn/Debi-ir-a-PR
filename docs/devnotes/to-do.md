@@ -93,6 +93,7 @@
   - [x] How It Works Page
   - [x] Home Page
   - [ ] NOTE: Mobile navigation bar not responding well
+- [ ] Add progress bar to TrackYourJourney.jsx
 
 - [x] NOTE: Turn off audio for panels while window is resizing
 

@@ -9,7 +9,7 @@ import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
 function ExplorerDashboardHistoryItem() {
   return (
-    <DashboardItem $height="5rem">
+    <DashboardItem $height="18rem">
       <Heading as="h4" $color="var(--color-dark-100)">
         Exploration History
       </Heading>

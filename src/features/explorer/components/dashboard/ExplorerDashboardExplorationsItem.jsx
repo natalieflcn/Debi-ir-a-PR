@@ -8,7 +8,7 @@ import Button from "../../../../shared/components/ui/Button";
 function ExplorerDashboardExplorationsItem({ explorationData, title }) {
   return (
     <>
-      <DashboardItem>
+      <DashboardItem >
         <Heading as="h4" $color="var(--color-dark-100)">
           {title}
         </Heading>

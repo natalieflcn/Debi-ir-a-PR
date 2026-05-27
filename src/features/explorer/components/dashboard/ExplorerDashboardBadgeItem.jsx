@@ -15,7 +15,7 @@ const StyledExplorerDashboardBadgeItem = styled.div`
 
 function ExplorerDashboardBadgeItem() {
   return (
-    <DashboardItem $variation="center">
+    <DashboardItem $variation="center" $height="18rem">
       <StyledExplorerDashboardBadgeItem>
         <Row $gap="var(--gap-lg)">
           <Heading as="h4" $color="var(--color-dark-100)">

@@ -23,9 +23,9 @@ import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 
 function ExplorationCard({
   exploration = fakeExplorationData,
-  userProgress = 1,
+  userProgress = null,
 }) {
-  const hasStarted = userProgress !== null;
+  const hasStarted = userProgress !== 1;
   const stopsCompleted = userProgress?.stopsCompleted ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
 
@@ -74,7 +74,7 @@ function ExplorationCard({
                   <Row $direction="horizontal" $gap="var(--gap-sm)">
                     <IoFlag color="var(--color-red-300)" />
                     <Bold $color="var(--color-dark-200)">
-                      {exploration.numStops} stops remaining
+                      {exploration.stopsRemaining} stops remaining
                     </Bold>
                   </Row>
                 </Row>
@@ -107,29 +107,35 @@ function ExplorationCard({
               EXPLORATION LOCATIONS
             </Heading>
             {exploration.locations.map((location) => (
-              <Row $direction="horizontal" $gap="var(--gap-xl)">
+              <Row
+                $direction="horizontal"
+                $gap="var(--gap-xl)"
+                key={location.id}
+              >
                 <Row
                   $direction="horizontal"
                   $gap="var(--gap-md)"
                   $align="flex-start"
-                  key={location.id}
                 >
-                  {location.completed ? (
-                    <IoCheckmarkCircleSharp
-                      size={25}
-                      color="var(--color-red-300)"
-                    />
-                  ) : (
-                    <FaRegCircle size={25} />
-                  )}
+                  {hasStarted &&
+                    (location.completed ? (
+                      <IoCheckmarkCircleSharp
+                        size={25}
+                        color="var(--color-red-300)"
+                      />
+                    ) : (
+                      <FaRegCircle size={25} />
+                    ))}
                   <LocationHeading as="h4" $color="var(--color-red-300)">
                     {location.id}
                   </LocationHeading>
                   <Heading as="h5">{location.locationName}</Heading>
                 </Row>
-                <Button $variation="primary" $size="extraSmall">
-                  Details
-                </Button>
+                {hasStarted && (
+                  <Button $variation="primary" $size="extraSmall">
+                    Details
+                  </Button>
+                )}
               </Row>
             ))}
           </ExplorationCardLocations>
