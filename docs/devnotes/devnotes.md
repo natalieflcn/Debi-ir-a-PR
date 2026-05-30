@@ -54,6 +54,7 @@
       - [ ] Petals flying across panels
       - [ ] Moss gently pulsing
       - [ ] Dust falls away from headlines when panel opens
+  - [ ] NOTE: Make sure navigation bar is mobile-responsive
 
 ---
 

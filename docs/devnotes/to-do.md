@@ -86,24 +86,28 @@
 ## Week: May 16 – May 25
 
 - [x] Fix Panel & PanelGroup scrolling implementation
-- [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish" TODO 2
-- [ ] Make sure the pages of the landing site are responsive for all devices TODO 3
+- [ ] Add Tio Tony's audios of saying PR phrases to "Brush Up Your Spanish"
+- [~] Make sure the pages of the landing site are responsive for all devices
   - [x] Resources Page
   - [x] About Page
   - [x] How It Works Page
   - [x] Home Page
   - [ ] NOTE: Mobile navigation bar not responding well
-- [ ] Add progress bar to TrackYourJourney.jsx
 
 - [x] NOTE: Turn off audio for panels while window is resizing
 
-- [ ] Create Explorer core static pages TODO finish today
+- [~] Create Explorer core static pages
   - [x] Explorer Dashboard page
   - [x] Explorations page
-  - [~] Explorations/Exploration page (not yet started)
-  - [ ] Explorations/Exploration page (started)
-  - [ ] Explorations/Exploration/Location page
+  - [x] Explorations/Exploration page (not yet started)
+  - [x] Explorations/Exploration page (started)
+  - [x] Explorations/Exploration/Location page
+
+## Week: May 30 - June 6
+
+- [ ] Finish Explorer core static pages
   - [ ] Profile page
+    - [ ] Implement Modal Window with changing Informational icons when user hovers over and clicks for more information on user title
 
 - [ ] Create Ambassador core static pages
 - [ ] Create SuperAdmin core static pages

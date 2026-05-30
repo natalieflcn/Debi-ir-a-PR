@@ -11,7 +11,6 @@ const fakeExplorationLocationData = {
     { id: 3, imageURL: "/src/assets/images/content/TEMP.png" },
   ],
   tags: ["food"],
-  completed: true,
 };
 
 export default fakeExplorationLocationData;

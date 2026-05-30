@@ -20,11 +20,12 @@ import {
 } from "./explorationCard.styles";
 import fakeExplorationData from "../../pages/explorations/fakeExplorationData";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
+import {
+  ExplorationLocationTag,
+  ExplorationLocationTags,
+} from "./explorationLocationCard.styles";
 
-function ExplorationCard({
-  exploration = fakeExplorationData,
-  userProgress = null,
-}) {
+function ExplorationCard({ exploration, userProgress }) {
   const hasStarted = userProgress !== 1;
   const stopsCompleted = userProgress?.stopsCompleted ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
@@ -100,6 +101,10 @@ function ExplorationCard({
               ABOUT THIS EXPLORATION
             </Heading>
             <p>{exploration.longDescription}</p>
+            <ExplorationLocationTags>
+              <ExplorationLocationTag>hi</ExplorationLocationTag>
+              <ExplorationLocationTag>hi</ExplorationLocationTag>
+            </ExplorationLocationTags>
           </ExplorationCardAbout>
 
           <ExplorationCardLocations>

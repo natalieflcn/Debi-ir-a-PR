@@ -10,7 +10,7 @@ import {
   ExplorationLocationTags,
   ExplorationLocationVisited,
   StyledExplorationLocation,
-} from "../../pages/explorations/explorationLocation.styles";
+} from "./explorationLocationCard.styles";
 import fakeExplorationLocationData from "../../pages/explorations/fakeExplorationLocationData";
 import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
@@ -18,10 +18,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import { FaRegCircle } from "react-icons/fa";
 
-function ExplorationLocationCard({
-  explorationLocation = fakeExplorationLocationData,
-  userProgress = null,
-}) {
+function ExplorationLocationCard({ explorationLocation, userCompleted }) {
   return (
     <StyledExplorationLocation>
       <ExplorationLocationHeaderImage $image={explorationLocation.headerImage}>
@@ -38,7 +35,7 @@ function ExplorationLocationCard({
               $color="var(--color-red-200)"
               $shadowColor="var(--color-brown-400)"
             >
-              {explorationLocation.completed ? (
+              {userCompleted ? (
                 <IoCheckmarkCircleSharp
                   size={25}
                   color="var(--color-red-300)"
@@ -88,12 +85,12 @@ function ExplorationLocationCard({
         <ExplorationLocationVisited $cardColor="var(--color-light-100)">
           <Row $direction="horizontal" $align="space-evenly">
             <Row $direction="horizontal" $gap="var(--gap-lg)">
-              {!explorationLocation.completed && (
+              {!userCompleted && (
                 <Heading as="h6">Have you explored this location yet?</Heading>
               )}
             </Row>
 
-            {explorationLocation.completed && (
+            {userCompleted && (
               <Row
                 $direction="horizontal"
                 $gap="var(--gap-sm
@@ -109,7 +106,7 @@ function ExplorationLocationCard({
               </Row>
             )}
 
-            {!explorationLocation.completed ? (
+            {!userCompleted ? (
               <Button $variation="primary" $size="small">
                 I have explored this location
               </Button>
