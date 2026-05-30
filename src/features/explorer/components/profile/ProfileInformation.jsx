@@ -28,7 +28,7 @@ const StyledButton = styled(Button)`
 `;
 const ProfileInformation = function ({ email, passwordLength, dateJoined }) {
   return (
-    <Card $cardColor="var(--color-light-200)">
+    <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
       <StyledProfileInformation>
         <Heading as="h5">Email</Heading>
         <Bold $color="var(--color-red-300)">{email.toLowerCase()}</Bold>

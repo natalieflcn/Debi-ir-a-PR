@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import ProfileHeader from "../../components/profile/ProfileHeader";
 import ProfileInformation from "../../components/profile/ProfileInformation";
+import ProfileBadgeCollection from "../../components/profile/ProfileBadgeCollection";
 
 const StyledExplorerProfile = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--gap-lg);
+  gap: var(--gap-xl);
 `;
 
 function ExplorerProfile() {
@@ -17,6 +18,7 @@ function ExplorerProfile() {
         passwordLength={8}
         dateJoined="Jan 30, 2026"
       />
+      <ProfileBadgeCollection />
     </StyledExplorerProfile>
   );
 }
