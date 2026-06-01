@@ -1,6 +1,7 @@
 import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
+import { StyledLayout } from "./layout.styles";
 
 const menuItems = [
   { label: "Dashboard", link: "/admin" },
@@ -13,8 +14,10 @@ function AdminLayout() {
   return (
     <>
       <NavBar type="admin" menuItems={menuItems} />
-      <MainContent />
-      <Footer />
+      <StyledLayout>
+        <MainContent />
+        <Footer />
+      </StyledLayout>
     </>
   );
 }

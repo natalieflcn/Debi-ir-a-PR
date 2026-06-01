@@ -57,7 +57,7 @@ const AdminRoutes = (
     <Route path="explorations" element={<ManageExplorations />} />
 
     <Route path="profile" element={<AdminProfile />} />
-    <Route path="editProfile" element={<EditAdminProfile />} />
+    {/* <Route path="editProfile" element={<EditAdminProfile />} /> */}
 
     <Route path="users" element={<ManageUsers />} />
     <Route path="ambassadors" element={<ManageAmbassadors />} />

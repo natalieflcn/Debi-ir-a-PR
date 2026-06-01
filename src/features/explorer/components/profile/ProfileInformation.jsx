@@ -49,7 +49,9 @@ const ProfileInformation = function ({ email, passwordLength, dateJoined }) {
 
         <InformationLabel as="h5">Date Joined</InformationLabel>
         <Bold $color="var(--color-red-300)">Joined on {dateJoined}</Bold>
-        <span />
+        <Button $variation="darkRed" $size="medium">
+          Delete Account
+        </Button>
       </StyledProfileInformation>
     </Card>
   );

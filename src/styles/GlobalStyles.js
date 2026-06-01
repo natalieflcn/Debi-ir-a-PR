@@ -87,7 +87,8 @@ ul {
 body {
   font-family:  sans-serif, Helvetica;
   font-weight: 300;
-  background-color: var(--color-blue-200);
+  /* background-color: var(--color-blue-200); */
+  background-color: ${({ theme }) => theme.backgroundColor};
   color: var(--color-light-100);
   line-height: var(--line-height-md);
 }
@@ -106,7 +107,8 @@ body::before{
   inset: 0;
   z-index: -1;
 
-  background-image: url('/src/assets/images/ui/BlueOverlay.png');
+  /* background-image: url('/src/assets/images/ui/BlueOverlay.png'); */
+  background-image: ${({ theme }) => theme.backgroundImage};
   background-size: cover;
   background-position: center;
 } 

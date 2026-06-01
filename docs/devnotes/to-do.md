@@ -106,8 +106,24 @@
 ## Week: May 30 - June 6
 
 - [ ] Finish Explorer core static pages
-  - [~] Profile page
-    - [ ] Implement Modal Window with changing Informational icons when user hovers over and clicks for more information on user title
+  - [x] Profile page
+    - [x] Implement Modal Window with changing Informational icons when user hovers over and clicks for more information on user title
 
 - [ ] Create Ambassador core static pages
+  - [ ] Dashboard
+  - [ ] Explorations
+    - [ ] ManageExplorations
+    - [ ] CreateExploration
+    - [ ] Exploration
+    - [ ] EditExplorationDetails
+    - [ ] EditExplorationLocationDetails
+  - [ ] Users
+    - [ ] Manage Explorers
+    - [ ] Explorer Details
+    - [ ] Edit Explorer Details
+  - [ ] Profile
+    - [ ] Ambassador Profile
+    - [ ] Edit Ambassador Profile
+- [ ] Fix routing for Ambassador pages
+
 - [ ] Create SuperAdmin core static pages
