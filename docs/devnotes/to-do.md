@@ -127,3 +127,5 @@
 - [ ] Fix routing for Ambassador pages
 
 - [ ] Create SuperAdmin core static pages
+
+- [ ] NOTE: Clean up function declarations for React components
