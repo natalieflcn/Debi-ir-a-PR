@@ -11,8 +11,12 @@ const StyledNavWrapper = styled.div`
   top: 0;
   z-index: 2;
   width: 100%; // ← full width
-  background-color: var(--color-blue-200);
-  background-image: url(${BlueOverlay});
+
+  /* background-color: var(--color-blue-200);
+  background-image: url(${BlueOverlay}); */
+
+  background-color: ${({ theme }) => theme.backgroundColor};
+  background-image: ${({ theme }) => theme.backgroundImage};
 
   /* @media (max-width: 600px) {
     width: 100%;
@@ -34,8 +38,9 @@ const StyledNavBar = styled.nav`
   margin: 0 auto;
   padding: 1.5rem 1rem;
 
-  background-image: url(${BlueOverlay});
+  /* background-image: url(${BlueOverlay}); */
 
+  background-image: ${({ theme }) => theme.backgroundImage};
   /* @media (max-width: 800px) {
     position: relative;
     max-width: 400px;
