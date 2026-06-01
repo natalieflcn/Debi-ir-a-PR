@@ -9,7 +9,7 @@ function AmbassadorDashboardProfileItem() {
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-lg)">
         <Row $align="center">
-          <Heading as="h4" $color="var(--color-red-300)">
+          <Heading as="h4" $color="var(--color-red-200)">
             Ambassador
           </Heading>
           <Image

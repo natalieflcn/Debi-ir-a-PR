@@ -9,6 +9,7 @@ import AmbassadorDashboardExplorationStats from "../../components/dashboard/Amba
 import AmbassadorDashboardLocationStats from "../../components/dashboard/AmbassadorDashboardLocationStats";
 import AmbassadorDashboardTopExplorations from "../../components/dashboard/AmbassadorDashboardTopExplorations";
 import AmbassadorDashboardTopLocations from "../../components/dashboard/AmbassadorDashboardTopLocations";
+import AmbassadorDashboardExplorationsCreated from "../../components/dashboard/AmbassadorDashboardExplorationsCreated";
 
 const StyledAmbassadorDashboard = styled.div`
   display: flex;
@@ -25,11 +26,14 @@ function AmbassadorDashboard() {
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AmbassadorDashboardProfileItem />
+        <AmbassadorDashboardExplorationsCreated />
         <AmbassadorDashboardUserStats />
-        <AmbassadorDashboardNewExplorers />
       </Row>
 
-      <AmbassadorDashboardTopExplorers />
+      <Row>
+        <AmbassadorDashboardNewExplorers />
+        <AmbassadorDashboardTopExplorers />
+      </Row>
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AmbassadorDashboardExplorationStats />
