@@ -35,14 +35,11 @@ function AmbassadorDashboard() {
         <AmbassadorDashboardTopExplorers />
       </Row>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+      <Row $gap="var(--gap-xl)">
         <AmbassadorDashboardExplorationStats />
-        <AmbassadorDashboardLocationStats />
-      </Row>
-
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AmbassadorDashboardTopExplorations />
         <AmbassadorDashboardTopLocations />
+        <AmbassadorDashboardLocationStats />
       </Row>
     </StyledAmbassadorDashboard>
   );

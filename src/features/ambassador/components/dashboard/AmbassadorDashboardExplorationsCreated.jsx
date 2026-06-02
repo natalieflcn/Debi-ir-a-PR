@@ -8,7 +8,7 @@ import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 function AmbassadorDashboardExplorationsCreated() {
   return (
     <DashboardItem $variation="center" $height="18rem">
-      <Row $gap="var(--gap-xl)">
+      <Row $gap="var(--gap-2xl)">
         <Heading as="h4" $color="var(--color-red-400)">
           Explorations Created
         </Heading>
@@ -19,7 +19,7 @@ function AmbassadorDashboardExplorationsCreated() {
           <Button $variation="secondary" $size="small">
             Create Exploration
           </Button>
-          <Button $variation="darkRed" $size="small">
+          <Button $variation="primary" $size="small">
             Manage Explorations
           </Button>
         </Row>

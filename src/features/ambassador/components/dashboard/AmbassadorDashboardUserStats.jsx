@@ -10,7 +10,7 @@ const NumTotalUsers = function () {
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
-            Number of Explorers
+            # of Total Explorers
           </Heading>
           <SmallText>
             (The total number of Explorers enrolled in Debí ir a PR)
@@ -28,7 +28,7 @@ const NumMonthlyUsers = function () {
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
-            Number of Monthly Users
+            # of Monthly Explorers
           </Heading>
           <SmallText>
             (The total number of Explorers that were active this month)
@@ -46,7 +46,7 @@ const NumWeeklyUsers = function () {
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
-            Number of Weekly Users
+            # of Weekly Explorers
           </Heading>
           <SmallText>
             (The total number of Explorers that were active this week)

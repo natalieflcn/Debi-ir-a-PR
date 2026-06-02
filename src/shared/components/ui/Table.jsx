@@ -30,6 +30,8 @@ const StyledTableHeading = styled.th`
   font-family: Museo;
   letter-spacing: var(--letter-spacing-museo-tight);
   text-transform: uppercase;
+  line-height: var(--line-height-md);
+  align-content: center;
 
   background-color: ${({ $theme }) => $theme.headerBackground};
   color: ${({ $theme }) => $theme.headerColor};
