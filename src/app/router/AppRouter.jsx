@@ -9,6 +9,7 @@ import AdminRoutes from "./AdminRoutes";
 import { Suspense } from "react";
 import SpinnerMini from "../../shared/components/ui/SpinnerMini";
 import AmbassadorRoutes from "./AmbassadorRoutes";
+import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 
 function AppRouter() {
   return (
@@ -21,7 +22,7 @@ function AppRouter() {
         {/* {Add Protected Route wrapping around this later} */}
         <Route element={<ExplorerLayout />}>{ExplorerRoutes}</Route>
 
-        <Route path="ambassador" element={<AdminLayout />}>
+        <Route path="ambassador" element={<AmbassadorLayout />}>
           {AmbassadorRoutes}
         </Route>
 

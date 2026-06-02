@@ -9,7 +9,7 @@ function App() {
 
   const currentTheme = {
     backgroundColor: "var(--color-red-200)",
-    backgroundImage: "url(src/assets/images/ui/RedOverlay.png)",
+    backgroundImage: "url(/src/assets/images/ui/RedOverlay.png)",
   };
 
   return (

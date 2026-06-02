@@ -52,7 +52,7 @@ const TableNameCell = styled.div`
   }
 
   &:hover strong {
-    color: var(--color-red-200);
+    color: var(--color-green-200);
     cursor: pointer;
   }
 `;

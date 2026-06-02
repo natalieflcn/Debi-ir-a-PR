@@ -33,7 +33,15 @@ const ExplorerDetails = lazy(
 
 const AmbassadorRoutes = (
   <>
-    <Route index element={<AmbassadorDashboard />} />
+    <Route path="dashboard" element={<AmbassadorDashboard />} />
+
+    <Route path="explorations" element={<ManageExplorations />} />
+
+    <Route path="users" element={<ManageExplorers />} />
+
+    <Route path="profile" element={<AmbassadorProfile />} />
+
+    {/* FIX ROUTES BELOW */}
 
     <Route path="create" element={<CreateExploration />} />
 
