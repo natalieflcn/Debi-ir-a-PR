@@ -2,6 +2,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
 import Input from "../../../../shared/components/ui/Input";
 import FilterDropdown from "../../../../shared/components/ui/FilterDropdown";
+import SortDropdown from "../../../../shared/components/ui/SortDropdown";
 
 const explorationsFilters = [
   { id: "featured", name: "Featured" },
@@ -14,19 +15,19 @@ const explorationsFilters = [
   { id: "all", name: "All" },
 ];
 
+const explorationsSort = [
+  { id: "name", name: "Name" },
+  { id: "numStops", name: "Number of Stops" },
+];
+
 function ExplorationsFilters() {
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
       <Input placeholder="Search for an exploration..."></Input>
-      <Button $size="small" $variation="secondary">
-        Sort
-      </Button>
 
-      <Button $size="small" $variation="primary">
-        Filter
-      </Button>
+      <SortDropdown categories={explorationsSort} />
 
-      <FilterDropdown categories={explorationsFilters}></FilterDropdown>
+      <FilterDropdown categories={explorationsFilters} />
 
       {/* {explorationsFilters.map((filter) => (
         <Button $size="small" $variation="primary" key={filter.id}>
