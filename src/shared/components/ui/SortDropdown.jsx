@@ -25,7 +25,7 @@ function SortDropdown({ categories }) {
   //     return item.category === selectedCategory;
   //   });
 
-  console.log(selectedCategory);
+
 
   return (
     <Dropdown

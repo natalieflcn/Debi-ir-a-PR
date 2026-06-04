@@ -25,7 +25,7 @@ import {
   ExplorationLocationTags,
 } from "./explorationLocationCard.styles";
 
-function ExplorationCard({ exploration, userProgress }) {
+function ExplorationCard({ exploration, userProgress, buttonDetails }) {
   const hasStarted = userProgress !== 1;
   const stopsCompleted = userProgress?.stopsCompleted ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;

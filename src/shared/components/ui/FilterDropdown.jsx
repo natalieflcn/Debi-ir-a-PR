@@ -20,8 +20,6 @@ function FilterDropdown({ categories }) {
   //     return item.category === selectedCategory;
   //   });
 
-  console.log(selectedCategory);
-
   return (
     <Dropdown
       categories={categories}

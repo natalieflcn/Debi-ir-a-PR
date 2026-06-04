@@ -75,8 +75,6 @@ function Dropdown({
   //     return item.category === selectedCategory;
   //   });
 
-  console.log(selectedCategory);
-
   return (
     <StyledDropdown className={className} $width={$width}>
       <Button

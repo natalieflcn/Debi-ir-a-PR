@@ -127,8 +127,8 @@
     - [ ] Edit Ambassador Profile TODO 2
 - [x] Fix routing for Ambassador pages
 
-- [ ] Create Input reusable component
-- [ ] Redesign ExplorationCard component to include Input component
+- [x] Create Input reusable component
+- [x] Redesign ExplorationCard component to include Input component
 - [ ] Turn ExplorationCard into shared component
 - [ ] Implement ExplorationCard into AmbassadorExplorations page
 

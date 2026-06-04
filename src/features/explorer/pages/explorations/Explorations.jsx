@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 
-import ExplorationMiniCard from "../../components/explorations/ExplorationMiniCard";
+import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
 import ExplorationsFilters from "../../components/explorations/ExplorationsFilters";
-import fakeExplorationData from "./fakeExplorationsData";
+import fakeExplorationsData from "./fakeExplorationsData";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -17,19 +17,23 @@ const ExplorationCards = styled.div`
   flex-wrap: wrap;
   gap: var(--gap-2xl);
 `;
+const ExplorerExplorationCardButton = {
+  buttonName: "Learn More",
+  buttonLink: "",
+};
 
 function Explorations() {
   return (
     <StyledExplorations>
       <ExplorationsFilters />
       <ExplorationCards>
-        {fakeExplorationData.map((exploration) => (
+        {fakeExplorationsData.map((exploration) => (
           <ExplorationMiniCard
             name={exploration.name}
             description={exploration.description}
             numStops={exploration.numStops}
             startLocation={exploration.startLocation}
-            tourLink={exploration.tourLink}
+            buttonDetails={ExplorerExplorationCardButton}
           />
         ))}
       </ExplorationCards>
