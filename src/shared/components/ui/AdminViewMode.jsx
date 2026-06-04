@@ -20,19 +20,13 @@ const StyledButton = styled(Button)`
       : "var(--box-shadow-offset-md) var(--color-dark-200)"};
 `;
 
-function AdminViewMode() {
-  const [viewMode, setViewMode] = useState("grid");
-
-  const handleSelectViewMode = function (mode) {
-    setViewMode(mode);
-  };
-
+function AdminViewMode({ viewMode, onViewModeChange }) {
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
       <StyledButton
         $size="square"
         $variation="light"
-        onClick={() => handleSelectViewMode("grid")}
+        onClick={() => onViewModeChange("grid")}
         $active={viewMode === "grid"}
       >
         <IoMdGrid size={25} />
@@ -41,7 +35,7 @@ function AdminViewMode() {
       <StyledButton
         $size="square"
         $variation="light"
-        onClick={() => handleSelectViewMode("list")}
+        onClick={() => onViewModeChange("list")}
         $active={viewMode === "list"}
       >
         <IoListOutline size={25} />

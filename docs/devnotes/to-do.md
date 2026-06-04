@@ -129,8 +129,8 @@
 
 - [x] Create Input reusable component
 - [x] Redesign ExplorationCard component to include Input component
-- [ ] Turn ExplorationCard into shared component
-- [ ] Implement ExplorationCard into AmbassadorExplorations page
+- [x] Turn MiniExplorationCard into shared component
+- [x] Implement MiniExplorationCard into AmbassadorExplorations page
 
 - [ ] NOTE: Need to change navItem hover/active colors for Admin theme
 - [ ] Create SuperAdmin core static pages
