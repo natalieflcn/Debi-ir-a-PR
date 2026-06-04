@@ -110,22 +110,27 @@
     - [x] Implement Modal Window with changing Informational icons when user hovers over and clicks for more information on user title
 
 - [~] Create Ambassador core static pages
-  - [~] Dashboard
+  - [x] Dashboard
     - [ ] UserStats could contain reusable component
   - [ ] Explorations
-    - [ ] ManageExplorations
-    - [ ] CreateExploration
-    - [ ] Exploration
-    - [ ] EditExplorationDetails
-    - [ ] EditExplorationLocationDetails
+    - [ ] ManageExplorations TODO 1
+    - [ ] CreateExploration TODO 3
+    - [ ] Exploration TODO 2
+    - [ ] EditExplorationDetails TODO 4
+    - [ ] EditExplorationLocationDetails TODO 5
   - [ ] Users
     - [ ] Manage Explorers
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
   - [ ] Profile
-    - [ ] Ambassador Profile
-    - [ ] Edit Ambassador Profile
-- [ ] Fix routing for Ambassador pages
+    - [ ] Ambassador Profile TODO 1
+    - [ ] Edit Ambassador Profile TODO 2
+- [x] Fix routing for Ambassador pages
+
+- [ ] Create Input reusable component
+- [ ] Redesign ExplorationCard component to include Input component
+- [ ] Turn ExplorationCard into shared component
+- [ ] Implement ExplorationCard into AmbassadorExplorations page
 
 - [ ] NOTE: Need to change navItem hover/active colors for Admin theme
 - [ ] Create SuperAdmin core static pages

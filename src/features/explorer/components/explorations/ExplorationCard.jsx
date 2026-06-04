@@ -145,6 +145,14 @@ function ExplorationCard({ exploration, userProgress }) {
             ))}
           </ExplorationCardLocations>
         </Row>
+
+        <Image
+          src="/src/assets/images/content/TEMP.png"
+          $height="25rem"
+          $objectFit="cover"
+          $width="100%"
+        />
+
         <Row $direction="horizontal">
           {exploration.images.map((image) => (
             <Image
@@ -155,12 +163,7 @@ function ExplorationCard({ exploration, userProgress }) {
             />
           ))}
         </Row>
-        <Image
-          src="/src/assets/images/content/TEMP.png"
-          $height="25rem"
-          $objectFit="cover"
-          $width="100%"
-        />
+
         {!hasStarted && (
           <Card $cardColor="var(--color-light-100)">
             <Row $direction="horizontal" $align="space-evenly">

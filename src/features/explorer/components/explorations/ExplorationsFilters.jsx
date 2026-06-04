@@ -1,5 +1,7 @@
 import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
+import Input from "../../../../shared/components/ui/Input";
+import FilterDropdown from "../../../../shared/components/ui/FilterDropdown";
 
 const explorationsFilters = [
   { id: "featured", name: "Featured" },
@@ -14,12 +16,23 @@ const explorationsFilters = [
 
 function ExplorationsFilters() {
   return (
-    <Row $direction="horizontal">
-      {explorationsFilters.map((filter) => (
+    <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <Input placeholder="Search for an exploration..."></Input>
+      <Button $size="small" $variation="secondary">
+        Sort
+      </Button>
+
+      <Button $size="small" $variation="primary">
+        Filter
+      </Button>
+
+      <FilterDropdown categories={explorationsFilters}></FilterDropdown>
+
+      {/* {explorationsFilters.map((filter) => (
         <Button $size="small" $variation="primary" key={filter.id}>
           {filter.name}
         </Button>
-      ))}
+      ))} */}
     </Row>
   );
 }

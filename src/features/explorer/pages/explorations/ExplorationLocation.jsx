@@ -5,7 +5,7 @@ function ExplorationLocation() {
   return (
     <ExplorationLocationCard
       explorationLocation={fakeExplorationLocationData}
-      userProgress={false}
+      userCompleted={true}
     ></ExplorationLocationCard>
   );
 }

@@ -38,8 +38,8 @@ function AmbassadorDashboard() {
       <Row $gap="var(--gap-xl)">
         <AmbassadorDashboardExplorationStats />
         <AmbassadorDashboardTopExplorations />
-        <AmbassadorDashboardTopLocations />
         <AmbassadorDashboardLocationStats />
+        <AmbassadorDashboardTopLocations />
       </Row>
     </StyledAmbassadorDashboard>
   );
