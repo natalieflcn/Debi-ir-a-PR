@@ -3,6 +3,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Input from "../../../../shared/components/ui/Input";
 import FilterDropdown from "../../../../shared/components/ui/FilterDropdown";
 import SortDropdown from "../../../../shared/components/ui/SortDropdown";
+import { IoMdGrid } from "react-icons/io";
 
 const explorationsFilters = [
   { id: "featured", name: "Featured" },
@@ -23,8 +24,6 @@ const explorationsSort = [
 function ExplorationsFilters() {
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
-      <Input placeholder="Search for an exploration..."></Input>
-
       <SortDropdown categories={explorationsSort} />
 
       <FilterDropdown categories={explorationsFilters} />

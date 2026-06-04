@@ -4,6 +4,8 @@ import Card from "../../../../shared/components/layout/Card";
 import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
 import ExplorationsFilters from "../../components/explorations/ExplorationsFilters";
 import fakeExplorationsData from "./fakeExplorationsData";
+import Input from "../../../../shared/components/ui/Input";
+import Row from "../../../../shared/components/layout/Row";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -25,7 +27,10 @@ const ExplorerExplorationCardButton = {
 function Explorations() {
   return (
     <StyledExplorations>
-      <ExplorationsFilters />
+      <Row $direction="horizontal" $gap="var(--gap-lg)">
+        <Input placeholder="Search for an exploration..." />
+        <ExplorationsFilters />
+      </Row>
       <ExplorationCards>
         {fakeExplorationsData.map((exploration) => (
           <ExplorationMiniCard

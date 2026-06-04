@@ -9,6 +9,7 @@ const sizes = {
       $borderRadius || "var(--border-radius-sm)"};
     --shadow-offset: var(--box-shadow-offset-sm);
   `,
+
   extraSmall: css`
     justify-content: center;
     padding: 0.5rem 1rem;
@@ -96,6 +97,18 @@ const variations = {
     &:hover {
       background-color: var(--color-yellow-100);
       box-shadow: var(--box-shadow-offset-md) var(--color-yellow-300);
+    }
+  `,
+  light: css`
+    color: var(--color-brown-200);
+    background-color: var(--color-light-100);
+    box-shadow: var(--box-shadow-offset-md) var(--color-dark-200);
+    transition: all ease-in 0.2s;
+
+    &:hover {
+      background-color: var(--color-yellow-0);
+      color: var(--color-brown-300);
+      box-shadow: var(--box-shadow-inset-md) var(--color-brown-400);
     }
   `,
   treeBark: css`

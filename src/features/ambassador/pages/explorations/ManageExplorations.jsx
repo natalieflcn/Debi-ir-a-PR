@@ -2,6 +2,10 @@ import styled from "styled-components";
 import ExplorationsFilters from "../../../explorer/components/explorations/ExplorationsFilters";
 import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
 import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
+import Row from "../../../../shared/components/layout/Row";
+
+import Input from "../../../../shared/components/ui/Input";
+import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -24,7 +28,12 @@ const AmbassadorExplorationCardButton = {
 function ManageExplorations() {
   return (
     <StyledExplorations>
-      <ExplorationsFilters />
+      <Row $direction="horizontal" $gap="var(--gap-lg)">
+        <Input placeholder="Search for an exploration..." />
+        <ExplorationsFilters />
+        <AdminViewMode />
+      </Row>
+
       <ExplorationCards>
         {fakeExplorationsData.map((exploration) => (
           <ExplorationMiniCard
