@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 
 import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
-import ExplorationsFilters from "../../components/explorations/ExplorationsFilters";
+import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
 import fakeExplorationsData from "./fakeExplorationsData";
 import Input from "../../../../shared/components/ui/Input";
 import Row from "../../../../shared/components/layout/Row";

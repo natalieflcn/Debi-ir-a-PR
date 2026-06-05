@@ -113,10 +113,11 @@
   - [x] Dashboard
     - [ ] UserStats could contain reusable component
   - [ ] Explorations
-    - [ ] ManageExplorations TODO 1
+    - [x] ManageExplorations
     - [ ] CreateExploration TODO 3
-    - [ ] Exploration TODO 2
+    - [ ] Exploration TODO 1
     - [ ] EditExplorationDetails TODO 4
+    - [ ] CreateLocation
     - [ ] EditExplorationLocationDetails TODO 5
   - [ ] Users
     - [ ] Manage Explorers

@@ -1,8 +1,8 @@
-import Row from "../../../../shared/components/layout/Row";
-import Button from "../../../../shared/components/ui/Button";
-import Input from "../../../../shared/components/ui/Input";
-import FilterDropdown from "../../../../shared/components/ui/FilterDropdown";
-import SortDropdown from "../../../../shared/components/ui/SortDropdown";
+import Row from "../layout/Row";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import FilterDropdown from "../ui/FilterDropdown";
+import SortDropdown from "../ui/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
 
 const explorationsFilters = [

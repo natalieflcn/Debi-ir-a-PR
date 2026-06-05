@@ -59,6 +59,7 @@ export const ExplorationCardAbout = styled.div`
 
 export const ExplorationCardLocations = styled(Row)`
   align-self: flex-start;
+  width: 100%;
 `;
 
 export const LocationHeading = styled(Heading)`

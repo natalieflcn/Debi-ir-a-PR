@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ExplorationsFilters from "../../../explorer/components/explorations/ExplorationsFilters";
+import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
 import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
 import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
 import Row from "../../../../shared/components/layout/Row";
@@ -8,6 +8,7 @@ import Input from "../../../../shared/components/ui/Input";
 import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
 import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
+import Button from "../../../../shared/components/ui/Button";
 
 const AmbassadorExplorationsTable = {
   columns: [
@@ -17,7 +18,22 @@ const AmbassadorExplorationsTable = {
     { id: "createdBy", heading: "Created By" },
     { id: "dateCreated", heading: "Date Created" },
     { id: "dateUpdated", heading: "Date Updated" },
-    { id: "action", heading: "Action" },
+    {
+      id: "action",
+      heading: "Action",
+      render: (row) => (
+        <ActionTableCell>
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            <Button $size="extraSmall" $variation="secondary">
+              View
+            </Button>
+            <Button $size="extraSmall" $variation="primary">
+              Edit
+            </Button>
+          </Row>
+        </ActionTableCell>
+      ),
+    },
   ],
   rows: [
     {
@@ -52,6 +68,25 @@ const AmbassadorExplorationsTable = {
     },
   ],
 };
+
+const explorationsTableTheme = {
+  boxShadow: "var(--box-shadow-offset-lg)",
+  shadowColor: "var(--color-green-400)",
+  headerBackground: "var(--color-green-200)",
+  headerColor: "var(--color-light-0)",
+  headerBackgroundAlt: "var(--color-green-300)",
+  headerColorAlt: "var(--color-light-0)",
+  cellBackground: "var(--color-light-100)",
+  cellBackgroundAlt: "var(--color-light-200)",
+  borderColor: "var(--color-yellow-300)",
+};
+
+const ActionTableCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -108,6 +143,7 @@ function ManageExplorations() {
         <CondensedTable
           columns={AmbassadorExplorationsTable.columns}
           rows={AmbassadorExplorationsTable.rows}
+          $theme={explorationsTableTheme}
         ></CondensedTable>
       )}
     </StyledExplorations>

@@ -1,0 +1,112 @@
+import Card from "../layout/Card";
+import Heading from "../typography/Heading";
+import Bold from "../typography/Bold";
+import { IoFlag } from "react-icons/io5";
+import { IoLocationSharp } from "react-icons/io5";
+import Image from "../ui/Image";
+import Row from "../layout/Row";
+import Button from "../ui/Button";
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
+import { FaRegCircle } from "react-icons/fa";
+import {
+  ExplorationCardAbout,
+  ExplorationCardBody,
+  ExplorationCardHeaderDetails,
+  ExplorationCardHeaderImage,
+  ExplorationCardHeading,
+  ExplorationCardLocations,
+  LocationHeading,
+  StyledExplorationCard,
+} from "../../../features/explorer/components/explorations/explorationCard.styles";
+
+import {
+  ExplorationLocationTag,
+  ExplorationLocationTags,
+} from "../../../features/explorer/components/explorations/explorationLocationCard.styles";
+
+function ExplorationCard({
+  exploration,
+  headerDetails,
+  locationDetails,
+  footerCTA,
+}) {
+  return (
+    <StyledExplorationCard $cardShadow="outsetLG">
+      <ExplorationCardHeaderImage $image={exploration.headerImage}>
+        <ExplorationCardHeaderDetails $gap="var(--gap-lg)">
+          <ExplorationCardHeading
+            as="h2"
+            $color="var(--color-red-200)"
+            $shadowColor="var(--color-brown-400)"
+          >
+            {exploration.explorationName}
+          </ExplorationCardHeading>
+
+          <Row $gap="var(--gap-md)">
+            <Row $direction="horizontal" $gap="var(--gap-xl)" $align="center">
+              <Row $direction="horizontal" $gap="var(--gap-sm)">
+                <IoFlag color="var(--color-red-300)" />
+                <Bold $color="var(--color-dark-200)">
+                  {exploration.numStops} total stops
+                </Bold>
+              </Row>
+
+              <Row $direction="horizontal" $gap="var(--gap-sm)">
+                <IoLocationSharp color="var(--color-red-300)" />
+                <Bold $color="var(--color-dark-200)">
+                  {exploration.startLocation}, PR
+                </Bold>
+              </Row>
+            </Row>
+          </Row>
+
+          {headerDetails}
+        </ExplorationCardHeaderDetails>
+      </ExplorationCardHeaderImage>
+
+      <ExplorationCardBody>
+        <Row $direction="horizontal" $gap="var(--gap-4xl)" $align="flex-start">
+          <ExplorationCardAbout>
+            <Heading as="h3" $color="var(--color-red-300)">
+              ABOUT THIS EXPLORATION
+            </Heading>
+            <p>{exploration.longDescription}</p>
+            <ExplorationLocationTags>
+              <ExplorationLocationTag>hi</ExplorationLocationTag>
+              <ExplorationLocationTag>hi</ExplorationLocationTag>
+            </ExplorationLocationTags>
+          </ExplorationCardAbout>
+
+          <ExplorationCardLocations>
+            <Heading as="h3" $color="var(--color-red-300)">
+              EXPLORATION LOCATIONS
+            </Heading>
+
+            {locationDetails}
+          </ExplorationCardLocations>
+        </Row>
+
+        <Image
+          src="/src/assets/images/content/TEMP.png"
+          $height="25rem"
+          $objectFit="cover"
+          $width="100%"
+        />
+
+        <Row $direction="horizontal">
+          {exploration.images.map((image) => (
+            <Image
+              src={image.imageURL}
+              $align="center"
+              $width="30%"
+              key={image.id}
+            />
+          ))}
+        </Row>
+
+        {footerCTA}
+      </ExplorationCardBody>
+    </StyledExplorationCard>
+  );
+}
+export default ExplorationCard;
