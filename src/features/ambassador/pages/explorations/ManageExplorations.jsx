@@ -21,7 +21,7 @@ const AmbassadorExplorationsTable = {
     {
       id: "action",
       heading: "Action",
-      render: (row) => (
+      render: () => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
             <Button $size="extraSmall" $variation="secondary">
@@ -101,10 +101,20 @@ const ExplorationCards = styled.div`
   gap: var(--gap-2xl);
 `;
 
-const AmbassadorExplorationCardButton = {
-  buttonName: "View and Edit Exploration",
-  buttonLink: "",
-};
+const AmbassadorExplorationCardButton = [
+  {
+    id: "view",
+    buttonVariation: "secondary",
+    buttonName: "View ",
+    buttonLink: "",
+  },
+  {
+    id: "edit",
+    buttonVariation: "primary",
+    buttonName: "Edit ",
+    buttonLink: "",
+  },
+];
 
 function ManageExplorations() {
   const [viewMode, setViewMode] = useState("grid");
@@ -115,6 +125,11 @@ function ManageExplorations() {
 
   return (
     <StyledExplorations>
+      <Row>
+        <Button $variation="darkRed" $size="small">
+          Create New Exploration
+        </Button>
+      </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
         <ExplorationsFilters />

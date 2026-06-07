@@ -17,7 +17,7 @@ import {
   ExplorationCardLocations,
   LocationHeading,
   StyledExplorationCard,
-} from "../../../features/explorer/components/explorations/explorationCard.styles";
+} from "./explorationCard.styles";
 
 import {
   ExplorationLocationTag,

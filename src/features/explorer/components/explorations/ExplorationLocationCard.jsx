@@ -8,7 +8,7 @@ import {
   ExplorationLocationHeading,
   ExplorationLocationTag,
   ExplorationLocationTags,
-  ExplorationLocationVisited,
+  ExplorationLocationFooter,
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
 import fakeExplorationLocationData from "../../pages/explorations/fakeExplorationLocationData";
@@ -18,7 +18,12 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import { FaRegCircle } from "react-icons/fa";
 
-function ExplorationLocationCard({ explorationLocation, userCompleted }) {
+function ExplorationLocationCard({
+  explorationLocation,
+  userCompleted,
+  headerDetails,
+  footerCTA,
+}) {
   return (
     <StyledExplorationLocation>
       <ExplorationLocationHeaderImage $image={explorationLocation.headerImage}>
@@ -30,21 +35,8 @@ function ExplorationLocationCard({ explorationLocation, userCompleted }) {
             >
               {explorationLocation.explorationName}
             </ExplorationLocationHeading>
-            <ExplorationLocationHeading
-              as="h4"
-              $color="var(--color-red-200)"
-              $shadowColor="var(--color-brown-400)"
-            >
-              {userCompleted ? (
-                <IoCheckmarkCircleSharp
-                  size={25}
-                  color="var(--color-red-300)"
-                />
-              ) : (
-                <FaRegCircle size={25} />
-              )}{" "}
-              {explorationLocation.locationName}
-            </ExplorationLocationHeading>
+
+            {headerDetails}
 
             <Row $direction="horizontal" $gap="var(--gap-sm)" $align="center">
               <IoLocationSharp color="var(--color-red-300)" />
@@ -82,41 +74,9 @@ function ExplorationLocationCard({ explorationLocation, userCompleted }) {
           ))}
         </Row>
 
-        <ExplorationLocationVisited $cardColor="var(--color-light-100)">
-          <Row $direction="horizontal" $align="space-evenly">
-            <Row $direction="horizontal" $gap="var(--gap-lg)">
-              {!userCompleted && (
-                <Heading as="h6">Have you explored this location yet?</Heading>
-              )}
-            </Row>
-
-            {userCompleted && (
-              <Row
-                $direction="horizontal"
-                $gap="var(--gap-sm
-              )"
-              >
-                <Heading as="h5" $color="var(--color-red-300)">
-                  Completed!
-                </Heading>
-                <IoCheckmarkCircleSharp
-                  size={40}
-                  color="var(--color-red-300)"
-                />
-              </Row>
-            )}
-
-            {!userCompleted ? (
-              <Button $variation="primary" $size="small">
-                I have explored this location
-              </Button>
-            ) : (
-              <Button $variation="darkRed" $size="small">
-                I have explored this location
-              </Button>
-            )}
-          </Row>
-        </ExplorationLocationVisited>
+        <ExplorationLocationFooter $cardColor="var(--color-light-100)">
+          {footerCTA}
+        </ExplorationLocationFooter>
       </ExplorationLocationBody>
     </StyledExplorationLocation>
   );

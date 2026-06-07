@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
-import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
+// import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(
   () => import("@/features/ambassador/pages/dashboard/AmbassadorDashboard.jsx"),
@@ -8,13 +8,13 @@ const AmbassadorDashboard = lazy(
 const CreateExploration = lazy(
   () => import("@/features/ambassador/pages/explorations/CreateExploration"),
 );
-const EditExplorationDetails = lazy(
-  () =>
-    import("@/features/ambassador/pages/explorations/EditExplorationDetails"),
+
+const ViewExploration = lazy(
+  () => import("@/features/ambassador/pages/explorations/ViewExploration"),
 );
-const EditExplorationItemDetails = lazy(
-  () =>
-    import("@/features/ambassador/pages/explorations/EditExplorationItemDetails"),
+
+const ViewLocation = lazy(
+  () => import("@/features/ambassador/pages/explorations/ViewLocation"),
 );
 const ManageExplorations = lazy(
   () => import("@/features/ambassador/pages/explorations/ManageExplorations"),
@@ -40,6 +40,11 @@ const AmbassadorRoutes = (
 
     <Route path="explorations/:explorationId" element={<ViewExploration />} />
 
+    <Route
+      path="explorations/:explorationId/:explorationItemId"
+      element={<ViewLocation />}
+    />
+
     <Route path="users" element={<ManageExplorers />} />
 
     <Route path="profile" element={<AmbassadorProfile />} />
@@ -52,10 +57,7 @@ const AmbassadorRoutes = (
       path="exploration/:explorationId"
       element={<EditExplorationDetails />}
     /> */}
-    <Route
-      path="exploration/:explorationId/explorationItemId"
-      element={<EditExplorationItemDetails />}
-    />
+
     <Route path="explorations" element={<ManageExplorations />} />
 
     <Route path="profile" element={<AmbassadorProfile />} />

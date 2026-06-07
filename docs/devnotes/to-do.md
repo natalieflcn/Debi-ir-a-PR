@@ -105,7 +105,7 @@
 
 ## Week: May 30 - June 6
 
-- [ ] Finish Explorer core static pages
+- [x] Finish Explorer core static pages
   - [x] Profile page
     - [x] Implement Modal Window with changing Informational icons when user hovers over and clicks for more information on user title
 
@@ -114,10 +114,13 @@
     - [ ] UserStats could contain reusable component
   - [ ] Explorations
     - [x] ManageExplorations
-    - [ ] CreateExploration TODO 3
-    - [ ] Exploration TODO 1
-    - [ ] EditExplorationDetails TODO 4
-    - [ ] CreateLocation
+      - [x] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons TODO 0
+      - [ ] Use useRef to close dropdown menus upon clicking outside of menus
+    - [ ] CreateExploration TODO 2
+    - [x] Exploration
+    - [ ] EditExplorationDetails TODO 3
+    - [ ] CreateLocation TODO 4
+    - [x] ViewLocation TODO 1
     - [ ] EditExplorationLocationDetails TODO 5
   - [ ] Users
     - [ ] Manage Explorers
@@ -127,6 +130,7 @@
     - [ ] Ambassador Profile TODO 1
     - [ ] Edit Ambassador Profile TODO 2
 - [x] Fix routing for Ambassador pages
+- [ ] Refactor current BrowserRouter implementation into CreateBrowserRouter
 
 - [x] Create Input reusable component
 - [x] Redesign ExplorationCard component to include Input component

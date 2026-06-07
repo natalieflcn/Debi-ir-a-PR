@@ -19,10 +19,14 @@ const ExplorationCards = styled.div`
   flex-wrap: wrap;
   gap: var(--gap-2xl);
 `;
-const ExplorerExplorationCardButton = {
-  buttonName: "Learn More",
-  buttonLink: "",
-};
+const ExplorerExplorationCardButton = [
+  {
+    id: "learn-more",
+    buttonVariation: "primary",
+    buttonName: "Learn More ",
+    buttonLink: "",
+  },
+];
 
 function Explorations() {
   return (

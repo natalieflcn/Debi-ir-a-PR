@@ -90,9 +90,17 @@ function ExplorationMiniCard({
             </Row>
           </Row>
 
-          <Button $variation="primary" $size="large">
-            {buttonDetails.buttonName}
-          </Button>
+          <Row $direction="horizontal" $gap="var(--gap-md)">
+            {buttonDetails.map((button) => (
+              <Button
+                $variation={button.buttonVariation}
+                $size="large"
+                key={button.id}
+              >
+                {button.buttonName}
+              </Button>
+            ))}
+          </Row>
         </Row>
       </ExplorationCardBody>
     </StyledExplorationCard>

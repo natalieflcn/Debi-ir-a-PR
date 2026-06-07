@@ -77,6 +77,6 @@ export const ExplorationLocationTag = styled.span`
   font-size: var(--font-size-xs);
 `;
 
-export const ExplorationLocationVisited = styled(Card)`
+export const ExplorationLocationFooter = styled(Card)`
   /* margin: 2rem 1.5rem; */
 `;

@@ -5,12 +5,6 @@ import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplor
 import AmbassadorExplorationCardHeaderDetails from "../../components/explorations/AmbassadorExplorationCardHeaderDetails";
 import AmbassadorExplorationCardLocations from "../../components/explorations/AmbassadorExplorationCardLocations";
 
-const headerCTA = (
-  <Button $variation="primary" $size="medium">
-    Edit Details
-  </Button>
-);
-
 function ViewExploration({ exploration = fakeExplorationData }) {
   const headerDetails = (
     <AmbassadorExplorationCardHeaderDetails author="me" lastUpdated="today" />

@@ -1,7 +1,7 @@
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
-import { LocationHeading } from "../../../explorer/components/explorations/explorationCard.styles";
+import { LocationHeading } from "../../../../shared/components/explorations/explorationCard.styles";
 
 function AmbassadorExplorationCardLocations({ locations }) {
   return locations.map((location) => (
