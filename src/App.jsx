@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppProviders from "./app/providers/AppProviders";
 import AppRouter from "./app/router/AppRouter";
@@ -15,11 +15,8 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <BrowserRouter>
-        {/* <AppProviders> */}
-        <AppRouter />
-        {/* </AppProviders> */}
-      </BrowserRouter>
+
+      <RouterProvider router={AppRouter} />
     </ThemeProvider>
   );
 }

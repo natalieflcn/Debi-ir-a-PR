@@ -32,41 +32,18 @@ const ExplorerDetails = lazy(
   () => import("@/features/ambassador/pages/users/ExplorerDetails"),
 );
 
-const AmbassadorRoutes = (
-  <>
-    <Route path="dashboard" element={<AmbassadorDashboard />} />
-
-    <Route path="explorations" element={<ManageExplorations />} />
-
-    <Route path="explorations/:explorationId" element={<ViewExploration />} />
-
-    <Route
-      path="explorations/:explorationId/:explorationItemId"
-      element={<ViewLocation />}
-    />
-
-    <Route path="users" element={<ManageExplorers />} />
-
-    <Route path="profile" element={<AmbassadorProfile />} />
-
-    {/* FIX ROUTES BELOW */}
-
-    <Route path="create" element={<CreateExploration />} />
-
-    {/* <Route
-      path="exploration/:explorationId"
-      element={<EditExplorationDetails />}
-    /> */}
-
-    <Route path="explorations" element={<ManageExplorations />} />
-
-    <Route path="profile" element={<AmbassadorProfile />} />
-    {/* <Route path="editProfile" element={<EditAmbassadorProfile />} /> */}
-
-    <Route path="users" element={<ManageExplorers />} />
-
-    {<Route path="explorers/:explorerId" element={<ExplorerDetails />} />}
-  </>
-);
+const AmbassadorRoutes = [
+  { path: "dashboard", element: <AmbassadorDashboard /> },
+  { path: "explorations", element: <ManageExplorations /> },
+  { path: "explorations/:explorationId", element: <ViewExploration /> },
+  {
+    path: "explorations/:explorationId/:explorationLocationId",
+    element: <ViewLocation />,
+  },
+  { path: "users", element: <ManageExplorers /> },
+  { path: "profile", element: <AmbassadorProfile /> },
+  { path: "dashboard", element: <AmbassadorDashboard /> },
+  { path: "create", element: <CreateExploration /> },
+];
 
 export default AmbassadorRoutes;

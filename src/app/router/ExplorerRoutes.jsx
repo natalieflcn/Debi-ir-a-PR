@@ -17,21 +17,15 @@ const ExplorerProfile = lazy(
   () => import("@/features/explorer/pages/profile/ExplorerProfile"),
 );
 
-const ExplorerRoutes = (
-  <>
-    <Route path="dashboard" element={<ExplorerDashboard />} />
-
-    <Route path="explorations" element={<Explorations />} />
-
-    <Route path="explorations/:explorationId" element={<Exploration />} />
-
-    <Route
-      path="explorations/:explorationId/:explorationItemId"
-      element={<ExplorationLocation />}
-    />
-
-    <Route path="profile" element={<ExplorerProfile />} />
-  </>
-);
+const ExplorerRoutes = [
+  { path: "dashboard", element: <ExplorerDashboard /> },
+  { path: "explorations", element: <Explorations /> },
+  { path: "explorations/:explorationId", element: <Exploration /> },
+  {
+    path: "explorations/:explorationId/:explorationLocationId",
+    element: <ExplorationLocation />,
+  },
+  { path: "profile", element: <ExplorerProfile /> },
+];
 
 export default ExplorerRoutes;

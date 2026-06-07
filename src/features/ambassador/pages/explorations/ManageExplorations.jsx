@@ -4,7 +4,7 @@ import ExplorationMiniCard from "../../../../shared/components/explorations/Expl
 import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
 import Row from "../../../../shared/components/layout/Row";
 
-import Input from "../../../../shared/components/ui/Input";
+import Input from "../../../../shared/components/form/Input";
 import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
 import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";

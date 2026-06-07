@@ -15,16 +15,13 @@ const Resources = lazy(
   () => import("@/features/landing/resources/page/Resources"),
 );
 
-const PublicRoutes = (
-  <>
-    <Route index element={<HomePage />} />
-    <Route path="how-it-works" element={<Workflow />} />
-    <Route path="about" element={<About />} />
-    <Route path="resources" element={<Resources />} />
-
-    <Route path="create-account" element={<CreateAccount />} />
-    <Route path="login" element={<Login />} />
-  </>
-);
+const PublicRoutes = [
+  { index: true, element: <HomePage /> },
+  { path: "how-it-works", element: <Workflow /> },
+  { path: "about", element: <About /> },
+  { path: "resources", element: <Resources /> },
+  { path: "create-account", element: <Resources /> },
+  { index: "login", element: <Login /> },
+];
 
 export default PublicRoutes;
