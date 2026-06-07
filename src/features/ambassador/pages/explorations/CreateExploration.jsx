@@ -4,6 +4,7 @@ import Button from "../../../../shared/components/ui/Button";
 import AppForm from "../../../../shared/components/form/Form";
 import FormField from "../../../../shared/components/form/FormField";
 import TextArea from "../../../../shared/components/form/TextArea";
+import ImageUploader from "../../../../shared/components/form/ImageUploader";
 
 const createExplorationFormValues = [
   {
@@ -62,7 +63,7 @@ function CreateExploration() {
       </FormField>
 
       <FormField label="Images">
-        <Input name="images" placeholder="The images of the exploration" />
+        <ImageUploader name="images" />
       </FormField>
 
       <FormField label="Locations">
