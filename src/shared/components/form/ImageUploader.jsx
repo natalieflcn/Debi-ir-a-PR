@@ -19,7 +19,8 @@ const InputWrapper = styled.div`
 
 const UploadButton = styled(Button)`
   &:hover {
-    background-color: var(--color-red-400);
+    ${({ $limitReached }) =>
+      $limitReached && `background-color: var(--color-red-400)`};
   }
 `;
 
@@ -48,7 +49,7 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
     setPreviews((prev) => [...prev, ...newPreviews]);
   }
 
-  function handleRemove(id) {
+  function handleDelete(id) {
     setPreviews((prev) => prev.filter((preview) => preview.id !== id));
   }
 
@@ -70,6 +71,7 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
           disabled={previews.length >= maxImages}
           $size="small"
           $variation={previews.length === maxImages ? "darkRed" : "primary"}
+          $limitReached={previews.length === maxImages}
         >
           {previews.length === maxImages ? "Limit Reached" : "Upload Images"} (
           {previews.length}/{maxImages})
@@ -89,9 +91,9 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
                   type="button"
                   $variation="darkRed"
                   $size="extraSmall"
-                  onClick={() => handleRemove(preview.id)}
+                  onClick={() => handleDelete(preview.id)}
                 >
-                  Remove
+                  Delete
                 </Button>
               </Row>
             ))}

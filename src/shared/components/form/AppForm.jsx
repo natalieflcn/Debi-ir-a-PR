@@ -18,7 +18,7 @@ const StyledForm = styled(Form)`
   margin: 0.5rem;
 `;
 
-function AppForm({ formTitle, action, children }) {
+function AppForm({ formTitle, action, method, children }) {
   return (
     <Card $cardColor="var(--color-light-100)">
       <Row $align="center" $gap="var(--gap-lg)">
@@ -29,7 +29,7 @@ function AppForm({ formTitle, action, children }) {
         >
           {formTitle}
         </Heading>
-        <StyledForm action={action} method="post">
+        <StyledForm action={action} method={method}>
           <Row $gap="var(--gap-md)">{children}</Row>
         </StyledForm>
       </Row>

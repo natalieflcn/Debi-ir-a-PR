@@ -4,6 +4,7 @@ import Heading from "../typography/Heading";
 
 const FormLabel = styled(Heading)`
   width: 12rem;
+  align-self: flex-start;
 `;
 
 function FormField({ label, children }) {

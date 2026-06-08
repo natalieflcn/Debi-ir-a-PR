@@ -1,74 +1,79 @@
 import Input from "../../../../shared/components/form/Input";
 import Button from "../../../../shared/components/ui/Button";
 
-import AppForm from "../../../../shared/components/form/Form";
+import AppForm from "../../../../shared/components/form/AppForm";
 import FormField from "../../../../shared/components/form/FormField";
 import TextArea from "../../../../shared/components/form/TextArea";
 import ImageUploader from "../../../../shared/components/form/ImageUploader";
+import { useState } from "react";
+import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
+import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
+import fakeExplorationLocationData from "../../../explorer/pages/explorations/fakeExplorationLocationData";
+import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+import Row from "../../../../shared/components/layout/Row";
+import styled from "styled-components";
 
-const createExplorationFormValues = [
-  {
-    id: 0,
-    title: "Name",
-    placeholder: "The title of the exploration",
-  },
-  {
-    id: 1,
-    title: "Header Image",
-    placeholder: "The main image of the exploration",
-  },
-  {
-    id: 2,
-    title: "Tagline",
-    placeholder: "The short description displayed on the Explorations page",
-  },
-  {
-    id: 3,
-    title: "Description",
-    placeholder: "The long description shown on the Exploration page",
-  },
-  { id: 4, title: "Locations", placeholder: "" },
-  { id: 5, title: "Images", placeholder: "" },
-];
+const StyledRow = styled(Row)`
+  flex: 1 1 0;
+`;
+function CreateExploration({ exploration = true }) {
+  const isEditing = Boolean(exploration);
 
-function CreateExploration() {
   return (
     <AppForm
-      formValues={createExplorationFormValues}
-      formTitle="CReATE aN eXPLORATION"
+      formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
+      action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
+      method={isEditing ? "patch" : "post"}
     >
-      <FormField label="Name">
-        <Input name="name" placeholder="The title of the exploration" />
-      </FormField>
+      <Row $gap="var(--gap-lg)">
+        <FormField label="Name">
+          <Input
+            name="name"
+            placeholder="The title of the exploration"
+            defaultValue={exploration?.name ?? ""}
+          />
+        </FormField>
 
-      <FormField label="Header Image">
-        <ImageUploader name="images" multiple={false} maxImages={1} />
-      </FormField>
+        <FormField label="Header Image">
+          <ImageUploader
+            name="images"
+            multiple={false}
+            maxImages={1}
+            existingImages={exploration?.images ?? []}
+          />
+        </FormField>
 
-      <FormField label="Tagline">
-        <Input
-          name="tagline"
-          placeholder="The short description displayed on the Explorations page"
-        />
-      </FormField>
+        <FormField label="Tagline">
+          <Input
+            name="tagline"
+            placeholder="The short description displayed on the Explorations page"
+            defaultValue={exploration?.description ?? ""}
+          />
+        </FormField>
 
-      <FormField label="Description">
-        <TextArea
-          name="description"
-          placeholder="The long description shown on the Exploration page"
-        />
-      </FormField>
+        <FormField label="Description">
+          <TextArea
+            name="description"
+            placeholder="The long description shown on the Exploration page"
+            existingLocations={exploration?.locations ?? []}
+          />
+        </FormField>
 
-      <FormField label="Images">
-        <ImageUploader name="images" />
-      </FormField>
+        <FormField label="Images">
+          <ImageUploader name="images" />
+        </FormField>
 
-      <FormField label="Locations">
-        <Input
-          name="locations"
-          placeholder="The locations of the exploration"
-        />
-      </FormField>
+        <FormField label="Locations">
+          <StyledRow>
+            <LocationBuilder />
+            <CurrentLocations locations={fakeExplorationData.locations} />
+          </StyledRow>
+        </FormField>
+
+        <Button $variation="darkRed" $size="medium" type="submit">
+          {isEditing ? "Save Changes" : "Create Exploration"}
+        </Button>
+      </Row>
     </AppForm>
   );
 }

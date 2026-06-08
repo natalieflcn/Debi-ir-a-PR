@@ -44,6 +44,7 @@ const AmbassadorRoutes = [
   { path: "profile", element: <AmbassadorProfile /> },
   { path: "dashboard", element: <AmbassadorDashboard /> },
   { path: "create", element: <CreateExploration /> },
+  { path: "edit/:explorationId", element: <CreateExploration /> },
 ];
 
 export default AmbassadorRoutes;

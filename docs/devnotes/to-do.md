@@ -114,19 +114,19 @@
     - [ ] UserStats could contain reusable component
   - [ ] Explorations
     - [x] ManageExplorations
-      - [x] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons TODO 0
+      - [x] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons
       - [ ] Use useRef to close dropdown menus upon clicking outside of menus
-    - [ ] CreateExploration TODO 2
+    - [~] CreateExploration TODO 2 -- ADD LOCATIONS AFTERWARDS BUG
     - [x] Exploration
-    - [ ] EditExplorationDetails TODO 3
-    - [ ] CreateLocation TODO 4
+    - [~] EditExplorationDetails TODO 3 BUG
+    - [ ] CreateLocation TODO 4 BUG
     - [x] ViewLocation TODO 1
-    - [ ] EditExplorationLocationDetails TODO 5
-  - [ ] Users
+    - [ ] EditExplorationLocationDetails TODO 5 BUG
+  - [ ] Users BUG COMPLETE TUESDAY
     - [ ] Manage Explorers
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
-  - [ ] Profile
+  - [ ] Profile BUG COMPLETE TUES
     - [ ] Ambassador Profile TODO 1
     - [ ] Edit Ambassador Profile TODO 2
 - [x] Fix routing for Ambassador pages
