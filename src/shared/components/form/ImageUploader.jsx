@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Row from "../layout/Row";
 import Button from "../ui/Button";
 import Image from "../ui/Image";
@@ -8,23 +8,43 @@ import styled from "styled-components";
 const StyledFileInput = styled.input`
   position: relative;
   align-content: center;
+  justify-self: flex-end;
   height: 10rem;
+  display: none;
 `;
 
 const InputWrapper = styled.div`
   flex: 1 1 0;
 `;
 
-function ImageUploader({ name, multiple = true }) {
+const UploadButton = styled(Button)`
+  &:hover {
+    background-color: var(--color-red-400);
+  }
+`;
+
+function ImageUploader({ name, multiple = true, maxImages = 3 }) {
   const [previews, setPreviews] = useState([]);
+
+  const inputRef = useRef(null);
 
   function handleFileChange(e) {
     const files = Array.from(e.target.files);
-    const newPreviews = files.map((file) => ({
+
+    const slotsRemaining = maxImages - previews.length;
+
+    if (slotsRemaining <= 0) {
+      alert(`Maximum of ${maxImages} images allowed`);
+      return;
+    }
+
+    const acceptedFiles = files.slice(0, slotsRemaining);
+    const newPreviews = acceptedFiles.map((file) => ({
       id: crypto.randomUUID(),
       url: URL.createObjectURL(file),
       name: file.name,
     }));
+
     setPreviews((prev) => [...prev, ...newPreviews]);
   }
 
@@ -34,14 +54,26 @@ function ImageUploader({ name, multiple = true }) {
 
   return (
     <InputWrapper>
-      <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
+      <Row $direction="horizontal" $gap="var(--gap-2xl)" $align="flex-start">
         <StyledFileInput
           type="file"
           name={name}
           accept="image/*"
           multiple={multiple}
           onChange={handleFileChange}
+          ref={inputRef}
         />
+
+        <UploadButton
+          type="button"
+          onClick={() => inputRef.current.click()}
+          disabled={previews.length >= maxImages}
+          $size="small"
+          $variation={previews.length === maxImages ? "darkRed" : "primary"}
+        >
+          {previews.length === maxImages ? "Limit Reached" : "Upload Images"} (
+          {previews.length}/{maxImages})
+        </UploadButton>
 
         {previews.length > 0 && (
           <Row $direction="horizontal" $gap="var(--gap-md)">

@@ -42,10 +42,7 @@ function CreateExploration() {
       </FormField>
 
       <FormField label="Header Image">
-        <Input
-          name="header-image"
-          placeholder="The main image of the exploration"
-        />
+        <ImageUploader name="images" multiple={false} maxImages={1} />
       </FormField>
 
       <FormField label="Tagline">
