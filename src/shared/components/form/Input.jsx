@@ -11,8 +11,8 @@ const StyledInput = styled.input`
   font-family: Museo;
 `;
 
-function Input({ placeholder }) {
-  return <StyledInput placeholder={placeholder} />;
+function Input({ placeholder, ...props }) {
+  return <StyledInput placeholder={placeholder} {...props} />;
 }
 
 export default Input;

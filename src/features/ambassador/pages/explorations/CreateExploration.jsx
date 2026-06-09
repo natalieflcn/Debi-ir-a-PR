@@ -16,7 +16,7 @@ import styled from "styled-components";
 const StyledRow = styled(Row)`
   flex: 1 1 0;
 `;
-function CreateExploration({ exploration = true }) {
+function CreateExploration({ exploration = false }) {
   const isEditing = Boolean(exploration);
 
   return (
@@ -36,10 +36,10 @@ function CreateExploration({ exploration = true }) {
 
         <FormField label="Header Image">
           <ImageUploader
-            name="images"
+            name="headerImage"
             multiple={false}
             maxImages={1}
-            existingImages={exploration?.images ?? []}
+            existingImages={exploration?.headerImage ?? []}
           />
         </FormField>
 
@@ -55,12 +55,16 @@ function CreateExploration({ exploration = true }) {
           <TextArea
             name="description"
             placeholder="The long description shown on the Exploration page"
-            existingLocations={exploration?.locations ?? []}
+            defaultValue={exploration?.description ?? ""}
           />
         </FormField>
 
         <FormField label="Images">
-          <ImageUploader name="images" />
+          <ImageUploader
+            name="images"
+            maxImages={3}
+            existingImages={exploration?.images ?? []}
+          />
         </FormField>
 
         <FormField label="Locations">

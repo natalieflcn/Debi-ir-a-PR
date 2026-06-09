@@ -8,6 +8,9 @@ const AmbassadorDashboard = lazy(
 const CreateExploration = lazy(
   () => import("@/features/ambassador/pages/explorations/CreateExploration"),
 );
+const CreateLocation = lazy(
+  () => import("@/features/ambassador/pages/explorations/CreateLocation"),
+);
 
 const ViewExploration = lazy(
   () => import("@/features/ambassador/pages/explorations/ViewExploration"),
@@ -40,10 +43,11 @@ const AmbassadorRoutes = [
     path: "explorations/:explorationId/:explorationLocationId",
     element: <ViewLocation />,
   },
+  { path: "create-location", element: <CreateLocation /> },
   { path: "users", element: <ManageExplorers /> },
   { path: "profile", element: <AmbassadorProfile /> },
   { path: "dashboard", element: <AmbassadorDashboard /> },
-  { path: "create", element: <CreateExploration /> },
+  { path: "create-exploration", element: <CreateExploration /> },
   { path: "edit/:explorationId", element: <CreateExploration /> },
 ];
 

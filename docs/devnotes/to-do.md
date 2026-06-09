@@ -103,7 +103,7 @@
   - [x] Explorations/Exploration page (started)
   - [x] Explorations/Exploration/Location page
 
-## Week: May 30 - June 6
+## Week: May 30 - June 7
 
 - [x] Finish Explorer core static pages
   - [x] Profile page
@@ -112,33 +112,77 @@
 - [~] Create Ambassador core static pages
   - [x] Dashboard
     - [ ] UserStats could contain reusable component
-  - [ ] Explorations
+  - [~] Explorations
     - [x] ManageExplorations
       - [x] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons
       - [ ] Use useRef to close dropdown menus upon clicking outside of menus
-    - [~] CreateExploration TODO 2 -- ADD LOCATIONS AFTERWARDS BUG
+    - [x] CreateExploration
     - [x] Exploration
-    - [~] EditExplorationDetails TODO 3 BUG
-    - [ ] CreateLocation TODO 4 BUG
-    - [x] ViewLocation TODO 1
-    - [ ] EditExplorationLocationDetails TODO 5 BUG
-  - [ ] Users BUG COMPLETE TUESDAY
-    - [ ] Manage Explorers
+    - [x] EditExplorationDetails
+    - [ ] CreateLocation TODO 1
+    - [x] ViewLocation
+    - [ ] EditExplorationLocationDetails TODO 2
+  - [ ] Users
+    - [ ] Manage Explorers TODO
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
-  - [ ] Profile BUG COMPLETE TUES
-    - [ ] Ambassador Profile TODO 1
-    - [ ] Edit Ambassador Profile TODO 2
+  - [ ] Profile
+    - [ ] Ambassador Profile TODO 3
+    - [ ] Edit Ambassador Profile TODO 4
 - [x] Fix routing for Ambassador pages
-- [ ] Refactor current BrowserRouter implementation into CreateBrowserRouter
-
+- [x] Refactor current BrowserRouter implementation into CreateBrowserRouter
 - [x] Create Input reusable component
 - [x] Redesign ExplorationCard component to include Input component
 - [x] Turn MiniExplorationCard into shared component
 - [x] Implement MiniExplorationCard into AmbassadorExplorations page
-
-- [ ] NOTE: Need to change navItem hover/active colors for Admin theme
-- [ ] Create SuperAdmin core static pages
+- [~] Refactor shared components (between Explorers, Ambassador, and Admin) into /shared folders
 
 - [ ] NOTE: Clean up function declarations for React components
-- [ ] Refactor shared components (between Explorers, Ambassador, and Admin) into /shared folders
+
+## Week: June 7 – June 12
+
+- [~] Explorations
+  - [ ] Use useRef to close dropdown menus upon clicking outside of menus
+  - [ ] CreateLocation TODO 1
+  - [ ] EditExplorationLocationDetails TODO 2
+
+  - [ ] Users
+    - [ ] Manage Explorers TODO 5
+    - [ ] Explorer Details TODO 6
+    - [ ] Edit Explorer Details TODO 7
+
+  - [ ] Profile
+    - [ ] Ambassador Profile TODO 3
+    - [ ] Edit Ambassador Profile TODO 4
+
+- [x] Fix routing for Ambassador pages
+
+- [ ] Create SuperAdmin core static pages (4-5 new pages)
+  - [ ] Dashboard
+  - [ ] Explorations
+    - [ ] ManageExplorations
+      - [ ] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons
+      - [ ] Use useRef to close dropdown menus upon clicking outside of menus
+    - [ ] CreateExploration
+    - [ ] Exploration
+    - [ ] EditExplorationDetails
+    - [ ] CreateLocation
+    - [ ] ViewLocation
+    - [ ] EditExplorationLocationDetails
+  - [ ] Users
+    - [ ] Manage Explorers
+    - [ ] Explorer Details
+    - [ ] Edit Explorer Details
+    - [ ] Manage Ambassadors
+    - [ ] Ambassador Details
+    - [ ] Edit Ambassador Details
+  - [ ] Profile
+    - [ ] Ambassador Profile
+    - [ ] Edit Ambassador Profile
+
+- [ ] Create other pages
+  - [ ] Login page
+  - [ ] Sign-up page
+  - [ ] Page 404 Not Found
+  - [ ] Error page
+- [ ] NOTE: Need to change navItem hover/active colors for Admin theme

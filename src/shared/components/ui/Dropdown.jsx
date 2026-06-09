@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import useClickOutside from "../../hooks/useClickOutside";
 
-const StyledDropdown = styled.div`
+export const StyledDropdown = styled.div`
   position: relative;
   display: inline-block;
 `;
@@ -12,11 +13,13 @@ const ButtonSpan = styled.span`
     `var(--color-${$dropdownVariation}-300)`};
 `;
 
-const DropdownMenuCard = styled.ul`
+export const DropdownMenuCard = styled.ul`
   position: absolute;
   top: 85%;
   left: 0;
   margin: 4px 0 0 0;
+  max-height: 15rem;
+  overflow-y: auto;
   background-color: var(--color-light-0);
   border-radius: 1px 0px var(--border-radius-md) var(--border-radius-md);
   border-right: ${({ $dropdownVariation }) =>
@@ -31,9 +34,10 @@ const DropdownMenuCard = styled.ul`
   width: 100%;
 `;
 
-const DropdownMenuItem = styled.button`
+export const DropdownMenuItem = styled.button`
   width: 100%;
   padding: 1rem;
+  background-color: var(--color-light-0);
   text-align: center;
   background: none;
   border: none;
@@ -61,6 +65,7 @@ function Dropdown({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Featured");
+  const dropdownRef = useClickOutside(() => setIsOpen(false));
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -76,7 +81,11 @@ function Dropdown({
   //   });
 
   return (
-    <StyledDropdown className={className} $width={$width}>
+    <StyledDropdown
+      className={className}
+      $width={$width}
+      dropdownRef={dropdownRef}
+    >
       <Button
         $size="small"
         $variation={$dropdownVariation === "red" ? "primary" : "secondary"}
