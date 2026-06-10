@@ -53,25 +53,14 @@ const AdminRoutes = [
     path: "users",
     element: <ManageUsers />,
   },
+  {
+    path: "users/explorers/:explorerId",
+    element: <ExplorerDetails />,
+  },
+  {
+    path: "users/ambassadors/:ambassadorId",
+    element: <AmbassadorDetails />,
+  },
 ];
-
-const AdminRoutes2 = (
-  <>
-    <Route index element={<AdminDashboard />} />
-
-    <Route path="create" element={<CreateExploration />} />
-
-    <Route path="explorations" element={<ManageExplorations />} />
-
-    <Route path="profile" element={<AdminProfile />} />
-    {/* <Route path="editProfile" element={<EditAdminProfile />} /> */}
-
-    <Route path="users" element={<ManageUsers />} />
-
-    {<Route path="ambassadors/:ambassadorId" element={<AmbassadorDetails />} />}
-
-    {<Route path="explorers/:explorerId" element={<ExplorerDetails />} />}
-  </>
-);
 
 export default AdminRoutes;

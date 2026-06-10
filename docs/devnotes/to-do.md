@@ -161,11 +161,8 @@
     - [x] CreateLocation
     - [x] ViewLocation
   - [ ] Users
-    - [ ] Manage Explorers
-    - [ ] Explorer Details
-    - [ ] Edit Explorer Details
-    - [ ] Manage Ambassadors
-    - [ ] Ambassador Details
+    - [ ] User Details
+    - [x] Manage Users
   - [x] Profile
     - [x] Admin Profile
 
