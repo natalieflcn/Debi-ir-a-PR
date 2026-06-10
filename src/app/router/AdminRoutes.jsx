@@ -22,9 +22,7 @@ const ManageExplorations = lazy(
 const AdminProfile = lazy(
   () => import("@/features/admin/pages/profile/AdminProfile"),
 );
-const EditAdminProfile = lazy(
-  () => import("@/features/admin/pages/profile/EditAdminProfile"),
-);
+
 const ManageUsers = lazy(
   () => import("@/features/admin/pages/users/ManageUsers"),
 );
@@ -41,7 +39,13 @@ const ManageAmbassadors = lazy(
   () => import("@/features/admin/pages/users/ManageAmbassadors"),
 );
 
-const AdminRoutes = (
+const AdminRoutes = [
+  { path: "dashboard", element: <AdminDashboard /> },
+  { path: "create-exploration", element: <CreateExploration /> },
+  { path: "profile", element: <AdminProfile /> },
+];
+
+const AdminRoutes2 = (
   <>
     <Route index element={<AdminDashboard />} />
 

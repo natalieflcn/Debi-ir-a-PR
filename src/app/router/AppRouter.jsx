@@ -54,6 +54,11 @@ const AppRouter = createBrowserRouter([
     element: <AmbassadorLayout />,
     children: [...AmbassadorRoutes],
   },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [...AdminRoutes],
+  },
 ]);
 
 export default AppRouter;

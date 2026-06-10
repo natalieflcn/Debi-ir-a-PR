@@ -143,21 +143,19 @@
 
 - [~] Explorations
   - [x] Use useRef to close dropdown menus upon clicking outside of menus
-  - [x] CreateLocation TODO 1
-  - [x] EditExplorationLocationDetails TODO 2
+  - [x] CreateLocation
+  - [x] EditExplorationLocationDetails
   - [x] Users
-    - [x] Manage Explorers TODO 5
-    - [x] Explorer Details TODO 6
+    - [x] Manage Explorers
+    - [x] Explorer Details
   - [x] Profile
-    - [x] Ambassador Profile TODO 3
+    - [x] Ambassador Profile
 - [x] Fix routing for Ambassador pages
 
 - [ ] Create SuperAdmin core static pages (4-5 new pages)
   - [ ] Dashboard
   - [ ] Explorations
     - [ ] ManageExplorations
-      - [ ] Separate 'View and Edit Exploration' button into two 'View' and 'Edit' buttons
-      - [ ] Use useRef to close dropdown menus upon clicking outside of menus
     - [ ] CreateExploration
     - [ ] Exploration
     - [ ] EditExplorationDetails
@@ -170,10 +168,8 @@
     - [ ] Edit Explorer Details
     - [ ] Manage Ambassadors
     - [ ] Ambassador Details
-    - [ ] Edit Ambassador Details
   - [ ] Profile
-    - [ ] Ambassador Profile
-    - [ ] Edit Ambassador Profile
+    - [ ] Admin Profile
 
 - [ ] Create other pages
   - [ ] Login page
