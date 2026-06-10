@@ -93,7 +93,7 @@ const TableNameCell = styled.div`
 
 const explorersTableTheme = {
   boxShadow: "var(--box-shadow-offset-lg)",
-  shadowColor: "var(--color-green-400)",
+  shadowColor: "var(--color-blue-400)",
   headerBackground: "var(--color-blue-200)",
   headerColor: "var(--color-light-0)",
   headerBackgroundAlt: "var(--color-blue-300)",

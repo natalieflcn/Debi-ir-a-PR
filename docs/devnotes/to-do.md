@@ -180,3 +180,4 @@
 - [ ] Change Login/Logout text based on logged-in user
 - [ ] Add "BACK" buttons to Explorations, Users pages
 - [ ] Create ability to add TAGS to Explorations and Locations
+- [ ] Editing sorting dropdown for ManageExplorers and ManageUsers

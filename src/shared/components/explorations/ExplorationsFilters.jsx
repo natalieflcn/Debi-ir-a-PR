@@ -4,8 +4,9 @@ import Input from "../form/Input";
 import FilterDropdown from "../ui/FilterDropdown";
 import SortDropdown from "../ui/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
+import useClickOutside from "../../hooks/useClickOutside";
 
-const explorationsFilters = [
+const ExplorationsFiltersCategories = [
   { id: "featured", name: "Featured" },
   { id: "city", name: "City" },
   { id: "restaurants", name: "Restaurants" },
@@ -21,14 +22,19 @@ const explorationsSort = [
   { id: "numStops", name: "Number of Stops" },
 ];
 
-function ExplorationsFilters() {
+function ExplorationsFilters({
+  sortCategories = explorationsSort,
+  filterCategories = ExplorationsFiltersCategories,
+}) {
+  // const dropdownRef = useClickOutside();
+
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
-      <SortDropdown categories={explorationsSort} />
+      <SortDropdown categories={sortCategories} />
 
-      <FilterDropdown categories={explorationsFilters} />
+      <FilterDropdown categories={filterCategories} />
 
-      {/* {explorationsFilters.map((filter) => (
+      {/* {ExplorationsFilters.map((filter) => (
         <Button $size="small" $variation="primary" key={filter.id}>
           {filter.name}
         </Button>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import Dropdown from "./Dropdown";
 
-function FilterDropdown({ categories }) {
+function FilterDropdown({ categories, initState }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Featured");
 
@@ -25,6 +25,7 @@ function FilterDropdown({ categories }) {
       categories={categories}
       dropdownName="Filter"
       $dropdownVariation="red"
+      initState={initState}
     ></Dropdown>
   );
 }

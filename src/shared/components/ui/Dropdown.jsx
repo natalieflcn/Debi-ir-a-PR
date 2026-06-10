@@ -62,10 +62,11 @@ function Dropdown({
   $dropdownVariation,
   $width,
   className,
+  initState = "Featured",
   ...props
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Featured");
+  const [selectedCategory, setSelectedCategory] = useState(initState);
   const dropdownRef = useClickOutside(() => setIsOpen(false));
 
   const toggleDropdown = () => setIsOpen(!isOpen);

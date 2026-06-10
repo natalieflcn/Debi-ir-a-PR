@@ -34,12 +34,6 @@ const AmbassadorDetails = lazy(
 const ExplorerDetails = lazy(
   () => import("@/features/admin/pages/users/ExplorerDetails"),
 );
-const ManageExplorers = lazy(
-  () => import("@/features/admin/pages/users/ManageExplorers"),
-);
-const ManageAmbassadors = lazy(
-  () => import("@/features/admin/pages/users/ManageAmbassadors"),
-);
 
 const AdminRoutes = [
   { path: "dashboard", element: <AdminDashboard /> },
@@ -55,6 +49,10 @@ const AdminRoutes = [
     path: "explorations/:explorationId/:explorationLocationId",
     element: <ViewLocation />,
   },
+  {
+    path: "users",
+    element: <ManageUsers />,
+  },
 ];
 
 const AdminRoutes2 = (
@@ -69,9 +67,9 @@ const AdminRoutes2 = (
     {/* <Route path="editProfile" element={<EditAdminProfile />} /> */}
 
     <Route path="users" element={<ManageUsers />} />
-    <Route path="ambassadors" element={<ManageAmbassadors />} />
+
     {<Route path="ambassadors/:ambassadorId" element={<AmbassadorDetails />} />}
-    <Route path="explorers" element={<ManageExplorers />} />
+
     {<Route path="explorers/:explorerId" element={<ExplorerDetails />} />}
   </>
 );
