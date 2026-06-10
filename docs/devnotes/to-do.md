@@ -145,15 +145,11 @@
   - [x] Use useRef to close dropdown menus upon clicking outside of menus
   - [x] CreateLocation TODO 1
   - [x] EditExplorationLocationDetails TODO 2
-
-  - [ ] Users
+  - [x] Users
     - [x] Manage Explorers TODO 5
-    - [ ] Explorer Details TODO 6
-    - [ ] Edit Explorer Details TODO 7
-
-  - [ ] Profile
+    - [x] Explorer Details TODO 6
+  - [x] Profile
     - [x] Ambassador Profile TODO 3
-
 - [x] Fix routing for Ambassador pages
 
 - [ ] Create SuperAdmin core static pages (4-5 new pages)
@@ -188,3 +184,4 @@
 - [ ] Add editing capability with useState on Profile components
 - [ ] Link buttons to navigate between pages
 - [ ] Change Login/Logout text based on logged-in user
+- [ ] Add "BACK" buttons to Explorations, Users pages

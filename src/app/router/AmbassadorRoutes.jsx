@@ -45,6 +45,7 @@ const AmbassadorRoutes = [
   },
   { path: "create-location", element: <CreateLocation /> },
   { path: "users", element: <ManageExplorers /> },
+  { path: "users/:userId", element: <ExplorerDetails /> },
   { path: "profile", element: <AmbassadorProfile /> },
   { path: "dashboard", element: <AmbassadorDashboard /> },
   { path: "create-exploration", element: <CreateExploration /> },

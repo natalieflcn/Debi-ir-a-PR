@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ProfileHeader from "../../components/profile/ProfileHeader";
-import ProfileInformation from "../../components/profile/ProfileInformation";
-import ProfileBadgeCollection from "../../components/profile/ProfileBadgeCollection";
+import ProfileInformation from "../../../../shared/components/profile/ProfileInformation";
+import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
+import ProfileBadgeCollection from "../../../explorer/components/profile/ProfileBadgeCollection";
 
 const StyledExplorerProfile = styled.div`
   display: flex;
