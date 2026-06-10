@@ -1,5 +1,93 @@
-function CreateExploration() {
-  return <div>Create Exploration</div>;
+import Input from "../../../../shared/components/form/Input";
+import Button from "../../../../shared/components/ui/Button";
+
+import AppForm from "../../../../shared/components/form/AppForm";
+import FormField from "../../../../shared/components/form/FormField";
+import TextArea from "../../../../shared/components/form/TextArea";
+import ImageUploader from "../../../../shared/components/form/ImageUploader";
+import { useState } from "react";
+import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
+import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
+import fakeExplorationLocationData from "../../../explorer/pages/explorations/fakeExplorationLocationData";
+import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+import Row from "../../../../shared/components/layout/Row";
+import styled from "styled-components";
+import CityDropdown from "../../../../shared/components/form/CityDropdown";
+
+const StyledRow = styled(Row)`
+  flex: 1 1 0;
+`;
+
+function CreateExploration({ exploration = false }) {
+  const isEditing = Boolean(exploration);
+
+  return (
+    <AppForm
+      formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
+      action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
+      method={isEditing ? "patch" : "post"}
+    >
+      <Row $gap="var(--gap-lg)">
+        <FormField label="Name">
+          <Input
+            name="name"
+            placeholder="The title of the exploration"
+            defaultValue={exploration?.name ?? ""}
+          />
+        </FormField>
+
+        <FormField label="Header Image">
+          <ImageUploader
+            name="headerImage"
+            multiple={false}
+            maxImages={1}
+            existingImages={exploration?.headerImage ?? []}
+          />
+        </FormField>
+
+        <FormField label="Starting City">
+          <CityDropdown
+            name="city"
+            defaultValue={exploration?.startingCity ?? "Select City"}
+          />
+        </FormField>
+        <FormField label="Tagline">
+          <Input
+            name="tagline"
+            placeholder="The short description displayed on the Explorations page"
+            defaultValue={exploration?.description ?? ""}
+          />
+        </FormField>
+
+        <FormField label="Description">
+          <TextArea
+            name="description"
+            placeholder="The long description shown on the Exploration page"
+            defaultValue={exploration?.description ?? ""}
+          />
+        </FormField>
+
+        <FormField label="Images">
+          <ImageUploader
+            name="images"
+            maxImages={3}
+            existingImages={exploration?.images ?? []}
+          />
+        </FormField>
+
+        <FormField label="Locations">
+          <StyledRow>
+            <LocationBuilder />
+            <CurrentLocations locations={fakeExplorationData.locations} />
+          </StyledRow>
+        </FormField>
+
+        <Button $variation="darkRed" $size="medium" type="submit">
+          {isEditing ? "Save Changes" : "Create Exploration"}
+        </Button>
+      </Row>
+    </AppForm>
+  );
 }
 
 export default CreateExploration;

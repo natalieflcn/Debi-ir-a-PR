@@ -15,7 +15,7 @@ const StyledHeading = styled(Heading)`
 `;
 function CreateLocation({
   exploration = fakeExplorationData,
-  location = true,
+  location = false,
 }) {
   const isEditing = Boolean(location);
 

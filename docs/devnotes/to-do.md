@@ -154,22 +154,20 @@
 
 - [ ] Create SuperAdmin core static pages (4-5 new pages)
   - [ ] Dashboard
-  - [ ] Explorations
-    - [ ] ManageExplorations
-    - [ ] CreateExploration
-    - [ ] Exploration
-    - [ ] EditExplorationDetails
-    - [ ] CreateLocation
-    - [ ] ViewLocation
-    - [ ] EditExplorationLocationDetails
+  - [x] Explorations
+    - [x] ManageExplorations
+    - [x] CreateExploration
+    - [x] Exploration
+    - [x] CreateLocation
+    - [x] ViewLocation
   - [ ] Users
     - [ ] Manage Explorers
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
     - [ ] Manage Ambassadors
     - [ ] Ambassador Details
-  - [ ] Profile
-    - [ ] Admin Profile
+  - [x] Profile
+    - [x] Admin Profile
 
 - [ ] Create other pages
   - [ ] Login page
@@ -181,3 +179,4 @@
 - [ ] Link buttons to navigate between pages
 - [ ] Change Login/Logout text based on logged-in user
 - [ ] Add "BACK" buttons to Explorations, Users pages
+- [ ] Create ability to add TAGS to Explorations and Locations
