@@ -70,7 +70,7 @@ function CityDropdown({ onSelect }) {
         <StyledButton
           type="button"
           $size="small"
-          $variation="primary"
+          $variation={selectedCity ? "darkRed" : "primary"}
           onClick={() => setIsOpen(!isOpen)}
         >
           {selectedCity ? selectedCity.name : "Select a city..."}

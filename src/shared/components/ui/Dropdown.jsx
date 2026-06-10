@@ -62,6 +62,7 @@ function Dropdown({
   $dropdownVariation,
   $width,
   className,
+  ...props
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Featured");
@@ -85,6 +86,7 @@ function Dropdown({
       className={className}
       $width={$width}
       dropdownRef={dropdownRef}
+      {...props}
     >
       <Button
         $size="small"

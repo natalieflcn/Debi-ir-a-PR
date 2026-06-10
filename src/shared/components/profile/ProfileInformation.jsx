@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Card from "../../../../shared/components/layout/Card";
-import Heading from "../../../../shared/components/typography/Heading";
-import Bold from "../../../../shared/components/typography/Bold";
-import Row from "../../../../shared/components/layout/Row";
-import Button from "../../../../shared/components/ui/Button";
+import Card from "../layout/Card";
+import Heading from "../typography/Heading";
+import Bold from "../typography/Bold";
+import Row from "../layout/Row";
+import Button from "../ui/Button";
 import { FaAsterisk } from "react-icons/fa";
 
 const StyledProfileInformation = styled.div`
@@ -26,6 +26,7 @@ const BoldInformation = styled(Bold)`
 const StyledButton = styled(Button)`
   justify-self: flex-end;
 `;
+
 const ProfileInformation = function ({ email, passwordLength, dateJoined }) {
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">

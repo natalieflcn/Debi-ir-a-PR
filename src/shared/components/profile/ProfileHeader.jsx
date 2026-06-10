@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import Image from "../../../../shared/components/ui/Image";
-import Row from "../../../../shared/components/layout/Row";
-import Heading from "../../../../shared/components/typography/Heading";
+import Image from "../ui/Image";
+import Row from "../layout/Row";
+import Heading from "../typography/Heading";
 import {
   IoIosInformationCircleOutline,
   IoIosInformationCircle,
 } from "react-icons/io";
 import { useState } from "react";
-import Modal from "../../../../shared/components/ui/Modal";
+import Modal from "../ui/Modal";
 
 const StyledProfileHeader = styled.div`
   display: flex;

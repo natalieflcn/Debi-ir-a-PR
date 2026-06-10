@@ -62,7 +62,7 @@ const newExplorersTableTheme = {
   headerColorAlt: "var(--color-light-0)",
   cellBackground: "var(--color-light-100)",
   cellBackgroundAlt: "var(--color-light-200)",
-  borderColor: "var(--color-yellow-300)",
+  borderColor: "var(--color-blue-300)",
 };
 
 function AmbassadorDashboardNewExplorers({

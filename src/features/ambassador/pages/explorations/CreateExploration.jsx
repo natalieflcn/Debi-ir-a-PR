@@ -12,11 +12,12 @@ import fakeExplorationLocationData from "../../../explorer/pages/explorations/fa
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 import Row from "../../../../shared/components/layout/Row";
 import styled from "styled-components";
+import CityDropdown from "../../../../shared/components/form/CityDropdown";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
 `;
-function CreateExploration({ exploration = false }) {
+function CreateExploration({ exploration = true }) {
   const isEditing = Boolean(exploration);
 
   return (
@@ -43,6 +44,12 @@ function CreateExploration({ exploration = false }) {
           />
         </FormField>
 
+        <FormField label="Starting City">
+          <CityDropdown
+            name="city"
+            defaultValue={exploration?.startingCity ?? "Select City"}
+          />
+        </FormField>
         <FormField label="Tagline">
           <Input
             name="tagline"

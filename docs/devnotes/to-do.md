@@ -119,15 +119,15 @@
     - [x] CreateExploration
     - [x] Exploration
     - [x] EditExplorationDetails
-    - [ ] CreateLocation TODO 1
+    - [x] CreateLocation
     - [x] ViewLocation
-    - [ ] EditExplorationLocationDetails TODO 2
+    - [x] EditExplorationLocationDetails
   - [ ] Users
     - [ ] Manage Explorers TODO
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
   - [ ] Profile
-    - [ ] Ambassador Profile TODO 3
+    - [x] Ambassador Profile TODO 3
     - [ ] Edit Ambassador Profile TODO 4
 - [x] Fix routing for Ambassador pages
 - [x] Refactor current BrowserRouter implementation into CreateBrowserRouter
@@ -142,18 +142,17 @@
 ## Week: June 7 – June 12
 
 - [~] Explorations
-  - [ ] Use useRef to close dropdown menus upon clicking outside of menus
-  - [ ] CreateLocation TODO 1
-  - [ ] EditExplorationLocationDetails TODO 2
+  - [x] Use useRef to close dropdown menus upon clicking outside of menus
+  - [x] CreateLocation TODO 1
+  - [x] EditExplorationLocationDetails TODO 2
 
   - [ ] Users
-    - [ ] Manage Explorers TODO 5
+    - [x] Manage Explorers TODO 5
     - [ ] Explorer Details TODO 6
     - [ ] Edit Explorer Details TODO 7
 
   - [ ] Profile
-    - [ ] Ambassador Profile TODO 3
-    - [ ] Edit Ambassador Profile TODO 4
+    - [x] Ambassador Profile TODO 3
 
 - [x] Fix routing for Ambassador pages
 
@@ -186,3 +185,6 @@
   - [ ] Page 404 Not Found
   - [ ] Error page
 - [ ] NOTE: Need to change navItem hover/active colors for Admin theme
+- [ ] Add editing capability with useState on Profile components
+- [ ] Link buttons to navigate between pages
+- [ ] Change Login/Logout text based on logged-in user

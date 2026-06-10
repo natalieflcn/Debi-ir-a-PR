@@ -14,7 +14,7 @@ const StyledHeading = styled(Heading)`
 `;
 function CreateLocation({
   exploration = fakeExplorationData,
-  location = false,
+  location = true,
 }) {
   const isEditing = Boolean(location);
 
@@ -35,15 +35,18 @@ function CreateLocation({
           />
         </FormField>
 
-        <FormField label="City">
-          <CityDropdown />
-        </FormField>
-
         <FormField label="Address">
           <Input
             name="address"
             placeholder="The address of the location"
             defaultValue={location?.address ?? ""}
+          />
+        </FormField>
+
+        <FormField label="City">
+          <CityDropdown
+            name="city"
+            defaultValue={location?.city ?? "Select City"}
           />
         </FormField>
 

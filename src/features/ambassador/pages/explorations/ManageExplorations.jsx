@@ -47,7 +47,7 @@ const AmbassadorExplorationsTable = {
       action: "View",
     },
     {
-      id: 0,
+      id: 1,
       explorationName: "toa alta tour",
       numStops: 5,
       startingLocation: "toa alta, pr",
@@ -57,7 +57,7 @@ const AmbassadorExplorationsTable = {
       action: "View",
     },
     {
-      id: 0,
+      id: 2,
       explorationName: "toa alta tour",
       numStops: 5,
       startingLocation: "toa alta, pr",
