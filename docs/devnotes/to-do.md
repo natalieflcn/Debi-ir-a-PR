@@ -153,25 +153,27 @@
 - [x] Fix routing for Ambassador pages
 
 - [ ] Create SuperAdmin core static pages (4-5 new pages)
-  - [ ] Dashboard
+  - [ ] Dashboard TODO 1
   - [x] Explorations
     - [x] ManageExplorations
     - [x] CreateExploration
     - [x] Exploration
     - [x] CreateLocation
     - [x] ViewLocation
-  - [ ] Users
-    - [ ] User Details
+  - [x] Users
+    - [x] User Details
     - [x] Manage Users
   - [x] Profile
     - [x] Admin Profile
 
 - [ ] Create other pages
-  - [ ] Login page
-  - [ ] Sign-up page
-  - [ ] Page 404 Not Found
-  - [ ] Error page
+  - [ ] Login page TODO 2
+  - [ ] Sign-up page TODO 3
+  - [ ] Page 404 Not Found TODO 4
+  - [ ] Error page TODO 5
+
 - [ ] NOTE: Need to change navItem hover/active colors for Admin theme
+
 - [ ] Add editing capability with useState on Profile components
 - [ ] Link buttons to navigate between pages
 - [ ] Change Login/Logout text based on logged-in user
