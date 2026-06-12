@@ -18,9 +18,13 @@ const StyledForm = styled(Form)`
   margin: 0.5rem;
 `;
 
-function AppForm({ formTitle, action, method, children }) {
+function AppForm({ formTitle, action, method, children, $height, className }) {
   return (
-    <Card $cardColor="var(--color-light-100)">
+    <Card
+      $cardColor="var(--color-light-100)"
+      $height={$height}
+      className={className}
+    >
       <Row $align="center" $gap="var(--gap-lg)">
         <Heading
           as="h2"

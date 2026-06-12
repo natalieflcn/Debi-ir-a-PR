@@ -7,41 +7,101 @@ import FormField from "../../../shared/components/form/FormField";
 import Input from "../../../shared/components/form/Input";
 import Button from "../../../shared/components/ui/Button";
 import { MdQuestionMark } from "react-icons/md";
+import Image from "../../../shared/components/ui/Image";
+
+const StyledLoginBackground = styled.div`
+  position: relative;
+  width: 40%;
+  flex: 0 0 40%;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  background-image: url("src/assets/images/content/TEMP.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  min-height: 70vh;
+`;
+
+const StyledRow = styled(Row)`
+  flex: 1;
+  height: 70vh;
+`;
+
+const StyledAppForm = styled(AppForm)`
+  height: 100%;
+  flex: 1;
+`;
 
 const StyledLogin = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--gap-2xl);
-  margin-bottom: 1rem;
+  background-color: var(--color-light-0);
+  border-top-right-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+  height: 70vh;
+  flex: 1;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  justify-content: center;
 `;
 
+const StyledHeading = styled(Heading)`
+  text-align: center;
+`;
 function Login() {
   return (
-    <StyledLogin>
-      <AppForm formTitle="LOGIN TO DeBí iR a PR" action="/login" method="post">
-        <Row $gap="var(--gap-lg)">
-          <FormField label="email">
-            <Input name="email" placeholder="Email address" />
-          </FormField>
+    <Row $direction="horizontal">
+      <StyledLoginBackground />
+      <StyledLogin>
+        <Row $gap="var(--gap-xl)">
+          <StyledAppForm
+            formTitle="WELCOME BACK"
+            action="/login"
+            method="post"
+            $height="100%"
+          >
+            <Row $gap="var(--gap-xl)">
+              <StyledHeading as="h5" $color="var(--color-red-300)">
+                Please login below
+              </StyledHeading>
+              <Row $gap="var(--gap-xl)">
+                <FormField label="email">
+                  <Input name="email" placeholder="Email address" />
+                </FormField>
 
-          <FormField label="password">
-            <Input name="password" placeholder="Password" />
-          </FormField>
-        </Row>
-      </AppForm>
+                <FormField label="password">
+                  <Input name="password" placeholder="Password" />
+                </FormField>
+              </Row>
+            </Row>
+          </StyledAppForm>
 
-      <Row $direction="horizontal" $gap="var(--gap-lg)" $align="flex-start">
-        <Row $direction="horizontal" $align="flex-start">
-          <Heading as="h4" $color="var(--color-light-0)">
-            Don't have an account yet
-          </Heading>
-          <MdQuestionMark size={25} />
+          <Row>
+            <Row $direction="horizontal" $align="center">
+              <StyledHeading as="h4" $color="var(--color-red-200)">
+                DON'T HAVE AN ACCOUNT YET
+              </StyledHeading>
+              <MdQuestionMark size={20} fill="var(--color-red-200)" />
+            </Row>
+
+            <Row $direction="horizontal" $gap="var(--gap-md)">
+              <Button $variation="secondary" $size="small">
+                Become an Explorer
+              </Button>
+
+              <Button $variation="primary" $size="small">
+                Become an Ambassador
+              </Button>
+
+              <Button $variation="yellow" $size="small">
+                Learn More
+              </Button>
+            </Row>
+          </Row>
         </Row>
-        <Button $variation="primary" $size="small">
-          Sign Up Here
-        </Button>
-      </Row>
-    </StyledLogin>
+      </StyledLogin>
+    </Row>
   );
 }
 
