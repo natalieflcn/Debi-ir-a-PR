@@ -3,9 +3,6 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 
-import Login from "../../features/auth/components/Login";
-import CreateAccount from "../../features/auth/components/CreateAccount";
-
 const HomePage = lazy(() => import("@/features/landing/home/page/HomePage"));
 const Workflow = lazy(
   () => import("@/features/landing/workflow/page/Workflow"),
@@ -14,6 +11,8 @@ const About = lazy(() => import("@/features/landing/about/page/About"));
 const Resources = lazy(
   () => import("@/features/landing/resources/page/Resources"),
 );
+const Login = lazy(() => import("@/features/auth/pages/Login"));
+const Signup = lazy(() => import("@/features/auth/pages/Signup"));
 
 const PublicRoutes = [
   { index: true, element: <HomePage /> },
@@ -21,7 +20,8 @@ const PublicRoutes = [
   { path: "about", element: <About /> },
   { path: "resources", element: <Resources /> },
   { path: "create-account", element: <Resources /> },
-  { index: "login", element: <Login /> },
+  { path: "login", element: <Login /> },
+  { path: "signup", element: <Signup /> },
 ];
 
 export default PublicRoutes;

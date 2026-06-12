@@ -152,8 +152,8 @@
     - [x] Ambassador Profile
 - [x] Fix routing for Ambassador pages
 
-- [ ] Create SuperAdmin core static pages (4-5 new pages)
-  - [ ] Dashboard TODO 1
+- [x] Create SuperAdmin core static pages (4-5 new pages)
+  - [x] Dashboard TODO 1
   - [x] Explorations
     - [x] ManageExplorations
     - [x] CreateExploration

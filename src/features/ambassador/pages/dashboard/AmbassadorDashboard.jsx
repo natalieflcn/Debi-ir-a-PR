@@ -3,14 +3,15 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Row from "../../../../shared/components/layout/Row";
 import AmbassadorDashboardUserStats from "../../components/dashboard/AmbassadorDashboardUserStats";
 import AmbassadorDashboardProfileItem from "../../components/dashboard/AmbassadorDashboardProfileItem";
-import AmbassadorDashboardNewExplorers from "../../components/dashboard/AmbassadorDashboardNewExplorers";
-import AmbassadorDashboardTopExplorers from "../../components/dashboard/AmbassadorDashboardTopExplorers";
+
 import AmbassadorDashboardExplorationStats from "../../components/dashboard/AmbassadorDashboardExplorationStats";
 import AmbassadorDashboardLocationStats from "../../components/dashboard/AmbassadorDashboardLocationStats";
 import AmbassadorDashboardTopExplorations from "../../components/dashboard/AmbassadorDashboardTopExplorations";
 import AmbassadorDashboardTopLocations from "../../components/dashboard/AmbassadorDashboardTopLocations";
-import AmbassadorDashboardExplorationsCreated from "../../components/dashboard/AmbassadorDashboardExplorationsCreated";
+
 import DashboardExplorationsCreated from "../../../../shared/components/dashboard/DashboardExplorationsCreated";
+import DashboardNewExplorers from "../../../../shared/components/dashboard/DashboardNewExplorers";
+import DashboardTopExplorers from "../../../../shared/components/dashboard/DashboardTopExplorers";
 
 const StyledAmbassadorDashboard = styled.div`
   display: flex;
@@ -32,8 +33,8 @@ function AmbassadorDashboard() {
       </Row>
 
       <Row>
-        <AmbassadorDashboardNewExplorers />
-        <AmbassadorDashboardTopExplorers />
+        <DashboardNewExplorers />
+        <DashboardTopExplorers />
       </Row>
 
       <Row $gap="var(--gap-xl)">

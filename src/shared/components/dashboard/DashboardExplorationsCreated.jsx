@@ -4,7 +4,6 @@ import Button from "../ui/Button";
 import InsetSpan from "../ui/InsetSpan";
 import Bold from "../typography/Bold";
 import Heading from "../typography/Heading";
-import styled from "styled-components";
 
 function DashboardExplorationsCreated() {
   return (
