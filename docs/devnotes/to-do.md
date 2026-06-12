@@ -153,7 +153,7 @@
 - [x] Fix routing for Ambassador pages
 
 - [x] Create SuperAdmin core static pages (4-5 new pages)
-  - [x] Dashboard TODO 1
+  - [x] Dashboard
   - [x] Explorations
     - [x] ManageExplorations
     - [x] CreateExploration
@@ -167,10 +167,12 @@
     - [x] Admin Profile
 
 - [ ] Create other pages
-  - [ ] Login page TODO 2
-  - [ ] Sign-up page TODO 3
-  - [ ] Page 404 Not Found TODO 4
-  - [ ] Error page TODO 5
+  - [x] Login page
+  - [ ] Sign-up page
+    - [ ] Explorer Signup TODO 1
+    - [ ] Ambassador Signup TODO 2
+  - [ ] Page 404 Not Found TODO 3
+  - [ ] Error page TODO 4
 
 - [ ] NOTE: Need to change navItem hover/active colors for Admin theme
 

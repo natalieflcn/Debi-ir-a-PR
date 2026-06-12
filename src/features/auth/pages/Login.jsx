@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Card from "../../../shared/components/layout/Card";
 import Heading from "../../../shared/components/typography/Heading";
 import Row from "../../../shared/components/layout/Row";
 import AppForm from "../../../shared/components/form/AppForm";
@@ -7,25 +6,18 @@ import FormField from "../../../shared/components/form/FormField";
 import Input from "../../../shared/components/form/Input";
 import Button from "../../../shared/components/ui/Button";
 import { MdQuestionMark } from "react-icons/md";
-import Image from "../../../shared/components/ui/Image";
 
 const StyledLoginBackground = styled.div`
   position: relative;
   width: 40%;
   flex: 0 0 40%;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
+
   background-image: url("src/assets/images/content/TEMP.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   min-height: 70vh;
-`;
-
-const StyledRow = styled(Row)`
-  flex: 1;
-  height: 70vh;
 `;
 
 const StyledAppForm = styled(AppForm)`
@@ -79,10 +71,9 @@ function Login() {
 
           <Row>
             <Row $direction="horizontal" $align="center">
-              <StyledHeading as="h4" $color="var(--color-red-200)">
-                DON'T HAVE AN ACCOUNT YET
+              <StyledHeading as="h5" $color="var(--color-red-300)">
+                DON'T HAVE AN ACCOUNT YET?
               </StyledHeading>
-              <MdQuestionMark size={20} fill="var(--color-red-200)" />
             </Row>
 
             <Row $direction="horizontal" $gap="var(--gap-md)">

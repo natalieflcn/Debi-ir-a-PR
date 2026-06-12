@@ -12,7 +12,12 @@ const Resources = lazy(
   () => import("@/features/landing/resources/page/Resources"),
 );
 const Login = lazy(() => import("@/features/auth/pages/Login"));
-const Signup = lazy(() => import("@/features/auth/pages/Signup"));
+const ExplorerSignup = lazy(
+  () => import("@/features/auth/pages/ExplorerSignup"),
+);
+const AmbassadorSignup = lazy(
+  () => import("@/features/auth/pages/AmbassadorSignup"),
+);
 
 const PublicRoutes = [
   { index: true, element: <HomePage /> },
@@ -21,7 +26,8 @@ const PublicRoutes = [
   { path: "resources", element: <Resources /> },
   { path: "create-account", element: <Resources /> },
   { path: "login", element: <Login /> },
-  { path: "signup", element: <Signup /> },
+  { path: "signup/explorer", element: <ExplorerSignup /> },
+  { path: "signup/ambassador", element: <AmbassadorSignup /> },
 ];
 
 export default PublicRoutes;
