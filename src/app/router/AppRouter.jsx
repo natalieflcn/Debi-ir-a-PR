@@ -1,6 +1,6 @@
 import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "../../shared/layouts/MainLayout";
-import PageNotFound from "../../shared/components/feedback/PageNotFound";
+
 import ExplorerLayout from "../../shared/layouts/ExplorerLayout";
 import AdminLayout from "../../shared/layouts/AdminLayout";
 import PublicRoutes from "./PublicRoutes";
@@ -11,6 +11,7 @@ import SpinnerMini from "../../shared/components/ui/SpinnerMini";
 import AmbassadorRoutes from "./AmbassadorRoutes";
 import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 import App from "../../App";
+import PageNotFound from "../../pages/PageNotFound";
 
 // function AppRouter() {
 //   return (
@@ -42,22 +43,22 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: [...PublicRoutes],
+    children: [...PublicRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/",
     element: <ExplorerLayout />,
-    children: [...ExplorerRoutes],
+    children: [...ExplorerRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/ambassador",
     element: <AmbassadorLayout />,
-    children: [...AmbassadorRoutes],
+    children: [...AmbassadorRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/admin",
     element: <AdminLayout />,
-    children: [...AdminRoutes],
+    children: [...AdminRoutes, { path: "*", element: <PageNotFound /> }],
   },
 ]);
 

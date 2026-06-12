@@ -168,9 +168,9 @@
 
 - [ ] Create other pages
   - [x] Login page
-  - [ ] Sign-up page
-    - [ ] Explorer Signup TODO 1
-    - [ ] Ambassador Signup TODO 2
+  - [x] Sign-up page
+    - [x] Explorer Signup
+    - [x] Ambassador Signup
   - [ ] Page 404 Not Found TODO 3
   - [ ] Error page TODO 4
 
