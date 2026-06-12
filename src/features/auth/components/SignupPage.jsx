@@ -37,19 +37,21 @@ const StyledSignup = styled.div`
 const StyledHeading = styled(Heading)`
   text-align: center;
   line-height: var(--line-height-2xl);
+  ${({ $variant }) =>
+    $variant === "explorer" &&
+    `color: var(--color-blue-200); text-shadow: 2px 2px var(--color-blue-400);`}
+  ${({ $variant }) =>
+    $variant === "ambassador" &&
+    `color: var(--color-red-200); text-shadow: 2px 2px var(--color-red-400);`}
 `;
 
-function Signup() {
+function Signup({ $variant }) {
   return (
     <Row $direction="horizontal">
       <StyledSignup>
         <Row $gap="var(--gap-xl)">
-          <StyledHeading
-            as="h2"
-            $color="var(--color-blue-200)"
-            $shadowColor="var(--color-blue-400)"
-          >
-            BECOME AN EXPLORER
+          <StyledHeading as="h2" $variant={$variant}>
+            BECOME AN {$variant === "explorer" ? "EXPLORER" : "AMBASSADOR"}
           </StyledHeading>
           <AppForm action="/login" method="post" $height="100%">
             <Row $gap="var(--gap-lg)">
@@ -68,10 +70,20 @@ function Signup() {
           </AppForm>
 
           <Row $direction="horizontal" $gap="var(--gap-md)">
-            <Heading as="h6" $color="var(--color-blue-200)">
+            <Heading
+              as="h6"
+              $color={
+                $variant === "explorer"
+                  ? "var(--color-blue-200)"
+                  : "var(--color-red-200)"
+              }
+            >
               Already have an account?
             </Heading>
-            <Button $size="medium" $variation="secondary">
+            <Button
+              $size="medium"
+              $variation={$variant === "explorer" ? "secondary" : "primary"}
+            >
               Login
             </Button>
           </Row>
