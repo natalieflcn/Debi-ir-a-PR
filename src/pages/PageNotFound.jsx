@@ -25,7 +25,7 @@ function PageNotFound() {
   return (
     <StyledPageNotFound>
       <Heading as="h2" $shadowColor="var(--color-brown-400)">
-        PAGE NOT FOUND
+        PaGE NoT FOuND
       </Heading>
       <Styled404>404</Styled404>
       <Image src="/src/assets/images/content/Concho.png" $width="20rem" />

@@ -12,6 +12,7 @@ import AmbassadorRoutes from "./AmbassadorRoutes";
 import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 import App from "../../App";
 import PageNotFound from "../../pages/PageNotFound";
+import ErrorPage from "../../pages/ErrorPage";
 
 // function AppRouter() {
 //   return (
@@ -43,21 +44,25 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [...PublicRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/",
     element: <ExplorerLayout />,
+    errorElement: <ErrorPage />,
     children: [...ExplorerRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/ambassador",
     element: <AmbassadorLayout />,
+    errorElement: <ErrorPage />,
     children: [...AmbassadorRoutes, { path: "*", element: <PageNotFound /> }],
   },
   {
     path: "/admin",
     element: <AdminLayout />,
+    errorElement: <ErrorPage />,
     children: [...AdminRoutes, { path: "*", element: <PageNotFound /> }],
   },
 ]);
