@@ -166,19 +166,22 @@
   - [x] Profile
     - [x] Admin Profile
 
-- [ ] Create other pages
+- [x] Create other pages
   - [x] Login page
   - [x] Sign-up page
     - [x] Explorer Signup
     - [x] Ambassador Signup
-  - [ ] Page 404 Not Found TODO 3
-  - [ ] Error page TODO 4
+  - [x] Page 404 Not Found TODO 3
+  - [x] Error page TODO 4
 
-- [ ] NOTE: Need to change navItem hover/active colors for Admin theme
-
-- [ ] Add editing capability with useState on Profile components
-- [ ] Link buttons to navigate between pages
-- [ ] Change Login/Logout text based on logged-in user
-- [ ] Add "BACK" buttons to Explorations, Users pages
-- [ ] Create ability to add TAGS to Explorations and Locations
-- [ ] Editing sorting dropdown for ManageExplorers and ManageUsers
+- [ ] Polish front-end framework
+  - [ ] Need to change navItem hover/active colors for Ambassador/Admin theme
+  - [ ] Add editing capability with useState on Profile components (i.e. email, password)
+  - [ ] How to select avatar for profile?
+  - [ ] Link buttons to navigate between pages
+  - [ ] Change Login/Logout text based on logged-in user
+  - [ ] Add "BACK" buttons to Explorations, Users pages
+  - [ ] Create ability to add TAGS to Explorations and Locations
+  - [ ] Editing sorting dropdown for ManageExplorers and ManageUsers
+  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
+  - [ ] Create auth-aware navigation shell to render background/layout based on (fake) user type

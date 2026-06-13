@@ -1,5 +1,17 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
+
+const themeVariants = {
+  blue: {
+    color: "var(--color-blue-200)",
+    textShadow: "var(--text-shadow-offset-md) var(--color-red-300)",
+  },
+  red: {
+    color: "var(--color-red-200)",
+    textShadow: "var(--text-shadow-offset-md) var(--color-blue-300)",
+  },
+};
 
 const StyledLogo = styled.h1`
   /* margin-right: 5rem; */
@@ -10,8 +22,8 @@ const StyledLogo = styled.h1`
 
   &:hover,
   &:active {
-    color: var(--color-red-200);
-    text-shadow: var(--text-shadow-offset-lg) var(--color-blue-300);
+    ${({ $logoTheme }) => `color: ${$logoTheme.color};
+    text-shadow: ${$logoTheme.textShadow}`}
   }
 `;
 
@@ -40,9 +52,13 @@ const IrAPR = styled.p`
 `;
 
 function Logo() {
+  const role = useAuth();
+  const logoTheme =
+    themeVariants[role === "ambassador" || role === "admin" ? "blue" : "red"];
+
   return (
     <div>
-      <StyledLogo>
+      <StyledLogo $logoTheme={logoTheme}>
         <NavLink to="/">
           <Debi>DeBÍ</Debi>
           <IrAPR>iR a PR</IrAPR>

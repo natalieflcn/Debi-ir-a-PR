@@ -28,8 +28,8 @@ const StyledNavLink = styled(NavLink)`
   &:hover,
   &:active,
   &.active {
-    color: var(--color-red-200);
-    text-shadow: var(--text-shadow-offset-md) var(--color-blue-300);
+    color: ${({ theme }) => theme.hoverColor};
+    text-shadow: ${({ theme }) => theme.textShadow};
   }
 `;
 
