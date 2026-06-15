@@ -13,6 +13,7 @@ import {
   StyledVideoSection,
 } from "./historySection.styles";
 import Card from "../../../../shared/components/layout/Card";
+import ExternalLink from "../../../../shared/components/ui/ExternalLink";
 
 const videos = [
   {
@@ -179,7 +180,11 @@ const BookSection = function ({ title, image, goodreadsURL, description }) {
   return (
     <StyledBookSection>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
-        <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
+        <ExternalLink
+          href={goodreadsURL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Image
             src={image}
             alt={title}
@@ -188,14 +193,18 @@ const BookSection = function ({ title, image, goodreadsURL, description }) {
             $borderRadius="0 4px 4px 0"
             $imageShadow="var(--box-shadow-offset-lg) var(--color-brown-200)"
           />
-        </Link>
+        </ExternalLink>
         <figcaption>
           <Row $gap="var(--gap-sm)" $direction="vertical">
-            <Link href={goodreadsURL} target="_blank" rel="noopener noreferrer">
+            <ExternalLink
+              href={goodreadsURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Heading as="h6" $color="var(--color-brown-300)">
                 {title}
               </Heading>
-            </Link>
+            </ExternalLink>
             <SmallText>{description}</SmallText>
           </Row>
         </figcaption>

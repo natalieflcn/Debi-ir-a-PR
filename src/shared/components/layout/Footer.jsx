@@ -3,6 +3,7 @@ import Link from "../ui/Link";
 import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
 import { SlGlobe } from "react-icons/sl";
 import styled from "styled-components";
+import ExternalLink from "../ui/ExternalLink";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -92,17 +93,17 @@ function Footer() {
       </Row>
 
       <Row $direction="horizontal">
-        <Link href="https://github.com/natalieflcn">
+        <ExternalLink href="https://github.com/natalieflcn">
           <StyledGitHub />
-        </Link>
+        </ExternalLink>
 
-        <Link href="https://www.linkedin.com/in/natalieflcn/">
+        <ExternalLink href="https://www.linkedin.com/in/natalieflcn/">
           <StyledLinkedIn />
-        </Link>
+        </ExternalLink>
 
-        <Link href="https://www.instagram/indyvox/">
+        <ExternalLink href="https://www.instagram/indyvox/">
           <StyledPortfolio />
-        </Link>
+        </ExternalLink>
       </Row>
     </StyledFooter>
   );

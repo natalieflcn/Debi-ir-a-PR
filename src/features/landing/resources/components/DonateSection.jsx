@@ -12,6 +12,7 @@ import {
 } from "./donateSection.styles";
 import Card from "../../../../shared/components/layout/Card";
 import { useRef } from "react";
+import ExternalLink from "../../../../shared/components/ui/ExternalLink";
 
 const organizations = [
   {
@@ -131,29 +132,33 @@ export default function DonateSection({ theme }) {
             key={organization.id}
           >
             <StyledOrganization>
-              <Link href={organization.website}>
+              <ExternalLink href={organization.website}>
                 <Image
                   src={organization.logo}
                   alt={organization.name}
                   $width="9rem"
                 />
-              </Link>
+              </ExternalLink>
               <Row>
                 <Row $gap="var(--gap-sm)">
-                  <Link href={organization.website}>
+                  <ExternalLink href={organization.website}>
                     <Heading as="h6" $color="var(--color-brown-400)">
                       {organization.name}
                     </Heading>
-                  </Link>
+                  </ExternalLink>
                   <SmallText>{organization.description}</SmallText>
                 </Row>
                 <Row $direction="horizontal" $gap="var(--gap-md)">
                   <Button $size="medium" $variation="primary">
-                    <Link href={organization.donate}>Donate Now</Link>
+                    <ExternalLink href={organization.donate}>
+                      Donate Now
+                    </ExternalLink>
                   </Button>
 
                   <Button $size="medium" $variation="treeLeaf">
-                    <Link href={organization.learnMore}>Learn More</Link>
+                    <ExternalLink href={organization.learnMore}>
+                      Learn More
+                    </ExternalLink>
                   </Button>
                 </Row>
               </Row>

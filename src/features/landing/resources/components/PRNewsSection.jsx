@@ -5,6 +5,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Link from "../../../../shared/components/ui/Link";
 import Button from "../../../../shared/components/ui/Button";
 import Card from "../../../../shared/components/layout/Card";
+import ExternalLink from "../../../../shared/components/ui/ExternalLink";
 
 const StyledPRNewsSection = styled.div`
   display: flex;
@@ -49,11 +50,11 @@ export default function PRNewsSection({ theme }) {
             developments and ongoing challenges, staying informed helps us
             better understand Puerto Rico’s reality and support its people.
           </p>
-          <Link href="https://www.the-independent.com/topic/puerto-rico">
+          <ExternalLink href="https://www.the-independent.com/topic/puerto-rico">
             <Button $size="medium" $variation="treeLeaf">
               Visit Independent News
             </Button>
-          </Link>
+          </ExternalLink>
         </Row>
       </Card>
     </StyledPRNewsSection>

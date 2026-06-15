@@ -3,12 +3,13 @@ import Image from "../../../../shared/components/ui/Image";
 import Card from "../../../../shared/components/layout/Card";
 import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
-import Link from "../../../../shared/components/ui/Link";
+
 import Button from "../../../../shared/components/ui/Button";
 import {
   StyledActSectionCTA,
   StyledEndActSection,
 } from "./endActSection.styles";
+import ExternalLink from "../../../../shared/components/ui/ExternalLink";
 
 const acts = [
   {
@@ -61,16 +62,16 @@ const ActSectionCTA = function ({ theme }) {
             island can be heard.
           </Row>
 
-          <Link href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
+          <ExternalLink href="https://www.change.org/p/puerto-rico-state-senate-eliminate-puerto-rico-s-act-60-act-20-22">
             <Button $size="medium" $variation="primary">
               Sign Petition on Change.org
             </Button>
-          </Link>
-          <Link href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
+          </ExternalLink>
+          <ExternalLink href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
             <Button $size="medium" $variation="treeLeaf">
               Sign Petition on ActionNetwork.org
             </Button>
-          </Link>
+          </ExternalLink>
         </Row>
       </Card>
     </StyledActSectionCTA>

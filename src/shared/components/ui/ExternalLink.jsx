@@ -9,7 +9,7 @@ const StyledLink = styled.a`
   }
 `;
 
-function Link({ href, children, ...props }) {
+function ExternalLink({ href, children, ...props }) {
   return (
     <StyledLink href={href} target="_blank" {...props}>
       {children}
@@ -17,4 +17,4 @@ function Link({ href, children, ...props }) {
   );
 }
 
-export default Link;
+export default ExternalLink;
