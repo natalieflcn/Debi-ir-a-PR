@@ -8,6 +8,8 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Row from "../../../../shared/components/layout/Row";
 import { IoIosCheckboxOutline } from "react-icons/io";
 import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import Button from "../../../../shared/components/ui/Button";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -28,30 +30,35 @@ function AmbassadorDetails() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   return (
-    <StyledExplorerDetails>
-      <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
+    <Row $gap="var(--gap-xl)">
+      <Button $size="medium" $variation="darkRed">
+        <FaArrowLeft size={12} /> Back to All Users
+      </Button>
+      <StyledExplorerDetails>
+        <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
 
-      <StyledCard $cardColor="var(--color-light-100)">
-        <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
-          <StyledIcon onClick={() => setIsAdmin((prev) => !prev)}>
-            {isAdmin ? (
-              <MdCheckBoxOutlineBlank size={25} fill="var(--color-dark-100" />
-            ) : (
-              <IoIosCheckbox size={25} fill="var(--color-dark-100" />
-            )}
-          </StyledIcon>
-          <Heading as="h5" $color="var(--color-dark-100)">
-            Promote to Admin?
-          </Heading>
-        </Row>
-      </StyledCard>
+        <StyledCard $cardColor="var(--color-light-100)">
+          <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
+            <StyledIcon onClick={() => setIsAdmin((prev) => !prev)}>
+              {isAdmin ? (
+                <MdCheckBoxOutlineBlank size={25} fill="var(--color-dark-100" />
+              ) : (
+                <IoIosCheckbox size={25} fill="var(--color-dark-100" />
+              )}
+            </StyledIcon>
+            <Heading as="h5" $color="var(--color-dark-100)">
+              Promote to Admin?
+            </Heading>
+          </Row>
+        </StyledCard>
 
-      <ProfileInformation
-        email="Natalie.dflcn@gmail.com"
-        passwordLength={8}
-        dateJoined="Jan 30, 2026"
-      />
-    </StyledExplorerDetails>
+        <ProfileInformation
+          email="Natalie.dflcn@gmail.com"
+          passwordLength={8}
+          dateJoined="Jan 30, 2026"
+        />
+      </StyledExplorerDetails>
+    </Row>
   );
 }
 

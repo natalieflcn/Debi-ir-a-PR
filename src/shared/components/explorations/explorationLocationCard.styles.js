@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Row from "../../../../shared/components/layout/Row";
-import Heading from "../../../../shared/components/typography/Heading";
-import Card from "../../../../shared/components/layout/Card";
+import Row from "../layout/Row";
+import Heading from "../typography/Heading";
+import Card from "../layout/Card";
 
 export const StyledExplorationLocation = styled.div`
   display: flex;

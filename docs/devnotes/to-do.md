@@ -123,12 +123,12 @@
     - [x] ViewLocation
     - [x] EditExplorationLocationDetails
   - [ ] Users
-    - [ ] Manage Explorers TODO
+    - [ ] Manage Explorers
     - [ ] Explorer Details
     - [ ] Edit Explorer Details
   - [ ] Profile
-    - [x] Ambassador Profile TODO 3
-    - [ ] Edit Ambassador Profile TODO 4
+    - [x] Ambassador Profile
+    - [ ] Edit Ambassador Profile
 - [x] Fix routing for Ambassador pages
 - [x] Refactor current BrowserRouter implementation into CreateBrowserRouter
 - [x] Create Input reusable component
@@ -171,18 +171,20 @@
   - [x] Sign-up page
     - [x] Explorer Signup
     - [x] Ambassador Signup
-  - [x] Page 404 Not Found TODO 3
-  - [x] Error page TODO 4
+  - [x] Page 404 Not Found
+  - [x] Error page
+
+## Week: June 15 – June 19
 
 - [ ] Polish front-end framework
   - [x] Need to change navItem hover/active colors for Ambassador/Admin theme
-  - [x] Add editing capability with useState on Profile components (i.e. email, password) TODO 1
+  - [x] Add editing capability with useState on Profile components (i.e. email, password)
   - [ ] How to select avatar for profile?
   - [ ] Link buttons to navigate between pages TODO 3
   - [ ] Change Login/Logout text based on logged-in user
-  - [ ] Add "BACK" buttons to Explorations, Users pages TODO 2
-  - [ ] Create ability to add TAGS to Explorations and Locations
-  - [ ] Editing sorting dropdown for ManageExplorers and ManageUsers
-  - [ ] Create a DeleteAccount modal window for when users want to delete their account
+  - [x] Add "BACK" buttons to Explorations, Users pages
+  - [ ] Create ability to add TAGS to Explorations and Locations TODO 4
+  - [ ] Editing sorting dropdown for ManageExplorers and ManageUsers TODO 1
+  - [ ] Create a DeleteAccount modal window for when users want to delete their account TODO 2
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
   - [x] Create auth-aware navigation shell to render background/layout based on (fake) user type

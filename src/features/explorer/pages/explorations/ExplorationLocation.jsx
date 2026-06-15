@@ -1,14 +1,12 @@
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
-import ExplorationLocationCard from "../../components/explorations/ExplorationLocationCard";
-import {
-  ExplorationLocationHeading,
-  ExplorationLocationFooter,
-} from "../../components/explorations/explorationLocationCard.styles";
+
 import fakeExplorationLocationData from "./fakeExplorationLocationData";
 import { FaRegCircle } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
+import ExplorationLocationCard from "../../../../shared/components/explorations/ExplorationLocationCard";
+import { ExplorationLocationHeading } from "../../../../shared/components/explorations/explorationLocationCard.styles";
 
 function ExplorerHeaderDetails({ userCompleted, locationName }) {
   return (
