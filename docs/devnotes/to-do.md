@@ -175,13 +175,14 @@
   - [x] Error page TODO 4
 
 - [ ] Polish front-end framework
-  - [ ] Need to change navItem hover/active colors for Ambassador/Admin theme
-  - [ ] Add editing capability with useState on Profile components (i.e. email, password)
+  - [x] Need to change navItem hover/active colors for Ambassador/Admin theme
+  - [x] Add editing capability with useState on Profile components (i.e. email, password) TODO 1
   - [ ] How to select avatar for profile?
-  - [ ] Link buttons to navigate between pages
+  - [ ] Link buttons to navigate between pages TODO 3
   - [ ] Change Login/Logout text based on logged-in user
-  - [ ] Add "BACK" buttons to Explorations, Users pages
+  - [ ] Add "BACK" buttons to Explorations, Users pages TODO 2
   - [ ] Create ability to add TAGS to Explorations and Locations
   - [ ] Editing sorting dropdown for ManageExplorers and ManageUsers
+  - [ ] Create a DeleteAccount modal window for when users want to delete their account
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
-  - [ ] Create auth-aware navigation shell to render background/layout based on (fake) user type
+  - [x] Create auth-aware navigation shell to render background/layout based on (fake) user type

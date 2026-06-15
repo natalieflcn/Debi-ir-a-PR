@@ -33,12 +33,6 @@ function ExplorationsFilters({
       <SortDropdown categories={sortCategories} />
 
       <FilterDropdown categories={filterCategories} />
-
-      {/* {ExplorationsFilters.map((filter) => (
-        <Button $size="small" $variation="primary" key={filter.id}>
-          {filter.name}
-        </Button>
-      ))} */}
     </Row>
   );
 }

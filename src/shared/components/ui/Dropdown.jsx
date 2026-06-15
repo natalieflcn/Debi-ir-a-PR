@@ -86,7 +86,7 @@ function Dropdown({
     <StyledDropdown
       className={className}
       $width={$width}
-      dropdownRef={dropdownRef}
+      ref={dropdownRef}
       {...props}
     >
       <Button
@@ -103,9 +103,8 @@ function Dropdown({
       {isOpen && (
         <DropdownMenuCard $dropdownVariation={$dropdownVariation}>
           {categories.map((category) => (
-            <li>
+            <li key={category.id}>
               <DropdownMenuItem
-                key={category.id}
                 onClick={() => handleSelectCategory(category.name)}
                 $active={category.name === selectedCategory}
                 $dropdownVariation={$dropdownVariation}
