@@ -7,7 +7,7 @@ import Input from "../../../shared/components/form/Input";
 import Bold from "../../../shared/components/typography/Bold";
 import Button from "../../../shared/components/ui/Button";
 
-const StyledLoginBackground = styled.div`
+const StyledSignupBackground = styled.div`
   position: relative;
   width: 50%;
   flex: 0 0 50%;
@@ -18,7 +18,7 @@ const StyledLoginBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  min-height: 70vh;
+  min-height: 80vh;
 `;
 
 const StyledSignup = styled.div`
@@ -27,7 +27,7 @@ const StyledSignup = styled.div`
   background-color: var(--color-light-0);
   border-top-left-radius: var(--border-radius-lg);
   border-bottom-left-radius: var(--border-radius-lg);
-  height: 70vh;
+  height: 80vh;
   flex: 1;
   padding: 2rem;
   box-sizing: border-box;
@@ -89,7 +89,7 @@ function Signup({ $variant }) {
           </Row>
         </Row>
       </StyledSignup>
-      <StyledLoginBackground />
+      <StyledSignupBackground />
     </Row>
   );
 }

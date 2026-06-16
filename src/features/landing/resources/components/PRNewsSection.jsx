@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Heading from "../../../../shared/components/typography/Heading";
-import Link from "../../../../shared/components/ui/Link";
+
 import Button from "../../../../shared/components/ui/Button";
 import Card from "../../../../shared/components/layout/Card";
 import ExternalLink from "../../../../shared/components/ui/ExternalLink";

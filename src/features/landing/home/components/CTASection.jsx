@@ -3,6 +3,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledCTASection = styled.div`
   display: flex;
@@ -39,15 +40,23 @@ function CTASection() {
           $gap="var(--gap-md)"
           $align="left"
         >
-          <Button $size="small" $variation="secondary">
-            Become an Explorer
-          </Button>
-          <Button $size="small" $variation="yellow">
-            Learn More
-          </Button>
-          <Button $size="small" $variation="primary">
-            Login
-          </Button>
+          <RouterLink to="/signup/explorer">
+            <Button $size="small" $variation="secondary">
+              Become an Explorer
+            </Button>
+          </RouterLink>
+
+          <RouterLink to="/how-it-works">
+            <Button $size="small" $variation="yellow">
+              Learn More
+            </Button>
+          </RouterLink>
+
+          <RouterLink to="/login">
+            <Button $size="small" $variation="primary">
+              Login
+            </Button>
+          </RouterLink>
         </StyledButtonGroup>
       </StyledCTASection>
     </Card>

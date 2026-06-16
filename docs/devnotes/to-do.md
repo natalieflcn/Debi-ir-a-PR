@@ -181,6 +181,10 @@
   - [x] Add editing capability with useState on Profile components (i.e. email, password)
   - [ ] How to select avatar for profile?
   - [ ] Link buttons to navigate between pages TODO 3
+    - [ ] Landing pages
+    - [ ] Explorer pages
+    - [ ] Ambassador pages
+    - [ ] Admin pages
   - [ ] Change Login/Logout text based on logged-in user
   - [x] Add "BACK" buttons to Explorations, Users pages
   - [ ] Create ability to add TAGS to Explorations and Locations TODO 4

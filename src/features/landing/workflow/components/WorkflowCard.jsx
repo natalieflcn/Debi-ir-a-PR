@@ -4,6 +4,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import WorkflowStep from "./WorkflowStep";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledWorkFlowCard = styled(Card)`
   width: 90%;
@@ -81,12 +82,17 @@ const WorkFlowCard = function ({ section, index }) {
             {section.CTA.description.toUpperCase()}
           </Heading>
           <Row $direction="horizontal" $gap="var(--gap-lg)">
-            <Button $size="medium" $variation="secondary">
-              {section.CTA.primaryLink.label}
-            </Button>
-            <Button $size="medium" $variation="primary">
-              {section.CTA.secondaryLink.label}
-            </Button>
+            <RouterLink to={section.CTA.primaryLink.href}>
+              <Button $size="medium" $variation="secondary">
+                {section.CTA.primaryLink.label}
+              </Button>
+            </RouterLink>
+
+            <RouterLink to={section.CTA.secondaryLink.href}>
+              <Button $size="medium" $variation="primary">
+                {section.CTA.secondaryLink.label}
+              </Button>
+            </RouterLink>
           </Row>
         </Row>
       </StyledCTA>

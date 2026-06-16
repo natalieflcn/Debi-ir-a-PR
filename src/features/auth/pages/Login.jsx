@@ -17,7 +17,7 @@ const StyledLoginBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  min-height: 70vh;
+  min-height: 80vh;
 `;
 
 const StyledAppForm = styled(AppForm)`
@@ -25,13 +25,13 @@ const StyledAppForm = styled(AppForm)`
   flex: 1;
 `;
 
-const StyledLogin = styled.div`
+const StyledLoginForm = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--color-light-0);
   border-top-right-radius: var(--border-radius-lg);
   border-bottom-right-radius: var(--border-radius-lg);
-  height: 70vh;
+  height: 80vh;
   flex: 1;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -41,11 +41,12 @@ const StyledLogin = styled.div`
 const StyledHeading = styled(Heading)`
   text-align: center;
 `;
+
 function Login() {
   return (
     <Row $direction="horizontal">
       <StyledLoginBackground />
-      <StyledLogin>
+      <StyledLoginForm>
         <Row $gap="var(--gap-xl)">
           <StyledAppForm
             formTitle="WELCOME BACK"
@@ -91,7 +92,7 @@ function Login() {
             </Row>
           </Row>
         </Row>
-      </StyledLogin>
+      </StyledLoginForm>
     </Row>
   );
 }

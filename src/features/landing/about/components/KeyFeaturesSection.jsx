@@ -3,6 +3,7 @@ import Card from "../../../../shared/components/layout/Card";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import styled from "styled-components";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const sectionItems = [
   {
@@ -23,7 +24,7 @@ const sectionItems = [
     ],
     buttonText: "Become an Explorer",
     buttonVariation: "darkBlue",
-    buttonLink: "",
+    buttonLink: "/signup/explorer",
   },
   {
     id: "ambassadors",
@@ -43,7 +44,7 @@ const sectionItems = [
     ],
     buttonText: "Become an Ambassador",
     buttonVariation: "darkRed",
-    buttonLink: "",
+    buttonLink: "/signup/ambassador",
   },
 ];
 
@@ -92,9 +93,11 @@ export default function KeyFeaturesSection() {
             <Row key={item.id}>{item.content}</Row>
           ))}
 
-          <Button $size="medium" $variation={section.buttonVariation}>
-            {section.buttonText}
-          </Button>
+          <RouterLink to={section.buttonLink}>
+            <Button $size="medium" $variation={section.buttonVariation}>
+              {section.buttonText}
+            </Button>
+          </RouterLink>
         </Card>
       ))}
     </StyledKeyFeatures>

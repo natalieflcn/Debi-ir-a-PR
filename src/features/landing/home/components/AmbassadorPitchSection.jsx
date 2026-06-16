@@ -6,6 +6,7 @@ import Line from "../../../../shared/components/layout/Line";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import ambassadorPitchData from "../data/ambassadorPitchData";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledAmbassadorPitchSection = styled.div`
   display: flex;
@@ -107,12 +108,17 @@ function AmbassadorPitchSection() {
           $gap="var(--gap-md)"
           $align="left"
         >
-          <Button $size="small" $variation="primary">
-            Become an Ambassador
-          </Button>
-          <Button $size="small" $variation="darkRed">
-            Login as an Ambassador
-          </Button>
+          <RouterLink to="/signup/ambassador">
+            <Button $size="small" $variation="primary">
+              Become an Ambassador
+            </Button>
+          </RouterLink>
+
+          <RouterLink to="/login">
+            <Button $size="small" $variation="darkRed">
+              Login as an Ambassador
+            </Button>
+          </RouterLink>
         </StyledButtons>
       </StyledAmbassadorPitchSection>
     </Card>

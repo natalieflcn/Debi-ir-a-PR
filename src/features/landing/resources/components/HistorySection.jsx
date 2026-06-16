@@ -2,7 +2,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import Link from "../../../../shared/components/ui/Link";
+
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";

@@ -1,5 +1,5 @@
 import Row from "./Row";
-import Link from "../ui/Link";
+
 import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
 import { SlGlobe } from "react-icons/sl";
 import styled from "styled-components";

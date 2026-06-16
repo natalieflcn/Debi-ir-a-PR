@@ -50,7 +50,7 @@ const workflowData = [
     ],
     CTA: {
       description: "Your next adventure is waiting",
-      primaryLink: { label: "Create Account", href: "/create-account" },
+      primaryLink: { label: "Create Account", href: "/signup/explorer" },
       secondaryLink: { label: "Log In", href: "/login" },
     },
   },
@@ -96,7 +96,7 @@ const workflowData = [
     ],
     CTA: {
       description: "Help People Love Puerto Rico in the Right Places",
-      primaryLink: { label: "Create Account", href: "/create-account" },
+      primaryLink: { label: "Create Account", href: "/signup/ambassador" },
       secondaryLink: { label: "Log In", href: "/login" },
     },
   },

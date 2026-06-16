@@ -11,6 +11,7 @@ import {
   StyledHeroSectionBackground,
   StyledHeroSectionContent,
 } from "./heroSection.styles";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 function HeroSection() {
   return (
@@ -59,16 +60,23 @@ function HeroSection() {
             $align="left"
             $gap="var(--gap-md)"
           >
-            <Button $variation="secondary" $size="small">
-              Become an Explorer
-            </Button>
-            <Button $variation="primary" $size="small">
-              How It Works
-            </Button>
+            <RouterLink to="/signup/explorer">
+              <Button $variation="secondary" $size="small">
+                Become an Explorer
+              </Button>
+            </RouterLink>
+
+            <RouterLink to="/how-it-works">
+              <Button $variation="primary" $size="small">
+                How It Works
+              </Button>
+            </RouterLink>
           </StyledHeroButtons>
           <Row $direction="horizontal" $align="left" $gap="var(--gap-xs)">
             <Bold $color="var(--color-light-100)">Already exploring?</Bold>
-            <StyledHeroLogin href="instagram.com">Login</StyledHeroLogin>
+            <RouterLink to="/login">
+              <StyledHeroLogin>Login</StyledHeroLogin>
+            </RouterLink>
           </Row>
         </Row>
       </StyledHeroSectionContent>
