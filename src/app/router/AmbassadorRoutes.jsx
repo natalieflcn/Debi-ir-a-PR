@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route } from "react-router-dom";
+import { redirect, Route } from "react-router-dom";
 // import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(
@@ -36,6 +36,10 @@ const ExplorerDetails = lazy(
 );
 
 const AmbassadorRoutes = [
+  {
+    index: true,
+    loader: () => redirect("/ambassador/dashboard"),
+  },
   { path: "dashboard", element: <AmbassadorDashboard /> },
   { path: "explorations", element: <ManageExplorations /> },
   { path: "explorations/:explorationId", element: <ViewExploration /> },
@@ -43,13 +47,20 @@ const AmbassadorRoutes = [
     path: "explorations/:explorationId/:explorationLocationId",
     element: <ViewLocation />,
   },
-  { path: "create-location", element: <CreateLocation /> },
+  { path: "explorations/create-location", element: <CreateLocation /> },
+  {
+    path: "explorations/:explorationId/create-location",
+    element: <CreateLocation location={true} />,
+  },
   { path: "users", element: <ManageExplorers /> },
   { path: "users/:userId", element: <ExplorerDetails /> },
   { path: "profile", element: <AmbassadorProfile /> },
   { path: "dashboard", element: <AmbassadorDashboard /> },
-  { path: "create-exploration", element: <CreateExploration /> },
-  { path: "edit/:explorationId", element: <CreateExploration /> },
+  { path: "explorations/create-exploration", element: <CreateExploration /> },
+  {
+    path: "explorations/edit-exploration/:explorationId",
+    element: <CreateExploration exploration={true} />,
+  },
 ];
 
 export default AmbassadorRoutes;

@@ -4,8 +4,9 @@ import Button from "../ui/Button";
 import InsetSpan from "../ui/InsetSpan";
 import Bold from "../typography/Bold";
 import Heading from "../typography/Heading";
+import RouterLink from "../ui/RouterLink";
 
-function DashboardExplorationsCreated() {
+function DashboardExplorationsCreated({ type }) {
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-xl)">
@@ -16,12 +17,17 @@ function DashboardExplorationsCreated() {
           <InsetSpan>5</InsetSpan> <Bold>explorations created</Bold>
         </Row>
         <Row>
-          <Button $variation="secondary" $size="small">
-            Create Exploration
-          </Button>
-          <Button $variation="primary" $size="small">
-            Manage Explorations
-          </Button>
+          <RouterLink to={`/${type}/explorations/create-exploration`}>
+            <Button $variation="secondary" $size="small">
+              Create Exploration
+            </Button>
+          </RouterLink>
+
+          <RouterLink to={`/${type}/explorations`}>
+            <Button $variation="primary" $size="small">
+              Manage Explorations
+            </Button>
+          </RouterLink>
         </Row>
       </Row>
     </DashboardItem>

@@ -1,7 +1,7 @@
 // admin dashboard, manage hunts, manage users
 
 import { lazy } from "react";
-import { Route } from "react-router-dom";
+import { redirect, Route } from "react-router-dom";
 
 const AdminDashboard = lazy(
   () => import("@/features/admin/pages/dashboard/AdminDashboard.jsx"),
@@ -36,15 +36,28 @@ const ExplorerDetails = lazy(
 );
 
 const AdminRoutes = [
+  {
+    index: true,
+    loader: () => redirect("/admin/dashboard"),
+  },
   { path: "dashboard", element: <AdminDashboard /> },
   { path: "explorations", element: <ManageExplorations /> },
   {
     path: "explorations/:explorationId",
     element: <ViewExploration />,
   },
-  { path: "create-exploration", element: <CreateExploration /> },
+  { path: "explorations/create-exploration", element: <CreateExploration /> },
+  {
+    path: "explorations/edit-exploration/:explorationId",
+    element: <CreateExploration />,
+  },
   { path: "profile", element: <AdminProfile /> },
-  { path: "create-location", element: <CreateLocation /> },
+  { path: "explorations/create-location", element: <CreateLocation /> },
+  {
+    path: "explorations/edit-location/:locationId",
+    element: <CreateLocation />,
+  },
+
   {
     path: "explorations/:explorationId/:explorationLocationId",
     element: <ViewLocation />,

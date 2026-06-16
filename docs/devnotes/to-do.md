@@ -197,3 +197,4 @@
   - [ ] Add functionality to Sorting dropdown
   - [ ] Add functionality to Filter dropdown
   - [ ] Add all cities to City dropdown
+  - [ ] Location form in modal window?

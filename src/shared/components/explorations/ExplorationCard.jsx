@@ -30,10 +30,11 @@ function ExplorationCard({
   headerDetails,
   locationDetails,
   footerCTA,
+  type = "",
 }) {
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to="/explorations">
+      <RouterLink to={`/${type}${type && "/"}explorations`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to Explorations
         </Button>

@@ -20,6 +20,7 @@ function ViewExploration({ exploration = fakeExplorationData }) {
       exploration={fakeExplorationData}
       headerDetails={headerDetails}
       locationDetails={locationDetails}
+      type="ambassador"
     />
   );
 }

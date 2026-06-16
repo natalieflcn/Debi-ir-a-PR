@@ -9,6 +9,7 @@ import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
 import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const AmbassadorExplorationsTable = {
   columns: [
@@ -106,13 +107,13 @@ const AmbassadorExplorationCardButton = [
     id: "view",
     buttonVariation: "secondary",
     buttonName: "View ",
-    buttonLink: "",
+    buttonLink: "/ambassador/explorations/:explorationId",
   },
   {
     id: "edit",
     buttonVariation: "primary",
     buttonName: "Edit ",
-    buttonLink: "",
+    buttonLink: "/ambassador/explorations/edit-exploration/:explorationId",
   },
 ];
 
@@ -126,9 +127,11 @@ function ManageExplorations() {
   return (
     <StyledExplorations>
       <Row>
-        <Button $variation="darkRed" $size="small">
-          Create New Exploration
-        </Button>
+        <RouterLink to="/ambassador/explorations/create-exploration">
+          <Button $variation="darkRed" $size="small">
+            Create New Exploration
+          </Button>
+        </RouterLink>
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
