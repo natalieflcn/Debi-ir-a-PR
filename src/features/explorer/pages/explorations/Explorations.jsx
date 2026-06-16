@@ -24,7 +24,7 @@ const ExplorerExplorationCardButton = [
     id: "learn-more",
     buttonVariation: "primary",
     buttonName: "Learn More ",
-    buttonLink: "",
+    buttonLink: "/explorations/:explorationId",
   },
 ];
 

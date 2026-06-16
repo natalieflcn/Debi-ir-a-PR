@@ -4,6 +4,7 @@ import Row from "../../../../shared/components/layout/Row";
 import { LocationHeading } from "../../../../shared/components/explorations/explorationCard.styles";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 function ExplorerExplorationCardLocations({ locations, hasStarted }) {
   return locations.map((location) => (
@@ -21,9 +22,11 @@ function ExplorerExplorationCardLocations({ locations, hasStarted }) {
         <Heading as="h5">{location.locationName}</Heading>
       </Row>
       {hasStarted && (
-        <Button $variation="primary" $size="extraSmall">
-          Details
-        </Button>
+        <RouterLink to="/explorations/:explorationId/:locationId">
+          <Button $variation="primary" $size="extraSmall">
+            Details
+          </Button>
+        </RouterLink>
       )}
     </Row>
   ));

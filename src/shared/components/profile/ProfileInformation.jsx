@@ -2,12 +2,14 @@ import styled from "styled-components";
 import Card from "../layout/Card";
 import Heading from "../typography/Heading";
 import Bold from "../typography/Bold";
+import SmallText from "../typography/SmallText";
 import Row from "../layout/Row";
 import Button from "../ui/Button";
 import { FaAsterisk } from "react-icons/fa";
 import { useState } from "react";
 import { Form } from "react-router-dom";
 import Input from "../form/Input";
+import Modal from "../ui/Modal";
 
 const StyledProfileInformation = styled.div`
   display: grid;
@@ -39,8 +41,9 @@ const ProfileInformation = function ({
   password = "hello",
   dateJoined,
 }) {
-  const [isEditingEmail, setIsEditingEmail] = useState(true);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
@@ -115,10 +118,41 @@ const ProfileInformation = function ({
 
         <InformationLabel as="h5">Date Joined</InformationLabel>
         <Bold $color="var(--color-red-300)">Joined on {dateJoined}</Bold>
-        <Button $variation="darkRed" $size="medium">
+        <Button
+          $variation="darkRed"
+          $size="medium"
+          onClick={() => setIsModalOpen(true)}
+        >
           Delete Account
         </Button>
       </StyledProfileInformation>
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <Row $gap="var(--gap-md)">
+            <Row $align="center" $gap="var(--gap-sm)">
+              <Bold $color="var(--color-red-300)">
+                Are you sure you want to delete your account?
+              </Bold>
+              <SmallText>
+                This is an irreversible action and all your progress will be
+                lost.
+              </SmallText>
+            </Row>
+
+            <Button
+              $size="small"
+              $variation="secondary"
+              onClick={() => setIsModalOpen(false)}
+            >
+              No, Return to profile
+            </Button>
+            <Button $size="small" $variation="primary">
+              Yes, Delete my account
+            </Button>
+          </Row>
+        </Modal>
+      )}
     </Card>
   );
 };

@@ -6,6 +6,7 @@ import { IoFlag } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
 import Row from "../layout/Row";
 import Button from "../ui/Button";
+import RouterLink from "../ui/RouterLink";
 
 const StyledExplorationCard = styled(Card)`
   align-items: flex-start;
@@ -60,9 +61,9 @@ function ExplorationMiniCard({
   description,
   numStops,
   startLocation,
-
   buttonDetails,
 }) {
+  console.log(buttonDetails);
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
       <ExplorationCardBackground>
@@ -92,13 +93,15 @@ function ExplorationMiniCard({
 
           <Row $direction="horizontal" $gap="var(--gap-md)">
             {buttonDetails.map((button) => (
-              <Button
-                $variation={button.buttonVariation}
-                $size="large"
-                key={button.id}
-              >
-                {button.buttonName}
-              </Button>
+              <RouterLink to={button.buttonLink}>
+                <Button
+                  $variation={button.buttonVariation}
+                  $size="large"
+                  key={button.id}
+                >
+                  {button.buttonName}
+                </Button>
+              </RouterLink>
             ))}
           </Row>
         </Row>

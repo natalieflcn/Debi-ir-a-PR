@@ -6,6 +6,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -30,9 +31,11 @@ function ExplorerDashboardBadgeItem() {
             3 out of 46 badges collected
           </Bold>
 
-          <Button $variation="primary" $size="small">
-            View Badge Collection
-          </Button>
+          <RouterLink to="/profile">
+            <Button $variation="primary" $size="small">
+              View Badge Collection
+            </Button>
+          </RouterLink>
         </Row>
       </StyledExplorerDashboardBadgeItem>
     </DashboardItem>

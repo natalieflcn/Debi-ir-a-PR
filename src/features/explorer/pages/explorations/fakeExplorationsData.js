@@ -1,4 +1,4 @@
-const fakeExplorationData = [
+const fakeExplorationsData = [
   {
     id: 1,
     name: "Toa Alta Tour",
@@ -6,7 +6,7 @@ const fakeExplorationData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
     startLocation: "Toa Alta",
-    tourLink: "hi",
+    tourLink: "/explorations/:explorationId",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const fakeExplorationData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
     startLocation: "Bayamon",
-    tourLink: "hi",
+    tourLink: "/explorations/:explorationId",
   },
   {
     id: 3,
@@ -24,8 +24,8 @@ const fakeExplorationData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 11,
     startLocation: "San Juan",
-    tourLink: "hi",
+    tourLink: "/explorations/:explorationId",
   },
 ];
 
-export default fakeExplorationData;
+export default fakeExplorationsData;

@@ -7,6 +7,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import ExplorationLocationCard from "../../../../shared/components/explorations/ExplorationLocationCard";
 import { ExplorationLocationHeading } from "../../../../shared/components/explorations/explorationLocationCard.styles";
+import { useState } from "react";
 
 function ExplorerHeaderDetails({ userCompleted, locationName }) {
   return (
@@ -25,7 +26,7 @@ function ExplorerHeaderDetails({ userCompleted, locationName }) {
   );
 }
 
-function ExplorerFooterCTA({ userCompleted }) {
+function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
   return (
     <Row $direction="horizontal" $align="space-evenly">
       <Row $direction="horizontal" $gap="var(--gap-lg)">
@@ -47,15 +48,13 @@ function ExplorerFooterCTA({ userCompleted }) {
         </Row>
       )}
 
-      {!userCompleted ? (
-        <Button $variation="primary" $size="small">
-          I have explored this location
-        </Button>
-      ) : (
-        <Button $variation="darkRed" $size="small">
-          I have explored this location
-        </Button>
-      )}
+      <Button
+        $variation={userCompleted ? "darkRed" : "primary"}
+        $size="small"
+        onClick={onToggleCompleted}
+      >
+        {userCompleted ? "Mark as Incomplete" : "I have explored this location"}
+      </Button>
     </Row>
   );
 }
@@ -63,21 +62,31 @@ function ExplorerFooterCTA({ userCompleted }) {
 function ExplorationLocation({
   explorationLocation = fakeExplorationLocationData,
 }) {
+  const [userCompleted, setUserCompleted] = useState(false);
+
+  function handleToggleCompleted() {
+    setUserCompleted((prev) => !prev);
+  }
   const headerDetails = (
     <ExplorerHeaderDetails
-      userCompleted={true}
+      userCompleted={userCompleted}
       locationName={explorationLocation.locationName}
     />
   );
 
-  const footerCTA = <ExplorerFooterCTA userCompleted={false} />;
+  const footerCTA = (
+    <ExplorerFooterCTA
+      userCompleted={userCompleted}
+      onToggleCompleted={handleToggleCompleted}
+    />
+  );
 
   return (
     <ExplorationLocationCard
       explorationLocation={explorationLocation}
       headerDetails={headerDetails}
       footerCTA={footerCTA}
-      userCompleted={true}
+      userCompleted={userCompleted}
     />
   );
 }

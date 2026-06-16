@@ -18,6 +18,7 @@ import {
   ExplorationLocationTags,
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
+import RouterLink from "../ui/RouterLink";
 
 function ExplorationLocationCard({
   explorationLocation,
@@ -27,9 +28,12 @@ function ExplorationLocationCard({
 }) {
   return (
     <Row $gap="var(--gap-lg)">
-      <Button $size="small" $variation="darkRed">
-        <FaArrowLeft size={12} /> Back to {explorationLocation.explorationName}
-      </Button>
+      <RouterLink to="/explorations/:explorationId">
+        <Button $size="small" $variation="darkRed">
+          <FaArrowLeft size={12} /> Back to{" "}
+          {explorationLocation.explorationName}
+        </Button>
+      </RouterLink>
 
       <StyledExplorationLocation>
         <ExplorationLocationHeaderImage

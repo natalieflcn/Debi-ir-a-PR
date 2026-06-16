@@ -5,6 +5,7 @@ import Image from "../../../../shared/components/ui/Image";
 import Button from "../../../../shared/components/ui/Button";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Row from "../../../../shared/components/layout/Row";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledExplorerDashboardProfileItem = styled.div`
   /* max-width: 50%; */
@@ -28,9 +29,11 @@ function ExplorerDashboardProfileItem() {
             <Heading as="h6">Natalie Falcon</Heading>
           </Row>
           <Row>
-            <Button $variation="secondary" $size="small">
-              View Profile
-            </Button>
+            <RouterLink to="/profile">
+              <Button $variation="secondary" $size="small">
+                View Profile
+              </Button>
+            </RouterLink>
           </Row>
         </Row>
       </DashboardItem>
