@@ -3,10 +3,12 @@ import { FaPencilAlt } from "react-icons/fa";
 import Row from "../layout/Row";
 import Bold from "../typography/Bold";
 import Button from "../ui/Button";
+import RouterLink from "../ui/RouterLink";
 
 function AdminExplorationCardHeaderDetails({
   dateUpdated = "today",
   author = "me",
+  type,
 }) {
   return (
     <>
@@ -21,9 +23,11 @@ function AdminExplorationCardHeaderDetails({
           <Bold $color="var(--color-dark-200)">Last Updated {dateUpdated}</Bold>
         </Row>
       </Row>
-      <Button $variation="primary" $size="small">
-        Edit Exploration
-      </Button>
+      <RouterLink to={`/${type}/explorations/edit-exploration/:explorationId`}>
+        <Button $variation="primary" $size="small">
+          Edit Exploration
+        </Button>
+      </RouterLink>
     </>
   );
 }

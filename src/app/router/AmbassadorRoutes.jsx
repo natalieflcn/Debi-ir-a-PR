@@ -41,26 +41,32 @@ const AmbassadorRoutes = [
     loader: () => redirect("/ambassador/dashboard"),
   },
   { path: "dashboard", element: <AmbassadorDashboard /> },
+
   { path: "explorations", element: <ManageExplorations /> },
+  { path: "explorations/create", element: <CreateExploration /> },
   { path: "explorations/:explorationId", element: <ViewExploration /> },
   {
-    path: "explorations/:explorationId/:explorationLocationId",
+    path: "explorations/:explorationId/edit",
+    element: <CreateExploration exploration={true} />,
+  },
+
+  {
+    path: "explorations/:explorationId/locations/create",
+    element: <CreateLocation />,
+  },
+  {
+    path: "explorations/:explorationId/locations/:explorationLocationId",
     element: <ViewLocation />,
   },
-  { path: "explorations/create-location", element: <CreateLocation /> },
+
   {
-    path: "explorations/:explorationId/create-location",
+    path: "explorations/:explorationId/locations/:locationId/edit",
     element: <CreateLocation location={true} />,
   },
+
   { path: "users", element: <ManageExplorers /> },
   { path: "users/:userId", element: <ExplorerDetails /> },
   { path: "profile", element: <AmbassadorProfile /> },
-  { path: "dashboard", element: <AmbassadorDashboard /> },
-  { path: "explorations/create-exploration", element: <CreateExploration /> },
-  {
-    path: "explorations/edit-exploration/:explorationId",
-    element: <CreateExploration exploration={true} />,
-  },
 ];
 
 export default AmbassadorRoutes;

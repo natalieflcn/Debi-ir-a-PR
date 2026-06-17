@@ -24,11 +24,20 @@ function CreateExploration({ exploration }) {
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to="/ambassador/explorations">
-        <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to Explorations
-        </Button>
-      </RouterLink>
+      {exploration ? (
+        <RouterLink to="/ambassador/explorations/:explorationId">
+          <Button $size="small" $variation="darkRed">
+            <FaArrowLeft size={12} /> Back to{" "}
+            {exploration?.name ?? "Exploration"}
+          </Button>
+        </RouterLink>
+      ) : (
+        <RouterLink to="/ambassador/explorations">
+          <Button $size="small" $variation="darkRed">
+            <FaArrowLeft size={12} /> Back to Explorations
+          </Button>
+        </RouterLink>
+      )}
 
       <AppForm
         formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}

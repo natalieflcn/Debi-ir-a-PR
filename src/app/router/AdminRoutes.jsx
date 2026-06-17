@@ -41,27 +41,31 @@ const AdminRoutes = [
     loader: () => redirect("/admin/dashboard"),
   },
   { path: "dashboard", element: <AdminDashboard /> },
+
   { path: "explorations", element: <ManageExplorations /> },
+  { path: "explorations/create-exploration", element: <CreateExploration /> },
   {
     path: "explorations/:explorationId",
     element: <ViewExploration />,
   },
-  { path: "explorations/create-exploration", element: <CreateExploration /> },
   {
-    path: "explorations/edit-exploration/:explorationId",
-    element: <CreateExploration />,
+    path: "explorations/:explorationId/edit",
+    element: <CreateExploration exploration={true} />,
   },
-  { path: "profile", element: <AdminProfile /> },
-  { path: "explorations/create-location", element: <CreateLocation /> },
   {
-    path: "explorations/edit-location/:locationId",
+    path: "explorations/:explorationId/locations/create",
     element: <CreateLocation />,
+  },
+  {
+    path: "explorations/:explorationId/locations/:explorationLocationId",
+    element: <ViewLocation />,
   },
 
   {
-    path: "explorations/:explorationId/:explorationLocationId",
-    element: <ViewLocation />,
+    path: "explorations/:explorationId/locations/:locationId/edit",
+    element: <CreateLocation location={true} />,
   },
+
   {
     path: "users",
     element: <ManageUsers />,
@@ -74,6 +78,8 @@ const AdminRoutes = [
     path: "users/ambassadors/:ambassadorId",
     element: <AmbassadorDetails />,
   },
+
+  { path: "profile", element: <AdminProfile /> },
 ];
 
 export default AdminRoutes;

@@ -8,11 +8,18 @@ import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplor
 
 function ViewExploration({ exploration = fakeExplorationData }) {
   const headerDetails = (
-    <AdminExplorationCardHeaderDetails author="me" lastUpdated="today" />
+    <AdminExplorationCardHeaderDetails
+      author="me"
+      lastUpdated="today"
+      type="ambassador"
+    />
   );
 
   const locationDetails = (
-    <AdminExplorationCardLocations locations={exploration.locations} />
+    <AdminExplorationCardLocations
+      locations={exploration.locations}
+      type="ambassador"
+    />
   );
 
   return (

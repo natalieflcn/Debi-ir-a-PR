@@ -2,8 +2,9 @@ import { LocationHeading } from "../explorations/explorationCard.styles";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 import Button from "../ui/Button";
+import RouterLink from "../ui/RouterLink";
 
-function AdminExplorationCardLocations({ locations }) {
+function AdminExplorationCardLocations({ locations, type }) {
   return locations.map((location) => (
     <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
       <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
@@ -14,12 +15,17 @@ function AdminExplorationCardLocations({ locations }) {
       </Row>
 
       <Row $direction="horizontal" $gap="var(--gap-md)">
-        <Button $variation="secondary" $size="extraSmall">
-          Details
-        </Button>
-        <Button $variation="primary" $size="extraSmall">
-          Edit
-        </Button>
+        <RouterLink to={`${type}/explorations/:explorationId`}>
+          <Button $variation="secondary" $size="extraSmall">
+            Details
+          </Button>
+        </RouterLink>
+
+        <RouterLink to={`/${type}/explorations/edit-exploration/explorationId`}>
+          <Button $variation="primary" $size="extraSmall">
+            Edit
+          </Button>
+        </RouterLink>
       </Row>
     </Row>
   ));

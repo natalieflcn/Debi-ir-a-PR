@@ -10,6 +10,7 @@ import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/ui/RouterLink";
+import { useAmbassadorUI } from "../../contexts/AmbassadorUIContext";
 
 const AmbassadorExplorationsTable = {
   columns: [
@@ -25,12 +26,17 @@ const AmbassadorExplorationsTable = {
       render: () => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <Button $size="extraSmall" $variation="secondary">
-              View
-            </Button>
-            <Button $size="extraSmall" $variation="primary">
-              Edit
-            </Button>
+            <RouterLink to="/ambassador/explorations/:explorationId">
+              <Button $size="extraSmall" $variation="secondary">
+                View
+              </Button>
+            </RouterLink>
+
+            <RouterLink to="/ambassador/explorations/edit-exploration/:explorationId">
+              <Button $size="extraSmall" $variation="primary">
+                Edit
+              </Button>
+            </RouterLink>
           </Row>
         </ActionTableCell>
       ),
@@ -118,7 +124,7 @@ const AmbassadorExplorationCardButton = [
 ];
 
 function ManageExplorations() {
-  const [viewMode, setViewMode] = useState("grid");
+  const { viewMode, setViewMode } = useAmbassadorUI();
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -162,7 +168,7 @@ function ManageExplorations() {
           columns={AmbassadorExplorationsTable.columns}
           rows={AmbassadorExplorationsTable.rows}
           $theme={explorationsTableTheme}
-        ></CondensedTable>
+        />
       )}
     </StyledExplorations>
   );
