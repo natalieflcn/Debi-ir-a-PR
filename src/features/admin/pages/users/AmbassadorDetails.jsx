@@ -10,6 +10,7 @@ import { IoIosCheckboxOutline } from "react-icons/io";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -31,9 +32,11 @@ function AmbassadorDetails() {
 
   return (
     <Row $gap="var(--gap-xl)">
-      <Button $size="medium" $variation="darkRed">
-        <FaArrowLeft size={12} /> Back to All Users
-      </Button>
+      <RouterLink to="/admin/users">
+        <Button $size="medium" $variation="darkRed">
+          <FaArrowLeft size={12} /> Back to All Users
+        </Button>
+      </RouterLink>
       <StyledExplorerDetails>
         <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
 

@@ -4,7 +4,7 @@ import Heading from "../typography/Heading";
 import Button from "../ui/Button";
 import RouterLink from "../ui/RouterLink";
 
-function AdminExplorationCardLocations({ locations, type }) {
+function AdminExplorationCardLocations({ locations }) {
   return locations.map((location) => (
     <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
       <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">

@@ -7,6 +7,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Bold from "../../../../shared/components/typography/Bold";
 import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
 import FilterDropdown from "../../../../shared/components/ui/FilterDropdown";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const AmbassadorExplorersTable = {
   columns: [
@@ -14,9 +15,11 @@ const AmbassadorExplorersTable = {
       id: "name",
       heading: "Name",
       render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
+        <RouterLink to={`${row.userType.toLowerCase()}s/:userId`}>
+          <TableNameCell>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </TableNameCell>
+        </RouterLink>
       ),
     },
     { id: "userType", heading: "User Type" },
@@ -25,12 +28,14 @@ const AmbassadorExplorersTable = {
     {
       id: "action",
       heading: "Action",
-      render: () => (
+      render: (row) => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <Button $size="extraSmall" $variation="primary">
-              View
-            </Button>
+            <RouterLink to={`${row.userType.toLowerCase()}s/:userId`}>
+              <Button $size="extraSmall" $variation="primary">
+                View
+              </Button>
+            </RouterLink>
           </Row>
         </ActionTableCell>
       ),

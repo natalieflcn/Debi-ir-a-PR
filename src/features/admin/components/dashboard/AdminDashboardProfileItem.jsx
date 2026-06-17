@@ -3,6 +3,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 function AdminDashboardProfileItem() {
   return (
@@ -21,9 +22,11 @@ function AdminDashboardProfileItem() {
           <Heading as="h6">Natalie Falcon</Heading>
         </Row>
         <Row>
-          <Button $variation="primary" $size="small">
-            View Profile
-          </Button>
+          <RouterLink to="/admin/profile">
+            <Button $variation="primary" $size="small">
+              View Profile
+            </Button>
+          </RouterLink>
         </Row>
       </Row>
     </DashboardItem>

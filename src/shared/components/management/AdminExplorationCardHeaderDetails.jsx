@@ -8,7 +8,6 @@ import RouterLink from "../ui/RouterLink";
 function AdminExplorationCardHeaderDetails({
   dateUpdated = "today",
   author = "me",
-  type,
 }) {
   return (
     <>
@@ -23,7 +22,7 @@ function AdminExplorationCardHeaderDetails({
           <Bold $color="var(--color-dark-200)">Last Updated {dateUpdated}</Bold>
         </Row>
       </Row>
-      <RouterLink to={`/${type}/explorations/:explorationId/edit`}>
+      <RouterLink to={`edit`}>
         <Button $variation="primary" $size="small">
           Edit Exploration
         </Button>

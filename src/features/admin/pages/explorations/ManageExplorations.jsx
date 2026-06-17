@@ -9,6 +9,7 @@ import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
 import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const AdminExplorationsTable = {
   columns: [
@@ -24,12 +25,19 @@ const AdminExplorationsTable = {
       render: () => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <Button $size="extraSmall" $variation="secondary">
-              View
-            </Button>
-            <Button $size="extraSmall" $variation="primary">
-              Edit
-            </Button>
+            <RouterLink to=":explorationId">
+              <Button $size="extraSmall" $variation="secondary">
+                View
+              </Button>
+            </RouterLink>
+
+            <RouterLink>
+              <RouterLink to=":explorationId/edit">
+                <Button $size="extraSmall" $variation="primary">
+                  Edit
+                </Button>
+              </RouterLink>
+            </RouterLink>
           </Row>
         </ActionTableCell>
       ),
@@ -106,13 +114,13 @@ const AdminExplorationCardButton = [
     id: "view",
     buttonVariation: "secondary",
     buttonName: "View ",
-    buttonLink: "",
+    buttonLink: "/admin/explorations/:explorationId",
   },
   {
     id: "edit",
     buttonVariation: "primary",
     buttonName: "Edit ",
-    buttonLink: "",
+    buttonLink: "/admin/explorations/:explorationId/edit",
   },
 ];
 
@@ -126,9 +134,11 @@ function ManageExplorations() {
   return (
     <StyledExplorations>
       <Row>
-        <Button $variation="darkRed" $size="small">
-          Create New Exploration
-        </Button>
+        <RouterLink to="create">
+          <Button $variation="darkRed" $size="small">
+            Create New Exploration
+          </Button>
+        </RouterLink>
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />

@@ -1,10 +1,13 @@
 import Button from "../ui/Button";
+import RouterLink from "../ui/RouterLink";
 
 function AdminFooterCTA() {
   return (
-    <Button $variation="darkRed" $size="small">
-      Edit this Location
-    </Button>
+    <RouterLink to="edit">
+      <Button $variation="darkRed" $size="small">
+        Edit this Location
+      </Button>
+    </RouterLink>
   );
 }
 

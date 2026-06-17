@@ -15,6 +15,7 @@ function ViewLocation() {
       explorationLocation={fakeExplorationLocationData}
       userCompleted={true}
       footerCTA={footerCTA}
+      type="admin"
     />
   );
 }
