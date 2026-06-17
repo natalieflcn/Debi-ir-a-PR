@@ -202,3 +202,4 @@
   - [ ] Change Logo shortcut based on user role
   - [ ] Add background image, box-shadow to login/signup pages
   - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
+  - [ ] Implement pagination feature

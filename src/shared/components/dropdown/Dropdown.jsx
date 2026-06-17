@@ -18,7 +18,7 @@ export const DropdownMenuCard = styled.ul`
   top: 85%;
   left: 0;
   margin: 4px 0 0 0;
-  max-height: 15rem;
+  max-height: 16rem;
   overflow-y: auto;
   background-color: var(--color-light-0);
   border-radius: 1px 0px var(--border-radius-md) var(--border-radius-md);

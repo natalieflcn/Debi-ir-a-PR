@@ -69,7 +69,7 @@ function LocationBuilder({ existingLocations = [] }) {
       ))}
 
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>
+        <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
           <LocationForm onSubmit={handleAddLocation} />
         </Modal>
       )}

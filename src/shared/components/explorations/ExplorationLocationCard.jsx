@@ -25,7 +25,7 @@ function ExplorationLocationCard({
   userCompleted,
   headerDetails,
   footerCTA,
-  type,
+  type = "",
 }) {
   return (
     <Row $gap="var(--gap-lg)">

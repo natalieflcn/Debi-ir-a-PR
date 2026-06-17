@@ -12,18 +12,21 @@ const StyledRow = styled(Row)`
 `;
 
 const StyledButton = styled(Button)`
-  width: 25rem;
+  width: 24rem;
+  /* width: 100%; */
 `;
 
 const StyledCityDropdown = styled(StyledDropdown)`
   width: 25rem;
+  position: relative;
 `;
 
 const StyledDropdownMenuCard = styled(DropdownMenuCard)`
   /* width: 100%; */
   width: 25rem;
-  position: relative;
-  bottom: 3px;
+
+  /* position: relative;
+  bottom: 3px; */
 `;
 
 const StyledDropdownMenuItem = styled(DropdownMenuItem)`
@@ -31,7 +34,7 @@ const StyledDropdownMenuItem = styled(DropdownMenuItem)`
 `;
 const StyledInput = styled(Input)`
   width: 100%;
-  position: relative;
+  /* position: relative; */
 `;
 const puertoRicoCities = [
   { id: 1, name: "San Juan" },
