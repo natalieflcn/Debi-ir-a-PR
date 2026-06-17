@@ -5,6 +5,7 @@ import Input from "../../../../shared/components/form/Input";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import Bold from "../../../../shared/components/typography/Bold";
+import RouterLink from "../../../../shared/components/ui/RouterLink";
 
 const AmbassadorExplorersTable = {
   columns: [
@@ -12,9 +13,11 @@ const AmbassadorExplorersTable = {
       id: "name",
       heading: "Name",
       render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
+        <RouterLink to=":userId">
+          <TableNameCell>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </TableNameCell>
+        </RouterLink>
       ),
     },
     { id: "email", heading: "Email" },
@@ -26,9 +29,11 @@ const AmbassadorExplorersTable = {
       render: () => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <Button $size="extraSmall" $variation="primary">
-              View
-            </Button>
+            <RouterLink to=":userId">
+              <Button $size="extraSmall" $variation="primary">
+                View
+              </Button>
+            </RouterLink>
           </Row>
         </ActionTableCell>
       ),

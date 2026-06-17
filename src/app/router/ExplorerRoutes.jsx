@@ -22,7 +22,7 @@ const ExplorerRoutes = [
   { path: "explorations", element: <Explorations /> },
   { path: "explorations/:explorationId", element: <Exploration /> },
   {
-    path: "explorations/:explorationId/:explorationLocationId",
+    path: "explorations/:explorationId/locations/:locationId",
     element: <ExplorationLocation />,
   },
   { path: "profile", element: <ExplorerProfile /> },

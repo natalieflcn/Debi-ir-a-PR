@@ -15,13 +15,13 @@ function AdminExplorationCardLocations({ locations, type }) {
       </Row>
 
       <Row $direction="horizontal" $gap="var(--gap-md)">
-        <RouterLink to={`${type}/explorations/:explorationId`}>
+        <RouterLink to={`locations/:locationId`}>
           <Button $variation="secondary" $size="extraSmall">
             Details
           </Button>
         </RouterLink>
 
-        <RouterLink to={`/${type}/explorations/explorationId/edit`}>
+        <RouterLink to={`locations/:locationId/edit`}>
           <Button $variation="primary" $size="extraSmall">
             Edit
           </Button>
