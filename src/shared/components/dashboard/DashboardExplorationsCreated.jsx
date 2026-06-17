@@ -17,7 +17,7 @@ function DashboardExplorationsCreated({ type }) {
           <InsetSpan>5</InsetSpan> <Bold>explorations created</Bold>
         </Row>
         <Row>
-          <RouterLink to={`/${type}/explorations/create-exploration`}>
+          <RouterLink to={`/${type}/explorations/create`}>
             <Button $variation="secondary" $size="small">
               Create Exploration
             </Button>

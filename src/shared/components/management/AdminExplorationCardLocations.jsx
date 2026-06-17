@@ -21,7 +21,7 @@ function AdminExplorationCardLocations({ locations, type }) {
           </Button>
         </RouterLink>
 
-        <RouterLink to={`/${type}/explorations/edit-exploration/explorationId`}>
+        <RouterLink to={`/${type}/explorations/explorationId/edit`}>
           <Button $variation="primary" $size="extraSmall">
             Edit
           </Button>

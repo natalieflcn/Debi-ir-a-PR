@@ -27,7 +27,7 @@ function CreateExploration({ exploration }) {
       {exploration ? (
         <RouterLink to="/ambassador/explorations/:explorationId">
           <Button $size="small" $variation="darkRed">
-            <FaArrowLeft size={12} /> Back to{" "}
+            <FaArrowLeft size={12} /> Back to
             {exploration?.name ?? "Exploration"}
           </Button>
         </RouterLink>

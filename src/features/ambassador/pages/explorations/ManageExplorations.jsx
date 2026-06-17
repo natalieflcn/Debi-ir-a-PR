@@ -32,7 +32,7 @@ const AmbassadorExplorationsTable = {
               </Button>
             </RouterLink>
 
-            <RouterLink to="/ambassador/explorations/edit-exploration/:explorationId">
+            <RouterLink to="/ambassador/explorations/:explorationId/edit">
               <Button $size="extraSmall" $variation="primary">
                 Edit
               </Button>
@@ -119,7 +119,7 @@ const AmbassadorExplorationCardButton = [
     id: "edit",
     buttonVariation: "primary",
     buttonName: "Edit ",
-    buttonLink: "/ambassador/explorations/edit-exploration/:explorationId",
+    buttonLink: "/ambassador/explorations/:explorationId/edit",
   },
 ];
 
@@ -133,7 +133,7 @@ function ManageExplorations() {
   return (
     <StyledExplorations>
       <Row>
-        <RouterLink to="/ambassador/explorations/create-exploration">
+        <RouterLink to="/ambassador/explorations/create">
           <Button $variation="darkRed" $size="small">
             Create New Exploration
           </Button>

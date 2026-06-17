@@ -22,7 +22,7 @@ function ExplorerExplorationCardLocations({ locations, hasStarted }) {
         <Heading as="h5">{location.locationName}</Heading>
       </Row>
       {hasStarted && (
-        <RouterLink to="/explorations/:explorationId/:locationId">
+        <RouterLink to="/explorations/:explorationId/locations/:locationId">
           <Button $variation="primary" $size="extraSmall">
             Details
           </Button>

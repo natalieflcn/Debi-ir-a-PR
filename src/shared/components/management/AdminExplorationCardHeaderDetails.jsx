@@ -23,7 +23,7 @@ function AdminExplorationCardHeaderDetails({
           <Bold $color="var(--color-dark-200)">Last Updated {dateUpdated}</Bold>
         </Row>
       </Row>
-      <RouterLink to={`/${type}/explorations/edit-exploration/:explorationId`}>
+      <RouterLink to={`/${type}/explorations/:explorationId/edit`}>
         <Button $variation="primary" $size="small">
           Edit Exploration
         </Button>
