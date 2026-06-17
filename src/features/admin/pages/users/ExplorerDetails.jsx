@@ -5,7 +5,7 @@ import ProfileBadgeCollection from "../../../explorer/components/profile/Profile
 import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledExplorerDetails = styled.div`
   display: flex;

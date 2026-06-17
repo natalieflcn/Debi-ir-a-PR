@@ -6,7 +6,7 @@ import Line from "../../../../shared/components/layout/Line";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import ambassadorPitchData from "../data/ambassadorPitchData";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledAmbassadorPitchSection = styled.div`
   display: flex;

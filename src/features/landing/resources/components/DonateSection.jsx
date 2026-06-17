@@ -1,7 +1,7 @@
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Bold from "../../../../shared/components/typography/Bold";
-import Link from "../../../../shared/components/ui/ExternalLink";
+
 import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import Button from "../../../../shared/components/ui/Button";
@@ -12,7 +12,7 @@ import {
 } from "./donateSection.styles";
 import Card from "../../../../shared/components/layout/Card";
 import { useRef } from "react";
-import ExternalLink from "../../../../shared/components/ui/ExternalLink";
+import ExternalLink from "../../../../shared/components/routing/ExternalLink";
 
 const organizations = [
   {

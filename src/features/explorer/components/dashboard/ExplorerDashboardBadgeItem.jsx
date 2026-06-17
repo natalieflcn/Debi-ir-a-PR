@@ -6,7 +6,9 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { useState } from "react";
+import Modal from "../../../../shared/components/ui/Modal";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -15,6 +17,8 @@ const StyledExplorerDashboardBadgeItem = styled.div`
 `;
 
 function ExplorerDashboardBadgeItem() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <DashboardItem $variation="center" $height="18rem">
       <StyledExplorerDashboardBadgeItem>
@@ -31,13 +35,18 @@ function ExplorerDashboardBadgeItem() {
             3 out of 46 badges collected
           </Bold>
 
-          <RouterLink to="/profile">
-            <Button $variation="primary" $size="small">
-              View Badge Collection
-            </Button>
-          </RouterLink>
+          <Button
+            $variation="primary"
+            $size="small"
+            onClick={() => setIsModalOpen(true)}
+          >
+            View Badge Collection
+          </Button>
         </Row>
       </StyledExplorerDashboardBadgeItem>
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>badges here</Modal>
+      )}
     </DashboardItem>
   );
 }

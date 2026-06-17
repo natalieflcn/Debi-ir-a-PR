@@ -5,7 +5,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 
 import Button from "../../../../shared/components/ui/Button";
 import Card from "../../../../shared/components/layout/Card";
-import ExternalLink from "../../../../shared/components/ui/ExternalLink";
+import ExternalLink from "../../../../shared/components/routing/ExternalLink";
 
 const StyledPRNewsSection = styled.div`
   display: flex;

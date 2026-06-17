@@ -2,7 +2,7 @@ import { LocationHeading } from "../explorations/explorationCard.styles";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 import Button from "../ui/Button";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function AdminExplorationCardLocations({ locations }) {
   return locations.map((location) => (

@@ -18,7 +18,7 @@ import {
   ExplorationLocationTags,
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function ExplorationLocationCard({
   explorationLocation,

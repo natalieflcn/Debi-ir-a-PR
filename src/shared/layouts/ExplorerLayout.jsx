@@ -3,6 +3,7 @@ import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
 import { StyledLayout } from "./layout.styles";
+import ScrollToTop from "../components/ui/ScrollToTop";
 
 const menuItems = [
   { label: "Dashboard", link: "/dashboard" },
@@ -13,6 +14,7 @@ const menuItems = [
 function ExplorerLayout() {
   return (
     <>
+      <ScrollToTop />
       <Background />
       <NavBar type="explorer" menuItems={menuItems} />
       <StyledLayout>

@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import InsetSpan from "../ui/InsetSpan";
 import Bold from "../typography/Bold";
 import Heading from "../typography/Heading";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function DashboardExplorationsCreated({ type }) {
   return (

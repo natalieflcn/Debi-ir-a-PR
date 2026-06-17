@@ -3,7 +3,7 @@ import Row from "./Row";
 import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
 import { SlGlobe } from "react-icons/sl";
 import styled from "styled-components";
-import ExternalLink from "../ui/ExternalLink";
+import ExternalLink from "../routing/ExternalLink";
 
 const StyledFooter = styled.footer`
   display: flex;

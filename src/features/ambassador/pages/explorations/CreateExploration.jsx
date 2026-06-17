@@ -12,8 +12,8 @@ import fakeExplorationLocationData from "../../../explorer/pages/explorations/fa
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 import Row from "../../../../shared/components/layout/Row";
 import styled from "styled-components";
-import CityDropdown from "../../../../shared/components/form/CityDropdown";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
 
 const StyledRow = styled(Row)`

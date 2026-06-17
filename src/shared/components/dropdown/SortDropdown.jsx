@@ -1,9 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "../ui/Button";
 import Dropdown from "./Dropdown";
 
-function FilterDropdown({ categories, initState }) {
+const StyledSortDropdown = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+function SortDropdown({ categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Featured");
 
@@ -23,11 +28,11 @@ function FilterDropdown({ categories, initState }) {
   return (
     <Dropdown
       categories={categories}
-      dropdownName="Filter"
-      $dropdownVariation="red"
-      initState={initState}
+      dropdownName="Sort"
+      $dropdownVariation="blue"
+      $width="20rem"
     ></Dropdown>
   );
 }
 
-export default FilterDropdown;
+export default SortDropdown;

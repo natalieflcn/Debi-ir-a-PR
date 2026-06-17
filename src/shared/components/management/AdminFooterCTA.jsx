@@ -1,5 +1,5 @@
 import Button from "../ui/Button";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function AdminFooterCTA() {
   return (

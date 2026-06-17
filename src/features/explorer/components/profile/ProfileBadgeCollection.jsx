@@ -3,6 +3,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
 import Image from "../../../../shared/components/ui/Image";
+import { forwardRef } from "react";
 
 const StyledProfileBadgeCollection = styled.div`
   display: flex;

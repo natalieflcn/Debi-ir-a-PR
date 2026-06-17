@@ -1,15 +1,11 @@
 import { useState } from "react";
-import {
-  DropdownMenuCard,
-  DropdownMenuItem,
-  StyledDropdown,
-} from "../ui/Dropdown";
+import { DropdownMenuCard, DropdownMenuItem, StyledDropdown } from "./Dropdown";
 import Button from "../ui/Button";
 import useClickOutside from "../../hooks/useClickOutside";
 import Heading from "../typography/Heading";
 import Row from "../layout/Row";
 import styled from "styled-components";
-import Input from "./Input";
+import Input from "../form/Input";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;

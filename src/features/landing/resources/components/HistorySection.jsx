@@ -13,7 +13,7 @@ import {
   StyledVideoSection,
 } from "./historySection.styles";
 import Card from "../../../../shared/components/layout/Card";
-import ExternalLink from "../../../../shared/components/ui/ExternalLink";
+import ExternalLink from "../../../../shared/components/routing/ExternalLink";
 
 const videos = [
   {

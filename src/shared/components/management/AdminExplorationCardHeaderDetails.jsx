@@ -3,7 +3,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import Row from "../layout/Row";
 import Bold from "../typography/Bold";
 import Button from "../ui/Button";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function AdminExplorationCardHeaderDetails({
   dateUpdated = "today",

@@ -23,7 +23,7 @@ import {
   ExplorationLocationTag,
   ExplorationLocationTags,
 } from "./explorationLocationCard.styles";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 function ExplorationCard({
   exploration,

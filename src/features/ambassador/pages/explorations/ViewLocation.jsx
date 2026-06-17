@@ -9,7 +9,7 @@ import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import AdminFooterCTA from "../../../../shared/components/management/AdminFooterCTA";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 function ViewLocation() {
   const footerCTA = <AdminFooterCTA />;

@@ -5,11 +5,11 @@ import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplo
 import Row from "../../../../shared/components/layout/Row";
 
 import Input from "../../../../shared/components/form/Input";
-import AdminViewMode from "../../../../shared/components/ui/AdminViewMode";
+import AdminViewMode from "../../../../shared/components/management/AdminViewMode";
 import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const AdminExplorationsTable = {
   columns: [

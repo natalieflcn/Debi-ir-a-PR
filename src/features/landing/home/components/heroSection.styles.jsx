@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
-import Link from "../../../../shared/components/ui/ExternalLink";
+import Link from "../../../../shared/components/routing/ExternalLink";
 import Row from "../../../../shared/components/layout/Row";
 
 export const StyledHeroSectionBackground = styled.div`

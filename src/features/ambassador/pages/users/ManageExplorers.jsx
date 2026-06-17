@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Row from "../../../../shared/components/layout/Row";
-import SortDropdown from "../../../../shared/components/ui/SortDropdown";
+import SortDropdown from "../../../../shared/components/dropdown/SortDropdown";
 import Input from "../../../../shared/components/form/Input";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import Bold from "../../../../shared/components/typography/Bold";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const AmbassadorExplorersTable = {
   columns: [

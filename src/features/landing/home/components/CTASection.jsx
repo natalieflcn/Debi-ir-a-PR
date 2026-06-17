@@ -3,7 +3,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledCTASection = styled.div`
   display: flex;

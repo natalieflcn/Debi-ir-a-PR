@@ -4,7 +4,7 @@ import Row from "../../../../shared/components/layout/Row";
 import { LocationHeading } from "../../../../shared/components/explorations/explorationCard.styles";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 function ExplorerExplorationCardLocations({ locations, hasStarted }) {
   return locations.map((location) => (

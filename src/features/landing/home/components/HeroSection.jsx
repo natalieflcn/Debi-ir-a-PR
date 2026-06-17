@@ -11,7 +11,7 @@ import {
   StyledHeroSectionBackground,
   StyledHeroSectionContent,
 } from "./heroSection.styles";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 function HeroSection() {
   return (

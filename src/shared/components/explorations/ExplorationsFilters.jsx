@@ -1,8 +1,8 @@
 import Row from "../layout/Row";
 import Button from "../ui/Button";
 import Input from "../form/Input";
-import FilterDropdown from "../ui/FilterDropdown";
-import SortDropdown from "../ui/SortDropdown";
+import FilterDropdown from "../dropdown/FilterDropdown";
+import SortDropdown from "../dropdown/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
 import useClickOutside from "../../hooks/useClickOutside";
 

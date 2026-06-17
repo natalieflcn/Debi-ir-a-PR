@@ -9,7 +9,7 @@ import {
   StyledActSectionCTA,
   StyledEndActSection,
 } from "./endActSection.styles";
-import ExternalLink from "../../../../shared/components/ui/ExternalLink";
+import ExternalLink from "../../../../shared/components/routing/ExternalLink";
 
 const acts = [
   {

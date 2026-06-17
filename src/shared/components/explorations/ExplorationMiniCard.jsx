@@ -6,7 +6,7 @@ import { IoFlag } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
 import Row from "../layout/Row";
 import Button from "../ui/Button";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../routing/RouterLink";
 
 const StyledExplorationCard = styled(Card)`
   align-items: flex-start;

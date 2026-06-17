@@ -1,7 +1,7 @@
 import { IoMdGrid } from "react-icons/io";
 import { IoListOutline } from "react-icons/io5";
 import Row from "../layout/Row";
-import Button from "./Button";
+import Button from "../ui/Button";
 import styled from "styled-components";
 import { useState } from "react";
 

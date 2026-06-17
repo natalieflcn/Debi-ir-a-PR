@@ -3,7 +3,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 function AmbassadorDashboardProfileItem() {
   return (

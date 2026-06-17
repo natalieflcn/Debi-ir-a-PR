@@ -10,7 +10,7 @@ import { IoIosCheckboxOutline } from "react-icons/io";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
-import RouterLink from "../../../../shared/components/ui/RouterLink";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledExplorerDetails = styled.div`
   display: flex;

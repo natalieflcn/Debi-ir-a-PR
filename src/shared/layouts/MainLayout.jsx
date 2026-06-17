@@ -3,6 +3,7 @@ import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
 import { StyledLayout } from "./layout.styles";
+import ScrollToTop from "../components/ui/ScrollToTop";
 
 const menuItems = [
   { label: "Home", link: "/" },
@@ -14,6 +15,7 @@ const menuItems = [
 function MainLayout() {
   return (
     <>
+      <ScrollToTop />
       <Background />
       <NavBar type="main" menuItems={menuItems} />
       <StyledLayout>

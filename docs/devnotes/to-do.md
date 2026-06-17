@@ -189,7 +189,7 @@
   - [ ] Change Login/Logout text based on logged-in user TODO 2
   - [x] Add "BACK" buttons to Explorations, Users pages
   - [ ] Create ability to add TAGS to Explorations and Locations TODO 4
-  - [ ] Editing sorting dropdown for ManageExplorers and ManageUsers TODO 3
+  - [ ] Edit sorting dropdown for ManageExplorers and ManageUsers TODO 3
   - [x] Create a DeleteAccount modal window for when users want to delete their account
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
   - [x] Create auth-aware navigation shell to render background/layout based on (fake) user type
@@ -199,3 +199,6 @@
   - [ ] Add functionality to Filter dropdown
   - [ ] Add all cities to City dropdown TODO 4
   - [ ] Location form in modal window?
+  - [ ] Change Logo shortcut based on user role
+  - [ ] Add background image, box-shadow to login/signup pages
+  - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
