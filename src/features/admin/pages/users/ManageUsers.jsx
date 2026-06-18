@@ -125,7 +125,7 @@ const ambassadorsTableTheme = {
 
 const sortCategories = [
   { id: "name", name: "Name" },
-  { id: "numStops", name: "Number of Stops" },
+  { id: "dateJoined", name: "Date Joined" },
 ];
 
 const filterCategories = [
@@ -139,7 +139,7 @@ function ManageUsers() {
     <StyledUsers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an explorer by name..." />
-        <SortDropdown />
+        <SortDropdown categories={sortCategories} />
         <FilterDropdown categories={filterCategories} initState="All" />
       </Row>
 

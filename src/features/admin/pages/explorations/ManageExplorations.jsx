@@ -10,6 +10,7 @@ import { useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { useAdminUI } from "../../contexts/AdminUIContext";
 
 const AdminExplorationsTable = {
   columns: [
@@ -125,7 +126,7 @@ const AdminExplorationCardButton = [
 ];
 
 function ManageExplorations() {
-  const [viewMode, setViewMode] = useState("grid");
+  const { viewMode, setViewMode } = useAdminUI();
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);

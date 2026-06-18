@@ -9,16 +9,6 @@ const StyledSortDropdown = styled.div`
 `;
 
 function SortDropdown({ categories }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Featured");
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
-  const handleSelectCategory = (category) => {
-    setSelectedCategory(category);
-    setIsOpen(false);
-  };
-
   //   const filteredItems = data.filter((item) => {
   //     if (selectedCategory === "All") return true;
 

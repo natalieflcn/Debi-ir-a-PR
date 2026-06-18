@@ -6,6 +6,7 @@ import FormField from "../../../shared/components/form/FormField";
 import Input from "../../../shared/components/form/Input";
 import Bold from "../../../shared/components/typography/Bold";
 import Button from "../../../shared/components/ui/Button";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -80,12 +81,15 @@ function Signup({ $variant }) {
             >
               Already have an account?
             </Heading>
-            <Button
-              $size="medium"
-              $variation={$variant === "explorer" ? "secondary" : "primary"}
-            >
-              Login
-            </Button>
+
+            <RouterLink to="/login">
+              <Button
+                $size="medium"
+                $variation={$variant === "explorer" ? "secondary" : "primary"}
+              >
+                Login
+              </Button>
+            </RouterLink>
           </Row>
         </Row>
       </StyledSignup>

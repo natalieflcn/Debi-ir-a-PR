@@ -6,6 +6,7 @@ import FormField from "../../../shared/components/form/FormField";
 import Input from "../../../shared/components/form/Input";
 import Button from "../../../shared/components/ui/Button";
 import { MdQuestionMark } from "react-icons/md";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -78,17 +79,23 @@ function Login() {
             </Row>
 
             <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button $variation="secondary" $size="small">
-                Become an Explorer
-              </Button>
+              <RouterLink to="/signup/explorer">
+                <Button $variation="secondary" $size="small">
+                  Become an Explorer
+                </Button>
+              </RouterLink>
 
-              <Button $variation="primary" $size="small">
-                Become an Ambassador
-              </Button>
+              <RouterLink to="/signup/ambassador">
+                <Button $variation="primary" $size="small">
+                  Become an Ambassador
+                </Button>
+              </RouterLink>
 
-              <Button $variation="yellow" $size="small">
-                Learn More
-              </Button>
+              <RouterLink to="how-it-works">
+                <Button $variation="yellow" $size="small">
+                  Learn More
+                </Button>
+              </RouterLink>
             </Row>
           </Row>
         </Row>

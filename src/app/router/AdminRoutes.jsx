@@ -43,7 +43,7 @@ const AdminRoutes = [
   { path: "dashboard", element: <AdminDashboard /> },
 
   { path: "explorations", element: <ManageExplorations /> },
-  { path: "explorations/create-exploration", element: <CreateExploration /> },
+  { path: "explorations/create", element: <CreateExploration /> },
   {
     path: "explorations/:explorationId",
     element: <ViewExploration />,

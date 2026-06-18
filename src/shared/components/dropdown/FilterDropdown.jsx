@@ -4,16 +4,6 @@ import Button from "../ui/Button";
 import Dropdown from "./Dropdown";
 
 function FilterDropdown({ categories, initState }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Featured");
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
-  const handleSelectCategory = (category) => {
-    setSelectedCategory(category);
-    setIsOpen(false);
-  };
-
   //   const filteredItems = data.filter((item) => {
   //     if (selectedCategory === "All") return true;
 

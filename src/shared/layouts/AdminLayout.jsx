@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import { StyledLayout } from "./layout.styles";
 import Background from "../components/decorative/Background";
 import ScrollToTop from "../components/ui/ScrollToTop";
+import { AdminUIProvider } from "../../features/admin/contexts/AdminUIContext";
 
 const menuItems = [
   { label: "Dashboard", link: "/admin/dashboard" },
@@ -16,12 +17,14 @@ function AdminLayout() {
   return (
     <>
       <ScrollToTop />
-      <Background />
-      <NavBar type="admin" menuItems={menuItems} />
-      <StyledLayout>
-        <MainContent />
-        <Footer />
-      </StyledLayout>
+      <AdminUIProvider>
+        <Background />
+        <NavBar type="admin" menuItems={menuItems} />
+        <StyledLayout>
+          <MainContent />
+          <Footer />
+        </StyledLayout>
+      </AdminUIProvider>
     </>
   );
 }
