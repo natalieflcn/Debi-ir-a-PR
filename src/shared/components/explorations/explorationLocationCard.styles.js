@@ -62,7 +62,7 @@ export const ExplorationLocationTags = styled.div`
   /* flex-direction: column; */
   box-shadow: var(--box-shadow-inset-md) var(--color-brown-300);
   border-radius: var(--border-radius-md);
-  padding: 1.5rem 0.5rem;
+  padding: 1.5rem;
   background-color: var(--color-light-100);
 `;
 
