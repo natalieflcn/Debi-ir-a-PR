@@ -179,16 +179,16 @@
 - [ ] Polish front-end framework
   - [x] Need to change navItem hover/active colors for Ambassador/Admin theme
   - [x] Add editing capability with useState on Profile components (i.e. email, password)
-  - [ ] How to select avatar for profile?
   - [~] Link buttons to navigate between pages TODO 1
     - [x] Landing pages
     - [x] Explorer pages
     - [x] Ambassador pages
     - [~] Admin pages
 
-  - [ ] Change Login/Logout text based on logged-in user TODO 2
+  - [x] Change Login/Logout text based on logged-in user
+  - [ ] How to select avatar for profile TODO 3
   - [x] Add "BACK" buttons to Explorations, Users pages
-  - [ ] Create ability to add TAGS to Explorations and Locations TODO 4
+  - [ ] Create ability to add TAGS to Explorations and Locations TODO 2
   - [x] Edit sorting dropdown for ManageExplorers and ManageUsers
   - [x] Create a DeleteAccount modal window for when users want to delete their account
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
@@ -199,8 +199,8 @@
   - [ ] Add functionality to Filter dropdown
   - [ ] Add all cities to City dropdown TODO 4
   - [x] Location form in modal window?
-  - [ ] Change Logo shortcut based on user role
+  - [x] Change Logo shortcut based on user role TODO 1
   - [ ] Add background image, box-shadow to login/signup pages
   - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
   - [ ] Implement pagination feature
-  - [ ] Need to add functionality to Edit/Delete (Locations) buttons on Create/Edit Exploration form
+  - [ ] Need to add functionality to Edit/Delete (Locations) buttons on Create/Edit Exploration form TODO 3

@@ -52,14 +52,15 @@ const IrAPR = styled.p`
 `;
 
 function Logo() {
-  const role = useAuth();
+  // const { role } = useAuth();
+  const role = "admin";
   const logoTheme =
     themeVariants[role === "ambassador" || role === "admin" ? "blue" : "red"];
 
   return (
     <div>
       <StyledLogo $logoTheme={logoTheme}>
-        <NavLink to="/">
+        <NavLink to={`/${role ? role : ""}`}>
           <Debi>DeBÍ</Debi>
           <IrAPR>iR a PR</IrAPR>
         </NavLink>
