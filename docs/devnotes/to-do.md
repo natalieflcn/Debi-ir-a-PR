@@ -186,7 +186,7 @@
     - [~] Admin pages
 
   - [x] Change Login/Logout text based on logged-in user
-  - [ ] How to select avatar for profile TODO 3
+  - [x] How to select avatar for profile
   - [x] Add "BACK" buttons to Explorations, Users pages
   - [ ] Create ability to add TAGS to Explorations and Locations TODO 2
   - [x] Edit sorting dropdown for ManageExplorers and ManageUsers
@@ -197,9 +197,9 @@
     - [ ] Explorer Info Titles
   - [ ] Add functionality to Sorting dropdown
   - [ ] Add functionality to Filter dropdown
-  - [ ] Add all cities to City dropdown TODO 4
+  - [x] Add all cities to City dropdown
   - [x] Location form in modal window?
-  - [x] Change Logo shortcut based on user role TODO 1
+  - [x] Change Logo shortcut based on user role
   - [ ] Add background image, box-shadow to login/signup pages
   - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
   - [ ] Implement pagination feature

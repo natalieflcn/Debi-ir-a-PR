@@ -6,12 +6,15 @@ import {
   IoIosInformationCircleOutline,
   IoIosInformationCircle,
 } from "react-icons/io";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Modal from "../ui/Modal";
+import Button from "../ui/Button";
+import { useSubmit } from "react-router-dom";
 
 const StyledProfileHeader = styled.div`
-  display: flex;
-
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 25% 1fr;
   gap: var(--gap-xl);
 `;
 
@@ -25,13 +28,63 @@ const InfoButton = styled.button`
   color: inherit;
 `;
 
+const HiddenInput = styled.input`
+  display: none;
+`;
+
 const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [avatarPreview, setAvatarPreview] = useState(
+    userAvatar ?? "/src/assets/images/content/TEMP.png",
+  );
+  const fileInputRef = useRef(null);
+  const submit = useSubmit();
+
+  function handleAvatarChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (avatarPreview.startsWith("blob:")) {
+      URL.revokeObjectURL(avatarPreview);
+    }
+
+    const previewURL = URL.createObjectURL(file);
+    setAvatarPreview(previewURL);
+
+    const formData = new FormData();
+
+    formData.append("avatar", file);
+
+    submit(formData, {
+      method: "patch",
+      action: "/profile/avatar",
+      encType: "multipart/form-data",
+    });
+  }
 
   return (
     <StyledProfileHeader>
-      <Image src="/src/assets/images/content/TEMP.png" $width="25%" />
+      <Row>
+        <Image src={avatarPreview} $width="100%" $height="auto" />
+
+        <HiddenInput
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          name="avatar"
+          onChange={handleAvatarChange}
+        />
+
+        <Button
+          $variation="yellow"
+          $size="small"
+          onClick={() => fileInputRef.current.click()}
+        >
+          Change Avatar
+        </Button>
+      </Row>
+
       <Row $gap="var(--gap-sm)">
         <Heading as="h2" $shadowColor="var(--color-blue-300)">
           {userName.toUpperCase()}
