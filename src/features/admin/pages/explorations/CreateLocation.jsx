@@ -11,6 +11,7 @@ import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
+import TagBuilder from "../../../../shared/components/form/TagBuilder";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -85,6 +86,10 @@ function CreateLocation({
               maxImages={1}
               existingImages={exploration?.images ?? []}
             />
+          </FormField>
+
+          <FormField label="Tags">
+            <TagBuilder />
           </FormField>
 
           <Button $variation="darkRed" $size="medium" type="submit">

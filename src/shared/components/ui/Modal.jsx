@@ -27,6 +27,7 @@ const ModalContent = styled.div`
     css`
       width: ${$width};
     `}
+  max-width: 50%;
 `;
 
 const ModalButton = styled.button`
