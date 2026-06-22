@@ -8,6 +8,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
 import FilterDropdown from "../../../../shared/components/dropdown/FilterDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { useState } from "react";
 
 const AmbassadorExplorersTable = {
   columns: [
@@ -55,7 +56,7 @@ const AmbassadorExplorersTable = {
       name: "Alethia Ragland",
       userType: "Ambassador",
       email: "thearagland@gmail.com",
-      dateJoined: "June 23, 2025",
+      dateJoined: "June 23, 2024",
       action: "View",
     },
     {
@@ -64,7 +65,7 @@ const AmbassadorExplorersTable = {
       userType: "Explorer",
       email: "genioa@gmail.com",
       explorationsCompleted: 6,
-      dateJoined: "March 6, 2025",
+      dateJoined: "March 6, 2023",
       action: "View",
     },
   ],
@@ -135,17 +136,29 @@ const filterCategories = [
 ];
 
 function ManageUsers() {
+  const [sortBy, setSortBy] = useState("name");
+
+  const sortedUsers = [...AmbassadorExplorersTable.rows].sort((a, b) => {
+    if (sortBy === "name") return a.name.localeCompare(b.name);
+    else return new Date(b.dateJoined) - new Date(a.dateJoined);
+  });
+
+  console.log(sortedUsers);
   return (
     <StyledUsers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an explorer by name..." />
-        <SortDropdown categories={sortCategories} />
+        <SortDropdown
+          categories={sortCategories}
+          initState="name"
+          onSort={setSortBy}
+        />
         <FilterDropdown categories={filterCategories} initState="All" />
       </Row>
 
       <CondensedTable
         columns={AmbassadorExplorersTable.columns}
-        rows={AmbassadorExplorersTable.rows}
+        rows={sortedUsers}
       ></CondensedTable>
     </StyledUsers>
   );

@@ -25,12 +25,13 @@ const explorationsSort = [
 function ExplorationsFilters({
   sortCategories = explorationsSort,
   filterCategories = ExplorationsFiltersCategories,
+  onSort,
 }) {
   // const dropdownRef = useClickOutside();
 
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
-      <SortDropdown categories={sortCategories} />
+      <SortDropdown categories={sortCategories} onSort={onSort} />
 
       <FilterDropdown categories={filterCategories} />
     </Row>

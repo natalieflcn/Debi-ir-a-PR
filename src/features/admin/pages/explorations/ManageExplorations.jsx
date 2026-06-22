@@ -127,6 +127,12 @@ const AdminExplorationCardButton = [
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAdminUI();
+  const [sortBy, setSortBy] = useState("featured");
+
+  const sortedExplorations = [...fakeExplorationsData].sort((a, b) => {
+    if (sortBy === "numStops") return a.numStops - b.numStops;
+    else return a.name.localeCompare(b.name);
+  });
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -143,7 +149,7 @@ function ManageExplorations() {
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters />
+        <ExplorationsFilters onSort={setSortBy} />
         <AdminViewMode
           viewMode={viewMode}
           onViewModeChange={handleSelectViewMode}
@@ -152,7 +158,7 @@ function ManageExplorations() {
 
       {viewMode === "grid" && (
         <ExplorationCards>
-          {fakeExplorationsData.map((exploration) => (
+          {sortedExplorations.map((exploration) => (
             <ExplorationMiniCard
               name={exploration.name}
               description={exploration.description}

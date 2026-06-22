@@ -6,6 +6,7 @@ import ExplorationsFilters from "../../../../shared/components/explorations/Expl
 import fakeExplorationsData from "./fakeExplorationsData";
 import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
+import { useState } from "react";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -29,14 +30,21 @@ const ExplorerExplorationCardButton = [
 ];
 
 function Explorations() {
+  const [sortBy, setSortBy] = useState("featured");
+
+  const sortedExplorations = [...fakeExplorationsData].sort((a, b) => {
+    if (sortBy === "numStops") return a.numStops - b.numStops;
+    else return a.name.localeCompare(b.name);
+  });
+
   return (
     <StyledExplorations>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters />
+        <ExplorationsFilters onSort={setSortBy} />
       </Row>
       <ExplorationCards>
-        {fakeExplorationsData.map((exploration) => (
+        {sortedExplorations.map((exploration) => (
           <ExplorationMiniCard
             name={exploration.name}
             description={exploration.description}

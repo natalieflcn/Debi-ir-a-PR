@@ -8,7 +8,7 @@ const StyledSortDropdown = styled.div`
   display: inline-block;
 `;
 
-function SortDropdown({ categories }) {
+function SortDropdown({ categories, onSort, initState }) {
   //   const filteredItems = data.filter((item) => {
   //     if (selectedCategory === "All") return true;
 
@@ -21,6 +21,8 @@ function SortDropdown({ categories }) {
       dropdownName="Sort"
       $dropdownVariation="blue"
       $width="20rem"
+      onSelect={(category) => onSort(category.id)}
+      initState={initState}
     ></Dropdown>
   );
 }

@@ -63,6 +63,7 @@ function Dropdown({
   $width,
   className,
   initState = "Featured",
+  onSelect,
   ...props
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,8 +73,10 @@ function Dropdown({
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelectCategory = (category) => {
-    setSelectedCategory(category);
+    console.log(category);
+    setSelectedCategory(category.name);
     setIsOpen(false);
+    onSelect?.(category);
   };
 
   //   const filteredItems = data.filter((item) => {
@@ -105,7 +108,7 @@ function Dropdown({
           {categories.map((category) => (
             <li key={category.id}>
               <DropdownMenuItem
-                onClick={() => handleSelectCategory(category.name)}
+                onClick={() => handleSelectCategory(category)}
                 $active={category.name === selectedCategory}
                 $dropdownVariation={$dropdownVariation}
               >

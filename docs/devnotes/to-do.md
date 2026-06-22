@@ -176,31 +176,33 @@
 
 ## Week: June 15 – June 19
 
-- [ ] Polish front-end framework
+- [~] Polish front-end framework
   - [x] Need to change navItem hover/active colors for Ambassador/Admin theme
   - [x] Add editing capability with useState on Profile components (i.e. email, password)
-  - [~] Link buttons to navigate between pages
+  - [x] Link buttons to navigate between pages
     - [x] Landing pages
     - [x] Explorer pages
     - [x] Ambassador pages
-    - [~] Admin pages
-
+    - [x] Admin pages
   - [x] Change Login/Logout text based on logged-in user
   - [x] How to select avatar for profile
   - [x] Add "BACK" buttons to Explorations, Users pages
   - [x] Create ability to add TAGS to Explorations and Locations
   - [x] Edit sorting dropdown for ManageExplorers and ManageUsers
   - [x] Create a DeleteAccount modal window for when users want to delete their account
-  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
   - [x] Create auth-aware navigation shell to render background/layout based on (fake) user type
-  - [ ] Define Profile info descriptions TODO 1
-    - [ ] Explorer Info Titles
-  - [ ] Add functionality to Sorting dropdown TODO 2
-  - [ ] Add functionality to Filter dropdown TODO 3
   - [x] Add all cities to City dropdown
   - [x] Location form in modal window?
   - [x] Change Logo shortcut based on user role
-  - [ ] Add background image, box-shadow to login/signup pages
   - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
+
+## Week: June 22 – June 25
+
+- [~] Polish front-end framework
+  - [x] Define Profile info descriptions
+    - [x] Explorer Info Titles
+  - [ ] Add functionality to Sorting dropdown TODO 2
+  - [ ] Add functionality to Filter dropdown TODO 3
   - [ ] Implement pagination feature TODO 4
   - [ ] Need to add functionality to Edit/Delete TODO 5(Locations) buttons on Create/Edit Exploration form
+  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)

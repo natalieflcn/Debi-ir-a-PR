@@ -10,7 +10,6 @@ const StyledRow = styled(Row)`
 function CurrentLocations({ locations }) {
   const hasLocations = locations.length > 0;
 
-  console.log(hasLocations);
   return (
     <>
       {!hasLocations && <Heading as="h5">No locations added yet.</Heading>}
