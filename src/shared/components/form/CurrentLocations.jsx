@@ -2,12 +2,19 @@ import styled from "styled-components";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 import Button from "../ui/Button";
+import RouterLink from "../routing/RouterLink";
+import { useEffect, useState } from "react";
+import Modal from "../ui/Modal";
+import LocationForm from "./LocationForm";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
 `;
 
-function CurrentLocations({ locations }) {
+function CurrentLocations({ locations, exploration }) {
+  const [editingLocation, setEditingLocation] = useState(null);
+  const [deletingLocation, setDeletingLocation] = useState(null);
+
   const hasLocations = locations.length > 0;
 
   return (
@@ -31,18 +38,64 @@ function CurrentLocations({ locations }) {
               <StyledRow
                 $align="flex-end"
                 $direction="horizontal"
-                $gap="var(--gap-md)"
+                $gap="var(--gap-lg)"
               >
-                <Button $variation="secondary" $size="small">
+                <Button
+                  $variation="secondary"
+                  $size="small"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setEditingLocation(location);
+                  }}
+                >
                   Edit
                 </Button>
-                <Button $variation="primary" $size="small">
-                  Delete
-                </Button>
+
+                <RouterLink>
+                  <Button
+                    $variation="primary"
+                    $size="small"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setDeletingLocation(location);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </RouterLink>
               </StyledRow>
             </Row>
           ))}
         </Row>
+      )}
+      {editingLocation && (
+        <Modal $width="60%" onClose={() => setEditingLocation(null)}>
+          <LocationForm exploration={exploration} />
+        </Modal>
+      )}
+
+      {deletingLocation && (
+        <Modal onClose={() => setDeletingLocation(null)}>
+          <Row $align="center">
+            <Heading as="h6">
+              Are you sure you want to delete this location from{" "}
+              {exploration.explorationName}?
+            </Heading>
+            <p>This action is irreversible.</p>
+            <Row $direction="horizontal" $gap="var(--gap-lg)">
+              <Button
+                $size="small"
+                $variation="secondary"
+                onClick={() => setDeletingLocation(null)}
+              >
+                Cancel
+              </Button>
+              <Button $size="small" $variation="primary">
+                Delete Location
+              </Button>
+            </Row>
+          </Row>
+        </Modal>
       )}
     </>
   );

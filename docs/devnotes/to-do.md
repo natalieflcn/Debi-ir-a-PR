@@ -203,7 +203,10 @@
     - [x] Explorer Info Titles
   - [x] Add functionality to Sorting dropdown
   - [x] Add functionality to Filter dropdown
-  - [ ] Implement pagination feature TODO 1
-  - [ ] Need to add functionality to Edit/Delete TODO 2(Locations) buttons on Create/Edit Exploration form
-  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
-  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data
+  - [x] Implement pagination feature
+  - [ ] Need to add functionality to Edit/Delete TODO 1(Locations) buttons on Create/Edit Exploration form
+  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
+  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data TODO 3
+  - [ ] Wire up Error, PageNotFound page buttons
+  - [ ] Add TagBuilder to Create/Edit Location form
+  - [ ] Add Bubbles background to Error and PageNotFound page

@@ -1,4 +1,5 @@
 const fakeExplorationData = {
+  id: 0,
   explorationName: "Toa Alta Tour",
   headerImage: "/src/assets/images/content/TEMP.png",
   numStops: 5,

@@ -95,7 +95,10 @@ function CreateExploration({ exploration }) {
           <FormField label="Locations">
             <StyledRow>
               <LocationBuilder />
-              <CurrentLocations locations={fakeExplorationData.locations} />
+              <CurrentLocations
+                locations={fakeExplorationData.locations}
+                exploration={fakeExplorationData}
+              />
             </StyledRow>
           </FormField>
 
