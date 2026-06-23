@@ -15,10 +15,17 @@ import styled from "styled-components";
 import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
+import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
 `;
+
+const StyledParagraph = styled.p`
+  color: var(--color-dark-200);
+`;
+
 function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
 
@@ -99,6 +106,16 @@ function CreateExploration({ exploration }) {
                 locations={fakeExplorationData.locations}
                 exploration={fakeExplorationData}
               />
+            </StyledRow>
+          </FormField>
+
+          <FormField label="Tags">
+            <StyledRow>
+              <ExplorationTagBuilder exploration={fakeExplorationData} />
+              <StyledParagraph>
+                <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
+                derived from the tag(s) you add to each location.
+              </StyledParagraph>
             </StyledRow>
           </FormField>
 

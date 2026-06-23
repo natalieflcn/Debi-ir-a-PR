@@ -3,6 +3,7 @@ import Image from "../shared/components/ui/Image";
 import Heading from "../shared/components/typography/Heading";
 import Button from "../shared/components/ui/Button";
 import Row from "../shared/components/layout/Row";
+import Background from "../shared/components/decorative/Background";
 
 const Styled404 = styled.div`
   position: absolute;
@@ -23,21 +24,24 @@ const StyledPageNotFound = styled.div`
 
 function PageNotFound() {
   return (
-    <StyledPageNotFound>
-      <Heading as="h2" $shadowColor="var(--color-brown-400)">
-        PaGE NoT FOuND
-      </Heading>
-      <Styled404>404</Styled404>
-      <Image src="/src/assets/images/content/Concho.png" $width="20rem" />
-      <Row $gap="var(--gap-lg)">
-        <Heading as="h6">
-          Perdón! The page you're looking for does not exist.
+    <>
+      <Background />
+      <StyledPageNotFound>
+        <Heading as="h2" $shadowColor="var(--color-brown-400)">
+          PaGE NoT FOuND
         </Heading>
-        <Button $size="small" $variation="yellow">
-          Back to Home
-        </Button>
-      </Row>
-    </StyledPageNotFound>
+        <Styled404>404</Styled404>
+        <Image src="/src/assets/images/content/Concho.png" $width="20rem" />
+        <Row $gap="var(--gap-lg)">
+          <Heading as="h6">
+            Perdón! The page you're looking for does not exist.
+          </Heading>
+          <Button $size="small" $variation="yellow">
+            Back to Home
+          </Button>
+        </Row>
+      </StyledPageNotFound>
+    </>
   );
 }
 

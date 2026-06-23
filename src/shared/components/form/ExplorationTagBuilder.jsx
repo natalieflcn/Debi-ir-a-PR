@@ -1,25 +1,20 @@
-import { useState } from "react";
-import Dropdown from "../dropdown/Dropdown";
-import Modal from "../ui/Modal";
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
-import Row from "../layout/Row";
-import styled from "styled-components";
 import {
   ExplorationLocationTag,
   ExplorationLocationTags,
 } from "../explorations/explorationLocationCard.styles";
+import styled from "styled-components";
+import Modal from "../ui/Modal";
+import Row from "../layout/Row";
 import { IoIosCheckbox } from "react-icons/io";
-import Heading from "../typography/Heading";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
-import Bold from "../typography/Bold";
+import Heading from "../typography/Heading";
 
 const TagCategories = [
   { id: "featured", name: "Featured" },
-  { id: "restaurant", name: "Restaurant" },
-  { id: "bar", name: "Bar" },
-  { id: "landmark", name: "Landmark" },
-  { id: "landscape", name: "Landscape" },
-  { id: "beach", name: "Beach" },
+  { id: "city", name: "City" },
+  { id: "artist", name: "Artist" },
   { id: "other", name: "Other" },
 ];
 
@@ -33,9 +28,33 @@ const StyledIcon = styled.div`
   justify-content: center;
 `;
 
-function TagBuilder({ existingTags = [] }) {
+export const ExplorationTag = styled.span`
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  display: inline;
+  font-weight: var(--font-weight-boldest);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-red-300);
+  color: var(--color-light-0);
+  font-size: var(--font-size-xs);
+`;
+
+function ExplorationTagBuilder({
+  exploration,
+  existingSelectedTags = [],
+  existingDerivedTags = [],
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTags, setSelectedTags] = useState(existingTags);
+  const [selectedTags, setSelectedTags] = useState(existingSelectedTags);
+  const [derivedTags, setDerivedTags] = useState(existingDerivedTags);
+
+  const derivedLocationTags = [
+    ...new Set(
+      exploration.locations?.flatMap((location) => location.tags ?? []) ?? [],
+    ),
+  ];
+
+  console.log(derivedLocationTags);
 
   function toggleTag(tagId) {
     setSelectedTags((prev) =>
@@ -44,13 +63,17 @@ function TagBuilder({ existingTags = [] }) {
         : [...prev, tagId],
     );
   }
+
   return (
     <>
       <StyledRow>
         <Button
           $size="small"
           $variation="primary"
-          onClick={() => setIsModalOpen(true)}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
         >
           Select Tags
         </Button>
@@ -61,9 +84,14 @@ function TagBuilder({ existingTags = [] }) {
 
             if (!tag) return null;
 
+            return <ExplorationTag key={tagId}>{tag?.name}</ExplorationTag>;
+          })}
+
+          {derivedLocationTags.map((tag) => {
             return (
-              <ExplorationLocationTag key={tagId}>
-                {tag?.name}
+              <ExplorationLocationTag key={tag}>
+                {tag.charAt(0).toUpperCase()}
+                {tag.slice(1)}
               </ExplorationLocationTag>
             );
           })}
@@ -78,6 +106,7 @@ function TagBuilder({ existingTags = [] }) {
                 $direction="horizontal"
                 $gap="var(--gap-md)"
                 $align="flex-start"
+                key={category.id}
               >
                 <StyledIcon onClick={() => toggleTag(category.id)}>
                   {selectedTags.includes(category.id) ? (
@@ -96,4 +125,4 @@ function TagBuilder({ existingTags = [] }) {
   );
 }
 
-export default TagBuilder;
+export default ExplorationTagBuilder;
