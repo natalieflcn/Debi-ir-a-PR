@@ -7,6 +7,7 @@ import fakeExplorationsData from "./fakeExplorationsData";
 import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
 import { useState } from "react";
+import Pagination from "../../../../shared/components/ui/Pagination";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -66,6 +67,12 @@ function Explorations() {
           />
         ))}
       </ExplorationCards>
+      <Pagination
+        currentPage={1}
+        totalPages={10}
+        onPageChange={null}
+        $variation="primary"
+      />
     </StyledExplorations>
   );
 }
