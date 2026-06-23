@@ -6,7 +6,7 @@ import ExplorationsFilters from "../../../../shared/components/explorations/Expl
 import fakeExplorationsData from "./fakeExplorationsData";
 import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 
 const StyledExplorations = styled.div`
@@ -30,9 +30,12 @@ const ExplorerExplorationCardButton = [
   },
 ];
 
+const ITEMS_PER_PAGE = 9;
+
 function Explorations() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredExplorations = [...fakeExplorationsData].filter(
     (exploration) => {
@@ -49,6 +52,17 @@ function Explorations() {
     else return a.name.localeCompare(b.name);
   });
 
+  const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedExplorations = sortedExplorations.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, filterBy]);
+
   return (
     <StyledExplorations>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
@@ -56,7 +70,7 @@ function Explorations() {
         <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
       </Row>
       <ExplorationCards>
-        {sortedExplorations.map((exploration) => (
+        {paginatedExplorations.map((exploration) => (
           <ExplorationMiniCard
             name={exploration.name}
             description={exploration.description}
@@ -68,9 +82,9 @@ function Explorations() {
         ))}
       </ExplorationCards>
       <Pagination
-        currentPage={1}
-        totalPages={10}
-        onPageChange={null}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
         $variation="primary"
       />
     </StyledExplorations>

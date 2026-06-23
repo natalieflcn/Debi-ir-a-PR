@@ -166,6 +166,11 @@ const variations = {
       box-shadow: var(--box-shadow-offset-md) var(--color-red-400);
     }
   `,
+  disabled: css`
+    color: var(--color-dark-0);
+    background-color: var(--color-light-0);
+    box-shadow: var(--box-shadow-offset-inset-md) var(--color-dark-100);
+  `,
 };
 
 const Button = styled.button`

@@ -11,20 +11,22 @@ const ButtonNumber = styled.p`
   right: 0.5px;
 `;
 function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
-  if (totalPages < 1) return null;
+  if (totalPages <= 1) return null;
 
   const highlightedPage = $variation === "primary" ? "darkRed" : "darkBlue";
 
   return (
     <Row $direction="horizontal">
-      <Button
-        $size="square"
-        $variation={$variation}
-        disabled={currentPage === 1}
-        onClick={() => onPageChange((prev) => prev - 1)}
-      >
-        <FaArrowLeft size={18} />
-      </Button>
+      {
+        <Button
+          $size="square"
+          $variation={currentPage === 1 ? "disabled" : $variation}
+          disabled={currentPage === 1}
+          onClick={() => onPageChange((prev) => prev - 1)}
+        >
+          <FaArrowLeft size={18} />
+        </Button>
+      }
 
       <Row $direction="horizontal" $gap="var(--gap-xl)" $align="center">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -32,6 +34,7 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
             $size="square"
             $variation={page === currentPage ? highlightedPage : $variation}
             onClick={() => onPageChange(page)}
+            key={page}
           >
             <ButtonNumber>{page}</ButtonNumber>
           </Button>
@@ -39,7 +42,7 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
       </Row>
       <Button
         $size="square"
-        $variation={$variation}
+        $variation={currentPage === totalPages ? "disabled" : $variation}
         disabled={currentPage === totalPages}
         onClick={() => onPageChange((prev) => prev + 1)}
       >
