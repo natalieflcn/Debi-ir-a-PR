@@ -206,3 +206,4 @@
   - [ ] Implement pagination feature TODO 1
   - [ ] Need to add functionality to Edit/Delete TODO 2(Locations) buttons on Create/Edit Exploration form
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
+  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data

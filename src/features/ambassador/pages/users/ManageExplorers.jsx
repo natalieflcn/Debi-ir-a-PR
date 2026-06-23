@@ -6,6 +6,8 @@ import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import Bold from "../../../../shared/components/typography/Bold";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { useEffect, useState } from "react";
+import Pagination from "../../../../shared/components/ui/Pagination";
 
 const AmbassadorExplorersTable = {
   columns: [
@@ -40,6 +42,30 @@ const AmbassadorExplorersTable = {
     },
   ],
   rows: [
+    {
+      id: 0,
+      name: "Natalie Falcon",
+      email: "natalie.dflcn@gmail.com",
+      explorationsCompleted: 5,
+      dateJoined: "January 17, 2025",
+      action: "View",
+    },
+    {
+      id: 1,
+      name: "Alethia Ragland",
+      email: "thearagland@gmail.com",
+      explorationsCompleted: 3,
+      dateJoined: "June 23, 2022",
+      action: "View",
+    },
+    {
+      id: 2,
+      name: "Jorge Gonzalez",
+      email: "genioa@gmail.com",
+      explorationsCompleted: 6,
+      dateJoined: "March 6, 2021",
+      action: "View",
+    },
     {
       id: 0,
       name: "Natalie Falcon",
@@ -108,19 +134,64 @@ const explorersTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-function ManageExplorers() {
+const sortCategories = [
+  { id: "name", name: "Name" },
+  { id: "dateJoined", name: "Date Joined" },
+];
+
+const ITEMS_PER_PAGE = 10;
+
+function ManageExplorers({ usersData = AmbassadorExplorersTable.rows }) {
+  const [sortBy, setSortBy] = useState("name");
+  const [filterBy, setFilterBy] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredUsers = [
+    ...usersData.filter((user) => {
+      if (filterBy === "all") return true;
+      return user.userType === filterBy;
+    }),
+  ];
+
+  const sortedUsers = [...filteredUsers].sort((a, b) => {
+    if (sortBy === "name") return a.name.localeCompare(b.name);
+    else return new Date(b.dateJoined) - new Date(a.dateJoined);
+  });
+
+  const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedUsers = sortedUsers.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, filterBy]);
+
   return (
     <StyledExplorers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an explorer by name..." />
-        <SortDropdown />
+        <SortDropdown
+          categories={sortCategories}
+          initState="Name"
+          onSort={setSortBy}
+        />
       </Row>
 
       <CondensedTable
         columns={AmbassadorExplorersTable.columns}
-        rows={AmbassadorExplorersTable.rows}
+        rows={paginatedUsers}
         $theme={explorersTableTheme}
-      ></CondensedTable>
+      />
+
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        $variation="secondary"
+      />
     </StyledExplorers>
   );
 }

@@ -8,7 +8,8 @@ import Bold from "../../../../shared/components/typography/Bold";
 import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
 import FilterDropdown from "../../../../shared/components/dropdown/FilterDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Pagination from "../../../../shared/components/ui/Pagination";
 
 const AmbassadorExplorersTable = {
   columns: [
@@ -54,6 +55,31 @@ const AmbassadorExplorersTable = {
     },
   ],
   rows: [
+    {
+      id: 0,
+      name: "Natalie Falcon",
+      userType: "explorer",
+      email: "natalie.dflcn@gmail.com",
+      dateJoined: "January 17, 2025",
+      action: "View",
+    },
+    {
+      id: 1,
+      name: "Alethia Ragland",
+      userType: "ambassador",
+      email: "thearagland@gmail.com",
+      dateJoined: "June 23, 2024",
+      action: "View",
+    },
+    {
+      id: 2,
+      name: "Jorge Gonzalez",
+      userType: "explorer",
+      email: "genioa@gmail.com",
+      explorationsCompleted: 6,
+      dateJoined: "March 6, 2023",
+      action: "View",
+    },
     {
       id: 0,
       name: "Natalie Falcon",
@@ -146,11 +172,14 @@ const filterCategories = [
   { id: "all", name: "All" },
 ];
 
-function ManageUsers() {
+const ITEMS_PER_PAGE = 10;
+
+function ManageUsers({ usersData = AmbassadorExplorersTable.rows }) {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredUsers = [...AmbassadorExplorersTable.rows].filter((user) => {
+  const filteredUsers = [...usersData].filter((user) => {
     if (filterBy === "all") return true;
     return user.userType === filterBy;
   });
@@ -160,6 +189,17 @@ function ManageUsers() {
     else return new Date(b.dateJoined) - new Date(a.dateJoined);
   });
 
+  const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedUsers = sortedUsers.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, filterBy]);
+
   console.log(sortedUsers);
   return (
     <StyledUsers>
@@ -167,7 +207,7 @@ function ManageUsers() {
         <Input placeholder="Search for an explorer by name..." />
         <SortDropdown
           categories={sortCategories}
-          initState="name"
+          initState="Name"
           onSort={setSortBy}
         />
         <FilterDropdown
@@ -179,8 +219,15 @@ function ManageUsers() {
 
       <CondensedTable
         columns={AmbassadorExplorersTable.columns}
-        rows={sortedUsers}
-      ></CondensedTable>
+        rows={paginatedUsers}
+      />
+
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        $variation="secondary"
+      />
     </StyledUsers>
   );
 }

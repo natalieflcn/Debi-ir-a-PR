@@ -6,17 +6,18 @@ import Row from "../../../../shared/components/layout/Row";
 
 import Input from "../../../../shared/components/form/Input";
 import AdminViewMode from "../../../../shared/components/management/AdminViewMode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAdminUI } from "../../contexts/AdminUIContext";
+import Pagination from "../../../../shared/components/ui/Pagination";
 
 const AdminExplorationsTable = {
   columns: [
-    { id: "explorationName", heading: "Exploration Name" },
+    { id: "name", heading: "Exploration Name" },
     { id: "numStops", heading: "# of Stops" },
-    { id: "startingLocation", heading: "Start Location" },
+    { id: "startLocation", heading: "Start Location" },
     { id: "createdBy", heading: "Created By" },
     { id: "dateCreated", heading: "Date Created" },
     { id: "dateUpdated", heading: "Date Updated" },
@@ -42,38 +43,6 @@ const AdminExplorationsTable = {
           </Row>
         </ActionTableCell>
       ),
-    },
-  ],
-  rows: [
-    {
-      id: 0,
-      explorationName: "toa alta tour",
-      numStops: 5,
-      startingLocation: "toa alta, pr",
-      createdBy: "me",
-      dateCreated: "January 3, 2026",
-      dateUpdated: "June 3, 2026",
-      action: "View",
-    },
-    {
-      id: 1,
-      explorationName: "toa alta tour",
-      numStops: 5,
-      startingLocation: "toa alta, pr",
-      createdBy: "me",
-      dateCreated: "January 3, 2026",
-      dateUpdated: "June 3, 2026",
-      action: "View",
-    },
-    {
-      id: 2,
-      explorationName: "toa alta tour",
-      numStops: 5,
-      startingLocation: "toa alta, pr",
-      createdBy: "me",
-      dateCreated: "January 3, 2026",
-      dateUpdated: "June 3, 2026",
-      action: "View",
     },
   ],
 };
@@ -125,10 +94,13 @@ const AdminExplorationCardButton = [
   },
 ];
 
+const ITEMS_PER_PAGE = 9;
+
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAdminUI();
   const [sortBy, setSortBy] = useState("featured");
   const [filterBy, setFilterBy] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredExplorations = [...fakeExplorationsData].filter(
     (exploration) => {
@@ -140,11 +112,21 @@ function ManageExplorations() {
     },
   );
 
-  console.log(filterBy, filteredExplorations);
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
     if (sortBy === "numStops") return a.numStops - b.numStops;
     else return a.name.localeCompare(b.name);
   });
+
+  const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedExplorations = sortedExplorations.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, filterBy]);
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -170,7 +152,7 @@ function ManageExplorations() {
 
       {viewMode === "grid" && (
         <ExplorationCards>
-          {sortedExplorations.map((exploration) => (
+          {paginatedExplorations.map((exploration) => (
             <ExplorationMiniCard
               name={exploration.name}
               description={exploration.description}
@@ -186,10 +168,17 @@ function ManageExplorations() {
       {viewMode === "list" && (
         <CondensedTable
           columns={AdminExplorationsTable.columns}
-          rows={AdminExplorationsTable.rows}
+          rows={paginatedExplorations}
           $theme={explorationsTableTheme}
         ></CondensedTable>
       )}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+        $variation="secondary"
+      />
     </StyledExplorations>
   );
 }
