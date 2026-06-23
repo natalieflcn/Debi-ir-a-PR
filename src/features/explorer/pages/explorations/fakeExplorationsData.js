@@ -7,6 +7,7 @@ const fakeExplorationsData = [
     numStops: 5,
     startLocation: "Toa Alta",
     tourLink: "/explorations/:explorationId",
+    tags: ["restaurants", "city"],
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const fakeExplorationsData = [
     numStops: 7,
     startLocation: "Bayamon",
     tourLink: "/explorations/:explorationId",
+    tags: ["restaurants", "city", "landscapes"],
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const fakeExplorationsData = [
     numStops: 11,
     startLocation: "San Juan",
     tourLink: "/explorations/:explorationId",
+    tags: ["restaurants", "city", "landscapes", "landmarks"],
   },
 ];
 

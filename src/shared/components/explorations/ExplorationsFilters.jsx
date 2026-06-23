@@ -26,14 +26,19 @@ function ExplorationsFilters({
   sortCategories = explorationsSort,
   filterCategories = ExplorationsFiltersCategories,
   onSort,
+  onFilter,
 }) {
   // const dropdownRef = useClickOutside();
 
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
-      <SortDropdown categories={sortCategories} onSort={onSort} />
+      <SortDropdown
+        categories={sortCategories}
+        onSort={onSort}
+        initState="Name"
+      />
 
-      <FilterDropdown categories={filterCategories} />
+      <FilterDropdown categories={filterCategories} onFilter={onFilter} />
     </Row>
   );
 }

@@ -201,8 +201,8 @@
 - [~] Polish front-end framework
   - [x] Define Profile info descriptions
     - [x] Explorer Info Titles
-  - [ ] Add functionality to Sorting dropdown TODO 2
-  - [ ] Add functionality to Filter dropdown TODO 3
-  - [ ] Implement pagination feature TODO 4
-  - [ ] Need to add functionality to Edit/Delete TODO 5(Locations) buttons on Create/Edit Exploration form
+  - [x] Add functionality to Sorting dropdown
+  - [ ] Add functionality to Filter dropdown TODO 1
+  - [ ] Implement pagination feature TODO 2
+  - [ ] Need to add functionality to Edit/Delete TODO 3(Locations) buttons on Create/Edit Exploration form
   - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)

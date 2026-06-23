@@ -126,8 +126,19 @@ const AmbassadorExplorationCardButton = [
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();
   const [sortBy, setSortBy] = useState("featured");
+  const [filterBy, setFilterBy] = useState("all");
 
-  const sortedExplorations = [...fakeExplorationsData].sort((a, b) => {
+  const filteredExplorations = [...fakeExplorationsData].filter(
+    (exploration) => {
+      if (filterBy === "all") return true;
+
+      return exploration.tags.some((tag) =>
+        tag.toLowerCase().includes(filterBy.toLowerCase()),
+      );
+    },
+  );
+
+  const sortedExplorations = [...filteredExplorations].sort((a, b) => {
     console.log(a, b);
 
     if (sortBy === "numStops") return a.numStops - b.numStops;
@@ -149,7 +160,7 @@ function ManageExplorations() {
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters onSort={setSortBy} />
+        <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
         <AdminViewMode
           viewMode={viewMode}
           onViewModeChange={handleSelectViewMode}

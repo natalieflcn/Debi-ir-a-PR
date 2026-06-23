@@ -23,7 +23,18 @@ const AmbassadorExplorersTable = {
         </RouterLink>
       ),
     },
-    { id: "userType", heading: "User Type" },
+    {
+      id: "userType",
+      heading: "User Type",
+      render: (row) => (
+        <ActionTableCell>
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            {row.userType.charAt(0).toUpperCase()}
+            {row.userType.slice(1)}
+          </Row>
+        </ActionTableCell>
+      ),
+    },
     { id: "email", heading: "Email" },
     { id: "dateJoined", heading: "Date Joined" },
     {
@@ -46,7 +57,7 @@ const AmbassadorExplorersTable = {
     {
       id: 0,
       name: "Natalie Falcon",
-      userType: "Explorer",
+      userType: "explorer",
       email: "natalie.dflcn@gmail.com",
       dateJoined: "January 17, 2025",
       action: "View",
@@ -54,7 +65,7 @@ const AmbassadorExplorersTable = {
     {
       id: 1,
       name: "Alethia Ragland",
-      userType: "Ambassador",
+      userType: "ambassador",
       email: "thearagland@gmail.com",
       dateJoined: "June 23, 2024",
       action: "View",
@@ -62,7 +73,7 @@ const AmbassadorExplorersTable = {
     {
       id: 2,
       name: "Jorge Gonzalez",
-      userType: "Explorer",
+      userType: "explorer",
       email: "genioa@gmail.com",
       explorationsCompleted: 6,
       dateJoined: "March 6, 2023",
@@ -130,15 +141,21 @@ const sortCategories = [
 ];
 
 const filterCategories = [
-  { id: "explorers", name: "Explorers" },
-  { id: "ambassadors", name: "Ambassadors" },
+  { id: "explorer", name: "Explorers" },
+  { id: "ambassador", name: "Ambassadors" },
   { id: "all", name: "All" },
 ];
 
 function ManageUsers() {
   const [sortBy, setSortBy] = useState("name");
+  const [filterBy, setFilterBy] = useState("all");
 
-  const sortedUsers = [...AmbassadorExplorersTable.rows].sort((a, b) => {
+  const filteredUsers = [...AmbassadorExplorersTable.rows].filter((user) => {
+    if (filterBy === "all") return true;
+    return user.userType === filterBy;
+  });
+
+  const sortedUsers = [...filteredUsers].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     else return new Date(b.dateJoined) - new Date(a.dateJoined);
   });
@@ -153,7 +170,11 @@ function ManageUsers() {
           initState="name"
           onSort={setSortBy}
         />
-        <FilterDropdown categories={filterCategories} initState="All" />
+        <FilterDropdown
+          categories={filterCategories}
+          initState="All"
+          onFilter={setFilterBy}
+        />
       </Row>
 
       <CondensedTable

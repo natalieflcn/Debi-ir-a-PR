@@ -30,9 +30,20 @@ const ExplorerExplorationCardButton = [
 ];
 
 function Explorations() {
-  const [sortBy, setSortBy] = useState("featured");
+  const [sortBy, setSortBy] = useState("name");
+  const [filterBy, setFilterBy] = useState("all");
 
-  const sortedExplorations = [...fakeExplorationsData].sort((a, b) => {
+  const filteredExplorations = [...fakeExplorationsData].filter(
+    (exploration) => {
+      if (filterBy === "all") return true;
+
+      return exploration.tags.some((tag) =>
+        tag.toLowerCase().includes(filterBy.toLowerCase()),
+      );
+    },
+  );
+
+  const sortedExplorations = [...filteredExplorations].sort((a, b) => {
     if (sortBy === "numStops") return a.numStops - b.numStops;
     else return a.name.localeCompare(b.name);
   });
@@ -41,7 +52,7 @@ function Explorations() {
     <StyledExplorations>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters onSort={setSortBy} />
+        <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
       </Row>
       <ExplorationCards>
         {sortedExplorations.map((exploration) => (
@@ -51,6 +62,7 @@ function Explorations() {
             numStops={exploration.numStops}
             startLocation={exploration.startLocation}
             buttonDetails={ExplorerExplorationCardButton}
+            key={exploration.id}
           />
         ))}
       </ExplorationCards>

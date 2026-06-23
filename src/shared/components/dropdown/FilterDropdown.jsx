@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../ui/Button";
 import Dropdown from "./Dropdown";
 
-function FilterDropdown({ categories, initState }) {
+function FilterDropdown({ categories, initState, onFilter }) {
   //   const filteredItems = data.filter((item) => {
   //     if (selectedCategory === "All") return true;
 
@@ -16,7 +16,8 @@ function FilterDropdown({ categories, initState }) {
       dropdownName="Filter"
       $dropdownVariation="red"
       initState={initState}
-    ></Dropdown>
+      onSelect={(category) => onFilter(category.id)}
+    />
   );
 }
 

@@ -92,12 +92,8 @@ function ExplorationMiniCard({
 
           <Row $direction="horizontal" $gap="var(--gap-md)">
             {buttonDetails.map((button) => (
-              <RouterLink to={button.buttonLink}>
-                <Button
-                  $variation={button.buttonVariation}
-                  $size="large"
-                  key={button.id}
-                >
+              <RouterLink to={button.buttonLink} key={button.id}>
+                <Button $variation={button.buttonVariation} $size="large">
                   {button.buttonName}
                 </Button>
               </RouterLink>

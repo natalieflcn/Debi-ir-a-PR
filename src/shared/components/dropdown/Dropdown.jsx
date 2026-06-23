@@ -73,7 +73,6 @@ function Dropdown({
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelectCategory = (category) => {
-    console.log(category);
     setSelectedCategory(category.name);
     setIsOpen(false);
     onSelect?.(category);
