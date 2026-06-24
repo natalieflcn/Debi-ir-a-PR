@@ -12,6 +12,8 @@ import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
 import LocationTagBuilder from "../../../../shared/components/form/LocationTagBuilder";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -22,6 +24,32 @@ function CreateLocation({
 }) {
   const isEditing = Boolean(location);
 
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState(null);
+  const [headerImage, setHeaderImage] = useState([]);
+  const [description, setDescription] = useState("");
+  const [images, setImages] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    const formData = {
+      name,
+      address,
+      city,
+      headerImage,
+      description,
+      images,
+      tags,
+    };
+
+    console.log(formData);
+    navigate(`/admin/explorations/:explorationId`);
+  };
+
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to="/admin/explorations/:explorationId">
@@ -31,7 +59,10 @@ function CreateLocation({
         </Button>
       </RouterLink>
 
-      <AppForm formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}>
+      <AppForm
+        formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
+        onSubmit={handleSubmit}
+      >
         <Row $gap="var(--gap-lg)">
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
@@ -43,7 +74,8 @@ function CreateLocation({
             <Input
               name="name"
               placeholder="The name of the location"
-              defaultValue={location?.name ?? ""}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </FormField>
 
@@ -51,15 +83,13 @@ function CreateLocation({
             <Input
               name="address"
               placeholder="The address of the location"
-              defaultValue={location?.address ?? ""}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </FormField>
 
           <FormField label="City">
-            <CityDropdown
-              name="city"
-              defaultValue={location?.city ?? "Select City"}
-            />
+            <CityDropdown name="city" value={city} onSelect={setCity} />
           </FormField>
 
           <FormField label="Header Image">
@@ -67,7 +97,8 @@ function CreateLocation({
               name="headerImage"
               multiple={false}
               maxImages={1}
-              existingImages={exploration?.headerImage ?? []}
+              value={headerImage}
+              onChange={setHeaderImage}
             />
           </FormField>
 
@@ -75,7 +106,8 @@ function CreateLocation({
             <TextArea
               name="description"
               placeholder="The description displayed beside the location"
-              defaultValue={exploration?.description ?? ""}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </FormField>
 
@@ -83,13 +115,14 @@ function CreateLocation({
             <ImageUploader
               name="images"
               multiple={true}
-              maxImages={1}
-              existingImages={exploration?.images ?? []}
+              maxImages={3}
+              value={images}
+              onChange={setImages}
             />
           </FormField>
 
           <FormField label="Tags">
-            <LocationTagBuilder />
+            <LocationTagBuilder value={tags} onChange={setTags} />
           </FormField>
 
           <Button $variation="darkRed" $size="medium" type="submit">

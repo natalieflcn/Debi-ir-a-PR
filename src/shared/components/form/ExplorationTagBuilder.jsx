@@ -54,8 +54,6 @@ function ExplorationTagBuilder({
     ),
   ];
 
-  console.log(derivedLocationTags);
-
   function toggleTag(tagId) {
     setSelectedTags((prev) =>
       prev.includes(tagId)

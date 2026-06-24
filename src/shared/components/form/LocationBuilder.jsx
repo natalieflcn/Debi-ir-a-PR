@@ -5,12 +5,6 @@ import Heading from "../typography/Heading";
 import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
 import styled from "styled-components";
-import fakeExplorationLocationData from "../../../features/explorer/pages/explorations/fakeExplorationLocationData";
-const emptyLocation = {
-  name: "",
-  address: "",
-  description: "",
-};
 
 const StyledLocationBuilder = styled.div`
   justify-self: flex-start;

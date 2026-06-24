@@ -17,6 +17,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
 import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
 import Bold from "../../../../shared/components/typography/Bold";
+import { useNavigate } from "react-router-dom";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -28,6 +29,34 @@ const StyledParagraph = styled.p`
 
 function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
+
+  const [name, setName] = useState("");
+  const [headerImage, setHeaderImage] = useState([]);
+  const [startingCity, setStartingCity] = useState(null);
+  const [tagline, setTagline] = useState("");
+  const [description, setDescription] = useState("");
+  const [images, setImages] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    const formData = {
+      name,
+      startingCity,
+
+      headerImage,
+      tagline,
+      description,
+      images,
+      locations,
+      tags,
+    };
+    console.log(formData);
+    navigate(`/ambassador/explorations/:explorationId`);
+  };
 
   return (
     <Row $gap="var(--gap-lg)">
@@ -50,13 +79,15 @@ function CreateExploration({ exploration }) {
         formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
         action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
         method={isEditing ? "patch" : "post"}
+        onSubmit={handleSubmit}
       >
         <Row $gap="var(--gap-lg)">
           <FormField label="Name">
             <Input
               name="name"
               placeholder="The title of the exploration"
-              defaultValue={exploration?.name ?? ""}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </FormField>
 
@@ -65,21 +96,25 @@ function CreateExploration({ exploration }) {
               name="headerImage"
               multiple={false}
               maxImages={1}
-              existingImages={exploration?.headerImage ?? []}
+              value={headerImage}
+              onChange={setHeaderImage}
             />
           </FormField>
 
           <FormField label="Starting City">
             <CityDropdown
               name="city"
-              defaultValue={exploration?.startingCity ?? "Select City"}
+              value={startingCity}
+              onSelect={setStartingCity}
             />
           </FormField>
+
           <FormField label="Tagline">
             <Input
               name="tagline"
               placeholder="The short description displayed on the Explorations page"
-              defaultValue={exploration?.description ?? ""}
+              value={tagline}
+              onChange={(e) => setTagline(e.target.value)}
             />
           </FormField>
 
@@ -87,7 +122,8 @@ function CreateExploration({ exploration }) {
             <TextArea
               name="description"
               placeholder="The long description shown on the Exploration page"
-              defaultValue={exploration?.description ?? ""}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </FormField>
 
@@ -95,7 +131,8 @@ function CreateExploration({ exploration }) {
             <ImageUploader
               name="images"
               maxImages={3}
-              existingImages={exploration?.images ?? []}
+              value={images}
+              onChange={setImages}
             />
           </FormField>
 
@@ -105,13 +142,18 @@ function CreateExploration({ exploration }) {
               <CurrentLocations
                 locations={fakeExplorationData.locations}
                 exploration={fakeExplorationData}
+                onChange={setLocations}
               />
             </StyledRow>
           </FormField>
 
           <FormField label="Tags">
             <StyledRow>
-              <ExplorationTagBuilder exploration={fakeExplorationData} />
+              <ExplorationTagBuilder
+                exploration={fakeExplorationData}
+                value={tags}
+                onChange={setTags}
+              />
               <StyledParagraph>
                 <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
                 derived from the tag(s) you add to each location.
