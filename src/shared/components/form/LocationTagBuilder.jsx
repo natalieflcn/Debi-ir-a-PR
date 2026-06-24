@@ -34,17 +34,17 @@ const StyledIcon = styled.div`
   justify-content: center;
 `;
 
-function LocationTagBuilder({ existingTags = [] }) {
+function LocationTagBuilder({ value, onChange }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTags, setSelectedTags] = useState(existingTags);
+  // const [selectedTags, setSelectedTags] = useState(value);
 
   function toggleTag(tagId) {
-    setSelectedTags((prev) =>
-      prev.includes(tagId)
-        ? prev.filter((id) => id !== tagId)
-        : [...prev, tagId],
-    );
+    const updated = value.includes(tagId)
+      ? value.filter((id) => id !== tagId)
+      : [...value, tagId];
+    onChange(updated);
   }
+
   return (
     <>
       <StyledRow>
@@ -57,7 +57,7 @@ function LocationTagBuilder({ existingTags = [] }) {
         </Button>
 
         <ExplorationLocationTags>
-          {selectedTags.map((tagId) => {
+          {value.map((tagId) => {
             const tag = TagCategories.find((c) => c.id === tagId);
 
             if (!tag) return null;
@@ -81,7 +81,7 @@ function LocationTagBuilder({ existingTags = [] }) {
                 $align="flex-start"
               >
                 <StyledIcon onClick={() => toggleTag(category.id)}>
-                  {selectedTags.includes(category.id) ? (
+                  {value.includes(category.id) ? (
                     <IoIosCheckbox size={25} />
                   ) : (
                     <MdCheckBoxOutlineBlank size={25} />

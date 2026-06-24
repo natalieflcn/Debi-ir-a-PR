@@ -24,15 +24,26 @@ const UploadButton = styled(Button)`
   }
 `;
 
-function ImageUploader({ name, multiple = true, maxImages = 3 }) {
-  const [previews, setPreviews] = useState([]);
+function ImageUploader({
+  name,
+  multiple = true,
+  maxImages = 3,
+  value = [],
+  onChange,
+}) {
+  // const [value, setPreviews] = useState([]);
 
   const inputRef = useRef(null);
 
+  const previews = value.map((file) => ({
+    id: crypto.randomUUID(),
+    url: URL.createObjectURL(file),
+    name: file.name,
+  }));
+
   function handleFileChange(e) {
     const files = Array.from(e.target.files);
-
-    const slotsRemaining = maxImages - previews.length;
+    const slotsRemaining = maxImages - value.length;
 
     if (slotsRemaining <= 0) {
       alert(`Maximum of ${maxImages} images allowed`);
@@ -40,22 +51,17 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
     }
 
     const acceptedFiles = files.slice(0, slotsRemaining);
-    const newPreviews = acceptedFiles.map((file) => ({
-      id: crypto.randomUUID(),
-      url: URL.createObjectURL(file),
-      name: file.name,
-    }));
 
-    setPreviews((prev) => [...prev, ...newPreviews]);
+    onChange([...value, ...acceptedFiles]);
   }
 
-  function handleDelete(id) {
-    setPreviews((prev) => prev.filter((preview) => preview.id !== id));
+  function handleDelete(fileName) {
+    onChange(value.filter((file) => file.name !== fileName));
   }
 
   return (
     <InputWrapper>
-      <Row $direction="horizontal" $gap="var(--gap-2xl)" $align="flex-start">
+      <Row $gap="var(--gap-2xl)" $align="flex-start">
         <StyledFileInput
           type="file"
           name={name}
@@ -68,19 +74,19 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
         <UploadButton
           type="button"
           onClick={() => inputRef.current.click()}
-          disabled={previews.length >= maxImages}
+          disabled={value.length >= maxImages}
           $size="small"
-          $variation={previews.length === maxImages ? "darkRed" : "primary"}
-          $limitReached={previews.length === maxImages}
+          $variation={value.length === maxImages ? "darkRed" : "primary"}
+          $limitReached={value.length === maxImages}
         >
-          {previews.length === maxImages ? "Limit Reached" : "Upload Images"} (
-          {previews.length}/{maxImages})
+          {value.length === maxImages ? "Limit Reached" : "Upload Images"} (
+          {value.length}/{maxImages})
         </UploadButton>
 
         {previews.length > 0 && (
           <Row $direction="horizontal" $gap="var(--gap-md)">
             {previews.map((preview) => (
-              <Row $gap="var(--gap-sm)" key={preview.id}>
+              <Row $gap="var(--gap-sm)" key={preview.name}>
                 <Image
                   src={preview.url}
                   $width="7rem"
@@ -91,7 +97,7 @@ function ImageUploader({ name, multiple = true, maxImages = 3 }) {
                   type="button"
                   $variation="darkRed"
                   $size="extraSmall"
-                  onClick={() => handleDelete(preview.id)}
+                  onClick={() => handleDelete(preview.name)}
                 >
                   Delete
                 </Button>

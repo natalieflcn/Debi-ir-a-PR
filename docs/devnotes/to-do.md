@@ -207,6 +207,23 @@
   - [x] Need to add functionality to Edit/Delete (Locations) buttons on Create/Edit Exploration form
   - [x] Wire up Error, PageNotFound page buttons
   - [x] Add LocationTagBuilder to Create/Edit Location form
-    - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
-  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data TODO 3
   - [x] Add Bubbles background to Error and PageNotFound page
+  - [ ] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
+    - [ ] Make sure all inputs are controlled with state
+    - [ ] Validate each form field before form is allowed to submit
+    - [ ] Error messages display per field when validation fails
+    - [ ] Display feedback in the UI
+    - [ ] Disabled submit button until entire form is completed
+    - [ ] Email format validated on login/signup/profile forms
+    - [ ] Password strength validated on signup/profile forms
+    - [ ] Add confirm password form field to signup/profile forms
+    - [ ] Form action and method attributes point to correct REST endpoints
+  - [ ] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button
+  - [ ] Refine routing and navigation
+    - [ ] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
+  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data TODO 3
+    - [ ] All fake data shapes match MongoDB schema field names
+    - [ ] Every action and loader in router has placeholder
+    - [ ] Components use useLoaderData pattern instead of importing fake data directly
+  - [ ] Images have fallback/placeholder when src is missing
+  - [ ] Make website responsive

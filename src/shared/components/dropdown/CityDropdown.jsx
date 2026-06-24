@@ -118,9 +118,9 @@ const puertoRicoCities = [
   // all 78 municipalities...
 ];
 
-function CityDropdown({ onSelect }) {
+function CityDropdown({ onSelect, value }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState(null);
+  // const [selectedCity, setSelectedCity] = useState(null);
   const [search, setSearch] = useState("");
 
   const dropdownRef = useClickOutside(() => setIsOpen(false));
@@ -130,10 +130,11 @@ function CityDropdown({ onSelect }) {
   );
 
   function handleSelect(city) {
-    setSelectedCity(city);
+    console.log(onSelect);
+    onSelect(city);
     setIsOpen(false);
     setSearch("");
-    onSelect(city);
+    console.log(city);
   }
 
   return (
@@ -142,10 +143,13 @@ function CityDropdown({ onSelect }) {
         <StyledButton
           type="button"
           $size="small"
-          $variation={selectedCity ? "darkRed" : "primary"}
-          onClick={() => setIsOpen(!isOpen)}
+          $variation={value ? "darkRed" : "primary"}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}
         >
-          {selectedCity ? selectedCity.name : "Select a city..."}
+          {value ? value.name : "Select a city..."}
         </StyledButton>
 
         {isOpen && (
@@ -166,7 +170,7 @@ function CityDropdown({ onSelect }) {
                 <li key={city.id}>
                   <StyledDropdownMenuItem
                     onClick={() => handleSelect(city)}
-                    $active={selectedCity?.id === city.id}
+                    $active={value?.id === city.id}
                     $dropdownVariation="red"
                   >
                     {city.name}

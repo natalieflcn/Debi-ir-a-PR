@@ -70,7 +70,10 @@ function LocationBuilder({ existingLocations = [] }) {
 
       {isModalOpen && (
         <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
-          <LocationForm onSubmit={handleAddLocation} />
+          <LocationForm
+            onSubmit={handleAddLocation}
+            onClose={() => setIsModalOpen(false)}
+          />
         </Modal>
       )}
     </StyledLocationBuilder>
