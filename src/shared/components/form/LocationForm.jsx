@@ -103,12 +103,7 @@ function LocationForm({ exploration = fakeExplorationData, onClose }) {
           <LocationTagBuilder value={tags} onChange={setTags} />
         </FormField>
 
-        <Button
-          $variation="darkRed"
-          $size="medium"
-          type="submit"
-          onClick={handleSubmit}
-        >
+        <Button $variation="darkRed" $size="medium" type="submit">
           {"Create Location"}
         </Button>
       </Row>

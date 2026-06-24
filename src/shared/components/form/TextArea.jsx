@@ -8,6 +8,7 @@ const StyledTextArea = styled.textarea`
   font-family: Museo;
   font-weight: var(--font-weight-medium);
   padding: 1rem;
+  color: var(--color-dark-200);
 `;
 
 function TextArea({ placeholder, children }) {

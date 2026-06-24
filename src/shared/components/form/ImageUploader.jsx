@@ -86,7 +86,7 @@ function ImageUploader({
         {previews.length > 0 && (
           <Row $direction="horizontal" $gap="var(--gap-md)">
             {previews.map((preview) => (
-              <Row $gap="var(--gap-sm)" key={preview.name}>
+              <Row $gap="var(--gap-sm)" key={preview.id}>
                 <Image
                   src={preview.url}
                   $width="7rem"
