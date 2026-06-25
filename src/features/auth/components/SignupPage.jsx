@@ -20,8 +20,9 @@ const StyledSignupBackground = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
-  height: 100%;
+  align-self: stretch;
+  min-height: 100%;
+  /* height: 100vh; */
 `;
 
 const StyledSignup = styled.div`
@@ -50,16 +51,41 @@ const StyledHeading = styled(Heading)`
 
 const SignupWrapper = styled.div`
   display: flex;
-  height: 40rem;
+
+  align-items: stretch;
 `;
+
 function Signup({ $variant }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
   const handleSubmit = function (e) {
     e.preventDefault();
+
+    const errors = {};
+
+    if (!name.trim()) {
+      errors.name = "Name is required.";
+    }
+    if (!email.trim()) {
+      errors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Please enter a valid email address";
+    }
+    if (!password.trim()) {
+      errors.password = "Password is required.";
+    } else if (password.length < 8) {
+      errors.password = "Password must be at least 8 characters.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     const formData = { name, email, password };
     console.log(formData);
     navigate("/");
@@ -80,30 +106,40 @@ function Signup({ $variant }) {
           >
             <Row $gap="var(--gap-lg)">
               <FormField label="name">
-                <Input
-                  name="name"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <Row $gap="var(--gap-xs)">
+                  <Input
+                    name="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  {formErrors.name && <Bold>{formErrors.name}</Bold>}
+                </Row>
               </FormField>
 
               <FormField label="email">
-                <Input
-                  name="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <Row $gap="var(--gap-xs)">
+                  <Input
+                    name="email"
+                    placeholder="Email address"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {formErrors.email && <Bold>{formErrors.email}</Bold>}
+                </Row>
               </FormField>
 
               <FormField label="password">
-                <Input
-                  name="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <Row $gap="var(--gap-xs)">
+                  <Input
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {formErrors.password && <Bold>{formErrors.password}</Bold>}
+                </Row>
               </FormField>
 
               <Button

@@ -210,7 +210,7 @@
   - [x] Add Bubbles background to Error and PageNotFound page
   - [~] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
     - [x] Make sure all inputs are controlled with state
-      - [ ] Configure Locations in Create/Edit Exploration later
+      - [ ] Configure Locations in Create/Edit Exploration later (NOTE: After decoupling false data from component props)
     - [ ] Validate each form field before form is allowed to submit
     - [ ] Error messages display per field when validation fails
     - [ ] Display feedback in the UI

@@ -20,8 +20,8 @@ const StyledLoginBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  /* min-height: 80vh; */
-  height: 100%;
+  align-self: stretch;
+  min-height: 100%;
 `;
 
 const StyledAppForm = styled(AppForm)`
@@ -31,7 +31,7 @@ const StyledAppForm = styled(AppForm)`
 
 const LoginWrapper = styled.div`
   display: flex;
-  height: 40rem;
+  align-items: stretch;
 `;
 
 const StyledLoginForm = styled.div`
