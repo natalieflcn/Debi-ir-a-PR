@@ -16,8 +16,8 @@ function ExplorerProfile() {
     <StyledExplorerProfile>
       <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
       <ProfileInformation
-        email="Natalie.dflcn@gmail.com"
-        passwordLength={8}
+        userEmail="Natalie.dflcn@gmail.com"
+        userPassword="mypassword"
         dateJoined="Jan 30, 2026"
       />
       <ProfileBadgeCollection />

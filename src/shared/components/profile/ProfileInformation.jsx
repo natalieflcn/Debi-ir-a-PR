@@ -14,7 +14,8 @@ import Modal from "../ui/Modal";
 const StyledProfileInformation = styled.div`
   display: grid;
   grid-template-columns: 12rem 1fr auto;
-  align-items: center;
+  grid-template-rows: repeat(2, 1fr);
+  align-items: start;
   gap: var(--gap-lg) var(--gap-xl);
   color: var(--color-dark-100);
 `;
@@ -37,14 +38,66 @@ const StyledForm = styled(Form)`
 `;
 
 const ProfileInformation = function ({
-  email,
-  password = "hello",
+  userEmail,
+  userPassword = "hello",
   dateJoined,
 }) {
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState(userEmail);
+  const [password, setPassword] = useState(userPassword);
+  const [emailErrors, setEmailErrors] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState("");
 
+  const handleEmailSubmit = function (e) {
+    e.preventDefault();
+
+    let errors = "";
+
+    if (!email.trim()) errors = "Please enter an email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      errors = "Please enter a valid email.";
+
+    if (errors) {
+      setEmailErrors(errors);
+      return;
+    }
+
+    setIsEditingEmail(false);
+    console.log("update email " + email);
+  };
+
+  const handleEmailCancel = function () {
+    setEmail(userEmail);
+    setIsEditingEmail(false);
+    setEmailErrors("");
+  };
+
+  const handlePasswordSubmit = function (e) {
+    e.preventDefault();
+
+    let errors = "";
+
+    if (!password.trim()) errors = "Please enter a password.";
+    else if (password.length < 8) {
+      errors = "Password must be at least 8 characters.";
+    }
+
+    if (errors) {
+      setPasswordErrors(errors);
+      return;
+    }
+
+    setIsEditingPassword(false);
+    console.log("update password " + password);
+  };
+
+  const handlePasswordCancel = function () {
+    setPassword(userPassword);
+    setIsEditingPassword(false);
+    setPasswordErrors("");
+  };
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
       <StyledProfileInformation>
@@ -52,16 +105,28 @@ const ProfileInformation = function ({
 
         {isEditingEmail ? (
           <StyledForm method="patch" action="/profile/email">
-            <Input name="email" defaultValue={email.toLowerCase()} />
+            <Row $gap="var(--gap-xs)">
+              <Input
+                name="email"
+                value={email.toLowerCase()}
+                onChange={(e) => setEmail(e.target.value.toLowerCase())}
+              />
+              {emailErrors && <Bold>{emailErrors}</Bold>}
+            </Row>
             <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button type="submit" $variation="secondary" $size="small">
+              <Button
+                type="submit"
+                $variation="secondary"
+                $size="small"
+                onClick={handleEmailSubmit}
+              >
                 Save
               </Button>
               <Button
                 type="button"
                 $variation="primary"
                 $size="small"
-                onClick={() => setIsEditingEmail(false)}
+                onClick={handleEmailCancel}
               >
                 Cancel
               </Button>
@@ -84,16 +149,29 @@ const ProfileInformation = function ({
 
         {isEditingPassword ? (
           <StyledForm>
-            <Input name="password" defaultValue={password} />
+            <Row $gap="var(--gap-xs)">
+              <Input
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+              />
+              {passwordErrors && <Bold>{passwordErrors}</Bold>}
+            </Row>
             <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button type="submit" $variation="secondary" $size="small">
+              <Button
+                type="submit"
+                $variation="secondary"
+                $size="small"
+                onClick={handlePasswordSubmit}
+              >
                 Save
               </Button>
               <Button
                 type="button"
                 $variation="primary"
                 $size="small"
-                onClick={() => setIsEditingPassword(false)}
+                onClick={handlePasswordCancel}
               >
                 Cancel
               </Button>
