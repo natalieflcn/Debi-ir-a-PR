@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const StyledSignupBackground = styled.div`
   position: relative;
-  width: 50%;
-  flex: 0 0 50%;
+  width: 45%;
+  flex: 0 0 45%;
 
   /* left: 50%; */
   background-image: url("/src/assets/images/content/TEMP.png");
@@ -38,6 +38,10 @@ const StyledSignup = styled.div`
   justify-content: center;
 `;
 
+const StyledInput = styled(Input)`
+  flex: 1 1 0;
+  width: 25rem;
+`;
 const StyledHeading = styled(Heading)`
   text-align: center;
   line-height: var(--line-height-2xl);
@@ -55,10 +59,14 @@ const SignupWrapper = styled.div`
   align-items: stretch;
 `;
 
+// const StyledInput = styled(Input)`
+//   width: 15rem;
+// `;
 function Signup({ $variant }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
@@ -79,6 +87,9 @@ function Signup({ $variant }) {
       errors.password = "Password is required.";
     } else if (password.length < 8) {
       errors.password = "Password must be at least 8 characters.";
+    }
+    if (confirmPassword.trim() !== password.trim()) {
+      errors.confirmPassword = "Passwords must match.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -107,7 +118,7 @@ function Signup({ $variant }) {
             <Row $gap="var(--gap-lg)">
               <FormField label="name">
                 <Row $gap="var(--gap-xs)">
-                  <Input
+                  <StyledInput
                     name="name"
                     placeholder="Name"
                     value={name}
@@ -119,7 +130,7 @@ function Signup({ $variant }) {
 
               <FormField label="email">
                 <Row $gap="var(--gap-xs)">
-                  <Input
+                  <StyledInput
                     name="email"
                     placeholder="Email address"
                     type="email"
@@ -132,13 +143,27 @@ function Signup({ $variant }) {
 
               <FormField label="password">
                 <Row $gap="var(--gap-xs)">
-                  <Input
+                  <StyledInput
                     name="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   {formErrors.password && <Bold>{formErrors.password}</Bold>}
+                </Row>
+              </FormField>
+
+              <FormField label="confirm Password">
+                <Row $gap="var(--gap-xs)">
+                  <StyledInput
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                  {formErrors.confirmPassword && (
+                    <Bold>{formErrors.confirmPassword}</Bold>
+                  )}
                 </Row>
               </FormField>
 

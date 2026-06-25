@@ -3,7 +3,8 @@ import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 
 const FormLabel = styled(Heading)`
-  width: 12rem;
+  /* width: 15rem; */
+  min-width: 12rem;
   align-self: flex-start;
 `;
 

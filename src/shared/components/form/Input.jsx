@@ -9,6 +9,7 @@ const StyledInput = styled.input`
   color: var(--color-dark-200);
   font-weight: var(--font-weight-medium);
   font-family: Museo;
+  width: 100%;
 `;
 
 function Input({ placeholder, ...props }) {
