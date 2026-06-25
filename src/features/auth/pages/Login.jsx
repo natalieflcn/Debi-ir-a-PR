@@ -7,6 +7,8 @@ import Input from "../../../shared/components/form/Input";
 import Button from "../../../shared/components/ui/Button";
 import { MdQuestionMark } from "react-icons/md";
 import RouterLink from "../../../shared/components/routing/RouterLink";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -18,12 +20,18 @@ const StyledLoginBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  min-height: 80vh;
+  /* min-height: 80vh; */
+  height: 100%;
 `;
 
 const StyledAppForm = styled(AppForm)`
   height: 100%;
   flex: 1;
+`;
+
+const LoginWrapper = styled.div`
+  display: flex;
+  height: 40rem;
 `;
 
 const StyledLoginForm = styled.div`
@@ -32,7 +40,7 @@ const StyledLoginForm = styled.div`
   background-color: var(--color-light-0);
   border-top-right-radius: var(--border-radius-lg);
   border-bottom-right-radius: var(--border-radius-lg);
-  height: 80vh;
+  height: 100%;
   flex: 1;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -44,8 +52,19 @@ const StyledHeading = styled(Heading)`
 `;
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    const formData = { email, password };
+    console.log(formData);
+    navigate("/");
+  };
+
   return (
-    <Row $direction="horizontal">
+    <LoginWrapper>
       <StyledLoginBackground />
       <StyledLoginForm>
         <Row $gap="var(--gap-xl)">
@@ -54,6 +73,7 @@ function Login() {
             action="/login"
             method="post"
             $height="100%"
+            onSubmit={handleSubmit}
           >
             <Row $gap="var(--gap-xl)">
               <StyledHeading as="h5" $color="var(--color-red-300)">
@@ -61,12 +81,26 @@ function Login() {
               </StyledHeading>
               <Row $gap="var(--gap-xl)">
                 <FormField label="email">
-                  <Input name="email" placeholder="Email address" />
+                  <Input
+                    name="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </FormField>
 
                 <FormField label="password">
-                  <Input name="password" placeholder="Password" />
+                  <Input
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </FormField>
+
+                <Button $variation="darkRed" $size="small" type="submit">
+                  Login
+                </Button>
               </Row>
             </Row>
           </StyledAppForm>
@@ -100,7 +134,7 @@ function Login() {
           </Row>
         </Row>
       </StyledLoginForm>
-    </Row>
+    </LoginWrapper>
   );
 }
 

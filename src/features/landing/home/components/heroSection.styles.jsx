@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Heading from "../../../../shared/components/typography/Heading";
 import Link from "../../../../shared/components/routing/ExternalLink";
 import Row from "../../../../shared/components/layout/Row";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 export const StyledHeroSectionBackground = styled.div`
   position: relative;
@@ -27,6 +28,7 @@ export const StyledHeroSectionContent = styled.div`
   transform: translateX(+3%);
   margin: 0 auto;
   padding-top: 2.5rem;
+  padding-bottom: 1rem;
 `;
 
 export const StyledHeroHeadingRow = styled(Row)`
@@ -52,7 +54,7 @@ export const StyledHeroPeriod = styled.span`
   right: 5px;
 `;
 
-export const StyledHeroLogin = styled(Link)`
+export const StyledHeroLogin = styled.p`
   transition: all 0.3s;
   &:hover {
     text-shadow: var(--text-shadow-md) var(--color-light-0);

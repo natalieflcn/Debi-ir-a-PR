@@ -72,6 +72,7 @@ function HeroSection() {
               </Button>
             </RouterLink>
           </StyledHeroButtons>
+
           <Row $direction="horizontal" $align="left" $gap="var(--gap-xs)">
             <Bold $color="var(--color-light-100)">Already exploring?</Bold>
             <RouterLink to="/login">

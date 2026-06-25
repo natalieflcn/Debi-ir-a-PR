@@ -7,6 +7,8 @@ import Input from "../../../shared/components/form/Input";
 import Bold from "../../../shared/components/typography/Bold";
 import Button from "../../../shared/components/ui/Button";
 import RouterLink from "../../../shared/components/routing/RouterLink";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -19,7 +21,7 @@ const StyledSignupBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  min-height: 80vh;
+  height: 100%;
 `;
 
 const StyledSignup = styled.div`
@@ -28,7 +30,7 @@ const StyledSignup = styled.div`
   background-color: var(--color-light-0);
   border-top-left-radius: var(--border-radius-lg);
   border-bottom-left-radius: var(--border-radius-lg);
-  height: 80vh;
+  height: 100%;
   flex: 1;
   padding: 2rem;
   box-sizing: border-box;
@@ -46,27 +48,71 @@ const StyledHeading = styled(Heading)`
     `color: var(--color-red-200); text-shadow: 2px 2px var(--color-red-400);`}
 `;
 
+const SignupWrapper = styled.div`
+  display: flex;
+  height: 40rem;
+`;
 function Signup({ $variant }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    const formData = { name, email, password };
+    console.log(formData);
+    navigate("/");
+  };
+
   return (
-    <Row $direction="horizontal">
+    <SignupWrapper>
       <StyledSignup>
         <Row $gap="var(--gap-xl)">
           <StyledHeading as="h2" $variant={$variant}>
             BECOME AN {$variant === "explorer" ? "EXPLORER" : "AMBASSADOR"}
           </StyledHeading>
-          <AppForm action="/login" method="post" $height="100%">
+          <AppForm
+            action="/login"
+            method="post"
+            $height="100%"
+            onSubmit={handleSubmit}
+          >
             <Row $gap="var(--gap-lg)">
               <FormField label="name">
-                <Input name="name" placeholder="Name" />
+                <Input
+                  name="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </FormField>
 
               <FormField label="email">
-                <Input name="email" placeholder="Email address" />
+                <Input
+                  name="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </FormField>
 
               <FormField label="password">
-                <Input name="password" placeholder="Password" />
+                <Input
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </FormField>
+
+              <Button
+                $variation={$variant === "explorer" ? "secondary" : "primary"}
+                $size="small"
+                type="submit"
+              >
+                Sign Up
+              </Button>
             </Row>
           </AppForm>
 
@@ -85,7 +131,7 @@ function Signup({ $variant }) {
             <RouterLink to="/login">
               <Button
                 $size="medium"
-                $variation={$variant === "explorer" ? "secondary" : "primary"}
+                $variation={$variant === "explorer" ? "darkBlue" : "darkRed"}
               >
                 Login
               </Button>
@@ -94,7 +140,7 @@ function Signup({ $variant }) {
         </Row>
       </StyledSignup>
       <StyledSignupBackground />
-    </Row>
+    </SignupWrapper>
   );
 }
 
