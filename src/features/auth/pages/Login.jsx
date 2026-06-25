@@ -9,6 +9,7 @@ import { MdQuestionMark } from "react-icons/md";
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Bold from "../../../shared/components/typography/Bold";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -51,13 +52,36 @@ const StyledHeading = styled(Heading)`
   text-align: center;
 `;
 
+const StyledInput = styled(Input)`
+  width: 25rem;
+`;
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formErrors, setFormErrors] = useState({});
+
   const navigate = useNavigate();
 
   const handleSubmit = function (e) {
     e.preventDefault();
+
+    const errors = {};
+
+    if (!email.trim()) {
+      errors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (!password.trim()) {
+      errors.password = "Please enter a password.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     const formData = { email, password };
     console.log(formData);
     navigate("/");
@@ -81,21 +105,27 @@ function Login() {
               </StyledHeading>
               <Row $gap="var(--gap-xl)">
                 <FormField label="email">
-                  <Input
-                    name="email"
-                    placeholder="Email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <Row $gap="var(--gap-xs)">
+                    <StyledInput
+                      name="email"
+                      placeholder="Email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {formErrors.email && <Bold>{formErrors.email}</Bold>}
+                  </Row>
                 </FormField>
 
                 <FormField label="password">
-                  <Input
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <Row $gap="var(--gap-xs)">
+                    <StyledInput
+                      name="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {formErrors.password && <Bold>{formErrors.password}</Bold>}
+                  </Row>
                 </FormField>
 
                 <Button $variation="darkRed" $size="small" type="submit">
