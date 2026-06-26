@@ -11,8 +11,12 @@ const StyledTextArea = styled.textarea`
   color: var(--color-dark-200);
 `;
 
-function TextArea({ placeholder, children }) {
-  return <StyledTextArea placeholder={placeholder}>{children}</StyledTextArea>;
+function TextArea({ placeholder, children, ...props }) {
+  return (
+    <StyledTextArea placeholder={placeholder} {...props}>
+      {children}
+    </StyledTextArea>
+  );
 }
 
 export default TextArea;

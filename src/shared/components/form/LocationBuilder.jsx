@@ -17,11 +17,9 @@ function LocationBuilder({ existingLocations = [] }) {
   //   const [draft, setDraft] = useState(emptyLocation);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  function handleAddLocation() {
-    setLocations((prev) => [
-      ...prev,
-      { ...locations, id: crypto.randomUUID() },
-    ]);
+  function handleAddLocation(formData) {
+    console.log("handleaddlocaiton running");
+    setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
     setIsModalOpen(false);
   }
 
@@ -64,10 +62,7 @@ function LocationBuilder({ existingLocations = [] }) {
 
       {isModalOpen && (
         <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
-          <LocationForm
-            onSubmit={handleAddLocation}
-            onClose={() => setIsModalOpen(false)}
-          />
+          <LocationForm onSubmit={handleAddLocation} />
         </Modal>
       )}
     </StyledLocationBuilder>
