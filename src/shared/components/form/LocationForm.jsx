@@ -64,7 +64,7 @@ function LocationForm({ exploration = fakeExplorationData, onSubmit }) {
       setFormErrors(errors);
       return;
     }
-    console.log("the rest shouldnt be returning");
+
     const formData = {
       name,
       address,

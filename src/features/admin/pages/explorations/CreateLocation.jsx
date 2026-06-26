@@ -14,10 +14,21 @@ import { FaArrowLeft } from "react-icons/fa";
 import LocationTagBuilder from "../../../../shared/components/form/LocationTagBuilder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
 `;
+
+const StyledRow = styled(Row)`
+  flex: 1 1 0;
+`;
+
+const StyledTextAreaRow = styled(Row)`
+  flex: 1 1 0;
+  height: 10rem;
+`;
+
 function CreateLocation({
   exploration = fakeExplorationData,
   location = false,
@@ -31,11 +42,37 @@ function CreateLocation({
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
 
   const handleSubmit = function (e) {
     e.preventDefault();
+
+    const errors = {};
+
+    if (!name.trim()) errors.name = "Location name is required.";
+
+    if (!address.trim()) errors.address = "Location address is required.";
+
+    if (!city) errors.city = "Please select a city.";
+
+    if (headerImage.length < 1)
+      errors.headerImage = "Please select a header image.";
+
+    if (!description.trim())
+      errors.description = "Please provide a description.";
+
+    if (images.length < 1) errors.images = "Please provide at least one image.";
+
+    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+
+    if (Object.keys(errors).length > 0) {
+      console.log("there is an error, should be returning");
+      setFormErrors(errors);
+      return;
+    }
+
     const formData = {
       name,
       address,
@@ -71,58 +108,79 @@ function CreateLocation({
           </FormField>
 
           <FormField label="Name">
-            <Input
-              name="name"
-              placeholder="The name of the location"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="name"
+                placeholder="The name of the location"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Address">
-            <Input
-              name="address"
-              placeholder="The address of the location"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="address"
+                placeholder="The address of the location"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="City">
-            <CityDropdown name="city" value={city} onSelect={setCity} />
+            <StyledRow $gap="var(--gap-xs)">
+              <CityDropdown name="city" value={city} onSelect={setCity} />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Header Image">
-            <ImageUploader
-              name="headerImage"
-              multiple={false}
-              maxImages={1}
-              value={headerImage}
-              onChange={setHeaderImage}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="headerImage"
+                multiple={false}
+                maxImages={1}
+                value={headerImage}
+                onChange={setHeaderImage}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Description">
-            <TextArea
-              name="description"
-              placeholder="The description displayed beside the location"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <StyledTextAreaRow $gap="var(--gap-xs)">
+              <TextArea
+                name="description"
+                placeholder="The description displayed beside the location"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledTextAreaRow>
           </FormField>
 
           <FormField label="Images">
-            <ImageUploader
-              name="images"
-              multiple={true}
-              maxImages={3}
-              value={images}
-              onChange={setImages}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="images"
+                multiple={true}
+                maxImages={3}
+                value={images}
+                onChange={setImages}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Tags">
-            <LocationTagBuilder value={tags} onChange={setTags} />
+            <StyledRow $gap="var(--gap-xs)">
+              <LocationTagBuilder value={tags} onChange={setTags} />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <Button $variation="darkRed" $size="medium" type="submit">
