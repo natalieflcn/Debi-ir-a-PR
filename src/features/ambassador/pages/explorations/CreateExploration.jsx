@@ -45,6 +45,7 @@ function CreateExploration({ exploration }) {
   const [tags, setTags] = useState([]);
   const [formErrors, setFormErrors] = useState({});
 
+  console.log(locations.length > 0);
   const navigate = useNavigate();
 
   const handleSubmit = function (e) {
@@ -62,7 +63,8 @@ function CreateExploration({ exploration }) {
     if (images.length < 1) errors.images = "Please provide at least one image.";
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
-    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+    if (tags.length < 1)
+      errors.tags = "Please select at least one exploration tag.";
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -159,7 +161,7 @@ function CreateExploration({ exploration }) {
           </FormField>
 
           <FormField label="Description">
-            <StyledRow $gap="var(--gap-xs)">
+            <StyledTextAreaRow $gap="var(--gap-xs)">
               <TextArea
                 name="description"
                 placeholder="The long description shown on the Exploration page"
@@ -167,7 +169,7 @@ function CreateExploration({ exploration }) {
                 onChange={(e) => setDescription(e.target.value)}
               />
               {formErrors.description && <Bold>{formErrors.description}</Bold>}
-            </StyledRow>
+            </StyledTextAreaRow>
           </FormField>
 
           <FormField label="Images">

@@ -13,8 +13,8 @@ function AmbassadorProfile() {
     <StyledAmbassadorProfile>
       <ProfileHeader userName="Natalie Ambassador" userTitle="Ambassador" />
       <ProfileInformation
-        email="Natalie.dflcn@gmail.com"
-        passwordLength={8}
+        userEmail="Natalie.dflcn@gmail.com"
+        userPasswordLength="yuhyuhyuh"
         dateJoined="Jan 30, 2026"
       />
     </StyledAmbassadorProfile>

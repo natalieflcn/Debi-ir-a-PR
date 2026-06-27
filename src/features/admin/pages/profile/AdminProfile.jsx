@@ -13,8 +13,8 @@ function AdminProfile() {
     <StyledAdminProfile>
       <ProfileHeader userName="Natalie Falcon" userTitle="Admin" />
       <ProfileInformation
-        email="Natalie.dflcn@gmail.com"
-        passwordLength={8}
+        userEmail="Natalie.dflcn@gmail.com"
+        userPasswordLength="yuhyuhyuh"
         dateJoined="Jan 30, 2026"
       />
     </StyledAdminProfile>

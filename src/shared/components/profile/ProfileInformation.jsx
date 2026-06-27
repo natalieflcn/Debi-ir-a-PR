@@ -44,9 +44,11 @@ const ProfileInformation = function ({
 }) {
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState(userEmail);
   const [password, setPassword] = useState(userPassword);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
 
@@ -82,6 +84,8 @@ const ProfileInformation = function ({
     if (!password.trim()) errors = "Please enter a password.";
     else if (password.length < 8) {
       errors = "Password must be at least 8 characters.";
+    } else if (password !== confirmPassword) {
+      errors = "Your passwords must match.";
     }
 
     if (errors) {
@@ -148,35 +152,48 @@ const ProfileInformation = function ({
         <InformationLabel as="h5">Password</InformationLabel>
 
         {isEditingPassword ? (
-          <StyledForm>
-            <Row $gap="var(--gap-xs)">
-              <Input
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-              />
-              {passwordErrors && <Bold>{passwordErrors}</Bold>}
-            </Row>
-            <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button
-                type="submit"
-                $variation="secondary"
-                $size="small"
-                onClick={handlePasswordSubmit}
-              >
-                Save
-              </Button>
-              <Button
-                type="button"
-                $variation="primary"
-                $size="small"
-                onClick={handlePasswordCancel}
-              >
-                Cancel
-              </Button>
-            </Row>
-          </StyledForm>
+          <>
+            <StyledForm>
+              <Row $gap="var(--gap-xs)">
+                <Input
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                />
+
+                <Row $gap="var(--gap-xs)">
+                  <Input
+                    name="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    type="password"
+                    placeholder="Confirm your password"
+                  />
+
+                  {passwordErrors && <Bold>{passwordErrors}</Bold>}
+                </Row>
+              </Row>
+              <Row $direction="horizontal" $gap="var(--gap-md)">
+                <Button
+                  type="submit"
+                  $variation="secondary"
+                  $size="small"
+                  onClick={handlePasswordSubmit}
+                >
+                  Save
+                </Button>
+                <Button
+                  type="button"
+                  $variation="primary"
+                  $size="small"
+                  onClick={handlePasswordCancel}
+                >
+                  Cancel
+                </Button>
+              </Row>
+            </StyledForm>
+          </>
         ) : (
           <>
             <Bold $color="var(--color-red-300)">
