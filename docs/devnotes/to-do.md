@@ -196,7 +196,7 @@
   - [x] Change Logo shortcut based on user role
   - [x] Open badge collection via modal window in Explorer dashboard, instead of redirecting to Profile
 
-## Week: June 22 – June 25
+## Week: June 22 – June 26
 
 - [~] Polish front-end framework
   - [x] Define Profile info descriptions
@@ -211,12 +211,12 @@
   - [~] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
     - [x] Make sure all inputs are controlled with state
       - [ ] Configure Locations in Create/Edit Exploration later (NOTE: After decoupling false data from component props)
-    - [ ] Validate each form field before form is allowed to submit
-    - [ ] Error messages display per field when validation fails
-    - [ ] Display feedback in the UI
+    - [~] Validate each form field before form is allowed to submit
+    - [~] Error messages display per field when validation fails
+    - [~] Display feedback in the UI
     - [ ] Disabled submit button until entire form is completed
-    - [ ] Email format validated on login/signup/profile forms
-    - [ ] Password strength validated on signup/profile forms
+    - [x] Email format validated on login/signup/profile forms
+    - [x] Password strength validated on signup/profile forms
     - [ ] Add confirm password form field to signup/profile forms
     - [ ] Form action and method attributes point to correct REST endpoints
   - [ ] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button

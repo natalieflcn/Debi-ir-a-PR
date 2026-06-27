@@ -27,6 +27,11 @@ const StyledParagraph = styled.p`
   color: var(--color-dark-200);
 `;
 
+const StyledTextAreaRow = styled(Row)`
+  flex: 1 1 0;
+  height: 10rem;
+`;
+
 function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
 
@@ -38,11 +43,32 @@ function CreateExploration({ exploration }) {
   const [images, setImages] = useState([]);
   const [locations, setLocations] = useState([]);
   const [tags, setTags] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
 
   const handleSubmit = function (e) {
     e.preventDefault();
+
+    const errors = {};
+
+    if (!name.trim()) errors.name = "Exploration name is required.";
+    if (!startingCity) errors.startingCity = "Please select starting city.";
+    if (headerImage.length < 1)
+      errors.headerImage = "Please select a header image.";
+    if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
+    if (!description.trim())
+      errors.description = "Please provide a description.";
+    if (images.length < 1) errors.images = "Please provide at least one image.";
+    if (locations.length < 1)
+      errors.locations = "Please provide at least one location.";
+    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     const formData = {
       name,
       startingCity,
@@ -83,77 +109,99 @@ function CreateExploration({ exploration }) {
       >
         <Row $gap="var(--gap-lg)">
           <FormField label="Name">
-            <Input
-              name="name"
-              placeholder="The title of the exploration"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="name"
+                placeholder="The title of the exploration"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Header Image">
-            <ImageUploader
-              name="headerImage"
-              multiple={false}
-              maxImages={1}
-              value={headerImage}
-              onChange={setHeaderImage}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="headerImage"
+                multiple={false}
+                maxImages={1}
+                value={headerImage}
+                onChange={setHeaderImage}
+              />
+              {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Starting City">
-            <CityDropdown
-              name="city"
-              value={startingCity}
-              onSelect={setStartingCity}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <CityDropdown
+                name="city"
+                value={startingCity}
+                onSelect={setStartingCity}
+              />
+              {formErrors.startingCity && (
+                <Bold>{formErrors.startingCity}</Bold>
+              )}
+            </StyledRow>
           </FormField>
 
           <FormField label="Tagline">
-            <Input
-              name="tagline"
-              placeholder="The short description displayed on the Explorations page"
-              value={tagline}
-              onChange={(e) => setTagline(e.target.value)}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="tagline"
+                placeholder="The short description displayed on the Explorations page"
+                value={tagline}
+                onChange={(e) => setTagline(e.target.value)}
+              />
+              {formErrors.tagline && <Bold>{formErrors.tagline}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Description">
-            <TextArea
-              name="description"
-              placeholder="The long description shown on the Exploration page"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <TextArea
+                name="description"
+                placeholder="The long description shown on the Exploration page"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {formErrors.description && <Bold>{formErrors.description}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Images">
-            <ImageUploader
-              name="images"
-              maxImages={3}
-              value={images}
-              onChange={setImages}
-            />
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="images"
+                maxImages={3}
+                value={images}
+                onChange={setImages}
+              />
+              {formErrors.images && <Bold>{formErrors.images}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Locations">
-            <StyledRow>
+            <StyledRow $gap="var(--gap-xs)">
               <LocationBuilder />
               <CurrentLocations
                 locations={fakeExplorationData.locations}
                 exploration={fakeExplorationData}
                 onChange={setLocations}
               />
+              {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
             </StyledRow>
           </FormField>
 
           <FormField label="Tags">
-            <StyledRow>
+            <StyledRow $gap="var(--gap-xs)">
               <ExplorationTagBuilder
                 exploration={fakeExplorationData}
                 value={tags}
                 onChange={setTags}
               />
+              {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
               <StyledParagraph>
                 <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
                 derived from the tag(s) you add to each location.
