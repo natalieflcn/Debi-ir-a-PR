@@ -26,14 +26,24 @@ const StyledTextAreaRow = styled(Row)`
   flex: 1 1 0;
   height: 10rem;
 `;
-function LocationForm({ exploration = fakeExplorationData, onSubmit }) {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState(null);
-  const [headerImage, setHeaderImage] = useState([]);
-  const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
-  const [tags, setTags] = useState([]);
+function LocationForm({
+  exploration = fakeExplorationData,
+  location,
+  onSubmit,
+}) {
+  const isEditing = Boolean(location);
+
+  const [name, setName] = useState(isEditing ? location.name : "");
+  const [address, setAddress] = useState(isEditing ? location.address : "");
+  const [city, setCity] = useState(isEditing ? location.city : null);
+  const [headerImage, setHeaderImage] = useState(
+    isEditing ? location.headerImage : [],
+  );
+  const [description, setDescription] = useState(
+    isEditing ? location.description : "",
+  );
+  const [images, setImages] = useState(isEditing ? location.images : []);
+  const [tags, setTags] = useState(isEditing ? location.tags : []);
   const [formErrors, setFormErrors] = useState({});
 
   const handleSubmit = function (e) {
@@ -79,7 +89,11 @@ function LocationForm({ exploration = fakeExplorationData, onSubmit }) {
   };
 
   return (
-    <AppForm formTitle={"CREATE A LOCATION"} onSubmit={handleSubmit}>
+    <AppForm
+      formTitle={"CREATE A LOCATION"}
+      onSubmit={handleSubmit}
+      method="post"
+    >
       <Row $gap="var(--gap-lg)">
         <FormField label="Exploration">
           <StyledHeading as="h6" $color="var(--color-red-300)">

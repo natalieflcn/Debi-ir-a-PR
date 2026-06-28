@@ -214,11 +214,11 @@
     - [~] Validate each form field before form is allowed to submit
     - [~] Error messages display per field when validation fails
     - [~] Display feedback in the UI
-    - [ ] Disabled submit button until entire form is completed
+      ~~- [ ] Disabled submit button until entire form is completed~~
     - [x] Email format validated on login/signup/profile forms
     - [x] Password strength validated on signup/profile forms
-    - [ ] Add confirm password form field to signup/profile forms
-    - [ ] Form action and method attributes point to correct REST endpoints
+    - [x] Add confirm password form field to signup/profile forms
+    - [x] Form method attributes point to correct REST endpoints
   - [ ] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button
   - [ ] Refine routing and navigation
     - [ ] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids

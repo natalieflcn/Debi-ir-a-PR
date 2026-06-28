@@ -43,11 +43,25 @@ function CreateExploration({ exploration = false }) {
   const [tagline, setTagline] = useState("");
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
-  const [locations, setLocations] = useState([]);
+  const [locations, setLocations] = useState(fakeExplorationData.locations);
   const [tags, setTags] = useState([]);
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
+
+  function handleAddLocation(formData) {
+    setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
+  }
+
+  function handleDeleteLocation(id) {
+    setLocations((prev) => prev.filter((l) => l.id !== id));
+  }
+
+  function handleEditLocation(id, formData) {
+    setLocations((prev) =>
+      prev.map((l) => (l.id === id ? { ...l, ...formData } : l)),
+    );
+  }
 
   const handleSubmit = function (e) {
     e.preventDefault();
@@ -184,9 +198,17 @@ function CreateExploration({ exploration = false }) {
           </FormField>
 
           <FormField label="Locations">
-            <StyledRow $gap="var(--gap-xs)">
-              <LocationBuilder />
-              <CurrentLocations locations={fakeExplorationData.locations} />
+            <StyledRow $gap="var(--gap-sm)">
+              <LocationBuilder
+                locations={locations}
+                onAdd={handleAddLocation}
+              />
+              <CurrentLocations
+                locations={locations}
+                onEdit={handleEditLocation}
+                onDelete={handleDeleteLocation}
+                exploration={fakeExplorationData}
+              />
               {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
             </StyledRow>
           </FormField>

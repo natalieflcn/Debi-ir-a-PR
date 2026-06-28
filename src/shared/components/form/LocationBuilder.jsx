@@ -12,20 +12,20 @@ const StyledLocationBuilder = styled.div`
   gap: var(--gap-md);
 `;
 
-function LocationBuilder({ existingLocations = [] }) {
-  const [locations, setLocations] = useState(existingLocations);
+function LocationBuilder({ locations, onAdd }) {
+  // const [locations, setLocations] = useState(existingLocations);
   //   const [draft, setDraft] = useState(emptyLocation);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  function handleAddLocation(formData) {
-    console.log("handleaddlocaiton running");
-    setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
-    setIsModalOpen(false);
-  }
+  // function handleAddLocation(formData) {
+  //   console.log("handleaddlocaiton running");
+  //   setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
+  //   setIsModalOpen(false);
+  // }
 
-  function handleDeleteLocation(id) {
-    setLocations((prev) => prev.filter((location) => location.id !== id));
-  }
+  // function handleDeleteLocation(id) {
+  //   setLocations((prev) => prev.filter((location) => location.id !== id));
+  // }
 
   return (
     <StyledLocationBuilder>
@@ -40,29 +40,15 @@ function LocationBuilder({ existingLocations = [] }) {
 
       <input type="hidden" name="locations" value={JSON.stringify(locations)} />
 
-      {locations.map((location) => (
-        <Row
-          key={location.id}
-          $direction="horizontal"
-          $gap="var(--gap-md)"
-          $align="center"
-        >
-          <Heading as="h5">{location.name}</Heading>
-          <p>{location.address}</p>
-          <Button
-            type="button"
-            $variation="darkRed"
-            $size="extraSmall"
-            onClick={() => handleDeleteLocation(location.id)}
-          >
-            Delete
-          </Button>
-        </Row>
-      ))}
-
       {isModalOpen && (
         <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
-          <LocationForm onSubmit={handleAddLocation} />
+          <LocationForm
+            onSubmit={(formData) => {
+              onAdd(formData);
+              console.log(formData);
+              setIsModalOpen(false);
+            }}
+          />
         </Modal>
       )}
     </StyledLocationBuilder>

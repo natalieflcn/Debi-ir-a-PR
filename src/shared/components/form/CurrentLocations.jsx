@@ -11,7 +11,7 @@ const StyledRow = styled(Row)`
   flex: 1 1 0;
 `;
 
-function CurrentLocations({ locations, exploration }) {
+function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
   const [editingLocation, setEditingLocation] = useState(null);
   const [deletingLocation, setDeletingLocation] = useState(null);
 
@@ -22,7 +22,7 @@ function CurrentLocations({ locations, exploration }) {
       {!hasLocations && <Heading as="h5">No locations added yet.</Heading>}
       {hasLocations && (
         <Row $gap="var(--gap-lg)">
-          {locations.map((location) => (
+          {locations.map((location, i) => (
             <Row
               key={location.id}
               $gap="var(--gap-md)"
@@ -30,10 +30,10 @@ function CurrentLocations({ locations, exploration }) {
               $align="flex-start"
             >
               <Heading as="h5" $color="var(--color-red-300)">
-                {location.id}
+                {i + 1}
               </Heading>
               <Heading as="h6" $color="var(--color-red-400)">
-                {location.locationName}
+                {location.name}
               </Heading>
               <StyledRow
                 $align="flex-end"
@@ -68,9 +68,17 @@ function CurrentLocations({ locations, exploration }) {
           ))}
         </Row>
       )}
+
       {editingLocation && (
         <Modal $width="60%" onClose={() => setEditingLocation(null)}>
-          <LocationForm exploration={exploration} />
+          <LocationForm
+            exploration={exploration}
+            location={editingLocation}
+            onSubmit={(formData) => {
+              onEdit(editingLocation.id, formData);
+              setEditingLocation(null);
+            }}
+          />
         </Modal>
       )}
 
@@ -90,7 +98,14 @@ function CurrentLocations({ locations, exploration }) {
               >
                 Cancel
               </Button>
-              <Button $size="small" $variation="primary">
+              <Button
+                $size="small"
+                $variation="primary"
+                onClick={() => {
+                  onDelete(deletingLocation.id);
+                  setDeletingLocation(null);
+                }}
+              >
                 Delete Location
               </Button>
             </Row>

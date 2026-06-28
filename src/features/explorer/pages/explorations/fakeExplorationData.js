@@ -10,27 +10,27 @@ const fakeExplorationData = {
   locations: [
     {
       id: 1,
-      locationName: "Rey Chino Food",
+      name: "Rey Chino Food",
       completed: true,
       tags: ["restaurant"],
     },
     {
       id: 2,
-      locationName: "Pool place",
+      name: "Pool place",
       completed: false,
       tags: ["restaurant"],
     },
     {
       id: 3,
-      locationName: "El Cafetin",
+      name: "El Cafetin",
       completed: false,
       tags: ["restaurant"],
     },
-    { id: 4, locationName: "El Yunque", completed: true, tags: ["restaurant"] },
-    { id: 5, locationName: "El Morro", completed: false, tags: ["restaurant"] },
+    { id: 4, name: "El Yunque", completed: true, tags: ["restaurant"] },
+    { id: 5, name: "El Morro", completed: false, tags: ["restaurant"] },
     {
       id: 6,
-      locationName: "Columbian steakhouse",
+      name: "Columbian steakhouse",
       completed: true,
       tags: ["restaurant"],
     },

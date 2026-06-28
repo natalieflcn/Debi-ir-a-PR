@@ -14,7 +14,7 @@ import Modal from "../ui/Modal";
 const StyledProfileInformation = styled.div`
   display: grid;
   grid-template-columns: 12rem 1fr auto;
-  grid-template-rows: repeat(2, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
   align-items: start;
   gap: var(--gap-lg) var(--gap-xl);
   color: var(--color-dark-100);

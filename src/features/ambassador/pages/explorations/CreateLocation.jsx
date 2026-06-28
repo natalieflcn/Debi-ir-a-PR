@@ -35,13 +35,17 @@ function CreateLocation({
 }) {
   const isEditing = Boolean(location);
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState(null);
-  const [headerImage, setHeaderImage] = useState([]);
-  const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [name, setName] = useState(isEditing ? location.name : "");
+  const [address, setAddress] = useState(isEditing ? location.address : "");
+  const [city, setCity] = useState(isEditing ? location.city : null);
+  const [headerImage, setHeaderImage] = useState(
+    isEditing ? location.headerImage : [],
+  );
+  const [description, setDescription] = useState(
+    isEditing ? location.description : "",
+  );
+  const [images, setImages] = useState(isEditing ? location.images : []);
+  const [tags, setTags] = useState(isEditing ? location.tags : []);
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
@@ -99,6 +103,7 @@ function CreateLocation({
       <AppForm
         formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
         onSubmit={handleSubmit}
+        method={isEditing ? "patch" : "post"}
       >
         <Row $gap="var(--gap-lg)">
           <FormField label="Exploration">

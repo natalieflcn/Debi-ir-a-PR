@@ -58,7 +58,7 @@ function LocationTagBuilder({ value, onChange }) {
 
         <ExplorationLocationTags>
           {value.map((tagId) => {
-            const tag = TagCategories.find((c) => c.id === tagId);
+            const tag = TagCategories.find((c, i) => c.id === tagId);
 
             if (!tag) return null;
 
@@ -79,6 +79,7 @@ function LocationTagBuilder({ value, onChange }) {
                 $direction="horizontal"
                 $gap="var(--gap-md)"
                 $align="flex-start"
+                key={category.id}
               >
                 <StyledIcon onClick={() => toggleTag(category.id)}>
                   {value.includes(category.id) ? (
