@@ -97,7 +97,7 @@ function LocationForm({
       <Row $gap="var(--gap-lg)">
         <FormField label="Exploration">
           <StyledHeading as="h6" $color="var(--color-red-300)">
-            {exploration.explorationName}
+            {exploration.name}
           </StyledHeading>
         </FormField>
 

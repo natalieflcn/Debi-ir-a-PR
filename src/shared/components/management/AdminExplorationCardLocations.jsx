@@ -11,7 +11,7 @@ function AdminExplorationCardLocations({ locations }) {
         <LocationHeading as="h4" $color="var(--color-red-300)">
           {location.id}
         </LocationHeading>
-        <Heading as="h5">{location.locationName}</Heading>
+        <Heading as="h5">{location.name}</Heading>
       </Row>
 
       <Row $direction="horizontal" $gap="var(--gap-md)">

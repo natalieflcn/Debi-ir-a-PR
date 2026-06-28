@@ -60,7 +60,7 @@ function ExplorationMiniCard({
   name,
   description,
   numStops,
-  startLocation,
+  startingCity,
   buttonDetails,
 }) {
   return (
@@ -86,7 +86,7 @@ function ExplorationMiniCard({
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoLocationSharp color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{startLocation}, PR</Bold>
+              <Bold $color="var(--color-dark-200)">{startingCity}, PR</Bold>
             </Row>
           </Row>
 

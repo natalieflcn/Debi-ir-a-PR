@@ -1,5 +1,7 @@
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
+import fakeExplorationData from "../../features/explorer/pages/explorations/fakeExplorationData";
+import fakeExplorationLocationData from "../../features/explorer/pages/explorations/fakeExplorationLocationData";
 // import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(
@@ -47,7 +49,7 @@ const AmbassadorRoutes = [
   { path: "explorations/:explorationId", element: <ViewExploration /> },
   {
     path: "explorations/:explorationId/edit",
-    element: <CreateExploration exploration={true} />,
+    element: <CreateExploration exploration={fakeExplorationData} />,
   },
 
   {
@@ -61,7 +63,7 @@ const AmbassadorRoutes = [
 
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
-    element: <CreateLocation location={true} />,
+    element: <CreateLocation location={fakeExplorationLocationData} />,
   },
 
   { path: "users", element: <ManageExplorers /> },

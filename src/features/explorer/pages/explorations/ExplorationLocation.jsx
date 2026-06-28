@@ -70,7 +70,7 @@ function ExplorationLocation({
   const headerDetails = (
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
-      locationName={explorationLocation.locationName}
+      locationName={explorationLocation.name}
     />
   );
 

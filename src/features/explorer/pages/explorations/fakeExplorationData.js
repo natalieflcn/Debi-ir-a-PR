@@ -1,11 +1,11 @@
 const fakeExplorationData = {
   id: 0,
-  explorationName: "Toa Alta Tour",
-  headerImage: "/src/assets/images/content/TEMP.png",
+  name: "Toa Alta Tour",
+  headerImage: ["/src/assets/images/content/TEMP.png"],
   numStops: 5,
-  startLocation: "Toa Alta",
-  shortDescription: "hello",
-  longDescription:
+  startingCity: { id: 71, name: "Trujillo Alto" },
+  tagline: "hello",
+  description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
   locations: [
     {
@@ -40,6 +40,7 @@ const fakeExplorationData = {
     { id: 2, imageURL: "/src/assets/images/content/TEMP.png" },
     { id: 3, imageURL: "/src/assets/images/content/TEMP.png" },
   ],
+  tags: [],
 };
 
 export default fakeExplorationData;

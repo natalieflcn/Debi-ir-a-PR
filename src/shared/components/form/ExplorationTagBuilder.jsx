@@ -39,14 +39,9 @@ export const ExplorationTag = styled.span`
   font-size: var(--font-size-xs);
 `;
 
-function ExplorationTagBuilder({
-  exploration,
-  existingSelectedTags = [],
-  existingDerivedTags = [],
-}) {
+function ExplorationTagBuilder({ exploration, tags, onChange }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTags, setSelectedTags] = useState(existingSelectedTags);
-  const [derivedTags, setDerivedTags] = useState(existingDerivedTags);
+  // const [selectedTags, setSelectedTags] = useState(existingSelectedTags);
 
   const derivedLocationTags = [
     ...new Set(
@@ -54,8 +49,9 @@ function ExplorationTagBuilder({
     ),
   ];
 
+  console.log(tags, derivedLocationTags);
   function toggleTag(tagId) {
-    setSelectedTags((prev) =>
+    onChange((prev) =>
       prev.includes(tagId)
         ? prev.filter((id) => id !== tagId)
         : [...prev, tagId],
@@ -77,7 +73,7 @@ function ExplorationTagBuilder({
         </Button>
 
         <ExplorationLocationTags>
-          {selectedTags.map((tagId) => {
+          {tags.map((tagId) => {
             const tag = TagCategories.find((c) => c.id === tagId);
 
             if (!tag) return null;
@@ -107,7 +103,7 @@ function ExplorationTagBuilder({
                 key={category.id}
               >
                 <StyledIcon onClick={() => toggleTag(category.id)}>
-                  {selectedTags.includes(category.id) ? (
+                  {tags.includes(category.id) ? (
                     <IoIosCheckbox size={25} />
                   ) : (
                     <MdCheckBoxOutlineBlank size={25} />

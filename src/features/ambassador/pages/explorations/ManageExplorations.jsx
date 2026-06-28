@@ -17,7 +17,7 @@ const AmbassadorExplorationsTable = {
   columns: [
     { id: "name", heading: "name" },
     { id: "numStops", heading: "# of Stops" },
-    { id: "startLocation", heading: "Start Location" },
+    { id: "startingCity", heading: "Starting City" },
     { id: "createdBy", heading: "Created By" },
     { id: "dateCreated", heading: "Date Created" },
     { id: "dateUpdated", heading: "Date Updated" },
@@ -157,7 +157,7 @@ function ManageExplorations() {
               name={exploration.name}
               description={exploration.description}
               numStops={exploration.numStops}
-              startLocation={exploration.startLocation}
+              startingCity={exploration.startingCity}
               buttonDetails={AmbassadorExplorationCardButton}
               key={exploration.id}
             />

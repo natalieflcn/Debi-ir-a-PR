@@ -1,6 +1,6 @@
 const fakeExplorationLocationData = {
-  explorationName: "Toa Alta Tour",
-  locationName: "Rey Chino Food",
+  name: "Toa Alta Tour",
+  name: "Rey Chino Food",
   locationAddress: "123 san juan rd",
   headerImage: "/src/assets/images/content/TEMP.png",
   description:

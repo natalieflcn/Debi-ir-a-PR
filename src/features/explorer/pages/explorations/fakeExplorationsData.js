@@ -5,7 +5,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
-    startLocation: "Toa Alta",
+    startingCity: "Toa Alta",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city"],
   },
@@ -15,7 +15,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
-    startLocation: "Bayamon",
+    startingCity: "Bayamon",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes"],
   },
@@ -25,7 +25,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 11,
-    startLocation: "San Juan",
+    startingCity: "San Juan",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
   },
@@ -35,7 +35,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
-    startLocation: "Toa Alta",
+    startingCity: "Toa Alta",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city"],
   },
@@ -45,7 +45,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
-    startLocation: "Bayamon",
+    startingCity: "Bayamon",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes"],
   },
@@ -55,7 +55,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 11,
-    startLocation: "San Juan",
+    startingCity: "San Juan",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
   },
@@ -65,7 +65,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
-    startLocation: "Toa Alta",
+    startingCity: "Toa Alta",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city"],
   },
@@ -75,7 +75,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
-    startLocation: "Bayamon",
+    startingCity: "Bayamon",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes"],
   },
@@ -85,7 +85,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 11,
-    startLocation: "San Juan",
+    startingCity: "San Juan",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
   },
@@ -95,7 +95,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
-    startLocation: "Toa Alta",
+    startingCity: "Toa Alta",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city"],
   },
@@ -105,7 +105,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
-    startLocation: "Bayamon",
+    startingCity: "Bayamon",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes"],
   },
@@ -115,7 +115,7 @@ const fakeExplorationsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 11,
-    startLocation: "San Juan",
+    startingCity: "San Juan",
     tourLink: "/explorations/:explorationId",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
   },

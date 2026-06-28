@@ -87,7 +87,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
           <Row $align="center">
             <Heading as="h6">
               Are you sure you want to delete this location from{" "}
-              {exploration.explorationName}?
+              {exploration.name}?
             </Heading>
             <p>This action is irreversible.</p>
             <Row $direction="horizontal" $gap="var(--gap-lg)">

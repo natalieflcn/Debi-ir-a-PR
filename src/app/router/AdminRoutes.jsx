@@ -2,6 +2,8 @@
 
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
+import fakeExplorationData from "../../features/explorer/pages/explorations/fakeExplorationData";
+import fakeExplorationLocationData from "../../features/explorer/pages/explorations/fakeExplorationLocationData";
 
 const AdminDashboard = lazy(
   () => import("@/features/admin/pages/dashboard/AdminDashboard.jsx"),
@@ -50,7 +52,7 @@ const AdminRoutes = [
   },
   {
     path: "explorations/:explorationId/edit",
-    element: <CreateExploration exploration={true} />,
+    element: <CreateExploration exploration={fakeExplorationData} />,
   },
   {
     path: "explorations/:explorationId/locations/create",
@@ -63,7 +65,7 @@ const AdminRoutes = [
 
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
-    element: <CreateLocation location={true} />,
+    element: <CreateLocation location={fakeExplorationLocationData} />,
   },
 
   {

@@ -29,10 +29,7 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateLocation({
-  exploration = fakeExplorationData,
-  location = true,
-}) {
+function CreateLocation({ exploration = fakeExplorationData, location }) {
   const isEditing = Boolean(location);
 
   const [name, setName] = useState(isEditing ? location.name : "");
@@ -95,8 +92,7 @@ function CreateLocation({
     <Row $gap="var(--gap-lg)">
       <RouterLink to="/ambassador/explorations/:explorationId">
         <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to{" "}
-          {exploration?.explorationName ?? "Exploration"}
+          <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>
       </RouterLink>
 
@@ -108,7 +104,7 @@ function CreateLocation({
         <Row $gap="var(--gap-lg)">
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
-              {exploration.explorationName}
+              {exploration.name}
             </StyledHeading>
           </FormField>
 

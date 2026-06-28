@@ -95,8 +95,7 @@ function CreateLocation({
     <Row $gap="var(--gap-lg)">
       <RouterLink to="/admin/explorations/:explorationId">
         <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to{" "}
-          {exploration?.explorationName ?? "Exploration"}
+          <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>
       </RouterLink>
 
@@ -108,7 +107,7 @@ function CreateLocation({
         <Row $gap="var(--gap-lg)">
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
-              {exploration.explorationName}
+              {exploration.name}
             </StyledHeading>
           </FormField>
 

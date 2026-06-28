@@ -75,7 +75,7 @@ function Explorations() {
             name={exploration.name}
             description={exploration.description}
             numStops={exploration.numStops}
-            startLocation={exploration.startLocation}
+            startingCity={exploration.startingCity}
             buttonDetails={ExplorerExplorationCardButton}
             key={exploration.id}
           />

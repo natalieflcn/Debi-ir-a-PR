@@ -31,8 +31,7 @@ function ExplorationLocationCard({
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations/:explorationId`}>
         <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to{" "}
-          {explorationLocation.explorationName}
+          <FaArrowLeft size={12} /> Back to {explorationLocation.name}
         </Button>
       </RouterLink>
 
@@ -46,7 +45,7 @@ function ExplorationLocationCard({
                 as="h2"
                 $shadowColor="var(--color-brown-400)"
               >
-                {explorationLocation.explorationName}
+                {explorationLocation.name}
               </ExplorationLocationHeading>
 
               {headerDetails}
@@ -65,7 +64,7 @@ function ExplorationLocationCard({
             <ExplorationLocationAbout>
               <Row $gap="var(--gap-sm)">
                 <Heading as="h3" $color="var(--color-red-300)">
-                  ABOUT {explorationLocation.locationName.toUpperCase()}
+                  ABOUT {explorationLocation.name.toUpperCase()}
                 </Heading>
                 {explorationLocation.description}
               </Row>

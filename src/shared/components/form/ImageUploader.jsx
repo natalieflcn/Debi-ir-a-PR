@@ -35,11 +35,22 @@ function ImageUploader({
 
   const inputRef = useRef(null);
 
-  const previews = value.map((file) => ({
-    id: crypto.randomUUID(),
-    url: URL.createObjectURL(file),
-    name: file.name,
-  }));
+  const previews = value.map((item) => {
+    if (item instanceof File) {
+      return {
+        id: crypto.randomUUID(),
+        url: URL.createObjectURL(item),
+        name: item.name,
+      };
+    }
+    // handles strings (headerImage) and objects with imageURL (images array)
+    const url = typeof item === "string" ? item : item.imageURL;
+    return {
+      id: crypto.randomUUID(),
+      url,
+      name: url,
+    };
+  });
 
   function handleFileChange(e) {
     const files = Array.from(e.target.files);

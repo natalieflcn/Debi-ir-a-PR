@@ -34,17 +34,26 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateExploration({ exploration = false }) {
+function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
 
-  const [name, setName] = useState("");
-  const [headerImage, setHeaderImage] = useState([]);
-  const [startingCity, setStartingCity] = useState(null);
-  const [tagline, setTagline] = useState("");
-  const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
-  const [locations, setLocations] = useState(fakeExplorationData.locations);
-  const [tags, setTags] = useState([]);
+  console.log(exploration);
+  const [name, setName] = useState(isEditing ? exploration.name : "");
+  const [headerImage, setHeaderImage] = useState(
+    isEditing ? exploration.headerImage : [],
+  );
+  const [startingCity, setStartingCity] = useState(
+    isEditing ? exploration.startingCity : null,
+  );
+  const [tagline, setTagline] = useState(isEditing ? exploration.tagline : "");
+  const [description, setDescription] = useState(
+    isEditing ? exploration.description : "",
+  );
+  const [images, setImages] = useState(isEditing ? exploration.images : []);
+  const [locations, setLocations] = useState(
+    isEditing ? exploration.locations : fakeExplorationData.locations,
+  );
+  const [tags, setTags] = useState(isEditing ? exploration.tags : []);
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
@@ -82,6 +91,7 @@ function CreateExploration({ exploration = false }) {
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
+      console.log("should be rediecting");
       return;
     }
 
@@ -96,6 +106,7 @@ function CreateExploration({ exploration = false }) {
       tags,
     };
     console.log(formData);
+
     navigate(`/admin/explorations/:explorationId`);
   };
 
@@ -142,7 +153,7 @@ function CreateExploration({ exploration = false }) {
                 multiple={false}
                 maxImages={1}
                 value={headerImage}
-                onChange={(e) => setHeaderImage(e.target.value)}
+                onChange={setHeaderImage}
               />
               {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
             </StyledRow>
@@ -153,7 +164,7 @@ function CreateExploration({ exploration = false }) {
               <CityDropdown
                 name="city"
                 value={startingCity}
-                onChange={setStartingCity}
+                onSelect={setStartingCity}
               />
               {formErrors.startingCity && (
                 <Bold>{formErrors.startingCity}</Bold>
@@ -191,7 +202,7 @@ function CreateExploration({ exploration = false }) {
                 name="images"
                 maxImages={3}
                 value={images}
-                setImages={setImages}
+                onChange={setImages}
               />
               {formErrors.images && <Bold>{formErrors.images}</Bold>}
             </StyledRow>
@@ -215,9 +226,10 @@ function CreateExploration({ exploration = false }) {
 
           <FormField label="Tags">
             <StyledRow $gap="var(--gap-xs)">
+              console.log(tags);
               <ExplorationTagBuilder
                 exploration={fakeExplorationData}
-                value={tags}
+                tags={tags}
                 onChange={setTags}
               />{" "}
               {formErrors.tags && <Bold>{formErrors.tags}</Bold>}

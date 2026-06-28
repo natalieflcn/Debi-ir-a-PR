@@ -47,7 +47,7 @@ function ExplorationCard({
               $color="var(--color-red-200)"
               $shadowColor="var(--color-brown-400)"
             >
-              {exploration.explorationName}
+              {exploration.name}
             </ExplorationCardHeading>
 
             <Row $gap="var(--gap-md)">
@@ -62,7 +62,7 @@ function ExplorationCard({
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoLocationSharp color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
-                    {exploration.startLocation}, PR
+                    {exploration.startingCity.name}, PR
                   </Bold>
                 </Row>
               </Row>
@@ -82,7 +82,7 @@ function ExplorationCard({
               <Heading as="h3" $color="var(--color-red-300)">
                 ABOUT THIS EXPLORATION
               </Heading>
-              <p>{exploration.longDescription}</p>
+              <p>{exploration.description}</p>
               <ExplorationLocationTags>
                 <ExplorationLocationTag>hi</ExplorationLocationTag>
                 <ExplorationLocationTag>hi</ExplorationLocationTag>
