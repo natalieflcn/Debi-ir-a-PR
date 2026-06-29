@@ -229,8 +229,9 @@
     - [ ] All fake data shapes match MongoDB schema field names
     - [ ] Every action and loader in router has placeholder
     - [ ] Components use useLoaderData pattern instead of importing fake data directly
-    - [ ] Refine routing and navigation
-    - [ ] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
+  - [x] Refine routing and navigation
+    - [ ] Create logic for ProtectedRoute
+    - [x] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
   - [ ] Images have fallback/placeholder when src is missing
-  - [ ] Render exploration tags from the data, instead of hard-coded data
+  - [x] Render exploration tags from the data, instead of hard-coded data
   - [ ] Make website responsive

@@ -4,6 +4,12 @@ import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 import fakeExplorationData from "../../features/explorer/pages/explorations/fakeExplorationData";
 import fakeExplorationLocationData from "../../features/explorer/pages/explorations/fakeExplorationLocationData";
+import { adminDashboardLoader } from "./loaders/adminDashboardLoader";
+import { explorationsLoader } from "./loaders/explorationsLoader";
+import { explorationLoader } from "./loaders/explorationLoader";
+import { locationLoader } from "./loaders/locationLoader";
+import { usersLoader } from "./loaders/usersLoader";
+import { profileLoader } from "./loaders/profileLoader";
 
 const AdminDashboard = lazy(
   () => import("@/features/admin/pages/dashboard/AdminDashboard.jsx"),
@@ -42,46 +48,61 @@ const AdminRoutes = [
     index: true,
     loader: () => redirect("/admin/dashboard"),
   },
-  { path: "dashboard", element: <AdminDashboard /> },
+  {
+    path: "dashboard",
+    element: <AdminDashboard />,
+    loader: adminDashboardLoader,
+  },
 
-  { path: "explorations", element: <ManageExplorations /> },
+  {
+    path: "explorations",
+    element: <ManageExplorations />,
+    loader: explorationsLoader,
+  },
   { path: "explorations/create", element: <CreateExploration /> },
   {
     path: "explorations/:explorationId",
     element: <ViewExploration />,
+    loader: explorationLoader,
   },
   {
     path: "explorations/:explorationId/edit",
     element: <CreateExploration exploration={fakeExplorationData} />,
+    loader: explorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/create",
     element: <CreateLocation />,
+    loader: explorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/:explorationLocationId",
     element: <ViewLocation />,
+    loader: locationLoader,
   },
 
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
     element: <CreateLocation location={fakeExplorationLocationData} />,
+    loader: locationLoader,
   },
-
   {
     path: "users",
     element: <ManageUsers />,
+    loader: usersLoader,
   },
   {
     path: "users/explorers/:explorerId",
     element: <ExplorerDetails />,
+    loader: profileLoader,
   },
   {
     path: "users/ambassadors/:ambassadorId",
     element: <AmbassadorDetails />,
+    loader: profileLoader,
   },
 
-  { path: "profile", element: <AdminProfile /> },
+  { path: "profile", element: <AdminProfile />, loader: profileLoader },
 ];
 
 export default AdminRoutes;

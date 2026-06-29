@@ -2,6 +2,12 @@ import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 import fakeExplorationData from "../../features/explorer/pages/explorations/fakeExplorationData";
 import fakeExplorationLocationData from "../../features/explorer/pages/explorations/fakeExplorationLocationData";
+import { explorationsLoader } from "./loaders/explorationsLoader";
+import { explorationLoader } from "./loaders/explorationLoader";
+import { locationLoader } from "./loaders/locationLoader";
+import { explorersLoader } from "./loaders/explorersLoader";
+import { profileLoader } from "./loaders/profileLoader";
+import { ambassadorDashboardLoader } from "./loaders/ambassadorDashboardLoader";
 // import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(
@@ -42,33 +48,53 @@ const AmbassadorRoutes = [
     index: true,
     loader: () => redirect("/ambassador/dashboard"),
   },
-  { path: "dashboard", element: <AmbassadorDashboard /> },
+  {
+    path: "dashboard",
+    element: <AmbassadorDashboard />,
+    loader: ambassadorDashboardLoader,
+  },
 
-  { path: "explorations", element: <ManageExplorations /> },
+  {
+    path: "explorations",
+    element: <ManageExplorations />,
+    loader: explorationsLoader,
+  },
   { path: "explorations/create", element: <CreateExploration /> },
-  { path: "explorations/:explorationId", element: <ViewExploration /> },
+  {
+    path: "explorations/:explorationId",
+    element: <ViewExploration />,
+    loader: explorationLoader,
+  },
   {
     path: "explorations/:explorationId/edit",
     element: <CreateExploration exploration={fakeExplorationData} />,
+    loader: explorationLoader,
   },
 
   {
     path: "explorations/:explorationId/locations/create",
     element: <CreateLocation />,
+    loader: explorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/:explorationLocationId",
     element: <ViewLocation />,
+    loader: locationLoader,
   },
 
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
     element: <CreateLocation location={fakeExplorationLocationData} />,
+    loader: locationLoader,
   },
 
-  { path: "users", element: <ManageExplorers /> },
-  { path: "users/:userId", element: <ExplorerDetails /> },
-  { path: "profile", element: <AmbassadorProfile /> },
+  { path: "users", element: <ManageExplorers />, loader: explorersLoader },
+  {
+    path: "users/:userId",
+    element: <ExplorerDetails />,
+    loader: profileLoader,
+  },
+  { path: "profile", element: <AmbassadorProfile />, loader: profileLoader },
 ];
 
 export default AmbassadorRoutes;
