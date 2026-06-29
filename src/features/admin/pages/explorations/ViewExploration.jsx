@@ -2,10 +2,12 @@ import ExplorationCard from "../../../../shared/components/explorations/Explorat
 import AdminExplorationCardHeaderDetails from "../../../../shared/components/management/AdminExplorationCardHeaderDetails";
 import AdminExplorationCardLocations from "../../../../shared/components/management/AdminExplorationCardLocations";
 import Button from "../../../../shared/components/ui/Button";
-
+import { useLoaderData } from "react-router-dom";
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 
-function ViewExploration({ exploration = fakeExplorationData }) {
+function ViewExploration() {
+  const exploration = useLoaderData();
+
   const headerDetails = (
     <AdminExplorationCardHeaderDetails author="me" lastUpdated="today" />
   );
@@ -16,7 +18,7 @@ function ViewExploration({ exploration = fakeExplorationData }) {
 
   return (
     <ExplorationCard
-      exploration={fakeExplorationData}
+      exploration={exploration}
       headerDetails={headerDetails}
       locationDetails={locationDetails}
       type="admin"

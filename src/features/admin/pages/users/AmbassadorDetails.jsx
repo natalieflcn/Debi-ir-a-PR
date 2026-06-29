@@ -12,7 +12,8 @@ import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
-import { AmbassadorExplorersTable } from "./ManageUsers";
+
+import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -31,15 +32,16 @@ const StyledIcon = styled.div`
 
 function AmbassadorDetails() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const usersData = useLoaderData();
 
   const ambassadorId = useParams().ambassadorId;
-  console.log(ambassadorId);
-  console.log(AmbassadorExplorersTable.rows);
-  const ambassador = AmbassadorExplorersTable.rows.find(
+
+  const ambassador = usersData.find(
     (user) => String(user.id) === String(ambassadorId),
   );
 
-  console.log(ambassador);
+  console.log(usersData, ambassador);
+
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">

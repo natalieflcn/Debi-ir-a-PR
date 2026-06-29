@@ -6,8 +6,9 @@ import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
-import { AmbassadorExplorersTable } from "./ManageUsers";
+
 import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -17,10 +18,13 @@ const StyledExplorerDetails = styled.div`
 
 function ExplorerDetails() {
   const explorerId = useParams().explorerId;
-  const explorer = AmbassadorExplorersTable.rows.find(
+  const usersData = useLoaderData();
+
+  const explorer = usersData.find(
     (user) => String(user.id) === String(explorerId),
   );
 
+  console.log(usersData, explorer);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">

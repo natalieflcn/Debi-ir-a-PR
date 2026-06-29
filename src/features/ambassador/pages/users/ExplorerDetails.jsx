@@ -7,7 +7,7 @@ import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
-import { AmbassadorExplorersTable } from "../../../admin/pages/users/ManageUsers";
+
 import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDetails = styled.div`

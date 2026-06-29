@@ -93,12 +93,12 @@ const AdminRoutes = [
   {
     path: "users/explorers/:explorerId",
     element: <ExplorerDetails />,
-    loader: profileLoader,
+    loader: usersLoader,
   },
   {
     path: "users/ambassadors/:ambassadorId",
     element: <AmbassadorDetails />,
-    loader: profileLoader,
+    loader: usersLoader,
   },
   { path: "profile", element: <AdminProfile />, loader: profileLoader },
 ];

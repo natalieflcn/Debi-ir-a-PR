@@ -58,5 +58,5 @@ const fakeUsers = [
 ];
 
 export async function usersLoader() {
-  return { users: fakeUsers };
+  return fakeUsers;
 }

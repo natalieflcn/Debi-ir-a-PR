@@ -20,6 +20,7 @@ import LocationTagBuilder from "../../../../shared/components/form/LocationTagBu
 import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -34,7 +35,8 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateExploration({ exploration }) {
+function CreateExploration() {
+  const exploration = useLoaderData();
   const isEditing = Boolean(exploration);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");

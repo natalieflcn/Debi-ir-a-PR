@@ -10,112 +10,7 @@ import FilterDropdown from "../../../../shared/components/dropdown/FilterDropdow
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
-
-// export const AmbassadorExplorersTable = {
-//   columns: [
-//     {
-//       id: "name",
-//       heading: "Name",
-//       render: (row) => (
-//         <RouterLink to={`${row.userType.toLowerCase()}s/${row.id}`}>
-//           <TableNameCell>
-//             <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-//           </TableNameCell>
-//         </RouterLink>
-//       ),
-//     },
-//     {
-//       id: "userType",
-//       heading: "User Type",
-//       render: (row) => (
-//         <ActionTableCell>
-//           <Row $direction="horizontal" $gap="var(--gap-sm)">
-//             {row.userType?.charAt(0).toUpperCase()}
-//             {row.userType?.slice(1)}
-//           </Row>
-//         </ActionTableCell>
-//       ),
-//     },
-//     { id: "email", heading: "Email" },
-//     { id: "dateJoined", heading: "Date Joined" },
-//     {
-//       id: "action",
-//       heading: "Action",
-//       render: (row) => {
-//         console.log(row);
-//         return (
-//           <ActionTableCell>
-//             <Row $direction="horizontal" $gap="var(--gap-sm)">
-//               <RouterLink to={`${row.userType?.toLowerCase()}s/${row.id}`}>
-//                 <Button $size="extraSmall" $variation="primary">
-//                   View
-//                 </Button>
-//               </RouterLink>
-//             </Row>
-//           </ActionTableCell>
-//         );
-//       },
-//     },
-//   ],
-//   rows: [
-//     {
-//       id: 0,
-//       name: "Natalie Falcon",
-//       userType: "explorer",
-//       title: "Explorer Title",
-//       email: "natalie.dflcn@gmail.com",
-//       dateJoined: "January 17, 2025",
-//       action: "View",
-//     },
-//     {
-//       id: 1,
-//       name: "Alethia Ragland",
-//       userType: "ambassador",
-//       title: "Ambassador",
-//       email: "thearagland@gmail.com",
-//       dateJoined: "June 23, 2024",
-//       action: "View",
-//     },
-//     {
-//       id: 2,
-//       name: "Jorge Gonzalez",
-//       userType: "explorer",
-//       title: "Explorer Title",
-//       email: "genioa@gmail.com",
-//       explorationsCompleted: 6,
-//       dateJoined: "March 6, 2023",
-//       action: "View",
-//     },
-//     {
-//       id: 3,
-//       name: "Natalie Falcon",
-//       userType: "explorer",
-//       title: "Explorer Title",
-//       email: "natalie.dflcn@gmail.com",
-//       dateJoined: "January 17, 2025",
-//       action: "View",
-//     },
-//     {
-//       id: 4,
-//       name: "Alethia Ragland",
-//       userType: "ambassador",
-//       title: "Explorer Title",
-//       email: "thearagland@gmail.com",
-//       dateJoined: "June 23, 2024",
-//       action: "View",
-//     },
-//     {
-//       id: 5,
-//       name: "Jorge Gonzalez",
-//       userType: "explorer",
-//       title: "Explorer Title",
-//       email: "genioa@gmail.com",
-//       explorationsCompleted: 6,
-//       dateJoined: "March 6, 2023",
-//       action: "View",
-//     },
-//   ],
-// };
+import { useLoaderData } from "react-router-dom";
 
 export const UsersTableColumns = [
   {
@@ -229,10 +124,11 @@ const filterCategories = [
 
 const ITEMS_PER_PAGE = 10;
 
-function ManageUsers({ usersData = null }) {
+function ManageUsers() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const usersData = useLoaderData();
 
   const filteredUsers = [...usersData].filter((user) => {
     if (filterBy === "all") return true;
@@ -272,7 +168,7 @@ function ManageUsers({ usersData = null }) {
         />
       </Row>
 
-      <CondensedTable columns={null} rows={paginatedUsers} />
+      <CondensedTable columns={UsersTableColumns} rows={paginatedUsers} />
 
       <Pagination
         totalPages={totalPages}

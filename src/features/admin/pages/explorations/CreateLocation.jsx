@@ -15,6 +15,7 @@ import LocationTagBuilder from "../../../../shared/components/form/LocationTagBu
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
+import { useLoaderData } from "react-router-dom";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -29,10 +30,7 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateLocation({
-  exploration = fakeExplorationData,
-  location = false,
-}) {
+function CreateLocation({ location = false }) {
   const isEditing = Boolean(location);
 
   const [name, setName] = useState(isEditing ? location.name : "");
@@ -47,6 +45,7 @@ function CreateLocation({
   const [images, setImages] = useState(isEditing ? location.images : []);
   const [tags, setTags] = useState(isEditing ? location.tags : []);
   const [formErrors, setFormErrors] = useState({});
+  const exploration = useLoaderData();
 
   const navigate = useNavigate();
 

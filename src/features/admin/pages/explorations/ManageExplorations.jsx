@@ -12,6 +12,7 @@ import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAdminUI } from "../../contexts/AdminUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
+import { useLoaderData } from "react-router-dom";
 
 const getAdminExplorationsTable = function () {
   return {
@@ -103,16 +104,15 @@ function ManageExplorations() {
   const [sortBy, setSortBy] = useState("featured");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const explorations = useLoaderData();
 
-  const filteredExplorations = [...fakeExplorationsData].filter(
-    (exploration) => {
-      if (filterBy === "all") return true;
+  const filteredExplorations = [...explorations].filter((exploration) => {
+    if (filterBy === "all") return true;
 
-      return exploration.tags.some((tag) =>
-        tag.toLowerCase().includes(filterBy.toLowerCase()),
-      );
-    },
-  );
+    return exploration.tags.some((tag) =>
+      tag.toLowerCase().includes(filterBy.toLowerCase()),
+    );
+  });
 
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
     if (sortBy === "numStops") return a.numStops - b.numStops;
