@@ -21,14 +21,16 @@ const ExplorationCards = styled.div`
   flex-wrap: wrap;
   gap: var(--gap-2xl);
 `;
-const ExplorerExplorationCardButton = [
-  {
-    id: "learn-more",
-    buttonVariation: "primary",
-    buttonName: "Learn More ",
-    buttonLink: "/explorations/:explorationId",
-  },
-];
+const ExplorerExplorationCardButton = function (exploration) {
+  return [
+    {
+      id: "learn-more",
+      buttonVariation: "primary",
+      buttonName: "Learn More ",
+      buttonLink: `/explorations/${exploration.id}`,
+    },
+  ];
+};
 
 const ITEMS_PER_PAGE = 9;
 

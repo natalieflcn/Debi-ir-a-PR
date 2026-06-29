@@ -211,19 +211,21 @@
   - [x] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
     - [x] Make sure all inputs are controlled with state
       - [x] Configure Locations in Create/Edit Exploration later (NOTE: After decoupling false data from component props)
-    - [~] Validate each form field before form is allowed to submit
-    - [~] Error messages display per field when validation fails
-    - [~] Display feedback in the UI
-      ~~- [ ] Disabled submit button until entire form is completed~~
+    - [x] Validate each form field before form is allowed to submit
+    - [x] Error messages display per field when validation fails
+    - [x] Display feedback in the UI
+          ~~- [ ] Disabled submit button until entire form is completed~~
     - [x] Email format validated on login/signup/profile forms
     - [x] Password strength validated on signup/profile forms
     - [x] Add confirm password form field to signup/profile forms
     - [x] Form method attributes point to correct REST endpoints
   - [x] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button
-  - [~] Editing forms should prepopulate themselves with existing data
+  - [x] Editing forms should prepopulate themselves with existing data
     - [x] Edit Location
-    - [~] Edit Exploration
-  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data TODO 3
+    - [x] Edit Exploration
+
+  ## Week: June 29 – July 4
+  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data
     - [ ] All fake data shapes match MongoDB schema field names
     - [ ] Every action and loader in router has placeholder
     - [ ] Components use useLoaderData pattern instead of importing fake data directly

@@ -73,6 +73,7 @@ function CreateLocation({ exploration = fakeExplorationData, location }) {
       return;
     }
 
+    const newId = crypto.randomUUID();
     const formData = {
       name,
       address,
@@ -83,12 +84,12 @@ function CreateLocation({ exploration = fakeExplorationData, location }) {
       tags,
     };
 
-    navigate(`/ambassador/explorations/:explorationId`);
+    navigate(`/ambassador/explorations/${newId}`);
   };
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to="/ambassador/explorations/:explorationId">
+      <RouterLink to={`/ambassador/explorations/${exploration.id}`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>

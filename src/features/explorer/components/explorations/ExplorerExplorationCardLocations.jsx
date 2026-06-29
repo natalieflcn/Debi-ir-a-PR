@@ -6,7 +6,11 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
-function ExplorerExplorationCardLocations({ locations, hasStarted }) {
+function ExplorerExplorationCardLocations({
+  locations,
+  hasStarted,
+  exploration,
+}) {
   return locations.map((location) => (
     <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
       <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
@@ -22,7 +26,9 @@ function ExplorerExplorationCardLocations({ locations, hasStarted }) {
         <Heading as="h5">{location.name}</Heading>
       </Row>
       {hasStarted && (
-        <RouterLink to="/explorations/:explorationId/locations/:locationId">
+        <RouterLink
+          to={`/explorations/${exploration.id}/locations/${location.id}`}
+        >
           <Button $variation="primary" $size="extraSmall">
             Details
           </Button>

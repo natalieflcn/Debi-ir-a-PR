@@ -10,12 +10,17 @@ import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import AdminFooterCTA from "../../../../shared/components/management/AdminFooterCTA";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
+import { useParams } from "react-router-dom";
 
 function ViewLocation() {
   const footerCTA = <AdminFooterCTA />;
 
+  const { explorationId } = useParams();
+
   return (
     <ExplorationLocationCard
+      exploration={explorationId}
       explorationLocation={fakeExplorationLocationData}
       userCompleted={true}
       footerCTA={footerCTA}

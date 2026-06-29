@@ -13,36 +13,38 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAdminUI } from "../../contexts/AdminUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
 
-const AdminExplorationsTable = {
-  columns: [
-    { id: "name", heading: "Exploration Name" },
-    { id: "numStops", heading: "# of Stops" },
-    { id: "startingCity", heading: "Starting City" },
-    { id: "createdBy", heading: "Created By" },
-    { id: "dateCreated", heading: "Date Created" },
-    { id: "dateUpdated", heading: "Date Updated" },
-    {
-      id: "action",
-      heading: "Action",
-      render: () => (
-        <ActionTableCell>
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to=":explorationId">
-              <Button $size="extraSmall" $variation="secondary">
-                View
-              </Button>
-            </RouterLink>
+const getAdminExplorationsTable = function () {
+  return {
+    columns: [
+      { id: "name", heading: "Exploration Name" },
+      { id: "numStops", heading: "# of Stops" },
+      { id: "startingCity", heading: "Starting City" },
+      { id: "createdBy", heading: "Created By" },
+      { id: "dateCreated", heading: "Date Created" },
+      { id: "dateUpdated", heading: "Date Updated" },
+      {
+        id: "action",
+        heading: "Action",
+        render: (row) => (
+          <ActionTableCell>
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <RouterLink to={`${row.id}`}>
+                <Button $size="extraSmall" $variation="secondary">
+                  View
+                </Button>
+              </RouterLink>
 
-            <RouterLink to=":explorationId/edit">
-              <Button $size="extraSmall" $variation="primary">
-                Edit
-              </Button>
-            </RouterLink>
-          </Row>
-        </ActionTableCell>
-      ),
-    },
-  ],
+              <RouterLink to={`${row.id}/edit`}>
+                <Button $size="extraSmall" $variation="primary">
+                  Edit
+                </Button>
+              </RouterLink>
+            </Row>
+          </ActionTableCell>
+        ),
+      },
+    ],
+  };
 };
 
 const explorationsTableTheme = {
@@ -77,20 +79,22 @@ const ExplorationCards = styled.div`
   gap: var(--gap-2xl);
 `;
 
-const AdminExplorationCardButton = [
-  {
-    id: "view",
-    buttonVariation: "secondary",
-    buttonName: "View ",
-    buttonLink: "/admin/explorations/:explorationId",
-  },
-  {
-    id: "edit",
-    buttonVariation: "primary",
-    buttonName: "Edit ",
-    buttonLink: "/admin/explorations/:explorationId/edit",
-  },
-];
+const getAdminExplorationCardButton = function (explorationId) {
+  return [
+    {
+      id: "view",
+      buttonVariation: "secondary",
+      buttonName: "View ",
+      buttonLink: `/admin/explorations/${explorationId}`,
+    },
+    {
+      id: "edit",
+      buttonVariation: "primary",
+      buttonName: "Edit ",
+      buttonLink: `/admin/explorations/${explorationId}/edit`,
+    },
+  ];
+};
 
 const ITEMS_PER_PAGE = 9;
 
@@ -156,7 +160,7 @@ function ManageExplorations() {
               description={exploration.description}
               numStops={exploration.numStops}
               startingCity={exploration.startingCity}
-              buttonDetails={AdminExplorationCardButton}
+              buttonDetails={getAdminExplorationCardButton(exploration.id)}
               key={exploration.id}
             />
           ))}
@@ -165,7 +169,7 @@ function ManageExplorations() {
 
       {viewMode === "list" && (
         <CondensedTable
-          columns={AdminExplorationsTable.columns}
+          columns={getAdminExplorationsTable().columns}
           rows={paginatedExplorations}
           $theme={explorationsTableTheme}
         ></CondensedTable>

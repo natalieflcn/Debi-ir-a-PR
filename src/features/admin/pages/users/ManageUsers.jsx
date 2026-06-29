@@ -11,13 +11,13 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 
-const AmbassadorExplorersTable = {
+export const AmbassadorExplorersTable = {
   columns: [
     {
       id: "name",
       heading: "Name",
       render: (row) => (
-        <RouterLink to={`${row.userType.toLowerCase()}s/:userId`}>
+        <RouterLink to={`${row.userType.toLowerCase()}s/${row.id}`}>
           <TableNameCell>
             <Bold $color="var(--color-dark-200)">{row.name}</Bold>
           </TableNameCell>
@@ -30,8 +30,8 @@ const AmbassadorExplorersTable = {
       render: (row) => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            {row.userType.charAt(0).toUpperCase()}
-            {row.userType.slice(1)}
+            {row.userType?.charAt(0).toUpperCase()}
+            {row.userType?.slice(1)}
           </Row>
         </ActionTableCell>
       ),
@@ -41,17 +41,20 @@ const AmbassadorExplorersTable = {
     {
       id: "action",
       heading: "Action",
-      render: (row) => (
-        <ActionTableCell>
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${row.userType.toLowerCase()}s/:userId`}>
-              <Button $size="extraSmall" $variation="primary">
-                View
-              </Button>
-            </RouterLink>
-          </Row>
-        </ActionTableCell>
-      ),
+      render: (row) => {
+        console.log(row);
+        return (
+          <ActionTableCell>
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <RouterLink to={`${row.userType?.toLowerCase()}s/${row.id}`}>
+                <Button $size="extraSmall" $variation="primary">
+                  View
+                </Button>
+              </RouterLink>
+            </Row>
+          </ActionTableCell>
+        );
+      },
     },
   ],
   rows: [
@@ -81,7 +84,7 @@ const AmbassadorExplorersTable = {
       action: "View",
     },
     {
-      id: 0,
+      id: 3,
       name: "Natalie Falcon",
       userType: "explorer",
       email: "natalie.dflcn@gmail.com",
@@ -89,7 +92,7 @@ const AmbassadorExplorersTable = {
       action: "View",
     },
     {
-      id: 1,
+      id: 4,
       name: "Alethia Ragland",
       userType: "ambassador",
       email: "thearagland@gmail.com",
@@ -97,7 +100,7 @@ const AmbassadorExplorersTable = {
       action: "View",
     },
     {
-      id: 2,
+      id: 5,
       name: "Jorge Gonzalez",
       userType: "explorer",
       email: "genioa@gmail.com",
@@ -200,6 +203,7 @@ function ManageUsers({ usersData = AmbassadorExplorersTable.rows }) {
     setCurrentPage(1);
   }, [sortBy, filterBy]);
 
+  console.log("paginatedUsers:", paginatedUsers);
   return (
     <StyledUsers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">

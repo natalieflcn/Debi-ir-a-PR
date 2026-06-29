@@ -95,7 +95,9 @@ function CreateExploration({ exploration }) {
       return;
     }
 
+    const newId = crypto.randomUUID();
     const formData = {
+      id: newId,
       name,
       startingCity,
       headerImage,
@@ -106,13 +108,13 @@ function CreateExploration({ exploration }) {
       tags,
     };
 
-    navigate(`/admin/explorations/:explorationId`);
+    navigate(`/admin/explorations/${newId}`);
   };
 
   return (
     <Row $gap="var(--gap-lg)">
       {exploration ? (
-        <RouterLink to="/admin/explorations/:explorationId">
+        <RouterLink to={`/admin/explorations/${exploration.id}`}>
           <Button $size="small" $variation="darkRed">
             <FaArrowLeft size={12} /> Back to{" "}
             {exploration?.name ?? "Exploration"}

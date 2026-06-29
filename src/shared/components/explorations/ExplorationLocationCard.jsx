@@ -21,7 +21,8 @@ import {
 import RouterLink from "../routing/RouterLink";
 
 function ExplorationLocationCard({
-  explorationLocation,
+  exploration,
+  location,
   userCompleted,
   headerDetails,
   footerCTA,
@@ -29,23 +30,21 @@ function ExplorationLocationCard({
 }) {
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/${type}${type && "/"}explorations/:explorationId`}>
+      <RouterLink to={`/${type}${type && "/"}explorations/${exploration}`}>
         <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to {explorationLocation.name}
+          <FaArrowLeft size={12} /> Back to {location.name}
         </Button>
       </RouterLink>
 
       <StyledExplorationLocation>
-        <ExplorationLocationHeaderImage
-          $image={explorationLocation.headerImage}
-        >
+        <ExplorationLocationHeaderImage $image={location.headerImage}>
           <ExplorationLocationHeaderDetails>
             <Row $gap="var(--gap-sm)">
               <ExplorationLocationHeading
                 as="h2"
                 $shadowColor="var(--color-brown-400)"
               >
-                {explorationLocation.name}
+                {location.name}
               </ExplorationLocationHeading>
 
               {headerDetails}
@@ -53,7 +52,7 @@ function ExplorationLocationCard({
               <Row $direction="horizontal" $gap="var(--gap-sm)" $align="center">
                 <IoLocationSharp color="var(--color-red-300)" />
                 <Bold $color="var(--color-dark-200)">
-                  {explorationLocation.locationAddress}
+                  {location.locationAddress}
                 </Bold>
               </Row>
             </Row>
@@ -64,9 +63,9 @@ function ExplorationLocationCard({
             <ExplorationLocationAbout>
               <Row $gap="var(--gap-sm)">
                 <Heading as="h3" $color="var(--color-red-300)">
-                  ABOUT {explorationLocation.name.toUpperCase()}
+                  ABOUT {location.name.toUpperCase()}
                 </Heading>
-                {explorationLocation.description}
+                {location.description}
               </Row>
               <ExplorationLocationTags>
                 <ExplorationLocationTag>hi</ExplorationLocationTag>
@@ -76,7 +75,7 @@ function ExplorationLocationCard({
             <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
           </Row>
           <Row $direction="horizontal">
-            {explorationLocation.images.map((image) => (
+            {location.images.map((image) => (
               <Image
                 src={image.imageURL}
                 $align="center"

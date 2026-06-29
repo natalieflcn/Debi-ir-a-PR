@@ -1,6 +1,7 @@
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 
 import fakeExplorationLocationData from "./fakeExplorationLocationData";
+import fakeExplorationsData from "./fakeExplorationsData";
 import { FaRegCircle } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
@@ -8,6 +9,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import ExplorationLocationCard from "../../../../shared/components/explorations/ExplorationLocationCard";
 import { ExplorationLocationHeading } from "../../../../shared/components/explorations/explorationLocationCard.styles";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function ExplorerHeaderDetails({ userCompleted, locationName }) {
   return (
@@ -64,6 +66,8 @@ function ExplorationLocation({
 }) {
   const [userCompleted, setUserCompleted] = useState(false);
 
+  const { explorationId } = useParams(); // ✅ get id from URL
+
   function handleToggleCompleted() {
     setUserCompleted((prev) => !prev);
   }
@@ -83,6 +87,7 @@ function ExplorationLocation({
 
   return (
     <ExplorationLocationCard
+      exploration={explorationId}
       explorationLocation={explorationLocation}
       headerDetails={headerDetails}
       footerCTA={footerCTA}

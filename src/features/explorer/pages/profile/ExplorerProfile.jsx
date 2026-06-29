@@ -2,6 +2,8 @@ import styled from "styled-components";
 import ProfileInformation from "../../../../shared/components/profile/ProfileInformation";
 import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileBadgeCollection from "../../../explorer/components/profile/ProfileBadgeCollection";
+import { AmbassadorExplorersTable } from "../../../admin/pages/users/ManageUsers";
+import { useParams } from "react-router-dom";
 
 const StyledExplorerProfile = styled.div`
   display: flex;
@@ -14,9 +16,9 @@ function ExplorerProfile() {
     <StyledExplorerProfile>
       <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
       <ProfileInformation
-        userEmail="Natalie.dflcn@gmail.com"
+        userEmail="natalie.fldl@gmail.com"
         userPassword="mypassword"
-        dateJoined="Jan 30, 2026"
+        dateJoined="June 29, 2026"
       />
       <ProfileBadgeCollection />
     </StyledExplorerProfile>

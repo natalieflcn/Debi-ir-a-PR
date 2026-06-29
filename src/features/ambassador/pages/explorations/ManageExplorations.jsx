@@ -24,16 +24,16 @@ const AmbassadorExplorationsTable = {
     {
       id: "action",
       heading: "Action",
-      render: () => (
+      render: (row) => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to="/ambassador/explorations/:explorationId">
+            <RouterLink to={`/ambassador/explorations/${row.id}`}>
               <Button $size="extraSmall" $variation="secondary">
                 View
               </Button>
             </RouterLink>
 
-            <RouterLink to="/ambassador/explorations/:explorationId/edit">
+            <RouterLink to={`/ambassador/explorations/${row.id}/edit`}>
               <Button $size="extraSmall" $variation="primary">
                 Edit
               </Button>
@@ -82,13 +82,13 @@ const AmbassadorExplorationCardButton = [
     id: "view",
     buttonVariation: "secondary",
     buttonName: "View ",
-    buttonLink: "/ambassador/explorations/:explorationId",
+    buttonLink: "/ambassador/explorations/explorationId",
   },
   {
     id: "edit",
     buttonVariation: "primary",
     buttonName: "Edit ",
-    buttonLink: "/ambassador/explorations/:explorationId/edit",
+    buttonLink: "/ambassador/explorations/explorationId/edit",
   },
 ];
 
@@ -111,8 +111,6 @@ function ManageExplorations() {
   );
 
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-   
-
     if (sortBy === "numStops") return a.numStops - b.numStops;
     else return a.name.localeCompare(b.name);
   });
