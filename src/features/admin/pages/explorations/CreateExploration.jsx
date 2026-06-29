@@ -87,7 +87,8 @@ function CreateExploration({ exploration }) {
     if (images.length < 1) errors.images = "Please provide at least one image.";
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
-    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+    if (tags.length < 1)
+      errors.tags = "Please select at least one exploration tag.";
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);

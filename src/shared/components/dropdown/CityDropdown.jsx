@@ -129,9 +129,10 @@ function CityDropdown({ onSelect, value }) {
     city.name.toLowerCase().includes(search.toLowerCase()),
   );
 
+  console.log(value);
   function handleSelect(city) {
     console.log(onSelect);
-    onSelect(city);
+    onSelect(city.name);
     setIsOpen(false);
     setSearch("");
     console.log(city);
@@ -149,7 +150,7 @@ function CityDropdown({ onSelect, value }) {
             setIsOpen(!isOpen);
           }}
         >
-          {value ? value.name : "Select a city..."}
+          {value ? value : "Select a city..."}
         </StyledButton>
 
         {isOpen && (

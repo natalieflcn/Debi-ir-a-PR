@@ -157,7 +157,7 @@ function ManageExplorations() {
               name={exploration.name}
               description={exploration.description}
               numStops={exploration.numStops}
-              startingCity={exploration.startingCity.name}
+              startingCity={exploration.startingCity}
               buttonDetails={AdminExplorationCardButton}
               key={exploration.id}
             />

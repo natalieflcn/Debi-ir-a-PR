@@ -62,7 +62,7 @@ function ExplorationCard({
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoLocationSharp color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
-                    {exploration.startingCity.name}, PR
+                    {exploration.startingCity}, PR
                   </Bold>
                 </Row>
               </Row>

@@ -3,7 +3,7 @@ const fakeExplorationData = {
   name: "Toa Alta Tour",
   headerImage: ["/src/assets/images/content/TEMP.png"],
   numStops: 5,
-  startingCity: { id: 71, name: "Trujillo Alto" },
+  startingCity: "Bayamon",
   tagline: "hello",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",

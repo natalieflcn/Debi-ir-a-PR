@@ -208,9 +208,9 @@
   - [x] Wire up Error, PageNotFound page buttons
   - [x] Add LocationTagBuilder to Create/Edit Location form
   - [x] Add Bubbles background to Error and PageNotFound page
-  - [~] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback) TODO 2
+  - [x] All inputs in forms should be controlled (validated client-side, show appropriate UI feedback)
     - [x] Make sure all inputs are controlled with state
-      - [ ] Configure Locations in Create/Edit Exploration later (NOTE: After decoupling false data from component props)
+      - [x] Configure Locations in Create/Edit Exploration later (NOTE: After decoupling false data from component props)
     - [~] Validate each form field before form is allowed to submit
     - [~] Error messages display per field when validation fails
     - [~] Display feedback in the UI
@@ -219,12 +219,16 @@
     - [x] Password strength validated on signup/profile forms
     - [x] Add confirm password form field to signup/profile forms
     - [x] Form method attributes point to correct REST endpoints
-  - [ ] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button
-  - [ ] Refine routing and navigation
-    - [ ] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
+  - [x] LocationBuilder/CurrentLocations should remove locations from list with "Delete" button
+  - [~] Editing forms should prepopulate themselves with existing data
+    - [x] Edit Location
+    - [~] Edit Exploration
   - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data TODO 3
     - [ ] All fake data shapes match MongoDB schema field names
     - [ ] Every action and loader in router has placeholder
     - [ ] Components use useLoaderData pattern instead of importing fake data directly
+    - [ ] Refine routing and navigation
+    - [ ] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
   - [ ] Images have fallback/placeholder when src is missing
+  - [ ] Render exploration tags from the data, instead of hard-coded data
   - [ ] Make website responsive
