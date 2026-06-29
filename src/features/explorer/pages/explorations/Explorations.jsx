@@ -8,6 +8,7 @@ import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
+import { useLoaderData } from "react-router-dom";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -38,16 +39,15 @@ function Explorations() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const explorations = useLoaderData();
 
-  const filteredExplorations = [...fakeExplorationsData].filter(
-    (exploration) => {
-      if (filterBy === "all") return true;
+  const filteredExplorations = [...explorations].filter((exploration) => {
+    if (filterBy === "all") return true;
 
-      return exploration.tags.some((tag) =>
-        tag.toLowerCase().includes(filterBy.toLowerCase()),
-      );
-    },
-  );
+    return exploration.tags.some((tag) =>
+      tag.toLowerCase().includes(filterBy.toLowerCase()),
+    );
+  });
 
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
     if (sortBy === "numStops") return a.numStops - b.numStops;
@@ -78,7 +78,7 @@ function Explorations() {
             description={exploration.description}
             numStops={exploration.numStops}
             startingCity={exploration.startingCity}
-            buttonDetails={ExplorerExplorationCardButton}
+            buttonDetails={ExplorerExplorationCardButton(exploration)}
             key={exploration.id}
           />
         ))}

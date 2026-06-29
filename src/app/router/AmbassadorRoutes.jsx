@@ -92,7 +92,7 @@ const AmbassadorRoutes = [
   {
     path: "users/:userId",
     element: <ExplorerDetails />,
-    loader: profileLoader,
+    loader: explorersLoader,
   },
   { path: "profile", element: <AmbassadorProfile />, loader: profileLoader },
 ];

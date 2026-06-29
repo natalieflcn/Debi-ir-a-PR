@@ -8,7 +8,7 @@ import ImageUploader from "../../../../shared/components/form/ImageUploader";
 import { useState } from "react";
 import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
 import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
-import fakeExplorationLocationData from "../../../explorer/pages/explorations/fakeExplorationLocationData";
+
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 import Row from "../../../../shared/components/layout/Row";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -32,7 +33,8 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateExploration({ exploration }) {
+function CreateExploration() {
+  const exploration = useLoaderData() || "";
   const isEditing = Boolean(exploration);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");

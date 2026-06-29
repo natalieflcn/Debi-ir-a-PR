@@ -1,9 +1,11 @@
 const fakeProfileData = {
-  name: "Natalie Falcon",
-  userEmail: "natalie.dflcn@gmail.com",
+  name: "Natalie Loader",
+  title: "Ambassador",
+  email: "natalie.dflcn@gmail.com",
   password: "hello123",
+  dateJoined: "January 7, 2026",
 };
 
 export async function profileLoader() {
-  return { userData: fakeProfileData };
+  return fakeProfileData;
 }

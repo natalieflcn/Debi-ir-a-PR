@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileInformation from "../../../../shared/components/profile/ProfileInformation";
+import { useLoaderData } from "react-router-dom";
 
 const StyledAmbassadorProfile = styled.div`
   display: flex;
@@ -9,13 +10,18 @@ const StyledAmbassadorProfile = styled.div`
 `;
 
 function AmbassadorProfile() {
+  const profileData = useLoaderData();
+
   return (
     <StyledAmbassadorProfile>
-      <ProfileHeader userName="Natalie Ambassador" userTitle="Ambassador" />
+      <ProfileHeader
+        userName={profileData.name}
+        userTitle={profileData.title}
+      />
       <ProfileInformation
-        userEmail="Natalie.dflcn@gmail.com"
-        userPasswordLength="yuhyuhyuh"
-        dateJoined="Jan 30, 2026"
+        userEmail={profileData.email}
+        userPassword={profileData.password}
+        dateJoined={profileData.datedJoined}
       />
     </StyledAmbassadorProfile>
   );

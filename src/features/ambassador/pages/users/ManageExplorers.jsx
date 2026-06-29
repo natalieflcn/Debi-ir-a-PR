@@ -8,96 +8,39 @@ import Bold from "../../../../shared/components/typography/Bold";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
+import { useLoaderData } from "react-router-dom";
 
-const AmbassadorExplorersTable = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <RouterLink to={`/${row.id}`}>
-          <TableNameCell>
-            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-          </TableNameCell>
-        </RouterLink>
-      ),
-    },
-    { id: "email", heading: "Email" },
-    { id: "explorationsCompleted", heading: "Explorations Completed" },
-    { id: "dateJoined", heading: "Date Joined" },
-    {
-      id: "action",
-      heading: "Action",
-      render: (row) => (
-        <ActionTableCell>
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${row.id}`}>
-              <Button $size="extraSmall" $variation="primary">
-                View
-              </Button>
-            </RouterLink>
-          </Row>
-        </ActionTableCell>
-      ),
-    },
-  ],
-  rows: [
-    {
-      id: 0,
-      name: "Natalie Falcon",
-      title: "Explorer Title",
-      email: "natalie.dflcn@gmail.com",
-      explorationsCompleted: 5,
-      dateJoined: "January 17, 2025",
-      action: "View",
-    },
-    {
-      id: 1,
-      name: "Alethia Ragland",
-      title: "Explorer Title",
-      email: "thearagland@gmail.com",
-      explorationsCompleted: 3,
-      dateJoined: "June 23, 2022",
-      action: "View",
-    },
-    {
-      id: 2,
-      name: "Jorge Gonzalez",
-      title: "Explorer Title",
-      email: "genioa@gmail.com",
-      explorationsCompleted: 6,
-      dateJoined: "March 6, 2021",
-      action: "View",
-    },
-    {
-      id: 3,
-      name: "Natalie Falcon",
-      title: "Explorer Title",
-      email: "natalie.dflcn@gmail.com",
-      explorationsCompleted: 5,
-      dateJoined: "January 17, 2025",
-      action: "View",
-    },
-    {
-      id: 4,
-      name: "Alethia Ragland",
-      title: "Explorer Title",
-      email: "thearagland@gmail.com",
-      explorationsCompleted: 3,
-      dateJoined: "June 23, 2025",
-      action: "View",
-    },
-    {
-      id: 5,
-      name: "Jorge Gonzalez",
-      title: "Explorer Title",
-      email: "genioa@gmail.com",
-      explorationsCompleted: 6,
-      dateJoined: "March 6, 2025",
-      action: "View",
-    },
-  ],
-};
+const AmbassadorExplorersTableColumns = [
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <RouterLink to={`/${row.id}`}>
+        <TableNameCell>
+          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+        </TableNameCell>
+      </RouterLink>
+    ),
+  },
+  { id: "email", heading: "Email" },
+  { id: "explorationsCompleted", heading: "Explorations Completed" },
+  { id: "dateJoined", heading: "Date Joined" },
+  {
+    id: "action",
+    heading: "Action",
+    render: (row) => (
+      <ActionTableCell>
+        <Row $direction="horizontal" $gap="var(--gap-sm)">
+          <RouterLink to={`${row.id}`}>
+            <Button $size="extraSmall" $variation="primary">
+              View
+            </Button>
+          </RouterLink>
+        </Row>
+      </ActionTableCell>
+    ),
+  },
+];
 
 const StyledExplorers = styled.div`
   display: flex;
@@ -147,12 +90,12 @@ const sortCategories = [
 
 const ITEMS_PER_PAGE = 10;
 
-function ManageExplorers({ usersData = AmbassadorExplorersTable.rows }) {
+function ManageExplorers() {
   const [sortBy, setSortBy] = useState("name");
-
   const [currentPage, setCurrentPage] = useState(1);
+  const explorersData = useLoaderData();
 
-  const sortedUsers = [...usersData].sort((a, b) => {
+  const sortedUsers = [...explorersData].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     else return new Date(b.dateJoined) - new Date(a.dateJoined);
   });
@@ -180,7 +123,7 @@ function ManageExplorers({ usersData = AmbassadorExplorersTable.rows }) {
       </Row>
 
       <CondensedTable
-        columns={AmbassadorExplorersTable.columns}
+        columns={AmbassadorExplorersTableColumns}
         rows={paginatedUsers}
         $theme={explorersTableTheme}
       />

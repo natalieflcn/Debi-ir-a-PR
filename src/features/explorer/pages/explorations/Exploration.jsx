@@ -8,8 +8,12 @@ import Button from "../../../../shared/components/ui/Button";
 import ExplorerExplorationCardHeaderDetails from "../../components/explorations/ExplorerExplorationCardHeaderDetails";
 import ExplorerExplorationCardLocations from "../../components/explorations/ExplorerExplorationCardLocations";
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
+import { useLoaderData } from "react-router-dom";
 
-function Exploration({ exploration = fakeExplorationData, userProgress = 0 }) {
+function Exploration({ userProgress = 0 }) {
+  const exploration = useLoaderData();
+
+  console.log(exploration);
   const hasStarted = userProgress !== 1;
 
   const headerDetails = (
@@ -19,10 +23,12 @@ function Exploration({ exploration = fakeExplorationData, userProgress = 0 }) {
       exploration={exploration}
     />
   );
+  console.log(exploration.locations);
 
   const locationDetails = (
     <ExplorerExplorationCardLocations
       hasStarted={hasStarted}
+      exploration={exploration}
       locations={exploration.locations}
     />
   );
@@ -33,7 +39,7 @@ function Exploration({ exploration = fakeExplorationData, userProgress = 0 }) {
 
   return (
     <ExplorationCard
-      exploration={fakeExplorationData}
+      exploration={exploration}
       headerDetails={headerDetails}
       locationDetails={locationDetails}
       footerCTA={footerCTA}

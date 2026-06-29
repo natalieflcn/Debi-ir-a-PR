@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
 import { AmbassadorExplorersTable } from "../../../admin/pages/users/ManageUsers";
+import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -16,10 +17,11 @@ const StyledExplorerDetails = styled.div`
 `;
 
 function ExplorerDetails() {
+  const explorers = useLoaderData();
   const explorerId = useParams().userId;
 
-  const explorer = AmbassadorExplorersTable.rows.find(
-    (user) => String(user.id) === String(explorerId),
+  const explorer = explorers.find(
+    (explorer) => String(explorer.id) === String(explorerId),
   );
   console.log(explorerId);
 

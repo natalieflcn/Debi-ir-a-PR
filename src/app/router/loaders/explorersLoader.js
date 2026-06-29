@@ -58,5 +58,10 @@ const fakeUsers = [
 ];
 
 export async function explorersLoader() {
-  return { explorers: fakeUsers };
+  return fakeUsers;
 }
+
+//  users: users.map(user => ({
+//             ...user,
+//             dateJoined: formatDate(user.createdAt),
+//         })),

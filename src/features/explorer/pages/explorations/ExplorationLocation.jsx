@@ -10,6 +10,7 @@ import ExplorationLocationCard from "../../../../shared/components/explorations/
 import { ExplorationLocationHeading } from "../../../../shared/components/explorations/explorationLocationCard.styles";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 function ExplorerHeaderDetails({ userCompleted, locationName }) {
   return (
@@ -61,12 +62,11 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
   );
 }
 
-function ExplorationLocation({
-  explorationLocation = fakeExplorationLocationData,
-}) {
+function ExplorationLocation() {
   const [userCompleted, setUserCompleted] = useState(false);
 
   const { explorationId } = useParams(); // ✅ get id from URL
+  const explorationLocation = useLoaderData();
 
   function handleToggleCompleted() {
     setUserCompleted((prev) => !prev);
@@ -85,10 +85,12 @@ function ExplorationLocation({
     />
   );
 
+  console.log(explorationLocation);
+
   return (
     <ExplorationLocationCard
       exploration={explorationId}
-      explorationLocation={explorationLocation}
+      location={explorationLocation}
       headerDetails={headerDetails}
       footerCTA={footerCTA}
       userCompleted={userCompleted}

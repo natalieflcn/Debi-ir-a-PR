@@ -5,8 +5,11 @@ import AdminExplorationCardLocations from "../../../../shared/components/managem
 import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+import { useLoaderData } from "react-router-dom";
 
-function ViewExploration({ exploration = fakeExplorationData }) {
+function ViewExploration() {
+  const exploration = useLoaderData();
+
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
       author="me"

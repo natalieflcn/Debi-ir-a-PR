@@ -224,14 +224,15 @@
     - [x] Edit Location
     - [x] Edit Exploration
 
-  ## Week: June 29 – July 4
-  - [ ] Prepare components to accept external data, instead of relying on internal, hard-coded false data
+  ## Week: June 29 – July 2
+  - [~] Prepare components to accept external data, instead of relying on internal, hard-coded false data
     - [ ] All fake data shapes match MongoDB schema field names
-    - [ ] Every action and loader in router has placeholder
-    - [ ] Components use useLoaderData pattern instead of importing fake data directly
+    - [~] Every action and loader in router has placeholder TODO 1
+    - [~] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation
-    - [ ] Create logic for ProtectedRoute
+    - [ ] Create logic for ProtectedRoute TODO 3
     - [x] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
-  - [ ] Images have fallback/placeholder when src is missing
+  - [ ] Images have fallback/placeholder when src is missing TODO 2
   - [x] Render exploration tags from the data, instead of hard-coded data
-  - [ ] Make website responsive
+  - [ ] Implement progress bar
+  - [ ] Make website responsive TODO 4

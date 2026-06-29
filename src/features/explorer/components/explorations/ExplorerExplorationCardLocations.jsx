@@ -11,6 +11,7 @@ function ExplorerExplorationCardLocations({
   hasStarted,
   exploration,
 }) {
+  console.log(exploration);
   return locations.map((location) => (
     <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
       <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">

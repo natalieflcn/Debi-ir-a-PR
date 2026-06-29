@@ -229,7 +229,7 @@ const filterCategories = [
 
 const ITEMS_PER_PAGE = 10;
 
-function ManageUsers({ usersData = AmbassadorExplorersTable.rows }) {
+function ManageUsers({ usersData = null }) {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -272,10 +272,7 @@ function ManageUsers({ usersData = AmbassadorExplorersTable.rows }) {
         />
       </Row>
 
-      <CondensedTable
-        columns={AmbassadorExplorersTable.columns}
-        rows={paginatedUsers}
-      />
+      <CondensedTable columns={null} rows={paginatedUsers} />
 
       <Pagination
         totalPages={totalPages}

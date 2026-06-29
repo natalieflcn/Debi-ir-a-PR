@@ -80,7 +80,6 @@ const AdminRoutes = [
     element: <ViewLocation />,
     loader: locationLoader,
   },
-
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
     element: <CreateLocation location={fakeExplorationLocationData} />,
@@ -101,7 +100,6 @@ const AdminRoutes = [
     element: <AmbassadorDetails />,
     loader: profileLoader,
   },
-
   { path: "profile", element: <AdminProfile />, loader: profileLoader },
 ];
 
