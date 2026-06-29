@@ -15,7 +15,7 @@ const AmbassadorExplorersTable = {
       id: "name",
       heading: "Name",
       render: (row) => (
-        <RouterLink to=":userId">
+        <RouterLink to={`/${row.id}`}>
           <TableNameCell>
             <Bold $color="var(--color-dark-200)">{row.name}</Bold>
           </TableNameCell>
@@ -28,10 +28,10 @@ const AmbassadorExplorersTable = {
     {
       id: "action",
       heading: "Action",
-      render: () => (
+      render: (row) => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to=":userId">
+            <RouterLink to={`${row.id}`}>
               <Button $size="extraSmall" $variation="primary">
                 View
               </Button>
@@ -45,6 +45,7 @@ const AmbassadorExplorersTable = {
     {
       id: 0,
       name: "Natalie Falcon",
+      title: "Explorer Title",
       email: "natalie.dflcn@gmail.com",
       explorationsCompleted: 5,
       dateJoined: "January 17, 2025",
@@ -53,6 +54,7 @@ const AmbassadorExplorersTable = {
     {
       id: 1,
       name: "Alethia Ragland",
+      title: "Explorer Title",
       email: "thearagland@gmail.com",
       explorationsCompleted: 3,
       dateJoined: "June 23, 2022",
@@ -61,30 +63,34 @@ const AmbassadorExplorersTable = {
     {
       id: 2,
       name: "Jorge Gonzalez",
+      title: "Explorer Title",
       email: "genioa@gmail.com",
       explorationsCompleted: 6,
       dateJoined: "March 6, 2021",
       action: "View",
     },
     {
-      id: 0,
+      id: 3,
       name: "Natalie Falcon",
+      title: "Explorer Title",
       email: "natalie.dflcn@gmail.com",
       explorationsCompleted: 5,
       dateJoined: "January 17, 2025",
       action: "View",
     },
     {
-      id: 1,
+      id: 4,
       name: "Alethia Ragland",
+      title: "Explorer Title",
       email: "thearagland@gmail.com",
       explorationsCompleted: 3,
       dateJoined: "June 23, 2025",
       action: "View",
     },
     {
-      id: 2,
+      id: 5,
       name: "Jorge Gonzalez",
+      title: "Explorer Title",
       email: "genioa@gmail.com",
       explorationsCompleted: 6,
       dateJoined: "March 6, 2025",
@@ -143,17 +149,10 @@ const ITEMS_PER_PAGE = 10;
 
 function ManageExplorers({ usersData = AmbassadorExplorersTable.rows }) {
   const [sortBy, setSortBy] = useState("name");
-  const [filterBy, setFilterBy] = useState("all");
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredUsers = [
-    ...usersData.filter((user) => {
-      if (filterBy === "all") return true;
-      return user.userType === filterBy;
-    }),
-  ];
-
-  const sortedUsers = [...filteredUsers].sort((a, b) => {
+  const sortedUsers = [...usersData].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     else return new Date(b.dateJoined) - new Date(a.dateJoined);
   });
@@ -167,7 +166,7 @@ function ManageExplorers({ usersData = AmbassadorExplorersTable.rows }) {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy]);
+  }, [sortBy]);
 
   return (
     <StyledExplorers>

@@ -11,6 +11,8 @@ import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { useParams } from "react-router-dom";
+import { AmbassadorExplorersTable } from "./ManageUsers";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -30,6 +32,14 @@ const StyledIcon = styled.div`
 function AmbassadorDetails() {
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const ambassadorId = useParams().ambassadorId;
+  console.log(ambassadorId);
+  console.log(AmbassadorExplorersTable.rows);
+  const ambassador = AmbassadorExplorersTable.rows.find(
+    (user) => String(user.id) === String(ambassadorId),
+  );
+
+  console.log(ambassador);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">
@@ -38,7 +48,10 @@ function AmbassadorDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
+        <ProfileHeader
+          userName={ambassador.name}
+          userTitle={isAdmin ? "Admin" : "Ambassador"}
+        />
 
         <StyledCard $cardColor="var(--color-light-100)">
           <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
@@ -56,9 +69,9 @@ function AmbassadorDetails() {
         </StyledCard>
 
         <ProfileInformation
-          email="Natalie.dflcn@gmail.com"
-          passwordLength={8}
-          dateJoined="Jan 30, 2026"
+          userEmail={ambassador.email}
+          password="hello"
+          dateJoined={ambassador.dateJoined}
         />
       </StyledExplorerDetails>
     </Row>

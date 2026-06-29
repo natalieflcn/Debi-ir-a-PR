@@ -6,6 +6,8 @@ import Row from "../../../../shared/components/layout/Row";
 import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import { AmbassadorExplorersTable } from "./ManageUsers";
+import { useParams } from "react-router-dom";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -14,6 +16,11 @@ const StyledExplorerDetails = styled.div`
 `;
 
 function ExplorerDetails() {
+  const explorerId = useParams().explorerId;
+  const explorer = AmbassadorExplorersTable.rows.find(
+    (user) => String(user.id) === String(explorerId),
+  );
+
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">
@@ -22,11 +29,11 @@ function ExplorerDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader userName="Natalie Falcon" userTitle="Some cool stuff" />
+        <ProfileHeader userName={explorer.name} userTitle={explorer.title} />
         <ProfileInformation
-          email="Natalie.dflcn@gmail.com"
-          passwordLength={8}
-          dateJoined="Jan 30, 2026"
+          userEmail={explorer.email}
+          password="hello"
+          dateJoined={explorer.dateJoined}
         />
         <ProfileBadgeCollection />
       </StyledExplorerDetails>
