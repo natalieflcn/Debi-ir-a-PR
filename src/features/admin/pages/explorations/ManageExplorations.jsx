@@ -33,12 +33,10 @@ const AdminExplorationsTable = {
               </Button>
             </RouterLink>
 
-            <RouterLink>
-              <RouterLink to=":explorationId/edit">
-                <Button $size="extraSmall" $variation="primary">
-                  Edit
-                </Button>
-              </RouterLink>
+            <RouterLink to=":explorationId/edit">
+              <Button $size="extraSmall" $variation="primary">
+                Edit
+              </Button>
             </RouterLink>
           </Row>
         </ActionTableCell>

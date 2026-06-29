@@ -50,7 +50,6 @@ function LocationForm({
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("handlesubmit fires");
     const errors = {};
 
     if (!name.trim()) errors.name = "Location name is required.";
@@ -70,7 +69,6 @@ function LocationForm({
     if (tags.length < 1) errors.tags = "Please select at least one tag.";
 
     if (Object.keys(errors).length > 0) {
-      console.log("there is an error, should be returning");
       setFormErrors(errors);
       return;
     }
@@ -84,7 +82,7 @@ function LocationForm({
       images,
       tags,
     };
-    console.log(formData);
+
     onSubmit(formData);
   };
 

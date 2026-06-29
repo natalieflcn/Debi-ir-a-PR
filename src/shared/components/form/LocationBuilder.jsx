@@ -45,7 +45,7 @@ function LocationBuilder({ locations, onAdd }) {
           <LocationForm
             onSubmit={(formData) => {
               onAdd(formData);
-              console.log(formData);
+
               setIsModalOpen(false);
             }}
           />

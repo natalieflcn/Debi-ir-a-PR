@@ -37,7 +37,6 @@ const StyledTextAreaRow = styled(Row)`
 function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
 
-  console.log(exploration);
   const [name, setName] = useState(isEditing ? exploration.name : "");
   const [headerImage, setHeaderImage] = useState(
     isEditing ? exploration.headerImage : [],
@@ -92,7 +91,7 @@ function CreateExploration({ exploration }) {
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
-      console.log("should be rediecting");
+
       return;
     }
 
@@ -106,7 +105,6 @@ function CreateExploration({ exploration }) {
       locations,
       tags,
     };
-    console.log(formData);
 
     navigate(`/admin/explorations/:explorationId`);
   };
@@ -227,7 +225,6 @@ function CreateExploration({ exploration }) {
 
           <FormField label="Tags">
             <StyledRow $gap="var(--gap-xs)">
-              console.log(tags);
               <ExplorationTagBuilder
                 exploration={fakeExplorationData}
                 tags={tags}

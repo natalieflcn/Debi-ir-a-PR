@@ -69,7 +69,6 @@ function CreateLocation({ exploration = fakeExplorationData, location }) {
     if (tags.length < 1) errors.tags = "Please select at least one tag.";
 
     if (Object.keys(errors).length > 0) {
-      console.log("there is an error, should be returning");
       setFormErrors(errors);
       return;
     }
@@ -84,7 +83,6 @@ function CreateLocation({ exploration = fakeExplorationData, location }) {
       tags,
     };
 
-    console.log(formData);
     navigate(`/ambassador/explorations/:explorationId`);
   };
 

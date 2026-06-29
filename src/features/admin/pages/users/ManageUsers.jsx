@@ -200,7 +200,6 @@ function ManageUsers({ usersData = AmbassadorExplorersTable.rows }) {
     setCurrentPage(1);
   }, [sortBy, filterBy]);
 
-  console.log(sortedUsers);
   return (
     <StyledUsers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">

@@ -35,17 +35,24 @@ const StyledTextAreaRow = styled(Row)`
 function CreateExploration({ exploration }) {
   const isEditing = Boolean(exploration);
 
-  const [name, setName] = useState("");
-  const [headerImage, setHeaderImage] = useState([]);
-  const [startingCity, setStartingCity] = useState(null);
-  const [tagline, setTagline] = useState("");
-  const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
-  const [locations, setLocations] = useState(fakeExplorationData.locations);
-  const [tags, setTags] = useState([]);
+  const [name, setName] = useState(isEditing ? exploration.name : "");
+  const [headerImage, setHeaderImage] = useState(
+    isEditing ? exploration.headerImage : [],
+  );
+  const [startingCity, setStartingCity] = useState(
+    isEditing ? exploration.startingCity : null,
+  );
+  const [tagline, setTagline] = useState(isEditing ? exploration.tagline : "");
+  const [description, setDescription] = useState(
+    isEditing ? exploration.description : "",
+  );
+  const [images, setImages] = useState(isEditing ? exploration.images : []);
+  const [locations, setLocations] = useState(
+    isEditing ? exploration.locations : fakeExplorationData.locations,
+  );
+  const [tags, setTags] = useState(isEditing ? exploration.tags : []);
   const [formErrors, setFormErrors] = useState({});
 
-  console.log(locations.length > 0);
   const navigate = useNavigate();
 
   function handleAddLocation(formData) {
@@ -96,7 +103,7 @@ function CreateExploration({ exploration }) {
       locations,
       tags,
     };
-    console.log(formData);
+
     navigate(`/ambassador/explorations/:explorationId`);
   };
 
@@ -218,7 +225,7 @@ function CreateExploration({ exploration }) {
             <StyledRow $gap="var(--gap-xs)">
               <ExplorationTagBuilder
                 exploration={fakeExplorationData}
-                value={tags}
+                tags={tags}
                 onChange={setTags}
               />
               {formErrors.tags && <Bold>{formErrors.tags}</Bold>}

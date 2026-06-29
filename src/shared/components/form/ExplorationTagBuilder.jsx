@@ -49,7 +49,6 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
     ),
   ];
 
-  console.log(tags, derivedLocationTags);
   function toggleTag(tagId) {
     onChange((prev) =>
       prev.includes(tagId)

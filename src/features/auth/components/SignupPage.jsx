@@ -98,7 +98,7 @@ function Signup({ $variant }) {
     }
 
     const formData = { name, email, password };
-    console.log(formData);
+
     navigate("/");
   };
 

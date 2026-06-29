@@ -111,7 +111,7 @@ function ManageExplorations() {
   );
 
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-    console.log(a, b);
+   
 
     if (sortBy === "numStops") return a.numStops - b.numStops;
     else return a.name.localeCompare(b.name);

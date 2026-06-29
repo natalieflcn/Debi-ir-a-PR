@@ -129,13 +129,10 @@ function CityDropdown({ onSelect, value }) {
     city.name.toLowerCase().includes(search.toLowerCase()),
   );
 
-  console.log(value);
   function handleSelect(city) {
-    console.log(onSelect);
     onSelect(city.name);
     setIsOpen(false);
     setSearch("");
-    console.log(city);
   }
 
   return (

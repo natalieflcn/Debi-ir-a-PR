@@ -83,7 +83,7 @@ function Login() {
     }
 
     const formData = { email, password };
-    console.log(formData);
+
     navigate("/");
   };
 

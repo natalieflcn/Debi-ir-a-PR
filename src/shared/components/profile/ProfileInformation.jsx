@@ -67,7 +67,6 @@ const ProfileInformation = function ({
     }
 
     setIsEditingEmail(false);
-    console.log("update email " + email);
   };
 
   const handleEmailCancel = function () {
@@ -94,7 +93,6 @@ const ProfileInformation = function ({
     }
 
     setIsEditingPassword(false);
-    console.log("update password " + password);
   };
 
   const handlePasswordCancel = function () {
@@ -102,6 +100,7 @@ const ProfileInformation = function ({
     setIsEditingPassword(false);
     setPasswordErrors("");
   };
+
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
       <StyledProfileInformation>
