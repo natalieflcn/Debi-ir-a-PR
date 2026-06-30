@@ -8,6 +8,7 @@ import DashboardNewExplorers from "../../../../shared/components/dashboard/Dashb
 import DashboardTopExplorers from "../../../../shared/components/dashboard/DashboardTopExplorers";
 import AdminDashboardTopAmbassadors from "../../components/dashboard/AdminDashboardTopAmbassadors";
 import AdminDashboardNewAmbassadors from "../../components/dashboard/AdminDashboardNewAmbassadors";
+import { useLoaderData } from "react-router-dom";
 
 const StyledAdminDashboard = styled.div`
   display: flex;
@@ -16,6 +17,8 @@ const StyledAdminDashboard = styled.div`
 `;
 
 function AdminDashboard() {
+  const { users, explorations, profileData } = useLoaderData();
+
   return (
     <StyledAdminDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">

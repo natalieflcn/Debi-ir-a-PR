@@ -227,6 +227,7 @@
   ## Week: June 29 – July 2
   - [~] Prepare components to accept external data, instead of relying on internal, hard-coded false data
     - [ ] All fake data shapes match MongoDB schema field names
+    - [ ] Determine data structure for progress objects
     - [~] Every action and loader in router has placeholder TODO 1
     - [~] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation

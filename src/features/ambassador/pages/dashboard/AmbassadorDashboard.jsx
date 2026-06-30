@@ -12,6 +12,7 @@ import AmbassadorDashboardTopLocations from "../../components/dashboard/Ambassad
 import DashboardExplorationsCreated from "../../../../shared/components/dashboard/DashboardExplorationsCreated";
 import DashboardNewExplorers from "../../../../shared/components/dashboard/DashboardNewExplorers";
 import DashboardTopExplorers from "../../../../shared/components/dashboard/DashboardTopExplorers";
+import { useLoaderData } from "react-router-dom";
 
 const StyledAmbassadorDashboard = styled.div`
   display: flex;
@@ -20,6 +21,8 @@ const StyledAmbassadorDashboard = styled.div`
 `;
 
 function AmbassadorDashboard() {
+  const { explorers, profileData, explorations } = useLoaderData;
+
   return (
     <StyledAmbassadorDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">

@@ -9,6 +9,7 @@ import Row from "../../../../shared/components/layout/Row";
 
 import Heading from "../../../../shared/components/typography/Heading";
 import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashboardStatsItem";
+import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDashboard = styled.div`
   display: flex;
@@ -59,6 +60,8 @@ const TEMPEXPLORATIONDATA = [
 ];
 
 function ExplorerDashboard() {
+  const { profileInfo, explorations } = useLoaderData();
+
   return (
     <StyledExplorerDashboard>
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
@@ -76,12 +79,12 @@ function ExplorerDashboard() {
       <Row $gap="var(--gap-xl)">
         <ExplorerDashboardExplorationsItem
           title="Current Explorations"
-          explorationData={TEMPCURRENTEXPLORATIONDATA}
+          explorationData={explorations}
         />
 
         <ExplorerDashboardExplorationsItem
           title="Featured Explorations"
-          explorationData={TEMPEXPLORATIONDATA}
+          explorationData={explorations}
         />
       </Row>
     </StyledExplorerDashboard>
