@@ -3,6 +3,7 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 import ErrorPage from "../../pages/ErrorPage";
+import Unauthorized from "../../pages/Unauthorized";
 
 const HomePage = lazy(() => import("@/features/landing/home/page/HomePage"));
 const Workflow = lazy(
@@ -30,6 +31,7 @@ const PublicRoutes = [
   { path: "signup/explorer", element: <ExplorerSignup /> },
   { path: "signup/ambassador", element: <AmbassadorSignup /> },
   { path: "error", element: <ErrorPage /> },
+  { path: "/unauthorized", element: <Unauthorized /> },
 ];
 
 export default PublicRoutes;

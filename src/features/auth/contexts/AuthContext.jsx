@@ -2,8 +2,14 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
+const fakeCurrentUser = {
+  id: "user_001",
+  name: "Natalie Falcon",
+  userType: "admin", // swap to "ambassador" or "admin" to test
+};
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(fakeCurrentUser);
 
   function login(userData) {
     setUser(userData);

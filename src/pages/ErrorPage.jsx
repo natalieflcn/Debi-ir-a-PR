@@ -6,6 +6,7 @@ import Row from "../shared/components/layout/Row";
 import { useRouteError } from "react-router-dom";
 import RouterLink from "../shared/components/routing/RouterLink";
 import Background from "../shared/components/decorative/Background";
+import { useAuth } from "../features/auth/contexts/AuthContext";
 
 const Styled404 = styled.div`
   position: absolute;
@@ -31,7 +32,28 @@ const StyledParagraph = styled.p`
 `;
 function ErrorPage() {
   const error = useRouteError();
- 
+
+  const { user } = useAuth();
+  let userRedirect;
+
+  switch (user.userType) {
+    case "explorer":
+      userRedirect = "dashboard";
+      break;
+
+    case "ambassador":
+      userRedirect = "ambassador";
+      break;
+
+    case "admin":
+      userRedirect = "admin";
+      break;
+
+    default:
+      userRedirect = "";
+      break;
+  }
+
   return (
     <>
       <Background />
@@ -39,7 +61,7 @@ function ErrorPage() {
         <Heading as="h2" $shadowColor="var(--color-brown-400)">
           SOMETHiNG WeNT WRoNG
         </Heading>
-    
+
         <Image
           src="/src/assets/images/content/Chairs.svg"
           $width="40rem"
@@ -58,7 +80,7 @@ function ErrorPage() {
             >
               Refresh the Page
             </Button>
-            <RouterLink to="/">
+            <RouterLink to={`/${userRedirect}`}>
               <Button $size="small" $variation="primary">
                 Back to Home
               </Button>

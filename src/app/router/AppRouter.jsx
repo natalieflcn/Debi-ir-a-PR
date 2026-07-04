@@ -13,6 +13,7 @@ import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 import App from "../../App";
 import PageNotFound from "../../pages/PageNotFound";
 import ErrorPage from "../../pages/ErrorPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 // function AppRouter() {
 //   return (
@@ -51,19 +52,37 @@ const AppRouter = createBrowserRouter([
     path: "/",
     element: <ExplorerLayout />,
     errorElement: <ErrorPage />,
-    children: [...ExplorerRoutes, { path: "*", element: <PageNotFound /> }],
+    children: [
+      {
+        element: <ProtectedRoute allowedRoles={["explorer"]} />,
+        children: [...ExplorerRoutes],
+      },
+      { path: "*", element: <PageNotFound /> },
+    ],
   },
   {
     path: "/ambassador",
     element: <AmbassadorLayout />,
     errorElement: <ErrorPage />,
-    children: [...AmbassadorRoutes, { path: "*", element: <PageNotFound /> }],
+    children: [
+      {
+        element: <ProtectedRoute allowedRoles={["ambassador"]} />,
+        children: [...AmbassadorRoutes],
+      },
+      { path: "*", element: <PageNotFound /> },
+    ],
   },
   {
     path: "/admin",
     element: <AdminLayout />,
     errorElement: <ErrorPage />,
-    children: [...AdminRoutes, { path: "*", element: <PageNotFound /> }],
+    children: [
+      {
+        element: <ProtectedRoute allowedRoles={["admin"]} />,
+        children: [...AdminRoutes],
+      },
+      { path: "*", element: <PageNotFound /> },
+    ],
   },
 ]);
 

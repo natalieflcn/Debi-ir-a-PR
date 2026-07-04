@@ -4,6 +4,8 @@ import Heading from "../shared/components/typography/Heading";
 import Button from "../shared/components/ui/Button";
 import Row from "../shared/components/layout/Row";
 import Background from "../shared/components/decorative/Background";
+import { useAuth } from "../features/auth/contexts/AuthContext";
+import RouterLink from "../shared/components/routing/RouterLink";
 
 const Styled404 = styled.div`
   position: absolute;
@@ -23,6 +25,27 @@ const StyledPageNotFound = styled.div`
 `;
 
 function PageNotFound() {
+  const { user } = useAuth();
+  let userRedirect;
+
+  switch (user.userType) {
+    case "explorer":
+      userRedirect = "dashboard";
+      break;
+
+    case "ambassador":
+      userRedirect = "ambassador";
+      break;
+
+    case "admin":
+      userRedirect = "admin";
+      break;
+
+    default:
+      userRedirect = "";
+      break;
+  }
+
   return (
     <>
       <Background />
@@ -36,9 +59,12 @@ function PageNotFound() {
           <Heading as="h6">
             Perdón! The page you're looking for does not exist.
           </Heading>
-          <Button $size="small" $variation="yellow">
-            Back to Home
-          </Button>
+
+          <RouterLink to={`/${userRedirect}`}>
+            <Button $size="small" $variation="yellow">
+              Back to Home
+            </Button>
+          </RouterLink>
         </Row>
       </StyledPageNotFound>
     </>
