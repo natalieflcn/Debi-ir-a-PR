@@ -1,4 +1,4 @@
-import ExplorationCard from "../../../../shared/components/explorations/ExplorationCard";
+import ExplorationCard from "../../../explorations/components/ExplorationCard";
 import Row from "../../../../shared/components/layout/Row";
 import AdminExplorationCardHeaderDetails from "../../../../shared/components/management/AdminExplorationCardHeaderDetails";
 import AdminExplorationCardLocations from "../../../../shared/components/management/AdminExplorationCardLocations";

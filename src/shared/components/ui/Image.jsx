@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const StyledImage = styled.img`
@@ -18,15 +19,20 @@ function Image({
   $objectFit,
   $imageShadow,
 }) {
+  const [imgSrc, setImgSrc] = useState(
+    src || "/src/assets/images/placeholders/default.png",
+  );
+
   return (
     <StyledImage
-      src={src}
+      src={imgSrc}
       alt={alt}
       $width={$width}
       $height={$height}
       $borderRadius={$borderRadius}
       $objectFit={$objectFit}
       $imageShadow={$imageShadow}
+      onError={() => setImgSrc("/src/assets/images/placeholders/default.png")}
     />
   );
 }

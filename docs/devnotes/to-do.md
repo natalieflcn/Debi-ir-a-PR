@@ -226,14 +226,15 @@
 
   ## Week: June 29 – July 2
   - [~] Prepare components to accept external data, instead of relying on internal, hard-coded false data
-    - [ ] All fake data shapes match MongoDB schema field names
-    - [ ] Determine data structure for progress objects
-    - [~] Every action and loader in router has placeholder TODO 1
-    - [~] Components use useLoaderData pattern instead of importing fake data directly
+    - [ ] All fake data shapes match MongoDB schema field names TODO1
+    - [ ] Determine data structure for progress objects TODO1-B
+    - [x] Every action and loader in router has placeholder
+    - [ ] Decouple false data from dashboard components and rely entirely on loaded data TODO2
+    - [x] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation
-    - [ ] Create logic for ProtectedRoute TODO 3
+    - [ ] Create logic for ProtectedRoute TODO 5
     - [x] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
-  - [ ] Images have fallback/placeholder when src is missing TODO 2
+  - [x] Images have fallback/placeholder when src is missing
   - [x] Render exploration tags from the data, instead of hard-coded data
-  - [ ] Implement progress bar
-  - [ ] Make website responsive TODO 4
+  - [ ] Implement progress bar TODO 3
+  - [ ] Make website responsive TODO 6

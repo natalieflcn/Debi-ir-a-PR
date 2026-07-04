@@ -5,7 +5,7 @@ import { FaRegCircle } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import AdminFooterCTA from "../../../../shared/components/management/AdminFooterCTA";
-import ExplorationLocationCard from "../../../../shared/components/explorations/ExplorationLocationCard";
+import ExplorationLocationCard from "../../../explorations/components/ExplorationLocationCard";
 import { useParams } from "react-router-dom";
 
 import { useLoaderData } from "react-router-dom";

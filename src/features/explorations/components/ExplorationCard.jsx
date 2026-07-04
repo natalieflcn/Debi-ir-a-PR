@@ -1,11 +1,11 @@
-import Card from "../layout/Card";
-import Heading from "../typography/Heading";
-import Bold from "../typography/Bold";
+import Card from "../../../shared/components/layout/Card";
+import Heading from "../../../shared/components/typography/Heading";
+import Bold from "../../../shared/components/typography/Bold";
 import { IoFlag } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
-import Image from "../ui/Image";
-import Row from "../layout/Row";
-import Button from "../ui/Button";
+import Image from "../../../shared/components/ui/Image";
+import Row from "../../../shared/components/layout/Row";
+import Button from "../../../shared/components/ui/Button";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
 import {
@@ -23,7 +23,7 @@ import {
   ExplorationLocationTag,
   ExplorationLocationTags,
 } from "./explorationLocationCard.styles";
-import RouterLink from "../routing/RouterLink";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 function ExplorationCard({
   exploration,

@@ -1,11 +1,11 @@
 import { IoCheckmarkCircleSharp, IoLocationSharp } from "react-icons/io5";
-import Row from "../layout/Row";
+import Row from "../../../shared/components/layout/Row";
 
-import fakeExplorationLocationData from "../../../features/explorer/pages/explorations/fakeExplorationLocationData";
-import Bold from "../typography/Bold";
-import Heading from "../typography/Heading";
-import Button from "../ui/Button";
-import Image from "../ui/Image";
+import fakeExplorationLocationData from "../../explorer/pages/explorations/fakeExplorationLocationData";
+import Bold from "../../../shared/components/typography/Bold";
+import Heading from "../../../shared/components/typography/Heading";
+import Button from "../../../shared/components/ui/Button";
+import Image from "../../../shared/components/ui/Image";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
 import {
   ExplorationLocationAbout,
@@ -18,7 +18,7 @@ import {
   ExplorationLocationTags,
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
-import RouterLink from "../routing/RouterLink";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 function ExplorationLocationCard({
   exploration,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Row from "../layout/Row";
-import Card from "../layout/Card";
-import Heading from "../typography/Heading";
+import Row from "../../../shared/components/layout/Row";
+import Card from "../../../shared/components/layout/Card";
+import Heading from "../../../shared/components/typography/Heading";
 
 export const StyledExplorationCard = styled(Card)`
   align-items: flex-start;

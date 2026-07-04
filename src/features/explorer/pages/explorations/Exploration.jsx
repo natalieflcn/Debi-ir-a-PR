@@ -1,5 +1,5 @@
 import { IoFlag } from "react-icons/io5";
-import ExplorationCard from "../../../../shared/components/explorations/ExplorationCard";
+import ExplorationCard from "../../../explorations/components/ExplorationCard";
 import Row from "../../../../shared/components/layout/Row";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 import fakeExplorationData from "./fakeExplorationData";

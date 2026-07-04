@@ -1,7 +1,7 @@
 import { FaRegCircle } from "react-icons/fa";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import Row from "../../../../shared/components/layout/Row";
-import { LocationHeading } from "../../../../shared/components/explorations/explorationCard.styles";
+import { LocationHeading } from "../../../explorations/components/explorationCard.styles";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
-import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
+import ExplorationsFilters from "../../../explorations/components/ExplorationMiniCard";
+import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
 import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
 import Row from "../../../../shared/components/layout/Row";
 

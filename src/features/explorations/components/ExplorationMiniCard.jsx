@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Card from "../layout/Card";
-import Heading from "../typography/Heading";
-import Bold from "../typography/Bold";
+import Card from "../../../shared/components/layout/Card";
+import Heading from "../../../shared/components/typography/Heading";
+import Bold from "../../../shared/components/typography/Bold";
 import { IoFlag } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
-import Row from "../layout/Row";
-import Button from "../ui/Button";
-import RouterLink from "../routing/RouterLink";
+import Row from "../../../shared/components/layout/Row";
+import Button from "../../../shared/components/ui/Button";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 const StyledExplorationCard = styled(Card)`
   align-items: flex-start;

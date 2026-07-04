@@ -1,10 +1,10 @@
-import Row from "../layout/Row";
-import Button from "../ui/Button";
-import Input from "../form/Input";
-import FilterDropdown from "../dropdown/FilterDropdown";
-import SortDropdown from "../dropdown/SortDropdown";
+import Row from "../../../shared/components/layout/Row";
+import Button from "../../../shared/components/ui/Button";
+import Input from "../../../shared/components/form/Input";
+import FilterDropdown from "../../../shared/components/dropdown/FilterDropdown";
+import SortDropdown from "../../../shared/components/dropdown/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from "../../../shared/hooks/useClickOutside";
 
 const ExplorationsFiltersCategories = [
   { id: "featured", name: "Featured" },

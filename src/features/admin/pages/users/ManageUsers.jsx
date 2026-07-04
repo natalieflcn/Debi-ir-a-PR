@@ -5,7 +5,7 @@ import Input from "../../../../shared/components/form/Input";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import Button from "../../../../shared/components/ui/Button";
 import Bold from "../../../../shared/components/typography/Bold";
-import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
+import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import FilterDropdown from "../../../../shared/components/dropdown/FilterDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";

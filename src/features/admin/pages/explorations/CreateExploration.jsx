@@ -15,7 +15,7 @@ import styled from "styled-components";
 import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
-import { ExplorationLocationTags } from "../../../../shared/components/explorations/explorationLocationCard.styles";
+import { ExplorationLocationTags } from "../../../explorations/components/explorationLocationCard.styles";
 import LocationTagBuilder from "../../../../shared/components/form/LocationTagBuilder";
 import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
 import Bold from "../../../../shared/components/typography/Bold";

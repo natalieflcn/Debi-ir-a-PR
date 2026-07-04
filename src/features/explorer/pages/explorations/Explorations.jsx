@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 
-import ExplorationMiniCard from "../../../../shared/components/explorations/ExplorationMiniCard";
-import ExplorationsFilters from "../../../../shared/components/explorations/ExplorationsFilters";
+import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
+import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import fakeExplorationsData from "./fakeExplorationsData";
 import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
