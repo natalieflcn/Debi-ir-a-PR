@@ -51,9 +51,7 @@ function ExplorationLocationCard({
 
               <Row $direction="horizontal" $gap="var(--gap-sm)" $align="center">
                 <IoLocationSharp color="var(--color-red-300)" />
-                <Bold $color="var(--color-dark-200)">
-                  {location.locationAddress}
-                </Bold>
+                <Bold $color="var(--color-dark-200)">{location.address}</Bold>
               </Row>
             </Row>
           </ExplorationLocationHeaderDetails>

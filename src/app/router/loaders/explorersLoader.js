@@ -1,67 +1,63 @@
+import { formatDate } from "../../../shared/utils/helpers";
+
 const fakeUsers = [
   {
-    id: 0,
+    id: "user_001",
     name: "Natalie Falcon",
     userType: "explorer",
-    title: "Explorer Title",
+    title: "First Explorer",
     email: "natalie.dflcn@gmail.com",
-    dateJoined: "January 17, 2025",
-    action: "View",
+    dateJoined: "2025-01-17",
+    avatar: "/src/assets/images/content/TEMP.png",
   },
   {
-    id: 1,
+    id: "user_002",
     name: "Alethia Ragland",
     userType: "ambassador",
     title: "Ambassador",
     email: "thearagland@gmail.com",
-    dateJoined: "June 23, 2024",
-    action: "View",
+    dateJoined: "2025-01-17",
   },
   {
-    id: 2,
+    id: "user_003",
     name: "Jorge Gonzalez",
     userType: "explorer",
-    title: "Explorer Title",
+    title: "First Explorer",
     email: "genioa@gmail.com",
     explorationsCompleted: 6,
-    dateJoined: "March 6, 2023",
-    action: "View",
+    dateJoined: "2025-01-17",
   },
   {
-    id: 3,
+    id: "user_004",
     name: "Natalie Falcon",
     userType: "explorer",
-    title: "Explorer Title",
+    title: "First Explorer",
     email: "natalie.dflcn@gmail.com",
-    dateJoined: "January 17, 2025",
-    action: "View",
+    dateJoined: "2025-01-17",
   },
   {
-    id: 4,
+    id: "user_005",
     name: "Alethia Ragland",
     userType: "ambassador",
-    title: "Explorer Title",
+    title: "First Explorer",
     email: "thearagland@gmail.com",
-    dateJoined: "June 23, 2024",
-    action: "View",
+    dateJoined: "2025-01-17",
   },
   {
-    id: 5,
+    id: "user_006",
     name: "Jorge Gonzalez",
     userType: "explorer",
-    title: "Explorer Title",
+    title: "First Explorer",
     email: "genioa@gmail.com",
-    explorationsCompleted: 6,
-    dateJoined: "March 6, 2023",
-    action: "View",
+    dateJoined: "2025-01-17",
   },
 ];
 
 export async function explorersLoader() {
-  return fakeUsers;
+  return {
+    users: fakeUsers.map((user) => ({
+      ...user,
+      dateJoined: formatDate(user.dateJoined),
+    })),
+  };
 }
-
-//  users: users.map(user => ({
-//             ...user,
-//             dateJoined: formatDate(user.createdAt),
-//         })),

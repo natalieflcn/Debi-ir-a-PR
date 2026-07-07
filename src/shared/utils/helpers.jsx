@@ -6,3 +6,14 @@ export const parseBold = function (text) {
     .split(/\*\*(.*?)\*\*/g)
     .map((part, i) => (i % 2 === 1 ? <Bold key={i}>{part}</Bold> : part));
 };
+
+export const formatDate = function (ISOString) {
+  const date = new Date(ISOString);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return formattedDate;
+};

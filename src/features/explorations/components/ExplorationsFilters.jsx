@@ -12,7 +12,7 @@ const ExplorationsFiltersCategories = [
   { id: "restaurants", name: "Restaurants" },
   { id: "landmarks", name: "Landmarks" },
   { id: "landscapes", name: "Landscapes" },
-  { id: "map", name: "Map" },
+
   { id: "other", name: "Other" },
   { id: "all", name: "All" },
 ];

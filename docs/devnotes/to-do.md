@@ -232,7 +232,7 @@
     - [ ] Decouple false data from dashboard components and rely entirely on loaded data TODO2
     - [x] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation
-    - [ ] Create logic for ProtectedRoute TODO 5
+    - [x] Create logic for ProtectedRoute
     - [x] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
   - [x] Images have fallback/placeholder when src is missing
   - [x] Render exploration tags from the data, instead of hard-coded data
