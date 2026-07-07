@@ -65,6 +65,8 @@ export async function adminDashboardLoader() {
     email: "natalie.dflcn@gmail.com",
     password: "hello123",
     dateJoined: "January 7, 2026",
+    isAdmin: true,
+    createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
   };
   const explorations = fakeExplorationsData;
 

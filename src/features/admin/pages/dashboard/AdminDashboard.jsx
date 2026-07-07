@@ -19,6 +19,11 @@ const StyledAdminDashboard = styled.div`
 function AdminDashboard() {
   const { users, explorations, profileData } = useLoaderData();
 
+  const explorersData = users.filter((user) => user.userType === "explorer");
+  const ambassadorsData = users.filter(
+    (user) => user.userType === "ambassador",
+  );
+
   return (
     <StyledAdminDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">
@@ -27,14 +32,14 @@ function AdminDashboard() {
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AdminDashboardProfileItem />
-        <DashboardExplorationsCreated type="admin" />
+        <DashboardExplorationsCreated type="admin" profile={profileData} />
         <AdminDashboardUserStats users={users} />
       </Row>
 
       <Row>
-        <DashboardNewExplorers />
+        <DashboardNewExplorers usersData={explorersData} />
         <DashboardTopExplorers />
-        <AdminDashboardNewAmbassadors />
+        <AdminDashboardNewAmbassadors usersData={ambassadorsData} />
         <AdminDashboardTopAmbassadors />
       </Row>
     </StyledAdminDashboard>

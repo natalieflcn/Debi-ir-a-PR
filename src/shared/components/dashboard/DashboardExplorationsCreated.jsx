@@ -6,7 +6,8 @@ import Bold from "../typography/Bold";
 import Heading from "../typography/Heading";
 import RouterLink from "../routing/RouterLink";
 
-function DashboardExplorationsCreated({ type }) {
+function DashboardExplorationsCreated({ type, profile }) {
+  console.log(profile);
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-xl)">
@@ -14,7 +15,8 @@ function DashboardExplorationsCreated({ type }) {
           Explorations Created
         </Heading>
         <Row $direction="horizontal" $gap="var(--gap-md)" $align="center">
-          <InsetSpan>5</InsetSpan> <Bold>explorations created</Bold>
+          <InsetSpan>{profile.createdExplorationIds.length}</InsetSpan>{" "}
+          <Bold>explorations created</Bold>
         </Row>
         <Row>
           <RouterLink to={`/${type}/explorations/create`}>

@@ -4,38 +4,19 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 
-const newAmbassadorsTableData = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      ),
-    },
-    { id: "email", heading: "Email" },
-    { id: "dateAdded", heading: "Date Joined" },
-  ],
-  rows: [
-    {
-      name: "Natalie Falcon",
-      email: "natalie.dflcn@gmail.com",
-      dateAdded: "June 30, 2026",
-    },
-    {
-      name: "Alethia Ragland",
-      email: "alethia.dflcn@gmail.com",
-      dateAdded: "January 30, 2026",
-    },
-    {
-      name: "Jungo Vasquez",
-      email: "jluis.vasquez@gmail.com",
-      dateAdded: "March 20, 2026",
-    },
-  ],
-};
+const newAmbassadorsTableColumns = [
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+      </TableNameCell>
+    ),
+  },
+  { id: "email", heading: "Email" },
+  { id: "dateJoined", heading: "Date Joined" },
+];
 
 const TableNameCell = styled.div`
   display: flex;
@@ -65,7 +46,13 @@ const newAmbassadorsTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-function AdminDashboardNewAmbassadors({ tableData = newAmbassadorsTableData }) {
+function AdminDashboardNewAmbassadors({ usersData }) {
+  const sortedUsers = usersData.sort(
+    (a, b) => new Date(b.dateJoined) - new Date(a.dateJoined),
+  );
+
+  const fiveSortedUsers = sortedUsers.slice(0, 5);
+
   return (
     <DashboardItem>
       <Heading as="h4" $color="var(--color-red-400)">
@@ -73,8 +60,8 @@ function AdminDashboardNewAmbassadors({ tableData = newAmbassadorsTableData }) {
       </Heading>
 
       <Table
-        columns={tableData.columns}
-        rows={tableData.rows}
+        columns={newAmbassadorsTableColumns}
+        rows={fiveSortedUsers}
         $theme={newAmbassadorsTableTheme}
       />
     </DashboardItem>
