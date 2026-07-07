@@ -4,42 +4,28 @@ import Heading from "../typography/Heading";
 import Table from "../ui/Table";
 import Bold from "../typography/Bold";
 
-const topExplorersTableData = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      ),
-    },
-    { id: "email", heading: "Email" },
-    { id: "numExplorationsStarted", heading: "Explorations Started" },
-    { id: "numExplorationsCompleted", heading: "Explorations Completed" },
-  ],
-  rows: [
-    {
-      name: "Natalie Falcon",
-      email: "natalie.dflcn@gmail.com",
-      numExplorationsStarted: 10,
-      numExplorationsCompleted: 4,
-    },
-    {
-      name: "Alethia Ragland",
-      email: "alethia.dflcn@gmail.com",
-      numExplorationsStarted: 9,
-      numExplorationsCompleted: 3,
-    },
-    {
-      name: "Jungo Vasquez",
-      email: "jluis.vasquez@gmail.com",
-      numExplorationsStarted: 15,
-      numExplorationsCompleted: 3,
-    },
-  ],
-};
+const topExplorersTableColumns = [
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+      </TableNameCell>
+    ),
+  },
+  { id: "email", heading: "Email" },
+  {
+    id: "numExplorationsStarted",
+    heading: "Explorations Started",
+    render: (row) => <TableNameCell>{row.explorationsStarted}</TableNameCell>,
+  },
+  {
+    id: "numExplorationsCompleted",
+    heading: "Explorations Completed",
+    render: (row) => <TableNameCell>{row.explorationsCompleted}</TableNameCell>,
+  },
+];
 
 const TableNameCell = styled.div`
   display: flex;
@@ -69,7 +55,13 @@ const topExplorersTableTheme = {
   borderColor: "var(--color-red-300)",
 };
 
-function DashboardTopExplorers({ tableData = topExplorersTableData }) {
+function DashboardTopExplorers({ usersData }) {
+  const topExplorers = usersData.sort(
+    (a, b) => b.explorationsCompleted - a.explorationsCompleted,
+  );
+
+  const fiveTopExplorers = topExplorers.slice(0, 5);
+
   return (
     <DashboardItem>
       <Heading as="h4" $color="var(--color-red-400)">
@@ -77,8 +69,8 @@ function DashboardTopExplorers({ tableData = topExplorersTableData }) {
       </Heading>
 
       <Table
-        columns={tableData.columns}
-        rows={tableData.rows}
+        columns={topExplorersTableColumns}
+        rows={fiveTopExplorers}
         $theme={topExplorersTableTheme}
       />
     </DashboardItem>

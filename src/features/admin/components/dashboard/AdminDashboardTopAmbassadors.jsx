@@ -4,38 +4,25 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 
-const topAmbassadorsTableData = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      ),
-    },
-    { id: "email", heading: "Email" },
-    { id: "numExplorationsCreated", heading: "Explorations Created" },
-  ],
-  rows: [
-    {
-      name: "Natalie Falcon",
-      email: "natalie.dflcn@gmail.com",
-      numExplorationsCreated: 4,
-    },
-    {
-      name: "Natalie Falcon",
-      email: "natalie.dflcn@gmail.com",
-      numExplorationsCreated: 4,
-    },
-    {
-      name: "Natalie Falcon",
-      email: "natalie.dflcn@gmail.com",
-      numExplorationsCreated: 4,
-    },
-  ],
-};
+const topAmbassadorsTableColumns = [
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+      </TableNameCell>
+    ),
+  },
+  { id: "email", heading: "Email" },
+  {
+    id: "numExplorationsCreated",
+    heading: "Explorations Created",
+    render: (row) => (
+      <TableNameCell>{row.createdExplorationIds.length}</TableNameCell>
+    ),
+  },
+];
 
 const TableNameCell = styled.div`
   display: flex;
@@ -65,7 +52,13 @@ const topAmbassadorsTableTheme = {
   borderColor: "var(--color-red-300)",
 };
 
-function AdminDashboardTopAmbassadors({ tableData = topAmbassadorsTableData }) {
+function AdminDashboardTopAmbassadors({ usersData }) {
+  const topAmbassadors = usersData.sort(
+    (a, b) => b.createdExplorationIds.length - a.createdExplorationIds.length,
+  );
+
+  const fiveTopAmbassadors = topAmbassadors.slice(0, 5);
+
   return (
     <DashboardItem>
       <Heading as="h4" $color="var(--color-red-400)">
@@ -73,8 +66,8 @@ function AdminDashboardTopAmbassadors({ tableData = topAmbassadorsTableData }) {
       </Heading>
 
       <Table
-        columns={tableData.columns}
-        rows={tableData.rows}
+        columns={topAmbassadorsTableColumns}
+        rows={fiveTopAmbassadors}
         $theme={topAmbassadorsTableTheme}
       />
     </DashboardItem>

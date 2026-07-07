@@ -38,9 +38,9 @@ function AdminDashboard() {
 
       <Row>
         <DashboardNewExplorers usersData={explorersData} />
-        <DashboardTopExplorers />
+        <DashboardTopExplorers usersData={explorersData} />
         <AdminDashboardNewAmbassadors usersData={ambassadorsData} />
-        <AdminDashboardTopAmbassadors />
+        <AdminDashboardTopAmbassadors usersData={ambassadorsData} />
       </Row>
     </StyledAdminDashboard>
   );
