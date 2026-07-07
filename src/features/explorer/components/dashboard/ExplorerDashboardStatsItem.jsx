@@ -2,7 +2,7 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 
-const placesExplored = {
+const locationsExplored = {
   columns: [
     { id: "restaurants", heading: "Restaurants" },
     { id: "bars", heading: "Bars" },
@@ -40,11 +40,11 @@ function ExplorerDashboardStatsItem() {
     <>
       <DashboardItem>
         <Heading as="h4" $color="var(--color-dark-100)">
-          Types of Places Explored
+          Types of Locations Explored
         </Heading>
         <Table
-          columns={placesExplored.columns}
-          rows={placesExplored.rows}
+          columns={locationsExplored.columns}
+          rows={locationsExplored.rows}
           $theme={explorerStatsTableTheme}
         />
       </DashboardItem>

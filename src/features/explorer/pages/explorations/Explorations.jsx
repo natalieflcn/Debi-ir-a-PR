@@ -71,6 +71,7 @@ function Explorations() {
         <Input placeholder="Search for an exploration..." />
         <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
       </Row>
+
       <ExplorationCards>
         {paginatedExplorations.map((exploration) => (
           <ExplorationMiniCard

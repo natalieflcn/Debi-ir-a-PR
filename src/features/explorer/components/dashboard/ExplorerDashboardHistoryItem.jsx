@@ -15,19 +15,19 @@ function ExplorerDashboardHistoryItem() {
       </Heading>
       <Row $gap="var(--gap-md)">
         <Row $direction="horizontal">
-          <Heading as="h6">Places explored this week</Heading>
+          <Heading as="h6">Locations explored this week</Heading>
           <InsetSpan>
             <Bold>5</Bold>
           </InsetSpan>
         </Row>
         <Row $direction="horizontal">
-          <Heading as="h6">Places explored this month</Heading>
+          <Heading as="h6">Locations explored this month</Heading>
           <InsetSpan>
             <Bold>5</Bold>
           </InsetSpan>
         </Row>
         <Row $direction="horizontal">
-          <Heading as="h6">Places explored this year</Heading>
+          <Heading as="h6">Locations explored this year</Heading>
           <InsetSpan>
             <Bold>5</Bold>
           </InsetSpan>

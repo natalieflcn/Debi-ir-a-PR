@@ -17,6 +17,7 @@ const fakeUsers = [
     title: "Ambassador",
     email: "thearagland@gmail.com",
     dateJoined: "2025-01-17",
+    isAdmin: true,
     createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
   },
   {
@@ -43,6 +44,7 @@ const fakeUsers = [
     title: "First Explorer",
     email: "thearagland@gmail.com",
     dateJoined: "2025-01-17",
+    isAdmin: false,
     createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
   },
   {
@@ -56,10 +58,10 @@ const fakeUsers = [
 ];
 
 export async function usersLoader() {
-  return {
-    users: fakeUsers.map((user) => ({
-      ...user,
-      dateJoined: formatDate(user.dateJoined),
-    })),
-  };
+  const usersData = fakeUsers.map((user) => ({
+    ...user,
+    dateJoined: formatDate(user.dateJoined),
+  }));
+
+  return usersData;
 }

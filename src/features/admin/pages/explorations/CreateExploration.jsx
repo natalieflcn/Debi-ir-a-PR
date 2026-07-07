@@ -8,15 +8,13 @@ import ImageUploader from "../../../../shared/components/form/ImageUploader";
 import { useState } from "react";
 import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
 import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
-import fakeExplorationLocationData from "../../../explorer/pages/explorations/fakeExplorationLocationData";
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+
 import Row from "../../../../shared/components/layout/Row";
 import styled from "styled-components";
 import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { FaArrowLeft } from "react-icons/fa";
-import { ExplorationLocationTags } from "../../../explorations/components/explorationLocationCard.styles";
-import LocationTagBuilder from "../../../../shared/components/form/LocationTagBuilder";
+
 import ExplorationTagBuilder from "../../../../shared/components/form/ExplorationTagBuilder";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +35,9 @@ const StyledTextAreaRow = styled(Row)`
 
 function CreateExploration() {
   const exploration = useLoaderData();
+
   const isEditing = Boolean(exploration);
+  console.log(exploration, isEditing);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");
   const [headerImage, setHeaderImage] = useState(
@@ -52,7 +52,7 @@ function CreateExploration() {
   );
   const [images, setImages] = useState(isEditing ? exploration.images : []);
   const [locations, setLocations] = useState(
-    isEditing ? exploration.locations : fakeExplorationData.locations,
+    isEditing ? exploration.locations : [],
   );
   const [tags, setTags] = useState(isEditing ? exploration.tags : []);
   const [formErrors, setFormErrors] = useState({});
@@ -221,7 +221,7 @@ function CreateExploration() {
                 locations={locations}
                 onEdit={handleEditLocation}
                 onDelete={handleDeleteLocation}
-                exploration={fakeExplorationData}
+                exploration={exploration || null}
               />
               {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
             </StyledRow>
@@ -230,7 +230,7 @@ function CreateExploration() {
           <FormField label="Tags">
             <StyledRow $gap="var(--gap-xs)">
               <ExplorationTagBuilder
-                exploration={fakeExplorationData}
+                exploration={exploration || null}
                 tags={tags}
                 onChange={setTags}
               />{" "}

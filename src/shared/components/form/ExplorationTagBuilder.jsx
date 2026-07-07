@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
-import {
-  ExplorationLocationTag,
-  ExplorationLocationTags,
-} from "../explorations/explorationLocationCard.styles";
+
 import styled from "styled-components";
 import Modal from "../ui/Modal";
 import Row from "../layout/Row";
 import { IoIosCheckbox } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Heading from "../typography/Heading";
-
+import {
+  ExplorationLocationTags,
+  ExplorationLocationTag,
+} from "../../../features/explorations/components/explorationLocationCard.styles";
 const TagCategories = [
   { id: "featured", name: "Featured" },
   { id: "city", name: "City" },
@@ -45,7 +45,7 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
 
   const derivedLocationTags = [
     ...new Set(
-      exploration.locations?.flatMap((location) => location.tags ?? []) ?? [],
+      exploration?.locations?.flatMap((location) => location.tags ?? []) ?? [],
     ),
   ];
 

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {
   ExplorationLocationTag,
   ExplorationLocationTags,
-} from "../explorations/explorationLocationCard.styles";
+} from "../../../features/explorations/components/explorationLocationCard.styles";
 import { IoIosCheckbox } from "react-icons/io";
 import Heading from "../typography/Heading";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";

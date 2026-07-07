@@ -4,7 +4,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
-const NumTotalExplorers = function () {
+const NumTotalExplorers = function ({ numExplorers }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -16,13 +16,13 @@ const NumTotalExplorers = function () {
             (The total number of Explorers enrolled in Debí ir a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorers}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumTotalAmbassadors = function () {
+const NumTotalAmbassadors = function ({ numAmbassadors }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -34,13 +34,13 @@ const NumTotalAmbassadors = function () {
             (The total number of Ambassadors enrolled in Debí ir a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numAmbassadors}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumTotalAdmins = function () {
+const NumTotalAdmins = function ({ numAdmins }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -52,18 +52,26 @@ const NumTotalAdmins = function () {
             (The total number of Admins managing Debí ir a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numAdmins}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-function AdminDashboardUserStats() {
+function AdminDashboardUserStats({ users }) {
+  const numExplorers = users.filter(
+    (user) => user.userType === "explorer",
+  ).length;
+  const numAmbassadors = users.filter(
+    (user) => user.userType === "ambassador",
+  ).length;
+  const numAdmins = users.filter((user) => user.userType === "admin").length;
+
   return (
     <Row>
-      <NumTotalExplorers />
-      <NumTotalAmbassadors />
-      <NumTotalAdmins />
+      <NumTotalExplorers numExplorers={numExplorers} />
+      <NumTotalAmbassadors numAmbassadors={numAmbassadors} />
+      <NumTotalAdmins numAdmins={numAdmins} />
     </Row>
   );
 }

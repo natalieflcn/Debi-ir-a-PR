@@ -28,7 +28,7 @@ function AdminDashboard() {
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AdminDashboardProfileItem />
         <DashboardExplorationsCreated type="admin" />
-        <AdminDashboardUserStats />
+        <AdminDashboardUserStats users={users} />
       </Row>
 
       <Row>

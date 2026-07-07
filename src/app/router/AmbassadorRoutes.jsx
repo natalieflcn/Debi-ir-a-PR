@@ -67,7 +67,7 @@ const AmbassadorRoutes = [
   },
   {
     path: "explorations/:explorationId/edit",
-    element: <CreateExploration exploration={fakeExplorationData} />,
+    element: <CreateExploration />,
     loader: explorationLoader,
   },
 
@@ -84,7 +84,7 @@ const AmbassadorRoutes = [
 
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
-    element: <CreateLocation location={fakeExplorationLocationData} />,
+    element: <CreateLocation />,
     loader: locationLoader,
   },
 

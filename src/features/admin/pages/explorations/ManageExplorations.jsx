@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import ExplorationsFilters from "../../../explorations/components/ExplorationMiniCard";
-import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
-import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
+
 import Row from "../../../../shared/components/layout/Row";
 
 import Input from "../../../../shared/components/form/Input";
@@ -13,6 +11,8 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAdminUI } from "../../contexts/AdminUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
+import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
+import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
 
 const getAdminExplorationsTable = function () {
   return {
@@ -80,19 +80,21 @@ const ExplorationCards = styled.div`
   gap: var(--gap-2xl);
 `;
 
-const getAdminExplorationCardButton = function (explorationId) {
+const getAdminExplorationCardButton = function (exploration) {
+  console.log("exploration received:", exploration);
+  console.log("exploration.id:", exploration?.id);
   return [
     {
       id: "view",
       buttonVariation: "secondary",
       buttonName: "View ",
-      buttonLink: `/admin/explorations/${explorationId}`,
+      buttonLink: `/admin/explorations/${exploration.id}`,
     },
     {
       id: "edit",
       buttonVariation: "primary",
       buttonName: "Edit ",
-      buttonLink: `/admin/explorations/${explorationId}/edit`,
+      buttonLink: `/admin/explorations/${exploration.id}/edit`,
     },
   ];
 };
@@ -105,6 +107,7 @@ function ManageExplorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const explorations = useLoaderData();
+  console.log(explorations);
 
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
@@ -126,6 +129,8 @@ function ManageExplorations() {
     startIndex + ITEMS_PER_PAGE,
   );
 
+  console.log(paginatedExplorations);
+
   useEffect(() => {
     setCurrentPage(1);
   }, [sortBy, filterBy]);
@@ -134,6 +139,7 @@ function ManageExplorations() {
     setViewMode(mode);
   };
 
+  console.log(paginatedExplorations);
   return (
     <StyledExplorations>
       <Row>
@@ -154,13 +160,15 @@ function ManageExplorations() {
 
       {viewMode === "grid" && (
         <ExplorationCards>
+          {console.log("about to map:", paginatedExplorations[0].name)}
+
           {paginatedExplorations.map((exploration) => (
             <ExplorationMiniCard
               name={exploration.name}
               description={exploration.description}
               numStops={exploration.numStops}
               startingCity={exploration.startingCity}
-              buttonDetails={getAdminExplorationCardButton(exploration.id)}
+              buttonDetails={getAdminExplorationCardButton(exploration)}
               key={exploration.id}
             />
           ))}
