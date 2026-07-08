@@ -5,7 +5,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
-function AmbassadorDashboardProfileItem() {
+function AmbassadorDashboardProfileItem({ profileData }) {
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-lg)">
@@ -14,12 +14,13 @@ function AmbassadorDashboardProfileItem() {
             Ambassador
           </Heading>
           <Image
-            src="/src/assets/images/content/TEMP.png"
+            src={profileData.avatar}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
+            $height="8rem"
             $imageShadow="var(--box-shadow-sm)"
           />
-          <Heading as="h6">Natalie Falcon</Heading>
+          <Heading as="h6">{profileData.name}</Heading>
         </Row>
         <Row>
           <RouterLink to="/ambassador/profile">

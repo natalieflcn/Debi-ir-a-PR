@@ -38,7 +38,7 @@ function AmbassadorDashboard() {
       </Heading>
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
-        <AmbassadorDashboardProfileItem />
+        <AmbassadorDashboardProfileItem profileData={profileData} />
         <DashboardExplorationsCreated type="ambassador" profile={profileData} />
         <AmbassadorDashboardUserStats
           usersData={explorers}

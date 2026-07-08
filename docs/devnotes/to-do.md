@@ -237,7 +237,15 @@
   - [x] Images have fallback/placeholder when src is missing
   - [x] Render exploration tags from the data, instead of hard-coded data
   - [ ] Implement progress bar TODO 3
-  - [ ] Make website responsive TODO 6
-  - [ ] FIX: Error pages render outside of layout
+
   - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
   - [ ] Implement Featured Explorations behavior
+  - [ ] Filter for explorations created by Ambassador/Admin
+  - [ ] Hyperlink tours in Tables to explorationIds
+  - [ ] Make sure users in Tables are hyperlinked to userIds
+  - [ ] Hyperlink tours in ManageExplorations for Ambassador
+  - [ ] Error page renders outside of layout
+  - [ ] Add badges to Badge Collection on Explorer Dashboard
+  - [ ] Open modal window upon click of badges from profile to display badge description
+  - [ ] FIX: Error pages render outside of layout
+  - [ ] Make website responsive TODO 6

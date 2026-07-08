@@ -17,7 +17,7 @@ const StyledAdminDashboard = styled.div`
 `;
 
 function AdminDashboard() {
-  const { users, explorations, profileData } = useLoaderData();
+  const { users, profileData } = useLoaderData();
 
   const explorersData = users.filter((user) => user.userType === "explorer");
   const ambassadorsData = users.filter(
@@ -31,7 +31,7 @@ function AdminDashboard() {
       </Heading>
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
-        <AdminDashboardProfileItem />
+        <AdminDashboardProfileItem profileData={profileData} />
         <DashboardExplorationsCreated type="admin" profile={profileData} />
         <AdminDashboardUserStats users={users} />
       </Row>

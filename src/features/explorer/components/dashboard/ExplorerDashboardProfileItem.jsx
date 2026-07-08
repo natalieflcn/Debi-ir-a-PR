@@ -11,22 +11,23 @@ const StyledExplorerDashboardProfileItem = styled.div`
   /* max-width: 50%; */
 `;
 
-function ExplorerDashboardProfileItem() {
+function ExplorerDashboardProfileItem({ profileData }) {
   return (
     <StyledExplorerDashboardProfileItem>
       <DashboardItem $variation="center" $height="18rem">
         <Row $gap="var(--gap-lg)">
           <Row $align="center">
             <Heading as="h4" $color="var(--color-dark-100)">
-              First Explorer
+              {profileData.title}
             </Heading>
             <Image
-              src="/src/assets/images/content/TEMP.png"
+              src={profileData.avatar}
               $borderRadius="var(--border-radius-round)"
               $width="8rem"
+              $height="8rem"
               $imageShadow="var(--box-shadow-sm)"
             />
-            <Heading as="h6">Natalie Falcon</Heading>
+            <Heading as="h6">{profileData.name}</Heading>
           </Row>
           <Row>
             <RouterLink to="/profile">

@@ -60,7 +60,7 @@ const TEMPEXPLORATIONDATA = [
 ];
 
 function ExplorerDashboard() {
-  const { profileInfo, explorations } = useLoaderData();
+  const { profileData, explorations, userProgress } = useLoaderData();
 
   return (
     <StyledExplorerDashboard>
@@ -69,7 +69,7 @@ function ExplorerDashboard() {
       </Heading>
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
-        <ExplorerDashboardProfileItem />
+        <ExplorerDashboardProfileItem profileData={profileData} />
         <ExplorerDashboardBadgeItem />
         <ExplorerDashboardHistoryItem />
       </Row>
