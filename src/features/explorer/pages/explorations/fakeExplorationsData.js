@@ -6,7 +6,7 @@ const fakeExplorationsData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 5,
     startingCity: "Bayamon",
-
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     tags: ["restaurants", "city"],
   },
   {
@@ -16,6 +16,7 @@ const fakeExplorationsData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     numStops: 7,
     startingCity: "Bayamon",
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     tags: ["restaurants", "city", "landscapes"],
   },
   {
@@ -26,6 +27,7 @@ const fakeExplorationsData = [
     numStops: 11,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -36,6 +38,7 @@ const fakeExplorationsData = [
     numStops: 5,
     startingCity: "Bayamon",
     tags: ["restaurants", "city"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -46,6 +49,7 @@ const fakeExplorationsData = [
     numStops: 7,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -56,6 +60,7 @@ const fakeExplorationsData = [
     numStops: 11,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -66,6 +71,7 @@ const fakeExplorationsData = [
     numStops: 5,
     startingCity: "Bayamon",
     tags: ["restaurants", "city"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -76,6 +82,7 @@ const fakeExplorationsData = [
     numStops: 7,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -86,6 +93,7 @@ const fakeExplorationsData = [
     numStops: 11,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -96,6 +104,7 @@ const fakeExplorationsData = [
     numStops: 5,
     startingCity: "Bayamon",
     tags: ["restaurants", "city"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -106,6 +115,7 @@ const fakeExplorationsData = [
     numStops: 7,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
   {
@@ -116,6 +126,7 @@ const fakeExplorationsData = [
     numStops: 11,
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
+    locationIds: ["loc_001", "loc_002", "loc_003"],
     featured: true,
   },
 ];

@@ -4,7 +4,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
-const NumTotalUsers = function () {
+const NumTotalUsers = function ({ numExplorers }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -16,13 +16,13 @@ const NumTotalUsers = function () {
             (The total number of Explorers enrolled in Debí ir a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorers}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumMonthlyUsers = function () {
+const NumMonthlyUsers = function ({ numExplorers }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -34,13 +34,13 @@ const NumMonthlyUsers = function () {
             (The total number of Explorers that were active this month)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorers}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumWeeklyUsers = function () {
+const NumWeeklyUsers = function ({ numExplorers }) {
   return (
     <DashboardItem>
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -52,18 +52,24 @@ const NumWeeklyUsers = function () {
             (The total number of Explorers that were active this week)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorers}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-function AmbassadorDashboardUserStats() {
+function AmbassadorDashboardUserStats({
+  usersData,
+  numMonthlyExplorers,
+  numWeeklyExplorers,
+}) {
+  const numTotalExplorers = usersData.length;
+
   return (
     <Row>
-      <NumTotalUsers />
-      <NumMonthlyUsers />
-      <NumWeeklyUsers />
+      <NumTotalUsers numExplorers={numTotalExplorers} />
+      <NumMonthlyUsers numExplorers={numMonthlyExplorers} />
+      <NumWeeklyUsers numExplorers={numWeeklyExplorers} />
     </Row>
   );
 }

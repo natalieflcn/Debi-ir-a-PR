@@ -4,7 +4,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
-const NumTotalExplorations = function () {
+const NumTotalExplorations = function ({ numExplorations }) {
   return (
     <DashboardItem $height="4rem">
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -17,13 +17,13 @@ const NumTotalExplorations = function () {
             a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorations}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumExplorationsCompleted = function () {
+const NumExplorationsCompleted = function ({ numExplorationsCompleted }) {
   return (
     <DashboardItem $height="4rem">
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -36,17 +36,24 @@ const NumExplorationsCompleted = function () {
             Debí ir a PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numExplorationsCompleted}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-function AmbassadorDashboardExplorationStats() {
+function AmbassadorDashboardExplorationStats({
+  explorations,
+  numExplorationsCompleted,
+}) {
+  const numExplorations = explorations.length;
+
   return (
     <Row $direction="horizontal" $gap="var(--gap-xl)">
-      <NumTotalExplorations />
-      <NumExplorationsCompleted />
+      <NumTotalExplorations numExplorations={numExplorations} />
+      <NumExplorationsCompleted
+        numExplorationsCompleted={numExplorationsCompleted}
+      />
     </Row>
   );
 }

@@ -13,7 +13,6 @@ import { useLoaderData } from "react-router-dom";
 function Exploration({ userProgress = 0 }) {
   const exploration = useLoaderData();
 
-  console.log(exploration);
   const hasStarted = userProgress !== 1;
 
   const headerDetails = (
@@ -23,7 +22,6 @@ function Exploration({ userProgress = 0 }) {
       exploration={exploration}
     />
   );
-  console.log(exploration.locations);
 
   const locationDetails = (
     <ExplorerExplorationCardLocations

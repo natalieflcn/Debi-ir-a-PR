@@ -85,8 +85,6 @@ function ExplorationLocation() {
     />
   );
 
-  console.log(explorationLocation);
-
   return (
     <ExplorationLocationCard
       exploration={explorationId}

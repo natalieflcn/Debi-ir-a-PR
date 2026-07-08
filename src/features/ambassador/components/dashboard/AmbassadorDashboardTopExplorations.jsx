@@ -4,42 +4,20 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
 
-const topExplorationsTableData = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      ),
-    },
-    { id: "numStops", heading: "# of Stops" },
-    { id: "numStarted", heading: "# of Explorers Started" },
-    { id: "numCompleted", heading: "# of Explorers Completed" },
-  ],
-  rows: [
-    {
-      name: "San Juan Tour",
-      numStops: 8,
-      numStarted: 15,
-      numCompleted: 4,
-    },
-    {
-      name: "Bayamon Tour",
-      numStops: 6,
-      numStarted: 15,
-      numCompleted: 4,
-    },
-    {
-      name: "Toa Alta Tour",
-      numStops: 8,
-      numStarted: 15,
-      numCompleted: 4,
-    },
-  ],
-};
+const topExplorationsTableColumns = [
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+      </TableNameCell>
+    ),
+  },
+  { id: "numStops", heading: "# of Stops" },
+  { id: "numStarted", heading: "# of Explorers Started" },
+  { id: "numCompleted", heading: "# of Explorers Completed" },
+];
 
 const TableNameCell = styled.div`
   display: flex;
@@ -69,9 +47,41 @@ const topExplorationsTableTheme = {
   borderColor: "var(--color-green-300)",
 };
 
-function AmbassadorDashboardTopExplorations({
-  tableData = topExplorationsTableData,
-}) {
+function AmbassadorDashboardTopExplorations({ explorations, userHistories }) {
+  const explorationEngagement = explorations
+    .map((exploration) => {
+      const started = userHistories.filter((history) =>
+        history.explorationProgress.some(
+          (entry) =>
+            entry.explorationId === exploration.id &&
+            entry.status !== "not_started",
+        ),
+      ).length;
+
+      const completed = userHistories.filter((history) =>
+        history.explorationProgress.some(
+          (entry) =>
+            entry.explorationId === exploration.id &&
+            entry.status === "completed",
+        ),
+      ).length;
+
+      return {
+        id: exploration.id,
+        name: exploration.name,
+        numStops: exploration.numStops,
+        numStarted: started,
+        numCompleted: completed,
+      };
+    })
+    .sort((a, b) => {
+      if (b.numCompleted !== a.numCompleted) {
+        return b.numCompleted - a.numCompleted; // primary: most completed first
+      }
+      return b.numStarted - a.numStarted;
+    }) // most completed first
+    .slice(0, 5); // top 5 only
+
   return (
     <DashboardItem>
       <Heading as="h4" $color="var(--color-red-400)">
@@ -79,8 +89,8 @@ function AmbassadorDashboardTopExplorations({
       </Heading>
 
       <Table
-        columns={tableData.columns}
-        rows={tableData.rows}
+        columns={topExplorationsTableColumns}
+        rows={explorationEngagement}
         $theme={topExplorationsTableTheme}
       />
     </DashboardItem>

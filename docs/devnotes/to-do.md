@@ -229,7 +229,7 @@
     - [~] All fake data shapes match MongoDB schema field names TODO1
     - [~] Determine data structure for progress objects
     - [x] Every action and loader in router has placeholder
-    - [ ] Decouple false data from dashboard components and rely entirely on loaded data TODO2
+    - [~] Decouple false data from dashboard components and rely entirely on loaded data TODO2
     - [x] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation
     - [x] Create logic for ProtectedRoute
@@ -238,3 +238,6 @@
   - [x] Render exploration tags from the data, instead of hard-coded data
   - [ ] Implement progress bar TODO 3
   - [ ] Make website responsive TODO 6
+  - [ ] FIX: Error pages render outside of layout
+  - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
+  - [ ] Implement Featured Explorations behavior

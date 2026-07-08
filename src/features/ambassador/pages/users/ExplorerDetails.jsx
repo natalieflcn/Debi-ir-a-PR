@@ -23,7 +23,6 @@ function ExplorerDetails() {
   const explorer = explorers.find(
     (explorer) => String(explorer.id) === String(explorerId),
   );
-  console.log(explorerId);
 
   return (
     <Row $gap="var(--gap-xl)">

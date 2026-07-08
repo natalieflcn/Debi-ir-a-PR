@@ -13,4 +13,24 @@ export const fakeLocationStats = [
     explorationId: "exp_001",
     numExplorersVisited: 203,
   },
+  {
+    locationId: "loc_002",
+    explorationId: "exp_001",
+    numExplorersVisited: 203,
+  },
+  {
+    locationId: "loc_003",
+    explorationId: "exp_001",
+    numExplorersVisited: 203,
+  },
+  {
+    locationId: "loc_004",
+    explorationId: "exp_001",
+    numExplorersVisited: 203,
+  },
+  {
+    locationId: "loc_005",
+    explorationId: "exp_001",
+    numExplorersVisited: 203,
+  },
 ];

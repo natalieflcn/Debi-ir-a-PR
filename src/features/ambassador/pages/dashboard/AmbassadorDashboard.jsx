@@ -21,7 +21,15 @@ const StyledAmbassadorDashboard = styled.div`
 `;
 
 function AmbassadorDashboard() {
-  const { explorers, profileData, explorations } = useLoaderData;
+  const {
+    explorers,
+    profileData,
+    explorations,
+    numWeeklyExplorers,
+    numMonthlyExplorers,
+    numExplorationsCompleted,
+    userHistories,
+  } = useLoaderData();
 
   return (
     <StyledAmbassadorDashboard>
@@ -31,19 +39,32 @@ function AmbassadorDashboard() {
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <AmbassadorDashboardProfileItem />
-        <DashboardExplorationsCreated type="ambassador" />
-        <AmbassadorDashboardUserStats />
+        <DashboardExplorationsCreated type="ambassador" profile={profileData} />
+        <AmbassadorDashboardUserStats
+          usersData={explorers}
+          numWeeklyExplorers={numWeeklyExplorers}
+          numMonthlyExplorers={numMonthlyExplorers}
+        />
       </Row>
 
       <Row>
-        <DashboardNewExplorers />
-        <DashboardTopExplorers />
+        <DashboardNewExplorers usersData={explorers} />
+        <DashboardTopExplorers usersData={explorers} />
       </Row>
 
       <Row $gap="var(--gap-xl)">
-        <AmbassadorDashboardExplorationStats />
-        <AmbassadorDashboardTopExplorations />
-        <AmbassadorDashboardLocationStats />
+        <AmbassadorDashboardExplorationStats
+          explorations={explorations}
+          numExplorationsCompleted={numExplorationsCompleted}
+        />
+        <AmbassadorDashboardTopExplorations
+          explorations={explorations}
+          userHistories={userHistories}
+        />
+        <AmbassadorDashboardLocationStats
+          explorations={explorations}
+          userHistories={userHistories}
+        />
         <AmbassadorDashboardTopLocations />
       </Row>
     </StyledAmbassadorDashboard>

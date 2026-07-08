@@ -16,7 +16,6 @@ function ViewLocation() {
 
   const { explorationId } = useParams();
 
-  console.log(location);
   return (
     <ExplorationLocationCard
       exploration={explorationId}

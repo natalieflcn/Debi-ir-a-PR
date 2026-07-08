@@ -42,7 +42,6 @@ export const UsersTableColumns = [
     id: "action",
     heading: "Action",
     render: (row) => {
-      console.log(row);
       return (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
@@ -151,7 +150,6 @@ function ManageUsers() {
     setCurrentPage(1);
   }, [sortBy, filterBy]);
 
-  console.log("paginatedUsers:", paginatedUsers);
   return (
     <StyledUsers>
       <Row $direction="horizontal" $gap="var(--gap-lg)">

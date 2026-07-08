@@ -81,8 +81,6 @@ const ExplorationCards = styled.div`
 `;
 
 const getAdminExplorationCardButton = function (exploration) {
-  console.log("exploration received:", exploration);
-  console.log("exploration.id:", exploration?.id);
   return [
     {
       id: "view",
@@ -107,7 +105,6 @@ function ManageExplorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const explorations = useLoaderData();
-  console.log(explorations);
 
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
@@ -129,8 +126,6 @@ function ManageExplorations() {
     startIndex + ITEMS_PER_PAGE,
   );
 
-  console.log(paginatedExplorations);
-
   useEffect(() => {
     setCurrentPage(1);
   }, [sortBy, filterBy]);
@@ -139,7 +134,6 @@ function ManageExplorations() {
     setViewMode(mode);
   };
 
-  console.log(paginatedExplorations);
   return (
     <StyledExplorations>
       <Row>
@@ -160,7 +154,7 @@ function ManageExplorations() {
 
       {viewMode === "grid" && (
         <ExplorationCards>
-          {console.log("about to map:", paginatedExplorations[0].name)}
+       
 
           {paginatedExplorations.map((exploration) => (
             <ExplorationMiniCard

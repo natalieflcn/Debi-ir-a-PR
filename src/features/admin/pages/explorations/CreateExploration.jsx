@@ -37,7 +37,6 @@ function CreateExploration() {
   const exploration = useLoaderData();
 
   const isEditing = Boolean(exploration);
-  console.log(exploration, isEditing);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");
   const [headerImage, setHeaderImage] = useState(

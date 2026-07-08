@@ -63,7 +63,6 @@ function ExplorationMiniCard({
   startingCity,
   buttonDetails,
 }) {
-  console.log(name, description, numStops, startingCity, buttonDetails);
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
       <ExplorationCardBackground>

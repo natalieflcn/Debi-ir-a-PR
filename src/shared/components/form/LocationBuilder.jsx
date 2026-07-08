@@ -13,19 +13,7 @@ const StyledLocationBuilder = styled.div`
 `;
 
 function LocationBuilder({ locations, onAdd }) {
-  // const [locations, setLocations] = useState(existingLocations);
-  //   const [draft, setDraft] = useState(emptyLocation);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // function handleAddLocation(formData) {
-  //   console.log("handleaddlocaiton running");
-  //   setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
-  //   setIsModalOpen(false);
-  // }
-
-  // function handleDeleteLocation(id) {
-  //   setLocations((prev) => prev.filter((location) => location.id !== id));
-  // }
 
   return (
     <StyledLocationBuilder>

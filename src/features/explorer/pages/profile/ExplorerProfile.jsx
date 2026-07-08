@@ -13,7 +13,7 @@ const StyledExplorerProfile = styled.div`
 
 function ExplorerProfile() {
   const profileData = useLoaderData();
-  console.log(profileData);
+
 
   return (
     <StyledExplorerProfile>

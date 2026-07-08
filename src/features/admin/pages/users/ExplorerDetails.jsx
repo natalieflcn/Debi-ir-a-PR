@@ -24,7 +24,6 @@ function ExplorerDetails() {
     (user) => String(user.id) === String(explorerId),
   );
 
-  console.log(usersData, explorer);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">

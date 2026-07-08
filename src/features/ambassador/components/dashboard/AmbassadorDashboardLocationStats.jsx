@@ -4,7 +4,12 @@ import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
-const NumTotalLocations = function () {
+const NumTotalLocations = function ({ explorations }) {
+  console.log(explorations);
+  const numLocations = explorations.flatMap(
+    (exploration) => exploration.locationIds,
+  ).length;
+
   return (
     <DashboardItem $height="4rem">
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -17,13 +22,20 @@ const NumTotalLocations = function () {
             PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{numLocations}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
 
-const NumLocationsExplored = function () {
+const NumLocationsExplored = function ({ userHistories }) {
+  console.log(userHistories);
+  const locationsExplored = new Set(
+    userHistories.flatMap((history) =>
+      history.visitLog.map((log) => log.locationId),
+    ),
+  );
+
   return (
     <DashboardItem $height="4rem">
       <Row $direction="horizontal" $gap="var(--gap-xl)">
@@ -36,16 +48,19 @@ const NumLocationsExplored = function () {
             PR)
           </SmallText>
         </Row>
-        <InsetSpan>5</InsetSpan>
+        <InsetSpan>{locationsExplored.size}</InsetSpan>
       </Row>
     </DashboardItem>
   );
 };
-function AmbassadorDashboardLocationStats() {
+function AmbassadorDashboardLocationStats({ explorations, userHistories }) {
   return (
     <Row $direction="horizontal" $gap="var(--gap-xl)">
-      <NumTotalLocations />
-      <NumLocationsExplored />
+      <NumTotalLocations explorations={explorations} />
+      <NumLocationsExplored
+        explorations={explorations}
+        userHistories={userHistories}
+      />
     </Row>
   );
 }

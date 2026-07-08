@@ -7,7 +7,6 @@ import Heading from "../typography/Heading";
 import RouterLink from "../routing/RouterLink";
 
 function DashboardExplorationsCreated({ type, profile }) {
-  console.log(profile);
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-xl)">

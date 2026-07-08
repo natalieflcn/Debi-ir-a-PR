@@ -40,8 +40,6 @@ function AmbassadorDetails() {
     (user) => String(user.id) === String(ambassadorId),
   );
 
-  console.log(usersData, ambassador);
-
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/admin/users">
