@@ -225,26 +225,30 @@
     - [x] Edit Exploration
 
   ## Week: June 29 – July 2
-  - [~] Prepare components to accept external data, instead of relying on internal, hard-coded false data
-    - [~] All fake data shapes match MongoDB schema field names TODO1
-    - [~] Determine data structure for progress objects
+  - [x] Prepare components to accept external data, instead of relying on internal, hard-coded false data
+    - [x] All fake data shapes match MongoDB schema field names
+    - [x] Determine data structure for progress objects
     - [x] Every action and loader in router has placeholder
-    - [~] Decouple false data from dashboard components and rely entirely on loaded data TODO2
+    - [x] Decouple false data from dashboard components and rely entirely on loaded data
     - [x] Components use useLoaderData pattern instead of importing fake data directly
   - [x] Refine routing and navigation
     - [x] Create logic for ProtectedRoute
     - [x] Should be no literal strings ":explorationId" in RouterLinks, all dynamic segments should use real values and ids
   - [x] Images have fallback/placeholder when src is missing
   - [x] Render exploration tags from the data, instead of hard-coded data
-  - [ ] Implement progress bar TODO 3
-  - [ ] Make featured flag its own feature, differentiated from the tags
-  - [ ] Allow Ambassadors and Admins to filter and search for featured explorations as well
-  - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
-  - [ ] Implement Featured Explorations behavior
-  - [ ] Hyperlink tours in Tables to explorationIds
-  - [ ] Make sure users in Tables are hyperlinked to userIds
-  - [ ] Hyperlink tours in ManageExplorations for Ambassador
-  - [ ] Add badges to Badge Collection on Explorer Dashboard
-  - [ ] Open modal window upon click of badges from profile to display badge description
-  - [ ] FIX: Error pages render outside of layout
-  - [ ] Make website responsive TODO 6
+
+## Week: July 6 – July 11
+
+- [ ] Implement progress bar on Explorer components TODO 1
+- [ ] Make featured flag its own feature, differentiated from the tags
+- [ ] Allow Ambassadors and Admins to filter and search for featured explorations as well
+- [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
+- [ ] Implement Featured Explorations behavior
+- [ ] Hyperlink tours in Tables to explorationIds
+- [ ] Make sure users in Tables are hyperlinked to userIds
+- [ ] Hyperlink tours in ManageExplorations for Ambassador
+- [ ] Add badges to Badge Collection on Explorer Dashboard
+- [ ] Open modal window upon click of badges from profile to display badge description
+- [ ] FIX: Error pages render outside of layout
+
+- [ ] Make website responsive TODO 6

@@ -19,7 +19,6 @@ const StyledExplorerDashboard = styled.div`
 `;
 
 function getCurrentExplorations(explorations, userHistory) {
-  console.log(userHistory);
   const explorationIds = [
     ...new Set(
       userHistory.explorationProgress
@@ -43,11 +42,30 @@ function getFeaturedExplorations(explorations) {
   return featuredExplorations;
 }
 
+function getUserProgress(explorations, userHistory) {
+  const userProgress = userHistory.explorationProgress.map((exploration) => {
+    const totalLocations = explorations.find(
+      (currentExploration) =>
+        currentExploration.id === exploration.explorationId,
+    ).locationIds.length;
+
+    return {
+      explorationId: exploration.explorationId,
+      userProgress: Math.round(
+        (exploration.locationsVisited / totalLocations) * 100,
+      ),
+    };
+  });
+
+  return userProgress;
+}
+
 function ExplorerDashboard() {
   const { profileData, explorations, userHistory } = useLoaderData();
 
   const currentExplorations = getCurrentExplorations(explorations, userHistory);
   const featuredExplorations = getFeaturedExplorations(explorations);
+  const userProgress = getUserProgress(explorations, userHistory);
 
   return (
     <StyledExplorerDashboard>
@@ -67,11 +85,13 @@ function ExplorerDashboard() {
         <ExplorerDashboardExplorationsItem
           title="Current Explorations"
           explorationData={currentExplorations}
+          userProgress={userProgress}
         />
 
         <ExplorerDashboardExplorationsItem
           title="Featured Explorations"
           explorationData={featuredExplorations}
+          userProgress={userProgress}
         />
       </Row>
     </StyledExplorerDashboard>

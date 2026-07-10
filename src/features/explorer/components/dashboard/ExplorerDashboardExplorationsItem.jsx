@@ -13,7 +13,12 @@ const ExplorationGrid = styled.div`
   width: 100%;
 `;
 
-function ExplorerDashboardExplorationsItem({ explorationData, title }) {
+function ExplorerDashboardExplorationsItem({
+  explorationData,
+  userProgress,
+  title,
+}) {
+  console.log(userProgress);
   return (
     <>
       <DashboardItem>
@@ -40,7 +45,13 @@ function ExplorerDashboardExplorationsItem({ explorationData, title }) {
                     <p>{exploration.description}</p>
                   </Row>
                   <Row>
-                    <Heading as="h6">{exploration.progress}% complete</Heading>
+                    <Heading as="h6">
+                      {userProgress.find(
+                        (explorationProgress) =>
+                          explorationProgress.explorationId === exploration.id,
+                      )?.userProgress ?? 0}
+                      % complete
+                    </Heading>
                     <Button $variation="primary" $size="small">
                       Continue Exploring
                     </Button>
