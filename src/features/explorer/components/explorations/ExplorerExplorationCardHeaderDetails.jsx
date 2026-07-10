@@ -4,9 +4,28 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Button from "../../../../shared/components/ui/Button";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 
-function ExplorerExplorationCardHeaderDetails({ hasStarted, exploration }) {
+function ExplorerExplorationCardHeaderDetails({
+  hasStarted,
+  exploration,
+  userHistory,
+}) {
   const stopsRemaining = exploration.numStops;
 
+  const userProgress = Math.round(
+    (userHistory.explorationProgress.find(
+      (visitedExploration) =>
+        visitedExploration.explorationId === exploration.id,
+    ).locationsVisited /
+      exploration.numStops) *
+      100,
+  );
+
+  console.log(
+    userHistory.explorationProgress.find(
+      (visitedExploration) =>
+        visitedExploration.explorationId === exploration.id,
+    ).locationsVisited,
+  );
   return (
     <>
       {hasStarted && (
@@ -26,7 +45,7 @@ function ExplorerExplorationCardHeaderDetails({ hasStarted, exploration }) {
             </Row>
           </Row>
           <Row>
-            <ProgressBar completed={60}></ProgressBar>
+            <ProgressBar completed={userProgress}></ProgressBar>
           </Row>
         </>
       )}

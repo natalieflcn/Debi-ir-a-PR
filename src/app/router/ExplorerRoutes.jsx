@@ -4,8 +4,8 @@ import { lazy } from "react";
 import { Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";
 import { explorationsLoader } from "./loaders/explorationsLoader";
-import { explorationLoader } from "./loaders/explorationLoader";
-import { locationLoader } from "./loaders/locationLoader";
+import { explorerExplorationLoader } from "./loaders/explorerExplorationLoader";
+import { explorerLocationLoader } from "./loaders/explorerLocationLoader";
 import { profileLoader } from "./loaders/profileLoader";
 import { explorerDashboardLoader } from "./loaders/explorerDashboardLoader";
 
@@ -36,12 +36,12 @@ const ExplorerRoutes = [
   {
     path: "explorations/:explorationId",
     element: <Exploration />,
-    loader: explorationLoader,
+    loader: explorerExplorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/:locationId",
     element: <ExplorationLocation />,
-    loader: locationLoader,
+    loader: explorerLocationLoader,
   },
   { path: "profile", element: <ExplorerProfile />, loader: profileLoader },
 ];

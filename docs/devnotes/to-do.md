@@ -249,6 +249,7 @@
 - [ ] Hyperlink tours in ManageExplorations for Ambassador
 - [ ] Add badges to Badge Collection on Explorer Dashboard
 - [ ] Open modal window upon click of badges from profile to display badge description
+- [ ] Remove LOC\_\_# and replace with numerals on Exploration Card location items
 - [ ] FIX: Error pages render outside of layout
 
 - [ ] Make website responsive TODO 6

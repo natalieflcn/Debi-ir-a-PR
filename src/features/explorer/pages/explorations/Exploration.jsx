@@ -1,19 +1,19 @@
 import { IoFlag } from "react-icons/io5";
 import ExplorationCard from "../../../explorations/components/ExplorationCard";
-import Row from "../../../../shared/components/layout/Row";
-import ProgressBar from "../../../../shared/components/ui/ProgressBar";
-import fakeExplorationData from "./fakeExplorationData";
-import Bold from "../../../../shared/components/typography/Bold";
-import Button from "../../../../shared/components/ui/Button";
+
 import ExplorerExplorationCardHeaderDetails from "../../components/explorations/ExplorerExplorationCardHeaderDetails";
 import ExplorerExplorationCardLocations from "../../components/explorations/ExplorerExplorationCardLocations";
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
 
-function Exploration({ userHistory = 0 }) {
-  const exploration = useLoaderData();
+function Exploration() {
+  const { exploration, userHistory } = useLoaderData();
 
-  const hasStarted = userHistory !== 1;
+  console.log(userHistory);
+
+  const hasStarted = userHistory.explorationProgress.some(
+    (startedExploration) => startedExploration.explorationId === exploration.id,
+  );
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails

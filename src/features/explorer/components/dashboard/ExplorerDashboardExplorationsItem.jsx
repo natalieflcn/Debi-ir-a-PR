@@ -18,7 +18,6 @@ function ExplorerDashboardExplorationsItem({
   userProgress,
   title,
 }) {
-  console.log(userProgress);
   return (
     <>
       <DashboardItem>

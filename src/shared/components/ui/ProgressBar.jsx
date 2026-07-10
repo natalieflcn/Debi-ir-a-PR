@@ -17,7 +17,7 @@ const InnerBar = styled.div`
   /* top: 10%; */
 
   background-color: var(--color-red-200);
-  width: 60%;
+  width: ${({ $width }) => $width};
   border-radius: inherit;
   transition: width 0.3s ease-in-out;
 `;
@@ -31,7 +31,7 @@ const CompletedNumber = styled.span`
 const ProgressBar = ({ completed }) => {
   return (
     <OuterBar>
-      <InnerBar>
+      <InnerBar $width={`${completed}%`}>
         <CompletedNumber>{`${completed}%`}</CompletedNumber>
       </InnerBar>
     </OuterBar>
