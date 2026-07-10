@@ -1,5 +1,5 @@
 // userHistory for userId: "user_natalie"
-const userProgress = [
+const userHistory = [
   {
     userId: "user_001",
     explorationProgress: [
@@ -162,4 +162,4 @@ const userProgress = [
   },
 ];
 
-export default userProgress;
+export default userHistory;

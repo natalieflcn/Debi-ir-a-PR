@@ -9,6 +9,7 @@ import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import Modal from "../../../../shared/components/ui/Modal";
+import badges from "../../../../../data/badges";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -16,8 +17,18 @@ const StyledExplorerDashboardBadgeItem = styled.div`
   align-content: space-between;
 `;
 
-function ExplorerDashboardBadgeItem() {
+function ExplorerDashboardBadgeItem({ userHistory }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const numBadges = badges.length;
+
+  const recentBadge = userHistory.earnedBadges.sort(
+    (a, b) => a.earnedAt > b.earnedAt,
+  )[0];
+
+  const recentBadgeName = badges.find(
+    (badge) => badge.id === recentBadge.badgeId,
+  ).name;
 
   return (
     <DashboardItem $variation="center" $height="18rem">
@@ -28,11 +39,12 @@ function ExplorerDashboardBadgeItem() {
           </Heading>
           <Row $gap="var(--gap-md)" $align="center">
             <Image src="/src/assets/images/content/TEMP.png" $width="5rem" />
-            <Heading as="h6">Toa Alta Badge</Heading>
+            <Heading as="h6">{recentBadgeName} Badge</Heading>
           </Row>
 
           <Bold $color="var(--color-dark-200)">
-            3 out of 46 badges collected
+            {userHistory.earnedBadges.length} out of {numBadges} badges
+            collected
           </Bold>
 
           <Button

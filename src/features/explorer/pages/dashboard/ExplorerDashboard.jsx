@@ -10,6 +10,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashboardStatsItem";
 import { useLoaderData } from "react-router-dom";
+import badges from "../../../../../data/badges";
 
 const StyledExplorerDashboard = styled.div`
   display: flex;
@@ -60,7 +61,7 @@ const TEMPEXPLORATIONDATA = [
 ];
 
 function ExplorerDashboard() {
-  const { profileData, explorations, userProgress } = useLoaderData();
+  const { profileData, explorations, userHistory } = useLoaderData();
 
   return (
     <StyledExplorerDashboard>
@@ -70,8 +71,8 @@ function ExplorerDashboard() {
 
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <ExplorerDashboardProfileItem profileData={profileData} />
-        <ExplorerDashboardBadgeItem />
-        <ExplorerDashboardHistoryItem />
+        <ExplorerDashboardBadgeItem userHistory={userHistory} />
+        <ExplorerDashboardHistoryItem userHistory={userHistory} />
       </Row>
 
       <ExplorerDashboardStatsItem />

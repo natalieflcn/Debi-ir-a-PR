@@ -1,4 +1,4 @@
-import userProgress from "../../../../data/fakeUserProgress";
+import userHistory from "../../../../data/fakeUserHistory";
 import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
 
 const explorers = [
@@ -68,7 +68,7 @@ function isActiveWithinDays(visitLog, days) {
 }
 
 export async function ambassadorDashboardLoader() {
-  const userHistories = userProgress;
+  const userHistories = userHistory;
 
   const activeThisWeek = userHistories.filter((history) => {
     return isActiveWithinDays(history.visitLog, 7);

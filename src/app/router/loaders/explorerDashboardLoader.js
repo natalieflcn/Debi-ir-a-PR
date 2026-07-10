@@ -1,4 +1,6 @@
+import { BsBadgeSd } from "react-icons/bs";
 import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
+import badges from "../../../../data/badges";
 
 export async function explorerDashboardLoader() {
   const explorations = fakeExplorationsData;
@@ -11,7 +13,7 @@ export async function explorerDashboardLoader() {
     dateJoined: "January 7, 2026",
   };
 
-  const userProgress = {
+  const userHistory = {
     userId: "user_001",
     explorationProgress: [
       {
@@ -27,6 +29,10 @@ export async function explorerDashboardLoader() {
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",
+      },
+      {
+        badgeId: "badge_toa_baja", // FK → explorationsData[n].badge
+        earnedAt: "2025-06-29",
       },
     ],
     visitLog: [
@@ -44,5 +50,5 @@ export async function explorerDashboardLoader() {
     ],
   };
 
-  return { explorations, profileData, userProgress };
+  return { explorations, profileData, userHistory };
 }

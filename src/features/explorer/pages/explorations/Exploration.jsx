@@ -10,14 +10,14 @@ import ExplorerExplorationCardLocations from "../../components/explorations/Expl
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
 
-function Exploration({ userProgress = 0 }) {
+function Exploration({ userHistory = 0 }) {
   const exploration = useLoaderData();
 
-  const hasStarted = userProgress !== 1;
+  const hasStarted = userHistory !== 1;
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails
-      userProgress={userProgress}
+      userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
     />
