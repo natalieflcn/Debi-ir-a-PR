@@ -81,11 +81,13 @@ function ExplorerDashboard() {
         <ExplorerDashboardExplorationsItem
           title="Current Explorations"
           explorationData={explorations}
+          userHistory={userHistory}
         />
 
         <ExplorerDashboardExplorationsItem
           title="Featured Explorations"
           explorationData={explorations}
+          userHistory={userHistory}
         />
       </Row>
     </StyledExplorerDashboard>

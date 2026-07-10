@@ -4,16 +4,47 @@ import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
 import Button from "../../../../shared/components/ui/Button";
+import styled from "styled-components";
 
-function ExplorerDashboardExplorationsItem({ explorationData, title }) {
+const ExplorationGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr; // always 2 columns
+  gap: var(--gap-lg);
+  width: 100%;
+`;
+
+function getCurrentExplorations(explorationData, userHistory) {
+  console.log(userHistory);
+  const explorationIds = [
+    ...new Set(
+      userHistory.explorationProgress
+        .filter((exploration) => exploration.status === "in_progress")
+        .map((exploration) => exploration.explorationId),
+    ),
+  ];
+
+  const explorations = explorationData.filter((exploration) =>
+    explorationIds.includes(exploration.id),
+  );
+
+  return explorations;
+}
+
+function ExplorerDashboardExplorationsItem({
+  explorationData,
+  title,
+  userHistory,
+}) {
+  const ExplorationItems = getCurrentExplorations(explorationData, userHistory);
+
   return (
     <>
-      <DashboardItem >
+      <DashboardItem>
         <Heading as="h4" $color="var(--color-dark-100)">
           {title}
         </Heading>
-        <Row $direction="horizontal" $gap="var(--gap-lg)">
-          {explorationData.slice(0, 2).map((exploration) => (
+        <ExplorationGrid>
+          {ExplorationItems.map((exploration) => (
             <Card
               $cardColor="var(--color-light-200)"
               $shadowColor="var(--color-brown-200)"
@@ -41,7 +72,7 @@ function ExplorerDashboardExplorationsItem({ explorationData, title }) {
               </Row>
             </Card>
           ))}
-        </Row>
+        </ExplorationGrid>
       </DashboardItem>
     </>
   );

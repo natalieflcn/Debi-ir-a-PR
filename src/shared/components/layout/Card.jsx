@@ -39,6 +39,7 @@ const Card = styled.div`
   ${({ $cardShadow }) => variants[$cardShadow] || variants["insetSM"]};
   height: ${({ $height }) => $height};
   width: ${({ $width }) => $width};
+  flex-wrap: ${({ $wrap }) => $wrap || "nowrap"};
 `;
 
 export default Card;

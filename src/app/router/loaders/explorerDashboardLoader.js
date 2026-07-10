@@ -25,6 +25,38 @@ export async function explorerDashboardLoader() {
         lastVisitedAt: "2025-06-20",
       },
       {
+        explorationId: "exp_002", // FK → explorationsData
+        locationsVisited: 4, // derive progress % here: 4/12 = 33%
+        status: "in_progress", // "not_started" | "in_progress" | "completed"
+        startedAt: "2025-03-01",
+        completedAt: null,
+        lastVisitedAt: "2025-06-20",
+      },
+      {
+        explorationId: "exp_003", // FK → explorationsData
+        locationsVisited: 4, // derive progress % here: 4/12 = 33%
+        status: "in_progress", // "not_started" | "in_progress" | "completed"
+        startedAt: "2025-03-01",
+        completedAt: null,
+        lastVisitedAt: "2025-06-20",
+      },
+      {
+        explorationId: "exp_004", // FK → explorationsData
+        locationsVisited: 4, // derive progress % here: 4/12 = 33%
+        status: "in_progress", // "not_started" | "in_progress" | "completed"
+        startedAt: "2025-03-01",
+        completedAt: null,
+        lastVisitedAt: "2025-06-20",
+      },
+      {
+        explorationId: "exp_001", // FK → explorationsData
+        locationsVisited: 4, // derive progress % here: 4/12 = 33%
+        status: "in_progress", // "not_started" | "in_progress" | "completed"
+        startedAt: "2025-03-01",
+        completedAt: null,
+        lastVisitedAt: "2025-06-20",
+      },
+      {
         explorationId: "exp_001", // FK → explorationsData
         locationsVisited: 4, // derive progress % here: 4/12 = 33%
         status: "completed", // "not_started" | "in_progress" | "completed"
