@@ -24,6 +24,14 @@ export async function explorerDashboardLoader() {
         completedAt: null,
         lastVisitedAt: "2025-06-20",
       },
+      {
+        explorationId: "exp_001", // FK → explorationsData
+        locationsVisited: 4, // derive progress % here: 4/12 = 33%
+        status: "completed", // "not_started" | "in_progress" | "completed"
+        startedAt: "2025-03-01",
+        completedAt: null,
+        lastVisitedAt: "2025-06-20",
+      },
     ],
     earnedBadges: [
       {
@@ -39,42 +47,42 @@ export async function explorerDashboardLoader() {
       // raw event log — drives HistoryItem aggregations
       {
         explorationId: "exp_001",
-        locationId: "loc_01",
+        locationId: "loc_001",
         visitedAt: "2026-07-10T14:00:00Z",
       },
       {
         explorationId: "exp_001",
-        locationId: "loc_02",
+        locationId: "loc_002",
         visitedAt: "2026-07-07T10:00:00Z",
       },
       {
         explorationId: "exp_002",
-        locationId: "loc_03",
+        locationId: "loc_003",
         visitedAt: "2026-07-01T14:00:00Z",
       },
       {
         explorationId: "exp_001",
-        locationId: "loc_04",
+        locationId: "loc_004",
         visitedAt: "2026-05-22T10:00:00Z",
       },
       {
         explorationId: "exp_002",
-        locationId: "loc_05",
+        locationId: "loc_005",
         visitedAt: "2026-01-01T14:00:00Z",
       },
       {
         explorationId: "exp_001",
-        locationId: "loc_06",
+        locationId: "loc_006",
         visitedAt: "2026-07-05T10:00:00Z",
       },
       {
         explorationId: "exp_002",
-        locationId: "loc_07",
+        locationId: "loc_007",
         visitedAt: "2026-03-20T14:00:00Z",
       },
       {
         explorationId: "exp_001",
-        locationId: "loc_08",
+        locationId: "loc_008",
         visitedAt: "2025-06-22T10:00:00Z",
       },
     ],

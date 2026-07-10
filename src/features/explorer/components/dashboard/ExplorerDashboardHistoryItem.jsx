@@ -46,7 +46,6 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
 
   const cutoffYear = getCurrentYear(now);
 
-  console.log(cutoffWeek, cutoffMonth, cutoffYear);
   const numWeeklyLocations = new Set(
     userHistory.visitLog
       .filter((visit) => new Date(visit.visitedAt) > cutoffWeek)
@@ -65,8 +64,11 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
       .map((visit) => visit.locationId),
   ).size;
 
-  const numExplorationsCompleted = 0;
-  const numExplorationsStarted = 0;
+  const numExplorationsCompleted = userHistory.explorationProgress.filter(
+    (exploration) => exploration.status === "completed",
+  ).length;
+
+  const numExplorationsStarted = userHistory.explorationProgress.length;
 
   return (
     <DashboardItem $height="18rem">

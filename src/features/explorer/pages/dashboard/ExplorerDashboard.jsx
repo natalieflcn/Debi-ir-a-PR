@@ -75,7 +75,7 @@ function ExplorerDashboard() {
         <ExplorerDashboardHistoryItem userHistory={userHistory} />
       </Row>
 
-      <ExplorerDashboardStatsItem />
+      <ExplorerDashboardStatsItem userHistory={userHistory} />
 
       <Row $gap="var(--gap-xl)">
         <ExplorerDashboardExplorationsItem

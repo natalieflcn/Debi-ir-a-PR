@@ -1,27 +1,16 @@
+import { fakeLocations } from "../../../../../data/fakeLocations";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 
-const locationsExplored = {
-  columns: [
-    { id: "restaurants", heading: "Restaurants" },
-    { id: "bars", heading: "Bars" },
-    { id: "landmarks", heading: "Landmarks" },
-    { id: "landscapes", heading: "Landscapes" },
-    { id: "beaches", heading: "Beaches" },
-    { id: "others", heading: "Other" },
-  ],
-  rows: [
-    {
-      restaurants: 5,
-      bars: 5,
-      landmarks: 5,
-      landscapes: 5,
-      beaches: 5,
-      others: 5,
-    },
-  ],
-};
+const statsTableColumns = [
+  { id: "restaurants", heading: "Restaurants" },
+  { id: "bars", heading: "Bars" },
+  { id: "landmarks", heading: "Landmarks" },
+  { id: "landscapes", heading: "Landscapes" },
+  { id: "beaches", heading: "Beaches" },
+  { id: "other", heading: "Other" },
+];
 
 const explorerStatsTableTheme = {
   boxShadow: "var(--box-shadow-offset-lg)",
@@ -35,7 +24,58 @@ const explorerStatsTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-function ExplorerDashboardStatsItem() {
+function getLocationTags(userHistory) {
+  const visitedLocationIds = userHistory.visitLog.map(
+    (visit) => visit.locationId,
+  );
+
+  const locationTags = fakeLocations
+    .filter((location) => visitedLocationIds.includes(location.locationId))
+    .flatMap((location) => location.tags);
+
+  return locationTags;
+}
+
+function ExplorerDashboardStatsItem({ userHistory }) {
+  const data = {
+    restaurants: 0,
+    bars: 0,
+    landmarks: 0,
+    landscapes: 0,
+    beaches: 0,
+    other: 0,
+  };
+
+  const locationTags = getLocationTags(userHistory);
+
+  locationTags.forEach((tag) => {
+    switch (tag) {
+      case "restaurant":
+        data.restaurants += 1;
+        break;
+
+      case "bar":
+        data.bars += 1;
+        break;
+
+      case "landmark":
+        data.landmarks += 1;
+        break;
+
+      case "landscape":
+        data.landscapes += 1;
+        break;
+
+      case "beach":
+        data.beaches += 1;
+        break;
+
+      default:
+        data.other += 1;
+        break;
+    }
+  });
+
   return (
     <>
       <DashboardItem>
@@ -43,8 +83,8 @@ function ExplorerDashboardStatsItem() {
           Types of Locations Explored
         </Heading>
         <Table
-          columns={locationsExplored.columns}
-          rows={locationsExplored.rows}
+          columns={statsTableColumns}
+          rows={[data]}
           $theme={explorerStatsTableTheme}
         />
       </DashboardItem>
