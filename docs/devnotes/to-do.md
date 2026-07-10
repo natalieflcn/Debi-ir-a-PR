@@ -237,6 +237,8 @@
   - [x] Images have fallback/placeholder when src is missing
   - [x] Render exploration tags from the data, instead of hard-coded data
   - [ ] Implement progress bar TODO 3
+  - [ ] Make featured flag its own feature, differentiated from the tags
+  - [ ] Allow Ambassadors and Admins to filter and search for featured explorations as well
   - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
   - [ ] Implement Featured Explorations behavior
   - [ ] Hyperlink tours in Tables to explorationIds

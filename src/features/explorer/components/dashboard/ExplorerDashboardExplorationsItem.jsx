@@ -13,30 +13,7 @@ const ExplorationGrid = styled.div`
   width: 100%;
 `;
 
-function getCurrentExplorations(explorationData, userHistory) {
-  console.log(userHistory);
-  const explorationIds = [
-    ...new Set(
-      userHistory.explorationProgress
-        .filter((exploration) => exploration.status === "in_progress")
-        .map((exploration) => exploration.explorationId),
-    ),
-  ];
-
-  const explorations = explorationData.filter((exploration) =>
-    explorationIds.includes(exploration.id),
-  );
-
-  return explorations;
-}
-
-function ExplorerDashboardExplorationsItem({
-  explorationData,
-  title,
-  userHistory,
-}) {
-  const ExplorationItems = getCurrentExplorations(explorationData, userHistory);
-
+function ExplorerDashboardExplorationsItem({ explorationData, title }) {
   return (
     <>
       <DashboardItem>
@@ -44,7 +21,7 @@ function ExplorerDashboardExplorationsItem({
           {title}
         </Heading>
         <ExplorationGrid>
-          {ExplorationItems.map((exploration) => (
+          {explorationData.map((exploration) => (
             <Card
               $cardColor="var(--color-light-200)"
               $shadowColor="var(--color-brown-200)"

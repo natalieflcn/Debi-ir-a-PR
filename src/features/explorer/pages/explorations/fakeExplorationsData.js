@@ -8,6 +8,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     locationIds: ["loc_001", "loc_002", "loc_003"],
     tags: ["restaurants", "city"],
+    featured: true,
   },
   {
     id: "exp_002",
@@ -18,6 +19,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     locationIds: ["loc_001", "loc_002", "loc_003"],
     tags: ["restaurants", "city", "landscapes"],
+    featured: true,
   },
   {
     id: "exp_003",
@@ -50,7 +52,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_006",
@@ -61,7 +63,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_007",
@@ -83,7 +85,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_009",
@@ -94,7 +96,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_010",
@@ -105,7 +107,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_011",
@@ -116,7 +118,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
   {
     id: "exp_012",
@@ -127,7 +129,7 @@ const fakeExplorationsData = [
     startingCity: "Bayamon",
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_001", "loc_002", "loc_003"],
-    featured: true,
+    featured: false,
   },
 ];
 

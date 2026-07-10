@@ -18,50 +18,36 @@ const StyledExplorerDashboard = styled.div`
   gap: var(--gap-xl);
 `;
 
-const TEMPCURRENTEXPLORATIONDATA = [
-  {
-    id: 1,
-    name: "Toa Alta",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-  {
-    id: 2,
-    name: "Toa Alta",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-  {
-    id: 3,
-    name: "Toa Alta",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-];
+function getCurrentExplorations(explorations, userHistory) {
+  console.log(userHistory);
+  const explorationIds = [
+    ...new Set(
+      userHistory.explorationProgress
+        .filter((exploration) => exploration.status === "in_progress")
+        .map((exploration) => exploration.explorationId),
+    ),
+  ];
 
-const TEMPEXPLORATIONDATA = [
-  {
-    id: 1,
-    name: "Bayamon",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-  {
-    id: 2,
-    name: "Bayamon",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-  {
-    id: 3,
-    name: "Bayamon",
-    description: "lorerio veivoesne v vepins vv oien sv peines vpesvniv",
-    progress: 80,
-  },
-];
+  const currentExplorations = explorations.filter((exploration) =>
+    explorationIds.includes(exploration.id),
+  );
+
+  return currentExplorations;
+}
+
+function getFeaturedExplorations(explorations) {
+  const featuredExplorations = explorations.filter(
+    (exploration) => exploration.featured === true,
+  );
+
+  return featuredExplorations;
+}
 
 function ExplorerDashboard() {
   const { profileData, explorations, userHistory } = useLoaderData();
+
+  const currentExplorations = getCurrentExplorations(explorations, userHistory);
+  const featuredExplorations = getFeaturedExplorations(explorations);
 
   return (
     <StyledExplorerDashboard>
@@ -80,14 +66,12 @@ function ExplorerDashboard() {
       <Row $gap="var(--gap-xl)">
         <ExplorerDashboardExplorationsItem
           title="Current Explorations"
-          explorationData={explorations}
-          userHistory={userHistory}
+          explorationData={currentExplorations}
         />
 
         <ExplorerDashboardExplorationsItem
           title="Featured Explorations"
-          explorationData={explorations}
-          userHistory={userHistory}
+          explorationData={featuredExplorations}
         />
       </Row>
     </StyledExplorerDashboard>
