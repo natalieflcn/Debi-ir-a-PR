@@ -7,28 +7,64 @@ import Bold from "../../../../shared/components/typography/Bold";
 
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
-function getCurrentWeek(currentDate) {}
+function getCurrentWeek(currentDate) {
+  const date = new Date(currentDate);
 
-function getCurrentMonth(currentDate) {}
+  const weekStart = date.getDate() !== 1 ? date.getDay() : 7;
 
-function getCurrentYear(currentDate) {}
+  date.setDate(date.getDate() - weekStart);
+  date.setHours(0, 0, 0, 0);
+
+  return date;
+}
+
+function getCurrentMonth(currentDate) {
+  const date = new Date(currentDate);
+
+  date.setDate(date.getDate() - date.getDate() + 1);
+  date.setHours(0, 0, 0, 0);
+
+  return date;
+}
+
+function getCurrentYear(currentDate) {
+  const date = new Date(currentDate);
+
+  date.setMonth(0);
+  date.setDate(1);
+  date.setHours(0, 0, 0, 0);
+
+  return date;
+}
 
 function ExplorerDashboardHistoryItem({ userHistory }) {
   const now = new Date();
 
-  const cutoffWeek = new Date();
-  cutoffWeek.setDate(now.getDate() - 7);
+  const cutoffWeek = getCurrentWeek(now);
 
-  const cutoffMonth = new Date();
-  cutoffWeek.setDate(now.getDate() - 30);
+  const cutoffMonth = getCurrentMonth(now);
 
-  const cutoffYear = new Date();
+  const cutoffYear = getCurrentYear(now);
 
-  const numWeeklyLocations = new Set();
-  // userHistory.visitLog.filter((visit) => visit.visitedAt < todaysDate),
+  console.log(cutoffWeek, cutoffMonth, cutoffYear);
+  const numWeeklyLocations = new Set(
+    userHistory.visitLog
+      .filter((visit) => new Date(visit.visitedAt) > cutoffWeek)
+      .map((visit) => visit.locationId),
+  ).size;
 
-  const numMonthlyLocations = 0;
-  const numYearlyLocations = 0;
+  const numMonthlyLocations = new Set(
+    userHistory.visitLog
+      .filter((visit) => new Date(visit.visitedAt) > cutoffMonth)
+      .map((visit) => visit.locationId),
+  ).size;
+
+  const numYearlyLocations = new Set(
+    userHistory.visitLog
+      .filter((visit) => new Date(visit.visitedAt) > cutoffYear)
+      .map((visit) => visit.locationId),
+  ).size;
+
   const numExplorationsCompleted = 0;
   const numExplorationsStarted = 0;
 
@@ -44,24 +80,28 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
             <Bold>{numWeeklyLocations}</Bold>
           </InsetSpan>
         </Row>
+
         <Row $direction="horizontal">
           <Heading as="h6">Locations explored this month</Heading>
           <InsetSpan>
             <Bold>{numMonthlyLocations}</Bold>
           </InsetSpan>
         </Row>
+
         <Row $direction="horizontal">
           <Heading as="h6">Locations explored this year</Heading>
           <InsetSpan>
             <Bold>{numYearlyLocations}</Bold>
           </InsetSpan>
         </Row>
+
         <Row $direction="horizontal">
           <Heading as="h6">Explorations completed</Heading>
           <InsetSpan>
             <Bold>{numExplorationsCompleted}</Bold>
           </InsetSpan>
         </Row>
+
         <Row $direction="horizontal">
           <Heading as="h6">Explorations started</Heading>
           <InsetSpan>

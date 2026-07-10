@@ -38,13 +38,43 @@ export async function explorerDashboardLoader() {
     visitLog: [
       // raw event log — drives HistoryItem aggregations
       {
+        explorationId: "exp_001",
+        locationId: "loc_01",
+        visitedAt: "2026-07-10T14:00:00Z",
+      },
+      {
+        explorationId: "exp_001",
+        locationId: "loc_02",
+        visitedAt: "2026-07-07T10:00:00Z",
+      },
+      {
         explorationId: "exp_002",
         locationId: "loc_03",
-        visitedAt: "2025-06-20T14:00:00Z",
+        visitedAt: "2026-07-01T14:00:00Z",
       },
       {
         explorationId: "exp_001",
         locationId: "loc_04",
+        visitedAt: "2026-05-22T10:00:00Z",
+      },
+      {
+        explorationId: "exp_002",
+        locationId: "loc_05",
+        visitedAt: "2026-01-01T14:00:00Z",
+      },
+      {
+        explorationId: "exp_001",
+        locationId: "loc_06",
+        visitedAt: "2026-07-05T10:00:00Z",
+      },
+      {
+        explorationId: "exp_002",
+        locationId: "loc_07",
+        visitedAt: "2026-03-20T14:00:00Z",
+      },
+      {
+        explorationId: "exp_001",
+        locationId: "loc_08",
         visitedAt: "2025-06-22T10:00:00Z",
       },
     ],
