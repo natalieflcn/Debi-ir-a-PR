@@ -9,8 +9,6 @@ import { useLoaderData } from "react-router-dom";
 function Exploration() {
   const { exploration, userHistory } = useLoaderData();
 
-  console.log(userHistory);
-
   const hasStarted = userHistory.explorationProgress.some(
     (startedExploration) => startedExploration.explorationId === exploration.id,
   );

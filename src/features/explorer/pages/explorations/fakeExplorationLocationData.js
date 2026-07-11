@@ -1,5 +1,5 @@
 const fakeExplorationLocationData = {
-  id: "loc_001",
+  id: "loc_002",
   explorationId: "exp_001",
   // explorationName: "Toa Alta Tour",
   name: "Rey Chino Food",

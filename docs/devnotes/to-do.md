@@ -239,17 +239,21 @@
 
 ## Week: July 6 – July 11
 
-- [ ] Implement progress bar on Explorer components TODO 1
+- [x] Implement progress bar on Explorer components
+- [ ] Move ExplorationLocation related components to /locations folder
 - [ ] Make featured flag its own feature, differentiated from the tags
 - [ ] Allow Ambassadors and Admins to filter and search for featured explorations as well
 - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
 - [ ] Implement Featured Explorations behavior
 - [ ] Hyperlink tours in Tables to explorationIds
 - [ ] Make sure users in Tables are hyperlinked to userIds
+- [ ] Render tags on ExplorationCard and ExplorationLocationCard from data, not hard-coded data
 - [ ] Hyperlink tours in ManageExplorations for Ambassador
 - [ ] Add badges to Badge Collection on Explorer Dashboard
 - [ ] Open modal window upon click of badges from profile to display badge description
 - [ ] Remove LOC\_\_# and replace with numerals on Exploration Card location items
+- [ ] Render locations from Exploration details and whether the Explorer has visited them or not
+- [ ] Make sure locations for Explorations are dynamically rendered for Ambassadors and Admins too
 - [ ] FIX: Error pages render outside of layout
 
 - [ ] Make website responsive TODO 6

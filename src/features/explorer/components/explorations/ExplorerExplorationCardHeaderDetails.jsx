@@ -20,12 +20,6 @@ function ExplorerExplorationCardHeaderDetails({
       100,
   );
 
-  console.log(
-    userHistory.explorationProgress.find(
-      (visitedExploration) =>
-        visitedExploration.explorationId === exploration.id,
-    ).locationsVisited,
-  );
   return (
     <>
       {hasStarted && (
