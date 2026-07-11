@@ -17,7 +17,7 @@ const CreateExploration = lazy(
   () => import("@/features/ambassador/pages/explorations/CreateExploration"),
 );
 const CreateLocation = lazy(
-  () => import("@/features/ambassador/pages/explorations/CreateLocation"),
+  () => import("@/features/ambassador/pages/locations/CreateLocation"),
 );
 
 const ViewExploration = lazy(
@@ -25,7 +25,7 @@ const ViewExploration = lazy(
 );
 
 const ViewLocation = lazy(
-  () => import("@/features/ambassador/pages/explorations/ViewLocation"),
+  () => import("@/features/ambassador/pages/locations/ViewLocation"),
 );
 const ManageExplorations = lazy(
   () => import("@/features/ambassador/pages/explorations/ManageExplorations"),

@@ -22,8 +22,10 @@ import {
 import {
   ExplorationLocationTag,
   ExplorationLocationTags,
-} from "./explorationLocationCard.styles";
+} from "../../locations/components/explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
+
+function getUserProgress(locations, userHistory) {}
 
 function ExplorationCard({
   exploration,

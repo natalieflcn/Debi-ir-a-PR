@@ -21,10 +21,10 @@ const ViewExploration = lazy(
   () => import("@/features/admin/pages/explorations/ViewExploration"),
 );
 const ViewLocation = lazy(
-  () => import("@/features/admin/pages/explorations/ViewLocation"),
+  () => import("@/features/admin/pages/locations/ViewLocation"),
 );
 const CreateLocation = lazy(
-  () => import("@/features/admin/pages/explorations/CreateLocation"),
+  () => import("@/features/admin/pages/locations/CreateLocation"),
 );
 const ManageExplorations = lazy(
   () => import("@/features/admin/pages/explorations/ManageExplorations"),

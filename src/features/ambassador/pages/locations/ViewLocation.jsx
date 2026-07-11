@@ -1,5 +1,5 @@
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
-import ExplorationLocationCard from "../../../explorations/components/ExplorationLocationCard";
+import ExplorationLocationCard from "../../../locations/components/ExplorationLocationCard";
 
 import fakeExplorationLocationData from "../../../explorer/pages/explorations/fakeExplorationLocationData";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";

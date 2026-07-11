@@ -26,6 +26,7 @@ function Exploration() {
       hasStarted={hasStarted}
       exploration={exploration}
       locations={exploration.locations}
+      userHistory={userHistory}
     />
   );
 

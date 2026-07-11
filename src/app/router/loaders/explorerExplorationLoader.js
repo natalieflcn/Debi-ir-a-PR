@@ -67,7 +67,7 @@ export async function explorerExplorationLoader() {
       // raw event log — drives HistoryItem aggregations
       {
         explorationId: "exp_001",
-        locationId: "loc_002",
+        locationId: "loc_001",
         visitedAt: "2026-07-10T14:00:00Z",
       },
       {

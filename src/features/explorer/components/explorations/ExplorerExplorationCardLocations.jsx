@@ -6,36 +6,56 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
+function getUserCompletedLocations(locations, userHistory) {
+  const completedLocations = locations.filter((location) =>
+    userHistory.visitLog.some((visit) => visit.locationId === location.id),
+  );
+
+  return completedLocations;
+}
+
 function ExplorerExplorationCardLocations({
   locations,
   hasStarted,
   exploration,
+  userHistory,
 }) {
-  return locations.map((location) => (
-    <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
-      <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
-        {hasStarted &&
-          (location.completed ? (
-            <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
-          ) : (
-            <FaRegCircle size={25} />
-          ))}
-        <LocationHeading as="h4" $color="var(--color-red-300)">
-          {location.id}
-        </LocationHeading>
-        <Heading as="h5">{location.name}</Heading>
+  console.log(locations, userHistory);
+
+  const completedLocationIds = new Set(
+    userHistory.visitLog.map((visit) => visit.locationId),
+  );
+
+  return locations.map((location, i) => {
+    const isCompleted = completedLocationIds.has(location.id);
+
+    console.log(isCompleted);
+    return (
+      <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
+        <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
+          {hasStarted &&
+            (isCompleted ? (
+              <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
+            ) : (
+              <FaRegCircle size={25} />
+            ))}
+          <LocationHeading as="h4" $color="var(--color-red-300)">
+            {i + 1}
+          </LocationHeading>
+          <Heading as="h5">{location.name}</Heading>
+        </Row>
+        {hasStarted && (
+          <RouterLink
+            to={`/explorations/${exploration.id}/locations/${location.id}`}
+          >
+            <Button $variation="primary" $size="extraSmall">
+              Details
+            </Button>
+          </RouterLink>
+        )}
       </Row>
-      {hasStarted && (
-        <RouterLink
-          to={`/explorations/${exploration.id}/locations/${location.id}`}
-        >
-          <Button $variation="primary" $size="extraSmall">
-            Details
-          </Button>
-        </RouterLink>
-      )}
-    </Row>
-  ));
+    );
+  });
 }
 
 export default ExplorerExplorationCardLocations;

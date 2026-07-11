@@ -16,7 +16,7 @@ const Exploration = lazy(
   () => import("@/features/explorer/pages/explorations/Exploration"),
 );
 const ExplorationLocation = lazy(
-  () => import("@/features/explorer/pages/explorations/ExplorationLocation"),
+  () => import("@/features/explorer/pages/locations/ExplorationLocation"),
 );
 const ExplorerProfile = lazy(
   () => import("@/features/explorer/pages/profile/ExplorerProfile"),
