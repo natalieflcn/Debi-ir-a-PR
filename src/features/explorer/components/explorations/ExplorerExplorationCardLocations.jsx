@@ -20,8 +20,6 @@ function ExplorerExplorationCardLocations({
   exploration,
   userHistory,
 }) {
-  console.log(locations, userHistory);
-
   const completedLocationIds = new Set(
     userHistory.visitLog.map((visit) => visit.locationId),
   );
@@ -29,7 +27,6 @@ function ExplorerExplorationCardLocations({
   return locations.map((location, i) => {
     const isCompleted = completedLocationIds.has(location.id);
 
-    console.log(isCompleted);
     return (
       <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
         <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">

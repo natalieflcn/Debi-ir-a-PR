@@ -15,10 +15,11 @@ import {
   ExplorationLocationHeaderImage,
   ExplorationLocationHeading,
   ExplorationLocationTag,
-  ExplorationLocationTags,
+  TagCollection,
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
+import { capitalize } from "../../../shared/utils/helpers";
 
 function ExplorationLocationCard({
   exploration,
@@ -28,6 +29,7 @@ function ExplorationLocationCard({
   footerCTA,
   type = "",
 }) {
+  console.log(location);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations/${exploration}`}>
@@ -65,10 +67,13 @@ function ExplorationLocationCard({
                 </Heading>
                 {location.description}
               </Row>
-              <ExplorationLocationTags>
-                <ExplorationLocationTag>hi</ExplorationLocationTag>
-                <ExplorationLocationTag>hi</ExplorationLocationTag>
-              </ExplorationLocationTags>
+              <TagCollection>
+                {location.tags.map((tag) => (
+                  <ExplorationLocationTag key={tag}>
+                    {capitalize(tag)}
+                  </ExplorationLocationTag>
+                ))}
+              </TagCollection>
             </ExplorationLocationAbout>
             <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
           </Row>

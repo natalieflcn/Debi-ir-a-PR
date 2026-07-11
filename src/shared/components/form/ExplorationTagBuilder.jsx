@@ -8,9 +8,10 @@ import { IoIosCheckbox } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Heading from "../typography/Heading";
 import {
-  ExplorationLocationTags,
+  TagCollection,
   ExplorationLocationTag,
-} from "../../../features/explorations/components/explorationLocationCard.styles";
+} from "../../../features/locations/components/explorationLocationCard.styles";
+import { capitalize } from "../../utils/helpers";
 const TagCategories = [
   { id: "featured", name: "Featured" },
   { id: "city", name: "City" },
@@ -71,7 +72,7 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
           Select Tags
         </Button>
 
-        <ExplorationLocationTags>
+        <TagCollection>
           {tags.map((tagId) => {
             const tag = TagCategories.find((c) => c.id === tagId);
 
@@ -83,12 +84,11 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
           {derivedLocationTags.map((tag) => {
             return (
               <ExplorationLocationTag key={tag}>
-                {tag.charAt(0).toUpperCase()}
-                {tag.slice(1)}
+                {capitalize(tag)}
               </ExplorationLocationTag>
             );
           })}
-        </ExplorationLocationTags>
+        </TagCollection>
       </StyledRow>
 
       {isModalOpen && (

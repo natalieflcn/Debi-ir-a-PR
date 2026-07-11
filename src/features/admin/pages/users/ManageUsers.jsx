@@ -11,6 +11,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
+import { capitalize } from "../../../../shared/utils/helpers";
 
 export const UsersTableColumns = [
   {
@@ -30,8 +31,7 @@ export const UsersTableColumns = [
     render: (row) => (
       <ActionTableCell>
         <Row $direction="horizontal" $gap="var(--gap-sm)">
-          {row.userType?.charAt(0).toUpperCase()}
-          {row.userType?.slice(1)}
+          {capitalize(row.userType)}
         </Row>
       </ActionTableCell>
     ),

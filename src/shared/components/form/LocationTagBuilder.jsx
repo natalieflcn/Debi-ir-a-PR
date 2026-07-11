@@ -6,7 +6,7 @@ import Row from "../layout/Row";
 import styled from "styled-components";
 import {
   ExplorationLocationTag,
-  ExplorationLocationTags,
+  TagCollection,
 } from "../../../features/explorations/components/explorationLocationCard.styles";
 import { IoIosCheckbox } from "react-icons/io";
 import Heading from "../typography/Heading";
@@ -56,7 +56,7 @@ function LocationTagBuilder({ value, onChange }) {
           Select Tags
         </Button>
 
-        <ExplorationLocationTags>
+        <TagCollection>
           {value.map((tagId) => {
             const tag = TagCategories.find((c, i) => c.id === tagId);
 
@@ -68,7 +68,7 @@ function LocationTagBuilder({ value, onChange }) {
               </ExplorationLocationTag>
             );
           })}
-        </ExplorationLocationTags>
+        </TagCollection>
       </StyledRow>
 
       {isModalOpen && (

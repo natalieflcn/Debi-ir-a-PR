@@ -8,6 +8,7 @@ import Row from "../../../shared/components/layout/Row";
 import Button from "../../../shared/components/ui/Button";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
+import { ExplorationTag } from "../../../shared/components/form/ExplorationTagBuilder";
 import {
   ExplorationCardAbout,
   ExplorationCardBody,
@@ -21,11 +22,10 @@ import {
 
 import {
   ExplorationLocationTag,
-  ExplorationLocationTags,
+  TagCollection,
 } from "../../locations/components/explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
-
-function getUserProgress(locations, userHistory) {}
+import { capitalize } from "../../../shared/utils/helpers";
 
 function ExplorationCard({
   exploration,
@@ -34,6 +34,11 @@ function ExplorationCard({
   footerCTA,
   type = "",
 }) {
+  const derivedLocationTags = [
+    ...new Set(exploration.locations.flatMap((location) => location.tags)),
+  ];
+
+  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations`}>
@@ -85,10 +90,17 @@ function ExplorationCard({
                 ABOUT THIS EXPLORATION
               </Heading>
               <p>{exploration.description}</p>
-              <ExplorationLocationTags>
-                <ExplorationLocationTag>hi</ExplorationLocationTag>
-                <ExplorationLocationTag>hi</ExplorationLocationTag>
-              </ExplorationLocationTags>
+
+              <TagCollection>
+                {exploration.tags.map((tag) => (
+                  <ExplorationTag key={tag}>{capitalize(tag)}</ExplorationTag>
+                ))}
+                {derivedLocationTags.map((tag) => (
+                  <ExplorationLocationTag key={tag}>
+                    {capitalize(tag)}
+                  </ExplorationLocationTag>
+                ))}
+              </TagCollection>
             </ExplorationCardAbout>
 
             <ExplorationCardLocations>

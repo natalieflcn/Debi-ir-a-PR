@@ -57,13 +57,13 @@ export const ExplorationLocationAbout = styled.div`
   gap: var(--gap-md);
 `;
 
-export const ExplorationLocationTags = styled.div`
-  /* display: flex; */
-  /* flex-direction: column; */
+export const TagCollection = styled.div`
+  display: flex;
   box-shadow: var(--box-shadow-inset-md) var(--color-brown-300);
   border-radius: var(--border-radius-md);
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: var(--color-light-100);
+  flex-wrap: wrap;
 `;
 
 export const ExplorationLocationTag = styled.span`

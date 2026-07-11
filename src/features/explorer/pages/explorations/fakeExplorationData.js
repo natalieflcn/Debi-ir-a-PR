@@ -7,7 +7,7 @@ const fakeExplorationData = {
   startingCity: "Bayamon",
   headerImage: ["/src/assets/images/content/TEMP.png"],
   numStops: 5,
-  tags: [],
+  tags: ["city"],
   featured: false,
   badge: {
     id: "badge_toa_alta",
@@ -25,7 +25,7 @@ const fakeExplorationData = {
       id: "loc_002",
       name: "Pool place",
       completed: false,
-      tags: ["restaurant"],
+      tags: ["bar"],
     },
     {
       id: "loc_003",
@@ -33,8 +33,8 @@ const fakeExplorationData = {
       completed: false,
       tags: ["restaurant"],
     },
-    { id: "loc_004", name: "El Yunque", completed: true, tags: ["restaurant"] },
-    { id: "loc_005", name: "El Morro", completed: false, tags: ["restaurant"] },
+    { id: "loc_004", name: "El Yunque", completed: true, tags: ["landscape"] },
+    { id: "loc_005", name: "El Morro", completed: false, tags: ["landmark"] },
     {
       id: "loc_006",
       name: "Columbian steakhouse",
