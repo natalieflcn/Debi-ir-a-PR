@@ -18,6 +18,7 @@ const StyledExplorerDashboardBadgeItem = styled.div`
 `;
 
 function ExplorerDashboardBadgeItem({ userHistory }) {
+  console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const numBadges = badges.length;
@@ -57,7 +58,23 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
         </Row>
       </StyledExplorerDashboardBadgeItem>
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>badges here</Modal>
+        <Modal onClose={() => setIsModalOpen(false)} $width="50%">
+          <Row $gap="var(--gap-lg)">
+            <Heading as="h3" $color="var(--color-blue-200)">
+              YOUR BADGE COLLECTION
+            </Heading>
+            <Row
+              $direction="horizontal"
+              $gap="var(--gap-lg)"
+              $wrap="wrap"
+              $align="start"
+            >
+              {userHistory.earnedBadges.map((badge) => (
+                <Image src="" $width="5rem" key={badge.badgeId} />
+              ))}
+            </Row>
+          </Row>
+        </Modal>
       )}
     </DashboardItem>
   );

@@ -12,9 +12,9 @@ const StyledExplorerProfile = styled.div`
 `;
 
 function ExplorerProfile() {
-  const profileData = useLoaderData();
+  const { profileData, userHistory } = useLoaderData();
 
-
+  console.log(userHistory);
   return (
     <StyledExplorerProfile>
       <ProfileHeader
@@ -26,7 +26,7 @@ function ExplorerProfile() {
         userPassword={profileData.password}
         dateJoined={profileData.dateJoined}
       />
-      <ProfileBadgeCollection />
+      <ProfileBadgeCollection userHistory={userHistory} />
     </StyledExplorerProfile>
   );
 }

@@ -245,8 +245,8 @@
   - [x] Implement Featured Explorations behavior
   - [x] Remove LOC\_\_# and replace with numerals on Exploration Card location items
   - [x] Render locations from Exploration details and whether the Explorer has visited them or not
-  - [ ] Render tags on ExplorationCard and ExplorationLocationCard from data, not hard-coded data
-  - [ ] Add badges to Badge Collection on Explorer Dashboard
+  - [x] Render tags on ExplorationCard and ExplorationLocationCard from data, not hard-coded data
+  - [x] Add badges to Badge Collection on Explorer Dashboard
   - [ ] Open modal window upon click of badges from profile to display badge description
 
 - [ ] Ambassador/Admin Tweaks
@@ -260,4 +260,5 @@
 
 - [ ] FIX: Error pages render outside of layout
 
+- [ ] Define badges objects
 - [ ] Make website responsive

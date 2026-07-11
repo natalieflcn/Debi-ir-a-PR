@@ -38,7 +38,6 @@ function ExplorationCard({
     ...new Set(exploration.locations.flatMap((location) => location.tags)),
   ];
 
-  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations`}>
