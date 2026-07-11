@@ -16,9 +16,8 @@ import {
   ExplorationCardHeaderImage,
   ExplorationCardHeading,
   ExplorationCardLocations,
-  LocationHeading,
   StyledExplorationCard,
-} from "./explorationCard.styles";
+} from "../../explorations/components/explorationCard.styles";
 
 import {
   ExplorationLocationTag,

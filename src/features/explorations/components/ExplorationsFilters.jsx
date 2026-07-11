@@ -27,6 +27,8 @@ function ExplorationsFilters({
   filterCategories = ExplorationsFiltersCategories,
   onSort,
   onFilter,
+  filterInitState,
+  sortInitState,
 }) {
   // const dropdownRef = useClickOutside();
 
@@ -35,10 +37,14 @@ function ExplorationsFilters({
       <SortDropdown
         categories={sortCategories}
         onSort={onSort}
-        initState="Name"
+        initState={sortInitState || "Name"}
       />
 
-      <FilterDropdown categories={filterCategories} onFilter={onFilter} />
+      <FilterDropdown
+        categories={filterCategories}
+        onFilter={onFilter}
+        initState={filterInitState || "Featured"}
+      />
     </Row>
   );
 }

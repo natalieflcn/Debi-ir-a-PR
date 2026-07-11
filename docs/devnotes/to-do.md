@@ -239,7 +239,7 @@
 
 ## Week: July 6 – July 11
 
-- [~] Explorer Tweaks
+- [x] Explorer Tweaks
   - [x] Implement progress bar on Explorer components
   - [x] Move ExplorationLocation related components to /locations folder
   - [x] Implement Featured Explorations behavior
@@ -247,18 +247,19 @@
   - [x] Render locations from Exploration details and whether the Explorer has visited them or not
   - [x] Render tags on ExplorationCard and ExplorationLocationCard from data, not hard-coded data
   - [x] Add badges to Badge Collection on Explorer Dashboard
-  - [ ] Open modal window upon click of badges from profile to display badge description
+  - [x] Open modal window upon click of badges from profile to display badge description
 
-- [ ] Ambassador/Admin Tweaks
-  - [ ] Make sure locations for Explorations are dynamically rendered for Ambassadors and Admins too
-  - [ ] Make featured flag its own feature, differentiated from the tags
-  - [ ] Allow Ambassadors and Admins to filter and search for featured explorations as well
+- [~] Ambassador/Admin Tweaks
+  - [x] Make sure locations for Explorations are dynamically rendered for Ambassadors and Admins too
+  - [x] Allow Ambassadors and Admins to filter and search for featured explorations as well
+  - [x] Hyperlink tours in Tables to explorationIds
+  - [x] Make sure users in Tables are hyperlinked to userIds
+  - [ ] Dynamically render "Created By" and "Last Updated" metadata on Exploration Card for Ambassadors/Admin
   - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
-  - [ ] Hyperlink tours in Tables to explorationIds
-  - [ ] Make sure users in Tables are hyperlinked to userIds
-  - [ ] Hyperlink tours in ManageExplorations for Ambassador
+  - [ ] Make featured flag its own feature, differentiated from the tags
 
 - [ ] FIX: Error pages render outside of layout
 
 - [ ] Define badges objects
+
 - [ ] Make website responsive

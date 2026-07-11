@@ -92,7 +92,7 @@ function CreateLocation({ location = false }) {
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/admin/explorations/${exploration.id}`}>
+      <RouterLink to={`/admin/explorations/${exploration.explorationId}`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>

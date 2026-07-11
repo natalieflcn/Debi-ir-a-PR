@@ -13,10 +13,21 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAmbassadorUI } from "../../contexts/AmbassadorUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const AmbassadorExplorationsTable = {
   columns: [
-    { id: "name", heading: "name" },
+    {
+      id: "name",
+      heading: "name",
+      render: (row) => (
+        <TableNameCell>
+          <RouterLink to={`${row.id}`}>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </RouterLink>
+        </TableNameCell>
+      ),
+    },
     { id: "numStops", heading: "# of Stops" },
     { id: "startingCity", heading: "Starting City" },
     { id: "createdBy", heading: "Created By" },
@@ -63,6 +74,22 @@ const ActionTableCell = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+`;
+
+const TableNameCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  & strong {
+    transition: color 0.2s ease;
+  }
+
+  &:hover strong {
+    color: var(--color-red-200);
+    cursor: pointer;
+  }
 `;
 
 const StyledExplorations = styled.div`
@@ -141,7 +168,11 @@ function ManageExplorations() {
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
+        <ExplorationsFilters
+          onSort={setSortBy}
+          onFilter={setFilterBy}
+          filterInitState="All"
+        />
         <AdminViewMode
           viewMode={viewMode}
           onViewModeChange={handleSelectViewMode}
@@ -169,6 +200,14 @@ function ManageExplorations() {
           rows={paginatedExplorations}
           $theme={explorationsTableTheme}
         />
+      )}
+
+      {paginatedExplorations.length === 0 && (
+        <Row $align="center">
+          <Bold $color="var(--color-light-0)">
+            There are no explorations to show.
+          </Bold>
+        </Row>
       )}
 
       <Pagination

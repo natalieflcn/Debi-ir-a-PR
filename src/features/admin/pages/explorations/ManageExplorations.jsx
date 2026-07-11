@@ -13,11 +13,22 @@ import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const getAdminExplorationsTable = function () {
   return {
     columns: [
-      { id: "name", heading: "Exploration Name" },
+      {
+        id: "name",
+        heading: "Exploration Name",
+        render: (row) => (
+          <TableNameCell>
+            <RouterLink to={`${row.id}`}>
+              <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+            </RouterLink>
+          </TableNameCell>
+        ),
+      },
       { id: "numStops", heading: "# of Stops" },
       { id: "startingCity", heading: "Starting City" },
       { id: "createdBy", heading: "Created By" },
@@ -67,6 +78,22 @@ const ActionTableCell = styled.div`
   gap: 0.5rem;
 `;
 
+const TableNameCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  & strong {
+    transition: color 0.2s ease;
+  }
+
+  &:hover strong {
+    color: var(--color-red-200);
+    cursor: pointer;
+  }
+`;
+
 const StyledExplorations = styled.div`
   display: flex;
   flex-direction: column;
@@ -101,7 +128,7 @@ const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAdminUI();
-  const [sortBy, setSortBy] = useState("featured");
+  const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const explorations = useLoaderData();
@@ -145,7 +172,11 @@ function ManageExplorations() {
       </Row>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
+        <ExplorationsFilters
+          onSort={setSortBy}
+          onFilter={setFilterBy}
+          filterInitState="All"
+        />
         <AdminViewMode
           viewMode={viewMode}
           onViewModeChange={handleSelectViewMode}
@@ -154,8 +185,6 @@ function ManageExplorations() {
 
       {viewMode === "grid" && (
         <ExplorationCards>
-       
-
           {paginatedExplorations.map((exploration) => (
             <ExplorationMiniCard
               name={exploration.name}
@@ -174,7 +203,15 @@ function ManageExplorations() {
           columns={getAdminExplorationsTable().columns}
           rows={paginatedExplorations}
           $theme={explorationsTableTheme}
-        ></CondensedTable>
+        />
+      )}
+
+      {paginatedExplorations.length === 0 && (
+        <Row $align="center">
+          <Bold $color="var(--color-light-0)">
+            There are no explorations to show.
+          </Bold>
+        </Row>
       )}
 
       <Pagination

@@ -112,6 +112,7 @@ function CreateExploration() {
     navigate(`/admin/explorations/${newId}`);
   };
 
+  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       {exploration ? (

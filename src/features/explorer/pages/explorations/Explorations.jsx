@@ -9,6 +9,7 @@ import Row from "../../../../shared/components/layout/Row";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -84,6 +85,14 @@ function Explorations() {
           />
         ))}
       </ExplorationCards>
+
+      {paginatedExplorations.length === 0 && (
+        <Row $align="center">
+          <Bold $color="var(--color-light-0)">
+            There are no explorations to show.
+          </Bold>
+        </Row>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
