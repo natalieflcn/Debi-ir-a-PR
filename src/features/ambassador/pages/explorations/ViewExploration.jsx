@@ -8,12 +8,12 @@ import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplor
 import { useLoaderData } from "react-router-dom";
 
 function ViewExploration() {
-  const exploration = useLoaderData();
+  const { exploration, user } = useLoaderData();
 
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
-      author="me"
-      lastUpdated="today"
+      author={user.name}
+      lastUpdated={exploration.updatedAt}
       type="ambassador"
     />
   );

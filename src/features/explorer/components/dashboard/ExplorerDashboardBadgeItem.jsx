@@ -18,7 +18,6 @@ const StyledExplorerDashboardBadgeItem = styled.div`
 `;
 
 function ExplorerDashboardBadgeItem({ userHistory }) {
-  console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const numBadges = badges.length;

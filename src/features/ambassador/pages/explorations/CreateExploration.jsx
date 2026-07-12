@@ -34,7 +34,7 @@ const StyledTextAreaRow = styled(Row)`
 `;
 
 function CreateExploration() {
-  const exploration = useLoaderData() || "";
+  const { exploration } = useLoaderData() || "";
   const isEditing = Boolean(exploration);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");

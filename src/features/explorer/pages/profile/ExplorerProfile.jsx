@@ -14,7 +14,6 @@ const StyledExplorerProfile = styled.div`
 function ExplorerProfile() {
   const { profileData, userHistory } = useLoaderData();
 
-  console.log(userHistory);
   return (
     <StyledExplorerProfile>
       <ProfileHeader

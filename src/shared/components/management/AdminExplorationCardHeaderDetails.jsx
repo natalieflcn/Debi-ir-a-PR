@@ -4,10 +4,11 @@ import Row from "../layout/Row";
 import Bold from "../typography/Bold";
 import Button from "../ui/Button";
 import RouterLink from "../routing/RouterLink";
+import { formatDate } from "../../utils/helpers";
 
 function AdminExplorationCardHeaderDetails({
-  dateUpdated = "today",
-  author = "me",
+  lastUpdated,
+  author = "Unknown",
 }) {
   return (
     <>
@@ -19,7 +20,9 @@ function AdminExplorationCardHeaderDetails({
 
         <Row $direction="horizontal" $gap="var(--gap-sm)">
           <FaPencilAlt color="var(--color-red-300)" />
-          <Bold $color="var(--color-dark-200)">Last Updated {dateUpdated}</Bold>
+          <Bold $color="var(--color-dark-200)">
+            Last Updated {formatDate(lastUpdated)}
+          </Bold>
         </Row>
       </Row>
       <RouterLink to={`edit`}>

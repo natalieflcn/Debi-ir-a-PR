@@ -9,6 +9,10 @@ const fakeExplorationsData = [
     locationIds: ["loc_001", "loc_002"],
     tags: ["restaurants", "city"],
     featured: true,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_002",
@@ -20,6 +24,10 @@ const fakeExplorationsData = [
     locationIds: ["loc_003", "loc_004", "loc_005"],
     tags: ["restaurants", "city", "landscapes"],
     featured: true,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_003",
@@ -31,6 +39,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_006", "loc_007"],
     featured: true,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_004",
@@ -42,6 +54,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city"],
     locationIds: ["loc_008", "loc_009", "loc_010"],
     featured: true,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_005",
@@ -53,6 +69,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_011", "loc_012"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_006",
@@ -64,6 +84,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_013"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_007",
@@ -75,6 +99,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city"],
     locationIds: ["loc_014", "loc_015", "loc_016"],
     featured: true,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_008",
@@ -86,6 +114,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_017", "loc_018"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_009",
@@ -97,6 +129,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_019", "loc_020", "loc_021"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_010",
@@ -108,6 +144,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city"],
     locationIds: ["loc_022", "loc_023"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_011",
@@ -119,6 +159,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes"],
     locationIds: ["loc_024"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
   {
     id: "exp_012",
@@ -130,6 +174,10 @@ const fakeExplorationsData = [
     tags: ["restaurants", "city", "landscapes", "landmarks"],
     locationIds: ["loc_025"],
     featured: false,
+    createdBy: "user_002", // FK → users (ambassador or admin)
+    createdAt: "2025-01-10",
+    updatedBy: "user_003", // FK → users (whoever last edited)
+    updatedAt: "2025-06-20",
   },
 ];
 

@@ -34,7 +34,7 @@ const StyledTextAreaRow = styled(Row)`
 `;
 
 function CreateExploration() {
-  const exploration = useLoaderData();
+  const { exploration } = useLoaderData() || "";
 
   const isEditing = Boolean(exploration);
 
@@ -112,7 +112,6 @@ function CreateExploration() {
     navigate(`/admin/explorations/${newId}`);
   };
 
-  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       {exploration ? (

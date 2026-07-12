@@ -2,12 +2,12 @@
 
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
-import fakeExplorationData from "../../features/explorer/pages/explorations/fakeExplorationData";
-import fakeExplorationLocationData from "../../features/explorer/pages/explorations/fakeExplorationLocationData";
+
 import { adminDashboardLoader } from "./loaders/adminDashboardLoader";
-import { explorationsLoader } from "./loaders/explorationsLoader";
-import { explorationLoader } from "./loaders/explorationLoader";
-import { locationLoader } from "./loaders/locationLoader";
+
+import { adminExplorationsLoader } from "./loaders/adminExplorationsLoader";
+import { adminExplorationLoader } from "./loaders/adminExplorationLoader";
+import { adminLocationLoader } from "./loaders/adminLocationLoader";
 import { usersLoader } from "./loaders/usersLoader";
 import { profileLoader } from "./loaders/profileLoader";
 
@@ -57,33 +57,33 @@ const AdminRoutes = [
   {
     path: "explorations",
     element: <ManageExplorations />,
-    loader: explorationsLoader,
+    loader: adminExplorationsLoader,
   },
   { path: "explorations/create", element: <CreateExploration /> },
   {
     path: "explorations/:explorationId",
     element: <ViewExploration />,
-    loader: explorationLoader,
+    loader: adminExplorationLoader,
   },
   {
     path: "explorations/:explorationId/edit",
     element: <CreateExploration />,
-    loader: explorationLoader,
+    loader: adminExplorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/create",
     element: <CreateLocation />,
-    loader: explorationLoader,
+    loader: adminExplorationLoader,
   },
   {
     path: "explorations/:explorationId/locations/:explorationLocationId",
     element: <ViewLocation />,
-    loader: locationLoader,
+    loader: adminLocationLoader,
   },
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
     element: <CreateLocation />,
-    loader: locationLoader,
+    loader: adminLocationLoader,
   },
   {
     path: "users",

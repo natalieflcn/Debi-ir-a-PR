@@ -5,7 +5,6 @@ import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
 const NumTotalLocations = function ({ explorations }) {
-  console.log(explorations);
   const numLocations = explorations.flatMap(
     (exploration) => exploration.locationIds,
   ).length;
@@ -29,7 +28,6 @@ const NumTotalLocations = function ({ explorations }) {
 };
 
 const NumLocationsExplored = function ({ userHistories }) {
-  console.log(userHistories);
   const locationsExplored = new Set(
     userHistories.flatMap((history) =>
       history.visitLog.map((log) => log.locationId),

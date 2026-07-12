@@ -14,9 +14,10 @@ import { useAmbassadorUI } from "../../contexts/AmbassadorUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
+import { formatDate } from "../../../../shared/utils/helpers";
 
-const AmbassadorExplorationsTable = {
-  columns: [
+const AmbassadorExplorationsTableColumns = function (users) {
+  return [
     {
       id: "name",
       heading: "name",
@@ -30,14 +31,29 @@ const AmbassadorExplorationsTable = {
     },
     { id: "numStops", heading: "# of Stops" },
     { id: "startingCity", heading: "Starting City" },
-    { id: "createdBy", heading: "Created By" },
-    { id: "dateCreated", heading: "Date Created" },
-    { id: "dateUpdated", heading: "Date Updated" },
+    {
+      id: "createdBy",
+      heading: "Created By",
+      render: (row) => {
+        const user = users.find((user) => user.id === row.createdBy);
+        return <TableCell>{user.name}</TableCell>;
+      },
+    },
+    {
+      id: "createdAt",
+      heading: "Date Created",
+      render: (row) => <TableCell>{formatDate(row.createdAt)}</TableCell>,
+    },
+    {
+      id: "updatedAt",
+      heading: "Date Updated",
+      render: (row) => <TableCell>{formatDate(row.updatedAt)}</TableCell>,
+    },
     {
       id: "action",
       heading: "Action",
       render: (row) => (
-        <ActionTableCell>
+        <TableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
             <RouterLink to={`/ambassador/explorations/${row.id}`}>
               <Button $size="extraSmall" $variation="secondary">
@@ -51,10 +67,10 @@ const AmbassadorExplorationsTable = {
               </Button>
             </RouterLink>
           </Row>
-        </ActionTableCell>
+        </TableCell>
       ),
     },
-  ],
+  ];
 };
 
 const explorationsTableTheme = {
@@ -69,7 +85,7 @@ const explorationsTableTheme = {
   borderColor: "var(--color-yellow-300)",
 };
 
-const ActionTableCell = styled.div`
+const TableCell = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +143,7 @@ function ManageExplorations() {
   const [sortBy, setSortBy] = useState("featured");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const explorations = useLoaderData();
+  const { explorations, users } = useLoaderData();
 
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
@@ -196,7 +212,7 @@ function ManageExplorations() {
 
       {viewMode === "list" && (
         <CondensedTable
-          columns={AmbassadorExplorationsTable.columns}
+          columns={AmbassadorExplorationsTableColumns(users)}
           rows={paginatedExplorations}
           $theme={explorationsTableTheme}
         />

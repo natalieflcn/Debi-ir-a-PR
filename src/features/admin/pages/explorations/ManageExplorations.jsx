@@ -14,49 +14,63 @@ import { useLoaderData } from "react-router-dom";
 import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
 import Bold from "../../../../shared/components/typography/Bold";
+import { formatDate } from "../../../../shared/utils/helpers";
 
-const getAdminExplorationsTable = function () {
-  return {
-    columns: [
-      {
-        id: "name",
-        heading: "Exploration Name",
-        render: (row) => (
-          <TableNameCell>
+const getAdminExplorationsTableColumns = function (users) {
+  return [
+    {
+      id: "name",
+      heading: "Exploration Name",
+      render: (row) => (
+        <TableNameCell>
+          <RouterLink to={`${row.id}`}>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </RouterLink>
+        </TableNameCell>
+      ),
+    },
+    { id: "numStops", heading: "# of Stops" },
+    { id: "startingCity", heading: "Starting City" },
+    {
+      id: "createdBy",
+      heading: "Created By",
+      render: (row) => {
+        const user = users.find((user) => user.id === row.createdBy);
+        return <TableCell>{user.name}</TableCell>;
+      },
+    },
+    {
+      id: "createdAt",
+      heading: "Date Created",
+      render: (row) => <TableCell>{formatDate(row.createdAt)}</TableCell>,
+    },
+    {
+      id: "updatedAt",
+      heading: "Date Updated",
+      render: (row) => <TableCell>{formatDate(row.updatedAt)}</TableCell>,
+    },
+    {
+      id: "action",
+      heading: "Action",
+      render: (row) => (
+        <TableCell>
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
             <RouterLink to={`${row.id}`}>
-              <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+              <Button $size="extraSmall" $variation="secondary">
+                View
+              </Button>
             </RouterLink>
-          </TableNameCell>
-        ),
-      },
-      { id: "numStops", heading: "# of Stops" },
-      { id: "startingCity", heading: "Starting City" },
-      { id: "createdBy", heading: "Created By" },
-      { id: "dateCreated", heading: "Date Created" },
-      { id: "dateUpdated", heading: "Date Updated" },
-      {
-        id: "action",
-        heading: "Action",
-        render: (row) => (
-          <ActionTableCell>
-            <Row $direction="horizontal" $gap="var(--gap-sm)">
-              <RouterLink to={`${row.id}`}>
-                <Button $size="extraSmall" $variation="secondary">
-                  View
-                </Button>
-              </RouterLink>
 
-              <RouterLink to={`${row.id}/edit`}>
-                <Button $size="extraSmall" $variation="primary">
-                  Edit
-                </Button>
-              </RouterLink>
-            </Row>
-          </ActionTableCell>
-        ),
-      },
-    ],
-  };
+            <RouterLink to={`${row.id}/edit`}>
+              <Button $size="extraSmall" $variation="primary">
+                Edit
+              </Button>
+            </RouterLink>
+          </Row>
+        </TableCell>
+      ),
+    },
+  ];
 };
 
 const explorationsTableTheme = {
@@ -71,7 +85,7 @@ const explorationsTableTheme = {
   borderColor: "var(--color-yellow-300)",
 };
 
-const ActionTableCell = styled.div`
+const TableCell = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +145,7 @@ function ManageExplorations() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const explorations = useLoaderData();
+  const { explorations, users } = useLoaderData();
 
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
@@ -200,7 +214,7 @@ function ManageExplorations() {
 
       {viewMode === "list" && (
         <CondensedTable
-          columns={getAdminExplorationsTable().columns}
+          columns={getAdminExplorationsTableColumns(users)}
           rows={paginatedExplorations}
           $theme={explorationsTableTheme}
         />

@@ -6,10 +6,13 @@ import { useLoaderData } from "react-router-dom";
 import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 
 function ViewExploration() {
-  const exploration = useLoaderData();
+  const { exploration, user } = useLoaderData();
 
   const headerDetails = (
-    <AdminExplorationCardHeaderDetails author="me" lastUpdated="today" />
+    <AdminExplorationCardHeaderDetails
+      author={user.name}
+      lastUpdated={exploration.updatedAt}
+    />
   );
 
   const locationDetails = (
