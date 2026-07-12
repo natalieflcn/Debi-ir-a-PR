@@ -19,6 +19,7 @@ import ExplorationTagBuilder from "../../../../shared/components/form/Exploratio
 import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
+import FeaturedFormToggle from "../../../../shared/components/form/FeaturedFormToggle";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -54,6 +55,9 @@ function CreateExploration() {
     isEditing ? exploration.locations : [],
   );
   const [tags, setTags] = useState(isEditing ? exploration.tags : []);
+  const [featured, setFeatured] = useState(
+    isEditing ? exploration.featured : false,
+  );
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
@@ -107,6 +111,7 @@ function CreateExploration() {
       images,
       locations,
       tags,
+      featured,
     };
 
     navigate(`/admin/explorations/${newId}`);
@@ -238,6 +243,15 @@ function CreateExploration() {
                 <Bold $color="var(--color-dark-200)">Note: </Bold> Tags are also
                 derived from the tag(s) you add to each location.
               </StyledParagraph>
+            </StyledRow>
+          </FormField>
+
+          <FormField label="Featured">
+            <StyledRow $align="start">
+              <FeaturedFormToggle
+                featured={featured}
+                onFeatured={setFeatured}
+              />
             </StyledRow>
           </FormField>
 

@@ -73,11 +73,3 @@ export async function adminUserLoader({ params }) {
     userHistory2,
   };
 }
-
-// pass explorer id, and admin/ambassador id into this loader, return the specific user and necessary details for the explorer/ambassador/admin-detail components... then destructure from loaded data and pass into props of profileBadgeCollection and other details for admin/ambassador
-
-// then replicate the 'toggle as admin' feature for featureFormToggle, implement this into explorationTagBuilder to toggle featured flag
-
-// then add toggle into explorationFilters to toggle search for featured explorations, both for explorers and admins
-
-// then create new toggle for admins/ambassadors to filter for explorations created by them

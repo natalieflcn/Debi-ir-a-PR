@@ -258,6 +258,13 @@
   - [ ] Make featured flag its own feature, differentiated from the tags
   - [ ] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
 
+<!--
+// then replicate the 'toggle as admin' feature for featureFormToggle, implement this into explorationTagBuilder to toggle featured flag
+
+// then add toggle into explorationFilters to toggle search for featured explorations, both for explorers and admins
+
+// then create new toggle for admins/ambassadors to filter for explorations created by them -->
+
 - [x] FIX: Error pages render outside of layout
 - [x] BUG: CreateLocation page crashing
 - [ ] Define badges objects

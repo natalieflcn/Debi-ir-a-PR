@@ -6,7 +6,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import { IoIosCheckbox } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Row from "../../../../shared/components/layout/Row";
-import { IoIosCheckboxOutline } from "react-icons/io";
+
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../../shared/components/ui/Button";
