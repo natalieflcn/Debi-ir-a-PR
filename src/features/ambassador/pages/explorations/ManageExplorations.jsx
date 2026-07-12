@@ -142,6 +142,7 @@ function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();
   const [sortBy, setSortBy] = useState("featured");
   const [filterBy, setFilterBy] = useState("all");
+  const [showFeatured, setShowFeatured] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const { explorations, users } = useLoaderData();
 
@@ -158,16 +159,19 @@ function ManageExplorations() {
     else return a.name.localeCompare(b.name);
   });
 
+  const featuredExplorations = [...sortedExplorations].filter(
+    (exploration) => exploration.featured,
+  );
+
   const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = sortedExplorations.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  const paginatedExplorations = showFeatured
+    ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+    : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy]);
+  }, [sortBy, filterBy, showFeatured]);
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -188,6 +192,8 @@ function ManageExplorations() {
           onSort={setSortBy}
           onFilter={setFilterBy}
           filterInitState="All"
+          showFeatured={showFeatured}
+          onShowFeatured={setShowFeatured}
         />
         <AdminViewMode
           viewMode={viewMode}

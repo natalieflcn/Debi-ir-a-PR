@@ -20,9 +20,9 @@ function FeaturedFormToggle({ featured, onFeatured }) {
       <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
         <StyledIcon onClick={() => onFeatured((prev) => !prev)}>
           {featured ? (
-            <MdCheckBoxOutlineBlank size={25} fill="var(--color-red-200" />
-          ) : (
             <IoIosCheckbox size={25} fill="var(--color-red-200" />
+          ) : (
+            <MdCheckBoxOutlineBlank size={25} fill="var(--color-red-200" />
           )}
         </StyledIcon>
         <Heading as="h6" $color="var(--color-dark-200)">

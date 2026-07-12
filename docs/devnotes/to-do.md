@@ -254,12 +254,12 @@
   - [x] Hyperlink tours in Tables to explorationIds
   - [x] Make sure users in Tables are hyperlinked to userIds
   - [x] Dynamically render "Created By" and "Last Updated" metadata on Exploration Card for Ambassadors/Admin
-  - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
-  - [ ] Make featured flag its own feature, differentiated from the tags
+  - [x] Make featured flag its own feature, differentiated from the tags
   - [ ] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
+  - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
 
 <!--
-// then replicate the 'toggle as admin' feature for featureFormToggle, implement this into explorationTagBuilder to toggle featured flag
+
 
 // then add toggle into explorationFilters to toggle search for featured explorations, both for explorers and admins
 

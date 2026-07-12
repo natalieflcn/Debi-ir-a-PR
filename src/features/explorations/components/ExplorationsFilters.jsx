@@ -5,6 +5,7 @@ import FilterDropdown from "../../../shared/components/dropdown/FilterDropdown";
 import SortDropdown from "../../../shared/components/dropdown/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
 import useClickOutside from "../../../shared/hooks/useClickOutside";
+import FeaturedExplorationToggle from "./FeaturedExplorationToggle";
 
 const ExplorationsFiltersCategories = [
   { id: "city", name: "City" },
@@ -28,6 +29,8 @@ function ExplorationsFilters({
   onFilter,
   filterInitState,
   sortInitState,
+  showFeatured,
+  onShowFeatured,
 }) {
   // const dropdownRef = useClickOutside();
 
@@ -43,6 +46,11 @@ function ExplorationsFilters({
         categories={filterCategories}
         onFilter={onFilter}
         initState={filterInitState || "Featured"}
+      />
+
+      <FeaturedExplorationToggle
+        showFeatured={showFeatured}
+        onShowFeatured={onShowFeatured}
       />
     </Row>
   );

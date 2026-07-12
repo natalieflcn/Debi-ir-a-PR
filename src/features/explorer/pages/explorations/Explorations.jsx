@@ -40,6 +40,7 @@ function Explorations() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showFeatured, setShowFeatured] = useState(false);
   const explorations = useLoaderData();
 
   const filteredExplorations = [...explorations].filter((exploration) => {
@@ -55,12 +56,16 @@ function Explorations() {
     else return a.name.localeCompare(b.name);
   });
 
+  const featuredExplorations = [...sortedExplorations].filter(
+    (exploration) => exploration.featured,
+  );
+
   const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = sortedExplorations.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+
+  const paginatedExplorations = showFeatured
+    ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+    : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -70,7 +75,12 @@ function Explorations() {
     <StyledExplorations>
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters onSort={setSortBy} onFilter={setFilterBy} />
+        <ExplorationsFilters
+          onSort={setSortBy}
+          onFilter={setFilterBy}
+          showFeatured={showFeatured}
+          onShowFeatured={setShowFeatured}
+        />
       </Row>
 
       <ExplorationCards>

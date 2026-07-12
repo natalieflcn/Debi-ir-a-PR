@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 const fakeCurrentUser = {
   id: "user_001",
   name: "Natalie Falcon",
-  userType: "admin", // swap to "ambassador" or "admin" to test
+  userType: "explorer", // swap to "ambassador" or "admin" to test
 };
 
 export function AuthProvider({ children }) {
