@@ -98,7 +98,7 @@ const userHistory = [
     ],
   },
   {
-    userId: "user_003",
+    userId: "user_002",
     explorationProgress: [
       {
         explorationId: "exp_004", // FK → explorationsData

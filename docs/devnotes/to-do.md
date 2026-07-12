@@ -251,14 +251,14 @@
 
 - [~] Ambassador/Admin Tweaks
   - [x] Make sure locations for Explorations are dynamically rendered for Ambassadors and Admins too
-  - [x] Allow Ambassadors and Admins to filter and search for featured explorations as well
   - [x] Hyperlink tours in Tables to explorationIds
   - [x] Make sure users in Tables are hyperlinked to userIds
   - [x] Dynamically render "Created By" and "Last Updated" metadata on Exploration Card for Ambassadors/Admin
   - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
   - [ ] Make featured flag its own feature, differentiated from the tags
+  - [ ] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
 
-- [ ] FIX: Error pages render outside of layout
+- [x] FIX: Error pages render outside of layout
 - [x] BUG: CreateLocation page crashing
 - [ ] Define badges objects
 

@@ -7,7 +7,6 @@ import { IoMdGrid } from "react-icons/io";
 import useClickOutside from "../../../shared/hooks/useClickOutside";
 
 const ExplorationsFiltersCategories = [
-  { id: "featured", name: "Featured" },
   { id: "city", name: "City" },
   { id: "restaurants", name: "Restaurants" },
   { id: "landmarks", name: "Landmarks" },

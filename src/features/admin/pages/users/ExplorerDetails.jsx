@@ -17,12 +17,8 @@ const StyledExplorerDetails = styled.div`
 `;
 
 function ExplorerDetails() {
-  const explorerId = useParams().explorerId;
-  const usersData = useLoaderData();
-
-  const explorer = usersData.find(
-    (user) => String(user.id) === String(explorerId),
-  );
+  const userId = useParams().userId;
+  const { user, userHistory2 } = useLoaderData(userId);
 
   return (
     <Row $gap="var(--gap-xl)">
@@ -32,13 +28,13 @@ function ExplorerDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader userName={explorer.name} userTitle={explorer.title} />
+        <ProfileHeader userName={user.name} userTitle={user.title} />
         <ProfileInformation
-          userEmail={explorer.email}
+          userEmail={user.email}
           password="hello"
-          dateJoined={explorer.dateJoined}
+          dateJoined={user.dateJoined}
         />
-        <ProfileBadgeCollection />
+        <ProfileBadgeCollection userHistory={userHistory2} />
       </StyledExplorerDetails>
     </Row>
   );

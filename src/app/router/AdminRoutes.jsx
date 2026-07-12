@@ -10,6 +10,7 @@ import { adminExplorationLoader } from "./loaders/adminExplorationLoader";
 import { adminLocationLoader } from "./loaders/adminLocationLoader";
 import { usersLoader } from "./loaders/usersLoader";
 import { profileLoader } from "./loaders/profileLoader";
+import { adminUserLoader } from "./loaders/adminUserLoader";
 
 const AdminDashboard = lazy(
   () => import("@/features/admin/pages/dashboard/AdminDashboard.jsx"),
@@ -91,14 +92,14 @@ const AdminRoutes = [
     loader: usersLoader,
   },
   {
-    path: "users/explorers/:explorerId",
+    path: "users/explorers/:userId",
     element: <ExplorerDetails />,
-    loader: usersLoader,
+    loader: adminUserLoader,
   },
   {
-    path: "users/ambassadors/:ambassadorId",
+    path: "users/ambassadors/:userId",
     element: <AmbassadorDetails />,
-    loader: usersLoader,
+    loader: adminUserLoader,
   },
   { path: "profile", element: <AdminProfile />, loader: profileLoader },
 ];

@@ -13,7 +13,6 @@ import {
 } from "../../../features/locations/components/explorationLocationCard.styles";
 import { capitalize } from "../../utils/helpers";
 const TagCategories = [
-  { id: "featured", name: "Featured" },
   { id: "city", name: "City" },
   { id: "artist", name: "Artist" },
   { id: "other", name: "Other" },

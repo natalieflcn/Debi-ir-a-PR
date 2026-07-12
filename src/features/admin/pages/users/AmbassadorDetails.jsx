@@ -31,14 +31,15 @@ const StyledIcon = styled.div`
 `;
 
 function AmbassadorDetails() {
+  const userId = useParams().userId;
+
+  console.log(userId);
+  const { user } = useLoaderData(userId);
   const [isAdmin, setIsAdmin] = useState(false);
-  const usersData = useLoaderData();
 
-  const ambassadorId = useParams().ambassadorId;
-
-  const ambassador = usersData.find(
-    (user) => String(user.id) === String(ambassadorId),
-  );
+  // const ambassador = usersData.find(
+  //   (user) => String(user.id) === String(ambassadorId),
+  // );
 
   return (
     <Row $gap="var(--gap-xl)">
@@ -49,7 +50,7 @@ function AmbassadorDetails() {
       </RouterLink>
       <StyledExplorerDetails>
         <ProfileHeader
-          userName={ambassador.name}
+          userName={user.name}
           userTitle={isAdmin ? "Admin" : "Ambassador"}
         />
 
@@ -69,9 +70,9 @@ function AmbassadorDetails() {
         </StyledCard>
 
         <ProfileInformation
-          userEmail={ambassador.email}
+          userEmail={user.email}
           password="hello"
-          dateJoined={ambassador.dateJoined}
+          dateJoined={user.dateJoined}
         />
       </StyledExplorerDetails>
     </Row>

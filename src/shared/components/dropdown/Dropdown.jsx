@@ -62,7 +62,7 @@ function Dropdown({
   $dropdownVariation,
   $width,
   className,
-  initState = "Featured",
+  initState = "All",
   onSelect,
   ...props
 }) {

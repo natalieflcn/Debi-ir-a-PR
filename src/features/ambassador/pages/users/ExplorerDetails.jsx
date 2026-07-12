@@ -9,6 +9,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
 
 import { useLoaderData } from "react-router-dom";
+import badges from "../../../../../data/badges";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -17,13 +18,10 @@ const StyledExplorerDetails = styled.div`
 `;
 
 function ExplorerDetails() {
-  const explorers = useLoaderData();
-  const explorerId = useParams().userId;
+  const userId = useParams().userId;
+  const { user, userHistory2 } = useLoaderData(userId);
 
-  const explorer = explorers.find(
-    (explorer) => String(explorer.id) === String(explorerId),
-  );
-
+  console.log(user, userHistory2);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/ambassador/users">
@@ -32,13 +30,13 @@ function ExplorerDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader userName={explorer.name} userTitle={explorer.title} />
+        <ProfileHeader userName={user.name} userTitle={user.title} />
         <ProfileInformation
-          userEmail={explorer.email}
+          userEmail={user.email}
           password="hello"
-          dateJoined={explorer.dateJoined}
+          dateJoined={user.dateJoined}
         />
-        <ProfileBadgeCollection />
+        <ProfileBadgeCollection userHistory={userHistory2} />
       </StyledExplorerDetails>
     </Row>
   );

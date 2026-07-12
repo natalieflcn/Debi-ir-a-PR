@@ -8,6 +8,7 @@ import { profileLoader } from "./loaders/profileLoader";
 import { ambassadorDashboardLoader } from "./loaders/ambassadorDashboardLoader";
 import { adminExplorationsLoader } from "./loaders/adminExplorationsLoader";
 import { adminLocationLoader } from "./loaders/adminLocationLoader";
+import { adminUserLoader } from "./loaders/adminUserLoader";
 // import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(
@@ -92,7 +93,7 @@ const AmbassadorRoutes = [
   {
     path: "users/:userId",
     element: <ExplorerDetails />,
-    loader: explorersLoader,
+    loader: adminUserLoader,
   },
   { path: "profile", element: <AmbassadorProfile />, loader: profileLoader },
 ];
