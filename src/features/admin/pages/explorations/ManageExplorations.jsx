@@ -15,6 +15,8 @@ import ExplorationsFilters from "../../../explorations/components/ExplorationsFi
 import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
 import Bold from "../../../../shared/components/typography/Bold";
 import { formatDate } from "../../../../shared/utils/helpers";
+import AdminShowCreatedExplorations from "../../../../shared/components/management/AdminShowCreatedExplorations";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const getAdminExplorationsTableColumns = function (users) {
   return [
@@ -146,34 +148,43 @@ function ManageExplorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
+  const [showMyExplorations, setShowMyExplorations] = useState(false);
   const { explorations, users } = useLoaderData();
+  const { user } = useAuth();
 
-  const filteredExplorations = [...explorations].filter((exploration) => {
-    if (filterBy === "all") return true;
+  const processedExplorations = [...explorations]
+    // Filter explorations
+    .filter((exploration) =>
+      filterBy === "all"
+        ? true
+        : exploration.tags.some((tag) =>
+            tag.toLowerCase().includes(filterBy.toLowerCase()),
+          ),
+    )
+    // Featured explorations
+    .filter((exploration) =>
+      showFeatured ? exploration.featured === true : true,
+    )
+    // My Explorations
+    .filter((exploration) =>
+      showMyExplorations ? exploration.createdBy === user.id : true,
+    )
+    // Sort Explorations
+    .sort((a, b) => {
+      if (sortBy === "numStops") return a.numStops - b.numStops;
+      return a.name.localeCompare(b.name);
+    });
 
-    return exploration.tags.some((tag) =>
-      tag.toLowerCase().includes(filterBy.toLowerCase()),
-    );
-  });
-
-  const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-    if (sortBy === "numStops") return a.numStops - b.numStops;
-    else return a.name.localeCompare(b.name);
-  });
-
-  const featuredExplorations = [...sortedExplorations].filter(
-    (exploration) => exploration.featured,
-  );
-
-  const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = showFeatured
-    ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-    : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedExplorations = processedExplorations.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured]);
+  }, [sortBy, filterBy, showFeatured, showMyExplorations]);
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -188,6 +199,7 @@ function ManageExplorations() {
           </Button>
         </RouterLink>
       </Row>
+
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
         <ExplorationsFilters
@@ -197,12 +209,15 @@ function ManageExplorations() {
           showFeatured={showFeatured}
           onShowFeatured={setShowFeatured}
         />
+        <AdminShowCreatedExplorations
+          showMyExplorations={showMyExplorations}
+          onShowMyExplorations={setShowMyExplorations}
+        />
         <AdminViewMode
           viewMode={viewMode}
           onViewModeChange={handleSelectViewMode}
         />
       </Row>
-
       {viewMode === "grid" && (
         <ExplorationCards>
           {paginatedExplorations.map((exploration) => (
@@ -217,7 +232,6 @@ function ManageExplorations() {
           ))}
         </ExplorationCards>
       )}
-
       {viewMode === "list" && (
         <CondensedTable
           columns={getAdminExplorationsTableColumns(users)}
@@ -225,7 +239,6 @@ function ManageExplorations() {
           $theme={explorationsTableTheme}
         />
       )}
-
       {paginatedExplorations.length === 0 && (
         <Row $align="center">
           <Bold $color="var(--color-light-0)">
@@ -233,7 +246,6 @@ function ManageExplorations() {
           </Bold>
         </Row>
       )}
-
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

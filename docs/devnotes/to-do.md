@@ -255,7 +255,7 @@
   - [x] Make sure users in Tables are hyperlinked to userIds
   - [x] Dynamically render "Created By" and "Last Updated" metadata on Exploration Card for Ambassadors/Admin
   - [x] Make featured flag its own feature, differentiated from the tags
-  - [ ] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
+  - [x] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
   - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
 
 <!--

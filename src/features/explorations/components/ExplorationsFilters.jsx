@@ -36,6 +36,11 @@ function ExplorationsFilters({
 
   return (
     <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <FeaturedExplorationToggle
+        showFeatured={showFeatured}
+        onShowFeatured={onShowFeatured}
+      />
+
       <SortDropdown
         categories={sortCategories}
         onSort={onSort}
@@ -46,11 +51,6 @@ function ExplorationsFilters({
         categories={filterCategories}
         onFilter={onFilter}
         initState={filterInitState || "Featured"}
-      />
-
-      <FeaturedExplorationToggle
-        showFeatured={showFeatured}
-        onShowFeatured={onShowFeatured}
       />
     </Row>
   );

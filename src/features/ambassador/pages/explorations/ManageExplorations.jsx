@@ -15,6 +15,8 @@ import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
 import { formatDate } from "../../../../shared/utils/helpers";
+import { useAuth } from "../../../auth/contexts/AuthContext";
+import AdminShowCreatedExplorations from "../../../../shared/components/management/AdminShowCreatedExplorations";
 
 const AmbassadorExplorationsTableColumns = function (users) {
   return [
@@ -143,35 +145,44 @@ function ManageExplorations() {
   const [sortBy, setSortBy] = useState("featured");
   const [filterBy, setFilterBy] = useState("all");
   const [showFeatured, setShowFeatured] = useState(false);
+  const [showMyExplorations, setShowMyExplorations] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const { explorations, users } = useLoaderData();
+  const { user } = useAuth();
 
-  const filteredExplorations = [...explorations].filter((exploration) => {
-    if (filterBy === "all") return true;
+  const processedExplorations = [...explorations]
+    // Filter explorations
+    .filter((exploration) =>
+      filterBy === "all"
+        ? true
+        : exploration.tags.some((tag) =>
+            tag.toLowerCase().includes(filterBy.toLowerCase()),
+          ),
+    )
+    // Featured explorations
+    .filter((exploration) =>
+      showFeatured ? exploration.featured === true : true,
+    )
+    // My Explorations
+    .filter((exploration) =>
+      showMyExplorations ? exploration.createdBy === user.id : true,
+    )
+    // Sort Explorations
+    .sort((a, b) => {
+      if (sortBy === "numStops") return a.numStops - b.numStops;
+      return a.name.localeCompare(b.name);
+    });
 
-    return exploration.tags.some((tag) =>
-      tag.toLowerCase().includes(filterBy.toLowerCase()),
-    );
-  });
-
-  const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-    if (sortBy === "numStops") return a.numStops - b.numStops;
-    else return a.name.localeCompare(b.name);
-  });
-
-  const featuredExplorations = [...sortedExplorations].filter(
-    (exploration) => exploration.featured,
-  );
-
-  const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = showFeatured
-    ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-    : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedExplorations = processedExplorations.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured]);
+  }, [sortBy, filterBy, showFeatured, showMyExplorations]);
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);
@@ -194,6 +205,10 @@ function ManageExplorations() {
           filterInitState="All"
           showFeatured={showFeatured}
           onShowFeatured={setShowFeatured}
+        />
+        <AdminShowCreatedExplorations
+          showMyExplorations={showMyExplorations}
+          onShowMyExplorations={setShowMyExplorations}
         />
         <AdminViewMode
           viewMode={viewMode}
