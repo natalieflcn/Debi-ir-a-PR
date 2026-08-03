@@ -5,9 +5,10 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 
 function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
+  console.log(exploration);
   return (
-    !hasStarted && (
-      <Card $cardColor="var(--color-light-100)">
+    <Card $cardColor="var(--color-light-100)">
+      {!hasStarted && (
         <Row $direction="horizontal" $align="space-evenly">
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <Image
@@ -21,8 +22,20 @@ function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
             Start Exploring Now
           </Button>
         </Row>
-      </Card>
-    )
+      )}
+
+      {hasStarted && (
+        <Row $direction="horizontal" $align="center" $gap="var(--gap-xl)">
+          Complete this exploration to earn:
+          <Row $direction="horizontal" $gap="var(--gap-lg)">
+            <Image $width="5rem" src={exploration.badge.image} />
+            <Heading as="h5" $color="var(--color-red-300)">
+              {exploration.badge.name}
+            </Heading>
+          </Row>
+        </Row>
+      )}
+    </Card>
   );
 }
 

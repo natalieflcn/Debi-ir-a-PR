@@ -31,7 +31,10 @@ function Exploration() {
   );
 
   const footerCTA = (
-    <ExplorerExplorationCardFooterCTA hasStarted={hasStarted} />
+    <ExplorerExplorationCardFooterCTA
+      hasStarted={hasStarted}
+      exploration={exploration}
+    />
   );
 
   return (

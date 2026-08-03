@@ -264,6 +264,6 @@
 ## Week: July 31 – August 8
 
 - [x] Define badges objects
-- [~] Display badge on Exploration page (locked/unlocked for explorers, unlocked for ambassadors/admins)
+- [x] Display badge on Exploration page (locked/unlocked for explorers, unlocked for ambassadors/admins)
 - [ ] Define how ambassadors/admins upload badge information in CreateExploration form
 - [ ] Make website responsive
