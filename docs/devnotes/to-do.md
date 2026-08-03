@@ -256,17 +256,14 @@
   - [x] Dynamically render "Created By" and "Last Updated" metadata on Exploration Card for Ambassadors/Admin
   - [x] Make featured flag its own feature, differentiated from the tags
   - [x] Create new toggle for Ambassadors and Admins to filter and search for featured explorations
-  - [ ] Filter for explorations created by 'user' for Ambassador & Admin roles
-
-<!--
-
-
-// then add toggle into explorationFilters to toggle search for featured explorations, both for explorers and admins
-
-// then create new toggle for admins/ambassadors to filter for explorations created by them -->
+  - [x] Filter for explorations created by 'user' for Ambassador & Admin roles
 
 - [x] FIX: Error pages render outside of layout
 - [x] BUG: CreateLocation page crashing
-- [ ] Define badges objects
 
+## Week: July 31 – August 8
+
+- [x] Define badges objects
+- [~] Display badge on Exploration page (locked/unlocked for explorers, unlocked for ambassadors/admins)
+- [ ] Define how ambassadors/admins upload badge information in CreateExploration form
 - [ ] Make website responsive

@@ -1,71 +1,278 @@
 const badges = [
   {
-    id: "badge_toa_alta",
-    name: "Toa Alta Explorer",
-    description: "Completed the Toa Alta Tour",
-    image: "/badges/toa-alta.png",
-    explorationId: "exp_001", // which exploration awards this badge (null if general)
-    type: "completion", // "completion" | "milestone" | "special"
+    id: "badge_001",
+    name: "Baby Turista",
+    description: "Completed 1 exploration",
+    image: "/badges/badge_001.png",
+    explorationId: null, // which exploration awards this badge (null if general)
+    type: "milestone", // "completion" | "milestone" | "special"
+    threshold: 1, // how many completions to unlock
   },
   {
-    id: "badge_5_explorations",
-    name: "Seasoned Explorer",
-    description: "Completed 5 explorations",
-    image: "/badges/seasoned.png",
+    id: "badge_002",
+    name: "Island Wanderer",
+    description: "Completed 3 explorations",
+    image: "/badges/badge_002.png",
     explorationId: null,
     type: "milestone",
+    threshold: 3, // how many completions to unlock
+  },
+  {
+    id: "badge_003",
+    name: "Tropical Cruiser",
+    description: "Completed 5 explorations",
+    image: "/badges/badge_003.png",
+    explorationId: null, // which exploration awards this badge (null if general)
+    type: "completion", // "completion" | "milestone" | "special"
     threshold: 5, // how many completions to unlock
   },
   {
-    id: "badge_toa_alta1",
-    name: "Toa Alta Explorer",
-    description: "Completed the Toa Alta Tour",
-    image: "/badges/toa-alta.png",
-    explorationId: "exp_001", // which exploration awards this badge (null if general)
-    type: "completion", // "completion" | "milestone" | "special"
-  },
-  {
-    id: "badge_5_explorations2",
-    name: "Seasoned Explorer",
-    description: "Completed 5 explorations",
-    image: "/badges/seasoned.png",
+    id: "badge_004",
+    name: "Fluttering Mariposa",
+    description: "Completed 10 explorations",
+    image: "/badges/badge_004.png",
     explorationId: null,
     type: "milestone",
+    threshold: 10, // how many completions to unlock
+  },
+  {
+    id: "badge_005",
+    name: "Coqui Crawler",
+    description: "Completed 15 explorations",
+    image: "/badges/badge_005.png",
+    explorationId: null, // which exploration awards this badge (null if general)
+    type: "milestone", // "completion" | "milestone" | "special",
+    threshold: 15,
+  },
+  {
+    id: "badge_006",
+    name: "Brutal Bouncer",
+    description: "Completed 20 explorations",
+    image: "/badges/badge_006.png",
+    explorationId: null,
+    type: "milestone",
+    threshold: 20, // how many completions to unlock
+  },
+  {
+    id: "badge_007",
+    name: "Barrio Member",
+    description: "Completed 25 explorations",
+    image: "/badges/badge_007.png",
+    explorationId: null, // which exploration awards this badge (null if general)
+    type: "milestone", // "completion" | "milestone" | "special"
+    threshold: 25,
+  },
+  {
+    id: "badge_008",
+    name: "Taino Trailblazer",
+    description: "Completed 30 explorations",
+    image: "/badges/badge_008.png",
+    explorationId: null,
+    type: "milestone",
+    threshold: 30, // how many completions to unlock
+  },
+  {
+    id: "badge_009",
+    name: "Isla Veteran",
+    description: "Completed 35 explorations",
+    image: "/badges/badge_009.png",
+    explorationId: null,
+    type: "milestone",
+    threshold: 35, // how many completions to unlock
+  },
+  {
+    id: "badge_010",
+    name: "Boricua at Heart",
+    description: "Completed more than 35 explorations",
+    image: "/badges/badge_010.png",
+    explorationId: null,
+    type: "milestone",
+    threshold: 36, // how many completions to unlock
+  },
+  {
+    id: "badge_011",
+    name: "San Juan Badge",
+    description: "Completed the San Juan Exploration",
+    image: "/badges/badge_011.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_012",
+    name: "Santurce Badge",
+    description: "Completed the Santurce Exploration",
+    image: "/badges/badge_012.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_013",
+    name: "Ponce Badge",
+    description: "Completed the Ponce Exploration",
+    image: "/badges/badge_013.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_014",
+    name: "Toa Alta Badge",
+    description: "Completed the Toa Alta Exploration",
+    image: "/badges/badge_014.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_015",
+    name: "Luquillo Badge",
+    description: "Completed the Luquillo Exploration",
+    image: "/badges/badge_015.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_016",
+    name: "Arecibo Badge",
+    description: "Completed the Arecibo Exploration",
+    image: "/badges/badge_016.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_017",
+    name: "Cabo Rojo Badge",
+    description: "Completed the Cabo Rojo Exploration",
+    image: "/badges/badge_017.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_018",
+    name: "Bayamon Badge",
+    description: "Completed the Bayamon Exploration",
+    image: "/badges/badge_018.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_019",
+    name: "Fajardo Badge",
+    description: "Completed the Fajardo Exploration",
+    image: "/badges/badge_019.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_020",
+    name: "Vieques Badge",
+    description: "Completed the Vieques Exploration",
+    image: "/badges/badge_020.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_021",
+    name: "Bayamon Badge",
+    description: "Completed the Bayamon Exploration",
+    image: "/badges/badge_021.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_022",
+    name: "Rio Piedras Badge",
+    description: "Completed the Rio Piedras Badge",
+    image: "/badges/badge_022.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_023",
+    name: "Bad Bunny Fan",
+    description: "Completed the Bad Bunny Exploration",
+    image: "/badges/badge_023.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_024",
+    name: "Rauw Alejandro Fan",
+    description: "Completed the Rauw Alejandro Exploration",
+    image: "/badges/badge_024.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_025",
+    name: "Marc Anthony Fan",
+    description: "Completed the Marc Anthony Exploration",
+    image: "/badges/badge_025.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_026",
+    name: "Playa Pioneer",
+    description: "Completed the Playa Pioneer Exploration",
+    image: "/badges/badge_026.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_027",
+    name: "Parks and Rec",
+    description: "Completed Parks and Rec Exploration",
+    image: "/badges/badge_027.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_028",
+    name: "El Yunque Badge",
+    description: "Completed El Yunque Exploration",
+    image: "/badges/seasoned.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_029",
+    name: "Excursionista Badge",
+    description: "Completed the Enjoy the Excursions Exploration",
+    image: "/badges/badge_029.png",
+    explorationId: null,
+    type: "completion",
     threshold: 5, // how many completions to unlock
   },
   {
-    id: "badge_toa_alta3",
-    name: "Toa Alta Explorer",
-    description: "Completed the Toa Alta Tour",
-    image: "/badges/toa-alta.png",
-    explorationId: "exp_001", // which exploration awards this badge (null if general)
-    type: "completion", // "completion" | "milestone" | "special"
-  },
-  {
-    id: "badge_5_explorations4",
-    name: "Seasoned Explorer",
-    description: "Completed 5 explorations",
-    image: "/badges/seasoned.png",
+    id: "badge_030",
+    name: "Chinchorreo Chaser",
+    description: "Completed the Chinchorreo Chaser Exploration",
+    image: "/badges/badge_030.png",
     explorationId: null,
-    type: "milestone",
-    threshold: 5, // how many completions to unlock
+    type: "completion",
   },
   {
-    id: "badge_toa_baja",
-    name: "Toa Alta Explorer",
-    description: "Completed the Toa Alta Tour",
-    image: "/badges/toa-alta.png",
-    explorationId: "exp_001", // which exploration awards this badge (null if general)
-    type: "completion", // "completion" | "milestone" | "special"
-  },
-  {
-    id: "badge_5_explorations6",
-    name: "Seasoned Explorer",
-    description: "Completed 5 explorations",
-    image: "/badges/seasoned.png",
+    id: "badge_031",
+    name: "Billiards Player",
+    description: "Completed the Billiards Player Exploration",
+    image: "/badges/badge_031.png",
     explorationId: null,
-    type: "milestone",
-    threshold: 5, // how many completions to unlock
+    type: "completion",
+  },
+  {
+    id: "badge_032",
+    name: "History Walker",
+    description: "Completed Walk through History Exploration",
+    image: "/badges/badge_032.png",
+    explorationId: null,
+    type: "completion",
+  },
+  {
+    id: "badge_033",
+    name: "Lechon Master",
+    description: "Completed the Lechon Master Exploration",
+    image: "/badges/badge_033.png",
+    explorationId: null,
+    type: "completion",
   },
 ];
 

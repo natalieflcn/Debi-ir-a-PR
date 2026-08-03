@@ -3,7 +3,8 @@ import AdminExplorationCardHeaderDetails from "../../../../shared/components/man
 import AdminExplorationCardLocations from "../../../../shared/components/management/AdminExplorationCardLocations";
 import Button from "../../../../shared/components/ui/Button";
 import { useLoaderData } from "react-router-dom";
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+
+import AdminFooterBadgeDisplay from "../../../../shared/components/management/AdminFooterBadgeDisplay";
 
 function ViewExploration() {
   const { exploration, user } = useLoaderData();
@@ -19,11 +20,14 @@ function ViewExploration() {
     <AdminExplorationCardLocations locations={exploration.locations} />
   );
 
+  const footerDetails = <AdminFooterBadgeDisplay badge={exploration.badge} />;
+
   return (
     <ExplorationCard
       exploration={exploration}
       headerDetails={headerDetails}
       locationDetails={locationDetails}
+      footerCTA={footerDetails}
       type="admin"
     />
   );

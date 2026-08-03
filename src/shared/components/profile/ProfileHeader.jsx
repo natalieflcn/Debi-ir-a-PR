@@ -49,12 +49,12 @@ const explorerTitlesTable = {
   rows: [
     { title: "Baby Turista", milestones: "0-1 Explorations" },
     { title: "Island Wanderer", milestones: "1-3 Explorations" },
-    { title: "Santurce Stroller", milestones: "3-5 Explorations" },
-    { title: "San Juan Seeker", milestones: "5-10 Explorations" },
-    { title: "Bayamón Bouncer", milestones: "10-15 Explorations" },
-    { title: "Ponce Pilgrim", milestones: "15-20 Explorations" },
-    { title: "Lechón Master", milestones: "20-25 Explorations" },
-    { title: "Chinchorreo Chaser", milestones: "25-30 Explorations" },
+    { title: "Tropical Cruiser", milestones: "3-5 Explorations" },
+    { title: "Fluttering Mariposa", milestones: "5-10 Explorations" },
+    { title: "Coqui Crawler", milestones: "10-15 Explorations" },
+    { title: "Brutal Bouncer", milestones: "15-20 Explorations" },
+    { title: "Barrio Member", milestones: "20-25 Explorations" },
+    { title: "Taino Trailblazer", milestones: "25-30 Explorations" },
     { title: "Isla Veteran", milestones: "30-35 Explorations" },
     { title: "Boricua at Heart", milestones: "35+ Explorations" },
   ],
@@ -136,6 +136,7 @@ const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
   const submit = useSubmit();
   const { role } = useAuth();
 
+  console.log(role);
   function handleAvatarChange(e) {
     const file = e.target.files[0];
     if (!file) return;
