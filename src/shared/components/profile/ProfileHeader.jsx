@@ -136,7 +136,6 @@ const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
   const submit = useSubmit();
   const { role } = useAuth();
 
-  console.log(role);
   function handleAvatarChange(e) {
     const file = e.target.files[0];
     if (!file) return;

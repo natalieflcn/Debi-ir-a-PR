@@ -5,7 +5,6 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 
 function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
-  console.log(exploration);
   return (
     <Card $cardColor="var(--color-light-100)">
       {!hasStarted && (

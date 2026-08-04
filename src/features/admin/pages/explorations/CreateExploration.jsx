@@ -96,6 +96,7 @@ function CreateExploration() {
     if (images.length < 1) errors.images = "Please provide at least one image.";
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
+    if (!badge) errors.badge = "Please create a badge.";
     if (tags.length < 1)
       errors.tags = "Please select at least one exploration tag.";
 
@@ -115,6 +116,7 @@ function CreateExploration() {
       description,
       images,
       locations,
+      badge,
       tags,
       featured,
     };
@@ -223,6 +225,7 @@ function CreateExploration() {
           <FormField label="Locations">
             <StyledRow $gap="var(--gap-md)">
               <LocationBuilder
+                exploration={exploration || name}
                 locations={locations}
                 onAdd={handleAddLocation}
               />
@@ -238,6 +241,7 @@ function CreateExploration() {
 
           <FormField label="Badge">
             <BadgeBuilder value={badge} onSelect={setBadge} />
+            {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
           </FormField>
 
           <FormField label="Tags">

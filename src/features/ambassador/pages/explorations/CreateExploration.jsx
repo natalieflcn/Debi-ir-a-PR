@@ -20,6 +20,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import FeaturedFormToggle from "../../../../shared/components/form/FeaturedFormToggle";
+import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -53,6 +54,7 @@ function CreateExploration() {
   const [locations, setLocations] = useState(
     isEditing ? exploration.locations : [],
   );
+  const [badge, setBadge] = useState(isEditing ? exploration.badge : null);
   const [tags, setTags] = useState(isEditing ? exploration.tags : []);
   const [featured, setFeatured] = useState(
     isEditing ? exploration.featured : false,
@@ -92,6 +94,7 @@ function CreateExploration() {
     if (images.length < 1) errors.images = "Please provide at least one image.";
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
+    if (!badge) errors.badge = "Please create a badge.";
     if (tags.length < 1)
       errors.tags = "Please select at least one exploration tag.";
 
@@ -110,6 +113,7 @@ function CreateExploration() {
       description,
       images,
       locations,
+      badge,
       tags,
       featured,
     };
@@ -216,8 +220,9 @@ function CreateExploration() {
           </FormField>
 
           <FormField label="Locations">
-            <StyledRow $gap="var(--gap-sm)">
+            <StyledRow $gap="var(--gap-md)">
               <LocationBuilder
+                exploration={exploration || name}
                 locations={locations}
                 onAdd={handleAddLocation}
               />
@@ -225,16 +230,21 @@ function CreateExploration() {
                 locations={locations}
                 onEdit={handleEditLocation}
                 onDelete={handleDeleteLocation}
-                exploration={fakeExplorationData}
+                exploration={exploration || null}
               />
               {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
             </StyledRow>
           </FormField>
 
+          <FormField label="Badge">
+            <BadgeBuilder value={badge} onSelect={setBadge} />
+            {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
+          </FormField>
+
           <FormField label="Tags">
             <StyledRow $gap="var(--gap-xs)">
               <ExplorationTagBuilder
-                exploration={fakeExplorationData}
+                exploration={exploration || null}
                 tags={tags}
                 onChange={setTags}
               />

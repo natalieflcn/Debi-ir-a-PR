@@ -63,11 +63,9 @@ const fakeUsers = [
 
 export async function adminUserLoader({ params }) {
   const { userId } = params;
-  console.log(userId);
   const user = fakeUsers.find((user) => user.id === userId);
   const userHistory2 = userHistory.find((history) => history.userId === userId);
 
-  console.log(user, userHistory2);
   return {
     user: { ...user, dateJoined: formatDate(user.dateJoined) },
     userHistory2,

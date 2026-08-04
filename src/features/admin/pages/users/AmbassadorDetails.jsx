@@ -33,7 +33,6 @@ const StyledIcon = styled.div`
 function AmbassadorDetails() {
   const userId = useParams().userId;
 
-  console.log(userId);
   const { user } = useLoaderData(userId);
   const [isAdmin, setIsAdmin] = useState(false);
 

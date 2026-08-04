@@ -53,7 +53,6 @@ function BadgeForm({ badge, onSubmit }) {
     onSubmit(formData);
   };
 
-  console.log(formErrors);
   return (
     <AppForm formTitle={"CREATE A BADGE"} onSubmit={handleSubmit} method="post">
       <Row $gap="var(--gap-lg)">

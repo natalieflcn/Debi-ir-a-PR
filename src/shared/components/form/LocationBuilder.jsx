@@ -5,6 +5,7 @@ import Heading from "../typography/Heading";
 import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
 import styled from "styled-components";
+import Bold from "../typography/Bold";
 
 const StyledLocationBuilder = styled.div`
   justify-self: flex-start;
@@ -12,32 +13,48 @@ const StyledLocationBuilder = styled.div`
   gap: var(--gap-md);
 `;
 
-function LocationBuilder({ locations, onAdd }) {
+function LocationBuilder({ exploration, locations, onAdd }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState("");
 
+  console.log(exploration);
+  function openModal(exploration) {
+    setError("");
+
+    if (!exploration) setError("Please define the Exploration name first.");
+    else setIsModalOpen(true);
+  }
   return (
     <StyledLocationBuilder>
-      <Button
-        type="button"
-        $variation="primary"
-        $size="small"
-        onClick={() => setIsModalOpen(true)}
-      >
-        Add Location
-      </Button>
+      <Row $direction="horizontal" $align="start" $gap="var(--gap-md)">
+        <Button
+          type="button"
+          $variation="primary"
+          $size="small"
+          onClick={() => openModal(exploration)}
+        >
+          Add Location
+        </Button>
 
-      <input type="hidden" name="locations" value={JSON.stringify(locations)} />
+        <input
+          type="hidden"
+          name="locations"
+          value={JSON.stringify(locations)}
+        />
 
-      {isModalOpen && (
-        <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
-          <LocationForm
-            onSubmit={(formData) => {
-              onAdd(formData);
-              setIsModalOpen(false);
-            }}
-          />
-        </Modal>
-      )}
+        {isModalOpen && (
+          <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
+            <LocationForm
+              onSubmit={(formData) => {
+                onAdd(formData);
+                setIsModalOpen(false);
+              }}
+              exploration={exploration}
+            />
+          </Modal>
+        )}
+        {error && <Bold>{error}</Bold>}
+      </Row>
     </StyledLocationBuilder>
   );
 }

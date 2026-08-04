@@ -17,7 +17,6 @@ const StyledBadgeBuilder = styled.div`
 function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log("badgebuilder running");
   return (
     <StyledBadgeBuilder>
       <Row $direction="horizontal" $gap="var(--gap-md)" $align="start">

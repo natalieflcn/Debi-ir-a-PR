@@ -21,7 +21,6 @@ function ExplorerDetails() {
   const userId = useParams().userId;
   const { user, userHistory2 } = useLoaderData(userId);
 
-  console.log(user, userHistory2);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/ambassador/users">
