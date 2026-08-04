@@ -55,6 +55,7 @@ function CreateExploration() {
   const [locations, setLocations] = useState(
     isEditing ? exploration.locations : [],
   );
+  const [badge, setBadge] = useState(isEditing ? exploration.badge : null);
   const [tags, setTags] = useState(isEditing ? exploration.tags : []);
   const [featured, setFeatured] = useState(
     isEditing ? exploration.featured : false,
@@ -236,7 +237,7 @@ function CreateExploration() {
           </FormField>
 
           <FormField label="Badge">
-            <BadgeBuilder />
+            <BadgeBuilder value={badge} onSelect={setBadge} />
           </FormField>
 
           <FormField label="Tags">

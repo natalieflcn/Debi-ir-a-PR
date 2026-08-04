@@ -33,7 +33,6 @@ function LocationBuilder({ locations, onAdd }) {
           <LocationForm
             onSubmit={(formData) => {
               onAdd(formData);
-
               setIsModalOpen(false);
             }}
           />

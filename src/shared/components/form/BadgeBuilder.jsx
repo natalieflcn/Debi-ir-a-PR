@@ -6,6 +6,7 @@ import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
 import styled from "styled-components";
 import BadgeForm from "./BadgeForm";
+import Image from "../ui/Image";
 
 const StyledBadgeBuilder = styled.div`
   justify-self: flex-start;
@@ -13,27 +14,50 @@ const StyledBadgeBuilder = styled.div`
   gap: var(--gap-md);
 `;
 
-function BadgeBuilder() {
+function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   console.log("badgebuilder running");
   return (
     <StyledBadgeBuilder>
-      <Button
-        type="button"
-        $variation="primary"
-        $size="small"
-        onClick={() => setIsModalOpen(true)}
-      >
-        Create Badge
-      </Button>
+      <Row $direction="horizontal" $gap="var(--gap-md)" $align="start">
+        <Button
+          type="button"
+          $variation={value ? "darkRed" : "primary"}
+          $size="small"
+          onClick={() => setIsModalOpen(true)}
+        >
+          {value ? value.name : "Create a Badge"}
+        </Button>
 
+        {value && (
+          <Image
+            src={value.image}
+            $width="3.7rem"
+            $height="3.7rem"
+            $objectFit="cover"
+          />
+        )}
+
+        {value && (
+          <Button
+            type="button"
+            $variation="primary"
+            $size="small"
+            onClick={() => onSelect(null)}
+          >
+            Delete Badge
+          </Button>
+        )}
+      </Row>
       {isModalOpen && (
         <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
           <BadgeForm
-            onSubmit={() => {
+            onSubmit={(formData) => {
+              onSelect(formData);
               setIsModalOpen(false);
             }}
+            badge={value}
           />
         </Modal>
       )}
