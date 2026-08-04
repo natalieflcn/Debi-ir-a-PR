@@ -25,7 +25,7 @@ function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
       )}
 
       {hasStarted && (
-        <Row $direction="horizontal" $align="center" $gap="var(--gap-xl)">
+        <Row $direction="vertical" $align="center" $gap="var(--gap-md)">
           Complete this exploration to earn:
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <Image $width="5rem" src={exploration.badge.image} />

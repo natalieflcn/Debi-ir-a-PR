@@ -6,6 +6,7 @@ import RouterLink from "../routing/RouterLink";
 import { useEffect, useState } from "react";
 import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
+import Bold from "../typography/Bold";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -19,7 +20,9 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
 
   return (
     <>
-      {!hasLocations && <Heading as="h5">No locations added yet.</Heading>}
+      {!hasLocations && (
+        <Bold $color="var(--color-red-300)">No locations added yet.</Bold>
+      )}
       {hasLocations && (
         <Row $gap="var(--gap-lg)">
           {locations.map((location, i) => (

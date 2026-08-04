@@ -61,7 +61,10 @@ function CreateExploration() {
   const navigate = useNavigate();
 
   function handleAddLocation(formData) {
-    setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
+    setLocations((prev) => [
+      ...prev,
+      { ...formData, id: `loc_${crypto.randomUUID()}` },
+    ]);
   }
 
   function handleDeleteLocation(id) {
@@ -97,7 +100,7 @@ function CreateExploration() {
       return;
     }
 
-    const newId = crypto.randomUUID();
+    const newId = `exp_${crypto.randomUUID()}`;
     const formData = {
       id: newId,
       name,

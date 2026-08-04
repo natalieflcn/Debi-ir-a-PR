@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import fakeExplorationData from "../../../features/explorer/pages/explorations/fakeExplorationData";
+
 import CityDropdown from "../dropdown/CityDropdown";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
@@ -26,11 +26,7 @@ const StyledTextAreaRow = styled(Row)`
   flex: 1 1 0;
   height: 10rem;
 `;
-function LocationForm({
-  exploration = fakeExplorationData,
-  location,
-  onSubmit,
-}) {
+function LocationForm({ exploration, location, onSubmit }) {
   const isEditing = Boolean(location);
 
   const [name, setName] = useState(isEditing ? location.name : "");
@@ -86,6 +82,7 @@ function LocationForm({
     onSubmit(formData);
   };
 
+  console.log(exploration);
   return (
     <AppForm
       formTitle={"CREATE A LOCATION"}
@@ -95,7 +92,7 @@ function LocationForm({
       <Row $gap="var(--gap-lg)">
         <FormField label="Exploration">
           <StyledHeading as="h6" $color="var(--color-red-300)">
-            {exploration.name}
+            {exploration?.name}
           </StyledHeading>
         </FormField>
 

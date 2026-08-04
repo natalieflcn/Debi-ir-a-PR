@@ -20,6 +20,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import FeaturedFormToggle from "../../../../shared/components/form/FeaturedFormToggle";
+import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -63,7 +64,10 @@ function CreateExploration() {
   const navigate = useNavigate();
 
   function handleAddLocation(formData) {
-    setLocations((prev) => [...prev, { ...formData, id: crypto.randomUUID() }]);
+    setLocations((prev) => [
+      ...prev,
+      { ...formData, id: `loc_${crypto.randomUUID()}` },
+    ]);
   }
 
   function handleDeleteLocation(id) {
@@ -100,7 +104,7 @@ function CreateExploration() {
       return;
     }
 
-    const newId = crypto.randomUUID();
+    const newId = `exp_${crypto.randomUUID()}`;
     const formData = {
       id: newId,
       name,
@@ -216,7 +220,7 @@ function CreateExploration() {
           </FormField>
 
           <FormField label="Locations">
-            <StyledRow $gap="var(--gap-sm)">
+            <StyledRow $gap="var(--gap-md)">
               <LocationBuilder
                 locations={locations}
                 onAdd={handleAddLocation}
@@ -229,6 +233,10 @@ function CreateExploration() {
               />
               {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
             </StyledRow>
+          </FormField>
+
+          <FormField label="Badge">
+            <BadgeBuilder />
           </FormField>
 
           <FormField label="Tags">

@@ -12,6 +12,7 @@ import {
   ExplorationLocationTag,
 } from "../../../features/locations/components/explorationLocationCard.styles";
 import { capitalize } from "../../utils/helpers";
+import Bold from "../typography/Bold";
 const TagCategories = [
   { id: "city", name: "City" },
   { id: "artist", name: "Artist" },
@@ -87,6 +88,10 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
               </ExplorationLocationTag>
             );
           })}
+
+          {tags.length === 0 && derivedLocationTags.length === 0 && (
+            <Bold $color="var(--color-red-300)">No tags selected yet.</Bold>
+          )}
         </TagCollection>
       </StyledRow>
 

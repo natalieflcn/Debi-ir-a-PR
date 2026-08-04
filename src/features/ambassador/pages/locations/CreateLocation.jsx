@@ -75,7 +75,7 @@ function CreateLocation({ location }) {
       return;
     }
 
-    const newId = crypto.randomUUID();
+    const newId = `loc_${crypto.randomUUID()}`;
     const formData = {
       name,
       address,

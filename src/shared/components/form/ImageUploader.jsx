@@ -38,7 +38,7 @@ function ImageUploader({
   const previews = value.map((item) => {
     if (item instanceof File) {
       return {
-        id: crypto.randomUUID(),
+        id: `img_${crypto.randomUUID()}`,
         url: URL.createObjectURL(item),
         name: item.name,
       };
@@ -46,7 +46,7 @@ function ImageUploader({
     // handles strings (headerImage) and objects with imageURL (images array)
     const url = typeof item === "string" ? item : item.imageURL;
     return {
-      id: crypto.randomUUID(),
+      id: `img_${crypto.randomUUID()}`,
       url,
       name: url,
     };

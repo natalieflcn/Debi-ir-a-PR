@@ -68,6 +68,10 @@ function LocationTagBuilder({ value, onChange }) {
               </ExplorationLocationTag>
             );
           })}
+
+          {value.length === 0 && (
+            <Bold $color="var(--color-red-300)">No tags selected yet.</Bold>
+          )}
         </TagCollection>
       </StyledRow>
 
