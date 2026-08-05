@@ -2,7 +2,7 @@ import MainContent from "./MainContent";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
-import { StyledLayout } from "./layout.styles";
+import { ResetLayout, StyledLayout } from "./layout.styles";
 import ScrollToTop from "../components/ui/ScrollToTop";
 
 const menuItems = [
@@ -14,15 +14,15 @@ const menuItems = [
 
 function MainLayout() {
   return (
-    <>
+    <ResetLayout>
       <ScrollToTop />
-      <Background />
+      {/* <Background /> */}
       <NavBar type="main" menuItems={menuItems} />
       <StyledLayout>
         <MainContent />
         <Footer />
       </StyledLayout>
-    </>
+    </ResetLayout>
   );
 }
 

@@ -5,6 +5,12 @@ const StyledMainContent = styled.main`
   position: relative;
   z-index: 3;
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   @media (max-width: 798px) {
     z-index: 0;
   }

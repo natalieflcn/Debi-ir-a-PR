@@ -1,7 +1,7 @@
 import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
-import { StyledLayout } from "./layout.styles";
+import { ResetLayout, StyledLayout } from "./layout.styles";
 import Background from "../components/decorative/Background";
 import { AmbassadorUIProvider } from "../../features/ambassador/contexts/AmbassadorUIContext";
 import ScrollToTop from "../components/ui/ScrollToTop";
@@ -15,7 +15,7 @@ const menuItems = [
 
 function AmbassadorLayout() {
   return (
-    <>
+    <ResetLayout>
       <ScrollToTop />
       <AmbassadorUIProvider>
         <Background />
@@ -25,7 +25,7 @@ function AmbassadorLayout() {
           <Footer />
         </StyledLayout>
       </AmbassadorUIProvider>
-    </>
+    </ResetLayout>
   );
 }
 

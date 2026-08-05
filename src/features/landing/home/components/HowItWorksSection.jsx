@@ -9,29 +9,25 @@ const StyledHowItWorksSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
-  max-width: 85%;
 `;
 
 const StyledMeetPuertoRicoCard = styled.div`
   color: var(--color-dark-200);
 
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     /* flex-direction: column; */
-    width: 30%;
   }
 `;
 
 const StyledCardsRow = styled(Row)`
-  align-content: space-evenly;
-
-  @media (max-width: 700px) {
+  @media (max-width: 428px) {
     flex-direction: column;
     width: 80%;
     align-self: center;
   }
 
-  @media (max-width: 800px) {
-    /* flex-direction: column; */
+  @media (max-width: 700px) {
+    flex-direction: column;
 
     gap: var(--gap-lg);
   }
@@ -40,10 +36,20 @@ const StyledCardsRow = styled(Row)`
 const StyledCard = styled(Card)`
   justify-content: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     /* flex-direction: column; */
-    width: 80%;
+    height: 9rem;
     align-self: center;
+  }
+
+  @media (max-width: 700px) {
+    /* flex-direction: column; */
+    height: 3rem;
+  }
+
+  @media (max-width: 420px) {
+    /* flex-direction: column; */
+    height: 5rem;
   }
 `;
 

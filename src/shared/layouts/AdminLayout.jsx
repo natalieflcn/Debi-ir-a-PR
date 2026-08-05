@@ -1,7 +1,7 @@
 import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
-import { StyledLayout } from "./layout.styles";
+import { ResetLayout, StyledLayout } from "./layout.styles";
 import Background from "../components/decorative/Background";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import { AdminUIProvider } from "../../features/admin/contexts/AdminUIContext";
@@ -15,7 +15,7 @@ const menuItems = [
 
 function AdminLayout() {
   return (
-    <>
+    <ResetLayout>
       <ScrollToTop />
       <AdminUIProvider>
         <Background />
@@ -25,7 +25,7 @@ function AdminLayout() {
           <Footer />
         </StyledLayout>
       </AdminUIProvider>
-    </>
+    </ResetLayout>
   );
 }
 

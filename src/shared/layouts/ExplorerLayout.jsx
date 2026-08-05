@@ -2,7 +2,7 @@ import NavBar from "../components/navigation/NavBar";
 import MainContent from "./MainContent";
 import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
-import { StyledLayout } from "./layout.styles";
+import { ResetLayout, StyledLayout } from "./layout.styles";
 import ScrollToTop from "../components/ui/ScrollToTop";
 
 const menuItems = [
@@ -13,7 +13,7 @@ const menuItems = [
 
 function ExplorerLayout() {
   return (
-    <>
+    <ResetLayout>
       <ScrollToTop />
       <Background />
       <NavBar type="explorer" menuItems={menuItems} />
@@ -21,7 +21,7 @@ function ExplorerLayout() {
         <MainContent />
         <Footer />
       </StyledLayout>
-    </>
+    </ResetLayout>
   );
 }
 

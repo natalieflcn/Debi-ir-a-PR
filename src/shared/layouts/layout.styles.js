@@ -14,3 +14,11 @@ export const StyledLayout = styled.div`
     /* margin: 0 auto; */
   }
 `;
+
+export const ResetLayout = styled.div`
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+`;

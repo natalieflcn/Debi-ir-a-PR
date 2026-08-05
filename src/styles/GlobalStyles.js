@@ -83,6 +83,10 @@ ul {
   list-style: none;
 }
 
+/* *, *::before, *::after {
+  box-sizing: border-box;
+} */
+
 // My Global Styles
 body {
   font-family:  sans-serif, Helvetica;

@@ -37,7 +37,7 @@ const StyledNavBar = styled.nav`
 
   margin: 0 auto;
   padding: 1.5rem 1rem;
-
+  overflow: hidden;
   /* background-image: url(${BlueOverlay}); */
 
   background-image: ${({ theme }) => theme.backgroundImage};

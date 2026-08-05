@@ -268,3 +268,4 @@
 - [x] Define how ambassadors/admins upload badge information in CreateExploration form
 - [x] BUG: Make sure Exploration name is defined first, before being allowed to add new locations to CreateExploration form
 - [ ] Make website responsive
+  - [x] Fix main content overflowing and bleeding past nav bar
