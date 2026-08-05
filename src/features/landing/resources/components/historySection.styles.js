@@ -35,8 +35,6 @@ export const StyledBookSection = styled.figure`
     margin-bottom: 1rem;
 
     img {
-      width: 7rem;
-      height: 12rem;
       margin-bottom: 1rem;
     }
   }
@@ -51,8 +49,6 @@ export const StyledBookSection = styled.figure`
     }
 
     img {
-      width: 7rem;
-      height: 12rem;
       margin-bottom: 1rem;
     }
   }

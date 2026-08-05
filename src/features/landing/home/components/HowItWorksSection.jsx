@@ -9,15 +9,39 @@ const StyledHowItWorksSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
+  max-width: 85%;
 `;
 
 const StyledMeetPuertoRicoCard = styled.div`
   color: var(--color-dark-200);
+
+  @media (max-width: 800px) {
+    /* flex-direction: column; */
+    width: 30%;
+  }
 `;
 
 const StyledCardsRow = styled(Row)`
-  @media (max-width: 900px) {
+  align-content: space-evenly;
+
+  @media (max-width: 700px) {
     flex-direction: column;
+    width: 80%;
+    align-self: center;
+  }
+
+  @media (max-width: 800px) {
+    /* flex-direction: column; */
+
+    gap: var(--gap-lg);
+  }
+`;
+
+const StyledCard = styled(Card)`
+  justify-content: center;
+
+  @media (max-width: 800px) {
+    /* flex-direction: column; */
     width: 80%;
     align-self: center;
   }
@@ -28,9 +52,13 @@ const MeetPuertoRicoCard = function ({ image, spotData }) {
     <StyledMeetPuertoRicoCard>
       <Row>
         <Image src={image} />
-        <Card $cardColor="var(--color-light-0)" $cardShadow="outsetSM">
+        <StyledCard
+          $cardColor="var(--color-light-0)"
+          $cardShadow="outsetSM"
+          $height="7rem"
+        >
           <p>{spotData}</p>
-        </Card>
+        </StyledCard>
       </Row>
     </StyledMeetPuertoRicoCard>
   );

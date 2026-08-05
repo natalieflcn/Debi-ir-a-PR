@@ -58,7 +58,7 @@ const workflowData = [
     id: "for-ambassadors",
     heading: "For Ambassadors",
     cardColor: `url("src/assets/images/ui/RedSand.gif")`,
-    tagline: "Passionate about Puerto Rico?",
+    tagline: "Share Your Love For Puerto Rico",
     description: [
       "As an Ambassador, you'll shape how the world experiences the island — putting your favorite spots on the map for thousands of Explorers.",
     ],

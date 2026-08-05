@@ -55,7 +55,19 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledRow = styled(Row)`
+  display: flex;
+
   @media (max-width: 1000px) {
+    gap: var(--gap-xs);
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: row;
+    gap: var(--gap-md);
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
     gap: var(--gap-xs);
   }
 `;

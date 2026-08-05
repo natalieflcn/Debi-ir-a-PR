@@ -57,14 +57,15 @@ export const StyledHeading = styled(Heading)`
       $isOpen ? $theme.panelHeadingHoverShadow : $theme.panelHeadingShadow};
   transition: all 0.4s;
   line-height: var(--line-height-lg);
+  flex-wrap: wrap;
 
-  @media (max-width: 1000px) {
-    font-size: var(--font-size-lg);
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-xl);
   }
 
-  @media (max-width: 450px) {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-sm);
+  @media (max-width: 600px) {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-md);
   }
 `;
 

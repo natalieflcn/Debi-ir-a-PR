@@ -4,7 +4,7 @@ const variants = {
   h2: css`
     font-family: DtMF;
     font-size: var(--font-size-2xl);
-    line-height: var(--line-height-xl);
+    line-height: var(--line-height-2xl);
     letter-spacing: var(--letter-spacing-dtmf-normal);
 
     ${({ $shadowColor }) =>
@@ -58,8 +58,9 @@ const variants = {
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
 
-    @media (max-width: 800) {
-      font-size: var(--font-size-sm);
+    @media (max-width: 800px) {
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-xs);
     }
   `,
 };

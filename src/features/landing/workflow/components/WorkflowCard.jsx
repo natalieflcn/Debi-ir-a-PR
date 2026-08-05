@@ -7,7 +7,7 @@ import WorkflowStep from "./WorkflowStep";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledWorkFlowCard = styled(Card)`
-  width: 90%;
+  max-width: 83%;
   display: flex;
   justify-items: center;
 
@@ -21,9 +21,18 @@ const StyledWorkFlowCard = styled(Card)`
 `;
 
 const StyledCTA = styled(Card)`
-  @media (max-width: 900px) {
+  text-align: center;
+  align-items: center;
+
+  h2,
+  h3,
+  h5 {
     text-align: center;
   }
+
+  /* @media (max-width: 900px) {
+    text-align: center;
+  } */
 `;
 
 const WorkFlowCard = function ({ section, index }) {

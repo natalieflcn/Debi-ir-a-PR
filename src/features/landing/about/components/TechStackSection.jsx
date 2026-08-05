@@ -66,7 +66,6 @@ const StyledTechStackSection = styled(Row)`
 
   @media (max-width: 450px) {
     h4 {
-      font-size: var(--font-size-xs);
       line-height: var(--line-height-md);
     }
   }

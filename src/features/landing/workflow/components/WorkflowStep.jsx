@@ -29,7 +29,7 @@ const StyledCard = styled(Card)`
     margin-right: 1rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 800px) {
     width: 90%;
   }
 `;

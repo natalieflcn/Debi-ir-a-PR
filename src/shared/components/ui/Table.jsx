@@ -41,6 +41,14 @@ const StyledTableHeading = styled.th`
     background-color: ${({ $theme }) => $theme.headerBackgroundAlt};
     color: ${({ $theme }) => $theme.headerColorAlt};
   }
+
+  @media (max-width: 800px) {
+    font-size: var(--font-size-md);
+  }
+
+  @media (max-width: 600px) {
+    font-size: var(--font-size-sm);
+  }
 `;
 
 const StyledTableData = styled.td`

@@ -265,6 +265,6 @@
 
 - [x] Define badges objects
 - [x] Display badge on Exploration page (locked/unlocked for explorers, unlocked for ambassadors/admins)
-- [ ] Define how ambassadors/admins upload badge information in CreateExploration form
-- [ ] BUG: Make sure Exploration name is defined first, before being allowed to add new locations to CreateExploration form
+- [x] Define how ambassadors/admins upload badge information in CreateExploration form
+- [x] BUG: Make sure Exploration name is defined first, before being allowed to add new locations to CreateExploration form
 - [ ] Make website responsive
