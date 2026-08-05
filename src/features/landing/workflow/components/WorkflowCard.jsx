@@ -7,7 +7,7 @@ import WorkflowStep from "./WorkflowStep";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const StyledWorkFlowCard = styled(Card)`
-  max-width: 83%;
+  /* max-width: 83%; */
   display: flex;
   justify-items: center;
 

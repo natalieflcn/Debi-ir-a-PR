@@ -18,7 +18,7 @@ const StyledAmbassadorPitchSection = styled.div`
 const StyledCards = styled(Row)`
   flex-direction: row;
 
-  @media (max-width: 900px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   }
 `;

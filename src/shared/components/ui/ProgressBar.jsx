@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const OuterBar = styled.div`
   /* position: relative; */
-  height: 1.5rem;
+  height: 2rem;
   width: 100%;
   background-color: var(--color-light-100);
   border-radius: var(--border-radius-lg);

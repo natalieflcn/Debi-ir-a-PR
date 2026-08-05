@@ -22,7 +22,7 @@ const StyledMeetPuertoRicoCard = styled.div`
 const StyledCardsRow = styled(Row)`
   @media (max-width: 428px) {
     flex-direction: column;
-    width: 80%;
+    /* width: 80%; */
     align-self: center;
   }
 
@@ -38,18 +38,18 @@ const StyledCard = styled(Card)`
 
   @media (max-width: 830px) {
     /* flex-direction: column; */
-    height: 9rem;
+    height: 10rem;
     align-self: center;
   }
 
   @media (max-width: 700px) {
     /* flex-direction: column; */
-    height: 3rem;
+    height: 5rem;
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 450px) {
     /* flex-direction: column; */
-    height: 5rem;
+    height: 9rem;
   }
 `;
 
