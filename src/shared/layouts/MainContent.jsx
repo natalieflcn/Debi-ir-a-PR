@@ -11,7 +11,8 @@ const StyledMainContent = styled.main`
     box-sizing: border-box;
   }
 
-  @media (max-width: 798px) {
+  @media (max-width: 800px) {
+    padding: 1.5rem;
     z-index: 0;
   }
 `;

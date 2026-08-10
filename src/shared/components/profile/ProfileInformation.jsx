@@ -11,13 +11,74 @@ import { Form } from "react-router-dom";
 import Input from "../form/Input";
 import Modal from "../ui/Modal";
 
+// const StyledProfileInformation = styled.div`
+//   display: grid;
+//   grid-template-columns: 12rem 1fr auto;
+//   /* grid-template-rows: repeat(2, 1fr); */
+//   align-items: start;
+//   gap: var(--gap-lg) var(--gap-xl);
+//   color: var(--color-dark-100);
+
+//   @media (max-width: 800px) {
+//     grid-template-columns: 8rem 1fr auto;
+//     grid-template-rows: 1fr 1fr;
+//   }
+// `;
+
 const StyledProfileInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  color: var(--color-dark-100);
+  @media (max-width: 800px) {
+    gap: var(--gap-2xl);
+  }
+`;
+
+const ProfileRow = styled.div`
   display: grid;
   grid-template-columns: 12rem 1fr auto;
-  /* grid-template-rows: repeat(2, 1fr); */
+  grid-template-areas: "label value button";
   align-items: start;
   gap: var(--gap-lg) var(--gap-xl);
-  color: var(--color-dark-100);
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "label value"
+      "button button";
+    row-gap: var(--gap-sm);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "label"
+      "value"
+      "button";
+    row-gap: var(--gap-sm);
+    justify-items: center;
+  }
+`;
+
+const ButtonArea = styled.div`
+  grid-area: button;
+  justify-self: flex-end;
+  width: 13rem;
+  /* border: 1px solid red; */
+
+  @media (max-width: 800px) {
+    width: 100%;
+    justify-self: inherit; // or flex-end, your call
+  }
+`;
+
+const LabelArea = styled(Heading)`
+  grid-area: label;
+`;
+
+const ValueArea = styled.div`
+  grid-area: value;
 `;
 
 const InformationLabel = styled(Heading)`
@@ -30,7 +91,7 @@ const BoldInformation = styled(Bold)`
 `;
 
 const StyledButton = styled(Button)`
-  justify-self: flex-end;
+  width: 100%;
 `;
 
 const StyledForm = styled(Form)`
@@ -104,121 +165,141 @@ const ProfileInformation = function ({
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
       <StyledProfileInformation>
-        <Heading as="h5">Email</Heading>
+        <ProfileRow>
+          <LabelArea as="h5">Email</LabelArea>
 
-        {isEditingEmail ? (
-          <StyledForm method="patch" action="/profile/email">
-            <Row $gap="var(--gap-xs)">
-              <Input
-                name="email"
-                value={email.toLowerCase()}
-                onChange={(e) => setEmail(e.target.value.toLowerCase())}
-              />
-              {emailErrors && <Bold>{emailErrors}</Bold>}
-            </Row>
-            <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button
-                type="submit"
-                $variation="secondary"
-                $size="small"
-                onClick={handleEmailSubmit}
-              >
-                Save
-              </Button>
-              <Button
-                type="button"
-                $variation="primary"
-                $size="small"
-                onClick={handleEmailCancel}
-              >
-                Cancel
-              </Button>
-            </Row>
-          </StyledForm>
-        ) : (
-          <>
-            <Bold $color="var(--color-red-300)">{email.toLowerCase()}</Bold>
-            <Button
-              $variation="primary"
-              $size="medium"
-              onClick={() => setIsEditingEmail(true)}
-            >
-              Edit Email Address
-            </Button>
-          </>
-        )}
-
-        <InformationLabel as="h5">Password</InformationLabel>
-
-        {isEditingPassword ? (
-          <>
-            <StyledForm>
-              <Row $gap="var(--gap-xs)">
-                <Input
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                />
-
+          {isEditingEmail ? (
+            <ValueArea>
+              <StyledForm method="patch" action="/profile/email">
                 <Row $gap="var(--gap-xs)">
                   <Input
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    name="email"
+                    value={email.toLowerCase()}
+                    onChange={(e) => setEmail(e.target.value.toLowerCase())}
+                  />
+                  {emailErrors && <Bold>{emailErrors}</Bold>}
+                </Row>
+                <Row $direction="horizontal" $gap="var(--gap-md)">
+                  <Button
+                    type="submit"
+                    $variation="secondary"
+                    $size="small"
+                    onClick={handleEmailSubmit}
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    type="button"
+                    $variation="primary"
+                    $size="small"
+                    onClick={handleEmailCancel}
+                  >
+                    Cancel
+                  </Button>
+                </Row>
+              </StyledForm>
+            </ValueArea>
+          ) : (
+            <>
+              <ValueArea>
+                <Bold $color="var(--color-red-300)">{email.toLowerCase()}</Bold>
+              </ValueArea>
+              <ButtonArea>
+                <StyledButton
+                  $variation="primary"
+                  $size="medium"
+                  onClick={() => setIsEditingEmail(true)}
+                >
+                  Edit Email Address
+                </StyledButton>
+              </ButtonArea>
+            </>
+          )}
+        </ProfileRow>
+
+        <ProfileRow>
+          <LabelArea as="h5">Password</LabelArea>
+
+          {isEditingPassword ? (
+            <ValueArea>
+              <StyledForm>
+                <Row $gap="var(--gap-xs)">
+                  <Input
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     type="password"
-                    placeholder="Confirm your password"
                   />
 
-                  {passwordErrors && <Bold>{passwordErrors}</Bold>}
-                </Row>
-              </Row>
-              <Row $direction="horizontal" $gap="var(--gap-md)">
-                <Button
-                  type="submit"
-                  $variation="secondary"
-                  $size="small"
-                  onClick={handlePasswordSubmit}
-                >
-                  Save
-                </Button>
-                <Button
-                  type="button"
-                  $variation="primary"
-                  $size="small"
-                  onClick={handlePasswordCancel}
-                >
-                  Cancel
-                </Button>
-              </Row>
-            </StyledForm>
-          </>
-        ) : (
-          <>
-            <Bold $color="var(--color-red-300)">
-              {Array.from({ length: password.length }, (_, index) => (
-                <FaAsterisk key={index} size={13} />
-              ))}
-            </Bold>
-            <Button
-              $variation="primary"
-              $size="medium"
-              onClick={() => setIsEditingPassword(true)}
-            >
-              Edit Password
-            </Button>
-          </>
-        )}
+                  <Row $gap="var(--gap-xs)">
+                    <Input
+                      name="confirmPassword"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      type="password"
+                      placeholder="Confirm your password"
+                    />
 
-        <InformationLabel as="h5">Date Joined</InformationLabel>
-        <Bold $color="var(--color-red-300)">Joined on {dateJoined}</Bold>
-        <Button
-          $variation="darkRed"
-          $size="medium"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Delete Account
-        </Button>
+                    {passwordErrors && <Bold>{passwordErrors}</Bold>}
+                  </Row>
+                </Row>
+                <Row $direction="horizontal" $gap="var(--gap-md)">
+                  <Button
+                    type="submit"
+                    $variation="secondary"
+                    $size="small"
+                    onClick={handlePasswordSubmit}
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    type="button"
+                    $variation="primary"
+                    $size="small"
+                    onClick={handlePasswordCancel}
+                  >
+                    Cancel
+                  </Button>
+                </Row>
+              </StyledForm>
+            </ValueArea>
+          ) : (
+            <>
+              <Bold $color="var(--color-red-300)">
+                <ValueArea>
+                  {Array.from({ length: password.length }, (_, index) => (
+                    <FaAsterisk key={index} size={13} />
+                  ))}
+                </ValueArea>
+              </Bold>
+              <ButtonArea>
+                <StyledButton
+                  $variation="primary"
+                  $size="medium"
+                  onClick={() => setIsEditingPassword(true)}
+                >
+                  Edit Password
+                </StyledButton>
+              </ButtonArea>
+            </>
+          )}
+        </ProfileRow>
+
+        <ProfileRow>
+          <LabelArea as="h5">Date Joined</LabelArea>
+          <ValueArea>
+            <Bold $color="var(--color-red-300)">Joined on {dateJoined}</Bold>
+          </ValueArea>
+          <ButtonArea>
+            <StyledButton
+              $variation="darkRed"
+              $size="medium"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Delete Account
+            </StyledButton>
+          </ButtonArea>
+        </ProfileRow>
       </StyledProfileInformation>
 
       {isModalOpen && (

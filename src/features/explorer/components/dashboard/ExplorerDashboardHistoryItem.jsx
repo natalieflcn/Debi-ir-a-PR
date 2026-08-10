@@ -71,7 +71,7 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
   const numExplorationsStarted = userHistory.explorationProgress.length;
 
   return (
-    <DashboardItem $height="18rem">
+    <DashboardItem $height="21rem">
       <Heading as="h4" $color="var(--color-dark-100)">
         Exploration History
       </Heading>

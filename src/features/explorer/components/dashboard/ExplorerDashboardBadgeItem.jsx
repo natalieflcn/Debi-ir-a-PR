@@ -26,12 +26,12 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
     (a, b) => a.earnedAt > b.earnedAt,
   )[0];
 
-  const recentBadgeName = badges.find(
+  const recentBadgeName = badges?.find(
     (badge) => badge.id === recentBadge.badgeId,
-  ).name;
+  )?.name;
 
   return (
-    <DashboardItem $variation="center" $height="18rem">
+    <DashboardItem $variation="center" $height="21rem">
       <StyledExplorerDashboardBadgeItem>
         <Row $gap="var(--gap-lg)">
           <Heading as="h4" $color="var(--color-dark-100)">

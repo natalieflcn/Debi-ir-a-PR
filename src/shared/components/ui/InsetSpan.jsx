@@ -6,7 +6,7 @@ const StyledInsetSpan = styled.span`
   box-shadow: var(--box-shadow-inset-sm) var(--color-dark-200);
   padding: 0.5rem;
   /* width: 1rem; */
-  height: 1rem;
+  height: 1.9rem;
   min-width: 1rem;
   text-align: center;
 `;

@@ -14,6 +14,22 @@ const StyledProfileBadgeCollection = styled.div`
   gap: var(--gap-sm);
 `;
 
+const BadgesRow = styled(Row)`
+  gap: var(--gap-2xl);
+  align-items: flex-start;
+  align-content: center;
+
+  @media (max-width: 800px) {
+    align-items: flex-start;
+    gap: var(--gap-lg);
+  }
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+    gap: var(--gap-md);
+  }
+`;
+
 const BadgeItem = styled.span`
   width: 5rem;
   cursor: pointer;
@@ -23,8 +39,13 @@ const BadgeItem = styled.span`
 const BadgeDetails = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--gap-lg);
+`;
+
+const TitleRow = styled(Row)`
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
 `;
 
 const ProfileBadgeCollection = function ({ userHistory }) {
@@ -45,22 +66,17 @@ const ProfileBadgeCollection = function ({ userHistory }) {
 
   return (
     <StyledProfileBadgeCollection>
-      <Row $direction="horizontal">
+      <TitleRow $direction="horizontal">
         <Heading as="h3" $shadowColor="var(--color-blue-300)">
           BADGE COLLECTION
         </Heading>
         <Heading as="h6">
           {earnedBadges.length} out of 100 badges collected
         </Heading>
-      </Row>
+      </TitleRow>
       <Card $cardColor="var(--color-light-100)" $cardShadow="insetMd">
         {/* replace later with badge info */}
-        <Row
-          $direction="horizontal"
-          $wrap="wrap"
-          $gap="var(--gap-2xl)"
-          $align="flex-start"
-        >
+        <BadgesRow $direction="horizontal" $wrap="wrap">
           {badges.map((badge) => {
             const isEarned = earnedBadges.some(
               (earned) => earned.badgeId === badge.id,
@@ -79,7 +95,7 @@ const ProfileBadgeCollection = function ({ userHistory }) {
               </BadgeItem>
             );
           })}
-        </Row>
+        </BadgesRow>
       </Card>
 
       {isModalOpen && (

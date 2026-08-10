@@ -261,7 +261,7 @@
 - [x] FIX: Error pages render outside of layout
 - [x] BUG: CreateLocation page crashing
 
-## Week: July 31 – August 8
+## Week: July 31 – August 5
 
 - [x] Define badges objects
 - [x] Display badge on Exploration page (locked/unlocked for explorers, unlocked for ambassadors/admins)
@@ -269,3 +269,10 @@
 - [x] BUG: Make sure Exploration name is defined first, before being allowed to add new locations to CreateExploration form
 - [ ] Make website responsive
   - [x] Fix main content overflowing and bleeding past nav bar
+
+## Week: August 10 - August 13
+
+- [~] Make website responsive
+  - [ ] Explorer pages
+  - [ ] Ambassador pages
+  - [ ] Admin pages

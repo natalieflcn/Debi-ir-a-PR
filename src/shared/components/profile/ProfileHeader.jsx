@@ -18,6 +18,15 @@ const StyledProfileHeader = styled.div`
   grid-auto-flow: column;
   grid-template-columns: 25% 1fr;
   gap: var(--gap-xl);
+
+  @media (max-width: 800px) {
+    grid-template-columns: 35% 1fr;
+  }
+
+  @media (max-width: 650px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
 const InfoButton = styled.button`
@@ -41,6 +50,11 @@ const StyledInfoButtonText = styled.div`
   gap: var(--gap-md);
 `;
 
+const StyledImage = styled(Image)`
+  @media (max-width: 800px) {
+    width: 10rem;
+  }
+`;
 const explorerTitlesTable = {
   columns: [
     { id: "title", heading: "Explorer Title" },

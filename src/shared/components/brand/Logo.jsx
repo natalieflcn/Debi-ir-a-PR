@@ -52,15 +52,33 @@ const IrAPR = styled.p`
 `;
 
 function Logo() {
-  // const { role } = useAuth();
-  const role = "admin";
+  const { role } = useAuth();
+  console.log(role);
+  // const role = "admin";
+  let userType = "";
+
+  switch (role) {
+    case "ambassador":
+      userType = "ambassador";
+      break;
+
+    case "admin":
+      userType = "admin";
+      break;
+
+    case "explorer":
+    default:
+      userType = "";
+      break;
+  }
+
   const logoTheme =
     themeVariants[role === "ambassador" || role === "admin" ? "blue" : "red"];
 
   return (
     <div>
       <StyledLogo $logoTheme={logoTheme}>
-        <NavLink to={`/${role ? role : ""}`}>
+        <NavLink to={`${userType}/dashboard`}>
           <Debi>DeBÍ</Debi>
           <IrAPR>iR a PR</IrAPR>
         </NavLink>

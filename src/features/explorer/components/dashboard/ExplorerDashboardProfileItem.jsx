@@ -14,7 +14,7 @@ const StyledExplorerDashboardProfileItem = styled.div`
 function ExplorerDashboardProfileItem({ profileData }) {
   return (
     <StyledExplorerDashboardProfileItem>
-      <DashboardItem $variation="center" $height="18rem">
+      <DashboardItem $variation="center" $height="21rem">
         <Row $gap="var(--gap-lg)">
           <Row $align="center">
             <Heading as="h4" $color="var(--color-dark-100)">
