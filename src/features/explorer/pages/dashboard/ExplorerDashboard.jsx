@@ -18,6 +18,9 @@ const StyledExplorerDashboard = styled.div`
   gap: var(--gap-xl);
 `;
 
+const StyledRow = styled(Row)`
+  align-items: stretch;
+`;
 function getCurrentExplorations(explorations, userHistory) {
   const explorationIds = [
     ...new Set(
@@ -73,11 +76,11 @@ function ExplorerDashboard() {
         WELCOME, NATALIE
       </Heading>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+      <StyledRow $direction="horizontal" $gap="var(--gap-xl)">
         <ExplorerDashboardProfileItem profileData={profileData} />
         <ExplorerDashboardBadgeItem userHistory={userHistory} />
         <ExplorerDashboardHistoryItem userHistory={userHistory} />
-      </Row>
+      </StyledRow>
 
       <ExplorerDashboardStatsItem userHistory={userHistory} />
 

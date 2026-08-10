@@ -13,32 +13,30 @@ const StyledExplorerDashboardProfileItem = styled.div`
 
 function ExplorerDashboardProfileItem({ profileData }) {
   return (
-    <StyledExplorerDashboardProfileItem>
-      <DashboardItem $variation="center" $height="21rem">
-        <Row $gap="var(--gap-lg)">
-          <Row $align="center">
-            <Heading as="h4" $color="var(--color-dark-100)">
-              {profileData.title}
-            </Heading>
-            <Image
-              src={profileData.avatar}
-              $borderRadius="var(--border-radius-round)"
-              $width="8rem"
-              $height="8rem"
-              $imageShadow="var(--box-shadow-sm)"
-            />
-            <Heading as="h6">{profileData.name}</Heading>
-          </Row>
-          <Row>
-            <RouterLink to="/profile">
-              <Button $variation="secondary" $size="small">
-                View Profile
-              </Button>
-            </RouterLink>
-          </Row>
+    <DashboardItem $variation="center">
+      <Row $gap="var(--gap-lg)">
+        <Row $align="center">
+          <Heading as="h4" $color="var(--color-dark-100)">
+            {profileData.title}
+          </Heading>
+          <Image
+            src={profileData.avatar}
+            $borderRadius="var(--border-radius-round)"
+            $width="8rem"
+            $height="8rem"
+            $imageShadow="var(--box-shadow-sm)"
+          />
+          <Heading as="h6">{profileData.name}</Heading>
         </Row>
-      </DashboardItem>
-    </StyledExplorerDashboardProfileItem>
+        <Row>
+          <RouterLink to="/profile">
+            <Button $variation="secondary" $size="small">
+              View Profile
+            </Button>
+          </RouterLink>
+        </Row>
+      </Row>
+    </DashboardItem>
   );
 }
 

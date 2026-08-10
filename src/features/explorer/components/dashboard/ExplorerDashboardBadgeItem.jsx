@@ -31,7 +31,7 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
   )?.name;
 
   return (
-    <DashboardItem $variation="center" $height="21rem">
+    <DashboardItem $variation="center">
       <StyledExplorerDashboardBadgeItem>
         <Row $gap="var(--gap-lg)">
           <Heading as="h4" $color="var(--color-dark-100)">

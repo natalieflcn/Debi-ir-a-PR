@@ -71,41 +71,47 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
   const numExplorationsStarted = userHistory.explorationProgress.length;
 
   return (
-    <DashboardItem $height="21rem">
+    <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-dark-100)">
         Exploration History
       </Heading>
       <Row $gap="var(--gap-md)">
-        <Row $direction="horizontal">
-          <Heading as="h6">Locations explored this week</Heading>
+        <Row $direction="horizontal" $gap="var(--gap-xl)">
+          <Bold $color="var(--color-dark-200)">
+            Locations explored this week
+          </Bold>
           <InsetSpan>
             <Bold>{numWeeklyLocations}</Bold>
           </InsetSpan>
         </Row>
 
-        <Row $direction="horizontal">
-          <Heading as="h6">Locations explored this month</Heading>
+        <Row $direction="horizontal" $gap="var(--gap-xl)">
+          <Bold $color="var(--color-dark-200)">
+            Locations explored this month
+          </Bold>
           <InsetSpan>
             <Bold>{numMonthlyLocations}</Bold>
           </InsetSpan>
         </Row>
 
-        <Row $direction="horizontal">
-          <Heading as="h6">Locations explored this year</Heading>
+        <Row $direction="horizontal" $gap="var(--gap-xl)">
+          <Bold $color="var(--color-dark-200)">
+            Locations explored this year
+          </Bold>
           <InsetSpan>
             <Bold>{numYearlyLocations}</Bold>
           </InsetSpan>
         </Row>
 
-        <Row $direction="horizontal">
-          <Heading as="h6">Explorations completed</Heading>
+        <Row $direction="horizontal" $gap="var(--gap-xl)">
+          <Bold $color="var(--color-dark-200)">Explorations completed</Bold>
           <InsetSpan>
             <Bold>{numExplorationsCompleted}</Bold>
           </InsetSpan>
         </Row>
 
-        <Row $direction="horizontal">
-          <Heading as="h6">Explorations started</Heading>
+        <Row $direction="horizontal" $gap="var(--gap-xl)">
+          <Bold $color="var(--color-dark-200)">Explorations started</Bold>
           <InsetSpan>
             <Bold>{numExplorationsStarted}</Bold>
           </InsetSpan>
