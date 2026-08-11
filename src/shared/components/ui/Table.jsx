@@ -12,12 +12,29 @@ const defaultTheme = {
   borderColor: "var(--color-dark-0)",
 };
 
-const StyledTable = styled.table`
+const TableWrapper = styled.div`
   width: 100%;
+
+  min-width: 0;
+  overflow-x: auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: ${({ $theme }) => `${$theme.boxShadow} ${$theme.shadowColor}`};
+`;
+
+const StyledTable = styled.table`
+  /* width: 100%;
   justify-items: center;
   justify-self: center;
   overflow: hidden;
-  table-layout: fixed;
+  table-layout: fixed; */
+  min-width: 100%;
+  width: max-content;
+  justify-items: center;
+  justify-self: center;
+  table-layout: auto;
+
+  border-collapse: collapse;
+
   text-align: center;
   border-radius: var(--border-radius-lg);
   box-shadow: ${({ $theme }) => `${$theme.boxShadow} ${$theme.shadowColor}}`};
@@ -26,7 +43,7 @@ const StyledTable = styled.table`
 const StyledTableHeading = styled.th`
   padding: 1rem;
   font-weight: var(--font-weight-boldest);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-family: Museo;
   letter-spacing: var(--letter-spacing-museo-tight);
   text-transform: uppercase;
@@ -68,29 +85,31 @@ const StyledTableData = styled.td`
 
 function Table({ columns, rows, $theme = defaultTheme }) {
   return (
-    <StyledTable $theme={$theme}>
-      <thead>
-        <tr>
-          {columns.map((col, i) => (
-            <StyledTableHeading key={i} $theme={$theme}>
-              {col.heading}
-            </StyledTableHeading>
-          ))}
-        </tr>
-      </thead>
-
-      <tbody>
-        {rows.map((row, i) => (
-          <tr key={i}>
-            {columns.map((col) => (
-              <StyledTableData key={col.id} $theme={$theme}>
-                {col.render ? col.render(row) : row[col.id]}
-              </StyledTableData>
+    <TableWrapper $theme={$theme}>
+      <StyledTable $theme={$theme}>
+        <thead>
+          <tr>
+            {columns.map((col, i) => (
+              <StyledTableHeading key={i} $theme={$theme}>
+                {col.heading}
+              </StyledTableHeading>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </StyledTable>
+        </thead>
+
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {columns.map((col) => (
+                <StyledTableData key={col.id} $theme={$theme}>
+                  {col.render ? col.render(row) : row[col.id]}
+                </StyledTableData>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </StyledTable>
+    </TableWrapper>
   );
 }
 

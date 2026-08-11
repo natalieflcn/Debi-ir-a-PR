@@ -78,7 +78,7 @@ function ExplorerDashboardStatsItem({ userHistory }) {
 
   return (
     <>
-      <DashboardItem>
+      <DashboardItem $variation="center">
         <Heading as="h4" $color="var(--color-dark-100)">
           Types of Locations Explored
         </Heading>

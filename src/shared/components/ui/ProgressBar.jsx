@@ -28,11 +28,11 @@ const CompletedNumber = styled.span`
   font-weight: var(--font-weight-boldest);
 `;
 
-const ProgressBar = ({ completed }) => {
+const ProgressBar = ({ completed, label = true }) => {
   return (
     <OuterBar>
       <InnerBar $width={`${completed}%`}>
-        <CompletedNumber>{`${completed}%`}</CompletedNumber>
+        <CompletedNumber>{label && `${completed}%`}</CompletedNumber>
       </InnerBar>
     </OuterBar>
   );

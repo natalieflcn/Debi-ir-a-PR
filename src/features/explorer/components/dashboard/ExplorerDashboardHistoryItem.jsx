@@ -6,6 +6,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Bold from "../../../../shared/components/typography/Bold";
 
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
+import styled from "styled-components";
 
 function getCurrentWeek(currentDate) {
   const date = new Date(currentDate);

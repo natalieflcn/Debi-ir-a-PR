@@ -27,6 +27,7 @@ const DashboardItem = styled.div`
   flex: 1;
   line-height: var(--line-height-sm) ${({ $flex }) => $flex};
   justify-content: center;
+  min-width: 0;
   ${({ $variation }) => variations[$variation]};
 `;
 
