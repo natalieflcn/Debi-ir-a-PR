@@ -28,6 +28,11 @@ const ModalContent = styled.div`
       width: ${$width};
     `}
   max-width: 60%;
+
+  @media (max-width: 600px) {
+    min-width: 10rem;
+    text-align: center;
+  }
 `;
 
 const ModalButton = styled.button`

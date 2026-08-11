@@ -42,15 +42,15 @@ const ProfileRow = styled.div`
   align-items: start;
   gap: var(--gap-lg) var(--gap-xl);
 
-  @media (max-width: 800px) {
+  /* @media (max-width: 800px) {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "label value"
       "button button";
     row-gap: var(--gap-sm);
-  }
+  } */
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "label"
@@ -79,6 +79,25 @@ const LabelArea = styled(Heading)`
 
 const ValueArea = styled.div`
   grid-area: value;
+`;
+
+const StyledRow = styled(Row)`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-width: 0;
+  align-items: start;
+  gap: var(--gap-xl);
+
+  input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+  }
 `;
 
 const InformationLabel = styled(Heading)`
@@ -169,7 +188,7 @@ const ProfileInformation = function ({
           <LabelArea as="h5">Email</LabelArea>
 
           {isEditingEmail ? (
-            <ValueArea>
+            <StyledRow $direction="horizontal">
               <StyledForm method="patch" action="/profile/email">
                 <Row $gap="var(--gap-xs)">
                   <Input
@@ -179,7 +198,11 @@ const ProfileInformation = function ({
                   />
                   {emailErrors && <Bold>{emailErrors}</Bold>}
                 </Row>
-                <Row $direction="horizontal" $gap="var(--gap-md)">
+                <Row
+                  $direction="horizontal"
+                  $gap="var(--gap-md)"
+                  $align="start"
+                >
                   <Button
                     type="submit"
                     $variation="secondary"
@@ -198,7 +221,7 @@ const ProfileInformation = function ({
                   </Button>
                 </Row>
               </StyledForm>
-            </ValueArea>
+            </StyledRow>
           ) : (
             <>
               <ValueArea>
@@ -221,17 +244,17 @@ const ProfileInformation = function ({
           <LabelArea as="h5">Password</LabelArea>
 
           {isEditingPassword ? (
-            <ValueArea>
+            <StyledRow>
               <StyledForm>
                 <Row $gap="var(--gap-xs)">
-                  <Input
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="password"
-                  />
+                  <Row $gap="var(--gap-md)">
+                    <Input
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      type="password"
+                    />
 
-                  <Row $gap="var(--gap-xs)">
                     <Input
                       name="confirmPassword"
                       value={confirmPassword}
@@ -243,7 +266,12 @@ const ProfileInformation = function ({
                     {passwordErrors && <Bold>{passwordErrors}</Bold>}
                   </Row>
                 </Row>
-                <Row $direction="horizontal" $gap="var(--gap-md)">
+
+                <Row
+                  $direction="horizontal"
+                  $gap="var(--gap-md)"
+                  $align="start"
+                >
                   <Button
                     type="submit"
                     $variation="secondary"
@@ -262,7 +290,7 @@ const ProfileInformation = function ({
                   </Button>
                 </Row>
               </StyledForm>
-            </ValueArea>
+            </StyledRow>
           ) : (
             <>
               <Bold $color="var(--color-red-300)">
