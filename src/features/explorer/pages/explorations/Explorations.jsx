@@ -21,8 +21,19 @@ const ExplorationCards = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--gap-2xl);
+  gap: var(--gap-xl);
 `;
+
+const ExplorationFiltersRow = styled(Row)`
+  @media (max-width: 980px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
+`;
+
 const ExplorerExplorationCardButton = function (exploration) {
   return [
     {
@@ -73,7 +84,7 @@ function Explorations() {
 
   return (
     <StyledExplorations>
-      <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
         <ExplorationsFilters
           onSort={setSortBy}
@@ -81,7 +92,7 @@ function Explorations() {
           showFeatured={showFeatured}
           onShowFeatured={setShowFeatured}
         />
-      </Row>
+      </ExplorationFiltersRow>
 
       <ExplorationCards>
         {paginatedExplorations.map((exploration) => (

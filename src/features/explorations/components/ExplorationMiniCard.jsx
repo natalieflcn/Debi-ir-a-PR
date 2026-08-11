@@ -11,7 +11,8 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 const StyledExplorationCard = styled(Card)`
   align-items: flex-start;
 
-  max-width: 31%;
+  /* max-width: 31%; */
+  min-width: 20rem;
   width: 31%;
   display: flex;
   flex-direction: column;
@@ -49,7 +50,7 @@ const ExplorationCardHeading = styled(Heading)`
 `;
 
 const ExplorationCardBody = styled.div`
-  padding: 1.75rem;
+  padding: 1.6rem;
 `;
 
 // const ExplorationDescription = styled.p`
@@ -76,7 +77,7 @@ function ExplorationMiniCard({
       </ExplorationCardBackground>
 
       <ExplorationCardBody>
-        <Row $gap="var(--gap-lg)">
+        <Row $gap="var(--gap-md)">
           <p>{description}</p>
 
           <Row $direction="horizontal" $align="space-evenly">

@@ -6,6 +6,17 @@ import SortDropdown from "../../../shared/components/dropdown/SortDropdown";
 import { IoMdGrid } from "react-icons/io";
 import useClickOutside from "../../../shared/hooks/useClickOutside";
 import FeaturedExplorationToggle from "./FeaturedExplorationToggle";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+    button,
+    div {
+      width: 100%;
+    }
+  }
+`;
 
 const ExplorationsFiltersCategories = [
   { id: "city", name: "City" },
@@ -35,7 +46,7 @@ function ExplorationsFilters({
   // const dropdownRef = useClickOutside();
 
   return (
-    <Row $direction="horizontal" $gap="var(--gap-lg)">
+    <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
       <FeaturedExplorationToggle
         showFeatured={showFeatured}
         onShowFeatured={onShowFeatured}
@@ -52,7 +63,7 @@ function ExplorationsFilters({
         onFilter={onFilter}
         initState={filterInitState || "Featured"}
       />
-    </Row>
+    </StyledRow>
   );
 }
 
