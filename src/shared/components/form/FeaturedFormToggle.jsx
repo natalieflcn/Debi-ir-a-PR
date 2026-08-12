@@ -7,6 +7,10 @@ import styled from "styled-components";
 const StyledFeaturedFormToggle = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 690px) {
+    align-self: center;
+  }
 `;
 
 const StyledIcon = styled.div`

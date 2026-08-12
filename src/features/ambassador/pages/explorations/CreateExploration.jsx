@@ -24,6 +24,10 @@ import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
 const StyledParagraph = styled.p`
@@ -33,6 +37,10 @@ const StyledParagraph = styled.p`
 const StyledTextAreaRow = styled(Row)`
   flex: 1 1 0;
   height: 10rem;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
 function CreateExploration() {
@@ -237,8 +245,10 @@ function CreateExploration() {
           </FormField>
 
           <FormField label="Badge">
-            <BadgeBuilder value={badge} onSelect={setBadge} />
-            {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
+            <StyledRow $gap="var(--gap-xs)">
+              <BadgeBuilder value={badge} onSelect={setBadge} />
+              {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
+            </StyledRow>
           </FormField>
 
           <FormField label="Tags">

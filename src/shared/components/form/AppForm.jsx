@@ -15,6 +15,10 @@ import styled from "styled-components";
 
 const StyledHeading = styled(Heading)`
   text-align: center;
+
+  @media (max-width: 400px) {
+    font-size: var(--font-size-lg);
+  }
 `;
 const StyledForm = styled(Form)`
   width: 95%;

@@ -12,6 +12,10 @@ const StyledBadgeBuilder = styled.div`
   justify-self: flex-start;
   flex: 1 1 0;
   gap: var(--gap-md);
+
+  @media (max-width: 690px) {
+    align-self: center;
+  }
 `;
 
 function BadgeBuilder({ value, onSelect }) {

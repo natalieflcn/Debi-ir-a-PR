@@ -28,6 +28,7 @@ const StyledHeading = styled(Heading)`
 const StyledFormRow = styled(Row)`
   @media (max-width: 690px) {
     gap: var(--gap-xl);
+    text-align: center;
   }
 `;
 
