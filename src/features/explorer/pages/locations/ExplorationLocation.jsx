@@ -9,6 +9,15 @@ import { ExplorationLocationHeading } from "../../../locations/components/explor
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  text-align: center;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+`;
 
 function ExplorerHeaderDetails({ userCompleted, locationName }) {
   return (
@@ -29,7 +38,11 @@ function ExplorerHeaderDetails({ userCompleted, locationName }) {
 
 function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
   return (
-    <Row $direction="horizontal" $align="space-evenly">
+    <StyledRow
+      $direction="horizontal"
+      $align="space-evenly"
+      $gap="var(--gap-lg)"
+    >
       <Row $direction="horizontal" $gap="var(--gap-lg)">
         {!userCompleted && (
           <Heading as="h6">Have you explored this location yet?</Heading>
@@ -56,7 +69,7 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
       >
         {userCompleted ? "Mark as Incomplete" : "I have explored this location"}
       </Button>
-    </Row>
+    </StyledRow>
   );
 }
 

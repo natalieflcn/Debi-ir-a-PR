@@ -37,6 +37,11 @@ export const ExplorationLocationHeaderDetails = styled(Row)`
 
   padding: 1.25rem 1.75rem;
   border-radius: var(--border-radius-lg);
+
+  @media (max-width: 800px) {
+    padding: 1rem 1.5rem;
+    width: 85%;
+  }
 `;
 
 export const ExplorationLocationBody = styled.div`
@@ -46,6 +51,10 @@ export const ExplorationLocationBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-xl);
+
+  @media (max-width: 800px) {
+    padding: 1rem;
+  }
 `;
 
 export const ExplorationLocationAbout = styled.div`
@@ -55,6 +64,11 @@ export const ExplorationLocationAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
+
+  @media (max-width: 800px) {
+    padding: 1rem;
+    font-size: var(--font-size-xs);
+  }
 `;
 
 export const TagCollection = styled.div`

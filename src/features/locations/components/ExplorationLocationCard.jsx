@@ -20,6 +20,17 @@ import {
 } from "./explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  @media (max-width: 800px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+  }
+`;
 
 function ExplorationLocationCard({
   exploration,
@@ -57,8 +68,9 @@ function ExplorationLocationCard({
             </Row>
           </ExplorationLocationHeaderDetails>
         </ExplorationLocationHeaderImage>
+
         <ExplorationLocationBody>
-          <Row $direction="horizontal">
+          <StyledRow $direction="horizontal">
             <ExplorationLocationAbout>
               <Row $gap="var(--gap-sm)">
                 <Heading as="h3" $color="var(--color-red-300)">
@@ -75,8 +87,8 @@ function ExplorationLocationCard({
               </TagCollection>
             </ExplorationLocationAbout>
             <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
-          </Row>
-          <Row $direction="horizontal">
+          </StyledRow>
+          <StyledRow $direction="horizontal">
             {location.images.map((image) => (
               <Image
                 src={image.imageURL}
@@ -85,7 +97,7 @@ function ExplorationLocationCard({
                 key={image.id}
               />
             ))}
-          </Row>
+          </StyledRow>
 
           <ExplorationLocationFooter $cardColor="var(--color-light-100)">
             {footerCTA}
