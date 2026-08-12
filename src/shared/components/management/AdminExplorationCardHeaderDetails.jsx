@@ -5,6 +5,14 @@ import Bold from "../typography/Bold";
 import Button from "../ui/Button";
 import RouterLink from "../routing/RouterLink";
 import { formatDate } from "../../utils/helpers";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+`;
 
 function AdminExplorationCardHeaderDetails({
   lastUpdated,
@@ -12,7 +20,7 @@ function AdminExplorationCardHeaderDetails({
 }) {
   return (
     <>
-      <Row $direction="horizontal" $align="center" $gap="var(--gap-xl)">
+      <StyledRow $direction="horizontal" $align="center" $gap="var(--gap-xl)">
         <Row $direction="horizontal" $gap="var(--gap-sm)">
           <IoPersonCircleSharp size={20} color="var(--color-red-300) " />
           <Bold $color="var(--color-dark-200)">Created By {author}</Bold>
@@ -24,7 +32,7 @@ function AdminExplorationCardHeaderDetails({
             Last Updated {formatDate(lastUpdated)}
           </Bold>
         </Row>
-      </Row>
+      </StyledRow>
       <RouterLink to={`edit`}>
         <Button $variation="primary" $size="small">
           Edit Exploration

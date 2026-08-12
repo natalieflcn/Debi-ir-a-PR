@@ -121,6 +121,7 @@ const ExplorationCards = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--gap-2xl);
+  justify-content: center;
 `;
 
 const getAdminExplorationCardButton = function (exploration) {

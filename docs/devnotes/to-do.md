@@ -274,7 +274,7 @@
 
 - [~] Make website responsive
   - [~] Explorer pages
-    - [ ] Exploration page
-    - [ ] Location page
+    - [x] Exploration page
+    - [x] Location page
   - [ ] Ambassador pages
   - [ ] Admin pages

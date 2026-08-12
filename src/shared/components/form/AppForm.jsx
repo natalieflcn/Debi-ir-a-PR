@@ -13,6 +13,9 @@ import styled from "styled-components";
 //   </Row>;
 // }
 
+const StyledHeading = styled(Heading)`
+  text-align: center;
+`;
 const StyledForm = styled(Form)`
   width: 95%;
   margin: 0.5rem;
@@ -34,13 +37,13 @@ function AppForm({
       className={className}
     >
       <Row $align="center" $gap="var(--gap-lg)">
-        <Heading
+        <StyledHeading
           as="h2"
           $color="var(--color-red-200)"
           $shadowColor="var(--color-brown-400)"
         >
           {formTitle}
-        </Heading>
+        </StyledHeading>
         <StyledForm action={action} method={method} onSubmit={onSubmit}>
           <Row $gap="var(--gap-md)">{children}</Row>
         </StyledForm>

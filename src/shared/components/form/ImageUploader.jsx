@@ -15,6 +15,10 @@ const StyledFileInput = styled.input`
 
 const InputWrapper = styled.div`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    align-self: center;
+  }
 `;
 
 const UploadButton = styled(Button)`

@@ -22,6 +22,7 @@ const ExplorationCards = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--gap-xl);
+    justify-content: center;
 `;
 
 const ExplorationFiltersRow = styled(Row)`

@@ -172,6 +172,7 @@ const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
     });
   }
 
+  console.log(userName);
   return (
     <StyledProfileHeader>
       <Row>

@@ -29,6 +29,10 @@ export const ExplorationCardHeaderImage = styled.div`
   @media (max-width: 800px) {
     height: 27rem;
   }
+
+  @media (max-width: 500px) {
+    height: 30rem;
+  }
 `;
 
 export const ExplorationCardHeading = styled(Heading)`
@@ -56,6 +60,10 @@ export const ExplorationCardHeaderDetails = styled(Row)`
   @media (max-width: 800px) {
     width: 90%;
     bottom: 12%;
+  }
+
+  @media (max-width: 500px) {
+    bottom: 5%;
   }
 `;
 export const ExplorationCardBody = styled.div`

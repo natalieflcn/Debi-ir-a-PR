@@ -10,6 +10,16 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 
+const StyledRow = styled(Row)`
+  @media (max-width: 550px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
+`;
+
 const AmbassadorExplorersTableColumns = [
   {
     id: "name",
@@ -46,6 +56,7 @@ const StyledExplorers = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
+  min-width: 0;
 `;
 
 const ActionTableCell = styled.div`
@@ -113,14 +124,14 @@ function ManageExplorers() {
 
   return (
     <StyledExplorers>
-      <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an explorer by name..." />
         <SortDropdown
           categories={sortCategories}
           initState="Name"
           onSort={setSortBy}
         />
-      </Row>
+      </StyledRow>
 
       <CondensedTable
         columns={AmbassadorExplorersTableColumns}

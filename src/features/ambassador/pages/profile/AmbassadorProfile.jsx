@@ -10,8 +10,9 @@ const StyledAmbassadorProfile = styled.div`
 `;
 
 function AmbassadorProfile() {
-  const profileData = useLoaderData();
+  const { profileData } = useLoaderData();
 
+  console.log(profileData);
   return (
     <StyledAmbassadorProfile>
       <ProfileHeader

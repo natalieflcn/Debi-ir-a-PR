@@ -9,21 +9,29 @@ import Input from "../form/Input";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    align-self: center;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  width: 24rem;
+  width: 100%;
+  min-width: 0;
+  /* max-width: 25rem; */
   /* width: 100%; */
 `;
 
 const StyledCityDropdown = styled(StyledDropdown)`
-  width: 25rem;
+  width: 100%;
   position: relative;
+  min-width: 0;
 `;
 
 const StyledDropdownMenuCard = styled(DropdownMenuCard)`
   /* width: 100%; */
-  width: 25rem;
+  width: 100%;
+  min-width: 0;
 
   /* position: relative;
   bottom: 3px; */

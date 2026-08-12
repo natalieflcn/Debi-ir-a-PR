@@ -19,10 +19,24 @@ import { useLoaderData } from "react-router-dom";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
+const StyledFormRow = styled(Row)`
+  @media (max-width: 690px) {
+    gap: var(--gap-xl);
+  }
+`;
+
+const StyledInput = styled(Input)`
+  width: 100%;
+`;
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+  min-width: 0;
 `;
 
 const StyledTextAreaRow = styled(Row)`
@@ -102,7 +116,7 @@ function CreateLocation({ location }) {
         onSubmit={handleSubmit}
         method={isEditing ? "patch" : "post"}
       >
-        <Row $gap="var(--gap-lg)">
+        <StyledFormRow $gap="var(--gap-lg)">
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
               {exploration.name}
@@ -111,7 +125,7 @@ function CreateLocation({ location }) {
 
           <FormField label="Name">
             <StyledRow $gap="var(--gap-xs)">
-              <Input
+              <StyledInput
                 name="name"
                 placeholder="The name of the location"
                 value={name}
@@ -188,7 +202,7 @@ function CreateLocation({ location }) {
           <Button $variation="darkRed" $size="medium" type="submit">
             {isEditing ? "Save Changes" : "Create Location"}
           </Button>
-        </Row>
+        </StyledFormRow>
       </AppForm>
     </Row>
   );

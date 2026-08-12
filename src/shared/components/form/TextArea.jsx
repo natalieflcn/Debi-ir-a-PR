@@ -9,6 +9,11 @@ const StyledTextArea = styled.textarea`
   font-weight: var(--font-weight-medium);
   padding: 1rem;
   color: var(--color-dark-200);
+
+  @media (max-width: 690px) {
+    flex: 1 1 auto;
+    height: 10rem;
+  }
 `;
 
 function TextArea({ placeholder, children, ...props }) {

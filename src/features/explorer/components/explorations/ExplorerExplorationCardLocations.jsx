@@ -35,6 +35,7 @@ const StyledHeadingName = styled(Heading)`
     font-size: var(--font-size-sm);
   }
 `;
+
 function getUserCompletedLocations(locations, userHistory) {
   const completedLocations = locations.filter((location) =>
     userHistory.visitLog.some((visit) => visit.locationId === location.id),

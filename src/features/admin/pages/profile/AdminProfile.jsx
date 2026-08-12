@@ -10,7 +10,7 @@ const StyledAdminProfile = styled.div`
 `;
 
 function AdminProfile() {
-  const profileData = useLoaderData();
+  const { profileData } = useLoaderData();
 
   return (
     <StyledAdminProfile>

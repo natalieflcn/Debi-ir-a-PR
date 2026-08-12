@@ -36,6 +36,13 @@ const StyledFooter = styled.footer`
   }
 `;
 
+const StyledRow = styled(Row)`
+  @media (max-width: 500px) {
+    text-align: center;
+    flex-direction: column;
+    gap: var(--gap-sm);
+  }
+`;
 const StyledGitHub = styled(BiLogoGithub)`
   margin-right: 1rem;
   width: 1.5rem;
@@ -88,9 +95,12 @@ const year = new Date().getFullYear();
 function Footer() {
   return (
     <StyledFooter>
-      <Row $direction="horizontal">
-        CReaTeD By NaTaLie FaLCoN <span>&copy;</span> <span>{year}</span>
-      </Row>
+      <StyledRow $direction="horizontal">
+        CReaTeD By NaTaLie FaLCoN{" "}
+        <Row $direction="horizontal">
+          <span>&copy;</span> <span>{year}</span>
+        </Row>
+      </StyledRow>
 
       <Row $direction="horizontal">
         <ExternalLink href="https://github.com/natalieflcn">

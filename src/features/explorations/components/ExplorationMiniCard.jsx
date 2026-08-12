@@ -13,7 +13,7 @@ const StyledExplorationCard = styled(Card)`
 
   /* max-width: 31%; */
   min-width: 20rem;
-  width: 31%;
+  max-width: 31%;
   display: flex;
   flex-direction: column;
   padding: 0;
