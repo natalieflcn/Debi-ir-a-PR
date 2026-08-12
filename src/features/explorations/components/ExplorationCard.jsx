@@ -16,7 +16,10 @@ import {
   ExplorationCardHeaderImage,
   ExplorationCardHeading,
   ExplorationCardLocations,
+  ExplorationDetailsRow,
+  ExplorationImagesRow,
   StyledExplorationCard,
+  StyledHeaderDetailsRow,
 } from "../../explorations/components/explorationCard.styles";
 
 import {
@@ -56,7 +59,11 @@ function ExplorationCard({
             </ExplorationCardHeading>
 
             <Row $gap="var(--gap-md)">
-              <Row $direction="horizontal" $gap="var(--gap-xl)" $align="center">
+              <StyledHeaderDetailsRow
+                $direction="horizontal"
+                $gap="var(--gap-xl)"
+                $align="center"
+              >
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoFlag color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
@@ -70,15 +77,14 @@ function ExplorationCard({
                     {exploration.startingCity}, PR
                   </Bold>
                 </Row>
-              </Row>
+              </StyledHeaderDetailsRow>{" "}
+              {headerDetails}
             </Row>
-
-            {headerDetails}
           </ExplorationCardHeaderDetails>
         </ExplorationCardHeaderImage>
 
         <ExplorationCardBody>
-          <Row
+          <ExplorationDetailsRow
             $direction="horizontal"
             $gap="var(--gap-4xl)"
             $align="flex-start"
@@ -108,7 +114,7 @@ function ExplorationCard({
 
               {locationDetails}
             </ExplorationCardLocations>
-          </Row>
+          </ExplorationDetailsRow>
 
           <Image
             src="/src/assets/images/content/TEMP.png"
@@ -117,16 +123,20 @@ function ExplorationCard({
             $width="100%"
           />
 
-          <Row $direction="horizontal">
+          <ExplorationImagesRow
+            $direction="horizontal"
+            $wrap="wrap"
+            $gap="var(--gap-md)"
+          >
             {exploration.images.map((image) => (
               <Image
                 src={image.imageURL}
                 $align="center"
-                $width="30%"
                 key={image.id}
+                $width="30%"
               />
             ))}
-          </Row>
+          </ExplorationImagesRow>
 
           {footerCTA}
         </ExplorationCardBody>

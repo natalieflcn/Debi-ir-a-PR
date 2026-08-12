@@ -33,6 +33,7 @@ const Card = styled.div`
   padding: 1.5rem;
   border-radius: var(--border-radius-md);
   align-items: ${({ $align }) => $align || ""};
+  min-width: 0;
 
   gap: ${({ $gap }) => $gap};
   background: ${({ $cardColor }) => $cardColor};

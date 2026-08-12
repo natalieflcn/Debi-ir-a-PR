@@ -24,8 +24,15 @@ const InnerBar = styled.div`
 
 const CompletedNumber = styled.span`
   color: var(--color-light-0);
+  text-shadow: 1px 1px 1px var(--color-dark-200);
   padding: 1rem;
   font-weight: var(--font-weight-boldest);
+
+  @media (max-width: 450px) {
+    /* font-weight: var(--font-weight-medium); */
+    font-size: var(--font-size-xs);
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const ProgressBar = ({ completed, label = true }) => {

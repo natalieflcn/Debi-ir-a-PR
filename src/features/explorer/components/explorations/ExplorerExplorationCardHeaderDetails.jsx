@@ -3,6 +3,14 @@ import Row from "../../../../shared/components/layout/Row";
 import Bold from "../../../../shared/components/typography/Bold";
 import Button from "../../../../shared/components/ui/Button";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+`;
 
 function ExplorerExplorationCardHeaderDetails({
   hasStarted,
@@ -24,7 +32,11 @@ function ExplorerExplorationCardHeaderDetails({
     <>
       {hasStarted && (
         <>
-          <Row $direction="horizontal" $gap="var(--gap-xl)" $align="center">
+          <StyledRow
+            $direction="horizontal"
+            $gap="var(--gap-xl)"
+            $align="center"
+          >
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
@@ -37,7 +49,7 @@ function ExplorerExplorationCardHeaderDetails({
                 {stopsRemaining} stops remaining
               </Bold>
             </Row>
-          </Row>
+          </StyledRow>
           <Row>
             <ProgressBar completed={userProgress}></ProgressBar>
           </Row>

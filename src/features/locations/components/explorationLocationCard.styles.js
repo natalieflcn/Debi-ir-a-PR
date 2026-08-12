@@ -64,6 +64,7 @@ export const TagCollection = styled.div`
   padding: 1rem;
   background-color: var(--color-light-100);
   flex-wrap: wrap;
+  min-width: 0;
 `;
 
 export const ExplorationLocationTag = styled.span`

@@ -273,6 +273,8 @@
 ## Week: August 10 - August 13
 
 - [~] Make website responsive
-  - [ ] Explorer pages
+  - [~] Explorer pages
+    - [ ] Exploration page
+    - [ ] Location page
   - [ ] Ambassador pages
   - [ ] Admin pages

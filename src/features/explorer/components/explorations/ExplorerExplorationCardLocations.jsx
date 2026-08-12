@@ -6,7 +6,35 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { LocationHeading } from "../../../explorations/components/explorationCard.styles";
+import styled from "styled-components";
 
+const StyledRow = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: start;
+    gap: var(--gap-xs);
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+const IconHeadingRow = styled(Row)`
+  @media (max-width: 800px) {
+    gap: var(--gap-sm);
+  }
+
+  @media (max-width: 550px) {
+    gap: var(--gap-xs);
+  }
+`;
+
+const StyledHeadingName = styled(Heading)`
+  @media (max-width: 550px) {
+    font-size: var(--font-size-sm);
+  }
+`;
 function getUserCompletedLocations(locations, userHistory) {
   const completedLocations = locations.filter((location) =>
     userHistory.visitLog.some((visit) => visit.locationId === location.id),
@@ -29,8 +57,12 @@ function ExplorerExplorationCardLocations({
     const isCompleted = completedLocationIds.has(location.id);
 
     return (
-      <Row $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
-        <Row $direction="horizontal" $gap="var(--gap-md)" $align="flex-start">
+      <StyledRow $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
+        <IconHeadingRow
+          $direction="horizontal"
+          $gap="var(--gap-md)"
+          $align="flex-start"
+        >
           {hasStarted &&
             (isCompleted ? (
               <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
@@ -40,8 +72,8 @@ function ExplorerExplorationCardLocations({
           <LocationHeading as="h4" $color="var(--color-red-300)">
             {i + 1}
           </LocationHeading>
-          <Heading as="h5">{location.name}</Heading>
-        </Row>
+          <StyledHeadingName as="h5">{location.name}</StyledHeadingName>
+        </IconHeadingRow>
         {hasStarted && (
           <RouterLink
             to={`/explorations/${exploration.id}/locations/${location.id}`}
@@ -51,7 +83,7 @@ function ExplorerExplorationCardLocations({
             </Button>
           </RouterLink>
         )}
-      </Row>
+      </StyledRow>
     );
   });
 }
