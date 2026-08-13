@@ -9,7 +9,7 @@ import BadgeForm from "./BadgeForm";
 import Image from "../ui/Image";
 
 const StyledBadgeBuilder = styled.div`
-  justify-self: flex-start;
+  align-self: flex-start;
   flex: 1 1 0;
   gap: var(--gap-md);
 
@@ -18,12 +18,20 @@ const StyledBadgeBuilder = styled.div`
   }
 `;
 
+const StyledRow = styled(Row)`
+  flex-direction: column;
+
+  @media (max-width: 690px) {
+    align-items: center;
+  }
+`;
+
 function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <StyledBadgeBuilder>
-      <Row $direction="horizontal" $gap="var(--gap-md)" $align="start">
+      <StyledRow $direction="horizontal" $gap="var(--gap-md)" $align="start">
         <Button
           type="button"
           $variation={value ? "darkRed" : "primary"}
@@ -36,8 +44,8 @@ function BadgeBuilder({ value, onSelect }) {
         {value && (
           <Image
             src={value.image}
-            $width="3.7rem"
-            $height="3.7rem"
+            $width="6rem"
+            $height="6rem"
             $objectFit="cover"
           />
         )}
@@ -46,13 +54,13 @@ function BadgeBuilder({ value, onSelect }) {
           <Button
             type="button"
             $variation="primary"
-            $size="small"
+            $size="extraSmall"
             onClick={() => onSelect(null)}
           >
-            Delete Badge
+            Delete
           </Button>
         )}
-      </Row>
+      </StyledRow>
       {isModalOpen && (
         <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
           <BadgeForm

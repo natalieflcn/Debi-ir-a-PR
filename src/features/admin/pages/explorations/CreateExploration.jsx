@@ -33,6 +33,10 @@ const StyledParagraph = styled.p`
 const StyledTextAreaRow = styled(Row)`
   flex: 1 1 0;
   height: 10rem;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
 function CreateExploration() {

@@ -120,10 +120,29 @@ const ExplorationCards = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--gap-2xl);
+  gap: var(--gap-xl);
   justify-content: center;
 `;
 
+const FiltersAdminTogglesRow = styled(Row)`
+  @media (max-width: 870px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
+`;
+
+const InputFiltersRow = styled(Row)`
+  @media (max-width: 1200px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
+`;
 const getAdminExplorationCardButton = function (exploration) {
   return [
     {
@@ -201,24 +220,28 @@ function ManageExplorations() {
         </RouterLink>
       </Row>
 
-      <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <InputFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters
-          onSort={setSortBy}
-          onFilter={setFilterBy}
-          filterInitState="All"
-          showFeatured={showFeatured}
-          onShowFeatured={setShowFeatured}
-        />
-        <AdminShowCreatedExplorations
-          showMyExplorations={showMyExplorations}
-          onShowMyExplorations={setShowMyExplorations}
-        />
-        <AdminViewMode
-          viewMode={viewMode}
-          onViewModeChange={handleSelectViewMode}
-        />
-      </Row>
+        <FiltersAdminTogglesRow $direction="horizontal" $gap="var(--gap-lg)">
+          <ExplorationsFilters
+            onSort={setSortBy}
+            onFilter={setFilterBy}
+            filterInitState="All"
+            showFeatured={showFeatured}
+            onShowFeatured={setShowFeatured}
+          />
+          <Row $direction="horizontal" $gap="var(--gap-lg)">
+            <AdminShowCreatedExplorations
+              showMyExplorations={showMyExplorations}
+              onShowMyExplorations={setShowMyExplorations}
+            />
+            <AdminViewMode
+              viewMode={viewMode}
+              onViewModeChange={handleSelectViewMode}
+            />
+          </Row>
+        </FiltersAdminTogglesRow>
+      </InputFiltersRow>
       {viewMode === "grid" && (
         <ExplorationCards>
           {paginatedExplorations.map((exploration) => (

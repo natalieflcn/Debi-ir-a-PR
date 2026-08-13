@@ -3,6 +3,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
+import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 
 const topAmbassadorsTableColumns = [
   {
@@ -60,12 +61,12 @@ function AdminDashboardTopAmbassadors({ usersData }) {
   const fiveTopAmbassadors = topAmbassadors.slice(0, 5);
 
   return (
-    <DashboardItem>
+    <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
         Top Ambassadors
       </Heading>
 
-      <Table
+      <CondensedTable
         columns={topAmbassadorsTableColumns}
         rows={fiveTopAmbassadors}
         $theme={topAmbassadorsTableTheme}

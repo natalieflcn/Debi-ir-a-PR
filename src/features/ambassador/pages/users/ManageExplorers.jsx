@@ -10,16 +10,6 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 
-const StyledRow = styled(Row)`
-  @media (max-width: 550px) {
-    flex-direction: column;
-
-    input {
-      width: 100%;
-    }
-  }
-`;
-
 const AmbassadorExplorersTableColumns = [
   {
     id: "name",
@@ -57,6 +47,16 @@ const StyledExplorers = styled.div`
   flex-direction: column;
   gap: var(--gap-lg);
   min-width: 0;
+`;
+
+const StyledRow = styled(Row)`
+  @media (max-width: 550px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
 `;
 
 const ActionTableCell = styled.div`

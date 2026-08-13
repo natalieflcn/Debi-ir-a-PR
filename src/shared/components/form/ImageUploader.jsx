@@ -21,6 +21,19 @@ const InputWrapper = styled.div`
   }
 `;
 
+const StyledRow = styled(Row)`
+  @media (max-width: 690px) {
+    align-items: center;
+  }
+`;
+
+const ImagesRow = styled(Row)`
+  @media (max-width: 690px) {
+    flex-direction: column;
+    gap: var(--gap-lg);
+  }
+`;
+
 const UploadButton = styled(Button)`
   &:hover {
     ${({ $limitReached }) =>
@@ -76,7 +89,7 @@ function ImageUploader({
 
   return (
     <InputWrapper>
-      <Row $gap="var(--gap-2xl)" $align="flex-start">
+      <StyledRow $gap="var(--gap-2xl)" $align="flex-start">
         <StyledFileInput
           type="file"
           name={name}
@@ -99,7 +112,7 @@ function ImageUploader({
         </UploadButton>
 
         {previews.length > 0 && (
-          <Row $direction="horizontal" $gap="var(--gap-md)">
+          <ImagesRow $direction="horizontal" $gap="var(--gap-md)">
             {previews.map((preview) => (
               <Row $gap="var(--gap-sm)" key={preview.id}>
                 <Image
@@ -118,9 +131,9 @@ function ImageUploader({
                 </Button>
               </Row>
             ))}
-          </Row>
+          </ImagesRow>
         )}
-      </Row>
+      </StyledRow>
     </InputWrapper>
   );
 }

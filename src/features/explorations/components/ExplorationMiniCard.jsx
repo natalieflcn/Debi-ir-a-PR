@@ -12,7 +12,7 @@ const StyledExplorationCard = styled(Card)`
   align-items: flex-start;
 
   /* max-width: 31%; */
-  min-width: 20rem;
+  min-width: 18rem;
   max-width: 31%;
   display: flex;
   flex-direction: column;

@@ -58,6 +58,7 @@ const ProfileRow = styled.div`
       "button";
     row-gap: var(--gap-sm);
     justify-items: center;
+    text-align: center;
   }
 `;
 

@@ -63,6 +63,22 @@ const StyledUsers = styled.div`
   gap: var(--gap-lg);
 `;
 
+const StyledRow = styled(Row)`
+  @media (max-width: 750px) {
+    flex-direction: column;
+
+    input {
+      width: 100%;
+    }
+  }
+`;
+
+const DropdownRow = styled(Row)`
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+`;
+
 const ActionTableCell = styled.div`
   display: flex;
   align-items: center;
@@ -128,7 +144,12 @@ function ManageUsers() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const usersData = useLoaderData();
+  const tableTheme =
+    (filterBy === "explorer" && explorersTableTheme) ||
+    (filterBy === "ambassador" && ambassadorsTableTheme) ||
+    undefined;
 
+  console.log(tableTheme);
   const filteredUsers = [...usersData].filter((user) => {
     if (filterBy === "all") return true;
     return user.userType === filterBy;
@@ -152,21 +173,27 @@ function ManageUsers() {
 
   return (
     <StyledUsers>
-      <Row $direction="horizontal" $gap="var(--gap-lg)">
+      <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input placeholder="Search for an explorer by name..." />
-        <SortDropdown
-          categories={sortCategories}
-          initState="Name"
-          onSort={setSortBy}
-        />
-        <FilterDropdown
-          categories={filterCategories}
-          initState="All"
-          onFilter={setFilterBy}
-        />
-      </Row>
+        <DropdownRow $direction="horizontal" $gap="var(--gap-lg)">
+          <SortDropdown
+            categories={sortCategories}
+            initState="Name"
+            onSort={setSortBy}
+          />
+          <FilterDropdown
+            categories={filterCategories}
+            initState="All"
+            onFilter={setFilterBy}
+          />
+        </DropdownRow>
+      </StyledRow>
 
-      <CondensedTable columns={UsersTableColumns} rows={paginatedUsers} />
+      <CondensedTable
+        columns={UsersTableColumns}
+        rows={paginatedUsers}
+        $theme={tableTheme}
+      />
 
       <Pagination
         totalPages={totalPages}

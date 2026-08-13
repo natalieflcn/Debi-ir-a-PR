@@ -276,5 +276,5 @@
   - [~] Explorer pages
     - [x] Exploration page
     - [x] Location page
-  - [ ] Ambassador pages
+  - [x] Ambassador pages
   - [ ] Admin pages

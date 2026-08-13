@@ -10,8 +10,29 @@ import Bold from "../typography/Bold";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+
+  @media (max-width: 600px) {
+    gap: var(--gap-md);
+  }
 `;
 
+const LocationRow = styled(Row)`
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const LocationNameRow = styled(Row)`
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
+    h5,
+    h6 {
+      font-size: var(--font-size-xs);
+    }
+  }
+`;
 function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
   const [editingLocation, setEditingLocation] = useState(null);
   const [deletingLocation, setDeletingLocation] = useState(null);
@@ -26,18 +47,20 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
       {hasLocations && (
         <Row $gap="var(--gap-lg)">
           {locations.map((location, i) => (
-            <Row
+            <LocationRow
               key={location.id}
-              $gap="var(--gap-md)"
+              $gap="var(--gap-sm)"
               $direction="horizontal"
               $align="flex-start"
             >
-              <Heading as="h5" $color="var(--color-red-300)">
-                {i + 1}
-              </Heading>
-              <Heading as="h6" $color="var(--color-red-400)">
-                {location.name}
-              </Heading>
+              <LocationNameRow $direction="horizontal" $gap="var(--gap-sm)">
+                <Heading as="h5" $color="var(--color-red-300)">
+                  {i + 1}
+                </Heading>
+                <Heading as="h6" $color="var(--color-red-400)">
+                  {location.name}
+                </Heading>
+              </LocationNameRow>
               <StyledRow
                 $align="flex-end"
                 $direction="horizontal"
@@ -45,7 +68,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
               >
                 <Button
                   $variation="secondary"
-                  $size="small"
+                  $size="extraSmall"
                   onClick={(e) => {
                     e.preventDefault();
                     setEditingLocation(location);
@@ -57,7 +80,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
                 <RouterLink>
                   <Button
                     $variation="primary"
-                    $size="small"
+                    $size="extraSmall"
                     onClick={(e) => {
                       e.preventDefault();
                       setDeletingLocation(location);
@@ -67,7 +90,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
                   </Button>
                 </RouterLink>
               </StyledRow>
-            </Row>
+            </LocationRow>
           ))}
         </Row>
       )}

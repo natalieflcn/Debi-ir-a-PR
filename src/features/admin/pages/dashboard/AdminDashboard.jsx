@@ -16,6 +16,34 @@ const StyledAdminDashboard = styled.div`
   gap: var(--gap-xl);
 `;
 
+const StyledAdminHighlights = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "profile explorationsCreated userStats";
+  gap: var(--gap-xl);
+
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "profile explorationsCreated"
+      "userStats userStats";
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      "profile"
+      "explorationsCreated"
+      "userStats";
+  }
+`;
+
+const GridArea = styled.div`
+  display: flex;
+  grid-area: ${({ $area }) => $area};
+  min-width: 0;
+`;
+
 function AdminDashboard() {
   const { users, profileData } = useLoaderData();
 
@@ -30,12 +58,17 @@ function AdminDashboard() {
         WELCOME, ADMIN
       </Heading>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
-        <AdminDashboardProfileItem profileData={profileData} />
-        <DashboardExplorationsCreated type="admin" profile={profileData} />
-        <AdminDashboardUserStats users={users} />
-      </Row>
-
+      <StyledAdminHighlights>
+        <GridArea $area="profile">
+          <AdminDashboardProfileItem profileData={profileData} />
+        </GridArea>
+        <GridArea $area="explorationsCreated">
+          <DashboardExplorationsCreated type="admin" profile={profileData} />
+        </GridArea>
+        <GridArea $area="userStats">
+          <AdminDashboardUserStats users={users} />
+        </GridArea>
+      </StyledAdminHighlights>
       <Row>
         <DashboardNewExplorers usersData={explorersData} />
         <DashboardTopExplorers usersData={explorersData} />
