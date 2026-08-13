@@ -1,8 +1,32 @@
+import styled from "styled-components";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import InsetSpan from "../../../../shared/components/ui/InsetSpan";
+
+const StyledRow = styled(Row)`
+  width: 100%;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const DashboardItemContentRow = styled(Row)`
+  /* width: 100%; */
+
+  @media (max-width: 900px) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: var(--gap-md);
+    text-align: center;
+    align-items: center;
+  }
+`;
 
 const NumTotalLocations = function ({ explorations }) {
   const numLocations = explorations.flatMap(
@@ -10,8 +34,8 @@ const NumTotalLocations = function ({ explorations }) {
   ).length;
 
   return (
-    <DashboardItem $variation="center">
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <DashboardItem>
+      <DashboardItemContentRow $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
             # of Total Locations
@@ -22,7 +46,7 @@ const NumTotalLocations = function ({ explorations }) {
           </SmallText>
         </Row>
         <InsetSpan>{numLocations}</InsetSpan>
-      </Row>
+      </DashboardItemContentRow>
     </DashboardItem>
   );
 };
@@ -35,8 +59,8 @@ const NumLocationsExplored = function ({ userHistories }) {
   );
 
   return (
-    <DashboardItem $height="4rem">
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <DashboardItem>
+      <DashboardItemContentRow $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
             # of Locations Explored
@@ -47,19 +71,19 @@ const NumLocationsExplored = function ({ userHistories }) {
           </SmallText>
         </Row>
         <InsetSpan>{locationsExplored.size}</InsetSpan>
-      </Row>
+      </DashboardItemContentRow>
     </DashboardItem>
   );
 };
 function AmbassadorDashboardLocationStats({ explorations, userHistories }) {
   return (
-    <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <StyledRow $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
       <NumTotalLocations explorations={explorations} />
       <NumLocationsExplored
         explorations={explorations}
         userHistories={userHistories}
       />
-    </Row>
+    </StyledRow>
   );
 }
 

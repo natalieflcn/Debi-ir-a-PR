@@ -3,6 +3,7 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
+import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 
 const topExplorationsTableColumns = [
   {
@@ -88,7 +89,7 @@ function AmbassadorDashboardTopExplorations({ explorations, userHistories }) {
         Top Explorations
       </Heading>
 
-      <Table
+      <CondensedTable
         columns={topExplorationsTableColumns}
         rows={explorationEngagement}
         $theme={topExplorationsTableTheme}

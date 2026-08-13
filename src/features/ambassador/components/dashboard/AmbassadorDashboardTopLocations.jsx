@@ -3,6 +3,7 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
+import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 
 const topLocationsTableData = {
   columns: [
@@ -74,7 +75,7 @@ function AmbassadorDashboardTopLocations({
         Top Locations
       </Heading>
 
-      <Table
+      <CondensedTable
         columns={tableData.columns}
         rows={tableData.rows}
         $theme={topLocationsTableTheme}

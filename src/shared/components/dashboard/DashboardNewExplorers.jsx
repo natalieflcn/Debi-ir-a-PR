@@ -3,7 +3,19 @@ import DashboardItem from "../layout/DashboardItem";
 import Heading from "../typography/Heading";
 import Table from "../ui/Table";
 import Bold from "../typography/Bold";
+import CondensedTable from "../ui/CondensedTable";
 
+// const StyledDashboardItem = styled(DashboardItem)`
+//   width: 100%;
+//   min-width: 0;
+//   overflow-x: auto;
+// `;
+
+const TableWrapper = styled.div`
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+`;
 const newExplorersTableColumns = [
   {
     id: "name",
@@ -46,24 +58,6 @@ const newExplorersTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-// rows: [
-//     {
-//       name: "Natalie Falcon",
-//       email: "natalie.dflcn@gmail.com",
-//       dateAdded: "June 30, 2026",
-//     },
-//     {
-//       name: "Alethia Ragland",
-//       email: "alethia.dflcn@gmail.com",
-//       dateAdded: "January 30, 2026",
-//     },
-//     {
-//       name: "Jungo Vasquez",
-//       email: "jluis.vasquez@gmail.com",
-//       dateAdded: "March 20, 2026",
-//     },
-//   ],
-
 function DashboardNewExplorers({ usersData }) {
   const sortedUsers = usersData.sort(
     (a, b) => new Date(b.dateJoined) - new Date(a.dateJoined),
@@ -72,12 +66,12 @@ function DashboardNewExplorers({ usersData }) {
   const fiveSortedUsers = sortedUsers.slice(0, 5);
 
   return (
-    <DashboardItem $variation="center">
+    <DashboardItem>
       <Heading as="h4" $color="var(--color-red-400)">
         New Explorers
       </Heading>
 
-      <Table
+      <CondensedTable
         columns={newExplorersTableColumns}
         rows={fiveSortedUsers}
         $theme={newExplorersTableTheme}

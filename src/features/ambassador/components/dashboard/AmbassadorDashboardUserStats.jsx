@@ -94,7 +94,7 @@ function AmbassadorDashboardUserStats({
   const numTotalExplorers = usersData.length;
 
   return (
-    <StyledRow>
+    <StyledRow $align="stretch">
       <NumTotalUsers numExplorers={numTotalExplorers} />
       <NumMonthlyUsers numExplorers={numMonthlyExplorers} />
       <NumWeeklyUsers numExplorers={numWeeklyExplorers} />

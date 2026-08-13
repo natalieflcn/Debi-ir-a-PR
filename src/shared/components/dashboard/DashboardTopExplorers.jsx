@@ -3,6 +3,7 @@ import DashboardItem from "../layout/DashboardItem";
 import Heading from "../typography/Heading";
 import Table from "../ui/Table";
 import Bold from "../typography/Bold";
+import CondensedTable from "../ui/CondensedTable";
 
 const topExplorersTableColumns = [
   {
@@ -68,7 +69,7 @@ function DashboardTopExplorers({ usersData }) {
         Top Explorers
       </Heading>
 
-      <Table
+      <CondensedTable
         columns={topExplorersTableColumns}
         rows={fiveTopExplorers}
         $theme={topExplorersTableTheme}
