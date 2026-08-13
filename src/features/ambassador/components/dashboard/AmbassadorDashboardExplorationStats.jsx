@@ -6,8 +6,8 @@ import InsetSpan from "../../../../shared/components/ui/InsetSpan";
 
 const NumTotalExplorations = function ({ numExplorations }) {
   return (
-    <DashboardItem $height="4rem">
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <DashboardItem $variation="center">
+      <Row $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
             # of Total Explorations
@@ -25,8 +25,8 @@ const NumTotalExplorations = function ({ numExplorations }) {
 
 const NumExplorationsCompleted = function ({ numExplorationsCompleted }) {
   return (
-    <DashboardItem $height="4rem">
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <DashboardItem $variation="center">
+      <Row $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
             # of Explorations Completed
@@ -49,7 +49,7 @@ function AmbassadorDashboardExplorationStats({
   const numExplorations = explorations.length;
 
   return (
-    <Row $direction="horizontal" $gap="var(--gap-xl)">
+    <Row $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
       <NumTotalExplorations numExplorations={numExplorations} />
       <NumExplorationsCompleted
         numExplorationsCompleted={numExplorationsCompleted}

@@ -83,7 +83,7 @@ function AmbassadorDashboardTopExplorations({ explorations, userHistories }) {
     .slice(0, 5); // top 5 only
 
   return (
-    <DashboardItem>
+    <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
         Top Explorations
       </Heading>

@@ -18,6 +18,56 @@ const StyledAmbassadorDashboard = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-xl);
+
+  /* profile exploration userstats
+  newexplorers
+  top explorers
+  totalexplorations explorationscompleted
+  topexplorations
+  totallocations locationsexplored
+  toplocations
+   */
+`;
+
+const StyledAmbassadorHighlights = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "profile explorationsCreated userStats";
+  gap: var(--gap-xl);
+
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "profile explorationsCreated"
+      "userStats userStats";
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      "profile"
+      "explorationsCreated"
+      "userStats";
+  }
+`;
+
+const StyledAmbassadorStats = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "newExplorers newExplorers"
+    "topExplorers topExplorers"
+    "explorationStats explorationStats"
+    "topExplorations topExplorations"
+    "locationStats locationStats"
+    "topLocations topLocations";
+  gap: var(--gap-xl);
+`;
+
+const GridArea = styled.div`
+  display: flex;
+  grid-area: ${({ $area }) => $area};
+  min-width: 0;
 `;
 
 function AmbassadorDashboard() {
@@ -37,36 +87,55 @@ function AmbassadorDashboard() {
         WELCOME, AMBASSADOR
       </Heading>
 
-      <Row $direction="horizontal" $gap="var(--gap-xl)">
-        <AmbassadorDashboardProfileItem profileData={profileData} />
-        <DashboardExplorationsCreated type="ambassador" profile={profileData} />
-        <AmbassadorDashboardUserStats
-          usersData={explorers}
-          numWeeklyExplorers={numWeeklyExplorers}
-          numMonthlyExplorers={numMonthlyExplorers}
-        />
-      </Row>
+      <StyledAmbassadorHighlights>
+        <GridArea $area="profile">
+          <AmbassadorDashboardProfileItem profileData={profileData} />
+        </GridArea>
+        <GridArea $area="explorationsCreated">
+          <DashboardExplorationsCreated
+            type="ambassador"
+            profile={profileData}
+          />
+        </GridArea>
+        <GridArea $area="userStats">
+          <AmbassadorDashboardUserStats
+            usersData={explorers}
+            numWeeklyExplorers={numWeeklyExplorers}
+            numMonthlyExplorers={numMonthlyExplorers}
+          />
+        </GridArea>
+      </StyledAmbassadorHighlights>
 
-      <Row>
-        <DashboardNewExplorers usersData={explorers} />
-        <DashboardTopExplorers usersData={explorers} />
-      </Row>
+      <StyledAmbassadorStats>
+        <GridArea $area="newExplorers">
+          <DashboardNewExplorers usersData={explorers} />
+        </GridArea>
+        <GridArea $area="topExplorers">
+          <DashboardTopExplorers usersData={explorers} />
+        </GridArea>
 
-      <Row $gap="var(--gap-xl)">
-        <AmbassadorDashboardExplorationStats
-          explorations={explorations}
-          numExplorationsCompleted={numExplorationsCompleted}
-        />
-        <AmbassadorDashboardTopExplorations
-          explorations={explorations}
-          userHistories={userHistories}
-        />
-        <AmbassadorDashboardLocationStats
-          explorations={explorations}
-          userHistories={userHistories}
-        />
-        <AmbassadorDashboardTopLocations />
-      </Row>
+        <GridArea $area="explorationStats">
+          <AmbassadorDashboardExplorationStats
+            explorations={explorations}
+            numExplorationsCompleted={numExplorationsCompleted}
+          />
+        </GridArea>
+        <GridArea $area="topExplorations">
+          <AmbassadorDashboardTopExplorations
+            explorations={explorations}
+            userHistories={userHistories}
+          />
+        </GridArea>
+        <GridArea $area="locationStats">
+          <AmbassadorDashboardLocationStats
+            explorations={explorations}
+            userHistories={userHistories}
+          />
+        </GridArea>
+        <GridArea $area="topLocations">
+          <AmbassadorDashboardTopLocations />
+        </GridArea>
+      </StyledAmbassadorStats>
     </StyledAmbassadorDashboard>
   );
 }

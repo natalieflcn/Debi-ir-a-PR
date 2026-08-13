@@ -10,7 +10,7 @@ const NumTotalLocations = function ({ explorations }) {
   ).length;
 
   return (
-    <DashboardItem $height="4rem">
+    <DashboardItem $variation="center">
       <Row $direction="horizontal" $gap="var(--gap-xl)">
         <Row $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">

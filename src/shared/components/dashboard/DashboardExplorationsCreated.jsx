@@ -5,10 +5,11 @@ import InsetSpan from "../ui/InsetSpan";
 import Bold from "../typography/Bold";
 import Heading from "../typography/Heading";
 import RouterLink from "../routing/RouterLink";
+import styled from "styled-components";
 
 function DashboardExplorationsCreated({ type, profile }) {
   return (
-    <DashboardItem $variation="center" $height="18rem">
+    <DashboardItem $variation="center">
       <Row $gap="var(--gap-xl)">
         <Heading as="h4" $color="var(--color-red-400)">
           Explorations Created

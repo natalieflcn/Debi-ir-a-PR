@@ -7,7 +7,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 function AmbassadorDashboardProfileItem({ profileData }) {
   return (
-    <DashboardItem $variation="center" $height="18rem">
+    <DashboardItem $variation="center">
       <Row $gap="var(--gap-lg)">
         <Row $align="center">
           <Heading as="h4" $color="var(--color-red-300)">

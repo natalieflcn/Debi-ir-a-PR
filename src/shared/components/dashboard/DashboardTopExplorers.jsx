@@ -63,7 +63,7 @@ function DashboardTopExplorers({ usersData }) {
   const fiveTopExplorers = topExplorers.slice(0, 5);
 
   return (
-    <DashboardItem>
+    <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
         Top Explorers
       </Heading>

@@ -69,7 +69,7 @@ function AmbassadorDashboardTopLocations({
   tableData = topLocationsTableData,
 }) {
   return (
-    <DashboardItem>
+    <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
         Top Locations
       </Heading>
