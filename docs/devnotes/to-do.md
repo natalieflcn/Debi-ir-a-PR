@@ -277,4 +277,29 @@
     - [x] Exploration page
     - [x] Location page
   - [x] Ambassador pages
-  - [ ] Admin pages
+  - [x] Admin pages
+
+## Week: August 20 – August 27
+
+- [ ] Refresh on Node.js, Express, MongoDB
+  - [ ] Node.js
+    - [ ] Modules
+    - [ ] Environment variables
+    - [ ] Callback functions
+  - [ ] Express
+    - [ ] Server setup
+    - [ ] Routing
+    - [ ] Request/Response cycle
+    - [ ] Controller pattern structure
+  - [ ] MongoDB
+    - [ ] Database -> Collections -> Documents hierachy
+    - [ ] Setup MongoDB Atlas cluster
+  - [ ] Mongoose
+    - [ ] Schemas & Models
+    - [ ] CRUD operations
+    - [ ] Validation and relationships
+  - Application: Build one real-world slice
+    - [ ] Define one schema/model
+    - [ ] Write POST route
+    - [ ] Write GET route
+    - [ ] Test both routes in Postman
