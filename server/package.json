@@ -1,0 +1,19 @@
+{
+  "name": "debi-ir-a-pr",
+  "version": "1.0.0",
+  "description": "The back-end foundation for Debi ir a PR project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natalieflcn/Debi-ir-a-PR.git"
+  },
+  "author": "Natalie Falcon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natalieflcn/Debi-ir-a-PR/issues"
+  },
+  "homepage": "https://github.com/natalieflcn/Debi-ir-a-PR#readme"
+}
