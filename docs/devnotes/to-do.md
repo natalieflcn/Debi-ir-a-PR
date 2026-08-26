@@ -300,9 +300,9 @@
     - [~] Validation and relationships
   - Application: Build one real-world slice
     - [x] Define one schema/model
-    - [ ] Write POST route
-    - [ ] Write GET route
-    - [ ] Test both routes in Postman
+    - [x] Write POST route
+    - [x] Write GET route
+    - [x] Test both routes in Postman
   - DiaPR: In practice
     - [ ] Define schemas
       - [ ] Explorations
