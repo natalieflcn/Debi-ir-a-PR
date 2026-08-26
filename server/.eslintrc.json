@@ -1,6 +1,10 @@
 {
   "extends": ["eslint:recommended", "plugin:node/recommended"],
   "rules": {
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "req/res/next/val" }]
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "req/res/next/val" }],
+    "no-async-promise-executor": "error",
+    "no-await-in-loop": "warn",
+    "require-await": "error",
+    "no-return-await": "warn"
   }
 }

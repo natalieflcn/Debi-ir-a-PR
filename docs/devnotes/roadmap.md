@@ -43,17 +43,17 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 ### Phase 1: Frontend Foundation (React)
 
 - [x] App structure & setup
-- [~] Create the landing page for the platfotm
-- [~] Build core pages (UI only with static data)
+- [x] Create the landing page for the platform
+- [x] Build core pages (UI only with static data)
 - [x] Implement routing with React Router
-- [~] Develop a reusable component system
-- [~] Use styled components to build a responsive design influenced by Puerto Rican aesthetics
+- [x] Develop a reusable component system
+- [x] Use styled components to build a responsive design influenced by Puerto Rican aesthetics
 
 ### Phase 2: Backend Foundation (Node + Express)
 
-- [ ] Set up server
-- [ ] Create MongoDB models
-- [ ] Build RESTful API routes
+- [x] Set up server
+- [~] Create MongoDB models
+- [~] Build RESTful API routes
 
 ### Phase 3: Authentication and Authorization
 
@@ -69,14 +69,13 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 ### Phase 5: Role-Based UI
 
-- [ ] Polish Explorer user experience
-- [ ] Polish Staff user experience
-- [ ] Polish Admin user experience
+- [~] Polish Explorer user experience
+- [~] Polish Staff user experience
+- [~] Polish Admin user experience
 
 ### Phase 6: Advanced Features
 
 - [ ] Show tour locations with Google Maps API
-- [ ] Reviews and ratings for tours
 - [ ] Image uploads for tours
 - [ ] Email system
 

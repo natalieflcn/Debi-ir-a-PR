@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const explorationSchema = mongoose.Schema({
-  displayId: {
+  explorationId: {
     type: String,
   },
   name: {
