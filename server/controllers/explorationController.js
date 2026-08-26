@@ -1,4 +1,5 @@
 const express = require("express");
+const Exploration = require("../models/Exploration");
 
 exports.getAllExplorations = (req, res) => {
   console.log("GET route successful!");
@@ -8,10 +9,20 @@ exports.getAllExplorations = (req, res) => {
 
 exports.getExploration = (req, res) => {};
 
-exports.createExploration = (req, res) => {
-  console.log("POST route successful!");
+exports.createExploration = async (req, res) => {
+  try {
+    const newExploration = await Exploration.create(req.body);
 
-  res.status(200).json({ status: "success" });
+    res
+      .status(201)
+      .json({ status: "success", data: { exploration: newExploration } });
+  } catch (err) {
+    console.log(err);
+
+    res
+      .status(400)
+      .json({ status: "fail", message: "Failed to create exploration." });
+  }
 };
 
 exports.updateExploration = (req, res) => {};

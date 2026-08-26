@@ -23,7 +23,7 @@ const explorationSchema = mongoose.Schema({
   },
   headerImage: {
     type: Array,
-    required: [true, "An exploration header image is required."],
+    // required: [true, "An exploration header image is required."],
   },
   numStops: { type: Number },
   tags: { type: Array },
