@@ -281,27 +281,34 @@
 
 ## Week: August 20 – August 27
 
-- [ ] Refresh on Node.js, Express, MongoDB
-  - [ ] Node.js
-    - [ ] Modules
-    - [ ] Environment variables
-    - [ ] Callback functions
-  - [ ] Express
-    - [ ] Server setup
-    - [ ] Routing
-    - [ ] Request/Response cycle
-    - [ ] Controller pattern structure
-  - [ ] MongoDB
-    - [ ] Database -> Collections -> Documents hierachy
-    - [ ] Setup MongoDB Atlas cluster
-  - [ ] Mongoose
-    - [ ] Schemas & Models
+- [~] Refresh on Node.js, Express, MongoDB
+  - [x] Node.js
+    - [x] Modules
+    - [x] Environment variables
+    - [x] Callback functions
+  - [x] Express
+    - [x] Server setup
+    - [x] Routing
+    - [x] Request/Response cycle
+    - [x] Controller pattern structure
+  - [x] MongoDB
+    - [x] Database -> Collections -> Documents hierachy
+    - [x] Setup MongoDB Atlas cluster
+  - [~] Mongoose
+    - [~] Schemas & Models
     - [ ] CRUD operations
-    - [ ] Validation and relationships
+    - [~] Validation and relationships
   - Application: Build one real-world slice
     - [ ] Define one schema/model
     - [ ] Write POST route
     - [ ] Write GET route
     - [ ] Test both routes in Postman
+  - DiaPR: In practice
+    - [ ] Define schemas
+      - [ ] Explorations
+      - [ ] Locations
+      - [ ] Badges
+      - [ ] Users
+      - [ ] UserHistories
 
-    - NOTE: Change route names in client project to reflect RESTful architecture (i.e. explorations/exploration/id --> explorations/id)
+    - [ ] Create models
