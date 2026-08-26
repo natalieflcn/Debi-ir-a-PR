@@ -299,7 +299,7 @@
     - [ ] CRUD operations
     - [~] Validation and relationships
   - Application: Build one real-world slice
-    - [ ] Define one schema/model
+    - [x] Define one schema/model
     - [ ] Write POST route
     - [ ] Write GET route
     - [ ] Test both routes in Postman
@@ -312,3 +312,4 @@
       - [ ] UserHistories
 
     - [ ] Create models
+    - [ ] NOTE: Add way to define type and threshold during badge creation
