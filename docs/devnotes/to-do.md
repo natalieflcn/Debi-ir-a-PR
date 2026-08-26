@@ -303,3 +303,5 @@
     - [ ] Write POST route
     - [ ] Write GET route
     - [ ] Test both routes in Postman
+
+    - NOTE: Change route names in client project to reflect RESTful architecture (i.e. explorations/exploration/id --> explorations/id)

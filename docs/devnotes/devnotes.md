@@ -69,6 +69,7 @@
 ## Technical Notes
 
 - React Lite YouTube Embed
+- Need to edit IP address in MongoDB Atlas during production and before deployment, used /16 CIDR notation for IP address due to mobile hotspot connectivity issues
 
 ---
 

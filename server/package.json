@@ -4,7 +4,8 @@
   "description": "The back-end foundation for Debi ir a PR project.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch server.js",
+    "start:prod": "NODE_ENV=production node --watch server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/natalieflcn/Debi-ir-a-PR/issues"
   },
-  "homepage": "https://github.com/natalieflcn/Debi-ir-a-PR#readme"
+  "homepage": "https://github.com/natalieflcn/Debi-ir-a-PR#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.4"
+  },
+  "devDependencies": {
+    "eslint": "^10.9.1",
+    "eslint-plugin-node": "^11.1.0"
+  }
 }
