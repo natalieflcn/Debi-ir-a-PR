@@ -48,6 +48,36 @@ exports.createExploration = async (req, res) => {
   }
 };
 
-exports.updateExploration = (req, res) => {};
+exports.updateExploration = async (req, res) => {
+  try {
+    const exploration = await Exploration.findOneAndUpdate(
+      { explorationId: req.params.explorationId },
+      req.body,
+      { new: true, runValidators: true },
+    );
 
-exports.deleteExploration = (req, res) => {};
+    res.status(200).json({ status: "success", data: { exploration } });
+  } catch (err) {
+    console.log(err);
+
+    res
+      .status(400)
+      .json({ status: "fail", message: "Failed to create exploration." });
+  }
+};
+
+exports.deleteExploration = async (req, res) => {
+  try {
+    await Exploration.findOneAndDelete({
+      explorationId: req.params.explorationId,
+    });
+
+    res.status(204).json({ status: "success", data: null });
+  } catch (err) {
+    console.log(err);
+
+    res
+      .status(400)
+      .json({ status: "fail", message: "Failed to create exploration." });
+  }
+};

@@ -128,13 +128,8 @@ function ExplorationCard({
             $wrap="wrap"
             $gap="var(--gap-md)"
           >
-            {exploration.images.map((image) => (
-              <Image
-                src={image.imageURL}
-                $align="center"
-                key={image.id}
-                $width="30%"
-              />
+            {exploration.images.map((image, i) => (
+              <Image src={image} $align="center" key={i} $width="30%" />
             ))}
           </ExplorationImagesRow>
 

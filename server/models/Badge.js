@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const badgeSchema = mongoose.Schema({
-  displayId: {
+  badgeId: {
     type: String,
+    unique: true,
   },
   name: {
     type: String,
     required: [true, "A badge name is required."],
-    unique: true,
   },
   description: {
     type: String,
@@ -15,11 +15,29 @@ const badgeSchema = mongoose.Schema({
   },
   image: { type: String, required: [true, "A badge icon is required."] },
   explorationId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Exploration",
     default: null,
   },
-  type: { type: String },
-  threshold: { type: Number, default: null },
+  type: {
+    type: String,
+    enum: {
+      values: ["completion", "milestone", "special"],
+      message: "{VALUE} is not a valid badge type.",
+    },
+  },
+  threshold: {
+    type: Number,
+    required: [
+      function () {
+        return this.type === "milestone";
+      },
+      "A threshold is required for milestone badges.",
+    ],
+    default: function () {
+      return this.type === "special" ? null : undefined;
+    },
+  },
 });
 
 const Badge = mongoose.model("Badge", badgeSchema);

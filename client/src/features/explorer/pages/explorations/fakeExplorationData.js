@@ -43,9 +43,9 @@ const fakeExplorationData = {
     },
   ],
   images: [
-    { id: 1, imageURL: "/src/assets/images/content/TEMP.png" },
-    { id: 2, imageURL: "/src/assets/images/content/TEMP.png" },
-    { id: 3, imageURL: "/src/assets/images/content/TEMP.png" },
+    "/src/assets/images/content/TEMP.png",
+    "/src/assets/images/content/TEMP.png",
+    "/src/assets/images/content/TEMP.png",
   ],
   createdBy: "user_001", // FK → users (ambassador or admin)
   createdAt: "2025-01-10",

@@ -295,8 +295,8 @@
     - [x] Database -> Collections -> Documents hierachy
     - [x] Setup MongoDB Atlas cluster
   - [~] Mongoose
-    - [~] Schemas & Models
-    - [ ] CRUD operations
+    - [x] Schemas & Models
+    - [x] CRUD operations
     - [~] Validation and relationships
   - Application: Build one real-world slice
     - [x] Define one schema/model
@@ -304,12 +304,15 @@
     - [x] Write GET route
     - [x] Test both routes in Postman
   - DiaPR: In practice
-    - [ ] Define schemas
-      - [ ] Explorations
-      - [ ] Locations
-      - [ ] Badges
-      - [ ] Users
-      - [ ] UserHistories
+    - [~] Define schemas and create models
+      - [x] Explorations
+      - [x] Locations
+      - [x] Badges
+      - [x] Users
+      - [-] UserHistories
+        - [ ] EarnedBadges
+        - [ ] ExplorationProgress
+        - [ ] Visit
 
-    - [ ] Create models
     - [ ] NOTE: Add way to define type and threshold during badge creation
+    - [ ] NOTE: Need to align all userType definitions in front-end to reflect 'role' instead

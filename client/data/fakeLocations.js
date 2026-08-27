@@ -13,7 +13,7 @@ export const fakeLocations = [
     explorationId: "exp_001",
     numExplorersVisited: 203,
     name: "Rey Chino Food",
-    address: "123 san juan rd",
+    address: "123 san juan rd", //street address, city, zip code
     coordinates: { lat: 18.388, lng: -66.248 },
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
