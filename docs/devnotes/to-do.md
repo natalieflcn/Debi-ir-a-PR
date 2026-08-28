@@ -279,7 +279,7 @@
   - [x] Ambassador pages
   - [x] Admin pages
 
-## Week: August 20 – August 27
+## Week: August 20 – August 28
 
 - [~] Refresh on Node.js, Express, MongoDB
   - [x] Node.js
@@ -310,9 +310,15 @@
       - [x] Badges
       - [x] Users
       - [-] UserHistories
-        - [ ] EarnedBadges
-        - [ ] ExplorationProgress
-        - [ ] Visit
+        - [x] EarnedBadges
+        - [x] ExplorationProgress
+        - [x] Visit
+    - [ ] Create refined development data
+      - [ ] Exploration data
+      - [ ] Badge data
+      - [ ] Location data
+      - [ ] (One) Explorer data point
+      - [ ] (One) Ambassador data point
 
     - [ ] NOTE: Add way to define type and threshold during badge creation
     - [ ] NOTE: Need to align all userType definitions in front-end to reflect 'role' instead

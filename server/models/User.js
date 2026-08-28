@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const capitalize = require("../utils/helpers");
 
-const userSchema = mongoose.Schema.create(
+const userSchema = new mongoose.Schema(
   {
     userId: { type: String, unique: true, index: true },
     name: {
@@ -14,6 +14,13 @@ const userSchema = mongoose.Schema.create(
       required: [true, "A user email is required."],
       lowercase: true,
       trim: true,
+      unique: true,
+      match: [/^\S+@\S+\.\S+$/, "Please provide a valid email."],
+    },
+    password: {
+      type: String,
+      required: [true, "A password is required."],
+      select: false,
     },
     role: {
       type: String,

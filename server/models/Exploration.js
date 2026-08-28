@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const explorationSchema = mongoose.Schema({
+const explorationSchema = new mongoose.Schema({
   explorationId: {
     type: String,
     unique: true,

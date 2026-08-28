@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const badgeSchema = mongoose.Schema({
+const badgeSchema = new mongoose.Schema({
   badgeId: {
     type: String,
     unique: true,

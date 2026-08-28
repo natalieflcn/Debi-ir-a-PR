@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const locationSchema = mongoose.Schema({
+const locationSchema = new mongoose.Schema({
   locationId: { type: String, unique: true, index: true },
   explorationId: { type: mongoose.Schema.ObjectId, ref: "Exploration" },
   name: { type: String, required: [true, "A location name is required."] },
