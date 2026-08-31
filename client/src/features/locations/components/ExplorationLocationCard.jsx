@@ -32,6 +32,14 @@ const StyledRow = styled(Row)`
   }
 `;
 
+const AddressRow = styled(Row)`
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: var(--gap-sm);
+    text-align: center;
+  }
+`;
+
 function ExplorationLocationCard({
   exploration,
   location,
@@ -61,10 +69,20 @@ function ExplorationLocationCard({
 
               {headerDetails}
 
-              <Row $direction="horizontal" $gap="var(--gap-sm)" $align="center">
+              <AddressRow
+                $direction="horizontal"
+                $gap="var(--gap-sm)"
+                $align="center"
+              >
+                {" "}
                 <IoLocationSharp color="var(--color-red-300)" />
-                <Bold $color="var(--color-dark-200)">{location.address}</Bold>
-              </Row>
+                <Bold $color="var(--color-dark-200)">
+                  {location.address.street},
+                </Bold>{" "}
+                <Bold $color="var(--color-dark-200)">
+                  {location.address.city}, PR {location.address.zipcode}
+                </Bold>
+              </AddressRow>
             </Row>
           </ExplorationLocationHeaderDetails>
         </ExplorationLocationHeaderImage>

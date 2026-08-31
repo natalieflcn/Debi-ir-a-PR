@@ -34,8 +34,13 @@ function CreateLocation({ location = false }) {
   const isEditing = Boolean(location);
 
   const [name, setName] = useState(isEditing ? location.name : "");
-  const [address, setAddress] = useState(isEditing ? location.address : "");
+  const [street, setStreet] = useState(
+    isEditing ? location.address.street : "",
+  );
   const [city, setCity] = useState(isEditing ? location.city : null);
+  const [zipcode, setZipcode] = useState(
+    isEditing ? location.address.zipcode : "",
+  );
   const [headerImage, setHeaderImage] = useState(
     isEditing ? location.headerImage : [],
   );
@@ -56,9 +61,11 @@ function CreateLocation({ location = false }) {
 
     if (!name.trim()) errors.name = "Location name is required.";
 
-    if (!address.trim()) errors.address = "Location address is required.";
+    if (!street.trim()) errors.street = "Location street address is required.";
 
     if (!city) errors.city = "Please select a city.";
+
+    if (!zipcode.trim()) errors.zipcode = "Location zipcode is required.";
 
     if (headerImage.length < 1)
       errors.headerImage = "Please select a header image.";
@@ -79,12 +86,13 @@ function CreateLocation({ location = false }) {
     const formData = {
       id: newId,
       name,
-      address,
+      address: { street, city, zipcode },
       city,
       headerImage,
       description,
       images,
       tags,
+      explorationId: exploration.explorationId,
     };
 
     navigate(`/admin/explorations/${newId}`);
@@ -122,15 +130,15 @@ function CreateLocation({ location = false }) {
             </StyledRow>
           </FormField>
 
-          <FormField label="Address">
+          <FormField label="Street">
             <StyledRow $gap="var(--gap-xs)">
               <Input
-                name="address"
-                placeholder="The address of the location"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                name="street"
+                placeholder="The street address of the location"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
               />
-              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+              {formErrors.street && <Bold>{formErrors.street}</Bold>}
             </StyledRow>
           </FormField>
 
@@ -138,6 +146,20 @@ function CreateLocation({ location = false }) {
             <StyledRow $gap="var(--gap-xs)">
               <CityDropdown name="city" value={city} onSelect={setCity} />
               {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
+          </FormField>
+
+          <FormField label="Zipcode">
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="zipcode"
+                placeholder="The zipcode of the location"
+                value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}
+                type="text"
+                maxLength={10}
+              />
+              {formErrors.zipcode && <Bold>{formErrors.zipcode}</Bold>}
             </StyledRow>
           </FormField>
 
