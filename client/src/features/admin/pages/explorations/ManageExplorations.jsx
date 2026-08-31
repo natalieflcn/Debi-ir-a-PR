@@ -32,7 +32,7 @@ const getAdminExplorationsTableColumns = function (users) {
       ),
     },
     { id: "numStops", heading: "# of Stops" },
-    { id: "startingCity", heading: "Starting City" },
+    { id: "city", heading: "City" },
     {
       id: "createdBy",
       heading: "Created By",
@@ -244,16 +244,23 @@ function ManageExplorations() {
       </InputFiltersRow>
       {viewMode === "grid" && (
         <ExplorationCards>
-          {paginatedExplorations.map((exploration) => (
-            <ExplorationMiniCard
-              name={exploration.name}
-              description={exploration.description}
-              numStops={exploration.numStops}
-              startingCity={exploration.startingCity}
-              buttonDetails={getAdminExplorationCardButton(exploration)}
-              key={exploration.id}
-            />
-          ))}
+          {paginatedExplorations.map((exploration) => {
+            const city =
+              exploration.cities.length === 1
+                ? exploration.cities[0]
+                : "Multiple Cities";
+
+            return (
+              <ExplorationMiniCard
+                name={exploration.name}
+                description={exploration.description}
+                numStops={exploration.numStops}
+                city={city}
+                buttonDetails={getAdminExplorationCardButton(exploration)}
+                key={exploration.id}
+              />
+            );
+          })}
         </ExplorationCards>
       )}
       {viewMode === "list" && (

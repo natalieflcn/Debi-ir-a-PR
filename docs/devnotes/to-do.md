@@ -319,11 +319,22 @@
 ## Week: August 31 – September 4
 
 - [~] Create refined development data
-  - [ ] Exploration data
-  - [ ] Location data
-  - [ ] (One) Explorer data point
-  - [ ] (One) Ambassador data point
-
+  - [ ] (Five) Exploration data TODO 2
+  - [ ] Location data TODO 3
+  - [x] (Five) Users data
+    - [x] (Two) Explorer data points
+      - [ ] EarnedBadges data points
+      - [ ] ExplorationProgress data points
+      - [ ] Visit data points
+    - [x] (Two) Ambassador data points
+    - [x] (One) Admin data point
+- [ ] Import dev-data into MongoDB database
 - [x] Add way to define type and threshold during badge creation
 - [x] Refine how addresses (and potentially coordinates) get stored for creating Locations
-- [ ] Need to align all userType definitions in front-end to reflect 'role' instead
+- [x] Need to align all userType definitions in front-end to reflect 'role' instead
+- [x] Change 'startingCity' field of Exploration to 'city/cities' to properly represent multi-city explorations
+  - [ ] [ ] CreateExploration
+  - [ ] [ ] ManageExplorations
+  - [ ] ExplorationCard
+  - [ ] ExplorationMiniCard
+  - [ ] Explorations

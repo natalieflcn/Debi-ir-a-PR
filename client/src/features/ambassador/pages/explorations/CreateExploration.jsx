@@ -51,9 +51,9 @@ function CreateExploration() {
   const [headerImage, setHeaderImage] = useState(
     isEditing ? exploration.headerImage : [],
   );
-  const [startingCity, setStartingCity] = useState(
-    isEditing ? exploration.startingCity : null,
-  );
+  // const [startingCity, setStartingCity] = useState(
+  //   isEditing ? exploration.startingCity : null,
+  // );
   const [tagline, setTagline] = useState(isEditing ? exploration.tagline : "");
   const [description, setDescription] = useState(
     isEditing ? exploration.description : "",
@@ -93,7 +93,7 @@ function CreateExploration() {
     const errors = {};
 
     if (!name.trim()) errors.name = "Exploration name is required.";
-    if (!startingCity) errors.startingCity = "Please select starting city.";
+    // if (!startingCity) errors.startingCity = "Please select starting city.";
     if (headerImage.length < 1)
       errors.headerImage = "Please select a header image.";
     if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
@@ -115,7 +115,8 @@ function CreateExploration() {
     const formData = {
       id: newId,
       name,
-      startingCity,
+      // startingCity,
+      // cities: locations.map...
       headerImage,
       tagline,
       description,
@@ -178,7 +179,7 @@ function CreateExploration() {
             </StyledRow>
           </FormField>
 
-          <FormField label="Starting City">
+          {/* <FormField label="Starting City">
             <StyledRow $gap="var(--gap-xs)">
               <CityDropdown
                 name="city"
@@ -189,7 +190,7 @@ function CreateExploration() {
                 <Bold>{formErrors.startingCity}</Bold>
               )}
             </StyledRow>
-          </FormField>
+          </FormField> */}
 
           <FormField label="Tagline">
             <StyledRow $gap="var(--gap-xs)">

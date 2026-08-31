@@ -61,7 +61,7 @@ function ExplorationMiniCard({
   name,
   description,
   numStops,
-  startingCity,
+  city,
   buttonDetails,
 }) {
   return (
@@ -87,7 +87,10 @@ function ExplorationMiniCard({
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoLocationSharp color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{startingCity}, PR</Bold>
+              <Bold $color="var(--color-dark-200)">
+                {city}
+                {city === "Multiple Cities" ? "" : ", PR"}
+              </Bold>
             </Row>
           </Row>
 

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Natalie Falcon",
+    "email": "natalie.dflcn@gmail.com",
+    "password": "adminAccount",
+    "role": "admin",
+    "title": "Admin",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Nika Chooi",
+    "email": "nikiflcn@gmail.com",
+    "password": "explorerAccount1",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Alethia Ragland",
+    "email": "thearagland1@gmail.com",
+    "password": "explorerAccount2",
+    "role": "explorer",
+    "title": "Tropical Cruiser",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Tony Stark",
+    "email": "jarvis@aol.com",
+    "password": "ambassadorAccount1",
+    "role": "ambassador",
+    "title": "Ambassador",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Miles Morales",
+    "email": "mmbkspiderman@hotmail.com",
+    "password": "ambassadorAccount2",
+    "role": "ambassador",
+    "title": "Ambassador",
+    "avatar": "TEMP.png"
+  }
+]

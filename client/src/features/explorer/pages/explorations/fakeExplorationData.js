@@ -4,7 +4,7 @@ const fakeExplorationData = {
   tagline: "hello",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
-  startingCity: "Bayamon",
+  cities: ["Bayamon"],
   headerImage: ["/src/assets/images/content/TEMP.png"],
   numStops: 5,
   tags: ["city"],

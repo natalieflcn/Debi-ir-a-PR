@@ -71,10 +71,19 @@ function ExplorationCard({
                   </Bold>
                 </Row>
 
+                {/* {exploration.cities.map((city, i) => (
+                  <Row $direction="horizontal" $gap="var(--gap-sm)" key={i}>
+                    <IoLocationSharp color="var(--color-red-300)" />
+                    <Bold $color="var(--color-dark-200)">{city}, PR</Bold>
+                  </Row>
+                ))} */}
+
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoLocationSharp color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
-                    {exploration.startingCity}, PR
+                    {exploration.cities.length === 1
+                      ? `${exploration.cities[0]}, PR`
+                      : "Multiple Cities"}
                   </Bold>
                 </Row>
               </StyledHeaderDetailsRow>{" "}

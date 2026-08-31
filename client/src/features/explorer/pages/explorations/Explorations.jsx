@@ -22,7 +22,7 @@ const ExplorationCards = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--gap-xl);
-    justify-content: center;
+  justify-content: center;
 `;
 
 const ExplorationFiltersRow = styled(Row)`
@@ -96,16 +96,24 @@ function Explorations() {
       </ExplorationFiltersRow>
 
       <ExplorationCards>
-        {paginatedExplorations.map((exploration) => (
-          <ExplorationMiniCard
-            name={exploration.name}
-            description={exploration.description}
-            numStops={exploration.numStops}
-            startingCity={exploration.startingCity}
-            buttonDetails={ExplorerExplorationCardButton(exploration)}
-            key={exploration.id}
-          />
-        ))}
+        {paginatedExplorations.map((exploration) => {
+          const city =
+            exploration.cities.length === 1
+              ? exploration.cities[0]
+              : "Multiple Cities";
+
+          console.log(city);
+          return (
+            <ExplorationMiniCard
+              name={exploration.name}
+              description={exploration.description}
+              numStops={exploration.numStops}
+              city={city}
+              buttonDetails={ExplorerExplorationCardButton(exploration)}
+              key={exploration.id}
+            />
+          );
+        })}
       </ExplorationCards>
 
       {paginatedExplorations.length === 0 && (
