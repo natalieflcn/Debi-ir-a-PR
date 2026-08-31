@@ -47,10 +47,8 @@ const GridArea = styled.div`
 function AdminDashboard() {
   const { users, profileData } = useLoaderData();
 
-  const explorersData = users.filter((user) => user.userType === "explorer");
-  const ambassadorsData = users.filter(
-    (user) => user.userType === "ambassador",
-  );
+  const explorersData = users.filter((user) => user.role === "explorer");
+  const ambassadorsData = users.filter((user) => user.role === "ambassador");
 
   return (
     <StyledAdminDashboard>

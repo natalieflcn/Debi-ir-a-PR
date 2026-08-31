@@ -55,20 +55,20 @@ function Logo() {
   const { role } = useAuth();
   console.log(role);
   // const role = "admin";
-  let userType = "";
+  let prefix = "";
 
   switch (role) {
     case "ambassador":
-      userType = "ambassador";
+      prefix = "ambassador";
       break;
 
     case "admin":
-      userType = "admin";
+      prefix = "admin";
       break;
 
     case "explorer":
     default:
-      userType = "";
+      prefix = "";
       break;
   }
 
@@ -78,7 +78,7 @@ function Logo() {
   return (
     <div>
       <StyledLogo $logoTheme={logoTheme}>
-        <NavLink to={`${userType}/dashboard`}>
+        <NavLink to={`${prefix}/dashboard`}>
           <Debi>DeBÍ</Debi>
           <IrAPR>iR a PR</IrAPR>
         </NavLink>

@@ -5,7 +5,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_001",
       name: "Natalie Falcon",
-      userType: "explorer",
+      role: "explorer",
       title: "First Explorer",
       explorationsStarted: 10,
       explorationsCompleted: 4,
@@ -16,7 +16,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_002",
       name: "Alethia Ragland",
-      userType: "ambassador",
+      role: "ambassador",
       title: "Ambassador",
       email: "thearagland@gmail.com",
       dateJoined: "2022-06-17",
@@ -26,7 +26,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_003",
       name: "Jorge Gonzalez",
-      userType: "explorer",
+      role: "explorer",
       title: "First Explorer",
       email: "genioa@gmail.com",
       explorationsStarted: 10,
@@ -36,7 +36,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_004",
       name: "Natalie Falcon",
-      userType: "explorer",
+      role: "explorer",
       title: "First Explorer",
       explorationsStarted: 8,
       explorationsCompleted: 6,
@@ -46,7 +46,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_005",
       name: "Alethia Ragland",
-      userType: "ambassador",
+      role: "ambassador",
       title: "First Explorer",
       email: "thearagland@gmail.com",
       dateJoined: "2023-01-12",
@@ -56,7 +56,7 @@ export async function adminDashboardLoader() {
     {
       id: "user_006",
       name: "Jorge Gonzalez",
-      userType: "explorer",
+      role: "explorer",
       explorationsCompleted: 6,
       explorationsStarted: 12,
       title: "First Explorer",

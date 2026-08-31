@@ -28,7 +28,7 @@ function PageNotFound() {
   const { user } = useAuth();
   let userRedirect;
 
-  switch (user.userType) {
+  switch (user.role) {
     case "explorer":
       userRedirect = "dashboard";
       break;

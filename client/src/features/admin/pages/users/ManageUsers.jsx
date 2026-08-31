@@ -18,7 +18,7 @@ export const UsersTableColumns = [
     id: "name",
     heading: "Name",
     render: (row) => (
-      <RouterLink to={`${row.userType.toLowerCase()}s/${row.id}`}>
+      <RouterLink to={`${row.role.toLowerCase()}s/${row.id}`}>
         <TableNameCell>
           <Bold $color="var(--color-dark-200)">{row.name}</Bold>
         </TableNameCell>
@@ -26,12 +26,12 @@ export const UsersTableColumns = [
     ),
   },
   {
-    id: "userType",
+    id: "role",
     heading: "User Type",
     render: (row) => (
       <ActionTableCell>
         <Row $direction="horizontal" $gap="var(--gap-sm)">
-          {capitalize(row.userType)}
+          {capitalize(row.role)}
         </Row>
       </ActionTableCell>
     ),
@@ -45,7 +45,7 @@ export const UsersTableColumns = [
       return (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${row.userType?.toLowerCase()}s/${row.id}`}>
+            <RouterLink to={`${row.role?.toLowerCase()}s/${row.id}`}>
               <Button $size="extraSmall" $variation="primary">
                 View
               </Button>
@@ -152,7 +152,7 @@ function ManageUsers() {
   console.log(tableTheme);
   const filteredUsers = [...usersData].filter((user) => {
     if (filterBy === "all") return true;
-    return user.userType === filterBy;
+    return user.role === filterBy;
   });
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {

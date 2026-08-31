@@ -87,13 +87,11 @@ const NumTotalAdmins = function ({ numAdmins }) {
 };
 
 function AdminDashboardUserStats({ users }) {
-  const numExplorers = users.filter(
-    (user) => user.userType === "explorer",
-  ).length;
+  const numExplorers = users.filter((user) => user.role === "explorer").length;
   const numAmbassadors = users.filter(
-    (user) => user.userType === "ambassador",
+    (user) => user.role === "ambassador",
   ).length;
-  const numAdmins = users.filter((user) => user.userType === "admin").length;
+  const numAdmins = users.filter((user) => user.role === "admin").length;
 
   return (
     <StyledRow $align="stretch">

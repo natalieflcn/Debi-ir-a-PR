@@ -5,7 +5,7 @@ const explorers = [
   {
     id: "user_001",
     name: "Natalie Falcon",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     explorationsStarted: 10,
     explorationsCompleted: 14,
@@ -16,7 +16,7 @@ const explorers = [
   {
     id: "user_003",
     name: "Jorge Gonzalez",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     email: "genioa@gmail.com",
     explorationsStarted: 10,
@@ -26,7 +26,7 @@ const explorers = [
   {
     id: "user_004",
     name: "Natalie Falcon",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     explorationsStarted: 8,
     explorationsCompleted: 62,
@@ -36,7 +36,7 @@ const explorers = [
   {
     id: "user_006",
     name: "Jorge Gonzalez",
-    userType: "explorer",
+    role: "explorer",
     explorationsCompleted: 61,
     explorationsStarted: 12,
     title: "First Explorer",

@@ -325,5 +325,5 @@
   - [ ] (One) Ambassador data point
 
 - [x] Add way to define type and threshold during badge creation
-- [ ] Refine how addresses (and potentially coordinates) get stored for creating Locations
+- [x] Refine how addresses (and potentially coordinates) get stored for creating Locations
 - [ ] Need to align all userType definitions in front-end to reflect 'role' instead

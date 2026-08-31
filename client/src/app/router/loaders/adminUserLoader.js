@@ -5,7 +5,7 @@ const fakeUsers = [
   {
     id: "user_001",
     name: "Natalie Falcon",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     explorationsCompleted: 6,
     email: "natalie.dflcn@gmail.com",
@@ -15,7 +15,7 @@ const fakeUsers = [
   {
     id: "user_002",
     name: "Alethia Ragland",
-    userType: "ambassador",
+    role: "ambassador",
     title: "Ambassador",
     email: "thearagland@gmail.com",
     dateJoined: "2025-01-17",
@@ -25,7 +25,7 @@ const fakeUsers = [
   {
     id: "user_003",
     name: "Jorge Gonzalez",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     email: "genioa@gmail.com",
     explorationsCompleted: 6,
@@ -34,7 +34,7 @@ const fakeUsers = [
   {
     id: "user_004",
     name: "Natalie Falcon",
-    userType: "explorer",
+    role: "explorer",
     title: "First Explorer",
     explorationsCompleted: 6,
     email: "natalie.dflcn@gmail.com",
@@ -43,7 +43,7 @@ const fakeUsers = [
   {
     id: "user_005",
     name: "Alethia Ragland",
-    userType: "ambassador",
+    role: "ambassador",
     title: "First Explorer",
     email: "thearagland@gmail.com",
     dateJoined: "2025-01-17",
@@ -53,7 +53,7 @@ const fakeUsers = [
   {
     id: "user_006",
     name: "Jorge Gonzalez",
-    userType: "explorer",
+    role: "explorer",
     explorationsCompleted: 6,
     title: "First Explorer",
     email: "genioa@gmail.com",
