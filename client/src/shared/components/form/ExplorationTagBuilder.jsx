@@ -13,10 +13,28 @@ import {
 } from "../../../features/locations/components/explorationLocationCard.styles";
 import { capitalize } from "../../utils/helpers";
 import Bold from "../typography/Bold";
+
 const TagCategories = [
-  { id: "city", name: "City" },
+  { id: "adventure", name: "Adventure" },
+  { id: "architecture", name: "Architecture" },
+  { id: "art", name: "Art" },
   { id: "artist", name: "Artist" },
-  { id: "other", name: "Other" },
+  { id: "culture", name: "Culture" },
+  { id: "entertainment", name: "Entertainment" },
+  { id: "family-friendly", name: "Family Friendly" },
+  { id: "food", name: "Food" },
+  { id: "heritage", name: "Heritage" },
+  { id: "history", name: "History" },
+  { id: "local-favorites", name: "Local Favorites" },
+  { id: "music", name: "Music" },
+  { id: "nature", name: "Nature" },
+  { id: "nightlife", name: "Nightlife" },
+  { id: "outdoors", name: "Outdoors" },
+  { id: "photography", name: "Photography" },
+  { id: "shopping", name: "Shopping" },
+  { id: "sightseeing", name: "Sightseeing" },
+  { id: "relaxation", name: "Relaxation" },
+  { id: "romantic", name: "Romantic" },
 ];
 
 const StyledRow = styled(Row)`

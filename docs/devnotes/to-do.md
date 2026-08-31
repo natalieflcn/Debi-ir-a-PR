@@ -333,8 +333,22 @@
 - [x] Refine how addresses (and potentially coordinates) get stored for creating Locations
 - [x] Need to align all userType definitions in front-end to reflect 'role' instead
 - [x] Change 'startingCity' field of Exploration to 'city/cities' to properly represent multi-city explorations
-  - [ ] [ ] CreateExploration
-  - [ ] [ ] ManageExplorations
-  - [ ] ExplorationCard
-  - [ ] ExplorationMiniCard
-  - [ ] Explorations
+  - [x] [x] CreateExploration
+  - [x] [x] ManageExplorations
+  - [x] ExplorationCard
+  - [x] ExplorationMiniCard
+  - [x] Explorations
+- [x] Revised Exploration Tag and Location Tag options
+  - [x] Explorations
+    - Culture, History, Art, Music, Architecture, Heritage, Artist, Food, Nightlife, Shopping, Nature, Entertainment, Adventure, Outdoors, Sightseeing, Photography, Relaxation, Family-Friendly, Romantic, Local-Favorites
+  - [x] Locations
+    - Restaurant, Bar, Cafe, Bakery, Food-Truck, Beach, Park, Landscape, Waterfall, Forest, Mountain, River, Landmark, Historical-Site, Museum, Monumet, Church, Castle, Plaza, Club, Concert, Theater, Gallery, Market, Shopping, Boutique
+  - [x] Revise Explorer Dashboard Table
+    - Culture: Culture, History, Artist, Heritage,
+    - Art: Art, Music, Architecture, Photography,
+    - Nature: Nature, Outdoors, Sightseeing, Relaxation,
+    - Entertainment: Nightlife, Shopping, Entertainment, Adventure,
+    - Food: Food
+    - Other: Family-Friendly, Romantic, Local-Favorites
+
+- [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized

@@ -4,11 +4,11 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 
 const statsTableColumns = [
-  { id: "restaurants", heading: "Restaurants" },
-  { id: "bars", heading: "Bars" },
-  { id: "landmarks", heading: "Landmarks" },
-  { id: "landscapes", heading: "Landscapes" },
-  { id: "beaches", heading: "Beaches" },
+  { id: "culture", heading: "Culture" },
+  { id: "art", heading: "Art" },
+  { id: "food", heading: "Food" },
+  { id: "entertainment", heading: "Entertainment" },
+  { id: "nature", heading: "Nature" },
   { id: "other", heading: "Other" },
 ];
 

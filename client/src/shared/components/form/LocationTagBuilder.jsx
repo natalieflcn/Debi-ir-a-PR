@@ -14,14 +14,33 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Bold from "../typography/Bold";
 
 const TagCategories = [
-  { id: "restaurant", name: "Restaurant" },
+  { id: "bakery", name: "Bakery" },
   { id: "bar", name: "Bar" },
+  { id: "beach", name: "Beach" },
+  { id: "boutique", name: "Boutique" },
+  { id: "cafe", name: "Cafe" },
+  { id: "castle", name: "Castle" },
+  { id: "church", name: "Church" },
   { id: "club", name: "Club" },
-  { id: "activity", name: "Activity" },
+  { id: "concert", name: "Concert" },
+  { id: "excursion", name: "Excursion" },
+  { id: "food-truck", name: "Food Truck" },
+  { id: "forest", name: "Forest" },
+  { id: "gallery", name: "Gallery" },
+  { id: "historical-site", name: "Historical Site" },
   { id: "landmark", name: "Landmark" },
   { id: "landscape", name: "Landscape" },
-  { id: "beach", name: "Beach" },
-  { id: "other", name: "Other" },
+  { id: "market", name: "Market" },
+  { id: "monument", name: "Monument" },
+  { id: "mountain", name: "Mountain" },
+  { id: "museum", name: "Museum" },
+  { id: "park", name: "Park" },
+  { id: "plaza", name: "Plaza" },
+  { id: "restaurant", name: "Restaurant" },
+  { id: "river", name: "River" },
+  { id: "shopping", name: "Shopping" },
+  { id: "waterfall", name: "Waterfall" },
+  { id: "theater", name: "Theater" },
 ];
 
 const StyledRow = styled(Row)`
