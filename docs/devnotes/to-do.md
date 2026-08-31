@@ -313,12 +313,17 @@
         - [x] EarnedBadges
         - [x] ExplorationProgress
         - [x] Visit
-    - [ ] Create refined development data
-      - [ ] Exploration data
-      - [ ] Badge data
-      - [ ] Location data
-      - [ ] (One) Explorer data point
-      - [ ] (One) Ambassador data point
+  - [ ] Create refined development data
+    - [ ] Badge data
 
-    - [ ] NOTE: Add way to define type and threshold during badge creation
-    - [ ] NOTE: Need to align all userType definitions in front-end to reflect 'role' instead
+## Week: August 31 – September 4
+
+- [~] Create refined development data
+  - [ ] Exploration data
+  - [ ] Location data
+  - [ ] (One) Explorer data point
+  - [ ] (One) Ambassador data point
+
+- [x] Add way to define type and threshold during badge creation
+- [ ] Refine how addresses (and potentially coordinates) get stored for creating Locations
+- [ ] Need to align all userType definitions in front-end to reflect 'role' instead
