@@ -4,7 +4,20 @@ const locationSchema = new mongoose.Schema({
   locationId: { type: String, unique: true, index: true },
   explorationId: { type: mongoose.Schema.ObjectId, ref: "Exploration" },
   name: { type: String, required: [true, "A location name is required."] },
-  address: {},
+  address: {
+    street: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    zipcode: {
+      type: String,
+      required: true,
+    },
+  },
   description: {
     type: String,
     required: [true, "A location description is required."],

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const earnedBadgeSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.ObjectId, ref: "User" },
-  badgeId: { type: mongoose.Schema.ObjectId, ref: "Badge" },
-  earnedAt: { type: Date },
+const earnedBadgeSchema = mongoose.Schema({
+  userId: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
+  badge: { type: mongoose.Schema.ObjectId, ref: "Badge", required: true },
+  earnedAt: { type: Date, default: Date.now },
 });
 
 const EarnedBadge = mongoose.model("EarnedBadge", earnedBadgeSchema);

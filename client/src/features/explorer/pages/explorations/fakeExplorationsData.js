@@ -182,3 +182,45 @@ const fakeExplorationsData = [
 ];
 
 export default fakeExplorationsData;
+
+// // bad bunny exp (7 stops)
+// - ojo de agua (vega baja, sightseeing)
+// - playa puerto nuevo (beach)
+// - el boricua (bar)
+// - el pozo de jacinto (sightseeing)
+// - la casita blanca (san juan, santurce)
+// - casa historia de la musica en cayey (museum)
+// - habitante cafe (cafe)
+
+// // rauw alejandro exp (6 stops)
+// - culebrita beach (beach, culebra)
+// - bar 0.2 (bar, san juan)
+// - canon blanco (river, utuado)
+// - ecos sports bar (bar, san juan)
+// - kiosko el boricua (food)
+// - asador san miguel (food, naranjito)
+
+// // marc anthony exp (5 or 9 stops)
+// - la factoria (san juan)
+// - musica bar and lounge (calle loiza)
+// - antaños bar and tapas
+// - paseo de la salsa
+// - la guancha
+
+// // san juan exp (8 stops)
+// - paseo de la princesa (outdoors)
+// - el hamburguito (food)
+// - escambron beach (beach)
+// - castillo san felipe del morro (landmark)
+// - plaza las americas (shopping)
+// - museo de arte de puerto rico (museo)
+// - morenos spot (bar)
+// - la placita (nightlife)
+
+// // city corredor exp (5 stops)
+// - parque luis munoz rivera
+// - paseo del morro
+// - canal and parque central path
+// - tablado del piñones
+// - ashford avenue
+// - pista recreativa

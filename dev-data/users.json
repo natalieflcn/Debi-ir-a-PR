@@ -1,5 +1,6 @@
 [
   {
+    "userId": "user_001",
     "name": "Natalie Falcon",
     "email": "natalie.dflcn@gmail.com",
     "password": "adminAccount",
@@ -8,6 +9,7 @@
     "avatar": "TEMP.png"
   },
   {
+    "userId": "user_002",
     "name": "Nika Chooi",
     "email": "nikiflcn@gmail.com",
     "password": "explorerAccount1",
@@ -16,6 +18,7 @@
     "avatar": "TEMP.png"
   },
   {
+    "userId": "user_003",
     "name": "Alethia Ragland",
     "email": "thearagland1@gmail.com",
     "password": "explorerAccount2",
@@ -24,6 +27,7 @@
     "avatar": "TEMP.png"
   },
   {
+    "userId": "user_004",
     "name": "Tony Stark",
     "email": "jarvis@aol.com",
     "password": "ambassadorAccount1",
@@ -32,6 +36,7 @@
     "avatar": "TEMP.png"
   },
   {
+    "userId": "user_005",
     "name": "Miles Morales",
     "email": "mmbkspiderman@hotmail.com",
     "password": "ambassadorAccount2",

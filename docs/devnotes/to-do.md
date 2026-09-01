@@ -346,9 +346,11 @@
   - [x] Revise Explorer Dashboard Table
     - Culture: Culture, History, Artist, Heritage,
     - Art: Art, Music, Architecture, Photography,
-    - Nature: Nature, Outdoors, Sightseeing, Relaxation,
-    - Entertainment: Nightlife, Shopping, Entertainment, Adventure,
+    - Nature: Nature, Outdoors, Sightseeing, Relaxation, Hiking, Trail
+    - Entertainment: Nightlife, Shopping, Entertainment, Adventure, Billiards
     - Food: Food
     - Other: Family-Friendly, Romantic, Local-Favorites
+  - [ ] Revise Exploration Filter Options
+    - Culture, Art, Nature, Entertainment, Food, Other
 
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized

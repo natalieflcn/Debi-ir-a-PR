@@ -4,15 +4,23 @@
     "name": "Bad Bunny Exploration",
     "tagline": "The tagline for the Bad Bunny Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
-    "cities": ["Vega Baja"],
+    "cities": ["Vega Baja", "San Juan", "Cayey", "Isabela"],
     "headerImage": ["TEMP.png"],
     "numStops": 7,
-    "tags": ["artist"],
+    "tags": ["artist", "culture", "heritage", "food", "nature", "sightseeing"],
     "featured": true,
-    "badge": null,
-    "locations": "",
+    "badge": "badge_020",
+    "locations": [
+      "ojo-de-agua",
+      "casa-historia-de-la-musica",
+      "habitante-cafe",
+      "la-casita-blanca",
+      "el-pozo-de-jacinto",
+      "playa-puerto-nuevo",
+      "el-boricua"
+    ],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
-    "createdBy": null,
+    "createdBy": "user_001",
     "updatedBy": null
   },
   {
@@ -20,16 +28,23 @@
     "name": "Rauw Alejandro Exploration",
     "tagline": "The tagline for the Rauw Alejandro Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
-    "cities": ["Carolina"],
+    "cities": ["Carolina", "Naranjito", "Utuado"],
     "headerImage": ["TEMP.png"],
     "numStops": 6,
-    "tags": "",
+    "tags": ["artist"],
     "featured": false,
-    "badge": null,
-    "locations": "",
+    "badge": "badge_021",
+    "locations": [
+      "kiosko-el-boricua",
+      "canon-blanco",
+      "ecos-sports-park",
+      "bar-02",
+      "asador-san-miguel",
+      "culebrita-beach"
+    ],
     "images": ["TEMP.png", "TEMP.png"],
-    "createdBy": null,
-    "updatedBy": null
+    "createdBy": "user_005",
+    "updatedBy": "user_005"
   },
   {
     "explorationId": "marc-anthony-exploration",
@@ -38,14 +53,20 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
     "cities": ["Guayama", "Yauco", "Ponce"],
     "headerImage": ["TEMP.png"],
-    "numStops": 9,
-    "tags": "",
+    "numStops": 5,
+    "tags": ["artist"],
     "featured": true,
-    "badge": null,
-    "locations": "",
+    "badge": "badge_022",
+    "locations": [
+      "la-factoria",
+      "paseo-de-la-salsa",
+      "la-guancha",
+      "antanos-bar-and-tapas",
+      "musica-bar-and-lounge"
+    ],
     "images": ["TEMP.png"],
-    "createdBy": null,
-    "updatedBy": null
+    "createdBy": "user_004",
+    "updatedBy": "user_005"
   },
   {
     "explorationId": "san-juan-exploration",
@@ -55,12 +76,21 @@
     "cities": ["San Juan"],
     "headerImage": ["TEMP.png"],
     "numStops": 8,
-    "tags": "",
+    "tags": [],
     "featured": false,
-    "badge": null,
-    "locations": "",
+    "badge": "badge_011",
+    "locations": [
+      "castillo-san-felipe-del-morro",
+      "paseo-de-la-princesa",
+      "balneario-del-escambron",
+      "el-hamburguer",
+      "museo-de-arte-de-puerto-rico",
+      "plaza-las-americas",
+      "morenos-spot",
+      "la-placita"
+    ],
     "images": ["TEMP.png", "TEMP.png"],
-    "createdBy": null,
+    "createdBy": "user_004",
     "updatedBy": null
   },
   {
@@ -71,12 +101,18 @@
     "cities": ["San Juan", "Carolina"],
     "headerImage": ["TEMP.png"],
     "numStops": 5,
-    "tags": "",
+    "tags": ["outdoors"],
     "featured": true,
-    "badge": null,
-    "locations": "",
+    "badge": "badge_030",
+    "locations": [
+      "paseo-del-morro",
+      "parque-luis-munoz-rivera",
+      "ashford-avenue",
+      "parque-central",
+      "paseo-tablado-del-pinones"
+    ],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
-    "createdBy": null,
+    "createdBy": "user_005",
     "updatedBy": null
   }
 ]
