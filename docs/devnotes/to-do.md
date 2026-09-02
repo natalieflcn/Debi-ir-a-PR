@@ -328,7 +328,7 @@
       - [ ] Visit data points
     - [x] (Two) Ambassador data points
     - [x] (One) Admin data point
-- [ ] Import dev-data into MongoDB database
+
 - [x] Add way to define type and threshold during badge creation
 - [x] Refine how addresses (and potentially coordinates) get stored for creating Locations
 - [x] Need to align all userType definitions in front-end to reflect 'role' instead
@@ -350,7 +350,13 @@
     - Entertainment: Nightlife, Shopping, Entertainment, Adventure, Billiards
     - Food: Food
     - Other: Family-Friendly, Romantic, Local-Favorites
-  - [ ] Revise Exploration Filter Options
+  - [ ] TODO Revise Exploration Filter Options
     - Culture, Art, Nature, Entertainment, Food, Other
+- [ ] Import dev-data into MongoDB database
+  - [ ] Create script to import Explorations and Locations
+    - [ ] Import all locations FIRST (locations will be assigned \_id property in MongoDB)
+    - [ ] Write script to update all explorations with MongoDB internal \_id field into the locations field of Exploration documents (use .find() to track locations with locationIds and replace with \_id)
+    - [ ] Import all explorations
 
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+- [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
