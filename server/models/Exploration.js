@@ -45,19 +45,17 @@ const explorationSchema = new mongoose.Schema(
     badge: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Badge",
-      required: [true, "An exploration badge is required."],
     },
-    locations: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Location",
-      default: [],
-    },
+    // locations: {
+    //   type: [mongoose.Schema.Types.ObjectId],
+    //   ref: "Location",
+    //   default: [],
+    // },
     images: { type: [String], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
     // updatedAt: { type: Date },
     updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

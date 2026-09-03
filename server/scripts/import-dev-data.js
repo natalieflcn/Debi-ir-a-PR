@@ -2,42 +2,57 @@ const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Location = require("../models/Location");
-const Exploration = require("..models/Exploration");
-const Badge = require("..models/Badge");
-const EarnedBadge = require("..models/EarnedBadge");
-const User = require("..models/User");
-const Visit = require("..models/Visit");
-const ExplorationProgress = require("..models/ExplorationProgress");
+const Exploration = require("../models/Exploration");
+const Badge = require("../models/Badge");
+const EarnedBadge = require("../models/EarnedBadge");
+const User = require("../models/User");
+const Visit = require("../models/Visit");
+const ExplorationProgress = require("../models/ExplorationProgress");
 
 // Connecting to database
-dotenv.config({ path: "../config.env" });
+dotenv.config({ path: `${__dirname}/../config.env` });
 
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD,
-);
+// console.log(process.env);
+
+const DB = process.env.DB.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log("DB connection successful for importing locations!"));
+  .connect(DB)
+  .then(() => console.log("DB connection successful for importing dev data!"))
+  .catch((err) => {
+    console.log("DB failed to connect for importing dev data!");
+    console.log(err);
+  });
 
 // Location Data
 const locations = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/locations.json`, "utf-8"),
+  fs.readFileSync(`${__dirname}/../dev-data/locations.json`),
 );
 
 const importLocationData = async () => {
   try {
-    await Location.create(locations);
-    console.log("Locations data successfully imported!");
+    // Retrieving explorations and creating an object that matches each explorationId with their _id
+    const explorations = await Exploration.find();
+    const explorationMap = {};
+
+    explorations.forEach(
+      (exp) => (explorationMap[exp.explorationId] = exp._id),
+    );
+
+    // Updating locations with exploration's _id
+    const updatedLocations = locations.map((loc) => {
+      const explorationMongoId = explorationMap[loc.explorationId];
+
+      return { ...loc, explorationId: explorationMongoId };
+    });
+
+    await Location.create(updatedLocations);
+    console.log("Locations data successfully updated and imported!");
   } catch (err) {
-    console.log("Importing locations data failed.");
+    console.log("Updating and importing locations data failed.");
     console.log(err);
   }
+  process.exit();
 };
 
 const deleteLocationData = async () => {
@@ -48,11 +63,12 @@ const deleteLocationData = async () => {
     console.log("Deleting locations data failed.");
     console.log(err);
   }
+  process.exit();
 };
 
 // Exploration Data
 const explorations = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/explorations.json`, "utf-8"),
+  fs.readFileSync(`${__dirname}/../dev-data/explorations.json`, "utf-8"),
 );
 
 const importExplorationData = async () => {
@@ -63,6 +79,7 @@ const importExplorationData = async () => {
     console.log("Importing explorations data failed.");
     console.log(err);
   }
+  process.exit();
 };
 
 const deleteExplorationData = async () => {
@@ -73,175 +90,188 @@ const deleteExplorationData = async () => {
     console.log("Explorations locations data failed.");
     console.log(err);
   }
+  process.exit();
 };
 
-// Badges Data
-const badges = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/badges.json`, "utf-8"),
-);
+// // Badges Data
+// const badges = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/badges.json`, "utf-8"),
+// );
 
-const importBadgeData = async () => {
-  try {
-    await Badge.create(badges);
-    console.log("Badges data successfully imported!");
-  } catch (err) {
-    console.log("Importing Badges data failed.");
-    console.log(err);
-  }
-};
+// const importBadgeData = async () => {
+//   try {
+//     await Badge.create(badges);
+//     console.log("Badges data successfully imported!");
+//   } catch (err) {
+//     console.log("Importing Badges data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteBadgeData = async () => {
-  try {
-    await Badge.deleteMany();
-    console.log("Badges data successfully deleted!");
-  } catch (err) {
-    console.log("Deleting badges data failed.");
-    console.log(err);
-  }
-};
+// const deleteBadgeData = async () => {
+//   try {
+//     await Badge.deleteMany();
+//     console.log("Badges data successfully deleted!");
+//   } catch (err) {
+//     console.log("Deleting badges data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-// EarnedBadges Data
-const earnedBadges = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/earnedBadges.json`, "utf-8"),
-);
+// // EarnedBadges Data
+// const earnedBadges = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/earnedBadges.json`, "utf-8"),
+// );
 
-const importEarnedBadgeData = async () => {
-  try {
-    await EarnedBadge.create(earnedBadges);
-    console.log("EarnedBadges data successfully imported!");
-  } catch (err) {
-    console.log("Importing EarnedBadges data failed.");
-    console.log(err);
-  }
-};
+// const importEarnedBadgeData = async () => {
+//   try {
+//     await EarnedBadge.create(earnedBadges);
+//     console.log("EarnedBadges data successfully imported!");
+//   } catch (err) {
+//     console.log("Importing EarnedBadges data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteEarnedBadgeData = async () => {
-  try {
-    await EarnedBadge.deleteMany();
-    console.log("EarnedBadges data successfully deleted!");
-  } catch (err) {
-    console.log("Deleting EarnedBadges data failed.");
-    console.log(err);
-  }
-};
+// const deleteEarnedBadgeData = async () => {
+//   try {
+//     await EarnedBadge.deleteMany();
+//     console.log("EarnedBadges data successfully deleted!");
+//   } catch (err) {
+//     console.log("Deleting EarnedBadges data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-// Users Data
-const users = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/users.json`, "utf-8"),
-);
+// // Users Data
+// const users = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/users.json`, "utf-8"),
+// );
 
-const importUsersData = async () => {
-  try {
-    await User.create(users);
-    console.log("Users data successfully imported!");
-  } catch (err) {
-    console.log("Importing users data failed.");
-    console.log(err);
-  }
-};
+// const importUsersData = async () => {
+//   try {
+//     await User.create(users);
+//     console.log("Users data successfully imported!");
+//   } catch (err) {
+//     console.log("Importing users data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteUsersData = async () => {
-  try {
-    await User.deleteMany();
-    console.log("Users data successfully deleted!");
-  } catch (err) {
-    console.log("Deleting users data failed.");
-    console.log(err);
-  }
-};
+// const deleteUsersData = async () => {
+//   try {
+//     await User.deleteMany();
+//     console.log("Users data successfully deleted!");
+//   } catch (err) {
+//     console.log("Deleting users data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-// Visit Data
-const visits = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/visits.json`, "utf-8"),
-);
+// // Visit Data
+// const visits = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/visit.json`, "utf-8"),
+// );
 
-const importVisitData = async () => {
-  try {
-    await Visit.create(visit);
-    console.log("Visits data successfully imported!");
-  } catch (err) {
-    console.log("Importing visits data failed.");
-    console.log(err);
-  }
-};
+// const importVisitData = async () => {
+//   try {
+//     await Visit.create(visit);
+//     console.log("Visits data successfully imported!");
+//   } catch (err) {
+//     console.log("Importing visits data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteVisitData = async () => {
-  try {
-    await Visit.deleteMany();
-    console.log("Visits data successfully deleted!");
-  } catch (err) {
-    console.log("Deleting visits data failed.");
-    console.log(err);
-  }
-};
+// const deleteVisitData = async () => {
+//   try {
+//     await Visit.deleteMany();
+//     console.log("Visits data successfully deleted!");
+//   } catch (err) {
+//     console.log("Deleting visits data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-// ExplorationProgress Data
-const explorationProgress = JSON.parse(
-  fs.readFileSync(`${_dirname}/dev-data/explorationProgress.json`, "utf-8"),
-);
+// // ExplorationProgress Data
+// const explorationProgress = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/explorationProgress.json`, "utf-8"),
+// );
 
-const importExplorationProgressData = async () => {
-  try {
-    await ExplorationProgress.create(explorationProgress);
-    console.log("ExplorationProgress data successfully imported!");
-  } catch (err) {
-    console.log("Importing ExplorationProgress data failed.");
-    console.log(err);
-  }
-};
+// const importExplorationProgressData = async () => {
+//   try {
+//     await ExplorationProgress.create(explorationProgress);
+//     console.log("ExplorationProgress data successfully imported!");
+//   } catch (err) {
+//     console.log("Importing ExplorationProgress data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteExplorationProgressData = async () => {
-  try {
-    await ExplorationProgress.deleteMany();
-    console.log("ExplorationProgress data successfully deleted!");
-  } catch (err) {
-    console.log("Deleting ExplorationProgress data failed.");
-    console.log(err);
-  }
-};
+// const deleteExplorationProgressData = async () => {
+//   try {
+//     await ExplorationProgress.deleteMany();
+//     console.log("ExplorationProgress data successfully deleted!");
+//   } catch (err) {
+//     console.log("Deleting ExplorationProgress data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
 switch (process.argv[2]) {
-  case "importLocations":
+  case "--importLocations":
     importLocationData();
     break;
 
-  case "deleteLocations":
+  case "--deleteLocations":
     deleteLocationData();
     break;
 
-  case "importExplorations":
+  case "--importExplorations":
+    importExplorationData();
     break;
 
-  case "deleteExplorations":
+  case "--deleteExplorations":
+    deleteExplorationData();
     break;
 
-  case "importBadges":
+  case "--importBadges":
     break;
 
-  case "deleteBadges":
+  case "--deleteBadges":
     break;
 
-  case "importEarnedBadges":
+  case "--importEarnedBadges":
     break;
 
-  case "deleteEarnedBadges":
+  case "--deleteEarnedBadges":
     break;
 
-  case "importExplorationProgress":
+  case "--importExplorationProgress":
     break;
 
-  case "deleteExplorationProgress":
+  case "--deleteExplorationProgress":
     break;
 
-  case "importUsers":
+  case "--importUsers":
     break;
 
-  case "deleteUsers":
+  case "--deleteUsers":
     break;
 
-  case "importVisits":
+  case "--importVisits":
     break;
 
-  case "deleteVisits":
+  case "--deleteVisits":
     break;
 }

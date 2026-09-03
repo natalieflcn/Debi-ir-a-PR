@@ -9,18 +9,10 @@
     "numStops": 7,
     "tags": ["artist", "culture", "heritage", "food", "nature", "sightseeing"],
     "featured": true,
-    "badge": "badge_020",
-    "locations": [
-      "ojo-de-agua",
-      "casa-historia-de-la-musica",
-      "habitante-cafe",
-      "la-casita-blanca",
-      "el-pozo-de-jacinto",
-      "playa-puerto-nuevo",
-      "el-boricua"
-    ],
+    "badge": null,
+    "locations": [],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
-    "createdBy": "user_001",
+    "createdBy": null,
     "updatedBy": null
   },
   {
@@ -33,18 +25,11 @@
     "numStops": 6,
     "tags": ["artist"],
     "featured": false,
-    "badge": "badge_021",
-    "locations": [
-      "kiosko-el-boricua",
-      "canon-blanco",
-      "ecos-sports-park",
-      "bar-02",
-      "asador-san-miguel",
-      "culebrita-beach"
-    ],
+    "badge": null,
+    "locations": [],
     "images": ["TEMP.png", "TEMP.png"],
-    "createdBy": "user_005",
-    "updatedBy": "user_005"
+    "createdBy": null,
+    "updatedBy": null
   },
   {
     "explorationId": "marc-anthony-exploration",
@@ -56,17 +41,11 @@
     "numStops": 5,
     "tags": ["artist"],
     "featured": true,
-    "badge": "badge_022",
-    "locations": [
-      "la-factoria",
-      "paseo-de-la-salsa",
-      "la-guancha",
-      "antanos-bar-and-tapas",
-      "musica-bar-and-lounge"
-    ],
+    "badge": null,
+    "locations": [],
     "images": ["TEMP.png"],
-    "createdBy": "user_004",
-    "updatedBy": "user_005"
+    "createdBy": null,
+    "updatedBy": null
   },
   {
     "explorationId": "san-juan-exploration",
@@ -78,19 +57,10 @@
     "numStops": 8,
     "tags": [],
     "featured": false,
-    "badge": "badge_011",
-    "locations": [
-      "castillo-san-felipe-del-morro",
-      "paseo-de-la-princesa",
-      "balneario-del-escambron",
-      "el-hamburguer",
-      "museo-de-arte-de-puerto-rico",
-      "plaza-las-americas",
-      "morenos-spot",
-      "la-placita"
-    ],
+    "badge": null,
+    "locations": [],
     "images": ["TEMP.png", "TEMP.png"],
-    "createdBy": "user_004",
+    "createdBy": null,
     "updatedBy": null
   },
   {
@@ -103,16 +73,10 @@
     "numStops": 5,
     "tags": ["outdoors"],
     "featured": true,
-    "badge": "badge_030",
-    "locations": [
-      "paseo-del-morro",
-      "parque-luis-munoz-rivera",
-      "ashford-avenue",
-      "parque-central",
-      "paseo-tablado-del-pinones"
-    ],
+    "badge": null,
+    "locations": [],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
-    "createdBy": "user_005",
+    "createdBy": null,
     "updatedBy": null
   }
 ]
