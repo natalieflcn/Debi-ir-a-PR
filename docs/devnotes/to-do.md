@@ -319,8 +319,8 @@
 ## Week: August 31 – September 4
 
 - [~] Create refined development data
-  - [ ] (Five) Exploration data TODO 2
-  - [ ] Location data TODO 3
+  - [x] (Five) Exploration data TODO 2
+  - [x] Location data TODO 3
   - [x] (Five) Users data
     - [x] (Two) Explorer data points
       - [ ] EarnedBadges data points
@@ -350,13 +350,13 @@
     - Entertainment: Nightlife, Shopping, Entertainment, Adventure, Billiards
     - Food: Food
     - Other: Family-Friendly, Romantic, Local-Favorites
-  - [ ] TODO Revise Exploration Filter Options
+  - [x] TODO Revise Exploration Filter Options
     - Culture, Art, Nature, Entertainment, Food, Other
-- [ ] Import dev-data into MongoDB database
-  - [ ] Create script to import Explorations and Locations
-    - [ ] Import all locations FIRST (locations will be assigned \_id property in MongoDB)
-    - [ ] Write script to update all explorations with MongoDB internal \_id field into the locations field of Exploration documents (use .find() to track locations with locationIds and replace with \_id)
-    - [ ] Import all explorations
+- [x] Import dev-data into MongoDB database
+  - [x] Create script to import Explorations and Locations
+    - [x] Import all locations FIRST (locations will be assigned \_id property in MongoDB)
+    - [x] Write script to update all explorations with MongoDB internal \_id field into the locations field of Exploration documents (use .find() to track locations with locationIds and replace with \_id)
+    - [x] Import all explorations
 
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
 - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)

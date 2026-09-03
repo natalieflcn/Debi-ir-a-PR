@@ -19,12 +19,38 @@ const StyledRow = styled(Row)`
 `;
 
 const ExplorationsFiltersCategories = [
-  { id: "city", name: "City" },
-  { id: "restaurants", name: "Restaurants" },
-  { id: "landmarks", name: "Landmarks" },
-  { id: "landscapes", name: "Landscapes" },
+  {
+    id: "arts-culture",
+    name: "Arts & Culture",
+    tags: ["culture", "history", "artist", "heritage", "art", "architecture"],
+  },
+  {
+    id: "entertainment",
+    name: "Entertainment",
+    tags: ["nightlife", "shopping", "entertainment", "adventure", "billiards"],
+  },
+  { id: "food", name: "Food", tags: ["food"] },
+  {
+    id: "nature",
+    name: "Nature",
+    tags: [
+      "nature",
+      "outdoors",
+      "sightseeing",
+      "hiking",
+      "trail",
+      "photography",
+    ],
+  },
+  {
+    id: "other",
+    name: "Other",
+    tags: ["family-friendly", "local-favorites", "romantic", "relaxation"],
+  },
+];
 
-  { id: "other", name: "Other" },
+const explorationFilters = [
+  ...ExplorationsFiltersCategories,
   { id: "all", name: "All" },
 ];
 
@@ -35,7 +61,7 @@ const explorationsSort = [
 
 function ExplorationsFilters({
   sortCategories = explorationsSort,
-  filterCategories = ExplorationsFiltersCategories,
+  filterCategories = explorationFilters,
   onSort,
   onFilter,
   filterInitState,
@@ -61,7 +87,7 @@ function ExplorationsFilters({
       <FilterDropdown
         categories={filterCategories}
         onFilter={onFilter}
-        initState={filterInitState || "Featured"}
+        initState={filterInitState || "All"}
       />
     </StyledRow>
   );

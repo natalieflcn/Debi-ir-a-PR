@@ -3,8 +3,17 @@ const Exploration = require("../models/Exploration");
 
 exports.getAllExplorations = async (req, res) => {
   try {
-    const explorations = await Exploration.find();
+    // BUILD QUERY
+    const queryObj = { ...req.query };
+    const excludedFields = ["page", "sort", "limit", "fields"];
+    excludedFields.forEach((field) => delete queryObj[field]);
 
+    const query = Exploration.find(queryObj);
+
+    // EXECUTE QUERY
+    const explorations = await query;
+
+    // SEND RESPONSE
     res.status(200).json({ status: "success", data: { explorations } });
   } catch (err) {
     console.log(err);
