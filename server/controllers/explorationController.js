@@ -1,51 +1,58 @@
 const express = require("express");
 const Exploration = require("../models/Exploration");
+const APIFeatures = require("../utils/apiFeatures");
 
 exports.getAllExplorations = async (req, res) => {
   try {
     // BUILD QUERY
-    // Filtering
-    const queryObj = { ...req.query };
-    const excludedFields = ["page", "sort", "limit", "fields"];
-    excludedFields.forEach((field) => delete queryObj[field]);
+    // // Filtering
+    // const queryObj = { ...req.query };
+    // const excludedFields = ["page", "sort", "limit", "fields"];
+    // excludedFields.forEach((field) => delete queryObj[field]);
 
-    const queryString = JSON.stringify(queryObj);
+    // const queryString = JSON.stringify(queryObj);
 
-    let query = Exploration.find(JSON.parse(queryString));
+    // let query = Exploration.find(JSON.parse(queryString));
 
-    // Sorting
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(",").join(" ");
-      query = query.sort(sortBy);
-      console.log(sortBy);
-    } else {
-      query = query.sort("-createdAt -updatedAt name");
-    }
+    // // Sorting
+    // if (req.query.sort) {
+    //   const sortBy = req.query.sort.split(",").join(" ");
+    //   query = query.sort(sortBy);
+    //   console.log(sortBy);
+    // } else {
+    //   query = query.sort("-createdAt -updatedAt name");
+    // }
 
-    // Limiting Fields
-    if (req.query.fields) {
-      console.log(req.query.fields);
-      const fields = req.query.fields.split(",").join(" ");
-      console.log(fields);
-      query = query.select(fields);
-    } else {
-      query = query.select("-__v");
-    }
+    // // Limiting Fields
+    // if (req.query.fields) {
+    //   console.log(req.query.fields);
+    //   const fields = req.query.fields.split(",").join(" ");
+    //   console.log(fields);
+    //   query = query.select(fields);
+    // } else {
+    //   query = query.select("-__v");
+    // }
 
-    // Pagination
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 20;
-    const skip = (page - 1) * limit;
+    // // Pagination
+    // const page = req.query.page * 1 || 1;
+    // const limit = req.query.limit * 1 || 20;
+    // const skip = (page - 1) * limit;
 
-    query = query.skip(skip).limit(limit);
+    // query = query.skip(skip).limit(limit);
 
-    if (req.query.page) {
-      const numExplorations = await Exploration.countDocuments();
-      if (skip >= numExplorations) throw new Error("This page does not exist.");
-    }
+    // if (req.query.page) {
+    //   const numExplorations = await Exploration.countDocuments();
+    //   if (skip >= numExplorations) throw new Error("This page does not exist.");
+    // }
 
     // EXECUTE QUERY
-    const explorations = await query;
+    const features = new APIFeatures(Exploration.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const explorations = await features.query;
 
     // SEND RESPONSE
     res.status(200).json({ status: "success", data: { explorations } });
