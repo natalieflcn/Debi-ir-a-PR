@@ -57,6 +57,7 @@ const explorationFilters = [
 const explorationsSort = [
   { id: "name", name: "Name" },
   { id: "numStops", name: "Number of Stops" },
+  { id: "dateCreated", name: "Date Created" },
 ];
 
 function ExplorationsFilters({
@@ -81,7 +82,7 @@ function ExplorationsFilters({
       <SortDropdown
         categories={sortCategories}
         onSort={onSort}
-        initState={sortInitState || "Name"}
+        initState={sortInitState || "Date Created"}
       />
 
       <FilterDropdown

@@ -9,7 +9,7 @@ router
   .post(explorationController.createExploration);
 
 router
-  .route("/:explorationId")
+  .route("/:id")
   .get(explorationController.getExploration)
   .patch(explorationController.updateExploration)
   .delete(explorationController.deleteExploration);

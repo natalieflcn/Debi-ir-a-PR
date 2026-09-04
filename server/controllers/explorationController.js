@@ -4,11 +4,45 @@ const Exploration = require("../models/Exploration");
 exports.getAllExplorations = async (req, res) => {
   try {
     // BUILD QUERY
+    // Filtering
     const queryObj = { ...req.query };
     const excludedFields = ["page", "sort", "limit", "fields"];
     excludedFields.forEach((field) => delete queryObj[field]);
 
-    const query = Exploration.find(queryObj);
+    const queryString = JSON.stringify(queryObj);
+
+    let query = Exploration.find(JSON.parse(queryString));
+
+    // Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(",").join(" ");
+      query = query.sort(sortBy);
+      console.log(sortBy);
+    } else {
+      query = query.sort("-createdAt -updatedAt name");
+    }
+
+    // Limiting Fields
+    if (req.query.fields) {
+      console.log(req.query.fields);
+      const fields = req.query.fields.split(",").join(" ");
+      console.log(fields);
+      query = query.select(fields);
+    } else {
+      query = query.select("-__v");
+    }
+
+    // Pagination
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 20;
+    const skip = (page - 1) * limit;
+
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const numExplorations = await Exploration.countDocuments();
+      if (skip >= numExplorations) throw new Error("This page does not exist.");
+    }
 
     // EXECUTE QUERY
     const explorations = await query;
@@ -27,7 +61,7 @@ exports.getAllExplorations = async (req, res) => {
 exports.getExploration = async (req, res) => {
   try {
     const exploration = await Exploration.findOne({
-      explorationId: req.params.explorationId,
+      _id: req.params.id,
     });
 
     res.status(200).json({ status: "success", data: { exploration } });
@@ -59,12 +93,13 @@ exports.createExploration = async (req, res) => {
 
 exports.updateExploration = async (req, res) => {
   try {
+    console.log(req.params);
     const exploration = await Exploration.findOneAndUpdate(
-      { explorationId: req.params.explorationId },
+      { _id: req.params.id },
       req.body,
       { new: true, runValidators: true },
     );
-
+    console.log(exploration);
     res.status(200).json({ status: "success", data: { exploration } });
   } catch (err) {
     console.log(err);
@@ -78,7 +113,7 @@ exports.updateExploration = async (req, res) => {
 exports.deleteExploration = async (req, res) => {
   try {
     await Exploration.findOneAndDelete({
-      explorationId: req.params.explorationId,
+      _id: req.params.id,
     });
 
     res.status(204).json({ status: "success", data: null });

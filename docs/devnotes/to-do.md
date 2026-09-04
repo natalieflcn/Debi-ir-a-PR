@@ -357,6 +357,13 @@
     - [x] Import all locations FIRST (locations will be assigned \_id property in MongoDB)
     - [x] Write script to update all explorations with MongoDB internal \_id field into the locations field of Exploration documents (use .find() to track locations with locationIds and replace with \_id)
     - [x] Import all explorations
-
+- [ ] Implement filtering for backend API
+  - [ ] Filter by tags
+  - [x] Filter by featured status
+  - [x] Sort by name, number of stops
+  - [x] Implement limiting fields
+  - [x] Implement pagination
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
 - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+
+- Note: La Marquesa
