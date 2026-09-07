@@ -357,13 +357,32 @@
     - [x] Import all locations FIRST (locations will be assigned \_id property in MongoDB)
     - [x] Write script to update all explorations with MongoDB internal \_id field into the locations field of Exploration documents (use .find() to track locations with locationIds and replace with \_id)
     - [x] Import all explorations
-- [ ] Implement filtering for backend API
+- [~] Implement filtering for backend API
   - [ ] Filter by tags
   - [x] Filter by featured status
   - [x] Sort by name, number of stops
   - [x] Implement limiting fields
   - [x] Implement pagination
+  - [x] Refactor API into module
+
+## Week: September 5 – September 12
+
+- [~] Continue refreshing yourself on MongoDB, Express, Node.js
+  - [~] MongoDB and Mongoose basics
+    - [ ] Setup routing and API for explorations and locations
+    - [~] Turn numStops into virtual property
+    - [ ] Polish validators in schemas
+    - [ ] Create pre-save hook to automatically create explorationId and locationId out of object names
+  - [ ] Error Handling in Express
+    - [ ] Refactor error handling in route handlers
+  - [ ] Authentication, Authorization, and Security
+    - [ ] Implement Users data, routing, and API
+  - [ ] Modelling Data and Advanced Mongoose
+    - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
+  - [ ] Automated Emails, File Uploads, Google Maps
+- [ ] Add ability for ambassadors/admins to delete resources
+  - [ ] Delete explorations
+  - [ ] Delete locations
+  - [ ] Delete users
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
 - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
-
-- Note: La Marquesa

@@ -1,6 +1,6 @@
 [
   {
-    "locationId": "ojo-de-agua",
+    "slug": "ojo-de-agua",
     "explorationId": "bad-bunny-exploration",
     "name": "Ojo de Agua",
     "address": {
@@ -18,7 +18,7 @@
     "tags": ["landscape", "river"]
   },
   {
-    "locationId": "casa-historia-de-la-musica",
+    "slug": "casa-historia-de-la-musica",
     "explorationId": "bad-bunny-exploration",
     "name": "Casa Historia de la Música",
     "address": {
@@ -36,7 +36,7 @@
     "tags": ["museum"]
   },
   {
-    "locationId": "habitante-cafe",
+    "slug": "habitante-cafe",
     "explorationId": "bad-bunny-exploration",
     "name": "Habitante Café",
     "address": {
@@ -54,7 +54,7 @@
     "tags": ["cafe"]
   },
   {
-    "locationId": "la-casita-blanca",
+    "slug": "la-casita-blanca",
     "explorationId": "bad-bunny-exploration",
     "name": "La Casita Blanca",
     "address": {
@@ -72,7 +72,7 @@
     "tags": ["restaurant"]
   },
   {
-    "locationId": "el-pozo-de-jacinto",
+    "slug": "el-pozo-de-jacinto",
     "explorationId": "bad-bunny-exploration",
     "name": "El Pozo de Jacinto",
     "address": {
@@ -90,7 +90,7 @@
     "tags": ["beach", "hiking", "cave"]
   },
   {
-    "locationId": "playa-puerto-nuevo",
+    "slug": "playa-puerto-nuevo",
     "explorationId": "bad-bunny-exploration",
     "name": "Playa Puerto Nuevo",
     "address": {
@@ -108,7 +108,7 @@
     "tags": ["beach"]
   },
   {
-    "locationId": "el-boricua",
+    "slug": "el-boricua",
     "explorationId": "bad-bunny-exploration",
     "name": "El Boricua",
     "address": {
@@ -126,7 +126,7 @@
     "tags": ["bar"]
   },
   {
-    "locationId": "kiosko-el-boricua",
+    "slug": "kiosko-el-boricua",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Kiosko El Boricua",
     "address": {
@@ -144,7 +144,7 @@
     "tags": ["restaurant"]
   },
   {
-    "locationId": "canon-blanco",
+    "slug": "canon-blanco",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Canon Blanco",
     "address": {
@@ -162,7 +162,7 @@
     "tags": ["hiking", "mountain"]
   },
   {
-    "locationId": "ecos-sports-park",
+    "slug": "ecos-sports-park",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Eco's Sports Park",
     "address": {
@@ -180,7 +180,7 @@
     "tags": ["park", "dancing", "bar", "sports", "plaza"]
   },
   {
-    "locationId": "bar-02",
+    "slug": "bar-02",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Bar 0.2",
     "address": {
@@ -198,7 +198,7 @@
     "tags": ["bar"]
   },
   {
-    "locationId": "asador-san-miguel",
+    "slug": "asador-san-miguel",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Asador San Miguel",
     "address": {
@@ -216,7 +216,7 @@
     "tags": ["restaurant"]
   },
   {
-    "locationId": "culebrita-beach",
+    "slug": "culebrita-beach",
     "explorationId": "rauw-alejandro-exploration",
     "name": "Culebrita Beach",
     "address": {
@@ -234,7 +234,7 @@
     "tags": ["beach"]
   },
   {
-    "locationId": "la-factoria",
+    "slug": "la-factoria",
     "explorationId": "marc-anthony-exploration",
     "name": "La Factoría",
     "address": {
@@ -252,7 +252,7 @@
     "tags": ["bar", "salsa", "dancing"]
   },
   {
-    "locationId": "paseo-de-la-salsa",
+    "slug": "paseo-de-la-salsa",
     "explorationId": "marc-anthony-exploration",
     "name": "Paseo de la Salsa",
     "address": {
@@ -270,7 +270,7 @@
     "tags": ["dancing", "salsa"]
   },
   {
-    "locationId": "la-guancha",
+    "slug": "la-guancha",
     "explorationId": "marc-anthony-exploration",
     "name": "La Guancha",
     "address": {
@@ -288,7 +288,7 @@
     "tags": ["attraction", "park", "beach", "food-truck"]
   },
   {
-    "locationId": "antanos-bar-and-tapas",
+    "slug": "antanos-bar-and-tapas",
     "explorationId": "marc-anthony-exploration",
     "name": "Antaño's Bar and Tapas",
     "address": {
@@ -306,7 +306,7 @@
     "tags": ["restaurant", "bar"]
   },
   {
-    "locationId": "musica-bar-and-lounge",
+    "slug": "musica-bar-and-lounge",
     "explorationId": "marc-anthony-exploration",
     "name": "Música Bar and Lounge",
     "address": {
@@ -324,7 +324,7 @@
     "tags": ["bar", "dancing", "salsa"]
   },
   {
-    "locationId": "castillo-san-felipe-del-morro",
+    "slug": "castillo-san-felipe-del-morro",
     "explorationId": "san-juan-exploration",
     "name": "Castillo San Felipe del Morro",
     "address": {
@@ -342,7 +342,7 @@
     "tags": ["landmark", "historical-site", "castle", "attraction"]
   },
   {
-    "locationId": "paseo-de-la-princesa",
+    "slug": "paseo-de-la-princesa",
     "explorationId": "san-juan-exploration",
     "name": "Paseo de la Princesa",
     "address": {
@@ -360,7 +360,7 @@
     "tags": ["food"]
   },
   {
-    "locationId": "balneario-del-escambron",
+    "slug": "balneario-del-escambron",
     "explorationId": "san-juan-exploration",
     "name": "Balneario del Escambrón",
     "address": {
@@ -378,7 +378,7 @@
     "tags": ["food"]
   },
   {
-    "locationId": "el-hamburguer",
+    "slug": "el-hamburguer",
     "explorationId": "san-juan-exploration",
     "name": "El Hamburguer",
     "address": {
@@ -396,7 +396,7 @@
     "tags": ["food"]
   },
   {
-    "locationId": "museo-de-arte-de-puerto-rico",
+    "slug": "museo-de-arte-de-puerto-rico",
     "explorationId": "san-juan-exploration",
     "name": "Museo de Arte de Puerto Rico",
     "address": {
@@ -414,7 +414,7 @@
     "tags": ["museum", "art"]
   },
   {
-    "locationId": "plaza-las-americas",
+    "slug": "plaza-las-americas",
     "explorationId": "san-juan-exploration",
     "name": "Plaza Las Americas",
     "address": {
@@ -432,7 +432,7 @@
     "tags": ["food"]
   },
   {
-    "locationId": "morenos-spot",
+    "slug": "morenos-spot",
     "explorationId": "san-juan-exploration",
     "name": "Moreno's Spot",
     "address": {
@@ -450,7 +450,7 @@
     "tags": ["restaurant", "bar"]
   },
   {
-    "locationId": "la-placita",
+    "slug": "la-placita",
     "explorationId": "san-juan-exploration",
     "name": "La Placita",
     "address": {
@@ -468,7 +468,7 @@
     "tags": ["bar", "club", "dancing", "reggaeton"]
   },
   {
-    "locationId": "paseo-del-morro",
+    "slug": "paseo-del-morro",
     "explorationId": "city-corredor-exploration",
     "name": "Paseo del Morro",
     "address": {
@@ -486,7 +486,7 @@
     "tags": ["trail"]
   },
   {
-    "locationId": "parque-luis-munoz-rivera",
+    "slug": "parque-luis-munoz-rivera",
     "explorationId": "city-corredor-exploration",
     "name": "Parque Luis Muñoz Rivera",
     "address": {
@@ -504,7 +504,7 @@
     "tags": ["trail", "park"]
   },
   {
-    "locationId": "ashford-avenue",
+    "slug": "ashford-avenue",
     "explorationId": "city-corredor-exploration",
     "name": "Ashford Avenue",
     "address": {
@@ -522,7 +522,7 @@
     "tags": ["trail"]
   },
   {
-    "locationId": "parque-central",
+    "slug": "parque-central",
     "explorationId": "city-corredor-exploration",
     "name": "Parque Central",
     "address": {
@@ -540,7 +540,7 @@
     "tags": ["trail", "park"]
   },
   {
-    "locationId": "paseo-tablado-del-pinones",
+    "slug": "paseo-tablado-del-pinones",
     "explorationId": "city-corredor-exploration",
     "name": "Paseo Tablado del Piñones",
     "address": {

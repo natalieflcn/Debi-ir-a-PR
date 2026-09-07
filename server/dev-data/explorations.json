@@ -1,6 +1,6 @@
 [
   {
-    "explorationId": "bad-bunny-exploration",
+    "slug": "bad-bunny-exploration",
     "name": "Bad Bunny Exploration",
     "tagline": "The tagline for the Bad Bunny Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
@@ -16,7 +16,7 @@
     "updatedBy": null
   },
   {
-    "explorationId": "rauw-alejandro-exploration",
+    "slug": "rauw-alejandro-exploration",
     "name": "Rauw Alejandro Exploration",
     "tagline": "The tagline for the Rauw Alejandro Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
@@ -32,7 +32,7 @@
     "updatedBy": null
   },
   {
-    "explorationId": "marc-anthony-exploration",
+    "slug": "marc-anthony-exploration",
     "name": "Marc Anthony Exploration",
     "tagline": "The tagline for the Marc Anthony Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
@@ -48,7 +48,7 @@
     "updatedBy": null
   },
   {
-    "explorationId": "san-juan-exploration",
+    "slug": "san-juan-exploration",
     "name": "San Juan Exploration",
     "tagline": "The tagline for the San Juan Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",
@@ -64,7 +64,7 @@
     "updatedBy": null
   },
   {
-    "explorationId": "city-corredor-exploration",
+    "slug": "city-corredor-exploration",
     "name": "City Corredor Exploration",
     "tagline": "The tagline for the City Corredor Exploration.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl.",

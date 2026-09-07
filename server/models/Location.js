@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const locationSchema = new mongoose.Schema({
-  locationId: { type: String, unique: true, index: true },
+  slug: { type: String, index: true },
   explorationId: { type: mongoose.Schema.ObjectId, ref: "Exploration" },
   name: { type: String, required: [true, "A location name is required."] },
   address: {

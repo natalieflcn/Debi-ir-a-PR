@@ -35,9 +35,7 @@ const importLocationData = async () => {
     const explorations = await Exploration.find();
     const explorationMap = {};
 
-    explorations.forEach(
-      (exp) => (explorationMap[exp.explorationId] = exp._id),
-    );
+    explorations.forEach((exp) => (explorationMap[exp.slug] = exp._id));
 
     // Updating locations with exploration's _id
     const updatedLocations = locations.map((loc) => {
@@ -57,8 +55,8 @@ const importLocationData = async () => {
 
 const deleteLocationData = async () => {
   try {
-    await Location.deleteMany();
-    console.log("Locations data successfully deleted!");
+    await Location.collection.drop();
+    console.log("Locations collection successfully dropped and deleted!");
   } catch (err) {
     console.log("Deleting locations data failed.");
     console.log(err);
@@ -84,10 +82,10 @@ const importExplorationData = async () => {
 
 const deleteExplorationData = async () => {
   try {
-    await Exploration.deleteMany();
-    console.log("Explorations data successfully deleted!");
+    await Exploration.collection.drop();
+    console.log("Explorations collection successfully dropped and deleted!");
   } catch (err) {
-    console.log("Explorations locations data failed.");
+    console.log("Deleting explorations data failed.");
     console.log(err);
   }
   process.exit();
