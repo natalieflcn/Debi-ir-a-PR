@@ -257,7 +257,7 @@
     "name": "Paseo de la Salsa",
     "address": {
       "street": "Calle Atocha",
-      "city": "Poncé",
+      "city": "Ponce",
       "zipcode": "00730"
     },
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
@@ -357,7 +357,7 @@
       "/src/assets/images/content/TEMP.png",
       "/src/assets/images/content/TEMP.png"
     ],
-    "tags": ["food"]
+    "tags": ["plaza"]
   },
   {
     "slug": "balneario-del-escambron",
@@ -375,7 +375,7 @@
       "/src/assets/images/content/TEMP.png",
       "/src/assets/images/content/TEMP.png"
     ],
-    "tags": ["food"]
+    "tags": ["beach"]
   },
   {
     "slug": "el-hamburguer",
@@ -393,7 +393,7 @@
       "/src/assets/images/content/TEMP.png",
       "/src/assets/images/content/TEMP.png"
     ],
-    "tags": ["food"]
+    "tags": ["restaurant"]
   },
   {
     "slug": "museo-de-arte-de-puerto-rico",
@@ -429,7 +429,7 @@
       "/src/assets/images/content/TEMP.png",
       "/src/assets/images/content/TEMP.png"
     ],
-    "tags": ["food"]
+    "tags": ["shopping"]
   },
   {
     "slug": "morenos-spot",

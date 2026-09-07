@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
+const { EXPLORATION_TAGS, PR_CITIES } = require("../utils/constants");
 
 const explorationSchema = new mongoose.Schema(
   {
@@ -42,6 +44,7 @@ const explorationSchema = new mongoose.Schema(
     },
     cities: {
       type: [String],
+      enum: PR_CITIES,
       default: [],
     },
     headerImage: {
@@ -58,6 +61,7 @@ const explorationSchema = new mongoose.Schema(
     // numStops: { type: Number },
     tags: {
       type: [String],
+      enum: EXPLORATION_TAGS,
       required: [true, "At least one exploration tag is required."],
     },
     featured: { type: Boolean, default: false },
@@ -85,6 +89,11 @@ const explorationSchema = new mongoose.Schema(
 
 explorationSchema.virtual("numStops").get(function () {
   return 5;
+});
+
+// Middlewares
+explorationSchema.pre("save", function (next) {
+  this.slug = slugify(this.name, { lower: true });
 });
 
 const Exploration = mongoose.model("Exploration", explorationSchema);
