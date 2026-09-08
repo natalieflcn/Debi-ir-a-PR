@@ -369,12 +369,14 @@
 
 - [~] Continue refreshing yourself on MongoDB, Express, Node.js
   - [~] MongoDB and Mongoose basics
-    - [ ] Setup routing and API for explorations and locations
+    - [~] Setup routing and API for explorations and locations
     - [~] Turn numStops into virtual property
-    - [ ] Polish validators in schemas
-    - [ ] Create pre-save hook to automatically create explorationId and locationId out of object names
+    - [x] Polish validators in schemas
+    - [x] Create pre-save hook to automatically create explorationId and locationId out of object names
   - [ ] Error Handling in Express
+    - [ ] Create global error handling middleware
     - [ ] Refactor error handling in route handlers
+    - [ ] Create catchAsync wrapper and wrap route handlers
   - [ ] Authentication, Authorization, and Security
     - [ ] Implement Users data, routing, and API
   - [ ] Modelling Data and Advanced Mongoose
@@ -386,3 +388,4 @@
   - [ ] Delete users
 - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
 - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+- [ ] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
