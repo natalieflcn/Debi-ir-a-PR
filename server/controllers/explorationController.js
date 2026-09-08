@@ -2,6 +2,7 @@ const express = require("express");
 const Exploration = require("../models/Exploration");
 const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
 exports.getAllExplorations = catchAsync(async (req, res, next) => {
   // EXECUTE QUERY
@@ -22,6 +23,9 @@ exports.getExploration = catchAsync(async (req, res, next) => {
     _id: req.params.id,
   });
 
+  if (!exploration)
+    next(new AppError("No exploration found with that ID.", 404));
+
   res.status(200).json({ status: "success", data: { exploration } });
 });
 
@@ -34,20 +38,25 @@ exports.createExploration = catchAsync(async (req, res, next) => {
 });
 
 exports.updateExploration = catchAsync(async (req, res, next) => {
-  console.log(req.params);
   const exploration = await Exploration.findOneAndUpdate(
     { _id: req.params.id },
     req.body,
     { new: true, runValidators: true },
   );
-  console.log(exploration);
+
+  if (!exploration)
+    next(new AppError("No exploration found with that ID.", 404));
+
   res.status(200).json({ status: "success", data: { exploration } });
 });
 
 exports.deleteExploration = catchAsync(async (req, res, next) => {
-  await Exploration.findOneAndDelete({
+  const exploration = await Exploration.findOneAndDelete({
     _id: req.params.id,
   });
+
+  if (!exploration)
+    next(new AppError("No exploration found with that ID.", 404));
 
   res.status(204).json({ status: "success", data: null });
 });

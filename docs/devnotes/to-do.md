@@ -374,14 +374,24 @@
     - [x] Polish validators in schemas
     - [x] Create pre-save hook to automatically create explorationId and locationId out of object names
   - [ ] Error Handling in Express
-    - [ ] Create global error handling middleware
-    - [ ] Refactor error handling in route handlers
-    - [ ] Create catchAsync wrapper and wrap route handlers
+    - [x] Create global error handling middleware
+    - [x] Refactor error handling in route handlers
+    - [x] Create catchAsync wrapper and wrap route handlers
+    - [x] Distinguish between development error handling and production error handling
+    - [ ] Handle different errors
+      - [x] 404 Not Found Errors
+      - [ ] CastError
+      - [ ] DuplicateKey Error
+      - [ ] ValidationError
+      - [ ] Unhandled rejected promises
+      - [ ] Uncaught exceptions
+
   - [ ] Authentication, Authorization, and Security
     - [ ] Implement Users data, routing, and API
   - [ ] Modelling Data and Advanced Mongoose
     - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
   - [ ] Automated Emails, File Uploads, Google Maps
+
 - [ ] Add ability for ambassadors/admins to delete resources
   - [ ] Delete explorations
   - [ ] Delete locations

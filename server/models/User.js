@@ -1,31 +1,38 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const capitalize = require("../utils/helpers");
 
 const userSchema = new mongoose.Schema(
   {
-    userId: { type: String, unique: true, index: true },
     name: {
       type: String,
-      required: [true, "A user name is required."],
+      required: [true, "Please enter your name."],
       trim: true,
     },
     email: {
       type: String,
-      required: [true, "A user email is required."],
+      required: [true, "Please provide your email."],
       lowercase: true,
       trim: true,
       unique: true,
-      match: [/^\S+@\S+\.\S+$/, "Please provide a valid email."],
+      validate: [validator.isEmail, "Please provide a valid email."],
     },
     password: {
       type: String,
-      required: [true, "A password is required."],
+      required: [true, "Please provide a password."],
+      minlength: 8,
+      select: false,
+    },
+    passwordConfirm: {
+      type: String,
+      required: [true, "Please confirm your password."],
+      minlength: 8,
       select: false,
     },
     role: {
       type: String,
       enum: ["explorer", "ambassador", "admin"],
-      required: true,
+      default: "explorer",
     },
     title: {
       type: String,
