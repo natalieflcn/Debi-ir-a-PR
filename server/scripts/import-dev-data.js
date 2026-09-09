@@ -145,32 +145,32 @@ const deleteExplorationData = async () => {
 //   process.exit();
 // };
 
-// // Users Data
-// const users = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/users.json`, "utf-8"),
-// );
+// Users Data
+const users = JSON.parse(
+  fs.readFileSync(`${__dirname}/../dev-data/users.json`, "utf-8"),
+);
 
-// const importUsersData = async () => {
-//   try {
-//     await User.create(users);
-//     console.log("Users data successfully imported!");
-//   } catch (err) {
-//     console.log("Importing users data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
+const importUsersData = async () => {
+  try {
+    await User.create(users);
+    console.log("Users data successfully imported!");
+  } catch (err) {
+    console.log("Importing users data failed.");
+    console.log(err);
+  }
+  process.exit();
+};
 
-// const deleteUsersData = async () => {
-//   try {
-//     await User.deleteMany();
-//     console.log("Users data successfully deleted!");
-//   } catch (err) {
-//     console.log("Deleting users data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
+const deleteUsersData = async () => {
+  try {
+    await User.collection.drop();
+    console.log("Users collection successfully dropped and deleted!");
+  } catch (err) {
+    console.log("Deleting users data failed.");
+    console.log(err);
+  }
+  process.exit();
+};
 
 // // Visit Data
 // const visits = JSON.parse(
@@ -265,6 +265,7 @@ switch (process.argv[2]) {
     break;
 
   case "--deleteUsers":
+    deleteUsersData();
     break;
 
   case "--importVisits":

@@ -6,3 +6,6 @@ const router = express.Router();
 
 router.post("/signup/explorer", authController.signupExplorer);
 router.post("/signup/ambassador", authController.signupAmbassador);
+router.post("/login", authController.login);
+
+module.exports = router;
