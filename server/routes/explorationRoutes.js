@@ -1,11 +1,12 @@
 const express = require("express");
 const explorationController = require("../controllers/explorationController");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(explorationController.getAllExplorations)
+  .get(authController.protect, explorationController.getAllExplorations)
   .post(explorationController.createExploration);
 
 router

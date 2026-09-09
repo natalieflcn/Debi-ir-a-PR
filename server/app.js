@@ -12,7 +12,12 @@ app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
 
 app.all("/{*splat}", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  next(
+    new AppError(
+      `Can't find ${req.originalUrl} on this server! This route may be undefined...`,
+      404,
+    ),
+  );
 });
 
 app.use(GlobalErrorHandler);

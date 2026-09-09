@@ -3,6 +3,7 @@ const validator = require("validator");
 const capitalize = require("../utils/helpers");
 const bcrypt = require("bcryptjs");
 
+// Schema Definition
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -36,6 +37,7 @@ const userSchema = new mongoose.Schema(
       },
       select: false,
     },
+    passwordChangedAt: Date,
     role: {
       type: String,
       enum: ["explorer", "ambassador", "admin"],
@@ -56,6 +58,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// Middleware
 userSchema.pre("save", async function () {
   if (!this.isModified()) return next();
 
@@ -63,6 +66,7 @@ userSchema.pre("save", async function () {
   this.passwordConfirm = undefined;
 });
 
+// Instance Methods
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword,
@@ -70,6 +74,26 @@ userSchema.methods.correctPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
+userSchema.methods.isPasswordChanged = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const passwordChangedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10,
+    );
+
+    return passwordChangedTimestamp < JWTTimestamp;
+  }
+
+  return false;
+};
+
+// Model Definition
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
+
+// check if you can login with no token TODO
+// check if you can login with token after manipulating token
+// check if you can login with token, after deleting user from mongo compass
+// check if you can login with token, after token expires -- change expires_in in env variables
+// check if you can login with token, after changing password

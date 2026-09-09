@@ -1,3 +1,5 @@
+const AppError = require("../utils/appError");
+
 // Development Errors VS Production Errors
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
@@ -15,6 +17,7 @@ const sendErrorProd = (err, res) => {
       message: err.message,
     });
   } else {
+    console.log(err);
     res.status(500).json({
       status: "error",
       message: "Something went wrong!",
@@ -41,6 +44,14 @@ const handleValidationErrorDB = (err) => {
   return new AppError(message, 400);
 };
 
+const handleJWTError = () => {
+  return new AppError("Invalid JSON Web Token. Please login again.", 401);
+};
+
+const handleJWTExpiredError = () => {
+  return new AppError("JSON Web Token has expired. Please login again.", 401);
+};
+
 // Global Error Handler
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
@@ -54,6 +65,8 @@ module.exports = (err, req, res, next) => {
     if (err.name === "CastError") error = handleCastErrorDB(error);
     if (err.code === 11000) error = handleDuplicateFieldsDB(error);
     if (err.name === "ValidationError") error = handleValidationErrorDB(error);
+    if (err.name === "JsonWebTokenError") error = handleJWTError();
+    if (err.name === "TokenExpiredError") error = handleJWTExpiredError();
 
     sendErrorProd(error, res);
   }
