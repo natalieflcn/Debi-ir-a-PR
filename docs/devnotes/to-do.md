@@ -368,26 +368,26 @@
 ## Week: September 5 – September 12
 
 - [~] Continue refreshing yourself on MongoDB, Express, Node.js
-  - [~] MongoDB and Mongoose basics
+  - [x] MongoDB and Mongoose basics
     - [~] Setup routing and API for explorations and locations
     - [~] Turn numStops into virtual property
     - [x] Polish validators in schemas
     - [x] Create pre-save hook to automatically create explorationId and locationId out of object names
-  - [ ] Error Handling in Express
+  - [x] Error Handling in Express
     - [x] Create global error handling middleware
     - [x] Refactor error handling in route handlers
     - [x] Create catchAsync wrapper and wrap route handlers
     - [x] Distinguish between development error handling and production error handling
-    - [ ] Handle different errors
+    - [x] Handle different errors
       - [x] 404 Not Found Errors
-      - [ ] CastError
-      - [ ] DuplicateKey Error
-      - [ ] ValidationError
-      - [ ] Unhandled rejected promises
-      - [ ] Uncaught exceptions
+      - [x] CastError
+      - [x] DuplicateKey Error
+      - [x] ValidationError
+      - [x] Unhandled rejected promises
+      - [x] Uncaught exceptions
 
-  - [ ] Authentication, Authorization, and Security
-    - [ ] Implement Users data, routing, and API
+  - [~] Authentication, Authorization, and Security
+    - [~] Implement Users data, routing, and API
   - [ ] Modelling Data and Advanced Mongoose
     - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
   - [ ] Automated Emails, File Uploads, Google Maps
