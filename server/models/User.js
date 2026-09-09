@@ -27,6 +27,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please confirm your password."],
       minlength: 8,
+      validate: {
+        validator: function (el) {
+          return el === this.password;
+        },
+        message: "Passwords do not match.",
+      },
       select: false,
     },
     role: {
@@ -49,6 +55,13 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+userSchema.pre("save", function (next) {
+  if (!this.isModified()) return next();
+
+  this.password = bcrypt.hash(this.password, 12);
+  this.passwordConfirm = undefined;
+  next();
+});
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
