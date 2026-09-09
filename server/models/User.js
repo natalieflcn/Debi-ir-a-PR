@@ -93,7 +93,7 @@ const User = mongoose.model("User", userSchema);
 module.exports = User;
 
 // check if you can login with no token TODO
-// check if you can login with token after manipulating token
-// check if you can login with token, after deleting user from mongo compass
-// check if you can login with token, after token expires -- change expires_in in env variables
+// check if you can login with token after manipulating token TODO
+// check if you can login with token, after deleting user from mongo compass TODO
+// check if you can login with token, after token expires -- change expires_in in env variables TODO
 // check if you can login with token, after changing password
