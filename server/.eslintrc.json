@@ -1,10 +1,41 @@
 {
-  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "script"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:import/recommended",
+    "plugin:promise/recommended"
+  ],
+  "plugins": ["import", "promise"],
   "rules": {
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "req/res/next/val" }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^(req|res|next)$" }],
+    "no-undef": "error",
     "no-async-promise-executor": "error",
     "no-await-in-loop": "warn",
     "require-await": "error",
-    "no-return-await": "warn"
+    "no-return-await": "warn",
+    "no-console": "off",
+
+    "import/no-unresolved": "error",
+    "import/named": "error",
+    "import/no-duplicates": "warn",
+
+    "node/no-missing-require": "error",
+    "node/no-extraneous-require": "error",
+    "node/no-unpublished-require": "off",
+
+    "promise/always-return": "warn",
+    "promise/no-nesting": "warn",
+
+    "eqeqeq": ["error", "always"],
+    "no-var": "error",
+    "prefer-const": "warn"
   }
 }
