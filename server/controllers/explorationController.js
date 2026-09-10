@@ -15,7 +15,11 @@ exports.getAllExplorations = catchAsync(async (req, res, next) => {
   const explorations = await features.query;
 
   // SEND RESPONSE
-  res.status(200).json({ status: "success", data: { explorations } });
+  res.status(200).json({
+    status: "success",
+    results: explorations.length,
+    data: { explorations },
+  });
 });
 
 exports.getExploration = catchAsync(async (req, res, next) => {
@@ -24,7 +28,7 @@ exports.getExploration = catchAsync(async (req, res, next) => {
   });
 
   if (!exploration)
-    next(new AppError("No exploration found with that ID.", 404));
+    return next(new AppError("No exploration found with that ID.", 404));
 
   res.status(200).json({ status: "success", data: { exploration } });
 });
@@ -45,7 +49,7 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
   );
 
   if (!exploration)
-    next(new AppError("No exploration found with that ID.", 404));
+    return next(new AppError("No exploration found with that ID.", 404));
 
   res.status(200).json({ status: "success", data: { exploration } });
 });
@@ -55,8 +59,9 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
     _id: req.params.id,
   });
 
+  console.log(exploration);
   if (!exploration)
-    next(new AppError("No exploration found with that ID.", 404));
+    return next(new AppError("No exploration found with that ID.", 404));
 
   res.status(204).json({ status: "success", data: null });
 });

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const capitalize = require("../utils/helpers");
+const { capitalize } = require("../utils/helpers");
 const bcrypt = require("bcryptjs");
 
 // Schema Definition

@@ -13,6 +13,10 @@ router
   .route("/:id")
   .get(explorationController.getExploration)
   .patch(explorationController.updateExploration)
-  .delete(explorationController.deleteExploration);
+  .delete(
+    authController.protect,
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.deleteExploration,
+  );
 
 module.exports = router;
