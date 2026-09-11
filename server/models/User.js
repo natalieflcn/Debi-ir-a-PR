@@ -54,6 +54,7 @@ const userSchema = new mongoose.Schema(
       },
     },
     avatar: { type: String, trim: true },
+    active: { type: Boolean, default: true, select: false },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
@@ -75,6 +76,9 @@ userSchema.pre("save", async function () {
   this.passwordConfirm = undefined;
 });
 
+userSchema.pre(/^find/, async function () {
+  this.find({ active: { $ne: false } });
+});
 // Instance Methods
 userSchema.methods.correctPassword = async function (
   candidatePassword,

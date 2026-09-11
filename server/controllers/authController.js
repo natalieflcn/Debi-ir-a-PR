@@ -96,6 +96,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     );
 
   req.user = freshUser;
+
   next();
 });
 
@@ -182,7 +183,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.updateMyPassword = catchAsync(async (req, res, next) => {
   // Get user from collection
   const user = await User.findById(req.user.id);
-
+  console.log(user);
   // Update password
   user.password = req.body.password;
   user.passwordConfirm = req.body.passwordConfirm;
