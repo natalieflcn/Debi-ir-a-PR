@@ -90,7 +90,7 @@ userSchema.methods.isPasswordChanged = function (JWTTimestamp) {
       10,
     );
 
-    return passwordChangedTimestamp < JWTTimestamp;
+    return passwordChangedTimestamp > JWTTimestamp;
   }
 
   return false;

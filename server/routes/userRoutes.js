@@ -11,10 +11,12 @@ router.post("/login", authController.login);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 router.patch(
-  "/updatePassword",
+  "/updateMyPassword",
   authController.protect,
-  authController.updatePassword,
+  authController.updateMyPassword,
 );
+
 router.get("/", userController.getAllUsers);
+router.patch("/updateMe", authController.protect, userController.updateMe);
 
 module.exports = router;
