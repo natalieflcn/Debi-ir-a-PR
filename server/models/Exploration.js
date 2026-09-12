@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
-const { EXPLORATION_TAGS, PR_CITIES } = require("../utils/constants");
+const {
+  EXPLORATION_TAGS,
+  LOCATION_TAGS,
+  PR_CITIES,
+} = require("../utils/constants");
+const locationSchema = require("./Location");
 
 const explorationSchema = new mongoose.Schema(
   {
@@ -69,11 +74,14 @@ const explorationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Badge",
     },
-    // locations: {
-    //   type: [mongoose.Schema.Types.ObjectId],
-    //   ref: "Location",
-    //   default: [],
-    // },
+    locations: {
+      type: [locationSchema],
+      default: [],
+      validate: {
+        validator: (arr) => arr.length <= 10,
+        message: "An exploration can have at most 10 locations.",
+      },
+    },
     images: { type: [String], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {

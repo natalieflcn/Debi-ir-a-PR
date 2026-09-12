@@ -25,44 +25,44 @@ mongoose
   });
 
 // Location Data
-const locations = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/locations.json`),
-);
+// const locations = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/locations.json`),
+// );
 
-const importLocationData = async () => {
-  try {
-    // Retrieving explorations and creating an object that matches each explorationId with their _id
-    const explorations = await Exploration.find();
-    const explorationMap = {};
+// const importLocationData = async () => {
+//   try {
+//     // Retrieving explorations and creating an object that matches each explorationId with their _id
+//     const explorations = await Exploration.find();
+//     const explorationMap = {};
 
-    explorations.forEach((exp) => (explorationMap[exp.slug] = exp._id));
+//     explorations.forEach((exp) => (explorationMap[exp.slug] = exp._id));
 
-    // Updating locations with exploration's _id
-    const updatedLocations = locations.map((loc) => {
-      const explorationMongoId = explorationMap[loc.explorationId];
+//     // Updating locations with exploration's _id
+//     const updatedLocations = locations.map((loc) => {
+//       const explorationMongoId = explorationMap[loc.explorationId];
 
-      return { ...loc, explorationId: explorationMongoId };
-    });
+//       return { ...loc, explorationId: explorationMongoId };
+//     });
 
-    await Location.create(updatedLocations);
-    console.log("Locations data successfully updated and imported!");
-  } catch (err) {
-    console.log("Updating and importing locations data failed.");
-    console.log(err);
-  }
-  process.exit();
-};
+//     await Location.create(updatedLocations);
+//     console.log("Locations data successfully updated and imported!");
+//   } catch (err) {
+//     console.log("Updating and importing locations data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
-const deleteLocationData = async () => {
-  try {
-    await Location.collection.drop();
-    console.log("Locations collection successfully dropped and deleted!");
-  } catch (err) {
-    console.log("Deleting locations data failed.");
-    console.log(err);
-  }
-  process.exit();
-};
+// const deleteLocationData = async () => {
+//   try {
+//     await Location.collection.drop();
+//     console.log("Locations collection successfully dropped and deleted!");
+//   } catch (err) {
+//     console.log("Deleting locations data failed.");
+//     console.log(err);
+//   }
+//   process.exit();
+// };
 
 // Exploration Data
 const explorations = JSON.parse(

@@ -10,7 +10,127 @@
     "tags": ["artist", "culture", "heritage", "food", "nature", "sightseeing"],
     "featured": true,
     "badge": null,
-    "locations": [],
+    "locations": [
+      {
+        "slug": "ojo-de-agua",
+        "name": "Ojo de Agua",
+        "address": {
+          "street": "Calle Amapola",
+          "city": "Vega Baja",
+          "zipcode": "00693"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["landscape", "river"]
+      },
+      {
+        "slug": "casa-historia-de-la-musica",
+        "name": "Casa Historia de la Música",
+        "address": {
+          "street": "Calle Nuñez Romeu #7",
+          "city": "Cayey",
+          "zipcode": "00736"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["museum"]
+      },
+      {
+        "slug": "habitante-cafe",
+        "name": "Habitante Café",
+        "address": {
+          "street": "959 Avenida Manuel Fernandez Juncos #35",
+          "city": "San Juan",
+          "zipcode": "00907"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["cafe"]
+      },
+      {
+        "slug": "la-casita-blanca",
+        "name": "La Casita Blanca",
+        "address": {
+          "street": "351 Calle Tapia",
+          "city": "San Juan",
+          "zipcode": "00912"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant"]
+      },
+      {
+        "slug": "el-pozo-de-jacinto",
+        "name": "El Pozo de Jacinto",
+        "address": {
+          "street": "Playa Jobos",
+          "city": "Isabela",
+          "zipcode": "00662"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["beach", "hiking", "cave"]
+      },
+      {
+        "slug": "playa-puerto-nuevo",
+        "name": "Playa Puerto Nuevo",
+        "address": {
+          "street": "Playa Puerto Nuevo",
+          "city": "Vega Baja",
+          "zipcode": "00693"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["beach"]
+      },
+      {
+        "slug": "el-boricua",
+        "name": "El Boricua",
+        "address": {
+          "street": "5 Calle Saldaña",
+          "city": "San Juan",
+          "zipcode": "00925"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["bar"]
+      }
+    ],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
     "createdBy": null,
     "updatedBy": null
@@ -26,7 +146,110 @@
     "tags": ["artist"],
     "featured": false,
     "badge": null,
-    "locations": [],
+    "locations": [
+      {
+        "slug": "kiosko-el-boricua",
+        "name": "Kiosko El Boricua",
+        "address": {
+          "street": "PR-187",
+          "city": "Loíza",
+          "zipcode": "00983"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant"]
+      },
+      {
+        "slug": "canon-blanco",
+        "name": "Canon Blanco",
+        "address": {
+          "street": "PR-10 Bo Las Palmas",
+          "city": "Utuado",
+          "zipcode": "00641"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["hiking", "mountain"]
+      },
+      {
+        "slug": "ecos-sports-park",
+        "name": "Eco's Sports Park",
+        "address": {
+          "street": "Stadium Street",
+          "city": "San Juan",
+          "zipcode": "00936"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["park", "dancing", "bar", "sports", "plaza"]
+      },
+      {
+        "slug": "bar-02",
+        "name": "Bar 0.2",
+        "address": {
+          "street": "802 Avenida Roberto H. Todd",
+          "city": "San Juan",
+          "zipcode": "00907"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["bar"]
+      },
+      {
+        "slug": "asador-san-miguel",
+        "name": "Asador San Miguel",
+        "address": {
+          "street": "Carretera 152 KM 11.0",
+          "city": "Naranjito",
+          "zipcode": "00719"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant"]
+      },
+      {
+        "slug": "culebrita-beach",
+        "name": "Culebrita Beach",
+        "address": {
+          "street": "Isla Culebrita",
+          "city": "Culebra",
+          "zipcode": "00775"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["beach"]
+      }
+    ],
     "images": ["TEMP.png", "TEMP.png"],
     "createdBy": null,
     "updatedBy": null
@@ -42,7 +265,93 @@
     "tags": ["artist"],
     "featured": true,
     "badge": null,
-    "locations": [],
+    "locations": [
+      {
+        "slug": "la-factoria",
+        "name": "La Factoría",
+        "address": {
+          "street": "51 Calle de San José",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["bar", "salsa", "dancing"]
+      },
+      {
+        "slug": "paseo-de-la-salsa",
+        "name": "Paseo de la Salsa",
+        "address": {
+          "street": "Calle Atocha",
+          "city": "Ponce",
+          "zipcode": "00730"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["dancing", "salsa"]
+      },
+      {
+        "slug": "la-guancha",
+        "name": "La Guancha",
+        "address": {
+          "street": "Calle B",
+          "city": "Ponce",
+          "zipcode": "00716"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["attraction", "park", "beach", "food-truck"]
+      },
+      {
+        "slug": "antanos-bar-and-tapas",
+        "name": "Antaño's Bar and Tapas",
+        "address": {
+          "street": "Calle Ruíz Belvis",
+          "city": "Caguas",
+          "zipcode": "00725"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant", "bar"]
+      },
+      {
+        "slug": "musica-bar-and-lounge",
+        "name": "Música Bar and Lounge",
+        "address": {
+          "street": "57 Calle Loíza",
+          "city": "San Juan",
+          "zipcode": "00911"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["bar", "dancing", "salsa"]
+      }
+    ],
     "images": ["TEMP.png"],
     "createdBy": null,
     "updatedBy": null
@@ -55,10 +364,154 @@
     "cities": ["San Juan"],
     "headerImage": ["TEMP.png"],
     "numStops": 8,
-    "tags": [],
+    "tags": [
+      "culture",
+      "food",
+      "nightlife",
+      "outdoors",
+      "sightseeing",
+      "shopping"
+    ],
     "featured": false,
     "badge": null,
-    "locations": [],
+    "locations": [
+      {
+        "slug": "castillo-san-felipe-del-morro",
+        "name": "Castillo San Felipe del Morro",
+        "address": {
+          "street": "501 Calle Norzagaray",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["landmark", "historical-site", "castle", "attraction"]
+      },
+      {
+        "slug": "paseo-de-la-princesa",
+        "name": "Paseo de la Princesa",
+        "address": {
+          "street": "Paseo de la Princesa",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["plaza"]
+      },
+      {
+        "slug": "balneario-del-escambron",
+        "name": "Balneario del Escambrón",
+        "address": {
+          "street": "Balneario del Escambrón",
+          "city": "San Juan",
+          "zipcode": "00910"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["beach"]
+      },
+      {
+        "slug": "el-hamburguer",
+        "name": "El Hamburguer",
+        "address": {
+          "street": "402 Avenida Luis Muñoz Rivera",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant"]
+      },
+      {
+        "slug": "museo-de-arte-de-puerto-rico",
+        "name": "Museo de Arte de Puerto Rico",
+        "address": {
+          "street": "299 Avenida de Arte de Puerto Rico",
+          "city": "San Juan",
+          "zipcode": "00909"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["museum", "art"]
+      },
+      {
+        "slug": "plaza-las-americas",
+        "name": "Plaza Las Americas",
+        "address": {
+          "street": "525 Avenida Franklin Delano Roosevelt ",
+          "city": "San Juan",
+          "zipcode": "00918"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["shopping"]
+      },
+      {
+        "slug": "morenos-spot",
+        "name": "Moreno's Spot",
+        "address": {
+          "street": "361 Calle de Tetuán",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["restaurant", "bar"]
+      },
+      {
+        "slug": "la-placita",
+        "name": "La Placita",
+        "address": {
+          "street": "300 Calle Dos Hermanos",
+          "city": "San Juan",
+          "zipcode": "00907"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["bar", "club", "dancing", "reggaeton"]
+      }
+    ],
     "images": ["TEMP.png", "TEMP.png"],
     "createdBy": null,
     "updatedBy": null
@@ -74,7 +527,93 @@
     "tags": ["outdoors"],
     "featured": true,
     "badge": null,
-    "locations": [],
+    "locations": [
+      {
+        "slug": "paseo-del-morro",
+        "name": "Paseo del Morro",
+        "address": {
+          "street": "Old San Juan",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["trail"]
+      },
+      {
+        "slug": "parque-luis-munoz-rivera",
+        "name": "Parque Luis Muñoz Rivera",
+        "address": {
+          "street": "Avenida Luis Muñoz Rivera",
+          "city": "San Juan",
+          "zipcode": "00901"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["trail", "park"]
+      },
+      {
+        "slug": "ashford-avenue",
+        "name": "Ashford Avenue",
+        "address": {
+          "street": "Ashford Avenue",
+          "city": "San Juan",
+          "zipcode": "00907"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["trail"]
+      },
+      {
+        "slug": "parque-central",
+        "name": "Parque Central",
+        "address": {
+          "street": "Calle Cerra",
+          "city": "San Juan",
+          "zipcode": "00907"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["trail", "park"]
+      },
+      {
+        "slug": "paseo-tablado-del-pinones",
+        "name": "Paseo Tablado del Piñones",
+        "address": {
+          "street": "PR-187",
+          "city": "Carolina",
+          "zipcode": "00772"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius egestas elit. Nam maximus mi vel lacus pulvinar, non blandit lorem venenatis. Sed suscipit leo viverra, condimentum velit non, viverra nisl. Lorem ipsum dolor sit amet, consectetur dipiscing elit.",
+        "headerImage": ["/src/assets/images/content/TEMP.png"],
+        "images": [
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png",
+          "/src/assets/images/content/TEMP.png"
+        ],
+        "tags": ["trail", "beach"]
+      }
+    ],
     "images": ["TEMP.png", "TEMP.png", "TEMP.png"],
     "createdBy": null,
     "updatedBy": null
