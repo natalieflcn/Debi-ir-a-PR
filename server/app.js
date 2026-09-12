@@ -1,5 +1,8 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const hpp = require("hpp");
 const explorationRouter = require("./routes/explorationRoutes");
 const userRouter = require("./routes/userRoutes");
 const AppError = require("./utils/appError");
@@ -14,8 +17,15 @@ const limiter = rateLimit({
     "Too many requests from this IP address. Please try again in an hour! ",
 });
 
+app.use(helmet());
+
 app.use("/api", limiter);
+
 app.use(express.json());
+
+app.use(mongoSanitize());
+
+app.use(hpp({ whitelist: [] }));
 
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
