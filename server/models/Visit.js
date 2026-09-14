@@ -7,7 +7,7 @@ const visitSchema = new mongoose.Schema({
   visitedAt: { type: Date },
 });
 
-const Visit = mongoose.model("Visit", visitSchema);
+// const Visit = mongoose.model("Visit", visitSchema);
 
 // module.exports = Visit;
 module.exports = visitSchema;
