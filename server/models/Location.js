@@ -4,7 +4,6 @@ const { LOCATION_TAGS, PR_CITIES } = require("../utils/constants");
 
 const locationSchema = new mongoose.Schema({
   slug: { type: String, index: true },
-  explorationId: { type: mongoose.Schema.ObjectId, ref: "Exploration" },
   name: {
     type: String,
     minlength: [5, "A location name must have more than 5 characters."],
@@ -26,6 +25,14 @@ const locationSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      default: "Point",
+    },
+    coordinates: [Number], // [longitude, latitude]
   },
   description: {
     type: String,

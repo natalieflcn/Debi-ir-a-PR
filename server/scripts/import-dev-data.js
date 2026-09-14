@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const Location = require("../models/Location");
 const Exploration = require("../models/Exploration");
 const Badge = require("../models/Badge");
-const EarnedBadge = require("../models/EarnedBadge");
+const BadgeCollection = require("../models/BadgeCollection");
 const User = require("../models/User");
 const Visit = require("../models/Visit");
 const ExplorationProgress = require("../models/ExplorationProgress");
@@ -118,28 +118,28 @@ const deleteExplorationData = async () => {
 //   process.exit();
 // };
 
-// // EarnedBadges Data
-// const earnedBadges = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/earnedBadges.json`, "utf-8"),
+// // BadgeCollections Data
+// const BadgeCollections = JSON.parse(
+//   fs.readFileSync(`${__dirname}/../dev-data/BadgeCollections.json`, "utf-8"),
 // );
 
-// const importEarnedBadgeData = async () => {
+// const importBadgeCollectionData = async () => {
 //   try {
-//     await EarnedBadge.create(earnedBadges);
-//     console.log("EarnedBadges data successfully imported!");
+//     await BadgeCollection.create(BadgeCollections);
+//     console.log("BadgeCollections data successfully imported!");
 //   } catch (err) {
-//     console.log("Importing EarnedBadges data failed.");
+//     console.log("Importing BadgeCollections data failed.");
 //     console.log(err);
 //   }
 //   process.exit();
 // };
 
-// const deleteEarnedBadgeData = async () => {
+// const deleteBadgeCollectionData = async () => {
 //   try {
-//     await EarnedBadge.deleteMany();
-//     console.log("EarnedBadges data successfully deleted!");
+//     await BadgeCollection.deleteMany();
+//     console.log("BadgeCollections data successfully deleted!");
 //   } catch (err) {
-//     console.log("Deleting EarnedBadges data failed.");
+//     console.log("Deleting BadgeCollections data failed.");
 //     console.log(err);
 //   }
 //   process.exit();
@@ -249,10 +249,10 @@ switch (process.argv[2]) {
   case "--deleteBadges":
     break;
 
-  case "--importEarnedBadges":
+  case "--importBadgeCollections":
     break;
 
-  case "--deleteEarnedBadges":
+  case "--deleteBadgeCollections":
     break;
 
   case "--importExplorationProgress":

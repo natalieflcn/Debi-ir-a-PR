@@ -59,8 +59,31 @@ const userSchema = new mongoose.Schema(
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
 );
+
+// Virtuals
+userSchema.virtuals("createdExplorations", {
+  ref: "Exploration",
+  localField: "_id",
+  foreignField: "createdBy",
+});
+
+userSchema.virtuals("explorationProgress", {
+  ref: "ExplorationProgress",
+  localField: "_id",
+  foreignField: "user",
+});
+
+userSchema.virtuals("badgeCollection", {
+  ref: "BadgeCollection",
+  localField: "_id",
+  foreignField: "user",
+});
 
 // Middleware
 userSchema.pre("save", async function () {
