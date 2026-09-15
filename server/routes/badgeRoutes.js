@@ -5,11 +5,12 @@ const badgeController = require("../controllers/badgeController");
 const router = express.Router();
 
 router
-  .get("/", badgeController.getAllBadges)
+  .route("/")
+  .get(badgeController.getAllBadges)
   .post(
     authController.protect,
-    authController.restrictTo("ambassador", "admin").badgeController
-      .createBadge,
+    authController.restrictTo("ambassador", "admin"),
+    badgeController.createBadge,
   );
 
 module.exports = router;

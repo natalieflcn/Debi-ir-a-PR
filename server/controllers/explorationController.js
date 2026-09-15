@@ -23,8 +23,9 @@ exports.getAllExplorations = catchAsync(async (req, res, next) => {
 });
 
 exports.getExploration = catchAsync(async (req, res, next) => {
-  const exploration = await Exploration.findOne({
-    _id: req.params.id,
+  const exploration = await Exploration.findOne(req.params.id).populate({
+    path: "badge",
+    select: "-description -type",
   });
 
   if (!exploration)

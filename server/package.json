@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/natalieflcn/Debi-ir-a-PR#readme",
   "dependencies": {
+    "@exortek/express-mongo-sanitize": "^3.0.1",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^8.7.0",
     "helmet": "^8.3.0",
     "hpp": "^0.2.3",

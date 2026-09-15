@@ -67,19 +67,19 @@ const userSchema = new mongoose.Schema(
 );
 
 // Virtuals
-userSchema.virtuals("createdExplorations", {
+userSchema.virtual("createdExplorations", {
   ref: "Exploration",
   localField: "_id",
   foreignField: "createdBy",
 });
 
-userSchema.virtuals("explorationProgress", {
+userSchema.virtual("explorationProgress", {
   ref: "ExplorationProgress",
   localField: "_id",
   foreignField: "user",
 });
 
-userSchema.virtuals("badgeCollection", {
+userSchema.virtual("badgeCollection", {
   ref: "BadgeCollection",
   localField: "_id",
   foreignField: "user",
@@ -102,6 +102,13 @@ userSchema.pre("save", async function () {
 userSchema.pre(/^find/, async function () {
   this.find({ active: { $ne: false } });
 });
+
+userSchema.pre(/^find/, async function () {
+  if (this.role === "explorer") {
+  } else {
+  }
+});
+
 // Instance Methods
 userSchema.methods.correctPassword = async function (
   candidatePassword,
@@ -134,6 +141,20 @@ userSchema.methods.createPasswordResetToken = function () {
   this.passwordResetTokenExpires = Date.now() + 10 * 60 * 1000;
 
   return resetToken;
+};
+
+userSchema.methods.populateUserData = async function () {
+  if (this.role === "explorer") {
+    await this.populate("badgeCollection").populate("explorationProgress");
+  } else {
+    console.log("running");
+    await this.populate({
+      path: "createdExplorations",
+      select: "_id name -createdBy",
+    });
+  }
+
+  return this;
 };
 
 // Model Definition

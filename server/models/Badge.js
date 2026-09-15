@@ -11,11 +11,11 @@ const badgeSchema = new mongoose.Schema(
       required: [true, "A badge description is required."],
     },
     image: { type: String, required: [true, "A badge icon is required."] },
-    exploration: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Exploration",
-      default: null,
-    },
+    // exploration: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Exploration",
+    //   default: null,
+    // },
     type: {
       type: String,
       enum: {
@@ -38,6 +38,12 @@ const badgeSchema = new mongoose.Schema(
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } },
 );
+
+// Query Middleware
+
+// badgeSchema.pre(/^find/, function (next) {
+//   this.populate({ path: "exploration", select: "_id name " });
+// });
 
 const Badge = mongoose.model("Badge", badgeSchema);
 

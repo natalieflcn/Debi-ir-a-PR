@@ -91,18 +91,29 @@ const explorationSchema = new mongoose.Schema(
     // updatedAt: { type: Date },
     updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
-  { timestamps: true },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true } },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
 );
 
-explorationSchema.virtual("numStops").get(function () {
-  return 5;
-});
+// explorationSchema.virtual("numStops").get(function () {
+//   return this.locations.length;
+// });
 
 // Middlewares
-explorationSchema.pre("save", function (next) {
+explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
 });
+
+// explorationSchema.pre(/^find/, function () {
+//   console.log(this);
+//   this.populate({
+//     path: "badge",
+//     select: "-description -type",
+//   });
+// });
 
 const Exploration = mongoose.model("Exploration", explorationSchema);
 
