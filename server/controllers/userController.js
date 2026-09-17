@@ -13,15 +13,22 @@ const filterRequestBody = (body, ...allowedFields) => {
   return filteredRequestBody;
 };
 
-exports.getUser = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+// exports.getUser = catchAsync(async (req, res, next) => {
+//   const user = await User.findById(req.params.id);
 
-  if (!user) return next(new AppError("No user found with that ID.", 404));
+//   if (!user) return next(new AppError("No user found with that ID.", 404));
 
-  await user.populateUserData();
+//   await user.populateUserData();
 
-  res.status(200).json({ status: "success", data: { user } });
-});
+//   res.status(200).json({ status: "success", data: { user } });
+// });
+
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
+
+exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // Create error is user tries to update password

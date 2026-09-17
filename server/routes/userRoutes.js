@@ -18,6 +18,12 @@ router.patch(
 );
 
 router.get("/", userController.getAllUsers);
+router.get(
+  "/me",
+  authController.protect,
+  userController.getMe,
+  userController.getUser,
+);
 router.get("/:id", userController.getUser);
 
 router.patch("/updateMe", authController.protect, userController.updateMe);
