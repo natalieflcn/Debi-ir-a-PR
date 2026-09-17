@@ -6,6 +6,7 @@ const {
   PR_CITIES,
 } = require("../utils/constants");
 const locationSchema = require("./Location");
+const badgeSchema = require("./Badge");
 
 const explorationSchema = new mongoose.Schema(
   {
@@ -71,8 +72,8 @@ const explorationSchema = new mongoose.Schema(
     },
     featured: { type: Boolean, default: false },
     badge: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Badge",
+      type: badgeSchema,
+      required: true,
     },
     locations: {
       type: [locationSchema],

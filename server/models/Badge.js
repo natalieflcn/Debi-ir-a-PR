@@ -45,6 +45,6 @@ const badgeSchema = new mongoose.Schema(
 //   this.populate({ path: "exploration", select: "_id name " });
 // });
 
-const Badge = mongoose.model("Badge", badgeSchema);
+// const Badge = mongoose.model("Badge", badgeSchema);
 
-module.exports = Badge;
+module.exports = badgeSchema;

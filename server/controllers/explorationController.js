@@ -1,15 +1,43 @@
 const express = require("express");
 const Exploration = require("../models/Exploration");
 const factory = require("./handlerFactory");
+const APIFeatures = require("../utils/apiFeatures");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
+// Exploration Routes
 exports.getAllExplorations = factory.getAll(Exploration);
-exports.getExploration = factory.getOne(Exploration, {
-  path: "badge",
-  select: "-description -type -__v",
+exports.getExploration = factory.getOne(Exploration, null);
+exports.createExploration = catchAsync(async (req, res, next) => {
+  const { badgeDetails, ...explorationData } = req.body;
+
+  const badge = await Badge.create(badgeDetails);
+  const exploration = await Exploration.create({
+    badge: badge._id,
+    ...explorationData,
+  });
+
+  res.status(201).json({
+    status: "success",
+    data: {
+      exploration,
+    },
+  });
 });
-exports.createExploration = factory.createOne(Exploration);
+
 exports.updateExploration = factory.updateOne(Exploration);
 exports.deleteExploration = factory.deleteOne(Exploration);
+
+// Exploration/Badge Routes
+// exports.createExplorationBadge = catchAsync(async (req, res, next) => {
+//   const badge = await Badge.create(req.body);
+
+//   const exploration = Exploration.find();
+//   if (!exploration.badge)
+//     next(new AppError("No badge found for that exploration.", 404));
+
+//   res.status(200).json({ status: "success", data: exploration.badge });
+// });
 
 // exports.getAllExplorations = catchAsync(async (req, res, next) => {
 //   // EXECUTE QUERY

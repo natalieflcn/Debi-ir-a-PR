@@ -20,7 +20,8 @@ router
     authController.protect,
     // authController.restrictTo("explorer"),
     explorationProgressController.updateExplorationProgress,
-  );
+  )
+  .delete(explorationProgressController.deleteExplorationProgress);
 
 // router
 //   .route("/")

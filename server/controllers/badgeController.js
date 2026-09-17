@@ -5,10 +5,12 @@ const APIFeatures = require("../utils/apiFeatures");
 const factory = require("./handlerFactory");
 
 exports.getAllBadges = factory.getAll(Badge);
-exports.getBadge = factory.getOne(Badge);
+exports.getBadge = factory.getOne(Badge, (req) => ({
+  exploration: req.params.explorationId,
+}));
 exports.createBadge = factory.createOne(Badge);
 exports.updateBadge = factory.updateOne(Badge);
-exports.deleteOne = factory.deleteOne(Badge);
+exports.deleteBadge = factory.deleteOne(Badge);
 
 // exports.getAllBadges = catchAsync(async (req, res, next) => {
 //   // const badges = await Badge.find();

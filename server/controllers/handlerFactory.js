@@ -4,21 +4,12 @@ const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-exports.getOne = (Model, popOptions) =>
+exports.getAll = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
-    let query = Model.findById(req.params.id);
-    if (popOptions) query = query.populate(popOptions);
-    const doc = await query;
+    const queryFilter = typeof filter === "function" ? filter(req) : filter;
 
-    if (!doc) return next(new AppError("No document found with that ID.", 404));
-
-    res.status(200).json({ status: "success", data: { data: doc } });
-  });
-
-exports.getAll = (Model) =>
-  catchAsync(async (req, res, next) => {
     // EXECUTE QUERY
-    const features = new APIFeatures(Model.find(), req.query)
+    const features = new APIFeatures(Model.find(queryFilter), req.query)
       .filter()
       .sort()
       .limitFields()
@@ -34,16 +25,39 @@ exports.getAll = (Model) =>
     });
   });
 
-exports.createOne = (Model) =>
+exports.getOne = (Model, filter = {}, popOptions) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.create(req.body);
+    const queryFilter =
+      typeof filter === "function" ? filter(req) : { _id: req.params.id };
+
+    let query = Model.findOne(queryFilter);
+
+    if (popOptions) query = query.populate(popOptions);
+
+    const doc = await query;
+
+    if (!doc) return next(new AppError("No document found with that ID.", 404));
+
+    res.status(200).json({ status: "success", data: { data: doc } });
+  });
+
+exports.createOne = (Model, additionalData) =>
+  catchAsync(async (req, res, next) => {
+    let additionalDataOptions;
+
+    if (additionalData) additionalDataOptions = additionalData(req);
+
+    const doc = await Model.create({ ...req.body, ...additionalDataOptions });
 
     res.status(201).json({ status: "success", data: { data: doc } });
   });
 
-exports.updateOne = (Model) =>
+exports.updateOne = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
+    const queryFilter =
+      typeof filter === "function" ? filter(req) : { _id: req.params.id };
+
+    const doc = await Model.findOneAndUpdate(queryFilter, req.body, {
       new: true,
       runValidators: true,
     });
@@ -53,11 +67,12 @@ exports.updateOne = (Model) =>
     res.status(200).json({ status: "success", data: { data: doc } });
   });
 
-exports.deleteOne = (Model) =>
+exports.deleteOne = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findOneAndDelete({
-      _id: req.params.id,
-    });
+    const queryFilter =
+      typeof filter === "function" ? filter(req) : { _id: req.params.id };
+
+    const doc = await Model.findOneAndDelete(queryFilter);
 
     if (!doc) return next(new AppError("No document found with that ID.", 404));
 

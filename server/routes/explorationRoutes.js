@@ -5,6 +5,7 @@ const explorationProgressRouter = require("./explorationProgressRoutes");
 
 const router = express.Router();
 
+// Flat Routes
 router
   .route("/")
   .get(authController.protect, explorationController.getAllExplorations)
@@ -20,6 +21,10 @@ router
     explorationController.deleteExploration,
   );
 
+// Nested Routes
+// router
+//   .route("/:explorationId/badge")
+//   .get(explorationController.getExplorationBadge);
 router.use(
   "/:explorationId/my-exploration-progress",
   explorationProgressRouter,

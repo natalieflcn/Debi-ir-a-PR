@@ -402,13 +402,23 @@
   - [x] TODO: Test userSchema populateUserRole instance method
   - [x] TODO: Populate Badge information on Exploration
   - [x] TODO: Create ExplorationProgress data point, test nested routes
-  - [~] Create handler factory functions
+  - [x] Create handler factory functions
     - [x] Explorations
     - [x] Badges
     - [x] Users
-    - [ ] Exploration Progress
-  - [ ] Automated Emails, File Uploads, Google Maps
-  - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
+    - [x] Exploration Progress
+  - [ ] Implement remaining routers, nested routes, controllers, and data points
+    - [ ] Badges
+    - [ ] BadgeCollection
+    - [ ] ExplorationProgress
+  - [ ] Refine authentication and authorization through app routes
+  - [ ] Add more data points
+  - [ ] Add indexes for data
+  - [ ] NOTE: Implement one-exploration/one-user per ExplorationProgress
+
+  badges, earnedBadges, explorationProgress, visit data, routing, and API
+
+- [ ] Automated Emails, File Uploads, Google Maps
 - [ ] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
 
 - [ ] FRONT-END TWEAKS (For the future)
