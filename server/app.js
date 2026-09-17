@@ -6,6 +6,7 @@ const hpp = require("hpp");
 const explorationRouter = require("./routes/explorationRoutes");
 const userRouter = require("./routes/userRoutes");
 const badgeRouter = require("./routes/badgeRoutes");
+const explorationProgressAdminRouter = require("./routes/explorationProgressAdminRoutes");
 const AppError = require("./utils/appError");
 const GlobalErrorHandler = require("./controllers/errorController");
 
@@ -31,6 +32,7 @@ app.use(hpp({ whitelist: [] }));
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/badges", badgeRouter);
+app.use("/api/v1/exploration-progress-admin", explorationProgressAdminRouter);
 
 app.all("/{*splat}", (req, res, next) => {
   next(

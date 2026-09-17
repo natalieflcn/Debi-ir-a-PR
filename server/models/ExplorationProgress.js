@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const visitSchema = require("./Visit");
 
 const explorationProgressSchema = new mongoose.Schema({
-  user: {},
+  user: { type: mongoose.Schema.ObjectId, ref: "User" },
   exploration: {
     type: mongoose.Schema.ObjectId,
     ref: "Exploration",
@@ -10,7 +9,6 @@ const explorationProgressSchema = new mongoose.Schema({
   },
   locationsVisited: {
     type: [mongoose.Schema.ObjectId],
-    ref: "Location",
     default: [],
   },
   status: {
@@ -18,11 +16,11 @@ const explorationProgressSchema = new mongoose.Schema({
     enum: ["not_started", "in_progress", "completed"],
     default: "not_started",
   },
-  startedAt: { type: Date },
   lastVisitedAt: { type: Date },
   completedAt: { type: Date },
-  visitLog: { type: [visitSchema], default: [] },
 });
+
+explorationProgressSchema.index({ user: 1, exploration: 1 }, { unique: true });
 
 const ExplorationProgress = mongoose.model(
   "ExplorationProgress",

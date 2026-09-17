@@ -23,9 +23,11 @@ exports.getAllExplorations = catchAsync(async (req, res, next) => {
 });
 
 exports.getExploration = catchAsync(async (req, res, next) => {
-  const exploration = await Exploration.findOne(req.params.id).populate({
+  const exploration = await Exploration.findOne({
+    _id: req.params.id,
+  }).populate({
     path: "badge",
-    select: "-description -type",
+    select: "-description -type -__v",
   });
 
   if (!exploration)
@@ -60,7 +62,6 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
     _id: req.params.id,
   });
 
-  console.log(exploration);
   if (!exploration)
     return next(new AppError("No exploration found with that ID.", 404));
 

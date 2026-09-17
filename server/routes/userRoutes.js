@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const explorationProgressRouter = require("./explorationProgressRoutes");
 
 const router = express.Router();
 
@@ -21,5 +22,9 @@ router.get("/:id", userController.getUser);
 
 router.patch("/updateMe", authController.protect, userController.updateMe);
 router.delete("/deleteMe", authController.protect, userController.deleteMe);
+
+// router.get("/:userId/badgeCollection");
+
+// router.use("/:userId/explorationProgress", explorationProgressRouter);
 
 module.exports = router;

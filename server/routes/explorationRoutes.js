@@ -1,6 +1,7 @@
 const express = require("express");
 const explorationController = require("../controllers/explorationController");
 const authController = require("../controllers/authController");
+const explorationProgressRouter = require("./explorationProgressRoutes");
 
 const router = express.Router();
 
@@ -18,5 +19,7 @@ router
     authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExploration,
   );
+
+router.use("/:explorationId/progress", explorationProgressRouter);
 
 module.exports = router;

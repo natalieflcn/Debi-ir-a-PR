@@ -16,25 +16,25 @@ const badgeSchema = new mongoose.Schema(
     //   ref: "Exploration",
     //   default: null,
     // },
-    type: {
-      type: String,
-      enum: {
-        values: ["completion", "milestone", "special"],
-        message: "{VALUE} is not a valid badge type.",
-      },
-    },
-    threshold: {
-      type: Number,
-      required: [
-        function () {
-          return this.type === "milestone";
-        },
-        "A threshold is required for milestone badges.",
-      ],
-      default: function () {
-        return this.type === "special" ? null : undefined;
-      },
-    },
+    // type: {
+    //   type: String,
+    //   enum: {
+    //     values: ["completion", "milestone", "special"],
+    //     message: "{VALUE} is not a valid badge type.",
+    //   },
+    // },
+    // threshold: {
+    //   type: Number,
+    //   required: [
+    //     function () {
+    //       return this.type === "milestone";
+    //     },
+    //     "A threshold is required for milestone badges.",
+    //   ],
+    //   default: function () {
+    //     return this.type === "special" ? null : undefined;
+    //   },
+    // },
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } },
 );

@@ -1,38 +1,65 @@
-// const express = require("express");
-// const Exploration = require("../models/Exploration");
-// const APIFeatures = require("../utils/apiFeatures");
-// const catchAsync = require("../utils/catchAsync");
-// const AppError = require("../utils/appError");
+const express = require("express");
+const ExplorationProgress = require("../models/ExplorationProgress");
+const APIFeatures = require("../utils/apiFeatures");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
-// exports.getExploration = catchAsync(async (req, res, next) => {
-//   const exploration = await Exploration.findOne(req.params.id).populate({
-//     path: "badge",
-//     select: "-description -type",
-//   });
+exports.getAllExplorationProgress = catchAsync(async (req, res, next) => {
+  console.log("running etAllExplorationProfess");
+  let filter = {};
 
-//   if (!exploration)
-//     return next(new AppError("No exploration found with that ID.", 404));
+  if (req.params.explorationId)
+    filter = { explorationId: req.params.explorationId };
 
-//   res.status(200).json({ status: "success", data: { exploration } });
-// });
+  const explorationProgress = await ExplorationProgress.find(filter);
 
-// exports.createExploration = catchAsync(async (req, res, next) => {
-//   const newExploration = await Exploration.create(req.body);
+  res.status(200).json({ status: "success", data: { explorationProgress } });
+});
 
-//   res
-//     .status(201)
-//     .json({ status: "success", data: { exploration: newExploration } });
-// });
+exports.getExplorationProgress = catchAsync(async (req, res, next) => {
+  const explorationProgress = await ExplorationProgress.findOne({
+    user: req.user._id,
+    exploration: req.params.explorationId,
+  });
 
-// exports.updateExploration = catchAsync(async (req, res, next) => {
-//   const exploration = await Exploration.findOneAndUpdate(
-//     { _id: req.params.id },
-//     req.body,
-//     { new: true, runValidators: true },
-//   );
+  if (!explorationProgress)
+    return next(
+      new AppError(
+        "No exploration progress found for this user and exploration.",
+        404,
+      ),
+    );
 
-//   if (!exploration)
-//     return next(new AppError("No exploration found with that ID.", 404));
+  res.status(200).json({ status: "success", data: { explorationProgress } });
+});
 
-//   res.status(200).json({ status: "success", data: { exploration } });
-// });
+exports.createExplorationProgress = catchAsync(async (req, res, next) => {
+  const newExplorationProgress = await ExplorationProgress.create({
+    exploration: req.params.explorationId,
+    user: req.user._id,
+    ...req.body,
+  });
+
+  res.status(201).json({
+    status: "success",
+    data: { explorationProgress: newExplorationProgress },
+  });
+});
+
+exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
+  const explorationProgress = await ExplorationProgress.findOneAndUpdate(
+    { user: req.user._id, exploration: req.params.explorationId },
+    req.body,
+    { new: true, runValidators: true },
+  );
+
+  if (!explorationProgress)
+    return next(
+      new AppError(
+        "No exploration progress found for this user and exploration.",
+        404,
+      ),
+    );
+
+  res.status(200).json({ status: "success", data: { explorationProgress } });
+});
