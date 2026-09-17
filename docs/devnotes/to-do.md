@@ -365,11 +365,11 @@
   - [x] Implement pagination
   - [x] Refactor API into module
 
-## Week: September 5 – September 12
+## Week: September 5 – September 14
 
 - [~] Continue refreshing yourself on MongoDB, Express, Node.js
   - [x] MongoDB and Mongoose basics
-    - [~] Setup routing and API for explorations and locations
+    - [x] Setup routing and API for explorations and locations
     - [~] Turn numStops into virtual property
     - [x] Polish validators in schemas
     - [x] Create pre-save hook to automatically create explorationId and locationId out of object names
@@ -386,16 +386,40 @@
       - [x] Unhandled rejected promises
       - [x] Uncaught exceptions
 
-  - [~] Authentication, Authorization, and Security
-    - [~] Implement Users data, routing, and API
-  - [ ] Modelling Data and Advanced Mongoose
-    - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
-  - [ ] Automated Emails, File Uploads, Google Maps
+  - [x] Authentication, Authorization, and Security
+    - [x] Implement Users data, routing, and API
+  - [~] Modelling Data and Advanced Mongoose
+    - [x] Redesign data structures for project
+      - [x] Locations embedded in Explorations
+      - [x] Visits embedded in explorationProgress
+      - [x] EarnedBadges parent-reference user, badges
+      - [x] Virtually populate explorer/ambassador/admin-specific fields onto User schema
+    - [~] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
 
-- [ ] Add ability for ambassadors/admins to delete resources
-  - [ ] Delete explorations
-  - [ ] Delete locations
-  - [ ] Delete users
-- [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
-- [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+## Week: September 15 – September 22
+
+- [~] Modelling Data and Advanced Mongoose
+  - [x] TODO: Test userSchema populateUserRole instance method
+  - [x] TODO: Populate Badge information on Exploration
+  - [x] TODO: Create ExplorationProgress data point, test nested routes
+  - [~] Create handler factory functions
+    - [x] Explorations
+    - [x] Badges
+    - [x] Users
+    - [ ] Exploration Progress
+  - [ ] Automated Emails, File Uploads, Google Maps
+  - [ ] Implement badges, earnedBadges, explorationProgress, visit data, routing, and API
 - [ ] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
+
+- [ ] FRONT-END TWEAKS (For the future)
+  - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+  - [ ] TODO: Add ability for ambassadors/admins to delete resources
+    - [ ] Delete explorations
+    - [ ] Delete locations
+    - [ ] Delete users
+  - [ ] TODO: Create more pages
+    - [ ] Implement 'Forgot Password?' in login screen
+    - [ ] Revise front-end Badge implementation (CreateBadge form)
+    - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
+    - [ ] Create Reset Password page
+  - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized

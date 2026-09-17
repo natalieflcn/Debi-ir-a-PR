@@ -65,7 +65,7 @@ export async function explorerDashboardLoader() {
         lastVisitedAt: "2025-06-20",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",

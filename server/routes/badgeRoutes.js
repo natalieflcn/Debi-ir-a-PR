@@ -13,4 +13,5 @@ router
     badgeController.createBadge,
   );
 
+router.route("/:id").get(badgeController.getBadge);
 module.exports = router;

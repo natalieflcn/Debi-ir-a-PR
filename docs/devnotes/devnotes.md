@@ -14,6 +14,7 @@
 - Express
 - MongoDB
 - Mongoose
+- Use Resend for email services, production environment
 
 ---
 

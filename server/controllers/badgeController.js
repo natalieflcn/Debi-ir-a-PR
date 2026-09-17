@@ -2,24 +2,31 @@ const mongoose = require("mongoose");
 const catchAsync = require("../utils/catchAsync");
 const Badge = require("../models/Badge");
 const APIFeatures = require("../utils/apiFeatures");
+const factory = require("./handlerFactory");
 
-exports.getAllBadges = catchAsync(async (req, res, next) => {
-  // const badges = await Badge.find();
-  const features = new APIFeatures(Badge.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
+exports.getAllBadges = factory.getAll(Badge);
+exports.getBadge = factory.getOne(Badge);
+exports.createBadge = factory.createOne(Badge);
+exports.updateBadge = factory.updateOne(Badge);
+exports.deleteOne = factory.deleteOne(Badge);
 
-  const badges = await features.query;
+// exports.getAllBadges = catchAsync(async (req, res, next) => {
+//   // const badges = await Badge.find();
+//   const features = new APIFeatures(Badge.find(), req.query)
+//     .filter()
+//     .sort()
+//     .limitFields()
+//     .paginate();
 
-  res
-    .status(200)
-    .json({ status: "success", results: badges.length, data: { badges } });
-});
+//   const badges = await features.query;
 
-exports.createBadge = catchAsync(async (req, res, next) => {
-  const newBadge = await Badge.create(req.body);
+//   res
+//     .status(200)
+//     .json({ status: "success", results: badges.length, data: { badges } });
+// });
 
-  res.status(201).json({ status: "success", data: { badge: newBadge } });
-});
+// exports.createBadge = catchAsync(async (req, res, next) => {
+//   const newBadge = await Badge.create(req.body);
+
+//   res.status(201).json({ status: "success", data: { badge: newBadge } });
+// });

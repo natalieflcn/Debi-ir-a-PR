@@ -22,7 +22,7 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
 
   const numBadges = badges.length;
 
-  const recentBadge = userHistory.earnedBadges.sort(
+  const recentBadge = userHistory.badgeCollection.sort(
     (a, b) => a.earnedAt > b.earnedAt,
   )[0];
 
@@ -43,7 +43,7 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
           </Row>
 
           <Bold $color="var(--color-dark-200)">
-            {userHistory.earnedBadges.length} out of {numBadges} badges
+            {userHistory.badgeCollection.length} out of {numBadges} badges
             collected
           </Bold>
 
@@ -68,7 +68,7 @@ function ExplorerDashboardBadgeItem({ userHistory }) {
               $wrap="wrap"
               $align="start"
             >
-              {userHistory.earnedBadges.map((badge) => (
+              {userHistory.badgeCollection.map((badge) => (
                 <Image src="" $width="5rem" key={badge.badgeId} />
               ))}
             </Row>

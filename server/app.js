@@ -32,7 +32,7 @@ app.use(hpp({ whitelist: [] }));
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/badges", badgeRouter);
-app.use("/api/v1/exploration-progress-admin", explorationProgressAdminRouter);
+app.use("/api/v1/admin-exploration-progress", explorationProgressAdminRouter);
 
 app.all("/{*splat}", (req, res, next) => {
   next(

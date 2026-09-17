@@ -1,22 +1,29 @@
 const express = require("express");
 const ExplorationProgress = require("../models/ExplorationProgress");
-const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const factory = require("./handlerFactory");
 
-exports.getAllExplorationProgress = catchAsync(async (req, res, next) => {
-  console.log("running etAllExplorationProfess");
-  let filter = {};
+// Admin Exploration Progress Routes (Return all Exploration Progress objects -- no specific exploration or user)
+exports.getAllExplorationProgress = factory.getAll(ExplorationProgress);
 
-  if (req.params.explorationId)
-    filter = { explorationId: req.params.explorationId };
+// User Exploration Progress Routes (Return all Exploration Progress objects for a specific user)
+exports.getUserExplorationProgress = catchAsync(async (req, res, next) => {
+  console.log(req.params);
+  const explorationProgress = await ExplorationProgress.find({
+    user: req.params.userId,
+  });
 
-  const explorationProgress = await ExplorationProgress.find(filter);
+  if (!explorationProgress)
+    return next(
+      new AppError("No exploration progress found for this user.", 404),
+    );
 
   res.status(200).json({ status: "success", data: { explorationProgress } });
 });
 
-exports.getExplorationProgress = catchAsync(async (req, res, next) => {
+// Exploration Progress Routes (Return Exploration Progress object for specific exploration -- as the logged in user)
+exports.getMyExplorationProgress = catchAsync(async (req, res, next) => {
   const explorationProgress = await ExplorationProgress.findOne({
     user: req.user._id,
     exploration: req.params.explorationId,

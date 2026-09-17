@@ -9,7 +9,7 @@ router
   .get(
     authController.protect,
     // authController.restrictTo("explorer"),
-    explorationProgressController.getExplorationProgress,
+    explorationProgressController.getMyExplorationProgress,
   )
   .post(
     authController.protect,

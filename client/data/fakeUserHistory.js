@@ -12,7 +12,7 @@ const userHistory = [
         lastVisitedAt: "2025-06-20",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",
@@ -109,7 +109,7 @@ const userHistory = [
         lastVisitedAt: "2025-06-20",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",
@@ -141,7 +141,7 @@ const userHistory = [
         lastVisitedAt: "2025-06-20",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",
@@ -173,7 +173,7 @@ const userHistory = [
         lastVisitedAt: "2026-07-02",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",
@@ -205,7 +205,7 @@ const userHistory = [
         lastVisitedAt: "2025-06-20",
       },
     ],
-    earnedBadges: [
+    badgeCollection: [
       {
         badgeId: "badge_toa_alta", // FK → explorationsData[n].badge
         earnedAt: "2025-06-20",

@@ -52,7 +52,7 @@ const ProfileBadgeCollection = function ({ userHistory }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);
 
-  const { earnedBadges } = userHistory;
+  const { badgeCollection } = userHistory;
 
   function onBadgeItemClick(badgeId, isEarned) {
     setIsModalOpen(true);
@@ -71,14 +71,14 @@ const ProfileBadgeCollection = function ({ userHistory }) {
           BADGE COLLECTION
         </Heading>
         <Heading as="h6">
-          {earnedBadges.length} out of 100 badges collected
+          {badgeCollection.length} out of 100 badges collected
         </Heading>
       </TitleRow>
       <Card $cardColor="var(--color-light-100)" $cardShadow="insetMd">
         {/* replace later with badge info */}
         <BadgesRow $direction="horizontal" $wrap="wrap">
           {badges.map((badge) => {
-            const isEarned = earnedBadges.some(
+            const isEarned = badgeCollection.some(
               (earned) => earned.badgeId === badge.id,
             );
 

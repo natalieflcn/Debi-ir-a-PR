@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const APIFeatures = require("../utils/apiFeatures");
+const factory = require("./handlerFactory");
 
 const filterRequestBody = (body, ...allowedFields) => {
   const filteredRequestBody = {};
@@ -21,20 +21,6 @@ exports.getUser = catchAsync(async (req, res, next) => {
   await user.populateUserData();
 
   res.status(200).json({ status: "success", data: { user } });
-});
-
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(User.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-
-  const users = await features.query;
-
-  res
-    .status(200)
-    .json({ status: "success", results: users.length, data: { users } });
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
@@ -59,9 +45,27 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { user: updatedUser } });
 });
 
+// exports.deleteMe = factory.deleteOne(User);
+
+// exports.getAllUsers = catchAsync(async (req, res, next) => {
+//   const features = new APIFeatures(User.find(), req.query)
+//     .filter()
+//     .sort()
+//     .limitFields()
+//     .paginate();
+
+//   const users = await features.query;
+
+//   res
+//     .status(200)
+//     .json({ status: "success", results: users.length, data: { users } });
+// });
+
 exports.deleteMe = catchAsync(async (req, res, next) => {
   console.log(req.user);
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
   res.status(204).json({ status: "success", data: null });
 });
+
+exports.getAllUsers = factory.getAll(User);

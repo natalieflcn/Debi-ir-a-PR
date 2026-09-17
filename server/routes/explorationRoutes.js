@@ -20,6 +20,9 @@ router
     explorationController.deleteExploration,
   );
 
-router.use("/:explorationId/progress", explorationProgressRouter);
+router.use(
+  "/:explorationId/my-exploration-progress",
+  explorationProgressRouter,
+);
 
 module.exports = router;

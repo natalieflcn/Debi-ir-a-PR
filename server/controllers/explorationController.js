@@ -1,69 +1,76 @@
 const express = require("express");
 const Exploration = require("../models/Exploration");
-const APIFeatures = require("../utils/apiFeatures");
-const catchAsync = require("../utils/catchAsync");
-const AppError = require("../utils/appError");
+const factory = require("./handlerFactory");
 
-exports.getAllExplorations = catchAsync(async (req, res, next) => {
-  // EXECUTE QUERY
-  const features = new APIFeatures(Exploration.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-
-  const explorations = await features.query;
-
-  // SEND RESPONSE
-  res.status(200).json({
-    status: "success",
-    results: explorations.length,
-    data: { explorations },
-  });
+exports.getAllExplorations = factory.getAll(Exploration);
+exports.getExploration = factory.getOne(Exploration, {
+  path: "badge",
+  select: "-description -type -__v",
 });
+exports.createExploration = factory.createOne(Exploration);
+exports.updateExploration = factory.updateOne(Exploration);
+exports.deleteExploration = factory.deleteOne(Exploration);
 
-exports.getExploration = catchAsync(async (req, res, next) => {
-  const exploration = await Exploration.findOne({
-    _id: req.params.id,
-  }).populate({
-    path: "badge",
-    select: "-description -type -__v",
-  });
+// exports.getAllExplorations = catchAsync(async (req, res, next) => {
+//   // EXECUTE QUERY
+//   const features = new APIFeatures(Exploration.find(), req.query)
+//     .filter()
+//     .sort()
+//     .limitFields()
+//     .paginate();
 
-  if (!exploration)
-    return next(new AppError("No exploration found with that ID.", 404));
+//   const explorations = await features.query;
 
-  res.status(200).json({ status: "success", data: { exploration } });
-});
+//   // SEND RESPONSE
+//   res.status(200).json({
+//     status: "success",
+//     results: explorations.length,
+//     data: { explorations },
+//   });
+// });
 
-exports.createExploration = catchAsync(async (req, res, next) => {
-  const newExploration = await Exploration.create(req.body);
+// exports.getExploration = catchAsync(async (req, res, next) => {
+//   const exploration = await Exploration.findOne({
+//     _id: req.params.id,
+//   }).populate({
+//     path: "badge",
+//     select: "-description -type -__v",
+//   });
 
-  res
-    .status(201)
-    .json({ status: "success", data: { exploration: newExploration } });
-});
+//   if (!exploration)
+//     return next(new AppError("No exploration found with that ID.", 404));
 
-exports.updateExploration = catchAsync(async (req, res, next) => {
-  const exploration = await Exploration.findOneAndUpdate(
-    { _id: req.params.id },
-    req.body,
-    { new: true, runValidators: true },
-  );
+//   res.status(200).json({ status: "success", data: { exploration } });
+// });
 
-  if (!exploration)
-    return next(new AppError("No exploration found with that ID.", 404));
+// exports.createExploration = catchAsync(async (req, res, next) => {
+//   const newExploration = await Exploration.create(req.body);
 
-  res.status(200).json({ status: "success", data: { exploration } });
-});
+//   res
+//     .status(201)
+//     .json({ status: "success", data: { exploration: newExploration } });
+// });
 
-exports.deleteExploration = catchAsync(async (req, res, next) => {
-  const exploration = await Exploration.findOneAndDelete({
-    _id: req.params.id,
-  });
+// exports.updateExploration = catchAsync(async (req, res, next) => {
+//   const exploration = await Exploration.findOneAndUpdate(
+//     { _id: req.params.id },
+//     req.body,
+//     { new: true, runValidators: true },
+//   );
 
-  if (!exploration)
-    return next(new AppError("No exploration found with that ID.", 404));
+//   if (!exploration)
+//     return next(new AppError("No exploration found with that ID.", 404));
 
-  res.status(204).json({ status: "success", data: null });
-});
+//   res.status(200).json({ status: "success", data: { exploration } });
+// });
+
+// exports.deleteExploration = catchAsync(async (req, res, next) => {
+//   const exploration = await Exploration.findOneAndDelete({
+//     _id: req.params.id,
+//   });
+
+//   if (!exploration)
+//     return next(new AppError("No exploration found with that ID.", 404));
+
+//   res.status(204).json({ status: "success", data: null });
+// });
