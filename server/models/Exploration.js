@@ -73,7 +73,6 @@ const explorationSchema = new mongoose.Schema(
     featured: { type: Boolean, default: false },
     badge: {
       type: badgeSchema,
-      required: true,
     },
     locations: {
       type: [locationSchema],
@@ -81,6 +80,10 @@ const explorationSchema = new mongoose.Schema(
       validate: {
         validator: (arr) => arr.length <= 10,
         message: "An exploration can have at most 10 locations.",
+      },
+      validate: {
+        validator: (arr) => arr.length > 0,
+        message: "An exploration must have at least one location.",
       },
     },
     images: { type: [String], default: [] },

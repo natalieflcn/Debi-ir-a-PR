@@ -8,22 +8,7 @@ const AppError = require("../utils/appError");
 // Exploration Routes
 exports.getAllExplorations = factory.getAll(Exploration);
 exports.getExploration = factory.getOne(Exploration, null);
-exports.createExploration = catchAsync(async (req, res, next) => {
-  const { badgeDetails, ...explorationData } = req.body;
-
-  const badge = await Badge.create(badgeDetails);
-  const exploration = await Exploration.create({
-    badge: badge._id,
-    ...explorationData,
-  });
-
-  res.status(201).json({
-    status: "success",
-    data: {
-      exploration,
-    },
-  });
-});
+exports.createExploration = factory.createOne(Exploration, null);
 
 exports.updateExploration = factory.updateOne(Exploration);
 exports.deleteExploration = factory.deleteOne(Exploration);

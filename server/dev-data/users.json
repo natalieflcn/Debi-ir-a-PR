@@ -1,47 +1,183 @@
 [
   {
-    "userId": "user_001",
-    "name": "Natalie Falcon",
-    "email": "natalie.dflcn@gmail.com",
-    "password": "adminAccount",
-    "role": "admin",
-    "title": "Admin",
+    "name": "Nadia Woodlawn",
+    "email": "nadiawoodlawn@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Explorer",
     "avatar": "TEMP.png"
   },
   {
-    "userId": "user_002",
     "name": "Nika Chooi",
     "email": "nikiflcn@gmail.com",
-    "password": "explorerAccount1",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
     "role": "explorer",
     "title": "Baby Turista",
     "avatar": "TEMP.png"
   },
   {
-    "userId": "user_003",
-    "name": "Alethia Ragland",
-    "email": "thearagland1@gmail.com",
-    "password": "explorerAccount2",
+    "name": "Vivian Ma",
+    "email": "vivianma@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+
     "role": "explorer",
-    "title": "Tropical Cruiser",
+    "title": "Explorer",
     "avatar": "TEMP.png"
   },
   {
-    "userId": "user_004",
+    "name": "Mario Leon",
+    "email": "marioleon@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Jennifer Vasquez",
+    "email": "jennifervasquez@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Explorer",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Shanna Mohan",
+    "email": "shannamohan@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Emmaly Merced",
+    "email": "emmalymerced@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Explorer",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Ralph Makombo",
+    "email": "ralphmakombo@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Allen Lima",
+    "email": "allenlima@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Explorer",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Sebastian Garcia",
+    "email": "sebastiangarcia@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Carlos Dejesus",
+    "email": "carlosdejesus@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "explorer",
+    "title": "Baby Turista",
+    "avatar": "TEMP.png"
+  },
+  {
     "name": "Tony Stark",
-    "email": "jarvis@aol.com",
-    "password": "ambassadorAccount1",
+    "email": "jarvis@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
     "role": "ambassador",
     "title": "Ambassador",
     "avatar": "TEMP.png"
   },
   {
-    "userId": "user_005",
     "name": "Miles Morales",
-    "email": "mmbkspiderman@hotmail.com",
-    "password": "ambassadorAccount2",
+    "email": "mmbkspiderman@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
     "role": "ambassador",
     "title": "Ambassador",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Sofia Guzman",
+    "email": "sofiaguzman@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "ambassador",
+    "title": "Ambassador",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Tony Falcon",
+    "email": "antonio@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "ambassador",
+    "title": "Ambassador",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Kenny Nieves",
+    "email": "kennynieves@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "ambassador",
+    "title": "Ambassador",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Naty",
+    "email": "naty@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "admin",
+    "title": "Admin",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Indy",
+    "email": "indy@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "admin",
+    "title": "Admin",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Hush",
+    "email": "hush@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "admin",
+    "title": "Admin",
+    "avatar": "TEMP.png"
+  },
+  {
+    "name": "Jungo",
+    "email": "mmbkspiderman@gmail.com",
+    "password": "password1234",
+    "passwordConfirm": "password1234",
+    "role": "admin",
+    "title": "Admin",
     "avatar": "TEMP.png"
   }
 ]

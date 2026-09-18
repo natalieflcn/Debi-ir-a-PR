@@ -1,0 +1,128 @@
+[
+  {
+    "user": "6aac8cab720191e06e0718bb",
+    "exploration": "6aac8bb0dfc1805b4a827415",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a82741e",
+      "6aac8bb0dfc1805b4a82741d",
+      "6aac8bb0dfc1805b4a82741c",
+      "6aac8bb0dfc1805b4a82741b",
+      "6aac8bb0dfc1805b4a82741a",
+      "6aac8bb0dfc1805b4a827419",
+      "6aac8bb0dfc1805b4a827418",
+      "6aac8bb0dfc1805b4a827417"
+    ],
+    "status": "completed",
+    "lastVisitedAt": "2026-06-30T00:00:00.000Z",
+    "completedAt": "2026-06-30T00:00:00.000Z"
+  },
+  {
+    "user": "6aac8cab720191e06e0718bb",
+    "exploration": "6aac8bb0dfc1805b4a82741f",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a827422",
+      "6aac8bb0dfc1805b4a827421",
+      "6aac8bb0dfc1805b4a827423"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-07-16T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bb",
+    "exploration": "6aac8bb0dfc1805b4a8273fd",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a8273ff",
+      "6aac8bb0dfc1805b4a827400"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-08-06T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bc",
+    "exploration": "6aac8bb0dfc1805b4a8273fd",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a827400",
+      "6aac8bb0dfc1805b4a827401",
+      "6aac8bb0dfc1805b4a827402",
+      "6aac8bb0dfc1805b4a8273ff"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-07-23T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bc",
+    "exploration": "6aac8bb0dfc1805b4a82741f",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a827421",
+      "6aac8bb0dfc1805b4a827422",
+      "6aac8bb0dfc1805b4a827425"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-05-08T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bc",
+    "exploration": "6aac8bb0dfc1805b4a827415",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a827417",
+      "6aac8bb0dfc1805b4a827418",
+      "6aac8bb0dfc1805b4a82741b",
+      "6aac8bb0dfc1805b4a82741d"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-08-29T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bc",
+    "exploration": "6aac8bb0dfc1805b4a827406",
+    "locationsVisited": ["6aac8bb0dfc1805b4a82740d"],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-06-19T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718bc",
+    "exploration": "6aac8bb0dfc1805b4a82740e",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a827412",
+      "6aac8bb0dfc1805b4a827410"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-08-16T00:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "user": "6aac8cab720191e06e0718be",
+    "exploration": "6aac8bb0dfc1805b4a8273fd",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a8273ff",
+      "6aac8bb0dfc1805b4a827400",
+      "6aac8bb0dfc1805b4a827401",
+      "6aac8bb0dfc1805b4a827402",
+      "6aac8bb0dfc1805b4a827403",
+      "6aac8bb0dfc1805b4a827404",
+      "6aac8bb0dfc1805b4a827405"
+    ],
+    "status": "completed",
+    "lastVisitedAt": "2026-09-11T00:00:00.000Z",
+    "completedAt": "2026-09-10T00:00:00.000Z"
+  },
+  {
+    "user": "6aac8cab720191e06e0718be",
+    "exploration": "6aac8bb0dfc1805b4a8273fd",
+    "locationsVisited": [
+      "6aac8bb0dfc1805b4a82740b",
+      "6aac8bb0dfc1805b4a82740a",
+      "6aac8bb0dfc1805b4a827409",
+      "6aac8bb0dfc1805b4a827408"
+    ],
+    "status": "in_progress",
+    "lastVisitedAt": "2026-09-15T00:00:00.000Z",
+    "completedAt": null
+  }
+]

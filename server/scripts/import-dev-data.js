@@ -1,13 +1,12 @@
 const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const Location = require("../models/Location");
-const Exploration = require("../models/Exploration");
-const Badge = require("../models/Badge");
-const BadgeCollection = require("../models/BadgeCollection");
-const User = require("../models/User");
-const Visit = require("../models/Visit");
 const ExplorationProgress = require("../models/ExplorationProgress");
+const Exploration = require("../models/Exploration");
+
+const User = require("../models/User");
+
+// const ExplorationProgress = require("../models/ExplorationProgress");
 
 // Connecting to database
 dotenv.config({ path: `${__dirname}/../config.env` });
@@ -200,31 +199,31 @@ const deleteUsersData = async () => {
 // };
 
 // // ExplorationProgress Data
-// const explorationProgress = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/explorationProgress.json`, "utf-8"),
-// );
+const explorationProgress = JSON.parse(
+  fs.readFileSync(`${__dirname}/../dev-data/explorationProgress.json`, "utf-8"),
+);
 
-// const importExplorationProgressData = async () => {
-//   try {
-//     await ExplorationProgress.create(explorationProgress);
-//     console.log("ExplorationProgress data successfully imported!");
-//   } catch (err) {
-//     console.log("Importing ExplorationProgress data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
+const importExplorationProgressData = async () => {
+  try {
+    await ExplorationProgress.create(explorationProgress);
+    console.log("ExplorationProgress data successfully imported!");
+  } catch (err) {
+    console.log("Importing ExplorationProgress data failed.");
+    console.log(err);
+  }
+  process.exit();
+};
 
-// const deleteExplorationProgressData = async () => {
-//   try {
-//     await ExplorationProgress.deleteMany();
-//     console.log("ExplorationProgress data successfully deleted!");
-//   } catch (err) {
-//     console.log("Deleting ExplorationProgress data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
+const deleteExplorationProgressData = async () => {
+  try {
+    await ExplorationProgress.deleteMany();
+    console.log("ExplorationProgress data successfully deleted!");
+  } catch (err) {
+    console.log("Deleting ExplorationProgress data failed.");
+    console.log(err);
+  }
+  process.exit();
+};
 
 switch (process.argv[2]) {
   case "--importLocations":
@@ -256,12 +255,15 @@ switch (process.argv[2]) {
     break;
 
   case "--importExplorationProgress":
+    importExplorationProgressData();
     break;
 
   case "--deleteExplorationProgress":
+    deleteExplorationProgressData();
     break;
 
   case "--importUsers":
+    importUsersData();
     break;
 
   case "--deleteUsers":

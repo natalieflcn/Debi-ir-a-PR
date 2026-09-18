@@ -9,7 +9,11 @@
     "numStops": 7,
     "tags": ["artist", "culture", "heritage", "food", "nature", "sightseeing"],
     "featured": true,
-    "badge": null,
+    "badge": {
+      "name": "Bad Bunny Fan",
+      "description": "Completed the Bad Bunny Exploration",
+      "image": "/badges/badge_020`.png"
+    },
     "locations": [
       {
         "slug": "ojo-de-agua",
@@ -145,7 +149,11 @@
     "numStops": 6,
     "tags": ["artist"],
     "featured": false,
-    "badge": null,
+    "badge": {
+      "name": "Rauw Alejandro Fan",
+      "description": "Completed the Rauw Alejandro Exploration",
+      "image": "/badges/badge_022.png"
+    },
     "locations": [
       {
         "slug": "kiosko-el-boricua",
@@ -264,7 +272,11 @@
     "numStops": 5,
     "tags": ["artist"],
     "featured": true,
-    "badge": null,
+    "badge": {
+      "name": "Marc Anthony Fan",
+      "description": "Completed the Marc Anthony Exploration",
+      "image": "/badges/badge_023.png"
+    },
     "locations": [
       {
         "slug": "la-factoria",
@@ -373,7 +385,11 @@
       "shopping"
     ],
     "featured": false,
-    "badge": null,
+    "badge": {
+      "name": "San Juan Badge",
+      "description": "Completed the San Juan Exploration",
+      "image": "/badges/badge_011.png"
+    },
     "locations": [
       {
         "slug": "castillo-san-felipe-del-morro",
@@ -526,7 +542,11 @@
     "numStops": 5,
     "tags": ["outdoors"],
     "featured": true,
-    "badge": null,
+    "badge": {
+      "name": "City Corredor",
+      "description": "Completed the City Corredor Exploration",
+      "image": "/badges/badge_033.png"
+    },
     "locations": [
       {
         "slug": "paseo-del-morro",

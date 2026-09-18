@@ -23,6 +23,17 @@ router
   )
   .delete(explorationProgressController.deleteExplorationProgress);
 
+router
+  .route("/me")
+  .get(
+    authController.protect,
+    explorationProgressController.getUserExplorationProgress,
+  );
+
+router
+  .route("/all")
+  .get(explorationProgressController.getAllExplorationProgress);
+
 // router
 //   .route("/")
 //   .get(
