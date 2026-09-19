@@ -6,12 +6,23 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 // Exploration Routes
-exports.getAllExplorations = factory.getAll(Exploration);
+exports.getAllExplorationData = factory.getAll(Exploration);
 exports.getExploration = factory.getOne(Exploration, null);
 exports.createExploration = factory.createOne(Exploration, null);
 
 exports.updateExploration = factory.updateOne(Exploration);
 exports.deleteExploration = factory.deleteOne(Exploration);
+
+exports.aliasExplorationsSummary = (req, res, next) => {
+  //   req.query.filter = {tags: }
+  req.query.sort = req.query.sort || "-createdAt";
+  req.query.fields =
+    "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags";
+  req.query.limit = "2";
+  req.query.page = req.query.page || 1;
+  console.log(req.query);
+  next();
+};
 
 // Exploration/Badge Routes
 // exports.createExplorationBadge = catchAsync(async (req, res, next) => {

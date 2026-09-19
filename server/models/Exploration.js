@@ -86,6 +86,7 @@ const explorationSchema = new mongoose.Schema(
         message: "An exploration must have at least one location.",
       },
     },
+    numStops: { type: Number },
     images: { type: [String], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
@@ -101,14 +102,27 @@ const explorationSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
-
 // explorationSchema.virtual("numStops").get(function () {
-//   return this.locations.length;
+//   return this.locations ? this.locations.length : undefined;
 // });
 
 // Middlewares
 explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
+});
+
+// explorationSchema.pre("save", function () {
+//   this.numStops = this.locations.length;
+// });
+
+explorationSchema.post(/^find/, function (docs, next) {
+  docs.forEach((doc) => {
+    doc.numStops = doc.locations.length;
+    doc.locations = undefined;
+  });
+
+  console.log(docs);
+  next();
 });
 
 // explorationSchema.pre(/^find/, function () {

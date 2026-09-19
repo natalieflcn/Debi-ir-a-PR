@@ -17,6 +17,7 @@ exports.getAll = (Model, filter = {}) =>
 
     const doc = await features.query;
 
+    console.log(req.query);
     // SEND RESPONSE
     res.status(200).json({
       status: "success",

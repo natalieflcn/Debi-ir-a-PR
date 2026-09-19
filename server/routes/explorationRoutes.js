@@ -8,8 +8,16 @@ const router = express.Router();
 // Flat Routes
 router
   .route("/")
-  .get(authController.protect, explorationController.getAllExplorations)
+  .get(authController.protect, explorationController.getAllExplorationData)
   .post(explorationController.createExploration);
+
+router
+  .route("/summary")
+  .get(
+    authController.protect,
+    explorationController.aliasExplorationsSummary,
+    explorationController.getAllExplorationData,
+  );
 
 router
   .route("/:id")
@@ -21,7 +29,6 @@ router
     explorationController.deleteExploration,
   );
 
-// Nested Routes
 // router
 //   .route("/:explorationId/badge")
 //   .get(explorationController.getExplorationBadge);

@@ -85,6 +85,9 @@ userSchema.virtual("badgeCollection", {
   foreignField: "user",
 });
 
+userSchema.index({ name: 1 });
+userSchema.index({ createdAt: -1 });
+
 // Middleware
 userSchema.pre("save", async function () {
   if (!this.isModified("password") || this.isNew) return;

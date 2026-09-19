@@ -3,13 +3,14 @@ const slugify = require("slugify");
 const { LOCATION_TAGS, PR_CITIES } = require("../utils/constants");
 
 const locationSchema = new mongoose.Schema({
-  slug: { type: String, index: true },
+  slug: { type: String },
   name: {
     type: String,
     minlength: [5, "A location name must have more than 5 characters."],
     maxlength: [40, "A location name must have less than 40 characters."],
     trim: true,
     required: [true, "A location name is required."],
+    unique: true,
   },
   address: {
     street: {
