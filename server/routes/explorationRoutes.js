@@ -5,27 +5,33 @@ const explorationProgressRouter = require("./explorationProgressRoutes");
 
 const router = express.Router();
 
+router.use(authController.protect);
 // Flat Routes
-router
-  .route("/")
-  .get(authController.protect, explorationController.getAllExplorationData)
-  .post(explorationController.createExploration);
+router.route("/").get(explorationController.getAllExplorationData).post(
+  // authController.protect(),
+  authController.restrictTo("admin", "ambassador"),
+  explorationController.createExploration,
+);
 
-router
-  .route("/summary")
-  .get(
-    authController.protect,
-    explorationController.aliasExplorationsSummary,
-    explorationController.getAllExplorationData,
-  );
+router.route("/summary").get(
+  // authController.protect(),
+  explorationController.aliasExplorationsSummary,
+  explorationController.getAllExplorationData,
+);
+
+router.use(authController.restrictTo("admin", "ambassador"));
 
 router
   .route("/:id")
   .get(explorationController.getExploration)
-  .patch(explorationController.updateExploration)
+  .patch(
+    // authController.protect,
+    // authController.restrictTo("admin", "ambassador"),
+    explorationController.updateExploration,
+  )
   .delete(
-    authController.protect,
-    authController.restrictTo("admin", "ambassador"),
+    // authController.protect,
+    // authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExploration,
   );
 

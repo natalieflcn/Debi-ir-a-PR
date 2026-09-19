@@ -4,6 +4,12 @@ const explorationProgressController = require("../controllers/explorationProgres
 
 const router = express.Router();
 
-router.route("/").get(explorationProgressController.getAllExplorationProgress);
+router
+  .route("/")
+  .get(
+    authController.protect,
+    authController("admin", "ambassador"),
+    explorationProgressController.getAllExplorationProgress,
+  );
 
 module.exports = router;
