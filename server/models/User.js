@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Please provide your email."],
       lowercase: true,
       trim: true,
-      unique: true,
+      unique: [true, "An account with this email already exists."],
       validate: [validator.isEmail, "Please provide a valid email."],
     },
     password: {
@@ -87,6 +87,7 @@ userSchema.virtual("badgeCollection", {
 
 userSchema.index({ name: 1 });
 userSchema.index({ createdAt: -1 });
+// userSchema.index({ email: 1 });
 
 // Middleware
 userSchema.pre("save", async function () {

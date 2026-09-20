@@ -109,7 +109,7 @@
     "avatar": "TEMP.png"
   },
   {
-    "name": "Miles Morales",
+    "name": "Peter Parker",
     "email": "mmbkspiderman@gmail.com",
     "password": "password1234",
     "passwordConfirm": "password1234",
@@ -173,7 +173,7 @@
   },
   {
     "name": "Jungo",
-    "email": "mmbkspiderman@gmail.com",
+    "email": "jungo@gmail.com",
     "password": "password1234",
     "passwordConfirm": "password1234",
     "role": "admin",
