@@ -10,6 +10,8 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bold from "../../../shared/components/typography/Bold";
+import { login } from "../../../services/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -59,10 +61,13 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { loginUser } = useAuth();
 
   const navigate = useNavigate();
 
-  const handleSubmit = function (e) {
+  const handleSubmit = async function (e) {
     e.preventDefault();
 
     const errors = {};
@@ -84,7 +89,15 @@ function Login() {
 
     const formData = { email, password };
 
-    navigate("/");
+    try {
+      setIsSubmitting(true);
+      await loginUser(formData);
+      navigate("/");
+    } catch (err) {
+      setFormErrors({ submit: "Login failed. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

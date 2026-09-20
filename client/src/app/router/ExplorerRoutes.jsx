@@ -1,7 +1,7 @@
 // explorer dashboard, hunts, profile
 
 import { lazy } from "react";
-import { Route } from "react-router-dom";
+import { redirect, Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";
 import { explorationsLoader } from "./loaders/explorationsLoader";
 import { explorerExplorationLoader } from "./loaders/explorerExplorationLoader";
@@ -23,6 +23,10 @@ const ExplorerProfile = lazy(
 );
 
 const ExplorerRoutes = [
+  {
+    index: true,
+    loader: () => redirect("/dashboard"),
+  },
   {
     path: "dashboard",
     element: <ExplorerDashboard />,

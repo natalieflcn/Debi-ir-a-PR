@@ -9,6 +9,7 @@ import Button from "../../../shared/components/ui/Button";
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signupAmbassador, signupExplorer } from "../../../services/auth";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -66,11 +67,12 @@ function Signup({ $variant }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordConfirm, setConfirmPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = function (e) {
+  const handleSubmit = async function (e) {
     e.preventDefault();
 
     const errors = {};
@@ -88,8 +90,8 @@ function Signup({ $variant }) {
     } else if (password.length < 8) {
       errors.password = "Password must be at least 8 characters.";
     }
-    if (confirmPassword.trim() !== password.trim()) {
-      errors.confirmPassword = "Passwords must match.";
+    if (passwordConfirm.trim() !== password.trim()) {
+      errors.passwordConfirm = "Passwords must match.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -97,9 +99,24 @@ function Signup({ $variant }) {
       return;
     }
 
-    const formData = { name, email, password };
+    const formData = { name, email, password, passwordConfirm };
 
-    navigate("/");
+    try {
+      setIsSubmitting(true);
+      const signupFunction =
+        $variant === "ambassador" ? signupAmbassador : signupExplorer;
+      await signupFunction(formData);
+      navigate(
+        $variant === "ambassador"
+          ? "/ambassador/explorations"
+          : "/explorations",
+      );
+    } catch (err) {
+      setFormErrors({ submit: err.message });
+    } finally {
+      setIsSubmitting(false);
+      // console.log("try catch bloc running");
+    }
   };
 
   return (
@@ -156,13 +173,13 @@ function Signup({ $variant }) {
               <FormField label="confirm Password">
                 <Row $gap="var(--gap-xs)">
                   <StyledInput
-                    name="confirmPassword"
+                    name="passwordConfirm"
                     placeholder="Confirm Password"
-                    value={confirmPassword}
+                    value={passwordConfirm}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
-                  {formErrors.confirmPassword && (
-                    <Bold>{formErrors.confirmPassword}</Bold>
+                  {formErrors.passwordConfirm && (
+                    <Bold>{formErrors.passwordConfirm}</Bold>
                   )}
                 </Row>
               </FormField>
@@ -172,7 +189,7 @@ function Signup({ $variant }) {
                 $size="small"
                 type="submit"
               >
-                Sign Up
+                {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Button>
             </Row>
           </AppForm>

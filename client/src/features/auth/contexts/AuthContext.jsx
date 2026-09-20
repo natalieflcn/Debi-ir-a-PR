@@ -1,21 +1,24 @@
 import { createContext, useContext, useState } from "react";
+import { login } from "../../../services/auth";
 
 const AuthContext = createContext(null);
 
 const fakeCurrentUser = {
   id: "user_001",
   name: "Natalie Falcon",
-  role: "ambassador", // swap to "ambassador" or "admin" to test
+  role: "explorer", // swap to "ambassador" or "admin" to test
 };
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(fakeCurrentUser);
 
-  function login(userData) {
+  async function loginUser(userData) {
+    const credentials = await login(userData);
     setUser(userData);
+    return credentials;
   }
 
-  function logout() {
+  function logoutUser() {
     setUser(null);
   }
 
@@ -23,8 +26,8 @@ export function AuthProvider({ children }) {
     user,
     isAuthenticated: Boolean(user),
     role: user?.role ?? null,
-    login,
-    logout,
+    loginUser,
+    logoutUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

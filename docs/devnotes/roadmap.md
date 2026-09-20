@@ -34,11 +34,11 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 ### Phase 0: Refactor Original Codebase
 
-- [~] Eradicate all bad practices
+- [x] Eradicate all bad practices
 - [x] Redesign file structure with feature-based approach
-- [~] Clean all components of any styling, organize styles into variants and themes
-- [ ] Redesign UX/UI of current landing pages implementation
-- [ ] Ensure app has retained responsiveness for all devices
+- [x] Clean all components of any styling, organize styles into variants and themes
+- [x] Redesign UX/UI of current landing pages implementation
+- [x] Ensure app has retained responsiveness for all devices
 
 ### Phase 1: Frontend Foundation (React)
 
@@ -52,14 +52,14 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 ### Phase 2: Backend Foundation (Node + Express)
 
 - [x] Set up server
-- [~] Create MongoDB models
-- [~] Build RESTful API routes
+- [x] Create MongoDB models
+- [x] Build RESTful API routes
 
 ### Phase 3: Authentication and Authorization
 
-- [ ] Create Auth system
-- [ ] Implement middleware to protect routes and restrict access
-- [ ] Connect to frontend
+- [x] Create Auth system
+- [x] Implement middleware to protect routes and restrict access
+- [~] Connect to frontend
 
 ### Phase 4: Connect frontend to backend
 
@@ -98,7 +98,7 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 - [ ] Frontend: Netlify
 - [ ] Backend: Heroku
-- [ ] Database: MongoDB Atlas
+- [x] Database: MongoDB Atlas
 
 ---
 

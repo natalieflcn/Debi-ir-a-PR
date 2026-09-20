@@ -319,8 +319,8 @@
 ## Week: August 31 – September 4
 
 - [~] Create refined development data
-  - [x] (Five) Exploration data TODO 2
-  - [x] Location data TODO 3
+  - [x] (Five) Exploration data
+  - [x] Location data
   - [x] (Five) Users data
     - [x] (Two) Explorer data points
       - [ ] EarnedBadges data points
@@ -350,7 +350,7 @@
     - Entertainment: Nightlife, Shopping, Entertainment, Adventure, Billiards
     - Food: Food
     - Other: Family-Friendly, Romantic, Local-Favorites
-  - [x] TODO Revise Exploration Filter Options
+  - [x] Revise Exploration Filter Options
     - Culture, Art, Nature, Entertainment, Food, Other
 - [x] Import dev-data into MongoDB database
   - [x] Create script to import Explorations and Locations
@@ -398,38 +398,69 @@
 
 ## Week: September 15 – September 22
 
-- [~] Modelling Data and Advanced Mongoose
-  - [x] TODO: Test userSchema populateUserRole instance method
-  - [x] TODO: Populate Badge information on Exploration
-  - [x] TODO: Create ExplorationProgress data point, test nested routes
+- [x] Modelling Data and Advanced Mongoose
+  - [x] Test userSchema populateUserRole instance method
+  - [x] Populate Badge information on Exploration
+  - [x] Create ExplorationProgress data point, test nested routes
   - [x] Create handler factory functions
     - [x] Explorations
     - [x] Badges
     - [x] Users
     - [x] Exploration Progress
-  - [ ] Implement remaining routers, nested routes, controllers, and data points
-    - [ ] Badges
-    - [ ] BadgeCollection
-    - [ ] ExplorationProgress
-  - [ ] Refine authentication and authorization through app routes
-  - [ ] Add more data points
-  - [ ] Add indexes for data
-  - [ ] NOTE: Implement one-exploration/one-user per ExplorationProgress
+  - [x] Implement remaining routers, nested routes, controllers, and data points
+        ~~- [ ] Badges~~
+        ~~- [ ] BadgeCollection~~
+    - [x] ExplorationProgress
+  - [~] Import development data
+  - [x] Add indexes for data
+    - [x] Implement one-exploration/one-user per ExplorationProgress with compound unique index
+  - [x] Refine CreateExploration controller function
+        ~~- [ ] Determine how to create Locations while Exploration document is still being created~~
+        ~~- [ ] Determine how to validate Badge data against Badge schema~~
+    - [x] Limit fields returned for /getAllExplorations
+    - [x] Implement filtering by tags for /getAllExplorations
+  - [x] Refine authentication and authorization through app routes
+  - [x] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
+- [ ] Create /logout route in backend
 
-  badges, earnedBadges, explorationProgress, visit data, routing, and API
-
-- [ ] Automated Emails, File Uploads, Google Maps
-- [ ] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
+- [ ] **PHASE 4:** Connect Front-end to Back-end
+  - [ ] Create API service layer in client-side
+    - [~] Start with authRoutes (/login, /signup)
+    - [~] Make fetch API calls to endpoints
+    - [x] Store back-end URL in env variable
+    - [x] Set up CORS on the back-end
+    - [~] Handle loading and errors in client
 
 - [ ] FRONT-END TWEAKS (For the future)
-  - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
-  - [ ] TODO: Add ability for ambassadors/admins to delete resources
-    - [ ] Delete explorations
-    - [ ] Delete locations
-    - [ ] Delete users
-  - [ ] TODO: Create more pages
-    - [ ] Implement 'Forgot Password?' in login screen
-    - [ ] Revise front-end Badge implementation (CreateBadge form)
-    - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
-    - [ ] Create Reset Password page
-  - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+  - [ ] Connecting front-end to back-end
+    - [ ] "/" should always return to dashboard for logged in users
+    - [ ] After signing up user, user should be redirected to Explorations
+    - [ ] After logging in user, user should be redirected to Dashboard
+    - [ ] Add JWT token to cookies on the front-end
+    - [ ] When logging in with incorrect password, error message should display on the front-end.
+    - [ ] Shouldn't be able to sign up with existing email
+  - [ ] Other Tasks
+    - [ ] TODO: Add ability for ambassadors/admins to delete resources
+      - [ ] Delete explorations
+      - [ ] Delete locations
+      - [ ] Delete users
+    - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
+    - [ ] Remove Exploration Name field from Location Form (when creating explorations)
+    - [ ] Derived location tags should not be displayed on Exploration page
+    - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+    - [ ] Hide password in input fields when not active on /signup and /login page
+    - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
+    - [ ] BUG: Links broken when viewing users from /ambassador/users
+    - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+    - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
+    - [ ] TODO: Create more pages
+      - [ ] Implement 'Forgot Password?' in login screen
+      - [ ] Revise front-end Badge implementation (CreateBadge form)
+      - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
+      - [ ] Create Reset Password page
+
+- [ ] **PHASE 6:** Advanced Features
+  - Automated Emails
+  - File Uploads
+  - Google Maps
+  - Aggregating Data for Dashboard Analytics
