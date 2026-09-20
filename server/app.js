@@ -9,6 +9,7 @@ const userRouter = require("./routes/userRoutes");
 const explorationProgressAdminRouter = require("./routes/explorationProgressAdminRoutes");
 const AppError = require("./utils/appError");
 const GlobalErrorHandler = require("./controllers/errorController");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -24,6 +25,7 @@ const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";
 app.use(
   cors({
     origin: allowedOrigin,
+    credentials: true,
   }),
 );
 
@@ -36,6 +38,8 @@ app.use(express.json());
 app.use(mongoSanitize());
 
 app.use(hpp({ whitelist: [] }));
+
+app.use(cookieParser());
 
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
