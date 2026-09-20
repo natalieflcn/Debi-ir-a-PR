@@ -53,7 +53,7 @@ const IrAPR = styled.p`
 
 function Logo() {
   const { role } = useAuth();
-  console.log(role);
+
   // const role = "admin";
   let prefix = "";
 

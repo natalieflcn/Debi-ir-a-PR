@@ -191,6 +191,7 @@ function Signup({ $variant }) {
               >
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Button>
+              {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
             </Row>
           </AppForm>
 

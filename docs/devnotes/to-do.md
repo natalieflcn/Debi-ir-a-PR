@@ -425,21 +425,51 @@
 
 - [ ] **PHASE 4:** Connect Front-end to Back-end
   - [ ] Create API service layer in client-side
-    - [~] Start with authRoutes (/login, /signup)
-    - [~] Make fetch API calls to endpoints
     - [x] Store back-end URL in env variable
     - [x] Set up CORS on the back-end
+    - [~] Start with authRoutes (/login, /signup)
+      - [x] /signup/explorer
+      - [x] /signup/ambassador
+      - [ ] /login
+      - [ ] /me
+      - [ ] /forgotPassword
+      - [ ] /resetForgottenPassword
+      - [ ] /updateMyPassword
+    - [~] Make fetch API calls to endpoints
     - [~] Handle loading and errors in client
+    - [ ] Connect remaining routes
+      - [ ] Explorations
+        - [ ] GET /explorations
+        - [ ] GET /explorations/summary
+        - [ ] GET /explorations/:explorationId
+        - [ ] POST /explorations
+        - [ ] PATCH /explorations/:explorationId
+        - [ ] DELETE /explorations/:explorationId
+      - [ ] Users
+        - [ ] GET /users
+        - [ ] GET /users/:userId
+        - [ ] POST /users
+        - [ ] PATCH /users/:userId
+        - [ ] DELETE /users/:userId
+      - [ ] ExplorationProgress
+        - [ ] GET /admin-exploration-progress
+        - [ ] GET /exploration-progress
+        - [ ] GET /users/:explorationId/user-exploration-progress
+        - [ ] POST /explorations/:explorationId/exploration-progress
+        - [ ] PATCH /explorations/:explorationId/exploration-progress
+        - [ ] DELETE /explorations/:explorationId/exploration-progress
 
-- [ ] FRONT-END TWEAKS (For the future)
-  - [ ] Connecting front-end to back-end
+- [ ] FRONT-END TWEAKS
+  - [~] Connecting front-end to back-end
+    - [x] Need to render form errors when user is attempting to sign up with existing email
     - [ ] "/" should always return to dashboard for logged in users
-    - [ ] After signing up user, user should be redirected to Explorations
-    - [ ] After logging in user, user should be redirected to Dashboard
-    - [ ] Add JWT token to cookies on the front-end
-    - [ ] When logging in with incorrect password, error message should display on the front-end.
-    - [ ] Shouldn't be able to sign up with existing email
-  - [ ] Other Tasks
+    - [x] After signing up user, user should be redirected to Explorations
+    - [x] After logging in user, user should be redirected to Dashboard
+    - [x] Add JWT token to cookies on the front-end
+    - [] When logging in with incorrect password, error message should display on the front-end.
+    - [x] Shouldn't be able to sign up with existing email
+
+  - [ ] Other Tasks (For the future)
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
       - [ ] Delete explorations
       - [ ] Delete locations
@@ -448,6 +478,7 @@
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)
     - [ ] Derived location tags should not be displayed on Exploration page
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+    - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [ ] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
     - [ ] BUG: Links broken when viewing users from /ambassador/users

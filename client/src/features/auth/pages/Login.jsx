@@ -91,10 +91,31 @@ function Login() {
 
     try {
       setIsSubmitting(true);
-      await loginUser(formData);
-      navigate("/");
+      let redirectLink = "";
+
+      const user = await loginUser(formData);
+
+      switch (user.role) {
+        case "explorer":
+          redirectLink = "/dashboard";
+          break;
+
+        case "ambassador":
+          redirectLink = "/ambassador/dashboard";
+          break;
+
+        case "admin":
+          redirectLink = "/admin/dashboard";
+          break;
+
+        default:
+          redirectLink = "/unauthorized";
+          break;
+      }
+
+      navigate(redirectLink);
     } catch (err) {
-      setFormErrors({ submit: "Login failed. Please try again." });
+      setFormErrors({ submit: err.message });
     } finally {
       setIsSubmitting(false);
     }
@@ -142,8 +163,9 @@ function Login() {
                 </FormField>
 
                 <Button $variation="darkRed" $size="small" type="submit">
-                  Login
+                  {isSubmitting ? "Logging In..." : "Login"}
                 </Button>
+                {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
               </Row>
             </Row>
           </StyledAppForm>

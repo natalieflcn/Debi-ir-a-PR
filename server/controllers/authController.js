@@ -22,7 +22,8 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
 
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+  // if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+  cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
 
@@ -70,7 +71,7 @@ exports.login = catchAsync(async (req, res, next) => {
   // Check if user exists and password is valid
   const user = await User.findOne({ email }).select("+password");
   if (!user || !(await user.correctPassword(password, user.password)))
-    return next(new AppError("Incorrect email or password", 401));
+    return next(new AppError("Incorrect email or password.", 401));
 
   // If valid, send JWT to user
   createSendToken(user, 200, res);

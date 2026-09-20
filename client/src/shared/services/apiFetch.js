@@ -12,9 +12,8 @@ export async function apiFetch(path, options = {}) {
 
     console.log(errorData);
 
-    throw new Response(errorData.message || "Request failed", {
-      status: res.status,
-    });
+    throw new Error(errorData.message || "Request failed");
   }
+
   return res.status === 204 ? null : res.json();
 }

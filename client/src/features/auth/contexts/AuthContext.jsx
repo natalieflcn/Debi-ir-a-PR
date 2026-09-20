@@ -10,12 +10,14 @@ const fakeCurrentUser = {
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(fakeCurrentUser);
+  const [user, setUser] = useState(null);
 
-  async function loginUser(userData) {
-    const credentials = await login(userData);
-    setUser(userData);
-    return credentials;
+  async function loginUser(credentials) {
+    const { data } = await login(credentials);
+
+    setUser(data.user);
+
+    return data.user;
   }
 
   function logoutUser() {
