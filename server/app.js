@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require("@exortek/express-mongo-sanitize");
@@ -17,6 +18,14 @@ const limiter = rateLimit({
   message:
     "Too many requests from this IP address. Please try again in an hour! ",
 });
+
+const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+  }),
+);
 
 app.use(helmet());
 

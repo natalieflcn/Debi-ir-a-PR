@@ -1,4 +1,4 @@
-export const PR_CITIES = [
+exports.PR_CITIES = [
   "Adjuntas",
   "Aguada",
   "Aguadilla",
@@ -80,7 +80,7 @@ export const PR_CITIES = [
   // all 78 municipalities...
 ];
 
-export const EXPLORATION_TAGS = [
+exports.EXPLORATION_TAGS = [
   "adventure",
   "architecture",
   "art",
@@ -103,7 +103,7 @@ export const EXPLORATION_TAGS = [
   "romantic",
 ];
 
-export const LOCATION_TAGS = [
+exports.LOCATION_TAGS = [
   "art",
   "attraction",
   "bakery",

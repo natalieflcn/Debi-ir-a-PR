@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const { capitalize } = require("../utils/helpers");
+const helpers = require("../utils/helpers");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema(
         if (!(this.role === "ambassador" || this.role === "admin"))
           return undefined;
 
-        return capitalize(this.role);
+        return helpers.capitalize(this.role);
       },
     },
     avatar: { type: String, trim: true },
@@ -150,7 +150,6 @@ userSchema.methods.populateUserData = async function () {
   if (this.role === "explorer") {
     await this.populate("badgeCollection").populate("explorationProgress");
   } else {
-    console.log("running");
     await this.populate({
       path: "createdExplorations",
       select: "_id name -createdBy",

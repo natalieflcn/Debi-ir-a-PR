@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
-const { LOCATION_TAGS, PR_CITIES } = require("../utils/constants");
+const constants = require("../utils/constants");
 
 const locationSchema = new mongoose.Schema({
   slug: { type: String },
@@ -19,7 +19,7 @@ const locationSchema = new mongoose.Schema({
     },
     city: {
       type: String,
-      enum: PR_CITIES,
+      enum: constants.PR_CITIES,
       required: true,
     },
     zipcode: {
@@ -61,7 +61,7 @@ const locationSchema = new mongoose.Schema({
   images: { type: [String], default: [] },
   tags: {
     type: [String],
-    enum: LOCATION_TAGS,
+    enum: constants.LOCATION_TAGS,
     required: [true, "At least one location tag is required."],
   },
 });

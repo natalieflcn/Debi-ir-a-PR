@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
-const {
-  EXPLORATION_TAGS,
-  LOCATION_TAGS,
-  PR_CITIES,
-} = require("../utils/constants");
+const constants = require("../utils/constants");
 const locationSchema = require("./Location");
 const badgeSchema = require("./Badge");
 
@@ -50,7 +46,7 @@ const explorationSchema = new mongoose.Schema(
     },
     cities: {
       type: [String],
-      enum: PR_CITIES,
+      enum: constants.PR_CITIES,
       default: [],
     },
     headerImage: {
@@ -67,7 +63,7 @@ const explorationSchema = new mongoose.Schema(
     // numStops: { type: Number },
     tags: {
       type: [String],
-      enum: EXPLORATION_TAGS,
+      enum: constants.EXPLORATION_TAGS,
       required: [true, "At least one exploration tag is required."],
     },
     featured: { type: Boolean, default: false },
@@ -121,7 +117,7 @@ explorationSchema.post(/^find/, function (docs, next) {
     doc.locations = undefined;
   });
 
-  console.log(docs);
+  // console.log(docs);
   next();
 });
 

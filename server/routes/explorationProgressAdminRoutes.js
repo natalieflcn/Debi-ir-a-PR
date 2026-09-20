@@ -8,7 +8,7 @@ router
   .route("/")
   .get(
     authController.protect,
-    authController("admin", "ambassador"),
+    authController.restrictTo("admin", "ambassador"),
     explorationProgressController.getAllExplorationProgress,
   );
 
