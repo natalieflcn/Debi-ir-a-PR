@@ -1,6 +1,7 @@
 import fakeExplorationLocationData from "../../../features/explorer/pages/explorations/fakeExplorationLocationData";
+import { getExploration } from "../../../services/explorations";
 
-export async function explorerLocationLoader() {
+export async function explorerLocationLoader({ params }) {
   const userHistory = {
     userId: "user_001",
     explorationProgress: [
@@ -143,5 +144,18 @@ export async function explorerLocationLoader() {
     ],
   };
 
-  return { location: fakeExplorationLocationData, userHistory };
+  const { explorationId, locationId } = params;
+
+  const { data } = await getExploration(explorationId);
+  const explorationData = data.data;
+  const location = explorationData.locations.find(
+    (loc) => loc.slug === locationId,
+  );
+  console.log();
+
+  return {
+    exploration: { name: explorationData.name, slug: explorationData.slug },
+    location: location,
+    userHistory,
+  };
 }

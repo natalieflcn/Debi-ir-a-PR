@@ -48,11 +48,12 @@ function ExplorationLocationCard({
   footerCTA,
   type = "",
 }) {
+  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/${type}${type && "/"}explorations/${exploration}`}>
+      <RouterLink to={`/${type}${type && "/"}explorations/${exploration.slug}`}>
         <Button $size="small" $variation="darkRed">
-          <FaArrowLeft size={12} /> Back to {location.name}
+          <FaArrowLeft size={12} /> Back to {exploration.name}
         </Button>
       </RouterLink>
 
@@ -107,13 +108,8 @@ function ExplorationLocationCard({
             <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
           </StyledRow>
           <StyledRow $direction="horizontal">
-            {location.images.map((image) => (
-              <Image
-                src={image.imageURL}
-                $align="center"
-                $width="30%"
-                key={image.id}
-              />
+            {location.images.map((image, i) => (
+              <Image src={image} $align="center" $width="30%" key={i} />
             ))}
           </StyledRow>
 

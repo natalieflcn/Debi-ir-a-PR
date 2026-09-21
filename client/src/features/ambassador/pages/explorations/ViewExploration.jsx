@@ -4,7 +4,7 @@ import AdminExplorationCardHeaderDetails from "../../../../shared/components/man
 import AdminExplorationCardLocations from "../../../../shared/components/management/AdminExplorationCardLocations";
 import Button from "../../../../shared/components/ui/Button";
 import { FaArrowLeft } from "react-icons/fa";
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+// import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
 import { useLoaderData } from "react-router-dom";
 import AdminFooterBadgeDisplay from "../../../../shared/components/management/AdminFooterBadgeDisplay";
 
@@ -30,7 +30,7 @@ function ViewExploration() {
 
   return (
     <ExplorationCard
-      exploration={fakeExplorationData}
+      exploration={exploration}
       headerDetails={headerDetails}
       locationDetails={locationDetails}
       footerCTA={footerDetails}

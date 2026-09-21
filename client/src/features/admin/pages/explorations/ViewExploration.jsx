@@ -9,6 +9,7 @@ import AdminFooterBadgeDisplay from "../../../../shared/components/management/Ad
 function ViewExploration() {
   const { exploration, user } = useLoaderData();
 
+  console.log(exploration);
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
       author={user.name}

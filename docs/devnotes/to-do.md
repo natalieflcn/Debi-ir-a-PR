@@ -435,21 +435,21 @@
       - [x] /me
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword TODO
+      - [ ] /updateMyPassword TODO 4
     - [~] Make fetch API calls to endpoints
     - [~] Handle loading and errors in client
     - [ ] Connect remaining routes
       - [ ] Explorations TODO
-        - [ ] GET /explorations
+        - [x] GET /explorations
         - [x] GET /explorations/summary
-        - [ ] GET /explorations/:explorationId
-        - [ ] POST /explorations
-        - [ ] PATCH /explorations/:explorationId
+        - [x] GET /explorations/:explorationId
+          - [ ] Rendering Exploration/Location TODO1
+        - [ ] POST /explorations TODO2
+        - [ ] PATCH /explorations/:explorationId TODO3
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
-        - [ ] GET /users
+        - [ ] GET /users TODO 5
         - [ ] GET /users/:userId
-        - [ ] POST /users
         - [ ] PATCH /users/:userId
         - [ ] DELETE /users/:userId
       - [ ] ExplorationProgress
@@ -480,7 +480,7 @@
     - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
     - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)
-    - [ ] Derived location tags should not be displayed on Exploration page
+    - [x] Derived location tags should not be displayed on Exploration page
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [ ] Hide password in input fields when not active on /signup and /login page
@@ -499,5 +499,5 @@
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails
   - File Uploads
-  - Google Maps
+  - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics

@@ -41,7 +41,7 @@ const StyledHeadingName = styled(Heading)`
 
 function AdminExplorationCardLocations({ locations }) {
   return locations.map((location, i) => (
-    <StyledRow $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
+    <StyledRow $direction="horizontal" $gap="var(--gap-xl)" key={location.slug}>
       <IconHeadingRow
         $direction="horizontal"
         $gap="var(--gap-md)"
@@ -54,13 +54,13 @@ function AdminExplorationCardLocations({ locations }) {
       </IconHeadingRow>
 
       <ButtonRow $direction="horizontal" $gap="var(--gap-md)">
-        <RouterLink to={`locations/${location.id}`}>
+        <RouterLink to={`locations/${location.slug}`}>
           <Button $variation="secondary" $size="extraSmall">
             Details
           </Button>
         </RouterLink>
 
-        <RouterLink to={`locations/${location.id}/edit`}>
+        <RouterLink to={`locations/${location.slug}/edit`}>
           <Button $variation="primary" $size="extraSmall">
             Edit
           </Button>

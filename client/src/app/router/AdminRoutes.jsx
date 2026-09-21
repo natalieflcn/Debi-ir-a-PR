@@ -77,7 +77,7 @@ const AdminRoutes = [
     loader: adminExplorationLoader,
   },
   {
-    path: "explorations/:explorationId/locations/:explorationLocationId",
+    path: "explorations/:explorationId/locations/:locationId",
     element: <ViewLocation />,
     loader: adminLocationLoader,
   },

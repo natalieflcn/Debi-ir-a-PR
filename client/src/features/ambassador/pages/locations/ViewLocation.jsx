@@ -12,13 +12,13 @@ import { useLoaderData } from "react-router-dom";
 
 function ViewLocation() {
   const footerCTA = <AdminFooterCTA />;
-  const location = useLoaderData();
+  // const location = useLoaderData();
 
-  const { explorationId } = useParams();
+  const { exploration, location } = useLoaderData();
 
   return (
     <ExplorationLocationCard
-      exploration={explorationId}
+      exploration={exploration}
       location={location}
       userCompleted={true}
       footerCTA={footerCTA}

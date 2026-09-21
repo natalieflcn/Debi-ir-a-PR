@@ -74,7 +74,7 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
 }
 
 function ExplorationLocation() {
-  const { location, userHistory } = useLoaderData();
+  const { exploration, location, userHistory } = useLoaderData();
 
   const loadUserCompleted = Boolean(
     userHistory.visitLog.find((visit) => visit.locationId === location.id),
@@ -82,7 +82,7 @@ function ExplorationLocation() {
 
   const [userCompleted, setUserCompleted] = useState(loadUserCompleted);
 
-  const { explorationId } = useParams(); // ✅ get id from URL
+  // const { explorationId } = useParams(); // ✅ get id from URL
 
   function handleToggleCompleted() {
     setUserCompleted((prev) => !prev);
@@ -104,7 +104,7 @@ function ExplorationLocation() {
 
   return (
     <ExplorationLocationCard
-      exploration={explorationId}
+      exploration={exploration}
       location={location}
       headerDetails={headerDetails}
       footerCTA={footerCTA}

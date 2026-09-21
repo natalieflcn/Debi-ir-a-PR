@@ -50,6 +50,9 @@ function ExplorerExplorationCardLocations({
   exploration,
   userHistory,
 }) {
+  console.log(exploration);
+
+  hasStarted = true;
   const completedLocationIds = new Set(
     userHistory.visitLog.map((visit) => visit.locationId),
   );
@@ -58,7 +61,11 @@ function ExplorerExplorationCardLocations({
     const isCompleted = completedLocationIds.has(location.id);
 
     return (
-      <StyledRow $direction="horizontal" $gap="var(--gap-xl)" key={location.id}>
+      <StyledRow
+        $direction="horizontal"
+        $gap="var(--gap-xl)"
+        key={location.slug}
+      >
         <IconHeadingRow
           $direction="horizontal"
           $gap="var(--gap-md)"
@@ -76,9 +83,7 @@ function ExplorerExplorationCardLocations({
           <StyledHeadingName as="h5">{location.name}</StyledHeadingName>
         </IconHeadingRow>
         {hasStarted && (
-          <RouterLink
-            to={`/explorations/${exploration.id}/locations/${location.id}`}
-          >
+          <RouterLink to={`locations/${location.slug}`}>
             <Button $variation="primary" $size="extraSmall">
               Details
             </Button>
