@@ -108,11 +108,11 @@ function ExplorationCard({
                 {exploration.tags.map((tag) => (
                   <ExplorationTag key={tag}>{capitalize(tag)}</ExplorationTag>
                 ))}
-                {derivedLocationTags.map((tag) => (
+                {/* {derivedLocationTags.map((tag) => (
                   <ExplorationLocationTag key={tag}>
                     {capitalize(tag)}
                   </ExplorationLocationTag>
-                ))}
+                ))} */}
               </TagCollection>
             </ExplorationCardAbout>
 

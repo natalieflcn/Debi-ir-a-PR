@@ -422,6 +422,7 @@
   - [x] Refine authentication and authorization through app routes
   - [x] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
 - [ ] Create /logout route in backend
+- [x] Replace exploration_id with slug for exploration routes
 
 - [ ] **PHASE 4:** Connect Front-end to Back-end
   - [ ] Create API service layer in client-side
@@ -440,7 +441,7 @@
     - [ ] Connect remaining routes
       - [ ] Explorations TODO
         - [ ] GET /explorations
-        - [ ] GET /explorations/summary
+        - [x] GET /explorations/summary
         - [ ] GET /explorations/:explorationId
         - [ ] POST /explorations
         - [ ] PATCH /explorations/:explorationId
@@ -468,13 +469,14 @@
     - [x] Add JWT token to cookies on the front-end
     - [ ] When logging in with incorrect password, error message should display on the front-end.
     - [x] Shouldn't be able to sign up with existing email
-    - [ ] BUG: Keep being redirected to Login page before
+    - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
 
   - [ ] Other Tasks (For the future)
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
       - [ ] Delete explorations
       - [ ] Delete locations
       - [ ] Delete users
+    - [ ] Center Exploration images... potentially make slideshow for more than three images?
     - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
     - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)

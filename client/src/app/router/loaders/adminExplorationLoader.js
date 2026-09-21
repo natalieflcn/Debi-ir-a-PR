@@ -1,4 +1,5 @@
 import fakeExplorationData from "../../../features/explorer/pages/explorations/fakeExplorationData";
+import { getExploration } from "../../../services/explorations";
 
 const fakeUsers = [
   {
@@ -63,6 +64,10 @@ const fakeUsers = [
 const exploration = fakeExplorationData;
 const user = fakeUsers.find((user) => user.id === exploration.createdBy);
 
-export async function adminExplorationLoader() {
-  return { exploration, user };
+export async function adminExplorationLoader({ params }) {
+  const { explorationId } = params;
+
+  const { data } = await getExploration(explorationId);
+
+  return { exploration: data.data, user };
 }

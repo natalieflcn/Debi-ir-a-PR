@@ -35,13 +35,13 @@ const ExplorationFiltersRow = styled(Row)`
   }
 `;
 
-const ExplorerExplorationCardButton = function (exploration) {
+const ExplorerExplorationCardButton = function (explorationSlug) {
   return [
     {
       id: "learn-more",
       buttonVariation: "primary",
       buttonName: "Learn More ",
-      buttonLink: `/explorations/${exploration.id}`,
+      buttonLink: `/explorations/${explorationSlug}`,
     },
   ];
 };
@@ -110,7 +110,7 @@ function Explorations() {
               description={exploration.description}
               numStops={exploration.numStops}
               city={city}
-              buttonDetails={ExplorerExplorationCardButton(exploration)}
+              buttonDetails={ExplorerExplorationCardButton(exploration.slug)}
               key={exploration.id}
             />
           );

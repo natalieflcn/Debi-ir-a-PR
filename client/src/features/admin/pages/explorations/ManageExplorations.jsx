@@ -143,19 +143,19 @@ const InputFiltersRow = styled(Row)`
     }
   }
 `;
-const getAdminExplorationCardButton = function (exploration) {
+const getAdminExplorationCardButton = function (explorationSlug) {
   return [
     {
       id: "view",
       buttonVariation: "secondary",
       buttonName: "View ",
-      buttonLink: `/admin/explorations/${exploration.id}`,
+      buttonLink: `/admin/explorations/${explorationSlug}`,
     },
     {
       id: "edit",
       buttonVariation: "primary",
       buttonName: "Edit ",
-      buttonLink: `/admin/explorations/${exploration.id}/edit`,
+      buttonLink: `/admin/explorations/${explorationSlug}/edit`,
     },
   ];
 };
@@ -256,7 +256,7 @@ function ManageExplorations() {
                 description={exploration.description}
                 numStops={exploration.numStops}
                 city={city}
-                buttonDetails={getAdminExplorationCardButton(exploration)}
+                buttonDetails={getAdminExplorationCardButton(exploration.slug)}
                 key={exploration.id}
               />
             );

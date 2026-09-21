@@ -144,20 +144,22 @@ const ExplorationCards = styled.div`
   justify-content: center;
 `;
 
-const AmbassadorExplorationCardButton = [
-  {
-    id: "view",
-    buttonVariation: "secondary",
-    buttonName: "View ",
-    buttonLink: "/ambassador/explorations/explorationId",
-  },
-  {
-    id: "edit",
-    buttonVariation: "primary",
-    buttonName: "Edit ",
-    buttonLink: "/ambassador/explorations/explorationId/edit",
-  },
-];
+const AmbassadorExplorationCardButton = function (explorationSlug) {
+  return [
+    {
+      id: "view",
+      buttonVariation: "secondary",
+      buttonName: "View ",
+      buttonLink: `/ambassador/explorations/${explorationSlug}`,
+    },
+    {
+      id: "edit",
+      buttonVariation: "primary",
+      buttonName: "Edit ",
+      buttonLink: `/ambassador/explorations/${explorationSlug}/edit`,
+    },
+  ];
+};
 
 const ITEMS_PER_PAGE = 9;
 
@@ -256,7 +258,9 @@ function ManageExplorations() {
                 description={exploration.description}
                 numStops={exploration.numStops}
                 city={city}
-                buttonDetails={AmbassadorExplorationCardButton}
+                buttonDetails={AmbassadorExplorationCardButton(
+                  exploration.slug,
+                )}
                 key={exploration.id}
               />
             );

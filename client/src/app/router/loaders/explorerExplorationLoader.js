@@ -1,6 +1,11 @@
+import { useParams } from "react-router-dom";
 import fakeExplorationData from "../../../features/explorer/pages/explorations/fakeExplorationData";
+import {
+  getExploration,
+  getExplorationsSummary,
+} from "../../../services/explorations";
 
-export async function explorerExplorationLoader() {
+export async function explorerExplorationLoader({ params }) {
   const userHistory = {
     userId: "user_001",
     explorationProgress: [
@@ -143,5 +148,10 @@ export async function explorerExplorationLoader() {
     ],
   };
 
-  return { exploration: fakeExplorationData, userHistory };
+  const { explorationId } = params;
+
+  const { data } = await getExploration(explorationId);
+
+  console.log(data);
+  return { exploration: data.data, userHistory };
 }

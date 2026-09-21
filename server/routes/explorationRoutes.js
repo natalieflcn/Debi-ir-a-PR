@@ -19,19 +19,19 @@ router.route("/summary").get(
   explorationController.getAllExplorationData,
 );
 
-router.use(authController.restrictTo("admin", "ambassador"));
+// router.use();
 
 router
   .route("/:id")
   .get(explorationController.getExploration)
   .patch(
     // authController.protect,
-    // authController.restrictTo("admin", "ambassador"),
+    authController.restrictTo("admin", "ambassador"),
     explorationController.updateExploration,
   )
   .delete(
     // authController.protect,
-    // authController.restrictTo("admin", "ambassador"),
+    authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExploration,
   );
 

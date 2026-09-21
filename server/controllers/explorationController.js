@@ -7,7 +7,11 @@ const AppError = require("../utils/appError");
 
 // Exploration Routes
 exports.getAllExplorationData = factory.getAll(Exploration);
-exports.getExploration = factory.getOne(Exploration, null);
+
+exports.getExploration = factory.getOne(Exploration, (req) => ({
+  slug: req.params.id,
+}));
+
 exports.createExploration = factory.createOne(Exploration, null);
 
 exports.updateExploration = factory.updateOne(Exploration);

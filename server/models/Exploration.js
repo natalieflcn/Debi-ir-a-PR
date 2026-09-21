@@ -105,6 +105,7 @@ const explorationSchema = new mongoose.Schema(
 // Middlewares
 explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
+  // this.numStops = this.locations.length;
 });
 
 // explorationSchema.pre("save", function () {
@@ -112,10 +113,33 @@ explorationSchema.pre("save", function () {
 // });
 
 explorationSchema.post(/^find/, function (docs, next) {
-  docs.forEach((doc) => {
-    doc.numStops = doc.locations.length;
-    doc.locations = undefined;
-  });
+  if (!docs) return next();
+
+  if (!Array.isArray(docs)) {
+    docs.numStops = docs.locations.length;
+  } else {
+    docs.forEach((doc) => {
+      console.log(doc);
+      doc.numStops = doc.locations.length;
+    });
+  }
+
+  // console.log(docs);
+  next();
+});
+
+explorationSchema.post("find", function (docs, next) {
+  if (!docs) return next();
+
+  if (!Array.isArray(docs)) {
+    docs.numStops = docs.locations.length;
+  } else {
+    docs.forEach((doc) => {
+      console.log(doc);
+      doc.numStops = doc.locations.length;
+      doc.locations = undefined;
+    });
+  }
 
   // console.log(docs);
   next();

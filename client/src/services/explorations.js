@@ -8,7 +8,9 @@ export async function getExplorationsSummary() {
   return await apiFetch("/explorations/summary");
 }
 
-export const getExploration = {};
+export async function getExploration(explorationId) {
+  return await apiFetch(`/explorations/${explorationId}`);
+}
 
 export const createExploration = {};
 

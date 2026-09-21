@@ -19,15 +19,15 @@ function ExplorerExplorationCardHeaderDetails({
 }) {
   const stopsRemaining = exploration.numStops;
 
-  const userProgress = Math.round(
-    (userHistory.explorationProgress.find(
-      (visitedExploration) =>
-        visitedExploration.explorationId === exploration.id,
-    ).locationsVisited /
-      exploration.numStops) *
-      100,
-  );
-
+  // const userProgress = Math.round(
+  //   (userHistory.explorationProgress.find(
+  //     (visitedExploration) =>
+  //       visitedExploration.explorationId === exploration.id,
+  //   ).locationsVisited /
+  //     exploration.numStops) *
+  //     100,
+  // );
+  const userProgress = 0.5;
   return (
     <>
       {hasStarted && (
