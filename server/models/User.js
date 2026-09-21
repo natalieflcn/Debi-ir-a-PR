@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: function () {
         if (!(this.role === "ambassador" || this.role === "admin"))
-          return undefined;
+          return "Baby Turista";
 
         return helpers.capitalize(this.role);
       },

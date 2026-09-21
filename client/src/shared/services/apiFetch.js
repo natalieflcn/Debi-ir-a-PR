@@ -7,6 +7,7 @@ export async function apiFetch(path, options = {}) {
     ...options,
   });
 
+  console.log("apifetch running", res);
   if (!res.ok) {
     const errorData = await res.json().catch(() => ({}));
 

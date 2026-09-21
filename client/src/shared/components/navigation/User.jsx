@@ -5,11 +5,11 @@ import RouterLink from "../routing/RouterLink";
 const StyledUser = styled.div``;
 
 function User() {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
 
   return (
     <StyledUser>
-      {isAuthenticated ? (
+      {!loading && isAuthenticated ? (
         <RouterLink to="/">
           <p>Logout</p>
         </RouterLink>

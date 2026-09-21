@@ -10,6 +10,7 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupAmbassador, signupExplorer } from "../../../services/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -70,6 +71,7 @@ function Signup({ $variant }) {
   const [passwordConfirm, setConfirmPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { registerUser } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async function (e) {
@@ -105,7 +107,10 @@ function Signup({ $variant }) {
       setIsSubmitting(true);
       const signupFunction =
         $variant === "ambassador" ? signupAmbassador : signupExplorer;
-      await signupFunction(formData);
+      const data = await signupFunction(formData);
+
+      registerUser(data);
+
       navigate(
         $variant === "ambassador"
           ? "/ambassador/explorations"
@@ -115,7 +120,6 @@ function Signup({ $variant }) {
       setFormErrors({ submit: err.message });
     } finally {
       setIsSubmitting(false);
-      // console.log("try catch bloc running");
     }
   };
 

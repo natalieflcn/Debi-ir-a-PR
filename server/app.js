@@ -31,6 +31,7 @@ app.use(
 
 app.use(helmet());
 
+app.use(cookieParser());
 app.use("/api", limiter);
 
 app.use(express.json());
@@ -38,8 +39,6 @@ app.use(express.json());
 app.use(mongoSanitize());
 
 app.use(hpp({ whitelist: [] }));
-
-app.use(cookieParser());
 
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);

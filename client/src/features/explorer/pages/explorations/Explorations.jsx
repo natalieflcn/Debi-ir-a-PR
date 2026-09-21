@@ -53,8 +53,9 @@ function Explorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
-  const explorations = useLoaderData();
+  const { explorations } = useLoaderData();
 
+  console.log(explorations);
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
 

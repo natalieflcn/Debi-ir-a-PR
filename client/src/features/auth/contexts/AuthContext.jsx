@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { login } from "../../../services/auth";
+import { apiFetch } from "../../../shared/services/apiFetch";
 
 const AuthContext = createContext(null);
 
@@ -11,12 +12,21 @@ const fakeCurrentUser = {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    apiFetch("/users/me")
+      .then((data) => setUser(data.data.user))
+      .catch(() => setUser(null))
+      .finally(() => setLoading(false));
+  }, []);
 
   async function loginUser(credentials) {
     const { data } = await login(credentials);
 
     setUser(data.user);
 
+    console.log(data.user);
     return data.user;
   }
 
@@ -24,12 +34,19 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
+  async function registerUser(userData) {
+    setUser(userData.data.user);
+    return userData.data.user;
+  }
+
   const value = {
     user,
+    loading,
     isAuthenticated: Boolean(user),
     role: user?.role ?? null,
     loginUser,
     logoutUser,
+    registerUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Form } from "react-router-dom";
 import Input from "../form/Input";
 import Modal from "../ui/Modal";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -118,17 +119,14 @@ const StyledForm = styled(Form)`
   display: contents;
 `;
 
-const ProfileInformation = function ({
-  userEmail,
-  userPassword = "hello",
-  dateJoined,
-}) {
+const ProfileInformation = function () {
+  const { user } = useAuth();
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [email, setEmail] = useState(userEmail);
-  const [password, setPassword] = useState(userPassword);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
@@ -151,7 +149,7 @@ const ProfileInformation = function ({
   };
 
   const handleEmailCancel = function () {
-    setEmail(userEmail);
+    setEmail(user.email);
     setIsEditingEmail(false);
     setEmailErrors("");
   };
@@ -177,7 +175,7 @@ const ProfileInformation = function ({
   };
 
   const handlePasswordCancel = function () {
-    setPassword(userPassword);
+    setPassword(user.password);
     setIsEditingPassword(false);
     setPasswordErrors("");
   };
@@ -254,6 +252,7 @@ const ProfileInformation = function ({
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       type="password"
+                      placeholder="Enter a new password"
                     />
 
                     <Input
@@ -261,7 +260,7 @@ const ProfileInformation = function ({
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       type="password"
-                      placeholder="Confirm your password"
+                      placeholder="Confirm your new password"
                     />
 
                     {passwordErrors && <Bold>{passwordErrors}</Bold>}
@@ -296,7 +295,7 @@ const ProfileInformation = function ({
             <>
               <Bold $color="var(--color-red-300)">
                 <ValueArea>
-                  {Array.from({ length: password.length }, (_, index) => (
+                  {Array.from({ length: 8 }, (_, index) => (
                     <FaAsterisk key={index} size={13} />
                   ))}
                 </ValueArea>
@@ -317,7 +316,14 @@ const ProfileInformation = function ({
         <ProfileRow>
           <LabelArea as="h5">Date Joined</LabelArea>
           <ValueArea>
-            <Bold $color="var(--color-red-300)">Joined on {dateJoined}</Bold>
+            <Bold $color="var(--color-red-300)">
+              Joined on{" "}
+              {new Date(user.createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </Bold>
           </ValueArea>
           <ButtonArea>
             <StyledButton

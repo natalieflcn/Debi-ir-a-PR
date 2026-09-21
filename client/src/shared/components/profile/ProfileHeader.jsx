@@ -140,15 +140,15 @@ const InfoButtonTexts = {
     </StyledInfoButtonText>
   ),
 };
-const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
+const ProfileHeader = function () {
+  const { user, role } = useAuth();
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(
-    userAvatar ?? "/src/assets/images/content/TEMP.png",
+    user.avatar ?? "/src/assets/images/content/TEMP.png",
   );
   const fileInputRef = useRef(null);
   const submit = useSubmit();
-  const { role } = useAuth();
 
   function handleAvatarChange(e) {
     const file = e.target.files[0];
@@ -172,7 +172,6 @@ const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
     });
   }
 
-  console.log(userName);
   return (
     <StyledProfileHeader>
       <Row>
@@ -197,12 +196,12 @@ const ProfileHeader = function ({ userAvatar, userName, userTitle }) {
 
       <Row $gap="var(--gap-sm)">
         <Heading as="h2" $shadowColor="var(--color-blue-300)">
-          {userName.toUpperCase()}
+          {user.name.toUpperCase()}
         </Heading>
 
         <Row $direction="horizontal" $align="flex-start" $gap="var(--gap-sm)">
           <Heading as="h5" $color="var(--color-light-0)">
-            {userTitle}
+            {user.title}
           </Heading>
           <InfoButton
             onMouseEnter={() => setIsHovered(true)}

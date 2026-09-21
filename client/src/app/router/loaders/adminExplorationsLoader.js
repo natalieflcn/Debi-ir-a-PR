@@ -1,4 +1,5 @@
 import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
+import { getExplorationsSummary } from "../../../services/explorations";
 
 const fakeUsers = [
   {
@@ -61,5 +62,7 @@ const fakeUsers = [
 ];
 
 export async function adminExplorationsLoader() {
-  return { explorations: fakeExplorationsData, users: fakeUsers };
+  const { data } = await getExplorationsSummary();
+
+  return { explorations: data.data, users: fakeUsers };
 }

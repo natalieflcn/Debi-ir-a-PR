@@ -50,7 +50,7 @@ function ErrorPage() {
       break;
 
     default:
-      userRedirect = "";
+      userRedirect = "/";
       break;
   }
 

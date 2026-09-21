@@ -1,5 +1,8 @@
 import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
+import { getExplorationsSummary } from "../../../services/explorations";
 
 export async function explorationsLoader() {
-  return fakeExplorationsData;
+  const { data } = await getExplorationsSummary();
+  // console.log(await getExplorationsSummary());
+  return { explorations: data.data };
 }

@@ -430,15 +430,15 @@
     - [~] Start with authRoutes (/login, /signup)
       - [x] /signup/explorer
       - [x] /signup/ambassador
-      - [ ] /login
-      - [ ] /me
+      - [x] /login
+      - [x] /me
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword
+      - [ ] /updateMyPassword TODO
     - [~] Make fetch API calls to endpoints
     - [~] Handle loading and errors in client
     - [ ] Connect remaining routes
-      - [ ] Explorations
+      - [ ] Explorations TODO
         - [ ] GET /explorations
         - [ ] GET /explorations/summary
         - [ ] GET /explorations/:explorationId
@@ -466,8 +466,9 @@
     - [x] After signing up user, user should be redirected to Explorations
     - [x] After logging in user, user should be redirected to Dashboard
     - [x] Add JWT token to cookies on the front-end
-    - [] When logging in with incorrect password, error message should display on the front-end.
+    - [ ] When logging in with incorrect password, error message should display on the front-end.
     - [x] Shouldn't be able to sign up with existing email
+    - [ ] BUG: Keep being redirected to Login page before
 
   - [ ] Other Tasks (For the future)
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
@@ -475,12 +476,14 @@
       - [ ] Delete locations
       - [ ] Delete users
     - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
+    - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)
     - [ ] Derived location tags should not be displayed on Exploration page
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [ ] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
+    - [ ] Set ten location limit on explorations client-side
     - [ ] BUG: Links broken when viewing users from /ambassador/users
     - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
@@ -489,6 +492,7 @@
       - [ ] Revise front-end Badge implementation (CreateBadge form)
       - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
       - [ ] Create Reset Password page
+    - [ ] Create document middleware that calculates number of explorations completed and changes user title
 
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails

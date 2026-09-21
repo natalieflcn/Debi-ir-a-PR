@@ -15,6 +15,7 @@ exports.deleteExploration = factory.deleteOne(Exploration);
 
 exports.aliasExplorationsSummary = (req, res, next) => {
   //   req.query.filter = {tags: }
+  console.log("aliasexploration running");
   req.query.sort = req.query.sort || "-createdAt";
   req.query.fields =
     "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags";
