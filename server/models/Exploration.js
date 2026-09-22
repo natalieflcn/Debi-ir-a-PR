@@ -58,7 +58,7 @@ const explorationSchema = new mongoose.Schema(
         },
         message: "An exploration can only have one header image.",
       },
-      required: [true, "A header image is required."],
+      // required: [true, "A header image is required."],
     },
     // numStops: { type: Number },
     tags: {
@@ -73,14 +73,16 @@ const explorationSchema = new mongoose.Schema(
     locations: {
       type: [locationSchema],
       default: [],
-      validate: {
-        validator: (arr) => arr.length <= 10,
-        message: "An exploration can have at most 10 locations.",
-      },
-      validate: {
-        validator: (arr) => arr.length > 0,
-        message: "An exploration must have at least one location.",
-      },
+      validate: [
+        {
+          validator: (arr) => arr.length <= 10,
+          message: "An exploration can have at most 10 locations.",
+        },
+        {
+          validator: (arr) => arr.length > 0,
+          message: "An exploration must have at least one location.",
+        },
+      ],
     },
     numStops: { type: Number },
     images: { type: [String], default: [] },

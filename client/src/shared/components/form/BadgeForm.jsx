@@ -49,28 +49,29 @@ function BadgeForm({ badge, onSubmit }) {
   const [description, setDescription] = useState(
     isEditing ? badge.description : "",
   );
-  const [type, setType] = useState(isEditing ? badge.type : "completion");
-  const [threshold, setThreshold] = useState(
-    isEditing ? badge.threshold : null,
-  );
+  // const [type, setType] = useState(isEditing ? badge.type : "completion");
+  // const [threshold, setThreshold] = useState(
+  //   isEditing ? badge.threshold : null,
+  // );
 
   const [formErrors, setFormErrors] = useState({});
 
   const handleSubmit = function (e) {
     e.preventDefault();
     e.stopPropagation();
+    setFormErrors({});
 
     const errors = {};
 
     if (!name.trim()) errors.name = "Badge name is required.";
 
-    if (image.length < 1) errors.image = "Badge image is required.";
+    // if (image.length < 1) errors.image = "Badge image is required.";
 
     if (!description.trim())
       errors.description = "Badge description is required.";
 
-    if (type === "milestone" && !threshold)
-      errors.threshold = "Threshold for milestone badges are required.";
+    // if (type === "milestone" && !threshold)
+    //   errors.threshold = "Threshold for milestone badges are required.";
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -79,8 +80,8 @@ function BadgeForm({ badge, onSubmit }) {
 
     const formData = {
       name,
-      image,
-      id: `badge_${crypto.randomUUID()}`,
+      description,
+      image: "",
     };
 
     onSubmit(formData);
@@ -125,7 +126,7 @@ function BadgeForm({ badge, onSubmit }) {
             {formErrors.description && <Bold>{formErrors.description}</Bold>}
           </StyledRow>
         </FormField>
-
+        {/* 
         <FormField label="Type">
           <StyledCheckboxForm>
             <StyledIcon onClick={() => setType("completion")}>
@@ -192,7 +193,7 @@ function BadgeForm({ badge, onSubmit }) {
               {formErrors.threshold && <Bold>{formErrors.threshold}</Bold>}
             </StyledRow>
           </FormField>
-        )}
+        )} */}
 
         <Button $variation="darkRed" $size="medium" type="submit">
           {"Create Badge"}

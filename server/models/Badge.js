@@ -10,7 +10,10 @@ const badgeSchema = new mongoose.Schema(
       type: String,
       required: [true, "A badge description is required."],
     },
-    image: { type: String, required: [true, "A badge icon is required."] },
+    image: {
+      type: String,
+      // required: [true, "A badge icon is required."]
+    },
     // exploration: {
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: "Exploration",

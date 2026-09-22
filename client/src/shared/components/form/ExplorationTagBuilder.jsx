@@ -62,11 +62,11 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [selectedTags, setSelectedTags] = useState(existingSelectedTags);
 
-  const derivedLocationTags = [
-    ...new Set(
-      exploration?.locations?.flatMap((location) => location.tags ?? []) ?? [],
-    ),
-  ];
+  // const derivedLocationTags = [
+  //   ...new Set(
+  //     exploration?.locations?.flatMap((location) => location.tags ?? []) ?? [],
+  //   ),
+  // ];
 
   function toggleTag(tagId) {
     onChange((prev) =>
@@ -99,15 +99,15 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
             return <ExplorationTag key={tagId}>{tag?.name}</ExplorationTag>;
           })}
 
-          {derivedLocationTags.map((tag) => {
+          {/* {derivedLocationTags.map((tag) => {
             return (
               <ExplorationLocationTag key={tag}>
                 {capitalize(tag)}
               </ExplorationLocationTag>
             );
-          })}
+          })} */}
 
-          {tags.length === 0 && derivedLocationTags.length === 0 && (
+          {tags.length === 0 && (
             <Bold $color="var(--color-red-300)">No tags selected yet.</Bold>
           )}
         </TagCollection>

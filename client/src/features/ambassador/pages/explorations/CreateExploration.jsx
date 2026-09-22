@@ -21,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import FeaturedFormToggle from "../../../../shared/components/form/FeaturedFormToggle";
 import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
+import { useAuth } from "../../../auth/contexts/AuthContext";
+import { createExploration } from "../../../../services/explorations";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -68,7 +70,9 @@ function CreateExploration() {
     isEditing ? exploration.featured : false,
   );
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   function handleAddLocation(formData) {
     setLocations((prev) => [
@@ -87,19 +91,19 @@ function CreateExploration() {
     );
   }
 
-  const handleSubmit = function (e) {
+  const handleSubmit = async function (e) {
     e.preventDefault();
 
     const errors = {};
 
     if (!name.trim()) errors.name = "Exploration name is required.";
-    // if (!startingCity) errors.startingCity = "Please select starting city.";
-    if (headerImage.length < 1)
-      errors.headerImage = "Please select a header image.";
+
+    // if (headerImage.length < 1)
+    //   errors.headerImage = "Please select a header image.";
     if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
     if (!description.trim())
       errors.description = "Please provide a description.";
-    if (images.length < 1) errors.images = "Please provide at least one image.";
+    // if (images.length < 1) errors.images = "Please provide at least one image.";
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
     if (!badge) errors.badge = "Please create a badge.";
@@ -111,9 +115,7 @@ function CreateExploration() {
       return;
     }
 
-    const newId = `exp_${crypto.randomUUID()}`;
     const formData = {
-      id: newId,
       name,
       // startingCity,
       // cities: locations.map...
@@ -121,19 +123,41 @@ function CreateExploration() {
       tagline,
       description,
       images,
+      cities: locations.map((loc) => loc.city),
       locations,
       badge,
       tags,
       featured,
+      createdBy: user._id,
     };
 
-    navigate(`/ambassador/explorations/${newId}`);
+    console.log(formData);
+
+    setIsSubmitting(true);
+    try {
+      const exploration = await createExploration(formData);
+      console.log(exploration);
+      navigate(`/ambassador/explorations/`);
+    } catch (err) {
+      if (err.errors) {
+        const normalized = {};
+        Object.entries(err.errors).forEach(([path, message]) => {
+          const topLevelField = path.split(".")[0];
+          normalized[topLevelField] = message;
+        });
+        setFormErrors(normalized);
+      } else {
+        setFormErrors({ submit: err.message });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <Row $gap="var(--gap-lg)">
       {exploration ? (
-        <RouterLink to={`/ambassador/explorations/${exploration.id}`}>
+        <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
           <Button $size="small" $variation="darkRed">
             <FaArrowLeft size={12} /> Back to{" "}
             {exploration?.name ?? "Exploration"}
@@ -261,8 +285,8 @@ function CreateExploration() {
               />
               {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
               <StyledParagraph>
-                <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
-                derived from the tag(s) you add to each location.
+                {/* <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
+                derived from the tag(s) you add to each location. */}
               </StyledParagraph>
             </StyledRow>
           </FormField>
@@ -277,8 +301,11 @@ function CreateExploration() {
           </FormField>
 
           <Button $variation="darkRed" $size="medium" type="submit">
-            {isEditing ? "Save Changes" : "Create Exploration"}
+            {!isSubmitting &&
+              (isEditing ? "Save Changes" : "Create Exploration")}
+            {isSubmitting && "Saving Exploration..."}
           </Button>
+          {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
         </Row>
       </AppForm>
     </Row>

@@ -48,7 +48,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
         <Row $gap="var(--gap-lg)">
           {locations.map((location, i) => (
             <LocationRow
-              key={location.id}
+              key={location.slug}
               $gap="var(--gap-sm)"
               $direction="horizontal"
               $align="flex-start"

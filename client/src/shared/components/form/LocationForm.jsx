@@ -61,13 +61,13 @@ function LocationForm({ exploration, location, onSubmit }) {
 
     if (!zipcode.trim()) errors.zipcode = "Location zipcode is required.";
 
-    if (headerImage.length < 1)
-      errors.headerImage = "Please select a header image.";
+    // if (headerImage.length < 1)
+    //   errors.headerImage = "Please select a header image.";
 
     if (!description.trim())
       errors.description = "Please provide a description.";
 
-    if (images.length < 1) errors.images = "Please provide at least one image.";
+    // if (images.length < 1) errors.images = "Please provide at least one image.";
 
     if (tags.length < 1) errors.tags = "Please select at least one tag.";
 
@@ -84,13 +84,12 @@ function LocationForm({ exploration, location, onSubmit }) {
       description,
       images,
       tags,
-      explorationId: exploration.explorationId,
+      // explorationId: exploration.explorationId,
     };
 
     onSubmit(formData);
   };
 
-  console.log(exploration);
   return (
     <AppForm
       formTitle={"CREATE A LOCATION"}

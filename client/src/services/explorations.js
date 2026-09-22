@@ -12,7 +12,14 @@ export async function getExploration(explorationId) {
   return await apiFetch(`/explorations/${explorationId}`);
 }
 
-export const createExploration = {};
+export async function createExploration(formData) {
+  console.log(formData);
+
+  return await apiFetch(`/explorations`, {
+    method: "POST",
+    body: JSON.stringify(formData),
+  });
+}
 
 export const updateExploration = {};
 

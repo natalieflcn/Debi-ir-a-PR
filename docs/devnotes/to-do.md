@@ -443,15 +443,18 @@
         - [x] GET /explorations
         - [x] GET /explorations/summary
         - [x] GET /explorations/:explorationId
-          - [ ] Rendering Exploration/Location TODO1
+          - [x] Rendering Exploration/Location
+          - [x] Rendering Edit-Exploration
+          - [ ] Rendering Edit-Exploration-Location
         - [ ] POST /explorations TODO2
+          - [ ] Rendering Create-Exploration
         - [ ] PATCH /explorations/:explorationId TODO3
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
         - [ ] GET /users TODO 5
-        - [ ] GET /users/:userId
-        - [ ] PATCH /users/:userId
-        - [ ] DELETE /users/:userId
+        - [ ] GET /users/:userId TODO6
+        - [ ] PATCH /users/:userId TODO7
+        - [ ] DELETE /users/:userId TODO8
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
         - [ ] GET /exploration-progress
@@ -470,6 +473,9 @@
     - [ ] When logging in with incorrect password, error message should display on the front-end.
     - [x] Shouldn't be able to sign up with existing email
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
+    - [ ] Create way for users to edit their name
+    - [ ] Apply back-end validator rule to front-end too
+    - [ ] No matter how small the description is, the exploration mini card buttons should be formatted on the bottom
 
   - [ ] Other Tasks (For the future)
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
@@ -477,6 +483,8 @@
       - [ ] Delete locations
       - [ ] Delete users
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
+    - [ ] Fix formatting exploration mini card issue. Text and content should wrap around, not stretch out the card.
+    - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
     - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)

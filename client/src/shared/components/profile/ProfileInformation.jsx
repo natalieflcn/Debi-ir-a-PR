@@ -11,6 +11,7 @@ import { Form } from "react-router-dom";
 import Input from "../form/Input";
 import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import { formatDate } from "../../utils/helpers";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -317,12 +318,7 @@ const ProfileInformation = function () {
           <LabelArea as="h5">Date Joined</LabelArea>
           <ValueArea>
             <Bold $color="var(--color-red-300)">
-              Joined on{" "}
-              {new Date(user.createdAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              Joined on {formatDate(user.createdAt)}
             </Bold>
           </ValueArea>
           <ButtonArea>

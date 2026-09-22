@@ -79,6 +79,7 @@ function LocationTagBuilder({ value, onChange }) {
     <>
       <StyledRow>
         <Button
+          type="button"
           $size="small"
           $variation="primary"
           onClick={() => setIsModalOpen(true)}

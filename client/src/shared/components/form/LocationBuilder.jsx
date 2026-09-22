@@ -21,7 +21,6 @@ function LocationBuilder({ exploration, locations, onAdd }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setError] = useState("");
 
-  console.log(exploration);
   function openModal(exploration) {
     setError("");
 

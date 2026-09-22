@@ -50,7 +50,7 @@ const locationSchema = new mongoose.Schema({
   },
   headerImage: {
     type: [String],
-    required: [true, "A location header image is required."],
+    // required: [true, "A location header image is required."],
     validate: {
       validator: function (value) {
         return value.length <= 1;

@@ -42,6 +42,7 @@ const StyledTextAreaRow = styled(Row)`
 function CreateExploration() {
   const { exploration } = useLoaderData() || "";
 
+  console.log(exploration);
   const isEditing = Boolean(exploration);
 
   const [name, setName] = useState(isEditing ? exploration.name : "");
@@ -132,7 +133,7 @@ function CreateExploration() {
   return (
     <Row $gap="var(--gap-lg)">
       {exploration ? (
-        <RouterLink to={`/admin/explorations/${exploration.id}`}>
+        <RouterLink to={`/admin/explorations/${exploration.slug}`}>
           <Button $size="small" $variation="darkRed">
             <FaArrowLeft size={12} /> Back to{" "}
             {exploration?.name ?? "Exploration"}
@@ -258,8 +259,8 @@ function CreateExploration() {
               />{" "}
               {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
               <StyledParagraph>
-                <Bold $color="var(--color-dark-200)">Note: </Bold> Tags are also
-                derived from the tag(s) you add to each location.
+                {/* <Bold $color="var(--color-dark-200)">Note: </Bold> Tags are also
+                derived from the tag(s) you add to each location. */}
               </StyledParagraph>
             </StyledRow>
           </FormField>
