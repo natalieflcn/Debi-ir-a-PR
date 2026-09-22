@@ -445,10 +445,12 @@
         - [x] GET /explorations/:explorationId
           - [x] Rendering Exploration/Location
           - [x] Rendering Edit-Exploration
-          - [ ] Rendering Edit-Exploration-Location
-        - [ ] POST /explorations TODO2
+          - [x] Rendering Edit-Exploration-Location
+        - [~] POST /explorations TODO2
           - [ ] Rendering Create-Exploration
         - [ ] PATCH /explorations/:explorationId TODO3
+          - [ ] Edit Exploration
+          - [ ] Edit Exploration Location
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
         - [ ] GET /users TODO 5
@@ -475,6 +477,8 @@
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
     - [ ] Apply back-end validator rule to front-end too
+      - [~] Create/Edit Exploration
+      - [ ] Create/Edit Location
     - [ ] No matter how small the description is, the exploration mini card buttons should be formatted on the bottom
 
   - [ ] Other Tasks (For the future)
@@ -483,12 +487,13 @@
       - [ ] Delete locations
       - [ ] Delete users
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
-    - [ ] Fix formatting exploration mini card issue. Text and content should wrap around, not stretch out the card.
+    - [x] Fix formatting exploration mini card issue. Text and content should wrap around, not stretch out the card.
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
     - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
     - [ ] Remove Exploration Name field from Location Form (when creating explorations)
     - [x] Derived location tags should not be displayed on Exploration page
+    - [ ] Add zipcode regex validator
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [ ] Hide password in input fields when not active on /signup and /login page

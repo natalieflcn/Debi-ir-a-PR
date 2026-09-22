@@ -142,6 +142,7 @@ const ExplorationCards = styled.div`
   flex-wrap: wrap;
   gap: var(--gap-xl);
   justify-content: center;
+  align-items: stretch;
 `;
 
 const AmbassadorExplorationCardButton = function (explorationSlug) {

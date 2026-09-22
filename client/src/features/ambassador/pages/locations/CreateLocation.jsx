@@ -45,9 +45,11 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateLocation({ location }) {
+function CreateLocation() {
+  const { exploration, location } = useLoaderData();
+  console.log(location, exploration);
   const isEditing = Boolean(location);
-  const exploration = useLoaderData();
+  console.log(isEditing);
 
   const [name, setName] = useState(isEditing ? location.name : "");
   // const [address, setAddress] = useState(isEditing ? location.address : "");
@@ -107,16 +109,17 @@ function CreateLocation({ location }) {
       description,
       images,
       tags,
-      explorationId: exploration.explorationId,
     };
 
     console.log(formData);
-    navigate(`/ambassador/explorations/${newId}`);
+    navigate(
+      `/ambassador/explorations/${exploration.slug}/locations/${location.slug}`,
+    );
   };
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/ambassador/explorations/${exploration.explorationId}`}>
+      <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>

@@ -75,6 +75,7 @@ function CreateExploration() {
   const { user } = useAuth();
 
   function handleAddLocation(formData) {
+    setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) => [
       ...prev,
       { ...formData, id: `loc_${crypto.randomUUID()}` },
@@ -82,13 +83,34 @@ function CreateExploration() {
   }
 
   function handleDeleteLocation(id) {
+    setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) => prev.filter((l) => l.id !== id));
   }
 
   function handleEditLocation(id, formData) {
+    setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) =>
       prev.map((l) => (l.id === id ? { ...l, ...formData } : l)),
     );
+  }
+
+  function handleSetBadge(value) {
+    setFormErrors((prev) => ({ ...prev, badge: "" }));
+    setBadge(value);
+  }
+  function handleSetHeaderImage(value) {
+    setFormErrors((prev) => ({ ...prev, headerImage: "" }));
+    setHeaderImage(value);
+  }
+
+  function handleSetImages(value) {
+    setFormErrors((prev) => ({ ...prev, images: "" }));
+    setImages(value);
+  }
+
+  function handleSetTags(value) {
+    setFormErrors((prev) => ({ ...prev, tags: "" }));
+    setTags(value);
   }
 
   const handleSubmit = async function (e) {
@@ -96,17 +118,40 @@ function CreateExploration() {
 
     const errors = {};
 
-    if (!name.trim()) errors.name = "Exploration name is required.";
+    if (!name.trim()) errors.name = "An exploration name is required.";
+    else if (name.trim().length < 5)
+      errors.name = "An exploration name must have more than 5 characters.";
+    else if (name.trim().length > 40)
+      errors.name = "An exploration name must have less than 40 characters.";
 
     // if (headerImage.length < 1)
     //   errors.headerImage = "Please select a header image.";
     if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
+    else if (tagline.trim().length < 15)
+      errors.tagline =
+        "An exploration tagline must have more than 15 characters.";
+    else if (tagline.trim().length > 175)
+      errors.tagline =
+        "An exploration tagline must have less than 175 characters.";
+
     if (!description.trim())
       errors.description = "Please provide a description.";
+    else if (description.trim().length < 50)
+      errors.description =
+        "An exploration description must have more than 50 characters.";
+    else if (description.trim().length > 1000)
+      errors.description =
+        "An exploration description must have less than 1000 characters.";
+
     // if (images.length < 1) errors.images = "Please provide at least one image.";
+
     if (locations.length < 1)
       errors.locations = "Please provide at least one location.";
+    else if (locations.length > 10)
+      errors.locations = "An exploration can have at most 10 locations.";
+
     if (!badge) errors.badge = "Please create a badge.";
+
     if (tags.length < 1)
       errors.tags = "Please select at least one exploration tag.";
 
@@ -115,6 +160,7 @@ function CreateExploration() {
       return;
     }
 
+    console.log(formErrors);
     const formData = {
       name,
       // startingCity,
@@ -139,16 +185,16 @@ function CreateExploration() {
       console.log(exploration);
       navigate(`/ambassador/explorations/`);
     } catch (err) {
-      if (err.errors) {
-        const normalized = {};
-        Object.entries(err.errors).forEach(([path, message]) => {
-          const topLevelField = path.split(".")[0];
-          normalized[topLevelField] = message;
-        });
-        setFormErrors(normalized);
-      } else {
-        setFormErrors({ submit: err.message });
-      }
+      let errorMessage = err.message;
+
+      if (err.message.startsWith("E11000 duplicate key error"))
+        errorMessage =
+          "An exploration already exists with this name. Please create an exploration with a different name.";
+
+      setFormErrors((prev) => ({
+        ...prev,
+        submit: errorMessage,
+      }));
     } finally {
       setIsSubmitting(false);
     }
@@ -184,7 +230,10 @@ function CreateExploration() {
                 name="name"
                 placeholder="The title of the exploration"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, name: "" }));
+                  setName(e.target.value);
+                }}
               />
               {formErrors.name && <Bold>{formErrors.name}</Bold>}
             </StyledRow>
@@ -197,7 +246,7 @@ function CreateExploration() {
                 multiple={false}
                 maxImages={1}
                 value={headerImage}
-                onChange={setHeaderImage}
+                onChange={handleSetHeaderImage}
               />
               {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
             </StyledRow>
@@ -222,7 +271,10 @@ function CreateExploration() {
                 name="tagline"
                 placeholder="The short description displayed on the Explorations page"
                 value={tagline}
-                onChange={(e) => setTagline(e.target.value)}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, tagline: "" }));
+                  setTagline(e.target.value);
+                }}
               />
               {formErrors.tagline && <Bold>{formErrors.tagline}</Bold>}
             </StyledRow>
@@ -234,7 +286,10 @@ function CreateExploration() {
                 name="description"
                 placeholder="The long description shown on the Exploration page"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                  setFormErrors((prev) => ({ ...prev, description: "" }));
+                }}
               />
               {formErrors.description && <Bold>{formErrors.description}</Bold>}
             </StyledTextAreaRow>
@@ -246,7 +301,7 @@ function CreateExploration() {
                 name="images"
                 maxImages={3}
                 value={images}
-                onChange={setImages}
+                onChange={handleSetImages}
               />
               {formErrors.images && <Bold>{formErrors.images}</Bold>}
             </StyledRow>
@@ -271,7 +326,7 @@ function CreateExploration() {
 
           <FormField label="Badge">
             <StyledRow $gap="var(--gap-xs)">
-              <BadgeBuilder value={badge} onSelect={setBadge} />
+              <BadgeBuilder value={badge} onSelect={handleSetBadge} />
               {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
             </StyledRow>
           </FormField>
@@ -281,7 +336,7 @@ function CreateExploration() {
               <ExplorationTagBuilder
                 exploration={exploration || null}
                 tags={tags}
-                onChange={setTags}
+                onChange={handleSetTags}
               />
               {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
               <StyledParagraph>

@@ -50,12 +50,28 @@ const ExplorationCardHeading = styled(Heading)`
 `;
 
 const ExplorationCardBody = styled.div`
+  display: flex;
   padding: 1.6rem;
+  max-width: 100%;
+  gap: var(--gap-md);
+  flex-direction: column;
+  flex: 1;
+
+  flex-wrap: wrap;
+`;
+
+const ButtonsRow = styled(Row)`
+  margin-top: auto;
+  /* justify-self: flex-end; */
 `;
 
 // const ExplorationDescription = styled.p`
 //   line-height: var(--line-height-md);
 // `;
+
+const ExplorationDescription = styled.p`
+  overflow-wrap: anywhere;
+`;
 
 function ExplorationMiniCard({
   name,
@@ -77,33 +93,31 @@ function ExplorationMiniCard({
       </ExplorationCardBackground>
 
       <ExplorationCardBody>
-        <Row $gap="var(--gap-md)">
-          <p>{description}</p>
+        <ExplorationDescription>{description}</ExplorationDescription>
 
-          <Row $direction="horizontal" $align="space-evenly">
-            <Row $direction="horizontal" $gap="var(--gap-sm)">
-              <IoFlag color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
-            </Row>
-            <Row $direction="horizontal" $gap="var(--gap-sm)">
-              <IoLocationSharp color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">
-                {city}
-                {city === "Multiple Cities" ? "" : ", PR"}
-              </Bold>
-            </Row>
+        <Row $direction="horizontal" $align="space-evenly">
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            <IoFlag color="var(--color-red-300)" />
+            <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
           </Row>
-
-          <Row $direction="horizontal" $gap="var(--gap-md)">
-            {buttonDetails.map((button) => (
-              <RouterLink to={button.buttonLink} key={button.id}>
-                <Button $variation={button.buttonVariation} $size="large">
-                  {button.buttonName}
-                </Button>
-              </RouterLink>
-            ))}
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            <IoLocationSharp color="var(--color-red-300)" />
+            <Bold $color="var(--color-dark-200)">
+              {city}
+              {city === "Multiple Cities" ? "" : ", PR"}
+            </Bold>
           </Row>
         </Row>
+
+        <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
+          {buttonDetails.map((button) => (
+            <RouterLink to={button.buttonLink} key={button.id}>
+              <Button $variation={button.buttonVariation} $size="large">
+                {button.buttonName}
+              </Button>
+            </RouterLink>
+          ))}
+        </ButtonsRow>
       </ExplorationCardBody>
     </StyledExplorationCard>
   );

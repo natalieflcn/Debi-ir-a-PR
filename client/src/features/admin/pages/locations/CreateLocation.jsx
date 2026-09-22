@@ -30,7 +30,9 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateLocation({ location = false }) {
+function CreateLocation() {
+  const { exploration, location } = useLoaderData();
+
   const isEditing = Boolean(location);
 
   const [name, setName] = useState(isEditing ? location.name : "");
@@ -50,7 +52,6 @@ function CreateLocation({ location = false }) {
   const [images, setImages] = useState(isEditing ? location.images : []);
   const [tags, setTags] = useState(isEditing ? location.tags : []);
   const [formErrors, setFormErrors] = useState({});
-  const exploration = useLoaderData();
 
   const navigate = useNavigate();
 
@@ -92,15 +93,16 @@ function CreateLocation({ location = false }) {
       description,
       images,
       tags,
-      explorationId: exploration.explorationId,
     };
 
-    navigate(`/admin/explorations/${newId}`);
+    navigate(
+      `/admin/explorations/${exploration.slug}/locations/${location.slug}`,
+    );
   };
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/admin/explorations/${exploration.explorationId}`}>
+      <RouterLink to={`/admin/explorations/${exploration.slug}`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>

@@ -38,8 +38,8 @@ const explorationSchema = new mongoose.Schema(
         "An exploration description must have more than 50 characters.",
       ],
       maxlength: [
-        500,
-        "An exploration description must have less than 500 characters.",
+        1000,
+        "An exploration description must have less than 1000 characters.",
       ],
       trim: true,
       required: [true, "An exploration description is required."],
@@ -69,6 +69,7 @@ const explorationSchema = new mongoose.Schema(
     featured: { type: Boolean, default: false },
     badge: {
       type: badgeSchema,
+      required: [true, "A badge is required."],
     },
     locations: {
       type: [locationSchema],
