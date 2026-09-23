@@ -60,17 +60,16 @@ const ExplorationCardBody = styled.div`
   flex-wrap: wrap;
 `;
 
-const ButtonsRow = styled(Row)`
+const StyledRow = styled(Row)`
   margin-top: auto;
-  /* justify-self: flex-end; */
 `;
-
 // const ExplorationDescription = styled.p`
 //   line-height: var(--line-height-md);
 // `;
 
 const ExplorationDescription = styled.p`
   overflow-wrap: anywhere;
+  margin-bottom: auto;
 `;
 
 function ExplorationMiniCard({
@@ -95,29 +94,31 @@ function ExplorationMiniCard({
       <ExplorationCardBody>
         <ExplorationDescription>{description}</ExplorationDescription>
 
-        <Row $direction="horizontal" $align="space-evenly">
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <IoFlag color="var(--color-red-300)" />
-            <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
+        <StyledRow>
+          <Row $direction="horizontal" $align="space-evenly">
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <IoFlag color="var(--color-red-300)" />
+              <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
+            </Row>
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <IoLocationSharp color="var(--color-red-300)" />
+              <Bold $color="var(--color-dark-200)">
+                {city}
+                {city === "Multiple Cities" ? "" : ", PR"}
+              </Bold>
+            </Row>
           </Row>
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <IoLocationSharp color="var(--color-red-300)" />
-            <Bold $color="var(--color-dark-200)">
-              {city}
-              {city === "Multiple Cities" ? "" : ", PR"}
-            </Bold>
-          </Row>
-        </Row>
 
-        <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
-          {buttonDetails.map((button) => (
-            <RouterLink to={button.buttonLink} key={button.id}>
-              <Button $variation={button.buttonVariation} $size="large">
-                {button.buttonName}
-              </Button>
-            </RouterLink>
-          ))}
-        </ButtonsRow>
+          <Row $direction="horizontal" $gap="var(--gap-md)">
+            {buttonDetails.map((button) => (
+              <RouterLink to={button.buttonLink} key={button.id}>
+                <Button $variation={button.buttonVariation} $size="large">
+                  {button.buttonName}
+                </Button>
+              </RouterLink>
+            ))}
+          </Row>
+        </StyledRow>
       </ExplorationCardBody>
     </StyledExplorationCard>
   );

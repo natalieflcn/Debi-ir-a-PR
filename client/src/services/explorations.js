@@ -21,6 +21,13 @@ export async function createExploration(formData) {
   });
 }
 
-export const updateExploration = {};
+export async function updateExploration(formData) {
+  console.log(formData);
+
+  return await apiFetch(`/explorations/${formData._id}`, {
+    method: "PATCH",
+    body: JSON.stringify(formData),
+  });
+}
 
 export const deleteExploration = {};

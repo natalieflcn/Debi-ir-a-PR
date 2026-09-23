@@ -128,8 +128,8 @@ function Login() {
         <Row $gap="var(--gap-xl)">
           <StyledAppForm
             formTitle="WELCOME BACK"
-            action="/login"
-            method="post"
+            // action="/login"
+            // method="post"
             $height="100%"
             onSubmit={handleSubmit}
           >

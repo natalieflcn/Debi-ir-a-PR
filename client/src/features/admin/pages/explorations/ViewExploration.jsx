@@ -12,7 +12,7 @@ function ViewExploration() {
   console.log(exploration);
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
-      author={user.name}
+      author={exploration.createdBy}
       lastUpdated={exploration.updatedAt}
     />
   );

@@ -131,8 +131,8 @@ function Signup({ $variant }) {
             BECOME AN {$variant === "explorer" ? "EXPLORER" : "AMBASSADOR"}
           </StyledHeading>
           <AppForm
-            action="/login"
-            method="post"
+            // action="/login"
+            // method="post"
             $height="100%"
             onSubmit={handleSubmit}
           >

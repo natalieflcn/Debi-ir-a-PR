@@ -128,7 +128,7 @@ function CreateLocation() {
       <AppForm
         formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
         onSubmit={handleSubmit}
-        method={isEditing ? "patch" : "post"}
+        // method={isEditing ? "patch" : "post"}
       >
         <StyledFormRow $gap="var(--gap-lg)">
           <FormField label="Exploration">

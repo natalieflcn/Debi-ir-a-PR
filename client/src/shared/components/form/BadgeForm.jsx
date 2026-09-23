@@ -88,7 +88,7 @@ function BadgeForm({ badge, onSubmit }) {
   };
 
   return (
-    <AppForm formTitle={"CREATE A BADGE"} onSubmit={handleSubmit} method="post">
+    <AppForm formTitle={"CREATE A BADGE"} onSubmit={handleSubmit}>
       <Row $gap="var(--gap-lg)">
         <FormField label="Name">
           <StyledRow $gap="var(--gap-xs)">

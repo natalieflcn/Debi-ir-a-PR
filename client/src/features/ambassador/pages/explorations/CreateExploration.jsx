@@ -22,7 +22,10 @@ import { useLoaderData } from "react-router-dom";
 import FeaturedFormToggle from "../../../../shared/components/form/FeaturedFormToggle";
 import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
 import { useAuth } from "../../../auth/contexts/AuthContext";
-import { createExploration } from "../../../../services/explorations";
+import {
+  createExploration,
+  updateExploration,
+} from "../../../../services/explorations";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -177,13 +180,22 @@ function CreateExploration() {
       createdBy: user._id,
     };
 
+    if (isEditing) {
+      formData._id = exploration._id;
+      formData.updatedBy = user._id;
+    } else {
+      formData.createdBy = user._id;
+    }
+
     console.log(formData);
 
     setIsSubmitting(true);
     try {
-      const exploration = await createExploration(formData);
-      console.log(exploration);
-      navigate(`/ambassador/explorations/`);
+      const { data } = isEditing
+        ? await updateExploration(formData)
+        : await createExploration(formData);
+
+      navigate(`/ambassador/explorations/${data.data.slug}`);
     } catch (err) {
       let errorMessage = err.message;
 
@@ -219,8 +231,8 @@ function CreateExploration() {
 
       <AppForm
         formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
-        action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
-        method={isEditing ? "patch" : "post"}
+        // action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
+        // method={isEditing ? "patch" : "post"}
         onSubmit={handleSubmit}
       >
         <Row $gap="var(--gap-lg)">

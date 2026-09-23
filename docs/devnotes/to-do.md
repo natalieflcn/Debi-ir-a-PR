@@ -435,7 +435,7 @@
       - [x] /me
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword TODO 4
+      - [ ] /updateMyPassword TODO 3
     - [~] Make fetch API calls to endpoints
     - [~] Handle loading and errors in client
     - [ ] Connect remaining routes
@@ -446,17 +446,17 @@
           - [x] Rendering Exploration/Location
           - [x] Rendering Edit-Exploration
           - [x] Rendering Edit-Exploration-Location
-        - [~] POST /explorations TODO2
-          - [ ] Rendering Create-Exploration
-        - [ ] PATCH /explorations/:explorationId TODO3
+        - [x] POST /explorations TODO 1
+          - [x] Rendering Create-Exploration
+        - [x] PATCH /explorations/:explorationId TODO2
           - [ ] Edit Exploration
           - [ ] Edit Exploration Location
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
-        - [ ] GET /users TODO 5
-        - [ ] GET /users/:userId TODO6
-        - [ ] PATCH /users/:userId TODO7
-        - [ ] DELETE /users/:userId TODO8
+        - [ ] GET /users TODO 4
+        - [ ] GET /users/:userId TODO 5
+        - [ ] PATCH /users/:userId TODO 6
+        - [ ] DELETE /users/:userId TODO 7
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
         - [ ] GET /exploration-progress
@@ -472,8 +472,9 @@
     - [x] After signing up user, user should be redirected to Explorations
     - [x] After logging in user, user should be redirected to Dashboard
     - [x] Add JWT token to cookies on the front-end
-    - [ ] When logging in with incorrect password, error message should display on the front-end.
+    - [ ] When logging in with incorrect password, error message should display on the front-end. TODO 8
     - [x] Shouldn't be able to sign up with existing email
+    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
     - [ ] Apply back-end validator rule to front-end too

@@ -27,8 +27,8 @@ const StyledForm = styled(Form)`
 
 function AppForm({
   formTitle,
-  action,
-  method,
+  // action,
+  // method,
   children,
   $height,
   className,
@@ -48,7 +48,7 @@ function AppForm({
         >
           {formTitle}
         </StyledHeading>
-        <StyledForm action={action} method={method} onSubmit={onSubmit}>
+        <StyledForm onSubmit={onSubmit}>
           <Row $gap="var(--gap-md)">{children}</Row>
         </StyledForm>
       </Row>
