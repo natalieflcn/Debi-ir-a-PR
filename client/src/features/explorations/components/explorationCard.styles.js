@@ -70,8 +70,8 @@ export const ExplorationCardBody = styled.div`
   padding: 4rem;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-3xl);
 
+  gap: var(--gap-3xl);
   @media (max-width: 800px) {
     padding: 1.5rem;
   }
@@ -81,7 +81,7 @@ export const ExplorationCardAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
-  width: 28%;
+  width: 45%;
   align-self: flex-start;
 
   @media (max-width: 1200px) {
@@ -121,6 +121,9 @@ export const ExplorationImagesRow = styled(Row)`
   }
 `;
 
+export const ExplorationDescription = styled.p`
+  overflow-wrap: anywhere;
+`;
 export const StyledHeaderDetailsRow = styled(Row)`
   @media (max-width: 900px) {
     flex-direction: column;

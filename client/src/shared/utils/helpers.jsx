@@ -21,3 +21,9 @@ export const formatDate = function (ISOString) {
 export const capitalize = function (word) {
   return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
 };
+
+export const verifyPRZipcode = function (zipcode) {
+  const prZipRegex = /^(00[67]\d{2}|009\d{2})(?:-\d{4})?$/;
+
+  return prZipRegex.test(zipcode);
+};

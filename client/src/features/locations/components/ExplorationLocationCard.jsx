@@ -40,6 +40,10 @@ const AddressRow = styled(Row)`
   }
 `;
 
+const LocationDescription = styled.p`
+  overflow-wrap: anywhere;
+`;
+
 function ExplorationLocationCard({
   exploration,
   location,
@@ -57,14 +61,11 @@ function ExplorationLocationCard({
         </Button>
       </RouterLink>
 
-      <StyledExplorationLocation>
-        <ExplorationLocationHeaderImage $image={location.headerImage}>
+      <StyledExplorationLocation $cardShadow="outsetLG">
+        <ExplorationLocationHeaderImage $image={location?.headerImage}>
           <ExplorationLocationHeaderDetails>
             <Row $gap="var(--gap-sm)">
-              <ExplorationLocationHeading
-                as="h2"
-                $shadowColor="var(--color-brown-400)"
-              >
+              <ExplorationLocationHeading as="h2" $color="var(--color-red-300)">
                 {location.name}
               </ExplorationLocationHeading>
 
@@ -95,7 +96,9 @@ function ExplorationLocationCard({
                 <Heading as="h3" $color="var(--color-red-300)">
                   ABOUT {location.name.toUpperCase()}
                 </Heading>
-                {location.description}
+                <LocationDescription>
+                  {location.description}
+                </LocationDescription>
               </Row>
               <TagCollection>
                 {location.tags.map((tag) => (

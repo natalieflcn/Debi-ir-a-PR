@@ -30,4 +30,15 @@ export async function updateExploration(formData) {
   });
 }
 
+export async function updateExplorationLocation(
+  exploration,
+  location,
+  formData,
+) {
+  return await apiFetch(`/explorations/${exploration}/locations/${location}`, {
+    method: "PATCH",
+    body: JSON.stringify(formData),
+  });
+}
+
 export const deleteExploration = {};

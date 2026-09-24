@@ -449,8 +449,8 @@
         - [x] POST /explorations TODO 1
           - [x] Rendering Create-Exploration
         - [x] PATCH /explorations/:explorationId TODO2
-          - [ ] Edit Exploration
-          - [ ] Edit Exploration Location
+          - [x] Edit Exploration
+          - [ ] Edit Exploration Location // note if creating locations, no exploration name
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
         - [ ] GET /users TODO 4
@@ -509,6 +509,8 @@
       - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
       - [ ] Create Reset Password page
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
+    - [ ] Note: If location is edited from /locations page, update the updatedBy on exploration document
+    - [ ] Rename CreateLocation to EditLocation and remove create conditional
 
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails

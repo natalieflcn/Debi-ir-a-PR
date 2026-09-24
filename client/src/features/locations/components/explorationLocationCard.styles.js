@@ -3,9 +3,10 @@ import Row from "../../../shared/components/layout/Row";
 import Heading from "../../../shared/components/typography/Heading";
 import Card from "../../../shared/components/layout/Card";
 
-export const StyledExplorationLocation = styled.div`
+export const StyledExplorationLocation = styled(Card)`
   display: flex;
   flex-direction: column;
+  background-color: var(--color-light-100);
 `;
 
 export const ExplorationLocationHeaderImage = styled.div`
@@ -17,6 +18,14 @@ export const ExplorationLocationHeaderImage = styled.div`
   position: relative;
   height: 25rem;
   width: 100%;
+
+  @media (max-width: 800px) {
+    height: 27rem;
+  }
+
+  @media (max-width: 500px) {
+    height: 30rem;
+  }
 `;
 
 export const ExplorationLocationHeading = styled(Heading)`

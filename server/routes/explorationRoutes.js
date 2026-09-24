@@ -35,6 +35,12 @@ router
     explorationController.deleteExploration,
   );
 
+router
+  .route("/:explorationId/locations/:locationId")
+  .patch(
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.updateExplorationLocation,
+  );
 // router
 //   .route("/:explorationId/badge")
 //   .get(explorationController.getExplorationBadge);

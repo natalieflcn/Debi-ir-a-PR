@@ -29,6 +29,43 @@ exports.aliasExplorationsSummary = (req, res, next) => {
   next();
 };
 
+// Exploration/Location Routes
+exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
+  const { explorationId, locationId } = req.params;
+
+  const exploration = await Exploration.findOne({ slug: explorationId });
+
+  if (!exploration)
+    return next(new AppError("No exploration found with that ID.", 404));
+
+  const location = exploration.locations.find((loc) => loc.slug === locationId);
+
+  if (!location)
+    return next(new AppError("No location found with that ID.", 404));
+
+  const allowedFields = [
+    "name",
+    "address",
+    "city",
+    "headerImage",
+    "description",
+    "images",
+    "tags",
+  ];
+
+  allowedFields.forEach((field) => {
+    if (req.body[field] !== undefined) {
+      location[field] = req.body[field];
+    }
+  });
+
+  if (req.body.updatedBy) location.updatedBy = req.body.updatedBy;
+
+  await exploration.save({ validateModifiedOnly: true });
+
+  res.status(200).json({ status: "success", data: { location } });
+});
+
 // Exploration/Badge Routes
 // exports.createExplorationBadge = catchAsync(async (req, res, next) => {
 //   const badge = await Badge.create(req.body);

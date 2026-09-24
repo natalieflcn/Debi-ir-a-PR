@@ -159,6 +159,8 @@ function CreateExploration() {
       errors.tags = "Please select at least one exploration tag.";
 
     if (Object.keys(errors).length > 0) {
+      errors.submit = "Please review your form submission and try again.";
+
       setFormErrors(errors);
       return;
     }

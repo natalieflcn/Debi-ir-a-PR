@@ -16,6 +16,7 @@ import {
   ExplorationCardHeaderImage,
   ExplorationCardHeading,
   ExplorationCardLocations,
+  ExplorationDescription,
   ExplorationDetailsRow,
   ExplorationImagesRow,
   StyledExplorationCard,
@@ -102,7 +103,9 @@ function ExplorationCard({
               <Heading as="h3" $color="var(--color-red-300)">
                 ABOUT THIS EXPLORATION
               </Heading>
-              <p>{exploration.description}</p>
+              <ExplorationDescription>
+                {exploration.description}
+              </ExplorationDescription>
 
               <TagCollection>
                 {exploration.tags.map((tag) => (

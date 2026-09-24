@@ -13,6 +13,8 @@ import { useState } from "react";
 import LocationTagBuilder from "./LocationTagBuilder";
 import Bold from "../typography/Bold";
 import { MdRowing } from "react-icons/md";
+import { verifyPRZipcode } from "../../utils/helpers";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -33,7 +35,7 @@ function LocationForm({ exploration, location, onSubmit }) {
   const [street, setStreet] = useState(
     isEditing ? location.address.street : "",
   );
-  const [city, setCity] = useState(isEditing ? location.city : null);
+  const [city, setCity] = useState(isEditing ? location.address.city : null);
   const [zipcode, setZipcode] = useState(
     isEditing ? location.address.zipcode : "",
   );
@@ -46,6 +48,18 @@ function LocationForm({ exploration, location, onSubmit }) {
   const [images, setImages] = useState(isEditing ? location.images : []);
   const [tags, setTags] = useState(isEditing ? location.tags : []);
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { user } = useAuth();
+
+  function handleSetTags(value) {
+    setFormErrors((prev) => ({ ...prev, tags: "" }));
+    setTags(value);
+  }
+
+  function handleSetCity(value) {
+    setFormErrors((prev) => ({ ...prev, city: "" }));
+    setCity(value);
+  }
 
   const handleSubmit = function (e) {
     e.preventDefault();
@@ -53,19 +67,31 @@ function LocationForm({ exploration, location, onSubmit }) {
 
     const errors = {};
 
-    if (!name.trim()) errors.name = "Location name is required.";
+    if (!name.trim()) errors.name = "A location name is required.";
+    else if (name.trim().length < 5)
+      errors.name = "A location name must have more than 5 characters.";
+    else if (name.trim().length > 40)
+      errors.name = "An location name must have less than 40 characters.";
 
     if (!street.trim()) errors.street = "Location street address is required.";
 
-    if (!city) errors.city = "Please select a city.";
+    if (!city) errors.city = "A city is required.";
 
-    if (!zipcode.trim()) errors.zipcode = "Location zipcode is required.";
+    if (!zipcode.trim()) errors.zipcode = "A location zipcode is required.";
+    else if (!verifyPRZipcode(zipcode.trim()))
+      errors.zipcode = "Please enter a valid Puerto Rican zipcode.";
 
     // if (headerImage.length < 1)
     //   errors.headerImage = "Please select a header image.";
 
     if (!description.trim())
       errors.description = "Please provide a description.";
+    else if (description.trim().length < 50)
+      errors.description =
+        "A location description must have more than 50 characters.";
+    else if (description.trim().length > 1000)
+      errors.description =
+        "A location description must have less than 1000 characters.";
 
     // if (images.length < 1) errors.images = "Please provide at least one image.";
 
@@ -86,8 +112,11 @@ function LocationForm({ exploration, location, onSubmit }) {
       tags,
       // explorationId: exploration.explorationId,
     };
+    if (isEditing) formData.updatedBy = user._id;
 
+    setIsSubmitting(true);
     onSubmit(formData);
+    setIsSubmitting(false);
   };
 
   return (
@@ -97,11 +126,13 @@ function LocationForm({ exploration, location, onSubmit }) {
       method="post"
     >
       <Row $gap="var(--gap-lg)">
-        <FormField label="Exploration">
-          <StyledHeading as="h6" $color="var(--color-red-300)">
-            {exploration?.name ?? exploration}
-          </StyledHeading>
-        </FormField>
+        {isEditing && (
+          <FormField label="Exploration">
+            <StyledHeading as="h6" $color="var(--color-red-300)">
+              {exploration?.name ?? exploration}
+            </StyledHeading>
+          </FormField>
+        )}
 
         <FormField label="Name">
           <StyledRow $gap="var(--gap-xs)">
@@ -109,7 +140,10 @@ function LocationForm({ exploration, location, onSubmit }) {
               name="name"
               placeholder="The name of the location"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setFormErrors((prev) => ({ ...prev, name: "" }));
+                setName(e.target.value);
+              }}
             />
             {formErrors.name && <Bold>{formErrors.name}</Bold>}
           </StyledRow>
@@ -121,7 +155,10 @@ function LocationForm({ exploration, location, onSubmit }) {
               name="street"
               placeholder="The street address of the location"
               value={street}
-              onChange={(e) => setStreet(e.target.value)}
+              onChange={(e) => {
+                setFormErrors((prev) => ({ ...prev, street: "" }));
+                setStreet(e.target.value);
+              }}
             />
             {formErrors.street && <Bold>{formErrors.street}</Bold>}
           </StyledRow>
@@ -129,7 +166,7 @@ function LocationForm({ exploration, location, onSubmit }) {
 
         <FormField label="City">
           <StyledRow $gap="var(--gap-xs)">
-            <CityDropdown name="city" value={city} onSelect={setCity} />
+            <CityDropdown name="city" value={city} onSelect={handleSetCity} />
             {formErrors.city && <Bold>{formErrors.city}</Bold>}
           </StyledRow>
         </FormField>
@@ -140,7 +177,10 @@ function LocationForm({ exploration, location, onSubmit }) {
               name="zipcode"
               placeholder="The zipcode of the location"
               value={zipcode}
-              onChange={(e) => setZipcode(e.target.value)}
+              onChange={(e) => {
+                setFormErrors((prev) => ({ ...prev, zipcode: "" }));
+                setZipcode(e.target.value);
+              }}
               type="text"
               maxLength={10}
             />
@@ -167,7 +207,10 @@ function LocationForm({ exploration, location, onSubmit }) {
               name="description"
               placeholder="The description displayed beside the location"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => {
+                setFormErrors((prev) => ({ ...prev, description: "" }));
+                setDescription(e.target.value);
+              }}
             />
             {formErrors.description && <Bold>{formErrors.description}</Bold>}
           </StyledTextAreaRow>
@@ -188,13 +231,14 @@ function LocationForm({ exploration, location, onSubmit }) {
 
         <FormField label="Tags">
           <StyledRow $gap="var(--gap-xs)">
-            <LocationTagBuilder value={tags} onChange={setTags} />
+            <LocationTagBuilder value={tags} onChange={handleSetTags} />
             {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
           </StyledRow>
         </FormField>
 
         <Button $variation="darkRed" $size="medium" type="submit">
-          {"Create Location"}
+          {!isSubmitting && (isEditing ? "Save Changes" : "Create Location")}
+          {isSubmitting && "Saving Changes..."}
         </Button>
       </Row>
     </AppForm>
