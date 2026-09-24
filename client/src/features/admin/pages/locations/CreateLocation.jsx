@@ -134,15 +134,16 @@ function CreateLocation() {
 
     try {
       setIsSubmitting(true);
-      const updatedLocation = await updateExplorationLocation(
+      const { data } = await updateExplorationLocation(
         exploration.slug,
         location.slug,
         formData,
       );
+      const updatedLocation = data.data;
 
       console.log(updatedLocation);
       navigate(
-        `/admin/explorations/${exploration.slug}/locations/${location.slug}`,
+        `/admin/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
       );
     } catch (err) {
       console.log(err);

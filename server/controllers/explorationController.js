@@ -53,17 +53,20 @@ exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
     "tags",
   ];
 
+  // Updating Location
   allowedFields.forEach((field) => {
     if (req.body[field] !== undefined) {
       location[field] = req.body[field];
     }
   });
 
-  if (req.body.updatedBy) location.updatedBy = req.body.updatedBy;
+  // Updating Exploration
+  exploration.cities = exploration.locations.map((loc) => loc.city);
+  if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
 
   await exploration.save({ validateModifiedOnly: true });
 
-  res.status(200).json({ status: "success", data: { location } });
+  res.status(200).json({ status: "success", data: { data: location } });
 });
 
 // Exploration/Badge Routes
