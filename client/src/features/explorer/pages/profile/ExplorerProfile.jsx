@@ -4,6 +4,7 @@ import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileBadgeCollection from "../../../explorer/components/profile/ProfileBadgeCollection";
 
 import { useLoaderData } from "react-router-dom";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const StyledExplorerProfile = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ function ExplorerProfile() {
       <ProfileInformation
         userEmail={profileData.email}
         userPassword={profileData.password}
-        dateJoined={profileData.createdAt}
+        dateJoined={formatDate(profileData.createdAt)}
       />
       <ProfileBadgeCollection userHistory={userHistory} />
     </StyledExplorerProfile>

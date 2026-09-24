@@ -481,9 +481,9 @@
       - [~] Explorations
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
-        - [ ] GET /users TODO 1
-          - [ ] Admin POV
-          - [ ] Ambassador POV
+        - [x] GET
+          - [x] Admin POV
+          - [x] Ambassador POV
         - [ ] GET /users/:userId TODO 2
         - [ ] PATCH /users/:userId TODO 3
         - [ ] DELETE /users/:userId TODO 4

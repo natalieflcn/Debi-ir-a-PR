@@ -1,3 +1,4 @@
+import { getExplorers } from "../../../services/users";
 import { formatDate } from "../../../shared/utils/helpers";
 
 const fakeUsers = [
@@ -54,10 +55,9 @@ const fakeUsers = [
 ];
 
 export async function explorersLoader() {
-  const usersData = fakeUsers.map((user) => ({
-    ...user,
-    dateJoined: formatDate(user.dateJoined),
-  }));
+  const { data } = await getExplorers();
 
-  return usersData;
+  const users = data.data;
+
+  return users;
 }

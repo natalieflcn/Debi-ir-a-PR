@@ -14,6 +14,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
 
 import { useLoaderData } from "react-router-dom";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -71,7 +72,7 @@ function AmbassadorDetails() {
         <ProfileInformation
           userEmail={user.email}
           password="hello"
-          dateJoined={user.createdAt}
+          dateJoined={formatDate(user.createdAt)}
         />
       </StyledExplorerDetails>
     </Row>

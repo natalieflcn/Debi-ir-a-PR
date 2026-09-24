@@ -67,7 +67,7 @@ export async function adminUserLoader({ params }) {
   const userHistory2 = userHistory.find((history) => history.userId === userId);
 
   return {
-    user: { ...user, dateJoined: formatDate(user.dateJoined) },
+    // user: data.data,
     userHistory2,
   };
 }

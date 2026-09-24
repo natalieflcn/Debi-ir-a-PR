@@ -11,7 +11,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
-import { capitalize } from "../../../../shared/utils/helpers";
+import { capitalize, formatDate } from "../../../../shared/utils/helpers";
 
 export const UsersTableColumns = [
   {
@@ -37,7 +37,19 @@ export const UsersTableColumns = [
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "createdAt", heading: "Date Joined" },
+  {
+    id: "createdAt",
+    heading: "Date Joined",
+    render: (row) => {
+      return (
+        <ActionTableCell>
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            {formatDate(row.createdAt)}
+          </Row>
+        </ActionTableCell>
+      );
+    },
+  },
   {
     id: "action",
     heading: "Action",

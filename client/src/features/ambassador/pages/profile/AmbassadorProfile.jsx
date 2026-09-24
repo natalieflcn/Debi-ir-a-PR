@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileInformation from "../../../../shared/components/profile/ProfileInformation";
 import { useLoaderData } from "react-router-dom";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const StyledAmbassadorProfile = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ function AmbassadorProfile() {
       <ProfileInformation
         userEmail={profileData.email}
         userPassword={profileData.password}
-        dateJoined={profileData.createdAt}
+        dateJoined={formatDate(profileData.createdAt)}
       />
     </StyledAmbassadorProfile>
   );

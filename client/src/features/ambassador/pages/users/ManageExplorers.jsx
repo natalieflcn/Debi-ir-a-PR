@@ -9,6 +9,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const AmbassadorExplorersTableColumns = [
   {
@@ -24,7 +25,19 @@ const AmbassadorExplorersTableColumns = [
   },
   { id: "email", heading: "Email" },
   { id: "explorationsCompleted", heading: "Explorations Completed" },
-  { id: "createdAt", heading: "Date Joined" },
+  {
+    id: "createdAt",
+    heading: "Date Joined",
+    render: (row) => {
+      return (
+        <ActionTableCell>
+          <Row $direction="horizontal" $gap="var(--gap-sm)">
+            {formatDate(row.createdAt)}
+          </Row>
+        </ActionTableCell>
+      );
+    },
+  },
   {
     id: "action",
     heading: "Action",

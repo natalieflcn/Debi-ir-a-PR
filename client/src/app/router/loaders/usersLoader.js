@@ -64,10 +64,7 @@ const fakeUsers = [
 export async function usersLoader() {
   const { data } = await getUsers();
 
-  const usersData = data.data.map((user) => ({
-    ...user,
-    createdAt: formatDate(user.createdAt),
-  }));
+  const users = data.data;
 
-  return usersData;
+  return users;
 }
