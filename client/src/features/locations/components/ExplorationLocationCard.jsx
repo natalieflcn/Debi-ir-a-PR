@@ -52,7 +52,6 @@ function ExplorationLocationCard({
   footerCTA,
   type = "",
 }) {
-  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations/${exploration.slug}`}>

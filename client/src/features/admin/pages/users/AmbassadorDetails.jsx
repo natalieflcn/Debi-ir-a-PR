@@ -71,7 +71,7 @@ function AmbassadorDetails() {
         <ProfileInformation
           userEmail={user.email}
           password="hello"
-          dateJoined={user.dateJoined}
+          dateJoined={user.createdAt}
         />
       </StyledExplorerDetails>
     </Row>

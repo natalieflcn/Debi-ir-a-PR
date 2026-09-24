@@ -78,7 +78,6 @@ function CreateLocation() {
 
     const errors = {};
 
-    console.log("button clicked");
     if (!name.trim()) errors.name = "Location name is required.";
     else if (name.trim().length < 5)
       errors.name = "A location name must have more than 5 characters.";
@@ -113,7 +112,7 @@ function CreateLocation() {
       errors.submit = "Please review your form submission and try again.";
 
       setFormErrors(errors);
-      console.log(errors);
+
       return;
     }
 
@@ -127,10 +126,7 @@ function CreateLocation() {
       tags,
     };
 
-    console.log(formData);
     if (isEditing) formData.updatedBy = user._id;
-
-    console.log("submit button clicked");
 
     try {
       setIsSubmitting(true);
@@ -141,7 +137,6 @@ function CreateLocation() {
       );
       const updatedLocation = data.data;
 
-      console.log(updatedLocation);
       navigate(
         `/admin/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
       );

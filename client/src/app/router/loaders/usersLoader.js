@@ -1,3 +1,4 @@
+import { getUsers } from "../../../services/users";
 import { formatDate } from "../../../shared/utils/helpers";
 
 const fakeUsers = [
@@ -61,9 +62,11 @@ const fakeUsers = [
 ];
 
 export async function usersLoader() {
-  const usersData = fakeUsers.map((user) => ({
+  const { data } = await getUsers();
+
+  const usersData = data.data.map((user) => ({
     ...user,
-    dateJoined: formatDate(user.dateJoined),
+    createdAt: formatDate(user.createdAt),
   }));
 
   return usersData;

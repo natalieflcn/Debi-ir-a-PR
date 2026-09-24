@@ -12,7 +12,6 @@ const StyledAmbassadorProfile = styled.div`
 function AmbassadorProfile() {
   const { profileData } = useLoaderData();
 
-  console.log(profileData);
   return (
     <StyledAmbassadorProfile>
       <ProfileHeader
@@ -22,7 +21,7 @@ function AmbassadorProfile() {
       <ProfileInformation
         userEmail={profileData.email}
         userPassword={profileData.password}
-        dateJoined={profileData.datedJoined}
+        dateJoined={profileData.createdAt}
       />
     </StyledAmbassadorProfile>
   );

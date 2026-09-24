@@ -50,9 +50,8 @@ const StyledTextAreaRow = styled(Row)`
 
 function CreateLocation() {
   const { exploration, location } = useLoaderData();
-  console.log(location, exploration);
+
   const isEditing = Boolean(location);
-  console.log(isEditing);
 
   const [name, setName] = useState(isEditing ? location.name : "");
   // const [address, setAddress] = useState(isEditing ? location.address : "");
@@ -140,8 +139,6 @@ function CreateLocation() {
 
     if (isEditing) formData.updatedBy = user._id;
 
-    console.log("submit button clicked");
-
     try {
       setIsSubmitting(true);
       const { data } = await updateExplorationLocation(
@@ -150,7 +147,7 @@ function CreateLocation() {
         formData,
       );
       const updatedLocation = data.data;
-      console.log(updatedLocation);
+
       navigate(
         `/ambassador/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
       );

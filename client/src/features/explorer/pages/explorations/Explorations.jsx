@@ -55,7 +55,6 @@ function Explorations() {
   const [showFeatured, setShowFeatured] = useState(false);
   const { explorations } = useLoaderData();
 
-  console.log(explorations);
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
 
@@ -103,7 +102,6 @@ function Explorations() {
               ? exploration.cities[0]
               : "Multiple Cities";
 
-          console.log(city);
           return (
             <ExplorationMiniCard
               name={exploration.name}

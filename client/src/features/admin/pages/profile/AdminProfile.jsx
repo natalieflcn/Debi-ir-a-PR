@@ -21,7 +21,7 @@ function AdminProfile() {
       <ProfileInformation
         userEmail={profileData.email}
         userPassword={profileData.password}
-        dateJoined={profileData.dateJoined}
+        dateJoined={profileData.createdAt}
       />
     </StyledAdminProfile>
   );

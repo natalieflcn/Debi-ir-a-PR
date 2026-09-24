@@ -24,7 +24,7 @@ const AmbassadorExplorersTableColumns = [
   },
   { id: "email", heading: "Email" },
   { id: "explorationsCompleted", heading: "Explorations Completed" },
-  { id: "dateJoined", heading: "Date Joined" },
+  { id: "createdAt", heading: "Date Joined" },
   {
     id: "action",
     heading: "Action",
@@ -96,7 +96,7 @@ const explorersTableTheme = {
 
 const sortCategories = [
   { id: "name", name: "Name" },
-  { id: "dateJoined", name: "Date Joined" },
+  { id: "createdAt", name: "Date Joined" },
 ];
 
 const ITEMS_PER_PAGE = 10;
@@ -108,7 +108,7 @@ function ManageExplorers() {
 
   const sortedUsers = [...explorersData].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
-    else return new Date(b.dateJoined) - new Date(a.dateJoined);
+    else return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
   const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);

@@ -421,11 +421,10 @@
     - [x] Implement filtering by tags for /getAllExplorations
   - [x] Refine authentication and authorization through app routes
   - [x] NOTE: Change importing style of constants.js and helpers.js to CommonJS styles instead of ES6
-- [ ] Create /logout route in backend
 - [x] Replace exploration_id with slug for exploration routes
 
-- [ ] **PHASE 4:** Connect Front-end to Back-end
-  - [ ] Create API service layer in client-side
+- [~] **PHASE 4:** Connect Front-end to Back-end
+  - [~] Create API service layer in client-side
     - [x] Store back-end URL in env variable
     - [x] Set up CORS on the back-end
     - [~] Start with authRoutes (/login, /signup)
@@ -433,30 +432,61 @@
       - [x] /signup/ambassador
       - [x] /login
       - [x] /me
-      - [ ] /forgotPassword
-      - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword TODO 3
     - [~] Make fetch API calls to endpoints
     - [~] Handle loading and errors in client
-    - [ ] Connect remaining routes
-      - [ ] Explorations TODO
+    - [~] Connect remaining routes
+      - [~] Explorations
         - [x] GET /explorations
         - [x] GET /explorations/summary
         - [x] GET /explorations/:explorationId
           - [x] Rendering Exploration/Location
           - [x] Rendering Edit-Exploration
           - [x] Rendering Edit-Exploration-Location
-        - [x] POST /explorations TODO 1
+        - [x] POST /explorations
           - [x] Rendering Create-Exploration
-        - [x] PATCH /explorations/:explorationId TODO2
+        - [x] PATCH /explorations/:explorationId
           - [x] Edit Exploration
-          - [ ] Edit Exploration Location // note if creating locations, no exploration name
+          - [x] Edit Exploration Location
+
+- [~] FRONT-END TWEAKS
+  - [x] Need to render form errors when user is attempting to sign up with existing email
+  - [x] After signing up user, user should be redirected to Explorations
+  - [x] After logging in user, user should be redirected to Dashboard
+  - [x] Add JWT token to cookies on the front-end
+  - [x] Shouldn't be able to sign up with existing email
+  - [x] Apply back-end validator rule to front-end too
+    - [x] Create/Edit Exploration
+    - [x] Create/Edit Location
+  - [x] No matter how small the description is, the exploration mini card buttons should be formatted on the bottom
+  - [x] Fix formatting exploration mini card issue. Text and content should wrap around, not stretch out the card.
+  - [x] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
+  - [x] Remove Exploration Name field from Location Form (when creating explorations)
+  - [x] Derived location tags should not be displayed on Exploration page
+  - [x] Add zipcode regex validator
+  - [x] Set ten location limit on explorations client-side
+  - [x] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
+  - [x] Revise front-end Badge implementation (CreateBadge form)
+  - [x] Note: If location is edited from /locations page, update the updatedBy on exploration document
+
+  ## Week: September 24 - October 1
+
+- [~] **PHASE 4:** Connect Front-end to Back-end
+  - [~] Create API service layer in client-side
+    - [~] Start with authRoutes (/login, /signup)
+      - [ ] /forgotPassword
+      - [ ] /resetForgottenPassword
+      - [ ] /updateMyPassword
+
+    - [~] Connect remaining routes
+      - [~] Explorations
         - [ ] DELETE /explorations/:explorationId
       - [ ] Users
-        - [ ] GET /users TODO 4
-        - [ ] GET /users/:userId TODO 5
-        - [ ] PATCH /users/:userId TODO 6
-        - [ ] DELETE /users/:userId TODO 7
+        - [ ] GET /users TODO 1
+          - [ ] Admin POV
+          - [ ] Ambassador POV
+        - [ ] GET /users/:userId TODO 2
+        - [ ] PATCH /users/:userId TODO 3
+        - [ ] DELETE /users/:userId TODO 4
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
         - [ ] GET /exploration-progress
@@ -467,50 +497,32 @@
 
 - [ ] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end
-    - [x] Need to render form errors when user is attempting to sign up with existing email
     - [ ] "/" should always return to dashboard for logged in users
-    - [x] After signing up user, user should be redirected to Explorations
-    - [x] After logging in user, user should be redirected to Dashboard
-    - [x] Add JWT token to cookies on the front-end
     - [ ] When logging in with incorrect password, error message should display on the front-end. TODO 8
-    - [x] Shouldn't be able to sign up with existing email
-    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
-    - [ ] Apply back-end validator rule to front-end too
-      - [~] Create/Edit Exploration
-      - [ ] Create/Edit Location
-    - [ ] No matter how small the description is, the exploration mini card buttons should be formatted on the bottom
-
-  - [ ] Other Tasks (For the future)
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
       - [ ] Delete explorations
       - [ ] Delete locations
       - [ ] Delete users
+    - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
+    - [ ] Create document middleware that calculates number of explorations completed and changes user title
+    - [ ] Make "Date Joined" the default filter for Users
+
+  - [ ] Other Tasks (For the future)
+    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
-    - [x] Fix formatting exploration mini card issue. Text and content should wrap around, not stretch out the card.
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
-    - [ ] Remove Exploration Name validator on LocationBuilder of CreateExploration Form
-    - [ ] Fetch to /me and unauthorized error shouldn't happen if the user is not logged in (public pages, login page, signup pages)
-    - [ ] Remove Exploration Name field from Location Form (when creating explorations)
-    - [x] Derived location tags should not be displayed on Exploration page
-    - [ ] Add zipcode regex validator
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [ ] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
-    - [ ] Set ten location limit on explorations client-side
     - [ ] BUG: Links broken when viewing users from /ambassador/users
-    - [ ] BUG: LocationCard doesn't properly display Exploration name (i.e. should display "Back to Toa Alta Tour)
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
+    - [ ] Rename CreateLocation to EditLocation and remove create conditional
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
-      - [ ] Revise front-end Badge implementation (CreateBadge form)
-      - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
       - [ ] Create Reset Password page
-    - [ ] Create document middleware that calculates number of explorations completed and changes user title
-    - [ ] Note: If location is edited from /locations page, update the updatedBy on exploration document
-    - [ ] Rename CreateLocation to EditLocation and remove create conditional
 
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails

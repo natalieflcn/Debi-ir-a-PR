@@ -19,7 +19,7 @@ export const UsersTableColumns = [
     heading: "Name",
     render: (row) => (
       <RouterLink to={`${row.role.toLowerCase()}s/${row.id}`}>
-        <TableNameCell>
+        <TableNameCell role={row.role}>
           <Bold $color="var(--color-dark-200)">{row.name}</Bold>
         </TableNameCell>
       </RouterLink>
@@ -37,7 +37,7 @@ export const UsersTableColumns = [
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "dateJoined", heading: "Date Joined" },
+  { id: "createdAt", heading: "Date Joined" },
   {
     id: "action",
     heading: "Action",
@@ -97,7 +97,8 @@ const TableNameCell = styled.div`
   }
 
   &:hover strong {
-    color: var(--color-blue-200);
+    color: ${({ role }) =>
+      role === "explorer" ? "var(--color-blue-200)" : "var(--color-red-200)"};
     cursor: pointer;
   }
 `;
@@ -128,12 +129,13 @@ const ambassadorsTableTheme = {
 
 const sortCategories = [
   { id: "name", name: "Name" },
-  { id: "dateJoined", name: "Date Joined" },
+  { id: "createdAt", name: "Date Joined" },
 ];
 
 const filterCategories = [
   { id: "explorer", name: "Explorers" },
   { id: "ambassador", name: "Ambassadors" },
+  { id: "admin", name: "Admins" },
   { id: "all", name: "All" },
 ];
 
@@ -144,12 +146,12 @@ function ManageUsers() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const usersData = useLoaderData();
+  console.log(usersData);
   const tableTheme =
     (filterBy === "explorer" && explorersTableTheme) ||
     (filterBy === "ambassador" && ambassadorsTableTheme) ||
     undefined;
 
-  console.log(tableTheme);
   const filteredUsers = [...usersData].filter((user) => {
     if (filterBy === "all") return true;
     return user.role === filterBy;
@@ -157,7 +159,7 @@ function ManageUsers() {
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
-    else return new Date(b.dateJoined) - new Date(a.dateJoined);
+    else return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
   const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);

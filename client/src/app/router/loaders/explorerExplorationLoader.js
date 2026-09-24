@@ -152,6 +152,5 @@ export async function explorerExplorationLoader({ params }) {
 
   const { data } = await getExploration(explorationId);
 
-  console.log(data);
   return { exploration: data.data, userHistory };
 }

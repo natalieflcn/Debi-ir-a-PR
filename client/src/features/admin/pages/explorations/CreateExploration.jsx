@@ -160,7 +160,6 @@ function CreateExploration() {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
 
-      console.log(errors);
       return;
     }
 
@@ -191,7 +190,6 @@ function CreateExploration() {
         ? await updateExploration(formData)
         : await createExploration(formData);
 
-      console.log(exploration);
       navigate(`/admin/explorations/${data.data.slug}`);
     } catch (err) {
       let errorMessage = err.message;

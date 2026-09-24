@@ -19,14 +19,7 @@ const StyledLocationBuilder = styled.div`
 
 function LocationBuilder({ exploration, locations, onAdd }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [error, setError] = useState("");
 
-  function openModal(exploration) {
-    setError("");
-
-    if (!exploration) setError("Please define the Exploration name first.");
-    else setIsModalOpen(true);
-  }
   return (
     <StyledLocationBuilder>
       <Row $direction="horizontal" $align="start" $gap="var(--gap-md)">
@@ -34,7 +27,7 @@ function LocationBuilder({ exploration, locations, onAdd }) {
           type="button"
           $variation="primary"
           $size="small"
-          onClick={() => openModal(exploration)}
+          onClick={() => setIsModalOpen(true)}
         >
           Add Location
         </Button>
@@ -56,7 +49,6 @@ function LocationBuilder({ exploration, locations, onAdd }) {
             />
           </Modal>
         )}
-        {error && <Bold>{error}</Bold>}
       </Row>
     </StyledLocationBuilder>
   );

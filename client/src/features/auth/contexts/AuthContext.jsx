@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
 
     setUser(data.user);
 
-    console.log(data.user);
+  
     return data.user;
   }
 

@@ -50,7 +50,7 @@ function ExplorerExplorationCardLocations({
   exploration,
   userHistory,
 }) {
-  console.log(exploration);
+
 
   hasStarted = true;
   const completedLocationIds = new Set(

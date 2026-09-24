@@ -13,7 +13,7 @@ export async function getExploration(explorationId) {
 }
 
 export async function createExploration(formData) {
-  console.log(formData);
+
 
   return await apiFetch(`/explorations`, {
     method: "POST",
@@ -22,7 +22,7 @@ export async function createExploration(formData) {
 }
 
 export async function updateExploration(formData) {
-  console.log(formData);
+
 
   return await apiFetch(`/explorations/${formData._id}`, {
     method: "PATCH",

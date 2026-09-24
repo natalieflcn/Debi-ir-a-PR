@@ -122,7 +122,6 @@ explorationSchema.post(/^find/, function (docs, next) {
     docs.numStops = docs.locations.length;
   } else {
     docs.forEach((doc) => {
-      console.log(doc);
       doc.numStops = doc.locations.length;
     });
   }
@@ -138,7 +137,6 @@ explorationSchema.post("find", function (docs, next) {
     docs.numStops = docs.locations.length;
   } else {
     docs.forEach((doc) => {
-      console.log(doc);
       doc.numStops = doc.locations.length;
       doc.locations = undefined;
     });

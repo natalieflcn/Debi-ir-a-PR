@@ -35,7 +35,7 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signupExplorer = catchAsync(async (req, res, next) => {
-  console.log("signupExplorer HIT", req.body);
+  
 
   const newUser = await User.create({
     name: req.body.name,
@@ -45,13 +45,12 @@ exports.signupExplorer = catchAsync(async (req, res, next) => {
     role: "explorer",
   });
 
-  console.log("User created:", newUser._id);
+  
 
   createSendToken(newUser, 201, res);
 });
 
 exports.signupAmbassador = catchAsync(async (req, res, next) => {
-  console.log("ambassadorsignup HIT", req.body);
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -85,7 +84,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   // Checking if token exists
   let token;
 
-  console.log("protect running");
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")

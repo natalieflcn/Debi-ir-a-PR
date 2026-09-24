@@ -165,7 +165,6 @@ function CreateExploration() {
       return;
     }
 
-    console.log(formErrors);
     const formData = {
       name,
       // startingCity,
@@ -188,8 +187,6 @@ function CreateExploration() {
     } else {
       formData.createdBy = user._id;
     }
-
-    console.log(formData);
 
     setIsSubmitting(true);
     try {

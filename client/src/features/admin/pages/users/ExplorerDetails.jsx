@@ -32,7 +32,7 @@ function ExplorerDetails() {
         <ProfileInformation
           userEmail={user.email}
           password="hello"
-          dateJoined={user.dateJoined}
+          dateJoined={user.createdAt}
         />
         <ProfileBadgeCollection userHistory={userHistory2} />
       </StyledExplorerDetails>

@@ -151,7 +151,6 @@ export async function explorerLocationLoader({ params }) {
   const location = explorationData.locations.find(
     (loc) => loc.slug === locationId,
   );
-  console.log();
 
   return {
     exploration: { name: explorationData.name, slug: explorationData.slug },

@@ -27,7 +27,7 @@ const newExplorersTableColumns = [
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "dateJoined", heading: "Date Joined" },
+  { id: "createdAt", heading: "Date Joined" },
 ];
 
 const TableNameCell = styled.div`
@@ -60,7 +60,7 @@ const newExplorersTableTheme = {
 
 function DashboardNewExplorers({ usersData }) {
   const sortedUsers = usersData.sort(
-    (a, b) => new Date(b.dateJoined) - new Date(a.dateJoined),
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
 
   const fiveSortedUsers = sortedUsers.slice(0, 5);
