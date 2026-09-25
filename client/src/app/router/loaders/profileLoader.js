@@ -1,3 +1,7 @@
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import { getMe } from "../../../services/auth";
+import { getUser } from "../../../services/users";
+
 const fakeProfileData = {
   name: "Natalie Loader",
   title: "Ambassador",
@@ -108,6 +112,11 @@ const userHistory = {
   ],
 };
 
-export async function profileLoader() {
-  return { profileData: fakeProfileData, userHistory };
+export async function profileLoader({ params }) {
+  // const { data: me } = await getMe();
+  console.log("running profileloader");
+  const { userId } = params;
+  const { data } = await getUser(userId);
+
+  return { user: data.data, userHistory };
 }

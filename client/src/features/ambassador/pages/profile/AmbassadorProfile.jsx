@@ -3,6 +3,7 @@ import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileInformation from "../../../../shared/components/profile/ProfileInformation";
 import { useLoaderData } from "react-router-dom";
 import { formatDate } from "../../../../shared/utils/helpers";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledAmbassadorProfile = styled.div`
   display: flex;
@@ -11,19 +12,13 @@ const StyledAmbassadorProfile = styled.div`
 `;
 
 function AmbassadorProfile() {
-  const { profileData } = useLoaderData();
+  // const { profileData } = useLoaderData();
+  const { user } = useAuth();
 
   return (
     <StyledAmbassadorProfile>
-      <ProfileHeader
-        userName={profileData.name}
-        userTitle={profileData.title}
-      />
-      <ProfileInformation
-        userEmail={profileData.email}
-        userPassword={profileData.password}
-        dateJoined={formatDate(profileData.createdAt)}
-      />
+      <ProfileHeader user={user} />
+      <ProfileInformation user={user} />
     </StyledAmbassadorProfile>
   );
 }

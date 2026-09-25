@@ -101,7 +101,11 @@ const AdminRoutes = [
     element: <AmbassadorDetails />,
     loader: adminUserLoader,
   },
-  { path: "profile", element: <AdminProfile />, loader: profileLoader },
+  {
+    path: "profile",
+    element: <AdminProfile />,
+    // loader: profileLoader
+  },
 ];
 
 export default AdminRoutes;

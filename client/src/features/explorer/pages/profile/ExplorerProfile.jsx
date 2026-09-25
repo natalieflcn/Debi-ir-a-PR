@@ -5,6 +5,7 @@ import ProfileBadgeCollection from "../../../explorer/components/profile/Profile
 
 import { useLoaderData } from "react-router-dom";
 import { formatDate } from "../../../../shared/utils/helpers";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledExplorerProfile = styled.div`
   display: flex;
@@ -13,20 +14,21 @@ const StyledExplorerProfile = styled.div`
 `;
 
 function ExplorerProfile() {
-  const { profileData, userHistory } = useLoaderData();
-
+  // const { user, userHistory } = useLoaderData();
+  const { user } = useAuth();
   return (
     <StyledExplorerProfile>
       <ProfileHeader
-        userName={profileData.name}
-        userTitle={profileData.title}
+        // userName={profileData.name}
+        // userTitle={profileData.title}
+        user={user}
       />
       <ProfileInformation
-        userEmail={profileData.email}
-        userPassword={profileData.password}
-        dateJoined={formatDate(profileData.createdAt)}
+        userEmail={user.email}
+        userPassword={user.password}
+        dateJoined={formatDate(user.createdAt)}
       />
-      <ProfileBadgeCollection userHistory={userHistory} />
+      {/* <ProfileBadgeCollection userHistory={userHistory} /> */}
     </StyledExplorerProfile>
   );
 }

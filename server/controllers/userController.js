@@ -2,6 +2,7 @@ const User = require("../models/User");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");
+const helpers = require("../utils/helpers");
 
 const filterRequestBody = (body, ...allowedFields) => {
   const filteredRequestBody = {};
@@ -75,3 +76,21 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllUsers = factory.getAll(User);
+
+exports.updateUser = catchAsync(async (req, res, next) => {
+  const { role } = req.body;
+
+  if (!["explorer", "ambassador", "admin"].includes(role)) {
+    return next(new AppError("Invalid role provided.", 400));
+  }
+
+  const doc = await User.findOneAndUpdate(
+    { _id: req.params.id },
+    { role, title: helpers.capitalize(role) },
+    { new: true, runValidators: true },
+  );
+
+  if (!doc) return next(new AppError("No user found with that ID.", 404));
+
+  res.status(200).json({ status: "success", data: { data: doc } });
+});

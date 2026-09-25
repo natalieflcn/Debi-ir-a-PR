@@ -35,3 +35,7 @@ export async function login({ email, password }) {
 
   //   return res.json();
 }
+
+export async function getMe() {
+  return await apiFetch("/users/me");
+}

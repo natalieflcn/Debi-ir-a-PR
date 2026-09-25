@@ -17,13 +17,17 @@ export const UsersTableColumns = [
   {
     id: "name",
     heading: "Name",
-    render: (row) => (
-      <RouterLink to={`${row.role.toLowerCase()}s/${row.id}`}>
-        <TableNameCell role={row.role}>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      </RouterLink>
-    ),
+    render: (row) => {
+      const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
+
+      return (
+        <RouterLink to={`${prefix}/${row.id}`}>
+          <TableNameCell role={row.role}>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </TableNameCell>
+        </RouterLink>
+      );
+    },
   },
   {
     id: "role",
@@ -158,7 +162,7 @@ function ManageUsers() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const usersData = useLoaderData();
-  console.log(usersData);
+
   const tableTheme =
     (filterBy === "explorer" && explorersTableTheme) ||
     (filterBy === "ambassador" && ambassadorsTableTheme) ||

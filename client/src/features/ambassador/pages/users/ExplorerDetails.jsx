@@ -30,12 +30,8 @@ function ExplorerDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader userName={user.name} userTitle={user.title} />
-        <ProfileInformation
-          userEmail={user.email}
-          password="hello"
-          dateJoined={formatDate(user.createdAt)}
-        />
+        <ProfileHeader user={user} />
+        <ProfileInformation user={user} />
         <ProfileBadgeCollection userHistory={userHistory2} />
       </StyledExplorerDetails>
     </Row>

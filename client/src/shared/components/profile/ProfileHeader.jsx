@@ -12,6 +12,7 @@ import Button from "../ui/Button";
 import { useSubmit } from "react-router-dom";
 import CondensedTable from "../ui/CondensedTable";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import { profileLoader } from "../../../app/router/loaders/profileLoader";
 
 const StyledProfileHeader = styled.div`
   display: grid;
@@ -140,13 +141,16 @@ const InfoButtonTexts = {
     </StyledInfoButtonText>
   ),
 };
-const ProfileHeader = function () {
-  const { user, role } = useAuth();
+const ProfileHeader = function ({ user, title }) {
+  // const { user, role } = useAuth();
+  // const { user } = profileLoader();
+  console.log(user);
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(
-    user.avatar ?? "/src/assets/images/content/TEMP.png",
+    user?.avatar ?? "/src/assets/images/content/TEMP.png",
   );
+
   const fileInputRef = useRef(null);
   const submit = useSubmit();
 
@@ -201,7 +205,7 @@ const ProfileHeader = function () {
 
         <Row $direction="horizontal" $align="flex-start" $gap="var(--gap-sm)">
           <Heading as="h5" $color="var(--color-light-0)">
-            {user.title}
+            {title ?? user.title}
           </Heading>
           <InfoButton
             onMouseEnter={() => setIsHovered(true)}
@@ -219,7 +223,7 @@ const ProfileHeader = function () {
 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          {InfoButtonTexts[role]}
+          {InfoButtonTexts[user.role]}
         </Modal>
       )}
     </StyledProfileHeader>

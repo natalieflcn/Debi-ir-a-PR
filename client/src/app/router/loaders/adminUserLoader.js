@@ -1,4 +1,5 @@
 import userHistory from "../../../../data/fakeUserHistory";
+import { getUser } from "../../../services/users";
 import { formatDate } from "../../../shared/utils/helpers";
 
 const fakeUsers = [
@@ -63,11 +64,13 @@ const fakeUsers = [
 
 export async function adminUserLoader({ params }) {
   const { userId } = params;
-  const user = fakeUsers.find((user) => user.id === userId);
-  const userHistory2 = userHistory.find((history) => history.userId === userId);
+  console.log(userId);
+  const { data } = await getUser(userId);
 
+  // const userHistory2 = userHistory.find((history) => history.userId === userId);
+  console.log(data.data);
   return {
-    // user: data.data,
-    userHistory2,
+    user: data.data,
+    // userHistory2,
   };
 }

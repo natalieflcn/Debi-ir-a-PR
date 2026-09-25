@@ -49,12 +49,14 @@ router.get(
   userController.getAllUsers,
 );
 
-router.get(
-  "/:id",
-  // authController.protect,
-  // authController.restrictTo("admin", "ambassador"),
-  userController.getUser,
-);
+router
+  .route(
+    "/:id",
+    // authController.protect,
+    // authController.restrictTo("admin", "ambassador"),
+  )
+  .get(userController.getUser)
+  .patch(userController.updateUser);
 
 // router.get("/:userId/badgeCollection");
 

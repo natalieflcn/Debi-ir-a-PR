@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 
 import { useLoaderData } from "react-router-dom";
 import { formatDate } from "../../../../shared/utils/helpers";
+import { toggleAdmin } from "../../../../services/users";
 
 const StyledExplorerDetails = styled.div`
   display: flex;
@@ -34,12 +35,28 @@ const StyledIcon = styled.div`
 function AmbassadorDetails() {
   const userId = useParams().userId;
 
-  const { user } = useLoaderData(userId);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { user: loaderUser } = useLoaderData();
+  const [user, setUser] = useState(loaderUser);
+  // const [title, setTitle] = useState(user.title);
+  const [isAdmin, setIsAdmin] = useState(user.role === "admin");
 
   // const ambassador = usersData.find(
   //   (user) => String(user.id) === String(ambassadorId),
   // );
+  async function handleSetIsAdmin() {
+    const newRole = isAdmin ? "ambassador" : "admin";
+
+    try {
+      const { data } = await toggleAdmin(userId, newRole);
+      setUser(data.data);
+      setIsAdmin(data.data.role === "admin");
+      // trust the server's response, not your own guess
+      console.log(data.data);
+    } catch (err) {
+      console.error("Failed to update role:", err);
+      // optionally surface an error to the UI here
+    }
+  }
 
   return (
     <Row $gap="var(--gap-xl)">
@@ -50,17 +67,19 @@ function AmbassadorDetails() {
       </RouterLink>
       <StyledExplorerDetails>
         <ProfileHeader
-          userName={user.name}
-          userTitle={isAdmin ? "Admin" : "Ambassador"}
+          user={user}
+          title={user.title}
+          // userName={user.name}
+          // userTitle={isAdmin ? "Admin" : "Ambassador"}
         />
 
         <StyledCard $cardColor="var(--color-light-100)">
           <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
-            <StyledIcon onClick={() => setIsAdmin((prev) => !prev)}>
+            <StyledIcon onClick={() => handleSetIsAdmin()}>
               {isAdmin ? (
-                <MdCheckBoxOutlineBlank size={25} fill="var(--color-dark-100" />
-              ) : (
                 <IoIosCheckbox size={25} fill="var(--color-dark-100" />
+              ) : (
+                <MdCheckBoxOutlineBlank size={25} fill="var(--color-dark-100" />
               )}
             </StyledIcon>
             <Heading as="h5" $color="var(--color-dark-100)">
@@ -69,11 +88,7 @@ function AmbassadorDetails() {
           </Row>
         </StyledCard>
 
-        <ProfileInformation
-          userEmail={user.email}
-          password="hello"
-          dateJoined={formatDate(user.createdAt)}
-        />
+        <ProfileInformation user={user} />
       </StyledExplorerDetails>
     </Row>
   );

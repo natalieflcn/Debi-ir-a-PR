@@ -120,8 +120,8 @@ const StyledForm = styled(Form)`
   display: contents;
 `;
 
-const ProfileInformation = function () {
-  const { user } = useAuth();
+const ProfileInformation = function ({ user }) {
+  // const { user } = useAuth();
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 

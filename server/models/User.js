@@ -49,8 +49,7 @@ const userSchema = new mongoose.Schema(
       default: function () {
         if (!(this.role === "ambassador" || this.role === "admin"))
           return "Baby Turista";
-
-        return helpers.capitalize(this.role);
+        else return helpers.capitalize(this.role);
       },
     },
     avatar: { type: String, trim: true },
@@ -107,11 +106,27 @@ userSchema.pre(/^find/, async function () {
   this.find({ active: { $ne: false } });
 });
 
-userSchema.pre(/^find/, async function () {
-  if (this.role === "explorer") {
-  } else {
-  }
-});
+// userSchema.post(/^find/, function () {
+//   if (!docs) return next();
+
+//   const docsArray = Array.isArray(docs) ? docs : [docs];
+
+//   docsArray.forEach((doc) => {
+//     if (doc.role === "ambassador" || doc.role === "admin") {
+//       doc.title = helpers.capitalize(doc.role);
+//     }
+//   });
+
+//   next();
+// });
+
+// userSchema.post("findOneAndUpdate", function (doc, next) {
+//   if (!doc) return next();
+//   if (doc.role === "ambassador" || doc.role === "admin") {
+//     doc.title = helpers.capitalize(doc.role);
+//   }
+//   next();
+// });
 
 // Instance Methods
 userSchema.methods.correctPassword = async function (

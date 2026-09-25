@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { login } from "../../../services/auth";
+import { getMe, login } from "../../../services/auth";
 import { apiFetch } from "../../../shared/services/apiFetch";
 
 const AuthContext = createContext(null);
@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    apiFetch("/users/me")
+    getMe()
       .then((data) => setUser(data.data.user))
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
@@ -26,7 +26,6 @@ export function AuthProvider({ children }) {
 
     setUser(data.user);
 
-  
     return data.user;
   }
 
