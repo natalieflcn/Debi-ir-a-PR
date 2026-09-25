@@ -16,7 +16,7 @@ const AmbassadorExplorersTableColumns = [
     id: "name",
     heading: "Name",
     render: (row) => (
-      <RouterLink to={`/${row.id}`}>
+      <RouterLink to={`${row.id}`}>
         <TableNameCell>
           <Bold $color="var(--color-dark-200)">{row.name}</Bold>
         </TableNameCell>

@@ -20,7 +20,7 @@ const StyledExplorerDetails = styled.div`
 
 function ExplorerDetails() {
   const userId = useParams().userId;
-  const { user, userHistory2 } = useLoaderData(userId);
+  const { user } = useLoaderData(userId);
 
   return (
     <Row $gap="var(--gap-xl)">
@@ -32,7 +32,7 @@ function ExplorerDetails() {
       <StyledExplorerDetails>
         <ProfileHeader user={user} />
         <ProfileInformation user={user} />
-        <ProfileBadgeCollection userHistory={userHistory2} />
+        <ProfileBadgeCollection userHistory={{ badgeCollection: [] }} />
       </StyledExplorerDetails>
     </Row>
   );

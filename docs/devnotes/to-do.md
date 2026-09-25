@@ -520,6 +520,7 @@
     - [ ] BUG: Links broken when viewing users from /ambassador/users
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
     - [ ] Rename CreateLocation to EditLocation and remove create conditional
+    - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page

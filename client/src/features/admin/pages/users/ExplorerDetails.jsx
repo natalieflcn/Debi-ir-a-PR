@@ -33,7 +33,7 @@ function ExplorerDetails() {
       <StyledExplorerDetails>
         <ProfileHeader user={user} />
         <ProfileInformation user={user} />
-        {/* <ProfileBadgeCollection userHistory={null} /> */}
+        <ProfileBadgeCollection userHistory={{ badgeCollection: [] }} />
       </StyledExplorerDetails>
     </Row>
   );

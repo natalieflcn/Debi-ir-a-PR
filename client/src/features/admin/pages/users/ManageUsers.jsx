@@ -58,10 +58,12 @@ export const UsersTableColumns = [
     id: "action",
     heading: "Action",
     render: (row) => {
+      const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
+
       return (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${row.role?.toLowerCase()}s/${row.id}`}>
+            <RouterLink to={`${prefix}/${row.id}`}>
               <Button $size="extraSmall" $variation="primary">
                 View
               </Button>

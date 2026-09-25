@@ -49,6 +49,7 @@ const TitleRow = styled(Row)`
 `;
 
 const ProfileBadgeCollection = function ({ userHistory }) {
+  console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);
 
