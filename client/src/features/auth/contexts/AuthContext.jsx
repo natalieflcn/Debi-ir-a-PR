@@ -38,6 +38,10 @@ export function AuthProvider({ children }) {
     return userData.data.user;
   }
 
+  function updateUser(userData) {
+    setUser(userData);
+  }
+
   const value = {
     user,
     loading,
@@ -46,6 +50,7 @@ export function AuthProvider({ children }) {
     loginUser,
     logoutUser,
     registerUser,
+    updateUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

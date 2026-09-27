@@ -18,3 +18,12 @@ export async function toggleAdmin(userId, role) {
     body: JSON.stringify({ role: role }),
   });
 }
+
+export async function updateMe(formData) {
+  console.log("running updateme api service");
+  console.log(formData);
+  return await apiFetch(`/users/updateMe`, {
+    method: "PATCH",
+    body: JSON.stringify(formData),
+  });
+}

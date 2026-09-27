@@ -12,6 +12,7 @@ import Input from "../form/Input";
 import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { formatDate } from "../../utils/helpers";
+import { updateMe } from "../../../services/users";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -121,7 +122,7 @@ const StyledForm = styled(Form)`
 `;
 
 const ProfileInformation = function ({ user }) {
-  // const { user } = useAuth();
+  const { updateUser } = useAuth();
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 
@@ -132,7 +133,7 @@ const ProfileInformation = function ({ user }) {
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
 
-  const handleEmailSubmit = function (e) {
+  const handleEmailSubmit = async function (e) {
     e.preventDefault();
 
     let errors = "";
@@ -146,6 +147,10 @@ const ProfileInformation = function ({ user }) {
       return;
     }
 
+    console.log(email);
+    const { data } = await updateMe({ email: email });
+
+    updateUser(data.user);
     setIsEditingEmail(false);
   };
 

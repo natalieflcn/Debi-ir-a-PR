@@ -41,6 +41,8 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       ),
     );
 
+  console.log(req.user, "running updateMe");
+
   // Filter out unwanted fields from request body
   const filteredBody = filterRequestBody(req.body, "name", "email");
 

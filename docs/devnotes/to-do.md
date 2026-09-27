@@ -484,9 +484,12 @@
         - [x] GET
           - [x] Admin POV
           - [x] Ambassador POV
-        - [ ] GET /users/:userId TODO 2
+        - [x] GET /users/:userId TODO 2
         - [ ] PATCH /users/:userId TODO 3
+          - [ ] /updateMe
+          - [ ] /updateUser
         - [ ] DELETE /users/:userId TODO 4
+
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
         - [ ] GET /exploration-progress
