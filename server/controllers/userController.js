@@ -52,7 +52,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     runValidators: true,
   });
 
-  res.status(200).json({ status: "success", data: { user: updatedUser } });
+  res.status(200).json({ status: "success", data: { data: updatedUser } });
 });
 
 // exports.deleteMe = factory.deleteOne(User);
@@ -80,19 +80,23 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 exports.getAllUsers = factory.getAll(User);
 
 exports.updateUser = catchAsync(async (req, res, next) => {
+  console.log("running updateuser controller");
   const { role } = req.body;
 
-  if (!["explorer", "ambassador", "admin"].includes(role)) {
+  if (role && !["explorer", "ambassador", "admin"].includes(role)) {
     return next(new AppError("Invalid role provided.", 400));
   }
 
-  const doc = await User.findOneAndUpdate(
-    { _id: req.params.id },
-    { role, title: helpers.capitalize(role) },
-    { new: true, runValidators: true },
-  );
+  if (role) req.body[title] = helpers.capitalize(role);
+
+  const doc = await User.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
   if (!doc) return next(new AppError("No user found with that ID.", 404));
 
   res.status(200).json({ status: "success", data: { data: doc } });
 });
+
+// exports.updateUser = factory.updateOne(User);

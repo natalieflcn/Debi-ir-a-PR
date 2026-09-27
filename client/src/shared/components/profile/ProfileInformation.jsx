@@ -12,7 +12,7 @@ import Input from "../form/Input";
 import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { formatDate } from "../../utils/helpers";
-import { updateMe } from "../../../services/users";
+import { updateMe, updateUserInformation } from "../../../services/users";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -122,7 +122,8 @@ const StyledForm = styled(Form)`
 `;
 
 const ProfileInformation = function ({ user }) {
-  const { updateUser } = useAuth();
+  const { user: myUser, updateUser } = useAuth();
+
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 
@@ -148,9 +149,22 @@ const ProfileInformation = function ({ user }) {
     }
 
     console.log(email);
-    const { data } = await updateMe({ email: email });
 
-    updateUser(data.user);
+    // if ((user._id = myUser._id)) {
+    //   const { data } = await updateMe({ email: email });
+    // } else {
+    //   const { data } = await updateUser(user._id, { email: email });
+    // }
+
+    const { data } =
+      user._id === myUser._id
+        ? await updateMe({ email: email })
+        : await updateUserInformation(user._id, { email: email });
+
+    console.log(data);
+
+    if (user._id === myUser._id) updateUser(data.data);
+
     setIsEditingEmail(false);
   };
 

@@ -27,3 +27,11 @@ export async function updateMe(formData) {
     body: JSON.stringify(formData),
   });
 }
+
+export async function updateUserInformation(userId, formData) {
+  console.log(userId, formData);
+  return await apiFetch(`/users/${userId}`, {
+    method: "PATCH",
+    body: JSON.stringify(formData),
+  });
+}

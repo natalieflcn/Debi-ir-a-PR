@@ -486,7 +486,7 @@
           - [x] Ambassador POV
         - [x] GET /users/:userId TODO 2
         - [ ] PATCH /users/:userId TODO 3
-          - [ ] /updateMe
+          - [x] /updateMe
           - [ ] /updateUser
         - [ ] DELETE /users/:userId TODO 4
 
