@@ -525,7 +525,9 @@
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
     - [ ] Rename CreateLocation to EditLocation and remove create conditional
     - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
+    - [ ] Figure out how to populate User data depending on role
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
+    - [ ] Add functionality to Input search in Explorations
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page

@@ -9,9 +9,11 @@ import { useLoaderData } from "react-router-dom";
 function Exploration() {
   const { exploration, userHistory } = useLoaderData();
 
-  const hasStarted = userHistory.explorationProgress.some(
-    (startedExploration) => startedExploration.explorationId === exploration.id,
-  );
+  // const hasStarted = userHistory.explorationProgress.some(
+  //   (startedExploration) => startedExploration.explorationId === exploration.id,
+  // );
+  const hasStarted =
+    userHistory.status === "in_progress" || userHistory.status === "completed";
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails
@@ -24,7 +26,7 @@ function Exploration() {
   const locationDetails = (
     <ExplorerExplorationCardLocations
       hasStarted={hasStarted}
-      exploration={exploration}
+      // exploration={exploration}
       locations={exploration.locations}
       userHistory={userHistory}
     />

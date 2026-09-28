@@ -5,6 +5,7 @@ import {
   getExplorationsSummary,
 } from "../../../services/explorations";
 import { getExplorationProgress } from "../../../services/explorationProgress";
+import { getMe } from "../../../services/auth";
 
 export async function explorerExplorationLoader({ params }) {
   const userHistory = {
@@ -153,11 +154,13 @@ export async function explorerExplorationLoader({ params }) {
   console.log(explorationId);
 
   const { data } = await getExploration(explorationId);
+  const { data: userData } = await getMe();
 
+  console.log(data);
   const { data: explorationProgress } =
     await getExplorationProgress(explorationId);
 
-  console.log(explorationProgress);
+  console.log(explorationProgress, userData);
 
-  return { exploration: data.data, userHistory };
+  return { exploration: data.data, userHistory: explorationProgress.data };
 }

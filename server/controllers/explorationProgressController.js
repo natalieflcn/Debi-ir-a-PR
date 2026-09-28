@@ -20,13 +20,26 @@ exports.getUserExplorationProgress = factory.getAll(
 
 // Exploration Progress Routes (Return Exploration Progress object for specific exploration -- as the logged in user)
 
-exports.getMyExplorationProgress = factory.getOne(
-  ExplorationProgress,
-  (req) => ({
+// exports.getMyExplorationProgress = factory.getOne(
+//   ExplorationProgress,
+//   (req) => ({
+//     user: req.user.id,
+//     exploration: req.params.explorationId,
+//   }),
+// );
+
+exports.getMyExplorationProgress = catchAsync(async (req, res, next) => {
+  let query = ExplorationProgress.findOne({
     user: req.user.id,
     exploration: req.params.explorationId,
-  }),
-);
+  });
+
+  const doc = await query;
+
+  // if (!doc) return next(new AppError("No document found with that ID.", 404));
+
+  res.status(200).json({ status: "success", data: { data: doc } });
+});
 
 exports.createExplorationProgress = factory.createOne(
   ExplorationProgress,

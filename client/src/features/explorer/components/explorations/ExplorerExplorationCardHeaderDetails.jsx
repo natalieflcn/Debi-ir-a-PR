@@ -17,7 +17,9 @@ function ExplorerExplorationCardHeaderDetails({
   exploration,
   userHistory,
 }) {
-  const stopsRemaining = exploration.numStops;
+  console.log(userHistory, hasStarted);
+  const stopsCompleted = userHistory.visitLog.length;
+  const stopsRemaining = exploration.numStops - stopsCompleted;
 
   // const userProgress = Math.round(
   //   (userHistory.explorationProgress.find(
@@ -27,7 +29,10 @@ function ExplorerExplorationCardHeaderDetails({
   //     exploration.numStops) *
   //     100,
   // );
-  const userProgress = 0.5;
+  const userProgress = Math.floor(
+    (stopsCompleted / exploration.locations.length) * 100,
+  );
+
   return (
     <>
       {hasStarted && (
@@ -40,7 +45,7 @@ function ExplorerExplorationCardHeaderDetails({
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
-                {exploration.numStops} stops completed
+                {stopsCompleted} stops completed
               </Bold>
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">

@@ -1,125 +1,247 @@
 [
   {
-    "user": "6aac8cab720191e06e0718bb",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a827415",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a82741e",
-      "6aac8bb0dfc1805b4a82741d",
-      "6aac8bb0dfc1805b4a82741c",
-      "6aac8bb0dfc1805b4a82741b",
-      "6aac8bb0dfc1805b4a82741a",
-      "6aac8bb0dfc1805b4a827419",
-      "6aac8bb0dfc1805b4a827418",
-      "6aac8bb0dfc1805b4a827417"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a82741e",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741d",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741c",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741b",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741a",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827419",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827418",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827417",
+        "visitedAt": "2026-06-30T00:00:00.000Z"
+      }
     ],
     "status": "completed",
     "lastVisitedAt": "2026-06-30T00:00:00.000Z",
     "completedAt": "2026-06-30T00:00:00.000Z"
   },
   {
-    "user": "6aac8cab720191e06e0718bb",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a82741f",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a827422",
-      "6aac8bb0dfc1805b4a827421",
-      "6aac8bb0dfc1805b4a827423"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a827422",
+        "visitedAt": "2026-07-16T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827421",
+        "visitedAt": "2026-07-16T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827423",
+        "visitedAt": "2026-07-16T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-07-16T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bb",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a8273fd",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a8273ff",
-      "6aac8bb0dfc1805b4a827400"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a8273ff",
+        "visitedAt": "2026-08-06T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827400",
+        "visitedAt": "2026-08-06T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-08-06T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bc",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a8273fd",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a827400",
-      "6aac8bb0dfc1805b4a827401",
-      "6aac8bb0dfc1805b4a827402",
-      "6aac8bb0dfc1805b4a8273ff"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a827400",
+        "visitedAt": "2026-07-23T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827401",
+        "visitedAt": "2026-07-23T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827402",
+        "visitedAt": "2026-07-23T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a8273ff",
+        "visitedAt": "2026-07-23T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-07-23T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bc",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a82741f",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a827421",
-      "6aac8bb0dfc1805b4a827422",
-      "6aac8bb0dfc1805b4a827425"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a827421",
+        "visitedAt": "2026-05-08T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827422",
+        "visitedAt": "2026-05-08T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827425",
+        "visitedAt": "2026-05-08T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-05-08T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bc",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a827415",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a827417",
-      "6aac8bb0dfc1805b4a827418",
-      "6aac8bb0dfc1805b4a82741b",
-      "6aac8bb0dfc1805b4a82741d"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a827417",
+        "visitedAt": "2026-08-29T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827418",
+        "visitedAt": "2026-08-29T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741b",
+        "visitedAt": "2026-08-29T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82741d",
+        "visitedAt": "2026-08-29T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-08-29T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bc",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a827406",
-    "locationsVisited": ["6aac8bb0dfc1805b4a82740d"],
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a82740d",
+        "visitedAt": "2026-06-19T00:00:00.000Z"
+      }
+    ],
     "status": "in_progress",
     "lastVisitedAt": "2026-06-19T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718bc",
+    "user": "6ab04ef3ce573729a94b3095",
     "exploration": "6aac8bb0dfc1805b4a82740e",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a827412",
-      "6aac8bb0dfc1805b4a827410"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a827412",
+        "visitedAt": "2026-08-16T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827410",
+        "visitedAt": "2026-08-16T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-08-16T00:00:00.000Z",
     "completedAt": null
   },
   {
-    "user": "6aac8cab720191e06e0718be",
+    "user": "6ab04ef3ce573729a94b3098",
     "exploration": "6aac8bb0dfc1805b4a8273fd",
-    "locationsVisited": [
-      "6aac8bb0dfc1805b4a8273ff",
-      "6aac8bb0dfc1805b4a827400",
-      "6aac8bb0dfc1805b4a827401",
-      "6aac8bb0dfc1805b4a827402",
-      "6aac8bb0dfc1805b4a827403",
-      "6aac8bb0dfc1805b4a827404",
-      "6aac8bb0dfc1805b4a827405"
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a8273ff",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827400",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827401",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827402",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827403",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827404",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a827405",
+        "visitedAt": "2026-09-10T00:00:00.000Z"
+      }
     ],
     "status": "completed",
-    "lastVisitedAt": "2026-09-11T00:00:00.000Z",
+    "lastVisitedAt": "2026-09-10T00:00:00.000Z",
     "completedAt": "2026-09-10T00:00:00.000Z"
   },
   {
-    "user": "6aac8cab720191e06e0718be",
+    "user": "6ab04ef3ce573729a94b3098",
     "exploration": "6aac8bb0dfc1805b4a827406",
     "locationsVisited": [
       "6aac8bb0dfc1805b4a82740b",
       "6aac8bb0dfc1805b4a82740a",
       "6aac8bb0dfc1805b4a827409",
       "6aac8bb0dfc1805b4a827408"
+    ],
+    "visitLog": [
+      {
+        "location": "6aac8bb0dfc1805b4a82740b",
+        "visitedAt": "2026-09-15T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82740a",
+        "visitedAt": "2026-09-15T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82740a",
+        "visitedAt": "2026-09-15T00:00:00.000Z"
+      },
+      {
+        "location": "6aac8bb0dfc1805b4a82740a",
+        "visitedAt": "2026-09-15T00:00:00.000Z"
+      }
     ],
     "status": "in_progress",
     "lastVisitedAt": "2026-09-15T00:00:00.000Z",

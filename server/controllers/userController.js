@@ -14,22 +14,31 @@ const filterRequestBody = (body, ...allowedFields) => {
   return filteredRequestBody;
 };
 
-// exports.getUser = catchAsync(async (req, res, next) => {
-//   const user = await User.findById(req.params.id);
+exports.getUser = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
 
-//   if (!user) return next(new AppError("No user found with that ID.", 404));
+  if (!user) return next(new AppError("No user found with that ID.", 404));
 
-//   await user.populateUserData();
+  // console.log(user);
+  // await user.populateUserData();
 
-//   res.status(200).json({ status: "success", data: { user } });
-// });
+  // const userData = user.toObject();
+
+  // if (user.role === "explorer") {
+  //   userData.badgeCollection = user.explorationProgress
+  //     .filter((progress) => progress.status === "completed")
+  //     .map((progress) => progress.exploration.badge);
+  // }
+
+  res.status(200).json({ status: "success", data: { user } });
+});
 
 exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
 };
 
-exports.getUser = factory.getOne(User);
+// exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // Create error is user tries to update password

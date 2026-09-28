@@ -36,29 +36,29 @@ const StyledHeadingName = styled(Heading)`
   }
 `;
 
-function getUserCompletedLocations(locations, userHistory) {
-  const completedLocations = locations.filter((location) =>
-    userHistory.visitLog.some((visit) => visit.locationId === location.id),
-  );
+// function getUserCompletedLocations(locations, userHistory) {
+//   const completedLocations = locations.filter((location) =>
+//     userHistory.visitLog.some((visit) => visit.locationId === location.id),
+//   );
 
-  return completedLocations;
-}
+//   return completedLocations;
+// }
 
 function ExplorerExplorationCardLocations({
   locations,
   hasStarted,
-  exploration,
+  // exploration,
   userHistory,
 }) {
-
-
-  hasStarted = true;
-  const completedLocationIds = new Set(
-    userHistory.visitLog.map((visit) => visit.locationId),
-  );
+  // const completedLocationIds = new Set(
+  //   userHistory.visitLog.map((visit) => visit.locationId),
+  // );
 
   return locations.map((location, i) => {
-    const isCompleted = completedLocationIds.has(location.id);
+    const isCompleted = userHistory.visitLog.some(
+      (visit) => visit.location.toString() === location._id.toString(),
+    );
+    console.log(isCompleted, userHistory.visitLog);
 
     return (
       <StyledRow
@@ -82,6 +82,7 @@ function ExplorerExplorationCardLocations({
           </LocationHeading>
           <StyledHeadingName as="h5">{location.name}</StyledHeadingName>
         </IconHeadingRow>
+
         {hasStarted && (
           <RouterLink to={`locations/${location.slug}`}>
             <Button $variation="primary" $size="extraSmall">

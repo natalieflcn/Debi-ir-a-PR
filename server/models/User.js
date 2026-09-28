@@ -66,11 +66,11 @@ const userSchema = new mongoose.Schema(
 );
 
 // Virtuals
-userSchema.virtual("createdExplorations", {
-  ref: "Exploration",
-  localField: "_id",
-  foreignField: "createdBy",
-});
+// userSchema.virtual("createdExplorations", {
+//   ref: "Exploration",
+//   localField: "_id",
+//   foreignField: "createdBy",
+// });
 
 userSchema.virtual("explorationProgress", {
   ref: "ExplorationProgress",
@@ -78,11 +78,13 @@ userSchema.virtual("explorationProgress", {
   foreignField: "user",
 });
 
-userSchema.virtual("badgeCollection", {
-  ref: "BadgeCollection",
-  localField: "_id",
-  foreignField: "user",
-});
+// userSchema.virtual("badgeCollection").get(function () {
+//   if (!this.explorationProgress) return [];
+
+//   return this.explorationProgress
+//     .filter((progress) => progress.status === "completed")
+//     .map((progress) => progress.exploration.badge);
+// });
 
 userSchema.index({ name: 1 });
 userSchema.index({ createdAt: -1 });
@@ -164,14 +166,19 @@ userSchema.methods.createPasswordResetToken = function () {
 
 userSchema.methods.populateUserData = async function () {
   if (this.role === "explorer") {
-    await this.populate("badgeCollection").populate("explorationProgress");
+    await this.populate({
+      path: "explorationProgress",
+      populate: {
+        path: "exploration",
+        select: "badge",
+      },
+    });
   } else {
     await this.populate({
       path: "createdExplorations",
       select: "_id name -createdBy",
     });
   }
-
   return this;
 };
 

@@ -30,6 +30,7 @@ exports.getOne = (Model, filter = {}, popOptions) =>
     const queryFilter =
       typeof filter === "function" ? filter(req) : { _id: req.params.id };
 
+    console.log(queryFilter);
     let query = Model.findOne(queryFilter);
 
     if (popOptions) query = query.populate(popOptions);

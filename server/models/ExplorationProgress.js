@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const visitSchema = require("./Visit");
 
 const explorationProgressSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: "User" },
@@ -7,8 +8,8 @@ const explorationProgressSchema = new mongoose.Schema({
     ref: "Exploration",
     required: true,
   },
-  locationsVisited: {
-    type: [mongoose.Schema.ObjectId],
+  visitLog: {
+    type: [visitSchema],
     default: [],
   },
   status: {
