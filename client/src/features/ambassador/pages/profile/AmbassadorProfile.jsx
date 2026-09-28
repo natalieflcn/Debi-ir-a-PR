@@ -15,6 +15,7 @@ function AmbassadorProfile() {
   // const { profileData } = useLoaderData();
   const { user } = useAuth();
 
+  console.log(user);
   return (
     <StyledAmbassadorProfile>
       <ProfileHeader user={user} />

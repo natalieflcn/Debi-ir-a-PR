@@ -39,3 +39,13 @@ export async function login({ email, password }) {
 export async function getMe() {
   return await apiFetch("/users/me");
 }
+
+export async function updateMyPassword({ password, passwordConfirm }) {
+  return await apiFetch("/users/updateMyPassword", {
+    method: "PATCH",
+    body: JSON.stringify({
+      password: password,
+      passwordConfirm: passwordConfirm,
+    }),
+  });
+}

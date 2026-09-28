@@ -475,7 +475,7 @@
     - [~] Start with authRoutes (/login, /signup)
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword
+      - [ ] /updateMyPassword TODO 1
 
     - [~] Connect remaining routes
       - [~] Explorations
@@ -484,24 +484,24 @@
         - [x] GET
           - [x] Admin POV
           - [x] Ambassador POV
-        - [x] GET /users/:userId TODO 2
-        - [ ] PATCH /users/:userId TODO 3
+        - [x] GET /users/:userId
+        - [x] PATCH /users/:userId
           - [x] /updateMe
-          - [ ] /updateUser
-        - [ ] DELETE /users/:userId TODO 4
+          - [x] /updateUser
+        - [ ] DELETE /users/:userId
 
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
-        - [ ] GET /exploration-progress
+        - [ ] GET /exploration-progress TODO 1
         - [ ] GET /users/:explorationId/user-exploration-progress
-        - [ ] POST /explorations/:explorationId/exploration-progress
-        - [ ] PATCH /explorations/:explorationId/exploration-progress
+        - [ ] POST /explorations/:explorationId/exploration-progress TODO 2
+        - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 3
         - [ ] DELETE /explorations/:explorationId/exploration-progress
 
 - [ ] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end
-    - [ ] "/" should always return to dashboard for logged in users
-    - [ ] When logging in with incorrect password, error message should display on the front-end. TODO 8
+    - [ ] "/" should always return to dashboard for logged in users TODO
+    - [ ] When logging in with incorrect password, error message should display on the front-end. TODO
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
@@ -510,17 +510,17 @@
       - [ ] Delete users
     - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
-    - [ ] Make "Date Joined" the default filter for Users
+    - [ ] Make "Date Joined" the default filter for Users TODO
 
   - [ ] Other Tasks (For the future)
-    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
+    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical) TODO
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
-    - [ ] Hide password in input fields when not active on /signup and /login page
+    - [ ] Hide password in input fields when not active on /signup and /login page TODO
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
-    - [ ] BUG: Links broken when viewing users from /ambassador/users
+    - [x] BUG: Links broken when viewing users from /ambassador/users
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
     - [ ] Rename CreateLocation to EditLocation and remove create conditional
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer

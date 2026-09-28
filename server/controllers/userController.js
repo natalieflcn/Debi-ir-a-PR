@@ -87,7 +87,7 @@ exports.updateUser = catchAsync(async (req, res, next) => {
     return next(new AppError("Invalid role provided.", 400));
   }
 
-  if (role) req.body[title] = helpers.capitalize(role);
+  if (role) req.body.title = helpers.capitalize(role);
 
   const doc = await User.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,

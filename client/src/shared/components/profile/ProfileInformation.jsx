@@ -13,6 +13,7 @@ import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { formatDate } from "../../utils/helpers";
 import { updateMe, updateUserInformation } from "../../../services/users";
+import { updateMyPassword } from "../../../services/auth";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -174,7 +175,7 @@ const ProfileInformation = function ({ user }) {
     setEmailErrors("");
   };
 
-  const handlePasswordSubmit = function (e) {
+  const handlePasswordSubmit = async function (e) {
     e.preventDefault();
 
     let errors = "";
@@ -190,6 +191,18 @@ const ProfileInformation = function ({ user }) {
       setPasswordErrors(errors);
       return;
     }
+
+    const { data } =
+      user._id === myUser._id
+        ? await updateMyPassword({
+            password: password,
+            passwordConfirm: confirmPassword,
+          })
+        : await updateUserInformation(user._id, { email: email }); // TODO implement update user password
+
+    console.log(data);
+
+    if (user._id === myUser._id) updateUser(data.data || data.user);
 
     setIsEditingPassword(false);
   };
