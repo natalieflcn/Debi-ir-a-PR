@@ -166,7 +166,7 @@ const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();
-  const [sortBy, setSortBy] = useState("featured");
+  const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [showFeatured, setShowFeatured] = useState(false);
   const [showMyExplorations, setShowMyExplorations] = useState(false);
@@ -193,8 +193,17 @@ function ManageExplorations() {
     )
     // Sort Explorations
     .sort((a, b) => {
-      if (sortBy === "numStops") return a.numStops - b.numStops;
-      return a.name.localeCompare(b.name);
+      switch (sortBy) {
+        case "numStops":
+          return a.numStops - b.numStops;
+
+        case "name":
+          return a.name.localeCompare(b.name);
+
+        case "createdAt":
+        default:
+          return new Date(b.createdAt) - new Date(a.createdAt);
+      }
     });
 
   const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);

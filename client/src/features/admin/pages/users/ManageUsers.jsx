@@ -146,8 +146,8 @@ const ambassadorsTableTheme = {
 };
 
 const sortCategories = [
-  { id: "name", name: "Name" },
   { id: "createdAt", name: "Date Joined" },
+  { id: "name", name: "Name" },
 ];
 
 const filterCategories = [
@@ -160,7 +160,7 @@ const filterCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageUsers() {
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const usersData = useLoaderData();
@@ -198,7 +198,7 @@ function ManageUsers() {
         <DropdownRow $direction="horizontal" $gap="var(--gap-lg)">
           <SortDropdown
             categories={sortCategories}
-            initState="Name"
+            initState="Date Joined"
             onSort={setSortBy}
           />
           <FilterDropdown

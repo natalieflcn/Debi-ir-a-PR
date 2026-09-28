@@ -480,7 +480,7 @@
     - [~] Connect remaining routes
       - [~] Explorations
         - [ ] DELETE /explorations/:explorationId
-      - [ ] Users
+      - [~] Users
         - [x] GET
           - [x] Admin POV
           - [x] Ambassador POV
@@ -488,6 +488,7 @@
         - [x] PATCH /users/:userId
           - [x] /updateMe
           - [x] /updateUser
+          - [x] /updateUserPassword
         - [ ] DELETE /users/:userId
 
       - [ ] ExplorationProgress
@@ -501,7 +502,7 @@
 - [ ] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end
     - [ ] "/" should always return to dashboard for logged in users TODO
-    - [ ] When logging in with incorrect password, error message should display on the front-end. TODO
+    - [x] When logging in with incorrect password, error message should display on the front-end.
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
@@ -513,12 +514,12 @@
     - [ ] Make "Date Joined" the default filter for Users TODO
 
   - [ ] Other Tasks (For the future)
-    - [ ] Fix default filters for Exploration Filters (date sorted is returning alphabetical) TODO
+    - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
-    - [ ] Hide password in input fields when not active on /signup and /login page TODO
+    - [x] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
     - [x] BUG: Links broken when viewing users from /ambassador/users
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout

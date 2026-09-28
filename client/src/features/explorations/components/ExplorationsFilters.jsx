@@ -57,7 +57,7 @@ const explorationFilters = [
 const explorationsSort = [
   { id: "name", name: "Name" },
   { id: "numStops", name: "Number of Stops" },
-  { id: "dateCreated", name: "Date Created" },
+  { id: "createdAt", name: "Date Created" },
 ];
 
 function ExplorationsFilters({

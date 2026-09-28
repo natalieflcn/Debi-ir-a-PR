@@ -49,7 +49,7 @@ const ExplorerExplorationCardButton = function (explorationSlug) {
 const ITEMS_PER_PAGE = 9;
 
 function Explorations() {
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
@@ -64,8 +64,17 @@ function Explorations() {
   });
 
   const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-    if (sortBy === "numStops") return a.numStops - b.numStops;
-    else return a.name.localeCompare(b.name);
+    switch (sortBy) {
+      case "numStops":
+        return a.numStops - b.numStops;
+
+      case "name":
+        return a.name.localeCompare(b.name);
+
+      case "createdAt":
+      default:
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    }
   });
 
   const featuredExplorations = [...sortedExplorations].filter(

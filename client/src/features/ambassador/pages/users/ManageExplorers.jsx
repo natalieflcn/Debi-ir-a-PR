@@ -108,14 +108,14 @@ const explorersTableTheme = {
 };
 
 const sortCategories = [
-  { id: "name", name: "Name" },
   { id: "createdAt", name: "Date Joined" },
+  { id: "name", name: "Name" },
 ];
 
 const ITEMS_PER_PAGE = 10;
 
 function ManageExplorers() {
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("createdAt");
   const [currentPage, setCurrentPage] = useState(1);
   const explorersData = useLoaderData();
 
@@ -141,7 +141,7 @@ function ManageExplorers() {
         <Input placeholder="Search for an explorer by name..." />
         <SortDropdown
           categories={sortCategories}
-          initState="Name"
+          initState="Date Joined"
           onSort={setSortBy}
         />
       </StyledRow>
