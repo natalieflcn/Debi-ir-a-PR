@@ -4,6 +4,8 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Button from "../../../../shared/components/ui/Button";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 import styled from "styled-components";
+import { FaFlagCheckered } from "react-icons/fa";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const StyledRow = styled(Row)`
   @media (max-width: 900px) {
@@ -18,7 +20,7 @@ function ExplorerExplorationCardHeaderDetails({
   userHistory,
 }) {
   console.log(userHistory, hasStarted);
-  const stopsCompleted = userHistory.visitLog.length;
+  const stopsCompleted = userHistory?.visitLog.length ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
 
   // const userProgress = Math.round(
@@ -35,7 +37,7 @@ function ExplorerExplorationCardHeaderDetails({
 
   return (
     <>
-      {hasStarted && (
+      {hasStarted && userHistory.status !== "completed" && (
         <>
           <StyledRow
             $direction="horizontal"
@@ -52,6 +54,25 @@ function ExplorerExplorationCardHeaderDetails({
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
                 {stopsRemaining} stops remaining
+              </Bold>
+            </Row>
+          </StyledRow>
+          <Row>
+            <ProgressBar completed={userProgress}></ProgressBar>
+          </Row>
+        </>
+      )}
+      {hasStarted && userHistory.status === "completed" && (
+        <>
+          <StyledRow
+            $direction="horizontal"
+            $gap="var(--gap-xl)"
+            $align="center"
+          >
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <FaFlagCheckered color="var(--color-red-300)" />
+              <Bold $color="var(--color-dark-200)">
+                Completed on {formatDate(userHistory.completedAt)}
               </Bold>
             </Row>
           </StyledRow>

@@ -15,7 +15,11 @@ const BadgeRow = styled(Row)`
 const StyledRow = styled(Row)`
   text-align: center;
 `;
-function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
+function ExplorerExplorationCardFooterCTA({
+  hasStarted,
+  exploration,
+  userHistory,
+}) {
   return (
     <Card $cardColor="var(--color-light-100)">
       {!hasStarted && (
@@ -34,9 +38,22 @@ function ExplorerExplorationCardFooterCTA({ hasStarted, exploration }) {
         </Row>
       )}
 
-      {hasStarted && (
+      {hasStarted && userHistory.status !== "completed" && (
         <StyledRow $direction="vertical" $align="center" $gap="var(--gap-md)">
           Complete this exploration to earn:
+          <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
+            <Image $width="5rem" src={exploration.badge.image} />
+            <Heading as="h5" $color="var(--color-red-300)">
+              {exploration.badge.name}
+            </Heading>
+          </BadgeRow>
+        </StyledRow>
+      )}
+
+      {hasStarted && userHistory.status === "completed" && (
+        <StyledRow $direction="vertical" $align="center" $gap="var(--gap-md)">
+          Congratulations! You completed this exploration and earned the
+          following badge:
           <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
             <Image $width="5rem" src={exploration.badge.image} />
             <Heading as="h5" $color="var(--color-red-300)">

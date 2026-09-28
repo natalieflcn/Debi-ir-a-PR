@@ -14,8 +14,8 @@ const explorationProgressSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["not_started", "in_progress", "completed"],
-    default: "not_started",
+    enum: ["in_progress", "completed"],
+    default: "in_progress",
   },
   lastVisitedAt: { type: Date },
   completedAt: { type: Date },

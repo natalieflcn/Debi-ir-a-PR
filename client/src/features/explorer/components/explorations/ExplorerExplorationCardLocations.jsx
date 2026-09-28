@@ -55,10 +55,10 @@ function ExplorerExplorationCardLocations({
   // );
 
   return locations.map((location, i) => {
-    const isCompleted = userHistory.visitLog.some(
+    const isCompleted = userHistory?.visitLog.some(
       (visit) => visit.location.toString() === location._id.toString(),
     );
-    console.log(isCompleted, userHistory.visitLog);
+    console.log(isCompleted, userHistory?.visitLog);
 
     return (
       <StyledRow

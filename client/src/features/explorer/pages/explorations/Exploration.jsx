@@ -13,7 +13,9 @@ function Exploration() {
   //   (startedExploration) => startedExploration.explorationId === exploration.id,
   // );
   const hasStarted =
-    userHistory.status === "in_progress" || userHistory.status === "completed";
+    (userHistory?.status === "in_progress" ||
+      userHistory?.status === "completed") ??
+    false;
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails
@@ -36,6 +38,7 @@ function Exploration() {
     <ExplorerExplorationCardFooterCTA
       hasStarted={hasStarted}
       exploration={exploration}
+      userHistory={userHistory}
     />
   );
 
