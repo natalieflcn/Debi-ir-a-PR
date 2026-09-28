@@ -55,7 +55,6 @@ export async function updateUserPassword({
   password,
   passwordConfirm,
 }) {
-  console.log(userId);
   return await apiFetch(`/users/${userId}/updatePassword`, {
     method: "PATCH",
     body: JSON.stringify({

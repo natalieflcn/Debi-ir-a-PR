@@ -511,7 +511,7 @@
       - [ ] Delete users
     - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
-    - [ ] Make "Date Joined" the default filter for Users TODO
+    - [x] Make "Date Joined" the default filter for Users
 
   - [ ] Other Tasks (For the future)
     - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
@@ -524,6 +524,7 @@
     - [x] BUG: Links broken when viewing users from /ambassador/users
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
     - [ ] Rename CreateLocation to EditLocation and remove create conditional
+    - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen

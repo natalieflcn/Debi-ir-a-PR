@@ -1,5 +1,6 @@
 const express = require("express");
 const ExplorationProgress = require("../models/ExplorationProgress");
+const Exploration = require("../models/Exploration");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");

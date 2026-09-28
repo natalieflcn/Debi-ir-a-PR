@@ -16,7 +16,6 @@ function ViewLocation() {
 
   const { exploration, location } = useLoaderData();
 
-  console.log(exploration, location);
   return (
     <ExplorationLocationCard
       exploration={exploration}

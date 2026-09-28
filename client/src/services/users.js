@@ -20,8 +20,6 @@ export async function toggleAdmin(userId, role) {
 }
 
 export async function updateMe(formData) {
-  console.log("running updateme api service");
-  console.log(formData);
   return await apiFetch(`/users/updateMe`, {
     method: "PATCH",
     body: JSON.stringify(formData),
@@ -29,7 +27,6 @@ export async function updateMe(formData) {
 }
 
 export async function updateUserInformation(userId, formData) {
-  console.log(userId, formData);
   return await apiFetch(`/users/${userId}`, {
     method: "PATCH",
     body: JSON.stringify(formData),

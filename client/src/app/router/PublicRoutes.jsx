@@ -4,6 +4,7 @@ import { lazy } from "react";
 import { Route } from "react-router-dom";
 import ErrorPage from "../../pages/ErrorPage";
 import Unauthorized from "../../pages/Unauthorized";
+import { rootLoader } from "./loaders/rootLoader";
 
 // import signupLoader from "./loaders/signupLoader";
 
@@ -24,7 +25,7 @@ const AmbassadorSignup = lazy(
 );
 
 const PublicRoutes = [
-  { index: true, element: <HomePage /> },
+  { index: true, element: <HomePage />, loader: rootLoader },
   { path: "how-it-works", element: <Workflow /> },
   { path: "about", element: <About /> },
   { path: "resources", element: <Resources /> },
@@ -32,16 +33,19 @@ const PublicRoutes = [
   {
     path: "login",
     element: <Login />,
+    loader: rootLoader,
     //  loader: loginLoader
   },
   {
     path: "signup/explorer",
     element: <ExplorerSignup />,
+    loader: rootLoader,
     // loader: signupLoader,
   },
   {
     path: "signup/ambassador",
     element: <AmbassadorSignup />,
+    loader: rootLoader,
     // loader: signupLoader,
   },
   { path: "error", element: <ErrorPage /> },

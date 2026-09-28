@@ -4,6 +4,7 @@ import {
   getExploration,
   getExplorationsSummary,
 } from "../../../services/explorations";
+import { getExplorationProgress } from "../../../services/explorationProgress";
 
 export async function explorerExplorationLoader({ params }) {
   const userHistory = {
@@ -149,8 +150,14 @@ export async function explorerExplorationLoader({ params }) {
   };
 
   const { explorationId } = params;
+  console.log(explorationId);
 
   const { data } = await getExploration(explorationId);
+
+  const { data: explorationProgress } =
+    await getExplorationProgress(explorationId);
+
+  console.log(explorationProgress);
 
   return { exploration: data.data, userHistory };
 }

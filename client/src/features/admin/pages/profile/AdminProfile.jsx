@@ -12,9 +12,7 @@ const StyledAdminProfile = styled.div`
 `;
 
 function AdminProfile() {
-  console.log("running admin profile");
   const { user } = useAuth();
-  console.log(user);
 
   return (
     <StyledAdminProfile>

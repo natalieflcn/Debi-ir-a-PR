@@ -159,8 +159,6 @@ const ProfileInformation = function ({ user }) {
       return;
     }
 
-    console.log(email);
-
     // if ((user._id = myUser._id)) {
     //   const { data } = await updateMe({ email: email });
     // } else {
@@ -171,8 +169,6 @@ const ProfileInformation = function ({ user }) {
       user._id === myUser._id
         ? await updateMe({ email: email })
         : await updateUserInformation(user._id, { email: email });
-
-    console.log(data);
 
     if (user._id === myUser._id) updateUser(data.data);
 
@@ -201,7 +197,6 @@ const ProfileInformation = function ({ user }) {
       setPasswordErrors(errors);
       return;
     }
-    console.log(user);
 
     const { data } =
       user._id === myUser._id
@@ -214,8 +209,6 @@ const ProfileInformation = function ({ user }) {
             password: password,
             passwordConfirm: confirmPassword,
           });
-
-    console.log(data);
 
     if (user._id === myUser._id) updateUser(data.data || data.user);
 

@@ -144,7 +144,7 @@ const InfoButtonTexts = {
 const ProfileHeader = function ({ user, title }) {
   // const { user, role } = useAuth();
   // const { user } = profileLoader();
-  console.log(user);
+  // console.log(user);
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(

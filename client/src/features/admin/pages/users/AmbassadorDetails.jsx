@@ -51,7 +51,6 @@ function AmbassadorDetails() {
       setUser(data.data);
       setIsAdmin(data.data.role === "admin");
       // trust the server's response, not your own guess
-      console.log(data.data);
     } catch (err) {
       console.error("Failed to update role:", err);
       // optionally surface an error to the UI here
