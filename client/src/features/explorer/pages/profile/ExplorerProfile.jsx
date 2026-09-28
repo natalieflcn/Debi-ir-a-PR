@@ -23,11 +23,7 @@ function ExplorerProfile() {
         // userTitle={profileData.title}
         user={user}
       />
-      <ProfileInformation
-        userEmail={user.email}
-        userPassword={user.password}
-        dateJoined={formatDate(user.createdAt)}
-      />
+      <ProfileInformation user={user} />
       {/* <ProfileBadgeCollection userHistory={userHistory} /> */}
     </StyledExplorerProfile>
   );

@@ -58,6 +58,7 @@ router
   .get(userController.getUser)
   .patch(userController.updateUser);
 
+router.route("/:id/updatePassword").patch(authController.updateUserPassword);
 // router.get("/:userId/badgeCollection");
 
 router.use("/:userId/user-exploration-progress", explorationProgressUserRouter);

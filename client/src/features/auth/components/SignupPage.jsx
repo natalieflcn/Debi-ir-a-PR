@@ -168,6 +168,7 @@ function Signup({ $variant }) {
                     name="password"
                     placeholder="Password"
                     value={password}
+                    type="password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   {formErrors.password && <Bold>{formErrors.password}</Bold>}
@@ -179,6 +180,7 @@ function Signup({ $variant }) {
                   <StyledInput
                     name="passwordConfirm"
                     placeholder="Confirm Password"
+                    type="password"
                     value={passwordConfirm}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />

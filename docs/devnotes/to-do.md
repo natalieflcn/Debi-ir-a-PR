@@ -475,7 +475,7 @@
     - [~] Start with authRoutes (/login, /signup)
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
-      - [ ] /updateMyPassword TODO 1
+      - [x] /updateMyPassword
 
     - [~] Connect remaining routes
       - [~] Explorations

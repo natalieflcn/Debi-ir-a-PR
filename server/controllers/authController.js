@@ -35,8 +35,6 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signupExplorer = catchAsync(async (req, res, next) => {
-  
-
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -44,8 +42,6 @@ exports.signupExplorer = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
     role: "explorer",
   });
-
-  
 
   createSendToken(newUser, 201, res);
 });
@@ -215,4 +211,17 @@ exports.updateMyPassword = catchAsync(async (req, res, next) => {
 
   // Send JWT back to client
   createSendToken(user, 200, res);
+});
+
+exports.updateUserPassword = catchAsync(async (req, res, next) => {
+  // Get user from collection
+  const user = await User.findById(req.params.id);
+
+  // Update password
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+
+  // Send JWT back to client
+  res.status(200).json({ status: "success", data: { data: user } });
 });

@@ -156,6 +156,7 @@ function Login() {
                       name="password"
                       placeholder="Password"
                       value={password}
+                      type="password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     {formErrors.password && <Bold>{formErrors.password}</Bold>}

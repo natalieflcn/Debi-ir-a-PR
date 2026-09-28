@@ -13,7 +13,7 @@ import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { formatDate } from "../../utils/helpers";
 import { updateMe, updateUserInformation } from "../../../services/users";
-import { updateMyPassword } from "../../../services/auth";
+import { updateMyPassword, updateUserPassword } from "../../../services/auth";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -135,6 +135,16 @@ const ProfileInformation = function ({ user }) {
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
 
+  const handleSetEmail = function (value) {
+    setEmailErrors("");
+    setEmail(value);
+  };
+
+  const handleSetPassword = function (value) {
+    setPasswordErrors("");
+    setPassword(value);
+  };
+
   const handleEmailSubmit = async function (e) {
     e.preventDefault();
 
@@ -191,6 +201,7 @@ const ProfileInformation = function ({ user }) {
       setPasswordErrors(errors);
       return;
     }
+    console.log(user);
 
     const { data } =
       user._id === myUser._id
@@ -198,7 +209,11 @@ const ProfileInformation = function ({ user }) {
             password: password,
             passwordConfirm: confirmPassword,
           })
-        : await updateUserInformation(user._id, { email: email }); // TODO implement update user password
+        : await updateUserPassword({
+            userId: user._id,
+            password: password,
+            passwordConfirm: confirmPassword,
+          });
 
     console.log(data);
 
@@ -208,7 +223,8 @@ const ProfileInformation = function ({ user }) {
   };
 
   const handlePasswordCancel = function () {
-    setPassword(user.password);
+    setPassword("");
+    setConfirmPassword("");
     setIsEditingPassword(false);
     setPasswordErrors("");
   };
@@ -226,7 +242,9 @@ const ProfileInformation = function ({ user }) {
                   <Input
                     name="email"
                     value={email.toLowerCase()}
-                    onChange={(e) => setEmail(e.target.value.toLowerCase())}
+                    onChange={(e) =>
+                      handleSetEmail(e.target.value.toLowerCase())
+                    }
                   />
                   {emailErrors && <Bold>{emailErrors}</Bold>}
                 </Row>
@@ -283,7 +301,7 @@ const ProfileInformation = function ({ user }) {
                     <Input
                       name="password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => handleSetPassword(e.target.value)}
                       type="password"
                       placeholder="Enter a new password"
                     />

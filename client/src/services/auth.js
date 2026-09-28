@@ -49,3 +49,18 @@ export async function updateMyPassword({ password, passwordConfirm }) {
     }),
   });
 }
+
+export async function updateUserPassword({
+  userId,
+  password,
+  passwordConfirm,
+}) {
+  console.log(userId);
+  return await apiFetch(`/users/${userId}/updatePassword`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      password: password,
+      passwordConfirm: passwordConfirm,
+    }),
+  });
+}
