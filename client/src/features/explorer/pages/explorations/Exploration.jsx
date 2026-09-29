@@ -10,19 +10,27 @@ import {
   startExploration,
 } from "../../../../services/explorationProgress";
 import { useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 function Exploration() {
   const { exploration } = useLoaderData();
-
+  const QueryClient = useQueryClient();
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["explorationProgress", exploration._id],
     queryFn: () => getExplorationProgress(exploration._id),
   });
 
-  const mutation = useMutation({
+  const {
+    isPending: isMutating,
+    mutate,
+    isError: isMutationError,
+  } = useMutation({
     mutationFn: (explorationId) => startExploration(explorationId),
+    onSuccess: () =>
+      QueryClient.invalidateQueries({
+        queryKey: ["explorationProgress", exploration._id],
+      }),
   });
 
   console.log(data);
@@ -62,7 +70,7 @@ function Exploration() {
       userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
-      onStartExploration={() => mutation.mutate(exploration._id)}
+      onStartExploration={() => mutate(exploration._id)}
     />
   );
 
@@ -81,15 +89,15 @@ function Exploration() {
       exploration={exploration}
       userHistory={userHistory}
       // onStartExploration={handleStartExploration}
-      onStartExploration={() => mutation.mutate(exploration._id)}
+      onStartExploration={() => mutate(exploration._id)}
     />
   );
 
   return (
     <>
-      {(isPending || mutation.isPending) && <SpinnerMini />}
+      {(isPending || isMutating) && <SpinnerMini />}
 
-      {(isError || mutation.isError) && <span>Error: {error.message}</span>}
+      {(isError || isMutationError) && <span>Error: {error.message}</span>}
 
       {/* {
     mutation.isSuccess ? "Exploration Started!" : null;

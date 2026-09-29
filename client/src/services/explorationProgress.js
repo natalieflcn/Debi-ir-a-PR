@@ -23,3 +23,12 @@ export async function startExploration(explorationId) {
     },
   );
 }
+
+// POST exploration progress
+// PATCH exploration progress
+// DELETE users
+// DELETE me
+// Make sure all API method calls are wrapped in try-catch blocks
+// Use React Query in conjunction with React loaders
+// Create new buttons (Delete)
+// Create new pages

@@ -519,6 +519,9 @@
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+    - [ ] Implement loading spinners throughout the app
+      - [ ] useNavigation in layout components
+      - [ ]
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [x] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
@@ -526,10 +529,11 @@
     - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
     - [ ] Rename CreateLocation to EditLocation and remove create conditional
     - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
-    - [ ] Figure out how to populate User data depending on role
+    - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] Add functionality to Input search in Explorations
     - [ ] Implement React Query/TanStack Query
+      - [ ] Use React Query in conjunction with React Router loaders to cache fetched route data
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page
@@ -539,4 +543,4 @@
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
-  -
+  - Searching/Filtering for Explorations/Users
