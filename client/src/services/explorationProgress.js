@@ -25,6 +25,7 @@ export async function startExploration(explorationId) {
 }
 
 export async function addVisitLocation(explorationId, locationId) {
+  console.log("running add visitlocation");
   return await apiFetch(
     `/explorations/${explorationId}/my-exploration-progress`,
     {

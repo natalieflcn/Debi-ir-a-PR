@@ -521,7 +521,7 @@
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [ ] Implement loading spinners throughout the app
       - [ ] useNavigation in layout components
-      - [ ]
+    - [ ] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [x] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations

@@ -50,26 +50,30 @@ exports.createExplorationProgress = factory.createOne(
 );
 
 exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
+  console.log("updateexplorationprogres running");
   // Retrieving Existing Documents and Related Data
-  const progress = ExplorationProgress.findOne({
+  const progress = await ExplorationProgress.findOne({
     user: req.user.id,
     exploration: req.params.explorationId,
   });
+
+  console.log(req.params.explorationId, req.body.locationId);
 
   if (!progress)
     return next(
       new AppError("No Exploration Progress found with that ID.", 404),
     );
 
-  const exploration = Exploration.findById(req.params.explorationId).select(
-    "locations",
-  );
+  const exploration = await Exploration.findById(
+    req.params.explorationId,
+  ).select("locations");
 
+  console.log(progress.visitLog);
   if (!exploration)
     return next(new AppError("No Exploration found with that ID.", 404));
 
   // Ensure No Duplicate Location Visits
-  const isAlreadyVisited = progress.visitLog.some(
+  const isAlreadyVisited = progress?.visitLog.some(
     (visit) => visit.location === req.body.locationId,
   );
 

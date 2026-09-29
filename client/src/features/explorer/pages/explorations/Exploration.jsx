@@ -21,11 +21,7 @@ function Exploration() {
     queryFn: () => getExplorationProgress(exploration._id),
   });
 
-  const {
-    isPending: isMutating,
-    mutate,
-    isError: isMutationError,
-  } = useMutation({
+  const mutateExploration = useMutation({
     mutationFn: (explorationId) => startExploration(explorationId),
     onSuccess: () =>
       QueryClient.invalidateQueries({
@@ -64,7 +60,7 @@ function Exploration() {
       userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
-      onStartExploration={() => mutate(exploration._id)}
+      onStartExploration={() => mutateExploration.mutate(exploration._id)}
     />
   );
 
@@ -83,15 +79,17 @@ function Exploration() {
       exploration={exploration}
       userHistory={userHistory}
       // onStartExploration={handleStartExploration}
-      onStartExploration={() => mutate(exploration._id)}
+      onStartExploration={() => mutateExploration.mutate(exploration._id)}
     />
   );
 
   return (
     <>
-      {(isPending || isMutating) && <SpinnerMini />}
+      {(isPending || mutateExploration.isPending) && <SpinnerMini />}
 
-      {(isError || isMutationError) && <span>Error: {error.message}</span>}
+      {(isError || mutateExploration.isError) && (
+        <span>Error: {error.message}</span>
+      )}
 
       {/* {
     mutation.isSuccess ? "Exploration Started!" : null;

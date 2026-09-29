@@ -12,7 +12,12 @@ import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 import { formatDate } from "../../../../shared/utils/helpers";
 import Bold from "../../../../shared/components/typography/Bold";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  addVisitLocation,
+  getExplorationProgress,
+  removeVisitLocation,
+} from "../../../../services/explorationProgress";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -22,14 +27,14 @@ const StyledRow = styled(Row)`
   }
 `;
 
-function ExplorerHeaderDetails({ userCompleted, userHistory, locationName }) {
+function ExplorerHeaderDetails({ userCompleted, visitedAt, locationName }) {
   return (
     <Row>
       {userCompleted && (
         <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
           <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
           <Bold $color="var(--color-light-0)">
-            Completed on {formatDate(userHistory.visitedAt)}
+            Completed on {formatDate(visitedAt)}
           </Bold>
         </Row>
       )}
@@ -83,27 +88,62 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
 function ExplorationLocation() {
   const { exploration, location } = useLoaderData();
   const QueryClient = useQueryClient();
+
+  console.log(exploration._id);
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ["location", location._id],
+    queryKey: ["explorationProgress", exploration._id],
+    queryFn: () => getExplorationProgress(exploration._id),
   });
 
-  console.log(exploration, location, userHistory);
-  // const loadUserCompleted = Boolean(
-  //   userHistory.visitLog.find((visit) => visit.locationId === location.id),
-  // );
+  const mutateCompleteLocation = useMutation({
+    mutationFn: ({ explorationId, locationId }) =>
+      addVisitLocation(explorationId, locationId),
+    onSuccess: async () => {
+      console.log("onsuccess is running");
+      QueryClient.invalidateQueries({
+        queryKey: ["explorationProgress", exploration._id],
+      });
+    },
+  });
 
-  const [userCompleted, setUserCompleted] = useState(Boolean(userHistory));
+  const mutateRemoveLocation = useMutation({
+    mutationFn: ({ explorationId, locationId }) =>
+      removeVisitLocation(explorationId, locationId),
+    onSuccess: () =>
+      QueryClient.invalidateQueries({
+        queryKey: ["explorationProgress", exploration._id],
+      }),
+  });
 
-  // const { explorationId } = useParams(); // ✅ get id from URL
+  const userHistory = data?.data?.data || null;
+
+  const userCompleted = Boolean(
+    userHistory?.visitLog?.some((visit) => visit.location === location._id),
+  );
+
+  console.log(userHistory.visitLog);
+  console.log(userCompleted);
 
   function handleToggleCompleted() {
-    setUserCompleted((prev) => !prev);
+    if (userCompleted)
+      mutateRemoveLocation.mutate({
+        explorationId: exploration._id,
+        locationId: location._id,
+      });
+    else
+      mutateCompleteLocation.mutate({
+        explorationId: exploration._id,
+        locationId: location._id,
+      });
   }
 
   const headerDetails = (
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
-      userHistory={userHistory}
+      visitedAt={
+        userHistory.visitLog.find((visit) => visit.location === location._id)
+          .visitedAt
+      }
       locationName={location.name}
     />
   );
