@@ -21,7 +21,6 @@ function ExplorerDetails() {
   const userId = useParams().userId;
   // const { user, userHistory2 } = useLoaderData(userId);
   const { user } = useLoaderData(userId);
-  console.log(user);
 
   return (
     <Row $gap="var(--gap-xl)">

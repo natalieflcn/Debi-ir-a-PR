@@ -58,7 +58,6 @@ function ExplorerExplorationCardLocations({
     const isCompleted = userHistory?.visitLog?.some(
       (visit) => visit.location.toString() === location._id.toString(),
     );
-    console.log(isCompleted, userHistory?.visitLog);
 
     return (
       <StyledRow

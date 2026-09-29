@@ -116,7 +116,7 @@ function Login() {
       navigate(redirectLink);
     } catch (err) {
       setFormErrors({ submit: err.message });
-      console.log(formErrors);
+ 
     } finally {
       setIsSubmitting(false);
     }

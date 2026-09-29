@@ -82,7 +82,6 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
 function ExplorationLocation() {
   const { exploration, location, userHistory } = useLoaderData();
 
-  console.log(userHistory);
   // const loadUserCompleted = Boolean(
   //   userHistory.visitLog.find((visit) => visit.locationId === location.id),
   // );

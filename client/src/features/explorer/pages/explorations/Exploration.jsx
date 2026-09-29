@@ -5,12 +5,33 @@ import ExplorerExplorationCardHeaderDetails from "../../components/explorations/
 import ExplorerExplorationCardLocations from "../../components/explorations/ExplorerExplorationCardLocations";
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
-import { startExploration } from "../../../../services/explorationProgress";
+import {
+  getExplorationProgress,
+  startExploration,
+} from "../../../../services/explorationProgress";
 import { useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 function Exploration() {
-  const { exploration, userHistory } = useLoaderData();
+  const { exploration } = useLoaderData();
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["explorationProgress", exploration._id],
+    queryFn: () => getExplorationProgress(exploration._id),
+  });
+
+  const mutation = useMutation({
+    mutationFn: (explorationId) => startExploration(explorationId),
+  });
+
+  console.log(data);
+
+  const userHistory = data?.data?.data || null;
+  console.log(userHistory);
+
   // const [userHistory, setUserHistory] = useState(useLoaderData);
+
   // const [hasStarted, setHasStarted] = useState(Boolean(userHistory?.status));
 
   // async function handleStartExploration() {
@@ -28,17 +49,20 @@ function Exploration() {
   // const hasStarted = userHistory.explorationProgress.some(
   //   (startedExploration) => startedExploration.explorationId === exploration.id,
   // );
+
   const hasStarted =
     (userHistory?.status === "in_progress" ||
       userHistory?.status === "completed") ??
     false;
+
+  console.log(hasStarted);
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails
       userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
-      // onStartExploration={handleStartExploration}
+      onStartExploration={() => mutation.mutate(exploration._id)}
     />
   );
 
@@ -57,16 +81,27 @@ function Exploration() {
       exploration={exploration}
       userHistory={userHistory}
       // onStartExploration={handleStartExploration}
+      onStartExploration={() => mutation.mutate(exploration._id)}
     />
   );
 
   return (
-    <ExplorationCard
-      exploration={exploration}
-      headerDetails={headerDetails}
-      locationDetails={locationDetails}
-      footerCTA={footerCTA}
-    />
+    <>
+      {(isPending || mutation.isPending) && <SpinnerMini />}
+
+      {(isError || mutation.isError) && <span>Error: {error.message}</span>}
+
+      {/* {
+    mutation.isSuccess ? "Exploration Started!" : null;
+  } */}
+
+      <ExplorationCard
+        exploration={exploration}
+        headerDetails={headerDetails}
+        locationDetails={locationDetails}
+        footerCTA={footerCTA}
+      />
+    </>
   );
 }
 
