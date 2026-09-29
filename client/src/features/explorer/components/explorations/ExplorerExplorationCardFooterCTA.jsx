@@ -21,6 +21,7 @@ function ExplorerExplorationCardFooterCTA({
   hasStarted,
   exploration,
   userHistory,
+  // onStartExploration
 }) {
   return (
     <Card $cardColor="var(--color-light-100)">
@@ -37,7 +38,7 @@ function ExplorerExplorationCardFooterCTA({
           <Button
             $variation="primary"
             $size="small"
-            onClick={handleStartExploration}
+            // onClick={onStartExploration}
           >
             Start Exploring Now
           </Button>

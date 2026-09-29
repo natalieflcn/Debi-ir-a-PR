@@ -18,9 +18,10 @@ function ExplorerExplorationCardHeaderDetails({
   hasStarted,
   exploration,
   userHistory,
+  // onStartExploration,
 }) {
   console.log(userHistory, hasStarted);
-  const stopsCompleted = userHistory?.visitLog.length ?? 0;
+  const stopsCompleted = userHistory?.visitLog?.length ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
 
   // const userProgress = Math.round(
@@ -85,7 +86,7 @@ function ExplorerExplorationCardHeaderDetails({
         <Button
           $variation="primary"
           $size="small"
-          onClick={handleStartExploration}
+          // onClick={onStartExploration}
         >
           Start Exploring
         </Button>

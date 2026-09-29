@@ -6,19 +6,25 @@ import ExplorerExplorationCardLocations from "../../components/explorations/Expl
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
 import { startExploration } from "../../../../services/explorationProgress";
+import { useState } from "react";
 
 function Exploration() {
   const { exploration, userHistory } = useLoaderData();
+  // const [userHistory, setUserHistory] = useState(useLoaderData);
+  // const [hasStarted, setHasStarted] = useState(Boolean(userHistory?.status));
 
-  async function handleStartExploration() {
-    console.log("button clicked");
-    try {
-      const { data } = await startExploration(exploration._id);
-      console.log(data.data);
-    } catch (err) {
-      console.log("Failed to start exploration", err);
-    }
-  }
+  // async function handleStartExploration() {
+  //   console.log("button clicked");
+  //   try {
+  //     const { data } = await startExploration(exploration._id);
+  //     setUserHistory(data.data);
+  //     setHasStarted(true);
+  //     console.log(data.data);
+  //   } catch (err) {
+  //     console.log("Failed to start exploration", err);
+  //   }
+  // }
+
   // const hasStarted = userHistory.explorationProgress.some(
   //   (startedExploration) => startedExploration.explorationId === exploration.id,
   // );
@@ -32,6 +38,7 @@ function Exploration() {
       userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
+      // onStartExploration={handleStartExploration}
     />
   );
 
@@ -49,6 +56,7 @@ function Exploration() {
       hasStarted={hasStarted}
       exploration={exploration}
       userHistory={userHistory}
+      // onStartExploration={handleStartExploration}
     />
   );
 
