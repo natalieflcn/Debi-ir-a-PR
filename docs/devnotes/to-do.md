@@ -495,7 +495,7 @@
         - [ ] GET /admin-exploration-progress
         - [x] GET /exploration-progress TODO
         - [ ] GET /users/:explorationId/user-exploration-progress
-        - [ ] POST /explorations/:explorationId/exploration-progress TODO 2
+        - [x] POST /explorations/:explorationId/exploration-progress
         - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 1
         - [ ] DELETE /explorations/:explorationId/exploration-progress
 

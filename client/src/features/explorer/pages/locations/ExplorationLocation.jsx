@@ -12,6 +12,7 @@ import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 import { formatDate } from "../../../../shared/utils/helpers";
 import Bold from "../../../../shared/components/typography/Bold";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -23,14 +24,14 @@ const StyledRow = styled(Row)`
 
 function ExplorerHeaderDetails({ userCompleted, userHistory, locationName }) {
   return (
-    <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
+    <Row>
       {userCompleted && (
-        <>
+        <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
           <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
           <Bold $color="var(--color-light-0)">
             Completed on {formatDate(userHistory.visitedAt)}
           </Bold>
-        </>
+        </Row>
       )}
     </Row>
   );
@@ -80,8 +81,13 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
 }
 
 function ExplorationLocation() {
-  const { exploration, location, userHistory } = useLoaderData();
+  const { exploration, location } = useLoaderData();
+  const QueryClient = useQueryClient();
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["location", location._id],
+  });
 
+  console.log(exploration, location, userHistory);
   // const loadUserCompleted = Boolean(
   //   userHistory.visitLog.find((visit) => visit.locationId === location.id),
   // );

@@ -33,10 +33,7 @@ function Exploration() {
       }),
   });
 
-  console.log(data);
-
   const userHistory = data?.data?.data || null;
-  console.log(userHistory);
 
   // const [userHistory, setUserHistory] = useState(useLoaderData);
 
@@ -59,11 +56,8 @@ function Exploration() {
   // );
 
   const hasStarted =
-    (userHistory?.status === "in_progress" ||
-      userHistory?.status === "completed") ??
-    false;
-
-  console.log(hasStarted);
+    userHistory?.status === "in_progress" ||
+    userHistory?.status === "completed";
 
   const headerDetails = (
     <ExplorerExplorationCardHeaderDetails

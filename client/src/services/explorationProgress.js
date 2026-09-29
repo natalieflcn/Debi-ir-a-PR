@@ -24,8 +24,29 @@ export async function startExploration(explorationId) {
   );
 }
 
-// POST exploration progress
+export async function addVisitLocation(explorationId, locationId) {
+  return await apiFetch(
+    `/explorations/${explorationId}/my-exploration-progress`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({
+        locationId: locationId,
+      }),
+    },
+  );
+}
+
+export async function removeVisitLocation(explorationId, locationId) {
+  return await apiFetch(
+    `/explorations/${explorationId}/my-exploration-progress`,
+    { method: "DELETE", body: JSON.stringify({ locationId: locationId }) },
+  );
+}
 // PATCH exploration progress
+// adding location to visitLog, each visitLog has timestamp
+// separate method for removing location from visitLog (one location per location at a time)
+// if locations.length === visitLog.length, status is complete, otherwise status is in_progress
+
 // DELETE users
 // DELETE me
 // Make sure all API method calls are wrapped in try-catch blocks

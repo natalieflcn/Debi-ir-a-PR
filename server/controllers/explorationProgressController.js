@@ -49,12 +49,56 @@ exports.createExplorationProgress = factory.createOne(
   }),
 );
 
-exports.updateExplorationProgress = factory.updateOne(
-  ExplorationProgress,
-  (req) => ({
-    user: req.user._id,
+exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
+  // Retrieving Existing Documents and Related Data
+  const progress = ExplorationProgress.findOne({
+    user: req.user.id,
     exploration: req.params.explorationId,
-  }),
+  });
+
+  if (!progress)
+    return next(
+      new AppError("No Exploration Progress found with that ID.", 404),
+    );
+
+  const exploration = Exploration.findById(req.params.explorationId).select(
+    "locations",
+  );
+
+  if (!exploration)
+    return next(new AppError("No Exploration found with that ID.", 404));
+
+  // Ensure No Duplicate Location Visits
+  const isAlreadyVisited = progress.visitLog.some(
+    (visit) => visit.location === req.body.locationId,
+  );
+
+  if (isAlreadyVisited)
+    return next(new AppError("This location has already been visited ", 400));
+
+  // Updating Exploration Progress Data
+  progress.visitLog.push({
+    location: req.body.locationId,
+    visitedAt: new Date(),
+  });
+
+  // Updating Exploration Progress Dervied Data
+  if (progress.visitLog.length === exploration.locations.length) {
+    progress.status = "completed";
+    progress.completedAt = new Date();
+  } else {
+    progress.status = "in_progress";
+  }
+
+  progress.lastVisitedAt = new Date();
+
+  await progress.save();
+
+  res.status(200).json({ status: "success", data: { data: progress } });
+});
+
+exports.deleteExplorationProgressVisit = catchAsync(
+  async (req, res, next) => {},
 );
 
 exports.deleteExplorationProgress = factory.deleteOne(

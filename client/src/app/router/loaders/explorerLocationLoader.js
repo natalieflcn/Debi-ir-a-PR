@@ -154,7 +154,7 @@ export async function explorerLocationLoader({ params }) {
   );
 
   const { data: explorationProgress } = await getExplorationProgress(
-    explorationData.slug,
+    explorationData._id,
   );
 
   console.log(
