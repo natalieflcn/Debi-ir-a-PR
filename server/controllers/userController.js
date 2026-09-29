@@ -15,7 +15,8 @@ const filterRequestBody = (body, ...allowedFields) => {
 };
 
 exports.getUser = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+  console.log(req.params);
+  const user = await User.findOne({ _id: req.params.id });
 
   if (!user) return next(new AppError("No user found with that ID.", 404));
 
@@ -30,7 +31,7 @@ exports.getUser = catchAsync(async (req, res, next) => {
   //     .map((progress) => progress.exploration.badge);
   // }
 
-  res.status(200).json({ status: "success", data: { user } });
+  res.status(200).json({ status: "success", data: { data: user } });
 });
 
 exports.getMe = (req, res, next) => {

@@ -1,4 +1,5 @@
 import fakeExplorationLocationData from "../../../features/explorer/pages/explorations/fakeExplorationLocationData";
+import { getExplorationProgress } from "../../../services/explorationProgress";
 import { getExploration } from "../../../services/explorations";
 
 export async function explorerLocationLoader({ params }) {
@@ -152,9 +153,20 @@ export async function explorerLocationLoader({ params }) {
     (loc) => loc.slug === locationId,
   );
 
+  const { data: explorationProgress } = await getExplorationProgress(
+    explorationData.slug,
+  );
+
+  console.log(
+    explorationProgress.data.visitLog.find(
+      (visit) => visit.location === location._id,
+    ),
+  );
   return {
     exploration: { name: explorationData.name, slug: explorationData.slug },
     location: location,
-    userHistory,
+    userHistory: explorationProgress.data.visitLog.find(
+      (visit) => visit.location === location._id,
+    ),
   };
 }

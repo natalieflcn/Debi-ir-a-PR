@@ -489,14 +489,14 @@
           - [x] /updateMe
           - [x] /updateUser
           - [x] /updateUserPassword
-        - [ ] DELETE /users/:userId
+        - [ ] DELETE /users/:userId TODO 3
 
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
-        - [ ] GET /exploration-progress TODO 1
+        - [x] GET /exploration-progress TODO
         - [ ] GET /users/:explorationId/user-exploration-progress
         - [ ] POST /explorations/:explorationId/exploration-progress TODO 2
-        - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 3
+        - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 1
         - [ ] DELETE /explorations/:explorationId/exploration-progress
 
 - [ ] FRONT-END TWEAKS
@@ -508,10 +508,11 @@
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
       - [ ] Delete explorations
       - [ ] Delete locations
-      - [ ] Delete users
+      - [x] Delete users
     - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
+    - [ ] Make sure all async API methods are wrapped in try-catch blocks
 
   - [ ] Other Tasks (For the future)
     - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
@@ -528,6 +529,7 @@
     - [ ] Figure out how to populate User data depending on role
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] Add functionality to Input search in Explorations
+    - [ ] Implement React Query/TanStack Query
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page
@@ -537,3 +539,4 @@
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
+  -

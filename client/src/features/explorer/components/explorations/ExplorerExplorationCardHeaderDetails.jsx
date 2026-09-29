@@ -82,7 +82,11 @@ function ExplorerExplorationCardHeaderDetails({
         </>
       )}
       {!hasStarted && (
-        <Button $variation="primary" $size="small">
+        <Button
+          $variation="primary"
+          $size="small"
+          onClick={handleStartExploration}
+        >
           Start Exploring
         </Button>
       )}

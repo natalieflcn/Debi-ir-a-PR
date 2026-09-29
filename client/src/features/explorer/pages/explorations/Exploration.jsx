@@ -5,10 +5,20 @@ import ExplorerExplorationCardHeaderDetails from "../../components/explorations/
 import ExplorerExplorationCardLocations from "../../components/explorations/ExplorerExplorationCardLocations";
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
+import { startExploration } from "../../../../services/explorationProgress";
 
 function Exploration() {
   const { exploration, userHistory } = useLoaderData();
 
+  async function handleStartExploration() {
+    console.log("button clicked");
+    try {
+      const { data } = await startExploration(exploration._id);
+      console.log(data.data);
+    } catch (err) {
+      console.log("Failed to start exploration", err);
+    }
+  }
   // const hasStarted = userHistory.explorationProgress.some(
   //   (startedExploration) => startedExploration.explorationId === exploration.id,
   // );

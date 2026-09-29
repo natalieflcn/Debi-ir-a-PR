@@ -29,6 +29,7 @@ import {
 } from "../../locations/components/explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
+import { startExploration } from "../../../services/explorationProgress";
 
 function ExplorationCard({
   exploration,
@@ -40,6 +41,16 @@ function ExplorationCard({
   const derivedLocationTags = [
     ...new Set(exploration.locations.flatMap((location) => location.tags)),
   ];
+
+  // async function handleStartExploration() {
+  //   console.log("button clicked");
+  //   try {
+  //     const { data } = await startExploration(exploration._id);
+  //     console.log(data.data);
+  //   } catch (err) {
+  //     console.log("Failed to start exploration", err);
+  //   }
+  // }
 
   return (
     <Row $gap="var(--gap-lg)">

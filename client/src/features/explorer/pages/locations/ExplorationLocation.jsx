@@ -10,6 +10,8 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
+import { formatDate } from "../../../../shared/utils/helpers";
+import Bold from "../../../../shared/components/typography/Bold";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -19,22 +21,26 @@ const StyledRow = styled(Row)`
   }
 `;
 
-function ExplorerHeaderDetails({ userCompleted, locationName }) {
+function ExplorerHeaderDetails({ userCompleted, userHistory, locationName }) {
   return (
-    <ExplorationLocationHeading
-      as="h4"
-      $color="var(--color-red-200)"
-      $shadowColor="var(--color-brown-400)"
-    >
-      {userCompleted ? (
-        <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
-      ) : (
-        <FaRegCircle size={25} />
+    <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
+      {userCompleted && (
+        <>
+          <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
+          <Bold $color="var(--color-light-0)">
+            Completed on {formatDate(userHistory.visitedAt)}
+          </Bold>
+        </>
       )}
-      {locationName}
-    </ExplorationLocationHeading>
+    </Row>
   );
 }
+
+// {userCompleted ? ( <ExplorationLocationHeading as="h6" $color="var(--color-dark-200)">
+
+//         <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" /> <p>Completed on {userHistory.visitedAt}</p>
+
+//     </ExplorationLocationHeading>}
 
 function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
   return (
@@ -76,11 +82,12 @@ function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
 function ExplorationLocation() {
   const { exploration, location, userHistory } = useLoaderData();
 
-  const loadUserCompleted = Boolean(
-    userHistory.visitLog.find((visit) => visit.locationId === location.id),
-  );
+  console.log(userHistory);
+  // const loadUserCompleted = Boolean(
+  //   userHistory.visitLog.find((visit) => visit.locationId === location.id),
+  // );
 
-  const [userCompleted, setUserCompleted] = useState(loadUserCompleted);
+  const [userCompleted, setUserCompleted] = useState(Boolean(userHistory));
 
   // const { explorationId } = useParams(); // ✅ get id from URL
 
@@ -91,6 +98,7 @@ function ExplorationLocation() {
   const headerDetails = (
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
+      userHistory={userHistory}
       locationName={location.name}
     />
   );

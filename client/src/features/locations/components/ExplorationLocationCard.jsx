@@ -68,8 +68,6 @@ function ExplorationLocationCard({
                 {location.name}
               </ExplorationLocationHeading>
 
-              {headerDetails}
-
               <AddressRow
                 $direction="horizontal"
                 $gap="var(--gap-sm)"
@@ -84,6 +82,8 @@ function ExplorationLocationCard({
                   {location.address.city}, PR {location.address.zipcode}
                 </Bold>
               </AddressRow>
+
+              {headerDetails}
             </Row>
           </ExplorationLocationHeaderDetails>
         </ExplorationLocationHeaderImage>

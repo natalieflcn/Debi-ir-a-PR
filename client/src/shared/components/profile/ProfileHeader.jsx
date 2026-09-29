@@ -151,6 +151,8 @@ const ProfileHeader = function ({ user, title }) {
     user?.avatar ?? "/src/assets/images/content/TEMP.png",
   );
 
+  console.log(user);
+
   const fileInputRef = useRef(null);
   const submit = useSubmit();
 
