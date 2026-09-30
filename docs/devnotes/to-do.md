@@ -480,7 +480,7 @@
 
     - [~] Connect remaining routes
       - [~] Explorations
-        - [ ] DELETE /explorations/:explorationId TODO
+        - [ ] DELETE /explorations/:explorationId
       - [~] Users
         - [x] GET
           - [x] Admin POV
@@ -490,8 +490,8 @@
           - [x] /updateMe
           - [x] /updateUser
           - [x] /updateUserPassword
-        - [x] DELETE /users/:userId TODO 1
-        - [ ] DELETE /me TODO 2
+        - [x] DELETE /users/:userId
+        - [x] DELETE /me
 
       - [~] ExplorationProgress
         - [ ] GET /admin-exploration-progress **(save this implementation for admin dashboard analytics stage)**

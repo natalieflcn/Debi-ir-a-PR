@@ -1,17 +1,26 @@
 import styled from "styled-components";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import RouterLink from "../routing/RouterLink";
+import { useNavigate } from "react-router-dom";
 
 const StyledUser = styled.div``;
 
 function User() {
-  const { isAuthenticated, loading, user } = useAuth();
+  const { isAuthenticated, loading, user, logoutUser } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogoutUser() {
+    await logoutUser();
+    setTimeout(() => {
+      navigate("/", { replace: true });
+    }, 10);
+  }
 
   return (
     <StyledUser>
       {!loading && isAuthenticated ? (
         <RouterLink to="/">
-          <p>Logout</p>
+          <p onClick={handleLogoutUser}>Logout</p>
         </RouterLink>
       ) : (
         <RouterLink to="/login">

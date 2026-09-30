@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getMe, login, logout } from "../../../services/auth";
 import { apiFetch } from "../../../shared/services/apiFetch";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
