@@ -19,6 +19,7 @@ import {
   updateUserInformation,
 } from "../../../services/users";
 import { updateMyPassword, updateUserPassword } from "../../../services/auth";
+import Spinner from "../ui/Spinner";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -128,7 +129,7 @@ const StyledForm = styled(Form)`
 `;
 
 const ProfileInformation = function ({ user }) {
-  const { user: myUser, updateUser } = useAuth();
+  const { user: myUser, updateUser, clearUser } = useAuth();
 
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -236,8 +237,13 @@ const ProfileInformation = function ({ user }) {
       // 'your account has been deleted' displayed in modal
       // set timer
       // redirect to home page of public routes
-      setTimeout(() => {
-        navigate(`/`);
+
+      setTimeout(async () => {
+        clearUser();
+        setTimeout(() => {
+          navigate("/", { replace: true });
+        }, 5);
+
         // Put your specific code or function call here
       }, 1000);
     } else {

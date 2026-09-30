@@ -42,4 +42,5 @@ export async function deleteUser(userId) {
 
 export async function deleteMe() {
   console.log("running delete me function");
+  return await apiFetch(`/users/deleteMe`, { method: "DELETE" });
 }

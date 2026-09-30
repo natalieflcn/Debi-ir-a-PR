@@ -36,6 +36,10 @@ export async function login({ email, password }) {
   //   return res.json();
 }
 
+export async function logout() {
+  return apiFetch("/users/logout", { method: "POST" });
+}
+
 export async function getMe() {
   return await apiFetch("/users/me");
 }

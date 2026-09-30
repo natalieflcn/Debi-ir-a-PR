@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getMe, login } from "../../../services/auth";
+import { getMe, login, logout } from "../../../services/auth";
 import { apiFetch } from "../../../shared/services/apiFetch";
 
 const AuthContext = createContext(null);
@@ -29,7 +29,12 @@ export function AuthProvider({ children }) {
     return data.user;
   }
 
-  function logoutUser() {
+  async function logoutUser() {
+    setUser(null);
+    await logout();
+  }
+
+  function clearUser() {
     setUser(null);
   }
 
@@ -50,6 +55,7 @@ export function AuthProvider({ children }) {
     loginUser,
     logoutUser,
     registerUser,
+    clearUser,
     updateUser,
   };
 

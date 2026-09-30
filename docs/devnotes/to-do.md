@@ -473,6 +473,7 @@
 - [~] **PHASE 4:** Connect Front-end to Back-end
   - [~] Create API service layer in client-side
     - [~] Start with authRoutes (/login, /signup)
+      - [ ] /logout
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
       - [x] /updateMyPassword
@@ -489,7 +490,7 @@
           - [x] /updateMe
           - [x] /updateUser
           - [x] /updateUserPassword
-        - [ ] DELETE /users/:userId TODO 1
+        - [x] DELETE /users/:userId TODO 1
         - [ ] DELETE /me TODO 2
 
       - [~] ExplorationProgress

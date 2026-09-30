@@ -76,6 +76,15 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
+exports.logout = catchAsync(async (req, res, next) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  });
+  res.json({ message: "Logged out user." });
+});
+
 exports.protect = catchAsync(async (req, res, next) => {
   // Checking if token exists
   let token;
