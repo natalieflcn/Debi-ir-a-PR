@@ -498,6 +498,7 @@
         - [x] POST /explorations/:explorationId/exploration-progress
         - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 1
         - [ ] DELETE /explorations/:explorationId/exploration-progress
+        - [ ] DELETE /explorations/:explorationId/exploration-progress/:locationId
 
 - [ ] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end
@@ -513,6 +514,7 @@
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
     - [ ] Make sure all async API methods are wrapped in try-catch blocks
+    - [ ] Maybe implement way for users to end Exploration
 
   - [ ] Other Tasks (For the future)
     - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)

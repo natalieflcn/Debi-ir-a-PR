@@ -49,15 +49,18 @@ exports.createExplorationProgress = factory.createOne(
   }),
 );
 
-exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
+exports.deleteExplorationProgress = factory.deleteOne(
+  ExplorationProgress,
+  (req) => ({ user: req.user._id, exploration: req.params.explorationId }),
+);
+
+exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
   console.log("updateexplorationprogres running");
   // Retrieving Existing Documents and Related Data
   const progress = await ExplorationProgress.findOne({
     user: req.user.id,
     exploration: req.params.explorationId,
   });
-
-  console.log(req.params.explorationId, req.body.locationId);
 
   if (!progress)
     return next(
@@ -74,7 +77,7 @@ exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
 
   // Ensure No Duplicate Location Visits
   const isAlreadyVisited = progress?.visitLog.some(
-    (visit) => visit.location === req.body.locationId,
+    (visit) => visit.location === req.params.locationId,
   );
 
   if (isAlreadyVisited)
@@ -82,7 +85,7 @@ exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
 
   // Updating Exploration Progress Data
   progress.visitLog.push({
-    location: req.body.locationId,
+    location: req.params.locationId,
     visitedAt: new Date(),
   });
 
@@ -101,9 +104,43 @@ exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { data: progress } });
 });
 
-exports.deleteExplorationProgressVisit = catchAsync(
-  async (req, res, next) => {},
-);
+exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
+  // Retrieving Existing Exploration Progress
+  const progress = await ExplorationProgress.findOne({
+    user: req.user.id,
+    exploration: req.params.explorationId,
+  });
+
+  if (!progress)
+    next(new AppError("No exploration progress found with that ID.", 404));
+
+  // Updating Exploration Progress Visit Log
+  const filteredVisits = progress.visitLog.filter(
+    (visit) => visit.location === req.params.locationId,
+  );
+  console.log("PROGRESS VISIT LOG");
+  console.log(progress.visitLog);
+  console.log("FILTERED VISITS");
+  console.log(filteredVisits);
+
+  progress.visitLog = filteredVisits;
+
+  // Updating Exploration Progress Derived Data
+  progress.status = "in_progress";
+
+  const datesVisited = progress.visitLog.map((visit) => visit.visitedAt);
+  const lastDateVisited =
+    datesVisited.length > 0 ? new Date(Math.max(...datesVisited)) : null;
+
+  progress.lastVisitedAt = lastDateVisited;
+  console.log("DATES VISITED");
+  console.log(datesVisited);
+  console.log("LAST VISITED AT");
+  console.log(lastDateVisited);
+  await progress.save();
+
+  res.status(200).json({ status: "success", data: { data: progress } });
+});
 
 exports.deleteExplorationProgress = factory.deleteOne(
   ExplorationProgress,

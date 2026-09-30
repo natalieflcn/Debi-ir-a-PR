@@ -27,30 +27,28 @@ export async function startExploration(explorationId) {
 export async function addVisitLocation(explorationId, locationId) {
   console.log("running add visitlocation");
   return await apiFetch(
-    `/explorations/${explorationId}/my-exploration-progress`,
+    `/explorations/${explorationId}/my-exploration-progress/locations/${locationId}`,
     {
-      method: "PATCH",
-      body: JSON.stringify({
-        locationId: locationId,
-      }),
+      method: "POST",
     },
   );
 }
 
 export async function removeVisitLocation(explorationId, locationId) {
+  console.log("running removevisitlocation");
   return await apiFetch(
-    `/explorations/${explorationId}/my-exploration-progress`,
-    { method: "DELETE", body: JSON.stringify({ locationId: locationId }) },
+    `/explorations/${explorationId}/my-exploration-progress/locations/${locationId}`,
+    { method: "DELETE" },
   );
 }
 // PATCH exploration progress
-// adding location to visitLog, each visitLog has timestamp
+// add loading spinner states to exploration location pages
 // separate method for removing location from visitLog (one location per location at a time)
-// if locations.length === visitLog.length, status is complete, otherwise status is in_progress
 
 // DELETE users
 // DELETE me
 // Make sure all API method calls are wrapped in try-catch blocks
+// add loading spinners everywhere
 // Use React Query in conjunction with React loaders
 // Create new buttons (Delete)
 // Create new pages

@@ -18,15 +18,20 @@ router
     // authController.restrictTo("explorer"),
     explorationProgressController.createExplorationProgress,
   )
-  .patch(
-    // authController.protect,
-    // authController.restrictTo("explorer"),
-    explorationProgressController.updateExplorationProgress,
-  )
+  // .patch(
+  //   // authController.protect,
+  //   // authController.restrictTo("explorer"),
+  //   explorationProgressController.updateExplorationProgress,
+  // )
   .delete(
     // authController.protect,
     explorationProgressController.deleteExplorationProgress,
   );
+
+router
+  .route("/locations/:locationId")
+  .post(explorationProgressController.addExplorationProgressVisit)
+  .delete(explorationProgressController.deleteExplorationProgressVisit);
 
 router.route("/me").get(
   // authController.protect,

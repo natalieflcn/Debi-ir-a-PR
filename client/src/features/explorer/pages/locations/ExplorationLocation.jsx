@@ -34,7 +34,7 @@ function ExplorerHeaderDetails({ userCompleted, visitedAt, locationName }) {
         <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
           <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
           <Bold $color="var(--color-light-0)">
-            Completed on {formatDate(visitedAt)}
+            Visited on {formatDate(visitedAt)}
           </Bold>
         </Row>
       )}
@@ -125,6 +125,7 @@ function ExplorationLocation() {
   console.log(userCompleted);
 
   function handleToggleCompleted() {
+    console.log("user completed", userCompleted);
     if (userCompleted)
       mutateRemoveLocation.mutate({
         explorationId: exploration._id,
@@ -141,8 +142,8 @@ function ExplorationLocation() {
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
       visitedAt={
-        userHistory.visitLog.find((visit) => visit.location === location._id)
-          .visitedAt
+        userHistory?.visitLog.find((visit) => visit?.location === location._id)
+          ?.visitedAt
       }
       locationName={location.name}
     />
