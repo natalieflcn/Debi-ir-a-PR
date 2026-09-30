@@ -19,6 +19,7 @@ import {
   removeVisitLocation,
 } from "../../../../services/explorationProgress";
 import Spinner from "../../../../shared/components/ui/Spinner";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -28,18 +29,32 @@ const StyledRow = styled(Row)`
   }
 `;
 
-function ExplorerHeaderDetails({ userCompleted, visitedAt, locationName }) {
+function ExplorerHeaderDetails({
+  userCompleted,
+  visitedAt,
+  locationName,
+  mutateIsPending,
+}) {
   return (
-    <Row>
-      {userCompleted && (
-        <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
-          <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
-          <Bold $color="var(--color-light-0)">
-            Visited on {formatDate(visitedAt)}
-          </Bold>
+    <>
+      {mutateIsPending && (
+        <Row $align="center">
+          <SpinnerMini />
         </Row>
       )}
-    </Row>
+      {!mutateIsPending && (
+        <Row>
+          {userCompleted && (
+            <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
+              <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
+              <Bold $color="var(--color-light-0)">
+                Visited on {formatDate(visitedAt)}
+              </Bold>
+            </Row>
+          )}
+        </Row>
+      )}
+    </>
   );
 }
 
@@ -49,39 +64,52 @@ function ExplorerHeaderDetails({ userCompleted, visitedAt, locationName }) {
 
 //     </ExplorationLocationHeading>}
 
-function ExplorerFooterCTA({ userCompleted, onToggleCompleted }) {
+function ExplorerFooterCTA({
+  userCompleted,
+  onToggleCompleted,
+  mutateIsPending = false,
+}) {
   return (
     <StyledRow
       $direction="horizontal"
       $align="space-evenly"
       $gap="var(--gap-lg)"
     >
-      <Row $direction="horizontal" $gap="var(--gap-lg)">
-        {!userCompleted && (
-          <Heading as="h6">Have you explored this location yet?</Heading>
-        )}
-      </Row>
+      {!mutateIsPending && (
+        <>
+          <Row $direction="horizontal" $gap="var(--gap-lg)">
+            {!userCompleted && (
+              <Heading as="h6">Have you explored this location yet?</Heading>
+            )}
+          </Row>
 
-      {userCompleted && (
-        <Row
-          $direction="horizontal"
-          $gap="var(--gap-sm
+          {userCompleted && (
+            <Row
+              $direction="horizontal"
+              $gap="var(--gap-sm
               )"
-        >
-          <Heading as="h5" $color="var(--color-red-300)">
-            Completed!
-          </Heading>
-          <IoCheckmarkCircleSharp size={40} color="var(--color-red-300)" />
-        </Row>
+            >
+              <Heading as="h5" $color="var(--color-red-300)">
+                Completed!
+              </Heading>
+              <IoCheckmarkCircleSharp size={40} color="var(--color-red-300)" />
+            </Row>
+          )}
+        </>
       )}
 
-      <Button
-        $variation={userCompleted ? "darkRed" : "primary"}
-        $size="small"
-        onClick={onToggleCompleted}
-      >
-        {userCompleted ? "Mark as Incomplete" : "I have explored this location"}
-      </Button>
+      {mutateIsPending && <SpinnerMini />}
+      {!mutateIsPending && (
+        <Button
+          $variation={userCompleted ? "darkRed" : "primary"}
+          $size="small"
+          onClick={onToggleCompleted}
+        >
+          {userCompleted
+            ? "Mark as Incomplete"
+            : "I have explored this location"}
+        </Button>
+      )}
     </StyledRow>
   );
 }
@@ -138,7 +166,8 @@ function ExplorationLocation() {
         locationId: location._id,
       });
   }
-
+  const mutateIsPending =
+    mutateCompleteLocation.isPending || mutateRemoveLocation.isPending;
   const headerDetails = (
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
@@ -147,6 +176,7 @@ function ExplorationLocation() {
           ?.visitedAt
       }
       locationName={location.name}
+      mutateIsPending={mutateIsPending}
     />
   );
 
@@ -154,14 +184,13 @@ function ExplorationLocation() {
     <ExplorerFooterCTA
       userCompleted={userCompleted}
       onToggleCompleted={handleToggleCompleted}
+      mutateIsPending={mutateIsPending}
     />
   );
 
   return (
     <>
-      {(isPending ||
-        mutateCompleteLocation.isPending ||
-        mutateRemoveLocation.isPending) && <Spinner />}
+      {isPending && <Spinner />}
 
       {isSuccess && (
         <ExplorationLocationCard
