@@ -3,6 +3,8 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { RouterProvider } from "react-router-dom";
 import AppRouter from "./app/router/AppRouter";
 import { useAuth } from "./features/auth/contexts/AuthContext";
+import ErrorFallback from "./errors/ErrorFallback";
+import { ErrorBoundary } from "react-error-boundary";
 
 const themeVariants = {
   blue: {
@@ -27,8 +29,9 @@ function AppContent() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-
-      <RouterProvider router={AppRouter} />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <RouterProvider router={AppRouter} />
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

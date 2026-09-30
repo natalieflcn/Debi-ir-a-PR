@@ -2,8 +2,8 @@
 
 import { lazy } from "react";
 import { Route } from "react-router-dom";
-import ErrorPage from "../../pages/ErrorPage";
-import Unauthorized from "../../pages/Unauthorized";
+import RouteError from "../../errors/RouteError";
+import Unauthorized from "../../errors/Unauthorized";
 import { rootLoader } from "./loaders/rootLoader";
 
 // import signupLoader from "./loaders/signupLoader";
@@ -48,7 +48,7 @@ const PublicRoutes = [
     loader: rootLoader,
     // loader: signupLoader,
   },
-  { path: "error", element: <ErrorPage /> },
+
   { path: "/unauthorized", element: <Unauthorized /> },
 ];
 

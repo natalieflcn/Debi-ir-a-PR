@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
+import Spinner from "../components/ui/Spinner";
 
 const StyledMainContent = styled.main`
   position: relative;
@@ -17,9 +18,14 @@ const StyledMainContent = styled.main`
   }
 `;
 function MainContent() {
+  const navigate = useNavigation();
+
   return (
     <StyledMainContent>
-      <Outlet />
+      <>
+        {navigate.state === "loading" && <Spinner />}
+        {navigate.state !== "loading" && <Outlet />}
+      </>
     </StyledMainContent>
   );
 }

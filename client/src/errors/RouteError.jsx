@@ -3,7 +3,7 @@ import Image from "../shared/components/ui/Image";
 import Heading from "../shared/components/typography/Heading";
 import Button from "../shared/components/ui/Button";
 import Row from "../shared/components/layout/Row";
-import { useRouteError } from "react-router-dom";
+import { useRevalidator, useRouteError } from "react-router-dom";
 import RouterLink from "../shared/components/routing/RouterLink";
 import Background from "../shared/components/decorative/Background";
 import { useAuth } from "../features/auth/contexts/AuthContext";
@@ -30,8 +30,9 @@ const StyledParagraph = styled.p`
   margin-bottom: 1rem;
   font-weight: var(--font-weight-medium);
 `;
-function ErrorPage() {
+function RouteError() {
   const error = useRouteError();
+  const { revalidate, state } = useRevalidator();
 
   const { user } = useAuth();
   let userRedirect;
@@ -76,9 +77,9 @@ function ErrorPage() {
             <Button
               $size="small"
               $variation="secondary"
-              onClick={() => window.location.reload()}
+              onClick={() => revalidate()}
             >
-              Refresh the Page
+              {state === "loading" ? "Trying Again..." : "Try Again"}
             </Button>
             <RouterLink to={`/${userRedirect}`}>
               <Button $size="small" $variation="primary">
@@ -92,4 +93,4 @@ function ErrorPage() {
   );
 }
 
-export default ErrorPage;
+export default RouteError;

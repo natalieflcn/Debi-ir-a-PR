@@ -11,8 +11,8 @@ import Spinner from "../../shared/components/ui/Spinner";
 import AmbassadorRoutes from "./AmbassadorRoutes";
 import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 import App from "../../App";
-import PageNotFound from "../../pages/PageNotFound";
-import ErrorPage from "../../pages/ErrorPage";
+import PageNotFound from "../../errors/PageNotFound";
+import RouteError from "../../errors/RouteError";
 import ProtectedRoute from "./ProtectedRoute";
 
 // function AppRouter() {
@@ -45,9 +45,9 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <RouteError />,
     children: [
       {
-        errorElement: <ErrorPage />,
         children: [...PublicRoutes],
       },
       { path: "*", element: <PageNotFound /> },
@@ -56,12 +56,11 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <ExplorerLayout />,
-
+    errorElement: <RouteError />,
     children: [
       {
         element: <ProtectedRoute allowedRoles={["explorer"]} />,
         children: [...ExplorerRoutes],
-        errorElement: <ErrorPage />,
       },
       { path: "*", element: <PageNotFound /> },
     ],
@@ -69,11 +68,11 @@ const AppRouter = createBrowserRouter([
   {
     path: "/ambassador",
     element: <AmbassadorLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <RouteError />,
     children: [
       {
         element: <ProtectedRoute allowedRoles={["ambassador"]} />,
-        errorElement: <ErrorPage />,
+
         children: [...AmbassadorRoutes],
       },
       { path: "*", element: <PageNotFound /> },
@@ -82,11 +81,11 @@ const AppRouter = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <RouteError />,
     children: [
       {
         element: <ProtectedRoute allowedRoles={["admin"]} />,
-        errorElement: <ErrorPage />,
+
         children: [...AdminRoutes],
       },
       { path: "*", element: <PageNotFound /> },

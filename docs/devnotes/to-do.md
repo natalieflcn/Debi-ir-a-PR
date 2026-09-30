@@ -473,7 +473,7 @@
 - [~] **PHASE 4:** Connect Front-end to Back-end
   - [~] Create API service layer in client-side
     - [~] Start with authRoutes (/login, /signup)
-      - [ ] /logout
+      - [x] /logout
       - [ ] /forgotPassword
       - [ ] /resetForgottenPassword
       - [x] /updateMyPassword
@@ -512,7 +512,6 @@
       - [ ] Delete explorations
       - [ ] Delete locations
       - [x] Delete users
-    - [ ] Eradicate visitLog usage in front-end, will consolidate visitLog into visitedLocations
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
     - [ ] Make sure all async API methods are wrapped in try-catch blocks
@@ -552,3 +551,26 @@
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
+
+// make sure all API methods are wrapped in try-catch blcoks
+
+- explorations.js
+- explorationprogress.js (onError react query)
+- users.js
+- auth.js
+
+// delete locations method
+---- delete locations from exploration
+// create exploration progress way to end exploration
+// create way to delete explorations
+// create way for users to edit their names
+
+// location name should wrap around current locations, not stretch past container
+// add functionality to search input
+
+// TODO implement loading spinners in all data fetched components
+
+// figure out how to populate user data depending on role without virtuals
+
+// create forgot password page
+// create reset password page
