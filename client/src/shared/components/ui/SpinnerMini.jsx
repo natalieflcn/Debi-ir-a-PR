@@ -12,7 +12,6 @@ const SpinnerMini = styled(BiLoaderAlt)`
   /* width: 100%; */
   /* display: block; */
 
-  border: 3px solid red;
   height: 2.4rem;
   width: 2.4rem;
   color: var(--color-blue-0);
