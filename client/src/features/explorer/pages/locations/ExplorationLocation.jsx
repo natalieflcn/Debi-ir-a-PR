@@ -18,6 +18,7 @@ import {
   getExplorationProgress,
   removeVisitLocation,
 } from "../../../../services/explorationProgress";
+import Spinner from "../../../../shared/components/ui/Spinner";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -90,7 +91,7 @@ function ExplorationLocation() {
   const QueryClient = useQueryClient();
 
   console.log(exploration._id);
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data, error, isSuccess } = useQuery({
     queryKey: ["explorationProgress", exploration._id],
     queryFn: () => getExplorationProgress(exploration._id),
   });
@@ -157,13 +158,21 @@ function ExplorationLocation() {
   );
 
   return (
-    <ExplorationLocationCard
-      exploration={exploration}
-      location={location}
-      headerDetails={headerDetails}
-      footerCTA={footerCTA}
-      userCompleted={userCompleted}
-    />
+    <>
+      {(isPending ||
+        mutateCompleteLocation.isPending ||
+        mutateRemoveLocation.isPending) && <Spinner />}
+
+      {isSuccess && (
+        <ExplorationLocationCard
+          exploration={exploration}
+          location={location}
+          headerDetails={headerDetails}
+          footerCTA={footerCTA}
+          userCompleted={userCompleted}
+        />
+      )}
+    </>
   );
 }
 

@@ -30,6 +30,7 @@ import {
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
 import { startExploration } from "../../../services/explorationProgress";
+import Spinner from "../../../shared/components/ui/Spinner";
 
 function ExplorationCard({
   exploration,
@@ -84,11 +85,11 @@ function ExplorationCard({
                 </Row>
 
                 {/* {exploration.cities.map((city, i) => (
-                  <Row $direction="horizontal" $gap="var(--gap-sm)" key={i}>
-                    <IoLocationSharp color="var(--color-red-300)" />
-                    <Bold $color="var(--color-dark-200)">{city}, PR</Bold>
-                  </Row>
-                ))} */}
+                <Row $direction="horizontal" $gap="var(--gap-sm)" key={i}>
+                  <IoLocationSharp color="var(--color-red-300)" />
+                  <Bold $color="var(--color-dark-200)">{city}, PR</Bold>
+                </Row>
+              ))} */}
 
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoLocationSharp color="var(--color-red-300)" />
@@ -103,7 +104,6 @@ function ExplorationCard({
             </Row>
           </ExplorationCardHeaderDetails>
         </ExplorationCardHeaderImage>
-
         <ExplorationCardBody>
           <ExplorationDetailsRow
             $direction="horizontal"
@@ -123,10 +123,10 @@ function ExplorationCard({
                   <ExplorationTag key={tag}>{capitalize(tag)}</ExplorationTag>
                 ))}
                 {/* {derivedLocationTags.map((tag) => (
-                  <ExplorationLocationTag key={tag}>
-                    {capitalize(tag)}
-                  </ExplorationLocationTag>
-                ))} */}
+                <ExplorationLocationTag key={tag}>
+                  {capitalize(tag)}
+                </ExplorationLocationTag>
+              ))} */}
               </TagCollection>
             </ExplorationCardAbout>
 

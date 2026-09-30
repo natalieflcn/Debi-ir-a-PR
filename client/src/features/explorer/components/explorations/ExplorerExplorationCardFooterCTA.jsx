@@ -5,6 +5,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import { startExploration } from "../../../../services/explorationProgress";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 const BadgeRow = styled(Row)`
   @media (max-width: 500px) {
@@ -22,10 +23,17 @@ function ExplorerExplorationCardFooterCTA({
   exploration,
   userHistory,
   onStartExploration,
+  mutateIsPending = false,
 }) {
   return (
     <Card $cardColor="var(--color-light-100)">
-      {!hasStarted && (
+      {mutateIsPending && (
+        <Row $align="center">
+          <SpinnerMini />
+        </Row>
+      )}
+
+      {!mutateIsPending && !hasStarted && (
         <Row $direction="horizontal" $align="space-evenly">
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <Image
@@ -45,7 +53,7 @@ function ExplorerExplorationCardFooterCTA({
         </Row>
       )}
 
-      {hasStarted && userHistory.status !== "completed" && (
+      {!mutateIsPending && hasStarted && userHistory.status !== "completed" && (
         <StyledRow $direction="vertical" $align="center" $gap="var(--gap-md)">
           Complete this exploration to earn:
           <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
@@ -57,7 +65,7 @@ function ExplorerExplorationCardFooterCTA({
         </StyledRow>
       )}
 
-      {hasStarted && userHistory.status === "completed" && (
+      {!mutateIsPending && hasStarted && userHistory.status === "completed" && (
         <StyledRow $direction="vertical" $align="center" $gap="var(--gap-md)">
           Congratulations! You completed this exploration and earned the
           following badge:

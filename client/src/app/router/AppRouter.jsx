@@ -7,7 +7,7 @@ import PublicRoutes from "./PublicRoutes";
 import ExplorerRoutes from "./ExplorerRoutes";
 import AdminRoutes from "./AdminRoutes";
 import { Suspense } from "react";
-import SpinnerMini from "../../shared/components/ui/SpinnerMini";
+import Spinner from "../../shared/components/ui/Spinner";
 import AmbassadorRoutes from "./AmbassadorRoutes";
 import AmbassadorLayout from "../../shared/layouts/AmbassadorLayout";
 import App from "../../App";

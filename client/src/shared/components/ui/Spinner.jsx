@@ -7,16 +7,12 @@ const rotate = keyframes`
   }
 `;
 
-const SpinnerMini = styled(BiLoaderAlt)`
-  /* margin: 1rem auto; */
-  /* width: 100%; */
-  /* display: block; */
-
-  border: 3px solid red;
+const Spinner = styled(BiLoaderAlt)`
+  margin: 4rem auto;
+  width: 100%;
   height: 2.4rem;
-  width: 2.4rem;
   color: var(--color-blue-0);
   animation: ${rotate} 1.5s infinite linear;
 `;
 
-export default SpinnerMini;
+export default Spinner;

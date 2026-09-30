@@ -41,7 +41,7 @@ export async function removeVisitLocation(explorationId, locationId) {
     { method: "DELETE" },
   );
 }
-// PATCH exploration progress
+
 // add loading spinner states to exploration location pages
 // separate method for removing location from visitLog (one location per location at a time)
 

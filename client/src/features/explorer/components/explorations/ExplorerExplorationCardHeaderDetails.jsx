@@ -6,6 +6,7 @@ import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 import styled from "styled-components";
 import { FaFlagCheckered } from "react-icons/fa";
 import { formatDate } from "../../../../shared/utils/helpers";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 const StyledRow = styled(Row)`
   @media (max-width: 900px) {
@@ -19,6 +20,7 @@ function ExplorerExplorationCardHeaderDetails({
   exploration,
   userHistory,
   onStartExploration,
+  mutateIsPending = false,
 }) {
   const stopsCompleted = userHistory?.visitLog?.length ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
@@ -37,7 +39,12 @@ function ExplorerExplorationCardHeaderDetails({
 
   return (
     <>
-      {hasStarted && userHistory.status !== "completed" && (
+      {mutateIsPending && (
+        <Row $align="center">
+          <SpinnerMini />
+        </Row>
+      )}
+      {!mutateIsPending && hasStarted && userHistory.status !== "completed" && (
         <>
           <StyledRow
             $direction="horizontal"
@@ -62,7 +69,7 @@ function ExplorerExplorationCardHeaderDetails({
           </Row>
         </>
       )}
-      {hasStarted && userHistory.status === "completed" && (
+      {!mutateIsPending && hasStarted && userHistory.status === "completed" && (
         <>
           <StyledRow
             $direction="horizontal"
@@ -81,7 +88,7 @@ function ExplorerExplorationCardHeaderDetails({
           </Row>
         </>
       )}
-      {!hasStarted && (
+      {!mutateIsPending && !hasStarted && (
         <Button $variation="primary" $size="small" onClick={onStartExploration}>
           Start Exploring
         </Button>

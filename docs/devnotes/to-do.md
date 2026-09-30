@@ -490,15 +490,16 @@
           - [x] /updateUser
           - [x] /updateUserPassword
         - [ ] DELETE /users/:userId TODO 3
+        - [ ] DELETE /me
 
       - [ ] ExplorationProgress
         - [ ] GET /admin-exploration-progress
-        - [x] GET /exploration-progress TODO
+        - [x] GET /exploration-progress
         - [ ] GET /users/:explorationId/user-exploration-progress
         - [x] POST /explorations/:explorationId/exploration-progress
-        - [ ] PATCH /explorations/:explorationId/exploration-progress TODO 1
+        - [x] POST /explorations/:explorationId/exploration-progress/locations/:locationId
         - [ ] DELETE /explorations/:explorationId/exploration-progress
-        - [ ] DELETE /explorations/:explorationId/exploration-progress/:locationId
+        - [x] DELETE /explorations/:explorationId/exploration-progress/:locationId
 
 - [ ] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end

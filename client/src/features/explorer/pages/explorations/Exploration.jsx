@@ -11,12 +11,12 @@ import {
 } from "../../../../services/explorationProgress";
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
+import Spinner from "../../../../shared/components/ui/Spinner";
 
 function Exploration() {
   const { exploration } = useLoaderData();
   const QueryClient = useQueryClient();
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data, error, isSuccess } = useQuery({
     queryKey: ["explorationProgress", exploration._id],
     queryFn: () => getExplorationProgress(exploration._id),
   });
@@ -61,6 +61,7 @@ function Exploration() {
       hasStarted={hasStarted}
       exploration={exploration}
       onStartExploration={() => mutateExploration.mutate(exploration._id)}
+      mutateIsPending={mutateExploration.isPending}
     />
   );
 
@@ -70,6 +71,7 @@ function Exploration() {
       // exploration={exploration}
       locations={exploration.locations}
       userHistory={userHistory}
+      mutateIsPending={mutateExploration.isPending}
     />
   );
 
@@ -80,12 +82,13 @@ function Exploration() {
       userHistory={userHistory}
       // onStartExploration={handleStartExploration}
       onStartExploration={() => mutateExploration.mutate(exploration._id)}
+      mutateIsPending={mutateExploration.isPending}
     />
   );
 
   return (
     <>
-      {(isPending || mutateExploration.isPending) && <SpinnerMini />}
+      {isPending && <Spinner />}
 
       {(isError || mutateExploration.isError) && (
         <span>Error: {error.message}</span>
@@ -95,12 +98,15 @@ function Exploration() {
     mutation.isSuccess ? "Exploration Started!" : null;
   } */}
 
-      <ExplorationCard
-        exploration={exploration}
-        headerDetails={headerDetails}
-        locationDetails={locationDetails}
-        footerCTA={footerCTA}
-      />
+      {isSuccess && (
+        <ExplorationCard
+          exploration={exploration}
+          headerDetails={headerDetails}
+          locationDetails={locationDetails}
+          footerCTA={footerCTA}
+          isPending={mutateExploration.isPending}
+        />
+      )}
     </>
   );
 }
