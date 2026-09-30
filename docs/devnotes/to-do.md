@@ -479,7 +479,7 @@
 
     - [~] Connect remaining routes
       - [~] Explorations
-        - [ ] DELETE /explorations/:explorationId
+        - [ ] DELETE /explorations/:explorationId TODO
       - [~] Users
         - [x] GET
           - [x] Admin POV
@@ -489,13 +489,13 @@
           - [x] /updateMe
           - [x] /updateUser
           - [x] /updateUserPassword
-        - [ ] DELETE /users/:userId TODO 3
-        - [ ] DELETE /me
+        - [ ] DELETE /users/:userId TODO 1
+        - [ ] DELETE /me TODO 2
 
-      - [ ] ExplorationProgress
-        - [ ] GET /admin-exploration-progress
+      - [~] ExplorationProgress
+        - [ ] GET /admin-exploration-progress **(save this implementation for admin dashboard analytics stage)**
         - [x] GET /exploration-progress
-        - [ ] GET /users/:explorationId/user-exploration-progress
+        - [ ] GET /users/:explorationId/user-exploration-progress **(save this implementation for explorer dashboard analytics stage)**
         - [x] POST /explorations/:explorationId/exploration-progress
         - [x] POST /explorations/:explorationId/exploration-progress/locations/:locationId
         - [ ] DELETE /explorations/:explorationId/exploration-progress
@@ -515,14 +515,18 @@
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
     - [ ] Make sure all async API methods are wrapped in try-catch blocks
-    - [ ] Maybe implement way for users to end Exploration
+    - [ ] Implement way for users to end Exploration
 
   - [ ] Other Tasks (For the future)
     - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
     - [ ] Center Exploration images... potentially make slideshow for more than three images?
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
-    - [ ] Implement loading spinners throughout the app
+    - [~] Implement loading spinners throughout the app
+      - [ ] Mini spinners in Explorer - Exploration Card
+      - [ ] Mini spinners in Explorer - Exploration Location Card
+      - [ ] Mini spinners in Admin - Exploration Card
+      - [ ] Mini spinners in Admin - Exploration Location Card
       - [ ] useNavigation in layout components
     - [ ] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
@@ -536,7 +540,7 @@
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] Add functionality to Input search in Explorations
     - [ ] Implement React Query/TanStack Query
-      - [ ] Use React Query in conjunction with React Router loaders to cache fetched route data
+      - [ ] Use React Query in conjunction with React Router loaders to cache fetched route data TODO 3
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page

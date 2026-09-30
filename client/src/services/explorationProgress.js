@@ -48,7 +48,6 @@ export async function removeVisitLocation(explorationId, locationId) {
 // DELETE users
 // DELETE me
 // Make sure all API method calls are wrapped in try-catch blocks
-// add loading spinners everywhere
 // Use React Query in conjunction with React loaders
-// Create new buttons (Delete)
+// Create new buttons (Delete Exploration, Delete Location)
 // Create new pages

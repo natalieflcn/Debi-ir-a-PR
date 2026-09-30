@@ -32,3 +32,14 @@ export async function updateUserInformation(userId, formData) {
     body: JSON.stringify(formData),
   });
 }
+
+export async function deleteUser(userId) {
+  console.log("running delete user function");
+  return await apiFetch(`/users/${userId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function deleteMe() {
+  console.log("running delete me function");
+}

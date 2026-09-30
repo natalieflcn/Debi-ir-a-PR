@@ -56,7 +56,8 @@ router
     // authController.restrictTo("admin", "ambassador"),
   )
   .get(userController.getUser)
-  .patch(userController.updateUser);
+  .patch(userController.updateUser)
+  .delete(userController.deleteUser);
 
 router.route("/:id/updatePassword").patch(authController.updateUserPassword);
 // router.get("/:userId/badgeCollection");

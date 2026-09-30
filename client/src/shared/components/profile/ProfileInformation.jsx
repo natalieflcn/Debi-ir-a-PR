@@ -7,12 +7,17 @@ import Row from "../layout/Row";
 import Button from "../ui/Button";
 import { FaAsterisk } from "react-icons/fa";
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import Input from "../form/Input";
 import Modal from "../ui/Modal";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { formatDate } from "../../utils/helpers";
-import { updateMe, updateUserInformation } from "../../../services/users";
+import {
+  deleteMe,
+  deleteUser,
+  updateMe,
+  updateUserInformation,
+} from "../../../services/users";
 import { updateMyPassword, updateUserPassword } from "../../../services/auth";
 
 // const StyledProfileInformation = styled.div`
@@ -129,11 +134,14 @@ const ProfileInformation = function ({ user }) {
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
+  const isMyProfile = user._id === myUser._id;
+  const navigate = useNavigate();
 
   const handleSetEmail = function (value) {
     setEmailErrors("");
@@ -165,12 +173,11 @@ const ProfileInformation = function ({ user }) {
     //   const { data } = await updateUser(user._id, { email: email });
     // }
 
-    const { data } =
-      user._id === myUser._id
-        ? await updateMe({ email: email })
-        : await updateUserInformation(user._id, { email: email });
+    const { data } = isMyProfile
+      ? await updateMe({ email: email })
+      : await updateUserInformation(user._id, { email: email });
 
-    if (user._id === myUser._id) updateUser(data.data);
+    if (isMyProfile) updateUser(data.data);
 
     setIsEditingEmail(false);
   };
@@ -198,19 +205,18 @@ const ProfileInformation = function ({ user }) {
       return;
     }
 
-    const { data } =
-      user._id === myUser._id
-        ? await updateMyPassword({
-            password: password,
-            passwordConfirm: confirmPassword,
-          })
-        : await updateUserPassword({
-            userId: user._id,
-            password: password,
-            passwordConfirm: confirmPassword,
-          });
+    const { data } = isMyProfile
+      ? await updateMyPassword({
+          password: password,
+          passwordConfirm: confirmPassword,
+        })
+      : await updateUserPassword({
+          userId: user._id,
+          password: password,
+          passwordConfirm: confirmPassword,
+        });
 
-    if (user._id === myUser._id) updateUser(data.data || data.user);
+    if (isMyProfile) updateUser(data.data || data.user);
 
     setIsEditingPassword(false);
   };
@@ -220,6 +226,29 @@ const ProfileInformation = function ({ user }) {
     setConfirmPassword("");
     setIsEditingPassword(false);
     setPasswordErrors("");
+  };
+
+  const handleDeleteUser = async function () {
+    setIsDeleted(true);
+    if (isMyProfile) {
+      await deleteMe();
+      // set user in authcontext to null
+      // 'your account has been deleted' displayed in modal
+      // set timer
+      // redirect to home page of public routes
+      setTimeout(() => {
+        navigate(`/`);
+        // Put your specific code or function call here
+      }, 1000);
+    } else {
+      await deleteUser(user._id);
+      // 'this user has been deleted displayed in modal
+      // set timer
+      // redirect to users page
+      setTimeout(() => {
+        navigate(`/${myUser.role}/users`);
+      }, 1000);
+    }
   };
 
   return (
@@ -379,26 +408,57 @@ const ProfileInformation = function ({ user }) {
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           <Row $gap="var(--gap-md)">
-            <Row $align="center" $gap="var(--gap-sm)">
-              <Bold $color="var(--color-red-300)">
-                Are you sure you want to delete your account?
-              </Bold>
-              <SmallText>
-                This is an irreversible action and all your progress will be
-                lost.
-              </SmallText>
-            </Row>
+            {!isDeleted && (
+              <>
+                <Row $align="center" $gap="var(--gap-sm)">
+                  <Bold $color="var(--color-red-300)">
+                    {isMyProfile
+                      ? "Are you sure you want to delete your account?"
+                      : "Are you sure you want to delete this user?"}
+                  </Bold>
+                  <SmallText>
+                    {isMyProfile
+                      ? "This is an irreversible action and all your data will be lost."
+                      : "This is an irreversible action and this user's data will be lost."}
+                  </SmallText>
+                </Row>
 
-            <Button
-              $size="small"
-              $variation="secondary"
-              onClick={() => setIsModalOpen(false)}
-            >
-              No, Return to profile
-            </Button>
-            <Button $size="small" $variation="primary">
-              Yes, Delete my account
-            </Button>
+                <Button
+                  $size="small"
+                  $variation="secondary"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  No, Return to profile
+                </Button>
+                <Button
+                  $size="small"
+                  $variation="primary"
+                  onClick={handleDeleteUser}
+                >
+                  {isMyProfile
+                    ? "Yes, Delete my account"
+                    : "Yes, Delete this user"}
+                </Button>
+              </>
+            )}
+            {isDeleted && (
+              <Row $align="center">
+                {
+                  <>
+                    <Bold>
+                      {isMyProfile
+                        ? "Your account has been deleted!"
+                        : "This account has been deleted!"}
+                    </Bold>
+                    <SmallText>
+                      {isMyProfile
+                        ? "Redirecting you back to the Home page..."
+                        : "Redirecting you back to the Users page..."}
+                    </SmallText>
+                  </>
+                }
+              </Row>
+            )}
           </Row>
         </Modal>
       )}
