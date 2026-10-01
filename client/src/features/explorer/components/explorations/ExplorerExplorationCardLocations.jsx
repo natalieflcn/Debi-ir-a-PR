@@ -64,6 +64,7 @@ function ExplorerExplorationCardLocations({
 
     return (
       <>
+        {/* KEY HERE */}
         {mutateIsPending && (
           <Row $align="center">
             <Spinner />

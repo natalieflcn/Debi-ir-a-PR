@@ -9,7 +9,7 @@ import { getExplorationsSummary } from "../../../services/explorations";
 export async function explorerExplorationsLoader() {
   const { data: explorations } = await getExplorationsSummary();
   const { data: progress } = await getAllMyExplorationProgress();
-  console.log(progress.data);
+
   // console.log(await getExplorationsSummary());
   return { explorations: explorations.data, userHistory: progress.data };
 }

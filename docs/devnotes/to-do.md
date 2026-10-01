@@ -563,9 +563,7 @@
   - [ ] Refactor modal windows with usereducer hook
 
 // create exploration progress way to end exploration, if in progress
-// if exploration is completed, clear exploration data
-
-// add indication that exploration is in progresss, completed
+// if exploration is completed, option to clear exploration data
 
 // combine react router loader qith react query for explorers
 

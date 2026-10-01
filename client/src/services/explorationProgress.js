@@ -31,6 +31,15 @@ export async function startExploration(explorationId) {
   );
 }
 
+export async function endExploration(explorationId) {
+  return await apiFetch(
+    `/explorations/${explorationId}/my-exploration-progress`,
+    {
+      method: "DELETE",
+    },
+  );
+}
+
 export async function addVisitLocation(explorationId, locationId) {
   return await apiFetch(
     `/explorations/${explorationId}/my-exploration-progress/locations/${locationId}`,
