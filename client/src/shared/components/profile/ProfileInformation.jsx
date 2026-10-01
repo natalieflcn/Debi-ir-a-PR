@@ -73,6 +73,10 @@ const ProfileRow = styled.div`
   }
 `;
 
+const Paragraph = styled.p`
+  text-align: center;
+`;
+
 const ButtonArea = styled.div`
   grid-area: button;
   justify-self: flex-end;
@@ -142,6 +146,8 @@ const ProfileInformation = function ({ user }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
+  const [isDeletingError, setIsDeletingError] = useState(false);
+  const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState("");
   const isMyProfile = user._id === myUser._id;
   const navigate = useNavigate();
 
@@ -231,30 +237,27 @@ const ProfileInformation = function ({ user }) {
   };
 
   const handleDeleteUser = async function () {
-    setIsDeleted(true);
-    if (isMyProfile) {
-      await deleteMe();
-      // set user in authcontext to null
-      // 'your account has been deleted' displayed in modal
-      // set timer
-      // redirect to home page of public routes
+    try {
+      if (isMyProfile) {
+        await deleteMe();
+        setIsDeleted(true);
 
-      setTimeout(async () => {
-        clearUser();
+        setTimeout(async () => {
+          clearUser();
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 5);
+        }, 1000);
+      } else {
+        await deleteUser(user._id);
+        setIsDeleted(true);
         setTimeout(() => {
-          navigate("/", { replace: true });
-        }, 5);
-
-        // Put your specific code or function call here
-      }, 1000);
-    } else {
-      await deleteUser(user._id);
-      // 'this user has been deleted displayed in modal
-      // set timer
-      // redirect to users page
-      setTimeout(() => {
-        navigate(`/${myUser.role}/users`);
-      }, 1000);
+          navigate(`/${myUser.role}/users`);
+        }, 1000);
+      }
+    } catch (err) {
+      setIsDeletingError(true);
+      setIsDeletingErrorMessage(err.message);
     }
   };
 
@@ -413,7 +416,11 @@ const ProfileInformation = function ({ user }) {
       </StyledProfileInformation>
 
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>
+        <Modal
+          onClose={() => {
+            setIsModalOpen(false);
+          }}
+        >
           <Row $gap="var(--gap-md)">
             {!isDeleted && (
               <>
@@ -447,6 +454,12 @@ const ProfileInformation = function ({ user }) {
                     : "Yes, Delete this user"}
                 </Button>
               </>
+            )}
+            {isDeletingError && (
+              <Row $align="center">
+                <Bold>An error has occurred. Please try again.</Bold>
+                <Paragraph>{err.message}</Paragraph>
+              </Row>
             )}
             {isDeleted && (
               <Row $align="center">

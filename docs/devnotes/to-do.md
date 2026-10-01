@@ -552,14 +552,6 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-// delete locations method
----- delete locations from exploration
-
-- add try-catch blocks around delete methods, update methods, auth methods
-
-- during exploration creation: delete location from form isnt working either
-- from existing exploration: from editlocation
-- edge case: 1 location exploration -- don't allow
 - refactor createlocation into editlocation
   ---- delete exploration
 

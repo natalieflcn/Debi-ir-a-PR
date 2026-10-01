@@ -17,18 +17,30 @@ import { useNavigate } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useLoaderData } from "react-router-dom";
 import { verifyPRZipcode } from "../../../../shared/utils/helpers";
-import {
-  updateExploration,
-  updateExplorationLocation,
-} from "../../../../services/explorations";
+import { updateExplorationLocation } from "../../../../services/explorations";
 import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
+const StyledFormRow = styled(Row)`
+  @media (max-width: 690px) {
+    gap: var(--gap-xl);
+    text-align: center;
+  }
+`;
+
+const StyledInput = styled(Input)`
+  width: 100%;
+`;
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+  min-width: 0;
 `;
 
 const StyledTextAreaRow = styled(Row)`
@@ -36,30 +48,23 @@ const StyledTextAreaRow = styled(Row)`
   height: 10rem;
 `;
 
-function CreateLocation() {
+function EditLocation() {
   const { exploration, location } = useLoaderData();
 
-  const isEditing = Boolean(location);
+  // const isEditing = Boolean(location);
 
-  const [name, setName] = useState(isEditing ? location.name : "");
-  const [street, setStreet] = useState(
-    isEditing ? location.address.street : "",
-  );
-  const [city, setCity] = useState(isEditing ? location.address.city : null);
-  const [zipcode, setZipcode] = useState(
-    isEditing ? location.address.zipcode : "",
-  );
-  const [headerImage, setHeaderImage] = useState(
-    isEditing ? location.headerImage : [],
-  );
-  const [description, setDescription] = useState(
-    isEditing ? location.description : "",
-  );
-  const [images, setImages] = useState(isEditing ? location.images : []);
-  const [tags, setTags] = useState(isEditing ? location.tags : []);
+  const [name, setName] = useState(location.name || "");
+  // const [address, setAddress] = useState(isEditing ? location.address : "");
+  const [street, setStreet] = useState(location.address.street || "");
+  const [city, setCity] = useState(location.address.city || "");
+  const [zipcode, setZipcode] = useState(location.address.zipcode || "");
+  const [headerImage, setHeaderImage] = useState(location.headerImage || []);
+  const [description, setDescription] = useState(location.description || "");
+  const [images, setImages] = useState(location.images || []);
+  const [tags, setTags] = useState(location.tags || []);
   const [formErrors, setFormErrors] = useState({});
-
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -112,21 +117,19 @@ function CreateLocation() {
       errors.submit = "Please review your form submission and try again.";
 
       setFormErrors(errors);
-
       return;
     }
 
     const formData = {
       name,
       address: { street, city, zipcode },
-      city,
       headerImage,
       description,
       images,
       tags,
     };
 
-    if (isEditing) formData.updatedBy = user._id;
+    formData.updatedBy = user._id;
 
     try {
       setIsSubmitting(true);
@@ -138,7 +141,7 @@ function CreateLocation() {
       const updatedLocation = data.data;
 
       navigate(
-        `/admin/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
+        `/ambassador/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
       );
     } catch (err) {
       console.log(err);
@@ -149,18 +152,18 @@ function CreateLocation() {
 
   return (
     <Row $gap="var(--gap-lg)">
-      <RouterLink to={`/admin/explorations/${exploration.slug}`}>
+      <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
         <Button $size="small" $variation="darkRed">
           <FaArrowLeft size={12} /> Back to {exploration?.name ?? "Exploration"}
         </Button>
       </RouterLink>
 
       <AppForm
-        formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
+        formTitle={"EDIT LOCATION"}
         onSubmit={handleSubmit}
         // method={isEditing ? "patch" : "post"}
       >
-        <Row $gap="var(--gap-lg)">
+        <StyledFormRow $gap="var(--gap-lg)">
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
               {exploration.name}
@@ -169,7 +172,7 @@ function CreateLocation() {
 
           <FormField label="Name">
             <StyledRow $gap="var(--gap-xs)">
-              <Input
+              <StyledInput
                 name="name"
                 placeholder="The name of the location"
                 value={name}
@@ -270,14 +273,13 @@ function CreateLocation() {
           </FormField>
 
           <Button $variation="darkRed" $size="medium" type="submit">
-            {!isSubmitting && (isEditing ? "Save Changes" : "Create Location")}
+            {!isSubmitting && "Save Changes"}
             {isSubmitting && "Saving Changes..."}
           </Button>
-          {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
-        </Row>
+        </StyledFormRow>
       </AppForm>
     </Row>
   );
 }
 
-export default CreateLocation;
+export default EditLocation;
