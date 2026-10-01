@@ -119,7 +119,7 @@ exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
   if (exploration.locations.length === 1)
     return next(
       new AppError(
-        "An exploration cannot have zero locations. Please add more locations before deleting this one.",
+        `An exploration cannot have zero locations. Please add more locations to the exploration before deleting ${exploration.locations.find((loc) => loc.slug === locationId).name}.`,
         400,
       ),
     );

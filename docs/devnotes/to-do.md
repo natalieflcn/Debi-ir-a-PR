@@ -552,15 +552,10 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-- explorations.js
-- explorationprogress.js (onError react query)
-- users.js
-- auth.js
-
-// update exploration method bc pre-save slugify isnt running
-
 // delete locations method
 ---- delete locations from exploration
+
+- add try-catch blocks around delete methods, update methods, auth methods
 
 - during exploration creation: delete location from form isnt working either
 - from existing exploration: from editlocation

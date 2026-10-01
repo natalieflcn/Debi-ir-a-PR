@@ -20,6 +20,7 @@ import {
 } from "../../../services/users";
 import { updateMyPassword, updateUserPassword } from "../../../services/auth";
 import Spinner from "../ui/Spinner";
+import SpinnerMini from "../ui/SpinnerMini";
 
 // const StyledProfileInformation = styled.div`
 //   display: grid;
@@ -461,6 +462,7 @@ const ProfileInformation = function ({ user }) {
                         ? "Redirecting you back to the Home page..."
                         : "Redirecting you back to the Users page..."}
                     </SmallText>
+                    <SpinnerMini />
                   </>
                 }
               </Row>

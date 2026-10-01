@@ -7,7 +7,9 @@ import Modal from "../ui/Modal";
 import Heading from "../typography/Heading";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import Bold from "../typography/Bold";
 import { deleteExplorationLocation } from "../../../services/explorations";
+import SpinnerMini from "../ui/SpinnerMini";
 
 const StyledRow = styled(Row)`
   @media (max-width: 700px) {
@@ -18,20 +20,45 @@ const StyledRow = styled(Row)`
     }
   }
 `;
+
+const Paragraph = styled.p`
+  text-align: center;
+`;
+
 function AdminFooterCTA({ exploration }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { locationId } = useParams();
   const { role } = useAuth();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  function handleDeleteLocation() {
-    setIsModalOpen(false);
-    // deleteExplorationLocation({
-    //   explorationId: exploration.slug,
-    //   locationId: locationId,
-    // });
-    console.log(exploration.slug, locationId);
-    navigate(`/${role}/explorations/${exploration.slug}`);
+  async function handleDeleteLocation() {
+    try {
+      await deleteExplorationLocation({
+        explorationId: exploration.slug,
+        locationId: locationId,
+      });
+      setIsDeleting(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setIsDeleting(false);
+        setIsError(false);
+        setErrorMessage("");
+        setIsSuccess(false);
+
+        navigate(`/${role}/explorations/${exploration.slug}`);
+      }, 1500);
+
+      console.log(exploration.slug, locationId);
+    } catch (err) {
+      setIsDeleting(false);
+      setIsError(true);
+      setErrorMessage(err.message);
+    }
   }
 
   return (
@@ -46,36 +73,66 @@ function AdminFooterCTA({ exploration }) {
         <Button
           $variation="primary"
           $size="medium"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setIsModalOpen(true);
+            setIsDeleting(true);
+          }}
         >
           Delete this Location
         </Button>
       </StyledRow>
 
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>
+        <Modal
+          onClose={() => {
+            setIsModalOpen(false);
+            setIsDeleting(false);
+            setIsError(false);
+            setErrorMessage("");
+            setIsSuccess(false);
+          }}
+        >
           <Row $align="center">
-            <Heading as="h6">
-              Are you sure you want to delete this location from{" "}
-              {exploration.name}?
-            </Heading>
-            <p>This action is irreversible.</p>
-            <Row $direction="horizontal" $gap="var(--gap-lg)">
-              <Button
-                $size="small"
-                $variation="secondary"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </Button>
-              <Button
-                $size="small"
-                $variation="primary"
-                onClick={handleDeleteLocation}
-              >
-                Delete Location
-              </Button>
-            </Row>
+            {isDeleting && (
+              <>
+                <Heading as="h6">
+                  Are you sure you want to delete this location from{" "}
+                  {exploration.name}?
+                </Heading>
+                <p>This action is irreversible.</p>
+                <Row $direction="horizontal" $gap="var(--gap-lg)">
+                  <Button
+                    $size="small"
+                    $variation="secondary"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    $size="small"
+                    $variation="primary"
+                    onClick={handleDeleteLocation}
+                  >
+                    Delete Location
+                  </Button>
+                </Row>
+              </>
+            )}
+
+            {isError && (
+              <Row $align="center">
+                <Bold>There was an error deleting this location.</Bold>
+                <Paragraph>{errorMessage}</Paragraph>
+              </Row>
+            )}
+
+            {isSuccess && (
+              <Row $align="center">
+                <Bold>You successfully deleted this location.</Bold>
+                <Paragraph>Redirecting you to {exploration.name}...</Paragraph>
+                <SpinnerMini />
+              </Row>
+            )}
           </Row>
         </Modal>
       )}
