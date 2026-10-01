@@ -14,7 +14,43 @@ exports.getExploration = factory.getOne(Exploration, (req) => ({
 
 exports.createExploration = factory.createOne(Exploration, null);
 
-exports.updateExploration = factory.updateOne(Exploration);
+// exports.updateExploration = factory.updateOne(Exploration);
+
+exports.updateExploration = catchAsync(async (req, res, next) => {
+  console.log("running explorationcontroller");
+  console.log(req.params);
+  const { id } = req.params;
+
+  const exploration = await Exploration.findOne({ _id: id });
+
+  if (!exploration)
+    return next(new AppError("No exploration found with that ID.", 404));
+
+  const allowedFields = [
+    "name",
+    "tagline",
+    "headerImage",
+    "description",
+    "images",
+    "tags",
+    "locations",
+    "badge",
+    "featured",
+  ];
+
+  allowedFields.forEach((field) => {
+    if (req.body[field] !== undefined) {
+      exploration[field] = req.body[field];
+    }
+  });
+
+  if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
+
+  await exploration.save();
+
+  res.status(200).json({ status: "success", data: { data: exploration } });
+});
+
 exports.deleteExploration = factory.deleteOne(Exploration);
 
 exports.aliasExplorationsSummary = (req, res, next) => {
@@ -69,6 +105,36 @@ exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { data: location } });
 });
 
+exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
+  const { explorationId, locationId } = req.params;
+
+  const exploration = await Exploration.findOne({ slug: explorationId });
+
+  if (!exploration)
+    return next(new AppError("Exploration with that ID not found.", 404));
+
+  if (!exploration.locations.some((loc) => loc.slug === locationId))
+    return next(new AppError("Location with that ID not found.", 404));
+
+  if (exploration.locations.length === 1)
+    return next(
+      new AppError(
+        "An exploration cannot have zero locations. Please add more locations before deleting this one.",
+        400,
+      ),
+    );
+
+  exploration.locations = exploration.locations.filter(
+    (loc) => loc.slug !== locationId,
+  );
+
+  await exploration.save();
+
+  res.status(204).json({
+    status: "success",
+    data: { data: exploration },
+  });
+});
 // Exploration/Badge Routes
 // exports.createExplorationBadge = catchAsync(async (req, res, next) => {
 //   const badge = await Badge.create(req.body);

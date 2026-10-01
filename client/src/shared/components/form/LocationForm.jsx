@@ -126,7 +126,7 @@ function LocationForm({ exploration, location, onSubmit }) {
       method="post"
     >
       <Row $gap="var(--gap-lg)">
-        {isEditing && (
+        {isEditing && exploration?.name && (
           <FormField label="Exploration">
             <StyledHeading as="h6" $color="var(--color-red-300)">
               {exploration?.name ?? exploration}

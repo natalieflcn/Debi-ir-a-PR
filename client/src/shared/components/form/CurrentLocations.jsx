@@ -48,7 +48,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
         <Row $gap="var(--gap-lg)">
           {locations.map((location, i) => (
             <LocationRow
-              key={location.slug}
+              key={i}
               $gap="var(--gap-sm)"
               $direction="horizontal"
               $align="flex-start"
@@ -113,7 +113,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
           <Row $align="center">
             <Heading as="h6">
               Are you sure you want to delete this location from{" "}
-              {exploration.name}?
+              {exploration?.name ?? "this exploration"}?
             </Heading>
             <p>This action is irreversible.</p>
             <Row $direction="horizontal" $gap="var(--gap-lg)">

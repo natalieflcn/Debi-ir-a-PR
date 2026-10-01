@@ -552,23 +552,28 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-// make sure all API methods are wrapped in try-catch blcoks
-
 - explorations.js
 - explorationprogress.js (onError react query)
 - users.js
 - auth.js
 
+// update exploration method bc pre-save slugify isnt running
+
 // delete locations method
 ---- delete locations from exploration
+
+- during exploration creation: delete location from form isnt working either
+- from existing exploration: from editlocation
+- edge case: 1 location exploration -- don't allow
+- refactor createlocation into editlocation
+  ---- delete exploration
+
 // create exploration progress way to end exploration
-// create way to delete explorations
+
 // create way for users to edit their names
 
 // location name should wrap around current locations, not stretch past container
 // add functionality to search input
-
-// TODO implement loading spinners in all data fetched components
 
 // figure out how to populate user data depending on role without virtuals
 

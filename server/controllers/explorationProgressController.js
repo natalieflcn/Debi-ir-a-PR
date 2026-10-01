@@ -112,7 +112,9 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
   });
 
   if (!progress)
-    next(new AppError("No exploration progress found with that ID.", 404));
+    return next(
+      new AppError("No exploration progress found with that ID.", 404),
+    );
 
   // Updating Exploration Progress Visit Log
   const filteredVisits = progress.visitLog.filter(

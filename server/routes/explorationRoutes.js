@@ -40,6 +40,10 @@ router
   .patch(
     authController.restrictTo("admin", "ambassador"),
     explorationController.updateExplorationLocation,
+  )
+  .delete(
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.deleteExplorationLocation,
   );
 // router
 //   .route("/:explorationId/badge")
