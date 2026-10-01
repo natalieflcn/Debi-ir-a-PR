@@ -3,7 +3,7 @@
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";
-import { explorationsLoader } from "./loaders/explorationsLoader";
+import { explorerExplorationsLoader } from "./loaders/explorerExplorationsLoader";
 import { explorerExplorationLoader } from "./loaders/explorerExplorationLoader";
 import { explorerLocationLoader } from "./loaders/explorerLocationLoader";
 import { profileLoader } from "./loaders/profileLoader";
@@ -35,7 +35,7 @@ const ExplorerRoutes = [
   {
     path: "explorations",
     element: <Explorations />,
-    loader: explorationsLoader,
+    loader: explorerExplorationsLoader,
   },
   {
     path: "explorations/:explorationId",

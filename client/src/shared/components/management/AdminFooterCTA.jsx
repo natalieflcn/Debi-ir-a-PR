@@ -52,8 +52,6 @@ function AdminFooterCTA({ exploration }) {
 
         navigate(`/${role}/explorations/${exploration.slug}`);
       }, 1500);
-
-      console.log(exploration.slug, locationId);
     } catch (err) {
       setIsDeleting(false);
       setIsError(true);

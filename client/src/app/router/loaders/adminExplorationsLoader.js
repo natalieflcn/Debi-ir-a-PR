@@ -63,6 +63,6 @@ const fakeUsers = [
 
 export async function adminExplorationsLoader() {
   const { data } = await getExplorationsSummary();
-
-  return { explorations: data.data, users: fakeUsers };
+  // console.log(await getExplorationsSummary());
+  return { explorations: data.data };
 }

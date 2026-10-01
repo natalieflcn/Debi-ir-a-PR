@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getExplorationProgress } from "../../../../services/explorationProgress";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -35,7 +37,10 @@ const ExplorationFiltersRow = styled(Row)`
   }
 `;
 
-const ExplorerExplorationCardButton = function (explorationSlug) {
+const ExplorerExplorationCardButton = function (
+  explorationSlug,
+  explorationId,
+) {
   return [
     {
       id: "learn-more",
@@ -54,6 +59,7 @@ function Explorations() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
   const { explorations } = useLoaderData();
+  // const QueryClient = useQueryClient();
 
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
@@ -113,9 +119,7 @@ function Explorations() {
 
           return (
             <ExplorationMiniCard
-              name={exploration.name}
-              description={exploration.description}
-              numStops={exploration.numStops}
+              exploration={exploration}
               city={city}
               buttonDetails={ExplorerExplorationCardButton(exploration.slug)}
               key={exploration.id}

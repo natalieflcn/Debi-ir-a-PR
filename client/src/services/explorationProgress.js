@@ -10,12 +10,19 @@ export async function getExplorationProgress(explorationId) {
   );
 }
 
+export async function getAllMyExplorationProgress() {
+  return await apiFetch(`/exploration-progress/me`);
+}
+
+export async function getUserExplorationProgress(userId) {
+  return await apiFetch(`${userId}/explorations/user-exploration-progress`);
+}
+
 export async function startExploration(explorationId) {
   //   const { data } = await apiFetch(`/explorations/${explorationSlug}`);
 
   //   const explorationId = data.data._id;
 
-  console.log("start exploration running!");
   return await apiFetch(
     `/explorations/${explorationId}/my-exploration-progress`,
     {
@@ -25,7 +32,6 @@ export async function startExploration(explorationId) {
 }
 
 export async function addVisitLocation(explorationId, locationId) {
-  console.log("running add visitlocation");
   return await apiFetch(
     `/explorations/${explorationId}/my-exploration-progress/locations/${locationId}`,
     {
@@ -35,7 +41,6 @@ export async function addVisitLocation(explorationId, locationId) {
 }
 
 export async function removeVisitLocation(explorationId, locationId) {
-  console.log("running removevisitlocation");
   return await apiFetch(
     `/explorations/${explorationId}/my-exploration-progress/locations/${locationId}`,
     { method: "DELETE" },

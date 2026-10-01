@@ -71,7 +71,7 @@ function LocationForm({ exploration, location, onSubmit }) {
     else if (name.trim().length < 5)
       errors.name = "A location name must have more than 5 characters.";
     else if (name.trim().length > 40)
-      errors.name = "An location name must have less than 40 characters.";
+      errors.name = "A location name must have less than 40 characters.";
 
     if (!street.trim()) errors.street = "Location street address is required.";
 
@@ -98,6 +98,7 @@ function LocationForm({ exploration, location, onSubmit }) {
     if (tags.length < 1) errors.tags = "Please select at least one tag.";
 
     if (Object.keys(errors).length > 0) {
+      errors.submit = "Please review your form submission and try again.";
       setFormErrors(errors);
       return;
     }
@@ -115,8 +116,13 @@ function LocationForm({ exploration, location, onSubmit }) {
     if (isEditing) formData.updatedBy = user._id;
 
     setIsSubmitting(true);
-    onSubmit(formData);
-    setIsSubmitting(false);
+    try {
+      onSubmit(formData);
+    } catch (err) {
+      setFormErrors({ submit: err.message });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -240,6 +246,7 @@ function LocationForm({ exploration, location, onSubmit }) {
           {!isSubmitting && (isEditing ? "Save Changes" : "Create Location")}
           {isSubmitting && "Saving Changes..."}
         </Button>
+        {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
       </Row>
     </AppForm>
   );

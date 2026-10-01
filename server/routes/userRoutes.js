@@ -1,7 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
-const explorationProgressUserRouter = require("./explorationProgressUserRoutes");
+const explorationProgressAdminRouter = require("./explorationProgressAdminRoutes");
 
 const router = express.Router();
 
@@ -63,6 +63,9 @@ router
 router.route("/:id/updatePassword").patch(authController.updateUserPassword);
 // router.get("/:userId/badgeCollection");
 
-router.use("/:userId/user-exploration-progress", explorationProgressUserRouter);
+router.use(
+  "/:userId/user-exploration-progress",
+  explorationProgressAdminRouter,
+);
 
 module.exports = router;

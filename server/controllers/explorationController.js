@@ -17,8 +17,6 @@ exports.createExploration = factory.createOne(Exploration, null);
 // exports.updateExploration = factory.updateOne(Exploration);
 
 exports.updateExploration = catchAsync(async (req, res, next) => {
-  console.log("running explorationcontroller");
-  console.log(req.params);
   const { id } = req.params;
 
   const exploration = await Exploration.findOne({ _id: id });
@@ -43,6 +41,8 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
       exploration[field] = req.body[field];
     }
   });
+
+  exploration.cities = exploration.locations.map((loc) => loc.city);
 
   if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
 

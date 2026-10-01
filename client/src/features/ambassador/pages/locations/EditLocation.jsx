@@ -101,7 +101,7 @@ function EditLocation() {
     else if (name.trim().length < 5)
       errors.name = "A location name must have more than 5 characters.";
     else if (name.trim().length > 40)
-      errors.name = "An location name must have less than 40 characters.";
+      errors.name = "A location name must have less than 40 characters.";
 
     if (!street.trim()) errors.street = "Location street address is required.";
 
@@ -159,6 +159,7 @@ function EditLocation() {
       );
     } catch (err) {
       console.log(err);
+      setFormErrors({ submit: err.message });
     } finally {
       setIsSubmitting(false);
     }
@@ -334,6 +335,7 @@ function EditLocation() {
                 Delete Location
               </Button>
             </Row>
+            {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
           </StyledFormRow>
         </AppForm>
       </Row>

@@ -15,7 +15,6 @@ const filterRequestBody = (body, ...allowedFields) => {
 };
 
 exports.getUser = catchAsync(async (req, res, next) => {
-  console.log(req.params);
   const user = await User.findOne({ _id: req.params.id });
 
   if (!user) return next(new AppError("No user found with that ID.", 404));
@@ -50,8 +49,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
         400,
       ),
     );
-
-  console.log(req.user, "running updateMe");
 
   // Filter out unwanted fields from request body
   const filteredBody = filterRequestBody(req.body, "name", "email");
@@ -92,7 +89,6 @@ exports.deleteUser = factory.deleteOne(User);
 exports.getAllUsers = factory.getAll(User);
 
 exports.updateUser = catchAsync(async (req, res, next) => {
-  console.log("running updateuser controller");
   const { role } = req.body;
 
   if (role && !["explorer", "ambassador", "admin"].includes(role)) {

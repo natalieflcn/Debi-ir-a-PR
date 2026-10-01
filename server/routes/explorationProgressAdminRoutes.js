@@ -2,14 +2,14 @@ const express = require("express");
 const authController = require("../controllers/authController");
 const explorationProgressController = require("../controllers/explorationProgressController");
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route("/")
   .get(
     authController.protect,
     authController.restrictTo("admin", "ambassador"),
-    explorationProgressController.getAllExplorationProgress,
+    explorationProgressController.getUserExplorationProgress,
   );
 
 module.exports = router;

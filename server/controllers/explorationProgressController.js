@@ -28,6 +28,11 @@ exports.getUserExplorationProgress = factory.getAll(
 //   }),
 // );
 
+exports.getAllMyExplorationProgress = factory.getAll(
+  ExplorationProgress,
+  (req) => ({ user: req.user.id }),
+);
+
 exports.getMyExplorationProgress = catchAsync(async (req, res, next) => {
   let query = ExplorationProgress.findOne({
     user: req.user.id,
@@ -55,7 +60,6 @@ exports.deleteExplorationProgress = factory.deleteOne(
 );
 
 exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
-  console.log("updateexplorationprogres running");
   // Retrieving Existing Documents and Related Data
   const progress = await ExplorationProgress.findOne({
     user: req.user.id,
@@ -71,7 +75,6 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
     req.params.explorationId,
   ).select("locations");
 
-  console.log(progress.visitLog);
   if (!exploration)
     return next(new AppError("No Exploration found with that ID.", 404));
 
@@ -120,10 +123,6 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
   const filteredVisits = progress.visitLog.filter(
     (visit) => visit.location === req.params.locationId,
   );
-  console.log("PROGRESS VISIT LOG");
-  console.log(progress.visitLog);
-  console.log("FILTERED VISITS");
-  console.log(filteredVisits);
 
   progress.visitLog = filteredVisits;
 
@@ -135,10 +134,7 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
     datesVisited.length > 0 ? new Date(Math.max(...datesVisited)) : null;
 
   progress.lastVisitedAt = lastDateVisited;
-  console.log("DATES VISITED");
-  console.log(datesVisited);
-  console.log("LAST VISITED AT");
-  console.log(lastDateVisited);
+
   await progress.save();
 
   res.status(200).json({ status: "success", data: { data: progress } });

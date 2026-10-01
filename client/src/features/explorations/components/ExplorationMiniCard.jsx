@@ -7,6 +7,8 @@ import { IoLocationSharp } from "react-icons/io5";
 import Row from "../../../shared/components/layout/Row";
 import Button from "../../../shared/components/ui/Button";
 import RouterLink from "../../../shared/components/routing/RouterLink";
+import { useQuery } from "@tanstack/react-query";
+import { getExplorationProgress } from "../../../services/explorationProgress";
 
 const StyledExplorationCard = styled(Card)`
   align-items: flex-start;
@@ -72,13 +74,7 @@ const ExplorationDescription = styled.p`
   margin-bottom: auto;
 `;
 
-function ExplorationMiniCard({
-  name,
-  description,
-  numStops,
-  city,
-  buttonDetails,
-}) {
+function ExplorationMiniCard({ exploration, city, buttonDetails }) {
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
       <ExplorationCardBackground>
@@ -87,18 +83,22 @@ function ExplorationMiniCard({
           $color="var(--color-red-200)"
           $shadowColor="var(--color-brown-400)"
         >
-          {name}
+          {exploration.name}
         </ExplorationCardHeading>
       </ExplorationCardBackground>
 
       <ExplorationCardBody>
-        <ExplorationDescription>{description}</ExplorationDescription>
+        <ExplorationDescription>
+          {exploration.description}
+        </ExplorationDescription>
 
         <StyledRow>
           <Row $direction="horizontal" $align="space-evenly">
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
-              <Bold $color="var(--color-dark-200)">{numStops} stops</Bold>
+              <Bold $color="var(--color-dark-200)">
+                {exploration.numStops} stops
+              </Bold>
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoLocationSharp color="var(--color-red-300)" />

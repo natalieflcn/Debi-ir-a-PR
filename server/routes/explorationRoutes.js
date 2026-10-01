@@ -1,7 +1,7 @@
 const express = require("express");
 const explorationController = require("../controllers/explorationController");
 const authController = require("../controllers/authController");
-const explorationProgressRouter = require("./explorationProgressRoutes");
+const explorationProgressExplorerRouter = require("./explorationProgressExplorerRoutes");
 
 const router = express.Router();
 
@@ -50,7 +50,7 @@ router
 //   .get(explorationController.getExplorationBadge);
 router.use(
   "/:explorationId/my-exploration-progress",
-  explorationProgressRouter,
+  explorationProgressExplorerRouter,
 );
 
 module.exports = router;

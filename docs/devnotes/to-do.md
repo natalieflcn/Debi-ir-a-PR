@@ -541,7 +541,9 @@
     - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
     - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
-    - [ ] Add functionality to Input search in Explorations
+    - [ ] Add functionality to search inputs
+      - [ ] Explorations
+      - [ ] Users
     - [x] Implement React Query/TanStack Query to manage ExplorationProgress for Explorers
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
@@ -554,18 +556,28 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-// delete exploration (admins/ambassadors)
+- [ ] Refactor project
+  - [ ] Refactor CreateExploration pages into one reusable component
+  - [ ] Refactor EditLocation and LocationForm components into one reusable component
+  - [ ] Refactor forms with usereducer hook
+  - [ ] Refactor modal windows with usereducer hook
 
-// create exploration progress way to end exploration
+// create exploration progress way to end exploration, if in progress
+// if exploration is completed, clear exploration data
+
+// add indication that exploration is in progresss, completed
 
 // create way for users to edit their names
 
-// location name should wrap around current locations, not stretch past container
-// about body shouldnt psuh image out of container, should wrap around as well
+// create forgot password page
+// create reset password page
+
+// fix pagination
+
+// fix broken layouts and actions for error pages
 
 // add functionality to search input
 
-// figure out how to populate user data depending on role without virtuals
+// refactor tings
 
-// create forgot password page
-// create reset password page
+// start adding google maps to exploration data

@@ -118,7 +118,6 @@ function ExplorationLocation() {
   const { exploration, location } = useLoaderData();
   const QueryClient = useQueryClient();
 
-  console.log(exploration._id);
   const { isPending, isError, data, error, isSuccess } = useQuery({
     queryKey: ["explorationProgress", exploration._id],
     queryFn: () => getExplorationProgress(exploration._id),
@@ -128,7 +127,6 @@ function ExplorationLocation() {
     mutationFn: ({ explorationId, locationId }) =>
       addVisitLocation(explorationId, locationId),
     onSuccess: async () => {
-      console.log("onsuccess is running");
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
       });
@@ -150,11 +148,7 @@ function ExplorationLocation() {
     userHistory?.visitLog?.some((visit) => visit.location === location._id),
   );
 
-  console.log(userHistory.visitLog);
-  console.log(userCompleted);
-
   function handleToggleCompleted() {
-    console.log("user completed", userCompleted);
     if (userCompleted)
       mutateRemoveLocation.mutate({
         explorationId: exploration._id,

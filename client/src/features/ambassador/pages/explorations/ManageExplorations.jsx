@@ -264,9 +264,7 @@ function ManageExplorations() {
 
             return (
               <ExplorationMiniCard
-                name={exploration.name}
-                description={exploration.description}
-                numStops={exploration.numStops}
+                exploration={exploration}
                 city={city}
                 buttonDetails={AmbassadorExplorationCardButton(
                   exploration.slug,
