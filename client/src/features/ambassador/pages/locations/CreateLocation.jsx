@@ -1,193 +1,162 @@
-import styled from "styled-components";
-import AppForm from "../../../../shared/components/form/AppForm";
-import FormField from "../../../../shared/components/form/FormField";
-import ImageUploader from "../../../../shared/components/form/ImageUploader";
-import Input from "../../../../shared/components/form/Input";
-import TextArea from "../../../../shared/components/form/TextArea";
-import Row from "../../../../shared/components/layout/Row";
-import Heading from "../../../../shared/components/typography/Heading";
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
-import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
-import Button from "../../../../shared/components/ui/Button";
-import RouterLink from "../../../../shared/components/routing/RouterLink";
-import { FaArrowLeft } from "react-icons/fa";
-import LocationTagBuilder from "../../../../shared/components/form/LocationTagBuilder";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Bold from "../../../../shared/components/typography/Bold";
+
 import { useLoaderData } from "react-router-dom";
-import { verifyPRZipcode } from "../../../../shared/utils/helpers";
-import {
-  deleteExplorationLocation,
-  updateExplorationLocation,
-} from "../../../../services/explorations";
-import { useAuth } from "../../../auth/contexts/AuthContext";
-import Modal from "../../../../shared/components/ui/Modal";
-import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
-const StyledHeading = styled(Heading)`
-  flex: 1 1 0;
+import CreateLocationCard from "../../../locations/components/CreateLocationCard";
 
-  @media (max-width: 690px) {
-    text-align: center;
-  }
-`;
-
-const StyledFormRow = styled(Row)`
-  @media (max-width: 690px) {
-    gap: var(--gap-xl);
-    text-align: center;
-  }
-`;
-
-const StyledInput = styled(Input)`
-  width: 100%;
-`;
-const StyledRow = styled(Row)`
-  flex: 1 1 0;
-  min-width: 0;
-`;
-
-const StyledTextAreaRow = styled(Row)`
-  flex: 1 1 0;
-  height: 10rem;
-`;
-
-const Paragraph = styled.p`
-  text-align: center;
-`;
-
-function EditLocation() {
+function CreateLocation() {
   const { exploration, location } = useLoaderData();
 
   // const isEditing = Boolean(location);
 
-  const [name, setName] = useState(location.name || "");
-  // const [address, setAddress] = useState(isEditing ? location.address : "");
-  const [street, setStreet] = useState(location.address.street || "");
-  const [city, setCity] = useState(location.address.city || "");
-  const [zipcode, setZipcode] = useState(location.address.zipcode || "");
-  const [headerImage, setHeaderImage] = useState(location.headerImage || []);
-  const [description, setDescription] = useState(location.description || "");
-  const [images, setImages] = useState(location.images || []);
-  const [tags, setTags] = useState(location.tags || []);
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [name, setName] = useState(location.name || "");
+  // // const [address, setAddress] = useState(isEditing ? location.address : "");
+  // const [street, setStreet] = useState(location.address.street || "");
+  // const [city, setCity] = useState(location.address.city || "");
+  // const [zipcode, setZipcode] = useState(location.address.zipcode || "");
+  // const [headerImage, setHeaderImage] = useState(location.headerImage || []);
+  // const [description, setDescription] = useState(location.description || "");
+  // const [images, setImages] = useState(location.images || []);
+  // const [tags, setTags] = useState(location.tags || []);
+  // const [formErrors, setFormErrors] = useState({});
+  // const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isDeletingError, setIsDeletingError] = useState(false);
   const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
   const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
 
-  const navigate = useNavigate();
-  const { user } = useAuth();
+  // const navigate = useNavigate(); TODO
+  // const { user } = useAuth();
 
-  function handleSetTags(value) {
-    setFormErrors((prev) => ({ ...prev, tags: "" }));
-    setTags(value);
-  }
+  // function handleSetTags(value) {
+  //   setFormErrors((prev) => ({ ...prev, tags: "" }));
+  //   setTags(value);
+  // }
 
-  function handleSetCity(value) {
-    setFormErrors((prev) => ({ ...prev, city: "" }));
-    setCity(value);
-  }
+  // function handleSetCity(value) {
+  //   setFormErrors((prev) => ({ ...prev, city: "" }));
+  //   setCity(value);
+  // }
 
-  const handleSubmit = async function (e) {
-    e.preventDefault();
+  // const handleSubmit = async function (e) {
+  //   e.preventDefault();
 
-    const errors = {};
+  //   const errors = {};
 
-    if (!name.trim()) errors.name = "Location name is required.";
-    else if (name.trim().length < 5)
-      errors.name = "A location name must have more than 5 characters.";
-    else if (name.trim().length > 40)
-      errors.name = "A location name must have less than 40 characters.";
+  //   if (!name.trim()) errors.name = "Location name is required.";
+  //   else if (name.trim().length < 5)
+  //     errors.name = "A location name must have more than 5 characters.";
+  //   else if (name.trim().length > 40)
+  //     errors.name = "A location name must have less than 40 characters.";
 
-    if (!street.trim()) errors.street = "Location street address is required.";
+  //   if (!street.trim()) errors.street = "Location street address is required.";
 
-    if (!city) errors.city = "Please select a city.";
+  //   if (!city) errors.city = "Please select a city.";
 
-    if (!zipcode.trim()) errors.zipcode = "Location zipcode is required.";
-    else if (!verifyPRZipcode(zipcode.trim()))
-      errors.zipcode = "Please enter a valid Puerto Rican zipcode.";
+  //   if (!zipcode.trim()) errors.zipcode = "Location zipcode is required.";
+  //   else if (!verifyPRZipcode(zipcode.trim()))
+  //     errors.zipcode = "Please enter a valid Puerto Rican zipcode.";
 
-    // if (headerImage.length < 1)
-    // errors.headerImage = "Please select a header image.";
+  //   // if (headerImage.length < 1)
+  //   // errors.headerImage = "Please select a header image.";
 
-    if (!description.trim())
-      errors.description = "Please provide a description.";
-    else if (description.trim().length < 50)
-      errors.description =
-        "A location description must have more than 50 characters.";
-    else if (description.trim().length > 1000)
-      errors.description =
-        "A location description must have less than 1000 characters.";
+  //   if (!description.trim())
+  //     errors.description = "Please provide a description.";
+  //   else if (description.trim().length < 50)
+  //     errors.description =
+  //       "A location description must have more than 50 characters.";
+  //   else if (description.trim().length > 1000)
+  //     errors.description =
+  //       "A location description must have less than 1000 characters.";
 
-    // if (images.length < 1) errors.images = "Please provide at least one image.";
+  //   // if (images.length < 1) errors.images = "Please provide at least one image.";
 
-    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+  //   if (tags.length < 1) errors.tags = "Please select at least one tag.";
 
-    if (Object.keys(errors).length > 0) {
-      errors.submit = "Please review your form submission and try again.";
+  //   if (Object.keys(errors).length > 0) {
+  //     errors.submit = "Please review your form submission and try again.";
 
-      setFormErrors(errors);
-      return;
-    }
+  //     setFormErrors(errors);
+  //     return;
+  //   }
 
-    const formData = {
-      name,
-      address: { street, city, zipcode },
-      headerImage,
-      description,
-      images,
-      tags,
-    };
+  //   const formData = {
+  //     name,
+  //     address: { street, city, zipcode },
+  //     headerImage,
+  //     description,
+  //     images,
+  //     tags,
+  //   };
 
-    formData.updatedBy = user._id;
+  //   formData.updatedBy = user._id;
 
-    try {
-      setIsSubmitting(true);
-      const { data } = await updateExplorationLocation(
-        exploration.slug,
-        location.slug,
-        formData,
-      );
-      const updatedLocation = data.data;
+  //   try {
+  //     setIsSubmitting(true);
+  //     const { data } = await updateExplorationLocation(
+  //       exploration.slug,
+  //       location.slug,
+  //       formData,
+  //     );
+  //     const updatedLocation = data.data;
 
-      navigate(
-        `/ambassador/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
-      );
-    } catch (err) {
-      console.log(err);
-      setFormErrors({ submit: err.message });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //     navigate(
+  //       `/ambassador/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //     setFormErrors({ submit: err.message });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
-  async function handleDeleteLocation() {
-    try {
-      await deleteExplorationLocation({
-        explorationId: exploration.slug,
-        locationId: location.slug,
-      });
-      setIsDeleting(false);
-      setIsDeletingSucess(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-        setIsDeletingError(false);
-        navigate(`/${user.role}/explorations/${exploration.slug}`);
-      }, 1500);
-    } catch (err) {
-      setIsDeleting(false);
-      setIsDeletingError(true);
-      setIsDeletingErrorMessage(err.message);
-    }
-  }
+  // const handleSubmit = async function (formData) {
+  //   const { data } = await updateExplorationLocation(
+  //     exploration.slug,
+  //     location.slug,
+  //     formData,
+  //   );
+
+  //   const updatedLocation = data.data;
+
+  //   navigate(
+  //     `/ambassador/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
+  //   );
+  // };
+
+  // TODO REfactor delete location later
+  // async function handleDeleteLocation() {
+  //   try {
+  //     await deleteExplorationLocation({
+  //       explorationId: exploration.slug,
+  //       locationId: location.slug,
+  //     });
+  //     setIsDeleting(false);
+  //     setIsDeletingSucess(true);
+  //     setTimeout(() => {
+  //       setIsModalOpen(false);
+  //       setIsDeletingError(false);
+  //       navigate(`/${user.role}/explorations/${exploration.slug}`);
+  //     }, 1500);
+  //   } catch (err) {
+  //     setIsDeleting(false);
+  //     setIsDeletingError(true);
+  //     setIsDeletingErrorMessage(err.message);
+  //   }
+  // }
 
   return (
-    <>
-      <Row $gap="var(--gap-lg)">
+    <CreateLocationCard
+      exploration={exploration}
+      location={location}
+      // onSubmit={handleSubmit}
+    />
+  );
+  // <>
+  {
+    /* <Row $gap="var(--gap-lg)">
         <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
           <Button $size="small" $variation="darkRed">
             <FaArrowLeft size={12} /> Back to{" "}
@@ -393,7 +362,8 @@ function EditLocation() {
         </Modal>
       )}
     </>
-  );
+  // ); */
+  }
 }
 
-export default EditLocation;
+export default CreateLocation;

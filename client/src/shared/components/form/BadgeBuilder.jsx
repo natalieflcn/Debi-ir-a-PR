@@ -3,7 +3,6 @@ import Row from "../layout/Row";
 import Button from "../ui/Button";
 import Heading from "../typography/Heading";
 import Modal from "../ui/Modal";
-import LocationForm from "./LocationForm";
 import styled from "styled-components";
 import BadgeForm from "./BadgeForm";
 import Image from "../ui/Image";

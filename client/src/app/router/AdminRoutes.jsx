@@ -24,8 +24,8 @@ const ViewExploration = lazy(
 const ViewLocation = lazy(
   () => import("@/features/admin/pages/locations/ViewLocation"),
 );
-const EditLocation = lazy(
-  () => import("@/features/admin/pages/locations/EditLocation"),
+const CreateLocation = lazy(
+  () => import("@/features/admin/pages/locations/CreateLocation"),
 );
 const ManageExplorations = lazy(
   () => import("@/features/admin/pages/explorations/ManageExplorations"),
@@ -83,7 +83,7 @@ const AdminRoutes = [
   },
   {
     path: "explorations/:explorationId/locations/:locationId/edit",
-    element: <EditLocation />,
+    element: <CreateLocation />,
     loader: adminLocationLoader,
   },
   {

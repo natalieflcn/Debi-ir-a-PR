@@ -6,6 +6,7 @@ import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
 import styled from "styled-components";
 import Bold from "../typography/Bold";
+import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";
 
 const StyledLocationBuilder = styled.div`
   justify-self: flex-start;
@@ -40,7 +41,7 @@ function LocationBuilder({ exploration, locations, onAdd }) {
 
         {isModalOpen && (
           <Modal $width="50rem" onClose={() => setIsModalOpen(false)}>
-            <LocationForm
+            <CreateLocationCard
               onSubmit={(formData) => {
                 onAdd(formData);
                 setIsModalOpen(false);

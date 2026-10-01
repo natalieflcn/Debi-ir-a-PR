@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Modal from "../ui/Modal";
 import LocationForm from "./LocationForm";
 import Bold from "../typography/Bold";
+import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -97,7 +98,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
 
       {editingLocation && (
         <Modal $width="60%" onClose={() => setEditingLocation(null)}>
-          <LocationForm
+          <CreateLocationCard
             exploration={exploration}
             location={editingLocation}
             onSubmit={(formData) => {

@@ -43,7 +43,7 @@ const Paragraph = styled.p`
   text-align: center;
 `;
 
-function EditLocation() {
+function CreateLocation() {
   const { exploration, location } = useLoaderData();
 
   // const isEditing = Boolean(location);
@@ -383,4 +383,4 @@ function EditLocation() {
   );
 }
 
-export default EditLocation;
+export default CreateLocation;
