@@ -500,7 +500,7 @@
         - [ ] GET /users/:explorationId/user-exploration-progress **(save this implementation for explorer dashboard analytics stage)**
         - [x] POST /explorations/:explorationId/exploration-progress
         - [x] POST /explorations/:explorationId/exploration-progress/locations/:locationId
-        - [ ] DELETE /explorations/:explorationId/exploration-progress
+        - [x] DELETE /explorations/:explorationId/exploration-progress
         - [x] DELETE /explorations/:explorationId/exploration-progress/:locationId
 
 - [ ] FRONT-END TWEAKS
@@ -528,7 +528,7 @@
         - [x] Mini spinners in Explorer - Exploration Location Card
         - [x] Mini spinners in Admin - Exploration Card
         - [x] Mini spinners in Admin - Exploration Location Card
-    - [ ] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
+    - [x] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [x] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
@@ -549,6 +549,11 @@
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page
 
+- [ ] Refactor project
+  - [ ] Refactor CreateExploration pages into one reusable component
+  - [ ] Refactor EditLocation and LocationForm components into one reusable component
+  - [ ] Refactor forms with usereducer hook
+  - [ ] Refactor modal windows with usereducer hook
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails
   - File Uploads
@@ -556,14 +561,10 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-- [ ] Refactor project
-  - [ ] Refactor CreateExploration pages into one reusable component
-  - [ ] Refactor EditLocation and LocationForm components into one reusable component
-  - [ ] Refactor forms with usereducer hook
-  - [ ] Refactor modal windows with usereducer hook
-
-// create exploration progress way to end exploration, if in progress
-// if exploration is completed, option to clear exploration data
+// Refactor CreateLocation, CreateExploration forms
+// Refactor form usages with useReducer
+// Refactor modal window usages with useReducer
+// Implement ReactQuery and Modal Window into EndExplorationProgress workflow
 
 // combine react router loader qith react query for explorers
 
@@ -572,12 +573,13 @@
 // create forgot password page
 // create reset password page
 
+// center exploration images, possibly create slideshow
 // fix pagination
 
 // fix broken layouts and actions for error pages
 
 // add functionality to search input
 
-// refactor tings
+// create document middleware (on exp progress?) to calculate new title for explorers
 
 // start adding google maps to exploration data
