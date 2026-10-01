@@ -14,6 +14,7 @@ function ViewExploration() {
   // need to use GET user with user.id here
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
+      exploration={exploration}
       author={exploration.createdBy}
       lastUpdated={exploration.updatedAt}
       type="ambassador"

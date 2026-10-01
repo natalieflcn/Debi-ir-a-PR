@@ -481,6 +481,7 @@
     - [~] Connect remaining routes
       - [~] Explorations
         - [ ] DELETE /explorations/:explorationId
+        - [x] DELETE /explorations/:explorationId/locations/:locationId
       - [~] Users
         - [x] GET
           - [x] Admin POV
@@ -510,11 +511,10 @@
     - [ ] Create way for users to edit their name
     - [ ] TODO: Add ability for ambassadors/admins to delete resources
       - [ ] Delete explorations
-      - [ ] Delete locations
+      - [x] Delete locations
       - [x] Delete users
     - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
-    - [ ] Make sure all async API methods are wrapped in try-catch blocks
     - [ ] Implement way for users to end Exploration
 
   - [ ] Other Tasks (For the future)
@@ -523,24 +523,26 @@
     - [ ] Location name should wrap around in CurrentLocations, not stretch past container
     - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [~] Implement loading spinners throughout the app
-      - [ ] Mini spinners in Explorer - Exploration Card
-      - [ ] Mini spinners in Explorer - Exploration Location Card
-      - [ ] Mini spinners in Admin - Exploration Card
-      - [ ] Mini spinners in Admin - Exploration Location Card
-      - [ ] useNavigation in layout components
+      - [x] useNavigation in layout components
+        - [x] Mini spinners in Explorer - Exploration Card
+        - [x] Mini spinners in Explorer - Exploration Location Card
+        - [x] Mini spinners in Admin - Exploration Card
+        - [x] Mini spinners in Admin - Exploration Location Card
     - [ ] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
     - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [x] Hide password in input fields when not active on /signup and /login page
     - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
     - [x] BUG: Links broken when viewing users from /ambassador/users
-    - [ ] BUG: PageNotFound breaks out of user-based layout and uses guest layout
-    - [ ] Rename CreateLocation to EditLocation and remove create conditional
+    - [ ] BUG: Error pages breaks out of user-based layout and uses guest layout
+      - [ ] PageNotFound
+      - [ ] RouteError
+      - [ ] ErrorFallback
+    - [x] Rename CreateLocation to EditLocation and remove create conditional
     - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
     - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
     - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
     - [ ] Add functionality to Input search in Explorations
-    - [ ] Implement React Query/TanStack Query
-      - [ ] Use React Query in conjunction with React Router loaders to cache fetched route data TODO 3
+    - [x] Implement React Query/TanStack Query to manage ExplorationProgress for Explorers
     - [ ] TODO: Create more pages
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page
@@ -552,14 +554,15 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-- refactor createlocation into editlocation
-  ---- delete exploration
+// delete exploration (admins/ambassadors)
 
 // create exploration progress way to end exploration
 
 // create way for users to edit their names
 
 // location name should wrap around current locations, not stretch past container
+// about body shouldnt psuh image out of container, should wrap around as well
+
 // add functionality to search input
 
 // figure out how to populate user data depending on role without virtuals

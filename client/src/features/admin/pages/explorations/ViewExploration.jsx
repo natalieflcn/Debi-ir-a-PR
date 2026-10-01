@@ -11,6 +11,7 @@ function ViewExploration() {
 
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
+      exploration={exploration}
       author={exploration.createdBy}
       lastUpdated={exploration.updatedAt}
     />

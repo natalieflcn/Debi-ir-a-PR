@@ -419,6 +419,8 @@ const ProfileInformation = function ({ user }) {
         <Modal
           onClose={() => {
             setIsModalOpen(false);
+            setIsDeletingError(false);
+            setIsDeletingErrorMessage("");
           }}
         >
           <Row $gap="var(--gap-md)">
@@ -458,7 +460,7 @@ const ProfileInformation = function ({ user }) {
             {isDeletingError && (
               <Row $align="center">
                 <Bold>An error has occurred. Please try again.</Bold>
-                <Paragraph>{err.message}</Paragraph>
+                <Paragraph>{isDeletingErrorMessage}</Paragraph>
               </Row>
             )}
             {isDeleted && (

@@ -6,6 +6,14 @@ import Button from "../ui/Button";
 import RouterLink from "../routing/RouterLink";
 import { formatDate } from "../../utils/helpers";
 import styled from "styled-components";
+import { deleteExploration } from "../../../services/explorations";
+import { useState } from "react";
+import Modal from "../ui/Modal";
+import SmallText from "../typography/SmallText";
+import Heading from "../typography/Heading";
+import SpinnerMini from "../ui/SpinnerMini";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
 const StyledRow = styled(Row)`
   @media (max-width: 900px) {
@@ -15,9 +23,33 @@ const StyledRow = styled(Row)`
 `;
 
 function AdminExplorationCardHeaderDetails({
+  exploration,
   lastUpdated,
   author = "Unknown",
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { role } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleDeleteExploration(explorationId) {
+    try {
+      await deleteExploration(explorationId);
+      setIsDeleting(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        navigate(`/${role}/explorations`);
+      }, 1500);
+    } catch (err) {
+      setIsDeleting(false);
+      setIsError(true);
+      setErrorMessage(err.message);
+    }
+  }
+
   return (
     <>
       <StyledRow $direction="horizontal" $align="center" $gap="var(--gap-xl)">
@@ -33,11 +65,82 @@ function AdminExplorationCardHeaderDetails({
           </Bold>
         </Row>
       </StyledRow>
-      <RouterLink to={`edit`}>
-        <Button $variation="primary" $size="small">
-          Edit Exploration
+      <Row $direction="horizontal" $gap="var(--gap-md)">
+        <RouterLink to={`edit`}>
+          <Button $variation="darkRed" $size="medium">
+            Edit Exploration
+          </Button>
+        </RouterLink>
+        <Button
+          $variation="primary"
+          $size="medium"
+          onClick={() => {
+            setIsModalOpen(true);
+            setIsDeleting(true);
+          }}
+        >
+          Delete Exploration
         </Button>
-      </RouterLink>
+      </Row>
+
+      {isModalOpen && (
+        <Modal
+          onClose={() => {
+            setIsModalOpen(false);
+            setIsDeleting(false);
+            setIsError(false);
+            setErrorMessage("");
+          }}
+        >
+          <Row $align="center">
+            {isDeleting && (
+              <>
+                <Heading as="h6">
+                  Are you sure you want to delete {exploration.name}?
+                </Heading>
+                <SmallText>
+                  This is an irreversible action and all exploration and related
+                  data will be lost.
+                </SmallText>
+                <Row $direction="horizontal" $gap="var(--gap-lg)">
+                  <Button
+                    $size="small"
+                    $variation="secondary"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    No, Return to exploration
+                  </Button>
+                  <Button
+                    $size="small"
+                    $variation="primary"
+                    onClick={() => handleDeleteExploration(exploration._id)}
+                  >
+                    Yes, Delete this exploration
+                  </Button>
+                </Row>
+              </>
+            )}
+
+            {isError && (
+              <>
+                <Bold>There was an error deleting this exploration.</Bold>
+                <SmallText>{errorMessage}</SmallText>
+                <SmallText>Please try again later.</SmallText>
+              </>
+            )}
+
+            {isSuccess && (
+              <>
+                <Bold>This exploration has been successfully deleted!</Bold>
+                <SmallText>
+                  Redirecting you back to the Explorations page...
+                </SmallText>
+                <SpinnerMini />
+              </>
+            )}
+          </Row>
+        </Modal>
+      )}
     </>
   );
 }

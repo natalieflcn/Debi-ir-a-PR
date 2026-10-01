@@ -20,10 +20,15 @@ export async function createExploration(formData) {
 }
 
 export async function updateExploration(formData) {
-  console.log(formData._id);
   return await apiFetch(`/explorations/${formData._id}`, {
     method: "PATCH",
     body: JSON.stringify(formData),
+  });
+}
+
+export async function deleteExploration(explorationId) {
+  return await apiFetch(`/explorations/${explorationId}`, {
+    method: "DELETE",
   });
 }
 
@@ -46,4 +51,3 @@ export async function deleteExplorationLocation({ explorationId, locationId }) {
     },
   );
 }
-export const deleteExploration = {};
