@@ -1,18 +1,8 @@
-import { BsBadgeSd } from "react-icons/bs";
-import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
-import badges from "../../../../data/badges";
+import fakeExplorationLocationData from "../../../../features/explorer/pages/explorations/fakeExplorationLocationData";
+import { getExplorationProgress } from "../../../../services/explorationProgress";
+import { getExploration } from "../../../../services/explorations";
 
-export async function explorerDashboardLoader() {
-  const explorations = fakeExplorationsData;
-  const profileData = {
-    name: "Natalie Loader",
-    title: "First Explorer",
-    avatar: "",
-    email: "natalie.dflcn@gmail.com",
-    password: "hello123",
-    dateJoined: "January 7, 2026",
-  };
-
+export async function explorerLocationLoader({ params }) {
   const userHistory = {
     userId: "user_001",
     explorationProgress: [
@@ -79,81 +69,108 @@ export async function explorerDashboardLoader() {
       // raw event log — drives HistoryItem aggregations
       {
         explorationId: "exp_001",
-        locationId: "loc_02",
+        locationId: "loc_002",
         visitedAt: "2026-07-10T14:00:00Z",
       },
       {
         explorationId: "exp_002",
-        locationId: "loc_04",
+        locationId: "loc_004",
         visitedAt: "2026-07-07T10:00:00Z",
       },
       {
         explorationId: "exp_002",
-        locationId: "loc_05",
+        locationId: "loc_005",
         visitedAt: "2026-07-01T14:00:00Z",
       },
       {
         explorationId: "exp_003",
-        locationId: "loc_06",
+        locationId: "loc_006",
         visitedAt: "2026-05-22T10:00:00Z",
       },
       {
         explorationId: "exp_004",
-        locationId: "loc_08",
+        locationId: "loc_008",
         visitedAt: "2026-01-01T14:00:00Z",
       },
       {
         explorationId: "exp_004",
-        locationId: "loc_10",
+        locationId: "loc_010",
         visitedAt: "2026-07-05T10:00:00Z",
       },
       {
         explorationId: "exp_005",
-        locationId: "loc_11",
+        locationId: "loc_011",
         visitedAt: "2026-03-20T14:00:00Z",
       },
       {
         explorationId: "exp_005",
-        locationId: "loc_12",
+        locationId: "loc_012",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_006",
-        locationId: "loc_13",
+        locationId: "loc_013",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_007",
-        locationId: "loc_14",
+        locationId: "loc_014",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_008",
-        locationId: "loc_17",
+        locationId: "loc_017",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_009",
-        locationId: "loc_19",
+        locationId: "loc_019",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_009",
-        locationId: "loc_20",
+        locationId: "loc_020",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_010",
-        locationId: "loc_22",
+        locationId: "loc_022",
         visitedAt: "2025-06-22T10:00:00Z",
       },
       {
         explorationId: "exp_012",
-        locationId: "loc_25",
+        locationId: "loc_025",
         visitedAt: "2025-06-22T10:00:00Z",
       },
     ],
   };
 
-  return { explorations, profileData, userHistory };
+  const { explorationId, locationId } = params;
+
+  const { data } = await getExploration(explorationId);
+  const explorationData = data.data;
+  const location = explorationData.locations.find(
+    (loc) => loc.slug === locationId,
+  );
+
+  // const { data: explorationProgress } = await getExplorationProgress(
+  //   explorationData._id,
+  // );
+
+  // console.log(
+  //   explorationProgress.data.visitLog.find(
+  //     (visit) => visit.location === location._id,
+  //   ),
+  // );
+  return {
+    exploration: {
+      _id: explorationData._id,
+      name: explorationData.name,
+      slug: explorationData.slug,
+    },
+    location: location,
+    // userHistory: explorationProgress.data.visitLog.find(
+    //   (visit) => visit.location === location._id,
+    // ),
+  };
 }

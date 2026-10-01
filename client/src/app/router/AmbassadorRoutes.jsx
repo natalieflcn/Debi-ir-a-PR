@@ -1,14 +1,14 @@
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 
-import { adminExplorationLoader } from "./loaders/adminExplorationLoader";
+import { adminExplorationLoader } from "./loaders/shared/adminExplorationLoader";
 
-import { explorersLoader } from "./loaders/explorersLoader";
-import { profileLoader } from "./loaders/profileLoader";
-import { ambassadorDashboardLoader } from "./loaders/ambassadorDashboardLoader";
-import { adminExplorationsLoader } from "./loaders/adminExplorationsLoader";
-import { adminLocationLoader } from "./loaders/adminLocationLoader";
-import { adminUserLoader } from "./loaders/adminUserLoader";
+import { explorersLoader } from "./loaders/ambassador/explorersLoader";
+import { profileLoader } from "./loaders/shared/profileLoader";
+import { ambassadorDashboardLoader } from "./loaders/ambassador/ambassadorDashboardLoader";
+import { adminExplorationsLoader } from "./loaders/shared/adminExplorationsLoader";
+import { adminLocationLoader } from "./loaders/shared/adminLocationLoader";
+import { adminUserLoader } from "./loaders/shared/adminUserLoader";
 // import ViewExploration from "../../features/ambassador/pages/explorations/ViewExploration";
 
 const AmbassadorDashboard = lazy(

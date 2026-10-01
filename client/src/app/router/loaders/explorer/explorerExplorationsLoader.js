@@ -1,10 +1,10 @@
-import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import { useAuth } from "../../../../features/auth/contexts/AuthContext";
 import {
   getAllMyExplorationProgress,
   getExplorationProgress,
   getUserExplorationProgress,
-} from "../../../services/explorationProgress";
-import { getExplorationsSummary } from "../../../services/explorations";
+} from "../../../../services/explorationProgress";
+import { getExplorationsSummary } from "../../../../services/explorations";
 
 export async function explorerExplorationsLoader() {
   const { data: explorations } = await getExplorationsSummary();

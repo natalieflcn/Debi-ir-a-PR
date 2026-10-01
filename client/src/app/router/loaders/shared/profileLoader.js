@@ -112,11 +112,8 @@ const userHistory = {
   ],
 };
 
-export async function profileLoader({ params }) {
-  // const { data: me } = await getMe();
-
-  const { userId } = params;
-  const { data } = await getUser(userId);
+export async function profileLoader() {
+  const { data } = await getMe();
 
   return { user: data.data, userHistory };
 }

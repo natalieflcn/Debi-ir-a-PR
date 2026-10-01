@@ -3,11 +3,11 @@
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";
-import { explorerExplorationsLoader } from "./loaders/explorerExplorationsLoader";
-import { explorerExplorationLoader } from "./loaders/explorerExplorationLoader";
-import { explorerLocationLoader } from "./loaders/explorerLocationLoader";
-import { profileLoader } from "./loaders/profileLoader";
-import { explorerDashboardLoader } from "./loaders/explorerDashboardLoader";
+import { explorerExplorationsLoader } from "./loaders/explorer/explorerExplorationsLoader";
+import { explorerExplorationLoader } from "./loaders/explorer/explorerExplorationLoader";
+import { explorerLocationLoader } from "./loaders/explorer/explorerLocationLoader";
+import { profileLoader } from "./loaders/shared/profileLoader";
+import { explorerDashboardLoader } from "./loaders/explorer/explorerDashboardLoader";
 
 const ExplorerDashboard = lazy(
   () => import("@/features/explorer/pages/dashboard/ExplorerDashboard.jsx"),

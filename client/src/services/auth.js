@@ -1,4 +1,4 @@
-import { apiFetch } from "../shared/services/apiFetch";
+import { apiFetch } from "./utils/apiFetch";
 
 // const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
 

@@ -4,8 +4,8 @@ import Heading from "../typography/Heading";
 import Button from "../ui/Button";
 import RouterLink from "../routing/RouterLink";
 import { useEffect, useState } from "react";
-import Modal from "../ui/Modal";
-import LocationForm from "./LocationForm";
+import Modal from "../modal/Modal";
+// import LocationForm from "./LocationForm";
 import Bold from "../typography/Bold";
 import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";
 

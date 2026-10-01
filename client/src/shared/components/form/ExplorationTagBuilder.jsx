@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 
 import styled from "styled-components";
-import Modal from "../ui/Modal";
+import Modal from "../modal/Modal";
 import Row from "../layout/Row";
 import { IoIosCheckbox } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";

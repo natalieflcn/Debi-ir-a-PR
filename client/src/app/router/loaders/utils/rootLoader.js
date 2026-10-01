@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { getMe } from "../../../services/auth.js";
+import { getMe } from "../../../../services/auth.js";
 
 const ROLE_HOME = {
   explorer: "/dashboard",

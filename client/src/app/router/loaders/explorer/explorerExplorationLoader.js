@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import fakeExplorationData from "../../../features/explorer/pages/explorations/fakeExplorationData";
+import fakeExplorationData from "../../../../features/explorer/pages/explorations/fakeExplorationData";
 import {
   getExploration,
   getExplorationsSummary,
-} from "../../../services/explorations";
-import { getExplorationProgress } from "../../../services/explorationProgress";
-import { getMe } from "../../../services/auth";
+} from "../../../../services/explorations";
+import { getExplorationProgress } from "../../../../services/explorationProgress";
+import { getMe } from "../../../../services/auth";
 
 export async function explorerExplorationLoader({ params }) {
   const userHistory = {

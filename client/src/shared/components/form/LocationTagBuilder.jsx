@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Dropdown from "../dropdown/Dropdown";
-import Modal from "../ui/Modal";
+import Modal from "../modal/Modal";
 import Button from "../ui/Button";
 import Row from "../layout/Row";
 import styled from "styled-components";

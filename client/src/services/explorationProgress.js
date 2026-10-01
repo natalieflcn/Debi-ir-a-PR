@@ -1,4 +1,4 @@
-import { apiFetch } from "../shared/services/apiFetch";
+import { apiFetch } from "./utils/apiFetch";
 
 export async function getExplorationProgress(explorationId) {
   // const { data } = await apiFetch(`/explorations/${explorationSlug}`);

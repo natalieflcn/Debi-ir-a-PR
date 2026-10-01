@@ -24,7 +24,7 @@ import {
 } from "../../../../services/explorations";
 import { useAuth } from "../../../auth/contexts/AuthContext";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
-import Modal from "../../../../shared/components/ui/Modal";
+import Modal from "../../../../shared/components/modal/Modal";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;

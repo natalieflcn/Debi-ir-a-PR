@@ -23,7 +23,7 @@ import Bold from "../../../shared/components/typography/Bold";
 import FeaturedFormToggle from "../../../shared/components/form/FeaturedFormToggle";
 import BadgeBuilder from "../../../shared/components/form/BadgeBuilder";
 import SpinnerMini from "../../../shared/components/ui/SpinnerMini";
-import Modal from "../../../shared/components/ui/Modal";
+import Modal from "../../../shared/components/modal/Modal";
 import Heading from "../../../shared/components/typography/Heading";
 
 const StyledRow = styled(Row)`

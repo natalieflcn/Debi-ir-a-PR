@@ -3,14 +3,14 @@
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 
-import { adminDashboardLoader } from "./loaders/adminDashboardLoader";
+import { adminDashboardLoader } from "./loaders/admin/adminDashboardLoader";
 
-import { adminExplorationsLoader } from "./loaders/adminExplorationsLoader";
-import { adminExplorationLoader } from "./loaders/adminExplorationLoader";
-import { adminLocationLoader } from "./loaders/adminLocationLoader";
-import { usersLoader } from "./loaders/usersLoader";
-import { profileLoader } from "./loaders/profileLoader";
-import { adminUserLoader } from "./loaders/adminUserLoader";
+import { adminExplorationsLoader } from "./loaders/shared/adminExplorationsLoader";
+import { adminExplorationLoader } from "./loaders/shared/adminExplorationLoader";
+import { adminLocationLoader } from "./loaders/shared/adminLocationLoader";
+import { usersLoader } from "./loaders/admin/usersLoader";
+import { profileLoader } from "./loaders/shared/profileLoader";
+import { adminUserLoader } from "./loaders/shared/adminUserLoader";
 
 const AdminDashboard = lazy(
   () => import("@/features/admin/pages/dashboard/AdminDashboard.jsx"),

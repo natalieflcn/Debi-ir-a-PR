@@ -566,6 +566,7 @@
 // Refactor modal window usages with useReducer
 // Implement ReactQuery and Modal Window into EndExplorationProgress workflow
 
+// utilize getMe() api in profileLoader to load data there instead of inside profile info, etc
 // combine react router loader qith react query for explorers
 
 // create way for users to edit their names
