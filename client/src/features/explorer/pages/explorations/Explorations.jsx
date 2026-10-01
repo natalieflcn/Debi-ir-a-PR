@@ -37,15 +37,37 @@ const ExplorationFiltersRow = styled(Row)`
   }
 `;
 
-const ExplorerExplorationCardButton = function (
-  explorationSlug,
-  explorationId,
-) {
+const ExplorerExplorationCardButton = function (explorationSlug, progress) {
+  let buttonId,
+    buttonVariation,
+    buttonName = "";
+
+  switch (progress) {
+    case "in_progress":
+      buttonId = "continue";
+      buttonVariation = "yellow";
+      buttonName = "Continue Exploring";
+      break;
+
+    case "completed":
+      buttonId = "completed";
+      buttonVariation = "treeLeaf";
+      buttonName = "Completed";
+      break;
+
+    case undefined:
+    default:
+      buttonId = "learn-more";
+      buttonVariation = "primary";
+      buttonName = "Learn More";
+      break;
+  }
+
   return [
     {
-      id: "learn-more",
-      buttonVariation: "primary",
-      buttonName: "Learn More ",
+      id: buttonId,
+      buttonVariation: buttonVariation,
+      buttonName: buttonName,
       buttonLink: `/explorations/${explorationSlug}`,
     },
   ];
@@ -58,7 +80,7 @@ function Explorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
-  const { explorations } = useLoaderData();
+  const { explorations, userHistory } = useLoaderData();
   // const QueryClient = useQueryClient();
 
   const filteredExplorations = [...explorations].filter((exploration) => {
@@ -117,11 +139,18 @@ function Explorations() {
               ? exploration.cities[0]
               : "Multiple Cities";
 
+          const progress = userHistory.find(
+            (entry) => entry.exploration === exploration._id,
+          )?.status;
+
           return (
             <ExplorationMiniCard
               exploration={exploration}
               city={city}
-              buttonDetails={ExplorerExplorationCardButton(exploration.slug)}
+              buttonDetails={ExplorerExplorationCardButton(
+                exploration.slug,
+                progress,
+              )}
               key={exploration.id}
             />
           );

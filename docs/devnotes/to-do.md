@@ -567,6 +567,8 @@
 
 // add indication that exploration is in progresss, completed
 
+// combine react router loader qith react query for explorers
+
 // create way for users to edit their names
 
 // create forgot password page
