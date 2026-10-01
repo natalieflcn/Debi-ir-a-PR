@@ -26,6 +26,9 @@ import {
   createExploration,
   updateExploration,
 } from "../../../../services/explorations";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
+import Heading from "../../../../shared/components/typography/Heading";
+import Modal from "../../../../shared/components/ui/Modal";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -42,6 +45,10 @@ const StyledTextAreaRow = styled(Row)`
   @media (max-width: 690px) {
     text-align: center;
   }
+`;
+
+const Paragraph = styled.p`
+  text-align: center;
 `;
 
 function CreateExploration() {
@@ -71,6 +78,11 @@ function CreateExploration() {
   );
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeletingError, setIsDeletingError] = useState(false);
+  const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
+  const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
   const { user } = useAuth();
 
   const navigate = useNavigate();
@@ -207,59 +219,79 @@ function CreateExploration() {
     }
   };
 
+  async function handleDeleteExploration() {
+    try {
+      await deleteExploration(exploration._id);
+      setIsDeleting(false);
+      setIsDeletingSucess(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setIsDeletingError(false);
+        navigate(`/${user.role}/explorations`);
+      }, 1500);
+    } catch (err) {
+      setIsDeleting(false);
+      setIsDeletingError(true);
+      setIsDeletingErrorMessage(err.message);
+    }
+  }
+
   return (
-    <Row $gap="var(--gap-lg)">
-      {exploration ? (
-        <RouterLink to={`/admin/explorations/${exploration.slug}`}>
-          <Button $size="small" $variation="darkRed">
-            <FaArrowLeft size={12} /> Back to{" "}
-            {exploration?.name ?? "Exploration"}
-          </Button>
-        </RouterLink>
-      ) : (
-        <RouterLink to="/admin/explorations">
-          <Button $size="small" $variation="darkRed">
-            <FaArrowLeft size={12} /> Back to Explorations
-          </Button>
-        </RouterLink>
-      )}
+    <>
+      <Row $gap="var(--gap-lg)">
+        {exploration ? (
+          <RouterLink to={`/admin/explorations/${exploration.slug}`}>
+            <Button $size="small" $variation="darkRed">
+              <FaArrowLeft size={12} /> Back to{" "}
+              {exploration?.name ?? "Exploration"}
+            </Button>
+          </RouterLink>
+        ) : (
+          <RouterLink to="/admin/explorations">
+            <Button $size="small" $variation="darkRed">
+              <FaArrowLeft size={12} /> Back to Explorations
+            </Button>
+          </RouterLink>
+        )}
 
-      <AppForm
-        formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
-        // action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
-        // method={isEditing ? "patch" : "post"}
-        onSubmit={handleSubmit}
-      >
-        <Row $gap="var(--gap-lg)">
-          <FormField label="Name">
-            <StyledRow $gap="var(--gap-xs)">
-              <Input
-                name="name"
-                placeholder="The title of the exploration"
-                value={name}
-                onChange={(e) => {
-                  setFormErrors((prev) => ({ ...prev, name: "" }));
-                  setName(e.target.value);
-                }}
-              />
-              {formErrors.name && <Bold>{formErrors.name}</Bold>}
-            </StyledRow>
-          </FormField>
+        <AppForm
+          formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
+          // action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
+          // method={isEditing ? "patch" : "post"}
+          onSubmit={handleSubmit}
+        >
+          <Row $gap="var(--gap-lg)">
+            <FormField label="Name">
+              <StyledRow $gap="var(--gap-xs)">
+                <Input
+                  name="name"
+                  placeholder="The title of the exploration"
+                  value={name}
+                  onChange={(e) => {
+                    setFormErrors((prev) => ({ ...prev, name: "" }));
+                    setName(e.target.value);
+                  }}
+                />
+                {formErrors.name && <Bold>{formErrors.name}</Bold>}
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Header Image">
-            <StyledRow $gap="var(--gap-xs)">
-              <ImageUploader
-                name="headerImage"
-                multiple={false}
-                maxImages={1}
-                value={headerImage}
-                onChange={handleSetHeaderImage}
-              />
-              {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
-            </StyledRow>
-          </FormField>
+            <FormField label="Header Image">
+              <StyledRow $gap="var(--gap-xs)">
+                <ImageUploader
+                  name="headerImage"
+                  multiple={false}
+                  maxImages={1}
+                  value={headerImage}
+                  onChange={handleSetHeaderImage}
+                />
+                {formErrors.headerImage && (
+                  <Bold>{formErrors.headerImage}</Bold>
+                )}
+              </StyledRow>
+            </FormField>
 
-          {/* <FormField label="Starting City">
+            {/* <FormField label="Starting City">
             <StyledRow $gap="var(--gap-xs)">
               <CityDropdown
                 name="city"
@@ -272,105 +304,178 @@ function CreateExploration() {
             </StyledRow>
           </FormField> */}
 
-          <FormField label="Tagline">
-            <StyledRow $gap="var(--gap-xs)">
-              <Input
-                name="tagline"
-                placeholder="The short description displayed on the Explorations page"
-                value={tagline}
-                onChange={(e) => {
-                  setFormErrors((prev) => ({ ...prev, tagline: "" }));
-                  setTagline(e.target.value);
-                }}
-              />
-              {formErrors.tagline && <Bold>{formErrors.tagline}</Bold>}
-            </StyledRow>
-          </FormField>
+            <FormField label="Tagline">
+              <StyledRow $gap="var(--gap-xs)">
+                <Input
+                  name="tagline"
+                  placeholder="The short description displayed on the Explorations page"
+                  value={tagline}
+                  onChange={(e) => {
+                    setFormErrors((prev) => ({ ...prev, tagline: "" }));
+                    setTagline(e.target.value);
+                  }}
+                />
+                {formErrors.tagline && <Bold>{formErrors.tagline}</Bold>}
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Description">
-            <StyledTextAreaRow $gap="var(--gap-xs)">
-              <TextArea
-                name="description"
-                placeholder="The long description shown on the Exploration page"
-                value={description}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                  setFormErrors((prev) => ({ ...prev, description: "" }));
-                }}
-              />
-              {formErrors.description && <Bold>{formErrors.description}</Bold>}
-            </StyledTextAreaRow>
-          </FormField>
+            <FormField label="Description">
+              <StyledTextAreaRow $gap="var(--gap-xs)">
+                <TextArea
+                  name="description"
+                  placeholder="The long description shown on the Exploration page"
+                  value={description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, description: "" }));
+                  }}
+                />
+                {formErrors.description && (
+                  <Bold>{formErrors.description}</Bold>
+                )}
+              </StyledTextAreaRow>
+            </FormField>
 
-          <FormField label="Images">
-            <StyledRow $gap="var(--gap-xs)">
-              <ImageUploader
-                name="images"
-                maxImages={3}
-                value={images}
-                onChange={handleSetImages}
-              />
-              {formErrors.images && <Bold>{formErrors.images}</Bold>}
-            </StyledRow>
-          </FormField>
+            <FormField label="Images">
+              <StyledRow $gap="var(--gap-xs)">
+                <ImageUploader
+                  name="images"
+                  maxImages={3}
+                  value={images}
+                  onChange={handleSetImages}
+                />
+                {formErrors.images && <Bold>{formErrors.images}</Bold>}
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Locations">
-            <StyledRow $gap="var(--gap-md)">
-              <LocationBuilder
-                exploration={exploration || name}
-                locations={locations}
-                onAdd={handleAddLocation}
-              />
-              <CurrentLocations
-                locations={locations}
-                onEdit={handleEditLocation}
-                onDelete={handleDeleteLocation}
-                exploration={exploration || null}
-              />
-              {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
-            </StyledRow>
-          </FormField>
+            <FormField label="Locations">
+              <StyledRow $gap="var(--gap-md)">
+                <LocationBuilder
+                  exploration={exploration || name}
+                  locations={locations}
+                  onAdd={handleAddLocation}
+                />
+                <CurrentLocations
+                  locations={locations}
+                  onEdit={handleEditLocation}
+                  onDelete={handleDeleteLocation}
+                  exploration={exploration || null}
+                />
+                {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Badge">
-            <StyledRow $gap="var(--gap-xs)">
-              <BadgeBuilder value={badge} onSelect={handleSetBadge} />
-              {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
-            </StyledRow>
-          </FormField>
+            <FormField label="Badge">
+              <StyledRow $gap="var(--gap-xs)">
+                <BadgeBuilder value={badge} onSelect={handleSetBadge} />
+                {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Tags">
-            <StyledRow $gap="var(--gap-xs)">
-              <ExplorationTagBuilder
-                exploration={exploration || null}
-                tags={tags}
-                onChange={handleSetTags}
-              />{" "}
-              {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
-              <StyledParagraph>
-                {/* <Bold $color="var(--color-dark-200)">Note: </Bold> Tags are also
+            <FormField label="Tags">
+              <StyledRow $gap="var(--gap-xs)">
+                <ExplorationTagBuilder
+                  exploration={exploration || null}
+                  tags={tags}
+                  onChange={handleSetTags}
+                />{" "}
+                {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
+                <StyledParagraph>
+                  {/* <Bold $color="var(--color-dark-200)">Note: </Bold> Tags are also
                 derived from the tag(s) you add to each location. */}
-              </StyledParagraph>
-            </StyledRow>
-          </FormField>
+                </StyledParagraph>
+              </StyledRow>
+            </FormField>
 
-          <FormField label="Featured">
-            <StyledRow $align="start">
-              <FeaturedFormToggle
-                featured={featured}
-                onFeatured={setFeatured}
-              />
-            </StyledRow>
-          </FormField>
+            <FormField label="Featured">
+              <StyledRow $align="start">
+                <FeaturedFormToggle
+                  featured={featured}
+                  onFeatured={setFeatured}
+                />
+              </StyledRow>
+            </FormField>
 
-          <Button $variation="darkRed" $size="medium" type="submit">
-            {!isSubmitting &&
-              (isEditing ? "Save Changes" : "Create Exploration")}
-            {isSubmitting && "Saving Exploration..."}
-          </Button>
-          {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
-        </Row>
-      </AppForm>
-    </Row>
+            <Row $direction="horizontal" $gap="var(--gap-md)">
+              <Button $variation="darkRed" $size="medium" type="submit">
+                {!isSubmitting &&
+                  (isEditing ? "Save Changes" : "Create Exploration")}
+                {isSubmitting && "Saving Exploration..."}
+              </Button>
+
+              {isEditing && (
+                <Button
+                  $variation="primary"
+                  $size="medium"
+                  type="button"
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setIsDeleting(true);
+                  }}
+                >
+                  Delete Exploration
+                </Button>
+              )}
+            </Row>
+            {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
+          </Row>
+        </AppForm>
+      </Row>
+
+      {isModalOpen && (
+        <Modal
+          onClose={() => {
+            setIsModalOpen(false);
+            setIsDeletingError(false);
+            setIsDeletingErrorMessage("");
+          }}
+        >
+          <Row $align="center">
+            {isDeleting && (
+              <>
+                <Heading as="h6">
+                  Are you sure you want to delete {exploration.name}?
+                </Heading>
+                <p>This action is irreversible.</p>
+                <Row $direction="horizontal" $gap="var(--gap-lg)">
+                  <Button
+                    $size="small"
+                    $variation="secondary"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    $size="small"
+                    $variation="primary"
+                    onClick={handleDeleteExploration}
+                  >
+                    Delete Exploration
+                  </Button>
+                </Row>
+              </>
+            )}
+
+            {isDeletingError && (
+              <Row $align="center">
+                <Bold>There was an error deleting this exploration.</Bold>
+                <Paragraph>{isDeletingErrorMessage}</Paragraph>
+              </Row>
+            )}
+
+            {isDeletingSuccess && (
+              <Row $align="center">
+                <Bold>You successfully deleted this exploration.</Bold>
+                <Paragraph>
+                  Redirecting you to the Explorations page...
+                </Paragraph>
+                <SpinnerMini />
+              </Row>
+            )}
+          </Row>
+        </Modal>
+      )}
+    </>
   );
 }
 
