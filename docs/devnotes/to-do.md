@@ -478,11 +478,11 @@
       - [ ] /resetForgottenPassword
       - [x] /updateMyPassword
 
-    - [~] Connect remaining routes
-      - [~] Explorations
-        - [ ] DELETE /explorations/:explorationId
+    - [x] Connect remaining routes
+      - [x] Explorations
+        - [x] DELETE /explorations/:explorationId
         - [x] DELETE /explorations/:explorationId/locations/:locationId
-      - [~] Users
+      - [x] Users
         - [x] GET
           - [x] Admin POV
           - [x] Ambassador POV
@@ -509,8 +509,8 @@
     - [x] When logging in with incorrect password, error message should display on the front-end.
     - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
     - [ ] Create way for users to edit their name
-    - [ ] TODO: Add ability for ambassadors/admins to delete resources
-      - [ ] Delete explorations
+    - [x] Add ability for ambassadors/admins to delete resources
+      - [x] Delete explorations
       - [x] Delete locations
       - [x] Delete users
     - [ ] Create document middleware that calculates number of explorations completed and changes user title

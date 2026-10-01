@@ -24,6 +24,7 @@ import BadgeBuilder from "../../../../shared/components/form/BadgeBuilder";
 import { useAuth } from "../../../auth/contexts/AuthContext";
 import {
   createExploration,
+  deleteExploration,
   updateExploration,
 } from "../../../../services/explorations";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";

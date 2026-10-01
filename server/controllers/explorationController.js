@@ -51,7 +51,23 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { data: exploration } });
 });
 
-exports.deleteExploration = factory.deleteOne(Exploration);
+// exports.deleteExploration = factory.deleteOne(Exploration);
+
+exports.deleteExploration = catchAsync(async (req, res, next) => {
+  const exploration = findOne(req.params.id);
+
+  if (!exploration)
+    next(new AppError("No exploration found with that ID", 404));
+
+  await ExplorationProgress.deleteMany({ exploration: exploration._id });
+
+  await exploration.deleteOne();
+
+  res.status(204).json({
+    status: "success",
+    data: null,
+  });
+});
 
 exports.aliasExplorationsSummary = (req, res, next) => {
   //   req.query.filter = {tags: }
