@@ -4,11 +4,12 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
-import {
-  endExploration,
-  startExploration,
-} from "../../../../services/explorationProgress";
+
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
+import { useState } from "react";
+import Modal from "../../../../shared/components/modal/Modal";
+import DeleteConfirmationModal from "../../../../shared/components/modal/DeleteConfirmationModal";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const BadgeRow = styled(Row)`
   @media (max-width: 500px) {
@@ -26,16 +27,28 @@ function ExplorerExplorationCardFooterCTA({
   exploration,
   userHistory,
   onStartExploration,
+  onEndExploration,
   mutateIsPending = false,
 }) {
-  async function handleClearExploration(explorationId) {
-    console.log(explorationId);
-    try {
-      await endExploration(explorationId);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleDeleteOptions = {
+    itemName: "your exploration progress",
+    redirect: "the exploration",
+    data: "exploration progress",
+  };
+  // async function handleClearExploration(explorationId) {
+  //   console.log(explorationId);
+  //   try {
+  //     await endExploration(explorationId);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  const handleDeleteSuccess = async function () {
+    navigate(`/explorations/${exploration.slug}`);
+  };
 
   return (
     <Row $gap="var(--gap-lg)">
@@ -68,7 +81,7 @@ function ExplorerExplorationCardFooterCTA({
 
         {!mutateIsPending &&
           hasStarted &&
-          userHistory.status !== "completed" && (
+          userHistory.status === "in_progress" && (
             <StyledRow
               $direction="vertical"
               $align="center"
@@ -108,12 +121,21 @@ function ExplorerExplorationCardFooterCTA({
         <Button
           $variation="primary"
           $size="medium"
-          onClick={() => handleClearExploration(exploration._id)}
+          onClick={() => setIsModalOpen(true)}
         >
           {userHistory?.status === "in_progress"
             ? "End Exploration"
             : "Clear Exploration Progress"}
         </Button>
+      )}
+
+      {isModalOpen && (
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onConfirmDelete={onEndExploration}
+          onSuccess={handleDeleteSuccess}
+          options={handleDeleteOptions}
+        />
       )}
     </Row>
   );

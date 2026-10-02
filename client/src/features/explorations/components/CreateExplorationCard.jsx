@@ -103,8 +103,8 @@ function CreateExplorationCard({ exploration }) {
   function handleEditLocation(tempId, formData) {
     setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) =>
-      prev.map((l) =>
-        (l._id ?? l.tempId) === tempId ? { ...l, ...formData } : l,
+      prev.map((loc) =>
+        (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
       ),
     );
   }

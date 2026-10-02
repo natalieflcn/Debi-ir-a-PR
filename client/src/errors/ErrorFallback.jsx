@@ -18,6 +18,7 @@ const StyledParagraph = styled.p`
 `;
 
 function ErrorFallback({ error, resetErrorBoundary }) {
+  console.log(error);
   return (
     <>
       <Background />

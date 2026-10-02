@@ -63,7 +63,7 @@ function ExplorerExplorationCardLocations({
     );
 
     return (
-      <>
+      <Row key={i}>
         {/* KEY HERE */}
         {mutateIsPending && (
           <Row $align="center">
@@ -105,7 +105,7 @@ function ExplorerExplorationCardLocations({
             )}
           </StyledRow>
         )}
-      </>
+      </Row>
     );
   });
 }

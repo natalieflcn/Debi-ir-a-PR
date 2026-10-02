@@ -55,6 +55,7 @@ function RouteError() {
       break;
   }
 
+  console.log(error);
   return (
     <>
       <Background />

@@ -6,10 +6,11 @@ import ExplorerExplorationCardLocations from "../../components/explorations/Expl
 import ExplorerExplorationCardFooterCTA from "../../components/explorations/ExplorerExplorationCardFooterCTA";
 import { useLoaderData } from "react-router-dom";
 import {
+  endExploration,
   getExplorationProgress,
   startExploration,
 } from "../../../../services/explorationProgress";
-import { useState } from "react";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../../../shared/components/ui/Spinner";
 
@@ -21,8 +22,16 @@ function Exploration() {
     queryFn: () => getExplorationProgress(exploration._id),
   });
 
-  const mutateExploration = useMutation({
+  const handleStartExploration = useMutation({
     mutationFn: (explorationId) => startExploration(explorationId),
+    onSuccess: () =>
+      QueryClient.invalidateQueries({
+        queryKey: ["explorationProgress", exploration._id],
+      }),
+  });
+
+  const handleEndExploration = useMutation({
+    mutationFn: (explorationId) => endExploration(explorationId),
     onSuccess: () =>
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
@@ -60,8 +69,8 @@ function Exploration() {
       userHistory={userHistory}
       hasStarted={hasStarted}
       exploration={exploration}
-      onStartExploration={() => mutateExploration.mutate(exploration._id)}
-      mutateIsPending={mutateExploration.isPending}
+      onStartExploration={() => handleStartExploration.mutate(exploration._id)}
+      mutateIsPending={handleStartExploration.isPending}
     />
   );
 
@@ -71,7 +80,7 @@ function Exploration() {
       // exploration={exploration}
       locations={exploration.locations}
       userHistory={userHistory}
-      mutateIsPending={mutateExploration.isPending}
+      mutateIsPending={handleStartExploration.isPending}
     />
   );
 
@@ -81,8 +90,9 @@ function Exploration() {
       exploration={exploration}
       userHistory={userHistory}
       // onStartExploration={handleStartExploration}
-      onStartExploration={() => mutateExploration.mutate(exploration._id)}
-      mutateIsPending={mutateExploration.isPending}
+      onStartExploration={() => handleStartExploration.mutate(exploration._id)}
+      onEndExploration={() => handleEndExploration.mutate(exploration._id)}
+      mutateIsPending={handleStartExploration.isPending}
     />
   );
 
@@ -90,7 +100,7 @@ function Exploration() {
     <>
       {isPending && <Spinner />}
 
-      {(isError || mutateExploration.isError) && (
+      {(isError || handleStartExploration.isError) && (
         <span>Error: {error.message}</span>
       )}
 
@@ -104,7 +114,7 @@ function Exploration() {
           headerDetails={headerDetails}
           locationDetails={locationDetails}
           footerCTA={footerCTA}
-          isPending={mutateExploration.isPending}
+          isPending={handleStartExploration.isPending}
         />
       )}
     </>
