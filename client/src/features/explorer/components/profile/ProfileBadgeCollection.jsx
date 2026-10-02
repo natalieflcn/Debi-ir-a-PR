@@ -4,9 +4,9 @@ import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
 import Image from "../../../../shared/components/ui/Image";
 import { forwardRef, useState } from "react";
-import badges from "../../../../../data/badges";
+
 import { FaLock } from "react-icons/fa6";
-import Modal from "../../../../shared/components/ui/Modal";
+import Modal from "../../../../shared/components/modal/Modal";
 
 const StyledProfileBadgeCollection = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const TitleRow = styled(Row)`
   }
 `;
 
-const ProfileBadgeCollection = function ({ userHistory }) {
+const ProfileBadgeCollection = function ({ userHistory, badges = [] }) {
   // console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);

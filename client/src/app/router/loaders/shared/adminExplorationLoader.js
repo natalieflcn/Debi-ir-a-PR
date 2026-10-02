@@ -5,5 +5,6 @@ export async function adminExplorationLoader({ params }) {
 
   const { data } = await getExploration(explorationId);
 
+  console.log(data);
   return { exploration: data.data };
 }

@@ -1,16 +1,15 @@
 import styled from "styled-components";
-import ExplorerDashboardItem from "../../../../shared/components/layout/DashboardItem";
+
 import ExplorerDashboardBadgeItem from "../../components/dashboard/ExplorerDashboardBadgeItem";
 import ExplorerDashboardExplorationsItem from "../../components/dashboard/ExplorerDashboardExplorationsItem";
 import ExplorerDashboardProfileItem from "../../components/dashboard/ExplorerDashboardProfileItem";
 import ExplorerDashboardHistoryItem from "../../components/dashboard/ExplorerDashboardHistoryItem";
-import ExplorerDashboardStatsItems from "../../components/dashboard/ExplorerDashboardStatsItem";
+
 import Row from "../../../../shared/components/layout/Row";
 
 import Heading from "../../../../shared/components/typography/Heading";
 import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashboardStatsItem";
 import { useLoaderData } from "react-router-dom";
-import badges from "../../../../../data/badges";
 
 const StyledExplorerDashboard = styled.div`
   /* display: flex;
@@ -103,16 +102,16 @@ function getUserProgress(explorations, userHistory) {
 function ExplorerDashboard() {
   const { profileData, explorations, userHistory } = useLoaderData();
 
-  const currentExplorations = getCurrentExplorations(explorations, userHistory);
-  const featuredExplorations = getFeaturedExplorations(explorations);
-  const userProgress = getUserProgress(explorations, userHistory);
+  // const currentExplorations = getCurrentExplorations(explorations, userHistory);
+  // const featuredExplorations = getFeaturedExplorations(explorations);
+  // const userProgress = getUserProgress(explorations, userHistory);
 
   return (
     <Row $gap="var(--gap-lg)">
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
         WELCOME, NATALIE
       </Heading>
-      <StyledExplorerDashboard>
+      {/* <StyledExplorerDashboard>
         <GridArea $area="profile">
           <ExplorerDashboardProfileItem profileData={profileData} />
         </GridArea>
@@ -141,8 +140,8 @@ function ExplorerDashboard() {
             explorationData={featuredExplorations}
             userProgress={userProgress}
           />
-        </GridArea>
-      </StyledExplorerDashboard>
+        </GridArea> */}
+      {/* </StyledExplorerDashboard> */}
     </Row>
   );
 }

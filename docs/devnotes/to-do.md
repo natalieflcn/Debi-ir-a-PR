@@ -559,8 +559,8 @@
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
-  - Searching/Filtering for Explorations/Users
 
+// BUG with rendering Exploration page as ambassador (prob explorer n admin too)
 // Refactor delete modal window usages
 
 - profileinformation

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Row from "../layout/Row";
 import Button from "../ui/Button";
 import Image from "../ui/Image";
-import Input from "./Input";
+import Input from "../form/Input";
 import styled from "styled-components";
 
 const StyledFileInput = styled.input`

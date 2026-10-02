@@ -1,15 +1,11 @@
-import ExplorationCard from "../../../explorations/components/ExplorationCard";
-import Row from "../../../../shared/components/layout/Row";
+import { useLoaderData } from "react-router-dom";
 import AdminExplorationCardHeaderDetails from "../../../../shared/components/management/AdminExplorationCardHeaderDetails";
 import AdminExplorationCardLocations from "../../../../shared/components/management/AdminExplorationCardLocations";
-import Button from "../../../../shared/components/ui/Button";
-import { FaArrowLeft } from "react-icons/fa";
-
-import { useLoaderData } from "react-router-dom";
 import AdminFooterBadgeDisplay from "../../../../shared/components/management/AdminFooterBadgeDisplay";
+import ExplorationCard from "../../../explorations/components/ExplorationCard";
 
 function ViewExploration() {
-  const { exploration, user } = useLoaderData();
+  const { exploration } = useLoaderData();
 
   // need to use GET user with user.id here
   const headerDetails = (

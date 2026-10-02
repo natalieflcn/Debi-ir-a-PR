@@ -9,7 +9,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useParams } from "react-router-dom";
 
 import { useLoaderData } from "react-router-dom";
-import badges from "../../../../../data/badges";
+
 import { formatDate } from "../../../../shared/utils/helpers";
 
 const StyledExplorerDetails = styled.div`

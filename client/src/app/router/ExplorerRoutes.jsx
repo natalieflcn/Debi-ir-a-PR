@@ -47,7 +47,7 @@ const ExplorerRoutes = [
     element: <ExplorationLocation />,
     loader: explorerLocationLoader,
   },
-  { path: "profile", element: <ExplorerProfile /> },
+  { path: "profile", element: <ExplorerProfile />, loader: profileLoader },
 ];
 
 export default ExplorerRoutes;

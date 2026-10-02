@@ -8,7 +8,7 @@ import { formatDate } from "../../utils/helpers";
 import styled from "styled-components";
 import { deleteExploration } from "../../../services/explorations";
 import { useState } from "react";
-import Modal from "../ui/Modal";
+import Modal from "../modal/Modal";
 import SmallText from "../typography/SmallText";
 import Heading from "../typography/Heading";
 import SpinnerMini from "../ui/SpinnerMini";

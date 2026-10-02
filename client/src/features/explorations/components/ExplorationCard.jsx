@@ -39,9 +39,9 @@ function ExplorationCard({
   footerCTA,
   type = "",
 }) {
-  const derivedLocationTags = [
-    ...new Set(exploration.locations.flatMap((location) => location.tags)),
-  ];
+  // const derivedLocationTags = [
+  //   ...new Set(exploration.locations.flatMap((location) => location.tags)),
+  // ];
 
   // async function handleStartExploration() {
   //   console.log("button clicked");

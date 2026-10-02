@@ -5,7 +5,7 @@ import FormField from "./FormField";
 import Input from "./Input";
 import Bold from "../typography/Bold";
 import Button from "../ui/Button";
-import ImageUploader from "./ImageUploader";
+import ImageUploader from "../ui/ImageUploader";
 import styled from "styled-components";
 import Heading from "../typography/Heading";
 import { IoIosCheckbox } from "react-icons/io";

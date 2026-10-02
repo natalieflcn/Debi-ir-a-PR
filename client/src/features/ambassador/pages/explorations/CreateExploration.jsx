@@ -4,7 +4,7 @@ import Button from "../../../../shared/components/ui/Button";
 import AppForm from "../../../../shared/components/form/AppForm";
 import FormField from "../../../../shared/components/form/FormField";
 import TextArea from "../../../../shared/components/form/TextArea";
-import ImageUploader from "../../../../shared/components/form/ImageUploader";
+import ImageUploader from "../../../../shared/components/ui/ImageUploader";
 import { useState } from "react";
 import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
 import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
@@ -28,7 +28,7 @@ import {
   updateExploration,
 } from "../../../../services/explorations";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
-import Modal from "../../../../shared/components/ui/Modal";
+import Modal from "../../../../shared/components/modal/Modal";
 import Heading from "../../../../shared/components/typography/Heading";
 import CreateExplorationCard from "../../../explorations/components/CreateExplorationCard";
 

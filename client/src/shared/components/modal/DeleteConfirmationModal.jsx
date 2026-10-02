@@ -7,10 +7,10 @@ import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
 
 function DeleteConfirmationModal({
-  itemName,
   onConfirmDelete,
   onClose,
   onSuccess,
+  options, // {itemName, redirect, data}
 }) {
   const [status, setStatus] = useState("deleting"); //  deleting || error || success
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,13 +37,14 @@ function DeleteConfirmationModal({
 
   return (
     <Modal onClose={handleModalClose}>
-      <Row $align="center" $gap="var(--gap-sm)">
+      <Row $align="center" $gap="var(--gap-md)">
         {status === "deleting" && (
           <>
-            <Bold>Are you sure you want to delete {itemName}?</Bold>
+            <Bold>Are you sure you want to delete {options.itemName}?</Bold>
             <SmallText>
-              This action is irreversible and all data will be lost.
+              This action is irreversible and all {options.data} will be lost.
             </SmallText>
+
             <Row $direction="horizontal" $gap="var(--gap-md)">
               <Button
                 $size="small"
@@ -57,7 +58,7 @@ function DeleteConfirmationModal({
                 $variation="primary"
                 onClick={handleConfirmDelete}
               >
-                Delete {itemName}
+                Delete {options.itemName}
               </Button>
             </Row>
           </>
@@ -65,7 +66,7 @@ function DeleteConfirmationModal({
 
         {status === "error" && (
           <>
-            <Bold>There was an error deleting {itemName}.</Bold>
+            <Bold>There was an error deleting {options.itemName}.</Bold>
             <SmallText>{errorMessage}</SmallText>
           </>
         )}
@@ -73,7 +74,7 @@ function DeleteConfirmationModal({
         {status === "success" && (
           <>
             <Bold>Successfully deleted.</Bold>
-            <SmallText>Redirecting you...</SmallText>
+            <SmallText>Redirecting you to {options.redirect}...</SmallText>
             <SpinnerMini />
           </>
         )}

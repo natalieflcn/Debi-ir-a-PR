@@ -7,7 +7,7 @@ import Row from "../../../shared/components/layout/Row";
 import CityDropdown from "../../../shared/components/dropdown/CityDropdown";
 import Heading from "../../../shared/components/typography/Heading";
 import Button from "../../../shared/components/ui/Button";
-import ImageUploader from "../../../shared/components/form/ImageUploader";
+import ImageUploader from "../../../shared/components/ui/ImageUploader";
 import Input from "../../../shared/components/form/Input";
 import TextArea from "../../../shared/components/form/TextArea";
 import FormField from "../../../shared/components/form/FormField";

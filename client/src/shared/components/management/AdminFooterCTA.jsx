@@ -3,7 +3,7 @@ import RouterLink from "../routing/RouterLink";
 import Row from "../layout/Row";
 import styled from "styled-components";
 import { useState } from "react";
-import Modal from "../ui/Modal";
+import Modal from "../modal/Modal";
 import Heading from "../typography/Heading";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";

@@ -3,8 +3,6 @@ import ProfileInformation from "../../../../shared/components/profile/ProfileInf
 import ProfileHeader from "../../../../shared/components/profile/ProfileHeader";
 import ProfileBadgeCollection from "../../../explorer/components/profile/ProfileBadgeCollection";
 
-import { useLoaderData } from "react-router-dom";
-import { formatDate } from "../../../../shared/utils/helpers";
 import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledExplorerProfile = styled.div`

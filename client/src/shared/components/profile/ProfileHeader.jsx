@@ -7,12 +7,11 @@ import {
   IoIosInformationCircle,
 } from "react-icons/io";
 import { useRef, useState } from "react";
-import Modal from "../ui/Modal";
+import Modal from "../modal/Modal";
 import Button from "../ui/Button";
 import { useSubmit } from "react-router-dom";
 import CondensedTable from "../ui/CondensedTable";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
-import { profileLoader } from "../../../app/router/loaders/profileLoader";
 
 const StyledProfileHeader = styled.div`
   display: grid;

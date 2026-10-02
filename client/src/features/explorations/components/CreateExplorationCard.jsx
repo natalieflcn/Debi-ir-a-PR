@@ -10,7 +10,7 @@ import Input from "../../../shared/components/form/Input";
 import Button from "../../../shared/components/ui/Button";
 import AppForm from "../../../shared/components/form/AppForm";
 import TextArea from "../../../shared/components/form/TextArea";
-import ImageUploader from "../../../shared/components/form/ImageUploader";
+import ImageUploader from "../../../shared/components/ui/ImageUploader";
 import FormField from "../../../shared/components/form/FormField";
 import LocationBuilder from "../../../shared/components/form/LocationBuilder";
 import CurrentLocations from "../../../shared/components/form/CurrentLocations";
@@ -238,7 +238,7 @@ function CreateExplorationCard({ exploration }) {
     <>
       <Row $gap="var(--gap-lg)">
         {exploration ? (
-          <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
+          <RouterLink to={`/${user.role}/explorations/${exploration.slug}`}>
             <Button $size="small" $variation="darkRed">
               <FaArrowLeft size={12} /> Back to{" "}
               {exploration?.name ?? "Exploration"}

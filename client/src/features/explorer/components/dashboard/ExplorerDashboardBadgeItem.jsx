@@ -8,8 +8,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useState } from "react";
-import Modal from "../../../../shared/components/ui/Modal";
-import badges from "../../../../../data/badges";
+import Modal from "../../../../shared/components/modal/Modal";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ const StyledExplorerDashboardBadgeItem = styled.div`
   align-content: space-between;
 `;
 
-function ExplorerDashboardBadgeItem({ userHistory }) {
+function ExplorerDashboardBadgeItem({ userHistory = [], badges = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const numBadges = badges.length;
