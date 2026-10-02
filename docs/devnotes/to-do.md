@@ -503,25 +503,18 @@
         - [x] DELETE /explorations/:explorationId/exploration-progress
         - [x] DELETE /explorations/:explorationId/exploration-progress/:locationId
 
-- [ ] FRONT-END TWEAKS
+- [~] FRONT-END TWEAKS
   - [~] Connecting front-end to back-end
-    - [ ] "/" should always return to dashboard for logged in users TODO
     - [x] When logging in with incorrect password, error message should display on the front-end.
-    - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
-    - [ ] Create way for users to edit their name
     - [x] Add ability for ambassadors/admins to delete resources
       - [x] Delete explorations
       - [x] Delete locations
       - [x] Delete users
-    - [ ] Create document middleware that calculates number of explorations completed and changes user title
     - [x] Make "Date Joined" the default filter for Users
-    - [ ] Implement way for users to end Exploration
 
-  - [ ] Other Tasks (For the future)
+  - [~] Other Tasks (For the future)
     - [x] Fix default filters for Exploration Filters (date sorted is returning alphabetical)
-    - [ ] Center Exploration images... potentially make slideshow for more than three images?
-    - [ ] Location name should wrap around in CurrentLocations, not stretch past container
-    - [ ] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
+    - [x] Note: When refreshing from an /unauthorized page, it should retry the original link, not /unauthorized
     - [~] Implement loading spinners throughout the app
       - [x] useNavigation in layout components
         - [x] Mini spinners in Explorer - Exploration Card
@@ -529,48 +522,71 @@
         - [x] Mini spinners in Admin - Exploration Card
         - [x] Mini spinners in Admin - Exploration Location Card
     - [x] Add indicators that an exploration is IN_PROGRESS or COMPLETED on ExplorationMiniCards
-    - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
     - [x] Hide password in input fields when not active on /signup and /login page
-    - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
     - [x] BUG: Links broken when viewing users from /ambassador/users
-    - [ ] BUG: Error pages breaks out of user-based layout and uses guest layout
-      - [ ] PageNotFound
-      - [ ] RouteError
-      - [ ] ErrorFallback
     - [x] Rename CreateLocation to EditLocation and remove create conditional
-    - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
-    - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
-    - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
-    - [ ] Add functionality to search inputs
-      - [ ] Explorations
-      - [ ] Users
     - [x] Implement React Query/TanStack Query to manage ExplorationProgress for Explorers
-    - [ ] TODO: Create more pages
-      - [ ] Implement 'Forgot Password?' in login screen
-      - [ ] Create Reset Password page
 
 - [~] Refactor project
   - [x] Refactor CreateExploration pages into one reusable component
   - [x] Refactor EditLocation and LocationForm components into one reusable component
+
+## Week: October 1 - October 9
+
+- [~] **PHASE 4:** Connect Front-end to Back-end
+  - [~] Finish API service layer in client-side
+    - [ ] /forgotPassword
+    - [ ] /resetForgottenPassword
+    - [ ] Utilize /getMe in profileLoader instead of useAuth hook in React profile components
+
+- [ ] FRONT-END TWEAKS
+  - [ ] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
+  - [ ] "/" should always return to dashboard for logged in users TODO
+  - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
+  - [ ] Create way for users to edit their name
+  - [ ] Create document middleware that calculates number of explorations completed and changes user title
+  - [ ] Implement way for users to end Exploration
+
+- [~] Refactor project
   - [ ] Refactor modal windows into reusable deleteConfirmation component
   - [ ] Refactor forms with usereducer hook
+
+- [ ] Other Tasks (For the future)
+  - [ ] Center Exploration images... potentially make slideshow for more than three images?
+  - [ ] Location name should wrap around in CurrentLocations, not stretch past container
+  - [ ] Logo has incorrect hyperlink
+  - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
+  - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
+  - [ ] BUG: Error pages breaks out of user-based layout and uses guest layout
+    - [ ] PageNotFound
+    - [ ] RouteError
+    - [ ] ErrorFallback
+  - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
+  - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
+  - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
+  - [ ] Add functionality to search inputs
+    - [ ] Explorations
+    - [ ] Users
+  - [ ] TODO: Create more pages
+    - [ ] Implement 'Forgot Password?' in login screen
+    - [ ] Create Reset Password page
+
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
 
-// BUG with rendering Exploration page as ambassador (prob explorer n admin too)
+TODO TODO TODO TODO TODO TODO TODO TODO
 // Refactor delete modal window usages
 
-- adminfootercta DONE
-- adminexplorationcardheaderdetails DONE
-- currentlocations?
-- createexplorationcard
-- createlocationcard
-- endexplorationprogress
+- currentlocations? TODO 4
 
-- note: add delete button to edit locaiton page and back to exploration button
+- endexplorationprogress TODO 3
+
+- note: recalcualte cities and derived data of explorations when deleting locations
+
+- note: add delete button to edit locaiton page and back to exploration button TODO 5
 
 // Refactor form usages with useReducer
 // Implement ReactQuery into getExplorations workflow

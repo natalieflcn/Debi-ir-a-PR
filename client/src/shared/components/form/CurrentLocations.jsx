@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 import Button from "../ui/Button";
-import RouterLink from "../routing/RouterLink";
 import { useEffect, useState } from "react";
 import Modal from "../modal/Modal";
 // import LocationForm from "./LocationForm";
 import Bold from "../typography/Bold";
 import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";
+import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -40,6 +40,16 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
 
   const hasLocations = locations.length > 0;
 
+  function getLocationId(location) {
+    return location?._id ?? location.tempId;
+  }
+
+  const handleDeleteOptions = {
+    itemName: `this location from "${exploration?.name ?? "this exploration"}"`,
+    redirect: exploration?.name || "this exploration",
+    data: "location data",
+  };
+
   return (
     <>
       {!hasLocations && (
@@ -49,7 +59,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
         <Row $gap="var(--gap-lg)">
           {locations.map((location, i) => (
             <LocationRow
-              key={i}
+              key={getLocationId(location)}
               $gap="var(--gap-sm)"
               $direction="horizontal"
               $align="flex-start"
@@ -68,6 +78,7 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
                 $gap="var(--gap-lg)"
               >
                 <Button
+                  type="button"
                   $variation="secondary"
                   $size="extraSmall"
                   onClick={(e) => {
@@ -78,18 +89,17 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
                   Edit
                 </Button>
 
-                <RouterLink>
-                  <Button
-                    $variation="primary"
-                    $size="extraSmall"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setDeletingLocation(location);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </RouterLink>
+                <Button
+                  type="button"
+                  $variation="primary"
+                  $size="extraSmall"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setDeletingLocation(getLocationId(location));
+                  }}
+                >
+                  Delete
+                </Button>
               </StyledRow>
             </LocationRow>
           ))}
@@ -102,13 +112,30 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
             exploration={exploration}
             location={editingLocation}
             onSubmit={(formData) => {
-              onEdit(editingLocation.id, formData);
+              onEdit(getLocationId(editingLocation), formData);
+              setEditingLocation(null);
+            }}
+            onConfirmDelete={() => {
+              onDelete(getLocationId(editingLocation));
+            }}
+            onDeleteSuccess={() => {
+              console.log("running delete success");
               setEditingLocation(null);
             }}
           />
         </Modal>
       )}
+      {
+        deletingLocation && (
+          <DeleteConfirmationModal
+            onClose={() => setDeletingLocation(null)}
+            onConfirmDelete={() => onDelete(deletingLocation)}
+            onSuccess={() => setDeletingLocation(null)}
+            options={handleDeleteOptions}
+          />
+        )
 
+        /* 
       {deletingLocation && (
         <Modal onClose={() => setDeletingLocation(null)}>
           <Row $align="center">
@@ -137,8 +164,9 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
               </Button>
             </Row>
           </Row>
-        </Modal>
-      )}
+        </Modal> */
+      }
+      {/* )} */}
     </>
   );
 }

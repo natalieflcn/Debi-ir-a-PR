@@ -13,8 +13,12 @@ import TextArea from "../../../shared/components/form/TextArea";
 import FormField from "../../../shared/components/form/FormField";
 import Bold from "../../../shared/components/typography/Bold";
 import LocationTagBuilder from "../../../shared/components/form/LocationTagBuilder";
-import { updateExplorationLocation } from "../../../services/explorations";
+import {
+  deleteExplorationLocation,
+  updateExplorationLocation,
+} from "../../../services/explorations";
 import { useNavigate } from "react-router-dom";
+import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -33,28 +37,30 @@ function CreateLocationCard({
   exploration,
   location,
   onSubmit,
-  onDelete = null,
+  onConfirmDelete,
+  onDeleteSuccess,
 }) {
   const isEditing = Boolean(location);
 
-  const [name, setName] = useState(isEditing ? location.name : "");
+  const [name, setName] = useState(isEditing ? location?.name : "");
   const [street, setStreet] = useState(
-    isEditing ? location.address.street : "",
+    isEditing ? location?.address?.street : "",
   );
-  const [city, setCity] = useState(isEditing ? location.address.city : null);
+  const [city, setCity] = useState(isEditing ? location?.address?.city : null);
   const [zipcode, setZipcode] = useState(
-    isEditing ? location.address.zipcode : "",
+    isEditing ? location?.address?.zipcode : "",
   );
   const [headerImage, setHeaderImage] = useState(
-    isEditing ? location.headerImage : [],
+    isEditing ? location?.headerImage : [],
   );
   const [description, setDescription] = useState(
-    isEditing ? location.description : "",
+    isEditing ? location?.description : "",
   );
-  const [images, setImages] = useState(isEditing ? location.images : []);
-  const [tags, setTags] = useState(isEditing ? location.tags : []);
+  const [images, setImages] = useState(isEditing ? location?.images : []);
+  const [tags, setTags] = useState(isEditing ? location?.tags : []);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -147,130 +153,173 @@ function CreateLocationCard({
     }
   };
 
+  const handleDefaultConfirmDelete = async function () {
+    await deleteExplorationLocation({
+      explorationId: exploration.slug,
+      locationId: location.slug,
+    });
+  };
+
+  const handleDefaultDeleteSuccess = async function () {
+    navigate(`/${user.role}/explorations/${exploration.slug}`);
+  };
+
+  const handleDeleteOptions = {
+    itemName: `this location from "${exploration?.name ?? "this exploration"}"`,
+    redirect: exploration?.name || "this exploration",
+    data: "location data",
+  };
+
   return (
-    <AppForm
-      formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
-      onSubmit={handleSubmit}
-      method="post"
-    >
-      <Row $gap="var(--gap-lg)">
-        {isEditing && exploration?.name && (
-          <FormField label="Exploration">
-            <StyledHeading as="h6" $color="var(--color-red-300)">
-              {exploration?.name ?? exploration}
-            </StyledHeading>
+    <>
+      <AppForm
+        formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
+        onSubmit={handleSubmit}
+        method="post"
+      >
+        <Row $gap="var(--gap-lg)">
+          {isEditing && exploration?.name && (
+            <FormField label="Exploration">
+              <StyledHeading as="h6" $color="var(--color-red-300)">
+                {exploration?.name ?? exploration}
+              </StyledHeading>
+            </FormField>
+          )}
+
+          <FormField label="Name">
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="name"
+                placeholder="The name of the location"
+                value={name}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, name: "" }));
+                  setName(e.target.value);
+                }}
+              />
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
+            </StyledRow>
           </FormField>
-        )}
 
-        <FormField label="Name">
-          <StyledRow $gap="var(--gap-xs)">
-            <Input
-              name="name"
-              placeholder="The name of the location"
-              value={name}
-              onChange={(e) => {
-                setFormErrors((prev) => ({ ...prev, name: "" }));
-                setName(e.target.value);
-              }}
-            />
-            {formErrors.name && <Bold>{formErrors.name}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="Street">
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="street"
+                placeholder="The street address of the location"
+                value={street}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, street: "" }));
+                  setStreet(e.target.value);
+                }}
+              />
+              {formErrors.street && <Bold>{formErrors.street}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="Street">
-          <StyledRow $gap="var(--gap-xs)">
-            <Input
-              name="street"
-              placeholder="The street address of the location"
-              value={street}
-              onChange={(e) => {
-                setFormErrors((prev) => ({ ...prev, street: "" }));
-                setStreet(e.target.value);
-              }}
-            />
-            {formErrors.street && <Bold>{formErrors.street}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="City">
+            <StyledRow $gap="var(--gap-xs)">
+              <CityDropdown name="city" value={city} onSelect={handleSetCity} />
+              {formErrors.city && <Bold>{formErrors.city}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="City">
-          <StyledRow $gap="var(--gap-xs)">
-            <CityDropdown name="city" value={city} onSelect={handleSetCity} />
-            {formErrors.city && <Bold>{formErrors.city}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="Zipcode">
+            <StyledRow $gap="var(--gap-xs)">
+              <Input
+                name="zipcode"
+                placeholder="The zipcode of the location"
+                value={zipcode}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, zipcode: "" }));
+                  setZipcode(e.target.value);
+                }}
+                type="text"
+                maxLength={10}
+              />
+              {formErrors.zipcode && <Bold>{formErrors.zipcode}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="Zipcode">
-          <StyledRow $gap="var(--gap-xs)">
-            <Input
-              name="zipcode"
-              placeholder="The zipcode of the location"
-              value={zipcode}
-              onChange={(e) => {
-                setFormErrors((prev) => ({ ...prev, zipcode: "" }));
-                setZipcode(e.target.value);
-              }}
-              type="text"
-              maxLength={10}
-            />
-            {formErrors.zipcode && <Bold>{formErrors.zipcode}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="Header Image">
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="headerImage"
+                multiple={false}
+                maxImages={1}
+                value={headerImage}
+                onChange={setHeaderImage}
+              />
+              {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="Header Image">
-          <StyledRow $gap="var(--gap-xs)">
-            <ImageUploader
-              name="headerImage"
-              multiple={false}
-              maxImages={1}
-              value={headerImage}
-              onChange={setHeaderImage}
-            />
-            {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="Description">
+            <StyledTextAreaRow $gap="var(--gap-xs)">
+              <TextArea
+                name="description"
+                placeholder="The description displayed beside the location"
+                value={description}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, description: "" }));
+                  setDescription(e.target.value);
+                }}
+              />
+              {formErrors.description && <Bold>{formErrors.description}</Bold>}
+            </StyledTextAreaRow>
+          </FormField>
 
-        <FormField label="Description">
-          <StyledTextAreaRow $gap="var(--gap-xs)">
-            <TextArea
-              name="description"
-              placeholder="The description displayed beside the location"
-              value={description}
-              onChange={(e) => {
-                setFormErrors((prev) => ({ ...prev, description: "" }));
-                setDescription(e.target.value);
-              }}
-            />
-            {formErrors.description && <Bold>{formErrors.description}</Bold>}
-          </StyledTextAreaRow>
-        </FormField>
+          <FormField label="Images">
+            <StyledRow $gap="var(--gap-xs)">
+              <ImageUploader
+                name="images"
+                multiple={true}
+                maxImages={3}
+                value={images}
+                onChange={setImages}
+              />
+              {formErrors.images && <Bold>{formErrors.images}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="Images">
-          <StyledRow $gap="var(--gap-xs)">
-            <ImageUploader
-              name="images"
-              multiple={true}
-              maxImages={3}
-              value={images}
-              onChange={setImages}
-            />
-            {formErrors.images && <Bold>{formErrors.images}</Bold>}
-          </StyledRow>
-        </FormField>
+          <FormField label="Tags">
+            <StyledRow $gap="var(--gap-xs)">
+              <LocationTagBuilder value={tags} onChange={handleSetTags} />
+              {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
+            </StyledRow>
+          </FormField>
 
-        <FormField label="Tags">
-          <StyledRow $gap="var(--gap-xs)">
-            <LocationTagBuilder value={tags} onChange={handleSetTags} />
-            {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
-          </StyledRow>
-        </FormField>
+          <Row $direction="horizontal" $gap="var(--gap-md)">
+            <Button $variation="darkRed" $size="medium" type="submit">
+              {!isSubmitting && "Save Changes"}
+              {isSubmitting && "Saving Changes..."}
+            </Button>
 
-        <Button $variation="darkRed" $size="medium" type="submit">
-          {!isSubmitting && (isEditing ? "Save Changes" : "Create Location")}
-          {isSubmitting && "Saving Changes..."}
-        </Button>
-        {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
-      </Row>
-    </AppForm>
+            {isEditing && (
+              <Button
+                $variation="primary"
+                $size="medium"
+                type="button"
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
+              >
+                Delete Location
+              </Button>
+            )}
+          </Row>
+          {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
+        </Row>
+      </AppForm>
+
+      {isModalOpen && (
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onConfirmDelete={onConfirmDelete || handleDefaultConfirmDelete}
+          onSuccess={onDeleteSuccess || handleDefaultDeleteSuccess}
+          options={handleDeleteOptions}
+        />
+      )}
+    </>
   );
 }
 

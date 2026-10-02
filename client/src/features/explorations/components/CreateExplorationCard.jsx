@@ -25,6 +25,7 @@ import BadgeBuilder from "../../../shared/components/form/BadgeBuilder";
 import SpinnerMini from "../../../shared/components/ui/SpinnerMini";
 import Modal from "../../../shared/components/modal/Modal";
 import Heading from "../../../shared/components/typography/Heading";
+import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -55,31 +56,31 @@ function CreateExplorationCard({ exploration }) {
   //   const { exploration } = useLoaderData() || "";
   const isEditing = Boolean(exploration);
 
-  const [name, setName] = useState(isEditing ? exploration.name : "");
+  const [name, setName] = useState(isEditing ? exploration?.name : "");
   const [headerImage, setHeaderImage] = useState(
     isEditing ? exploration.headerImage : [],
   );
 
-  const [tagline, setTagline] = useState(isEditing ? exploration.tagline : "");
+  const [tagline, setTagline] = useState(isEditing ? exploration?.tagline : "");
   const [description, setDescription] = useState(
-    isEditing ? exploration.description : "",
+    isEditing ? exploration?.description : "",
   );
-  const [images, setImages] = useState(isEditing ? exploration.images : []);
+  const [images, setImages] = useState(isEditing ? exploration?.images : []);
   const [locations, setLocations] = useState(
-    isEditing ? exploration.locations : [],
+    isEditing ? exploration?.locations : [],
   );
-  const [badge, setBadge] = useState(isEditing ? exploration.badge : null);
-  const [tags, setTags] = useState(isEditing ? exploration.tags : []);
+  const [badge, setBadge] = useState(isEditing ? exploration?.badge : null);
+  const [tags, setTags] = useState(isEditing ? exploration?.tags : []);
   const [featured, setFeatured] = useState(
-    isEditing ? exploration.featured : false,
+    isEditing ? exploration?.featured : false,
   );
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isDeletingError, setIsDeletingError] = useState(false);
-  const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
-  const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeletingError, setIsDeletingError] = useState(false);
+  // const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
+  // const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -87,19 +88,24 @@ function CreateExplorationCard({ exploration }) {
     setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) => [
       ...prev,
-      { ...formData, id: `loc_${crypto.randomUUID()}` },
+      { ...formData, tempId: `loc_${crypto.randomUUID()}` },
     ]);
   }
 
-  function handleDeleteLocation(id) {
-    setFormErrors((prev) => ({ ...prev, locations: "" }));
-    setLocations((prev) => prev.filter((l) => l.id !== id));
-  }
-
-  function handleEditLocation(id, formData) {
+  function handleDeleteLocation(tempId) {
+    console.log(tempId);
     setFormErrors((prev) => ({ ...prev, locations: "" }));
     setLocations((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, ...formData } : l)),
+      prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
+    );
+  }
+
+  function handleEditLocation(tempId, formData) {
+    setFormErrors((prev) => ({ ...prev, locations: "" }));
+    setLocations((prev) =>
+      prev.map((l) =>
+        (l._id ?? l.tempId) === tempId ? { ...l, ...formData } : l,
+      ),
     );
   }
 
@@ -217,22 +223,36 @@ function CreateExplorationCard({ exploration }) {
     }
   };
 
-  async function handleDeleteExploration() {
-    try {
-      await deleteExploration(exploration._id);
-      setIsDeleting(false);
-      setIsDeletingSucess(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-        setIsDeletingError(false);
-        navigate(`/${user.role}/explorations`);
-      }, 1500);
-    } catch (err) {
-      setIsDeleting(false);
-      setIsDeletingError(true);
-      setIsDeletingErrorMessage(err.message);
-    }
-  }
+  // async function handleDeleteExploration() {
+  //   try {
+  //     await deleteExploration(exploration._id);
+  //     setIsDeleting(false);
+  //     setIsDeletingSucess(true);
+  //     setTimeout(() => {
+  //       setIsModalOpen(false);
+  //       setIsDeletingError(false);
+  //       navigate(`/${user.role}/explorations`);
+  //     }, 1500);
+  //   } catch (err) {
+  //     setIsDeleting(false);
+  //     setIsDeletingError(true);
+  //     setIsDeletingErrorMessage(err.message);
+  //   }
+  // }
+
+  const handleConfirmDelete = async function () {
+    await deleteExploration(exploration._id);
+  };
+
+  const handleDeleteSuccess = async function () {
+    navigate(`/${user.role}/explorations`);
+  };
+
+  const handleDeleteOptions = {
+    itemName: exploration?.name,
+    redirect: "the explorations page",
+    data: "exploration and related data",
+  };
 
   return (
     <>
@@ -395,7 +415,6 @@ function CreateExplorationCard({ exploration }) {
                   type="button"
                   onClick={() => {
                     setIsModalOpen(true);
-                    setIsDeleting(true);
                   }}
                 >
                   Delete Exploration
@@ -408,57 +427,63 @@ function CreateExplorationCard({ exploration }) {
       </Row>
 
       {isModalOpen && (
-        <Modal
-          onClose={() => {
-            setIsModalOpen(false);
-            setIsDeletingError(false);
-            setIsDeletingErrorMessage("");
-          }}
-        >
-          <Row $align="center">
-            {isDeleting && (
-              <>
-                <Heading as="h6">
-                  Are you sure you want to delete {exploration.name}?
-                </Heading>
-                <p>This action is irreversible.</p>
-                <Row $direction="horizontal" $gap="var(--gap-lg)">
-                  <Button
-                    $size="small"
-                    $variation="secondary"
-                    onClick={() => setIsModalOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    $size="small"
-                    $variation="primary"
-                    onClick={handleDeleteExploration}
-                  >
-                    Delete Exploration
-                  </Button>
-                </Row>
-              </>
-            )}
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onConfirmDelete={handleConfirmDelete}
+          onSuccess={handleDeleteSuccess}
+          options={handleDeleteOptions}
+        />
+        // <Modal
+        //   onClose={() => {
+        //     setIsModalOpen(false);
+        //     setIsDeletingError(false);
+        //     setIsDeletingErrorMessage("");
+        //   }}
+        // >
+        //   <Row $align="center">
+        //     {isDeleting && (
+        //       <>
+        //         <Heading as="h6">
+        //           Are you sure you want to delete {exploration.name}?
+        //         </Heading>
+        //         <p>This action is irreversible.</p>
+        //         <Row $direction="horizontal" $gap="var(--gap-lg)">
+        //           <Button
+        //             $size="small"
+        //             $variation="secondary"
+        //             onClick={() => setIsModalOpen(false)}
+        //           >
+        //             Cancel
+        //           </Button>
+        //           <Button
+        //             $size="small"
+        //             $variation="primary"
+        //             onClick={handleDeleteExploration}
+        //           >
+        //             Delete Exploration
+        //           </Button>
+        //         </Row>
+        //       </>
+        //     )}
 
-            {isDeletingError && (
-              <Row $align="center">
-                <Bold>There was an error deleting this exploration.</Bold>
-                <Paragraph>{isDeletingErrorMessage}</Paragraph>
-              </Row>
-            )}
+        //     {isDeletingError && (
+        //       <Row $align="center">
+        //         <Bold>There was an error deleting this exploration.</Bold>
+        //         <Paragraph>{isDeletingErrorMessage}</Paragraph>
+        //       </Row>
+        //     )}
 
-            {isDeletingSuccess && (
-              <Row $align="center">
-                <Bold>You successfully deleted this exploration.</Bold>
-                <Paragraph>
-                  Redirecting you to the Explorations page...
-                </Paragraph>
-                <SpinnerMini />
-              </Row>
-            )}
-          </Row>
-        </Modal>
+        //     {isDeletingSuccess && (
+        //       <Row $align="center">
+        //         <Bold>You successfully deleted this exploration.</Bold>
+        //         <Paragraph>
+        //           Redirecting you to the Explorations page...
+        //         </Paragraph>
+        //         <SpinnerMini />
+        //       </Row>
+        //     )}
+        //   </Row>
+        // </Modal>
       )}
     </>
   );
