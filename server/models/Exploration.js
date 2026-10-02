@@ -108,6 +108,10 @@ const explorationSchema = new mongoose.Schema(
 // Middlewares
 explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
+  console.log("running es save middleware");
+
+  console.log(this.locations);
+  this.cities = [...new Set(this.locations.map((loc) => loc.address.city))];
   // this.numStops = this.locations.length;
 });
 
@@ -130,21 +134,21 @@ explorationSchema.post(/^find/, function (docs, next) {
   next();
 });
 
-explorationSchema.post("find", function (docs, next) {
-  if (!docs) return next();
+// explorationSchema.post("find", function (docs, next) {
+//   if (!docs) return next();
 
-  if (!Array.isArray(docs)) {
-    docs.numStops = docs.locations.length;
-  } else {
-    docs.forEach((doc) => {
-      doc.numStops = doc.locations.length;
-      doc.locations = undefined;
-    });
-  }
+//   if (!Array.isArray(docs)) {
+//     docs.numStops = docs.locations.length;
+//   } else {
+//     docs.forEach((doc) => {
+//       doc.numStops = doc.locations.length;
+//       doc.locations = undefined;
+//     });
+//   }
 
-  // console.log(docs);
-  next();
-});
+//   // console.log(docs);
+//   next();
+// });
 
 // explorationSchema.pre(/^find/, function () {
 //   console.log(this);

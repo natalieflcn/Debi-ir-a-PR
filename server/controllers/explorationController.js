@@ -114,7 +114,7 @@ exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
   });
 
   // Updating Exploration
-  exploration.cities = exploration.locations.map((loc) => loc.city);
+  // exploration.cities = exploration.locations.map((loc) => loc.city);
   if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
 
   await exploration.save({ validateModifiedOnly: true });
@@ -145,7 +145,7 @@ exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
     (loc) => loc.slug !== locationId,
   );
 
-  await exploration.save();
+  await exploration.save({ validateModifiedOnly: true });
 
   res.status(204).json({
     status: "success",

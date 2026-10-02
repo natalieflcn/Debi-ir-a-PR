@@ -537,18 +537,18 @@
   - [~] Finish API service layer in client-side
     - [ ] /forgotPassword
     - [ ] /resetForgottenPassword
-    - [ ] Utilize /getMe in profileLoader instead of useAuth hook in React profile components
+    - [x] Utilize /getMe in profileLoader instead of useAuth hook in React profile components
 
 - [ ] FRONT-END TWEAKS
-  - [ ] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
+  - [x] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
   - [ ] "/" should always return to dashboard for logged in users TODO
   - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
   - [ ] Create way for users to edit their name
   - [ ] Create document middleware that calculates number of explorations completed and changes user title
-  - [ ] Implement way for users to end Exploration
+  - [x] Implement way for users to end Exploration
 
 - [~] Refactor project
-  - [ ] Refactor modal windows into reusable deleteConfirmation component
+  - [x] Refactor modal windows into reusable deleteConfirmation component
   - [ ] Refactor forms with usereducer hook
 
 - [ ] Other Tasks (For the future)
@@ -579,24 +579,22 @@
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-- note: recalcualte cities and derived data of explorations when deleting locations
+- note: recalcualte cities and derived data of explorations when deleting locations TODO 1
 
-// Refactor form usages with useReducer
+// Refactor form usages with useReducer TODO 7
 
-// utilize getMe() api in profileLoader to load data there instead of inside profile info, etc
+// create way for users to edit their names TODO 3
 
-// create way for users to edit their names
-
-// create forgot password page
+// create forgot password page TODO 8
 // create reset password page
 
-// center exploration images, possibly create slideshow
-// fix pagination
+// center exploration images, possibly create slideshow TODO 6
+// fix pagination TODO 4
 
-// fix broken layouts and actions for error pages
+// fix broken layouts and actions for error pages TODO 5
 
 // add functionality to search input
 
-// create document middleware (on exp progress?) to calculate new title for explorers
+// create document middleware (on exp progress?) to calculate new title for explorers TODO 2
 
 // start adding google maps to exploration data
