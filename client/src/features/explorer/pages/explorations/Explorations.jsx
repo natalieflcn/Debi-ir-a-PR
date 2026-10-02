@@ -11,7 +11,11 @@ import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getExplorationProgress } from "../../../../services/explorationProgress";
+import {
+  getAllMyExplorationProgress,
+  getExplorationProgress,
+} from "../../../../services/explorationProgress";
+import Spinner from "../../../../shared/components/ui/Spinner";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -80,9 +84,17 @@ function Explorations() {
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
-  const { explorations, userHistory } = useLoaderData();
+  const { explorations } = useLoaderData();
+
+  const { isPending, isError, data, error, isSuccess } = useQuery({
+    queryKey: ["allMyExplorationProgress"],
+    queryFn: getAllMyExplorationProgress,
+  });
   // const QueryClient = useQueryClient();
 
+  console.log(data);
+  const userHistory = data.data.data;
+  console.log(userHistory);
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
 
@@ -121,56 +133,64 @@ function Explorations() {
   }, [sortBy, filterBy]);
 
   return (
-    <StyledExplorations>
-      <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Input placeholder="Search for an exploration..." />
-        <ExplorationsFilters
-          onSort={setSortBy}
-          onFilter={setFilterBy}
-          showFeatured={showFeatured}
-          onShowFeatured={setShowFeatured}
-        />
-      </ExplorationFiltersRow>
+    <>
+      {isPending && <Spinner />}
 
-      <ExplorationCards>
-        {paginatedExplorations.map((exploration) => {
-          const city =
-            exploration.cities.length === 1
-              ? exploration.cities[0]
-              : "Multiple Cities";
+      {isError && <span>Error: {error.message}</span>}
 
-          const progress = userHistory.find(
-            (entry) => entry.exploration === exploration._id,
-          )?.status;
-
-          return (
-            <ExplorationMiniCard
-              exploration={exploration}
-              city={city}
-              buttonDetails={ExplorerExplorationCardButton(
-                exploration.slug,
-                progress,
-              )}
-              key={exploration.id}
+      {isSuccess && (
+        <StyledExplorations>
+          <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
+            <Input placeholder="Search for an exploration..." />
+            <ExplorationsFilters
+              onSort={setSortBy}
+              onFilter={setFilterBy}
+              showFeatured={showFeatured}
+              onShowFeatured={setShowFeatured}
             />
-          );
-        })}
-      </ExplorationCards>
+          </ExplorationFiltersRow>
 
-      {paginatedExplorations.length === 0 && (
-        <Row $align="center">
-          <Bold $color="var(--color-light-0)">
-            There are no explorations to show.
-          </Bold>
-        </Row>
+          <ExplorationCards>
+            {paginatedExplorations.map((exploration) => {
+              const city =
+                exploration.cities.length === 1
+                  ? exploration.cities[0]
+                  : "Multiple Cities";
+
+              const progress = userHistory.find(
+                (entry) => entry.exploration === exploration._id,
+              )?.status;
+
+              return (
+                <ExplorationMiniCard
+                  exploration={exploration}
+                  city={city}
+                  buttonDetails={ExplorerExplorationCardButton(
+                    exploration.slug,
+                    progress,
+                  )}
+                  key={exploration.id}
+                />
+              );
+            })}
+          </ExplorationCards>
+
+          {paginatedExplorations.length === 0 && (
+            <Row $align="center">
+              <Bold $color="var(--color-light-0)">
+                There are no explorations to show.
+              </Bold>
+            </Row>
+          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            $variation="primary"
+          />
+        </StyledExplorations>
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-        $variation="primary"
-      />
-    </StyledExplorations>
+    </>
   );
 }
 
