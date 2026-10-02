@@ -549,11 +549,11 @@
       - [ ] Implement 'Forgot Password?' in login screen
       - [ ] Create Reset Password page
 
-- [ ] Refactor project
-  - [ ] Refactor CreateExploration pages into one reusable component
-  - [ ] Refactor EditLocation and LocationForm components into one reusable component
+- [~] Refactor project
+  - [x] Refactor CreateExploration pages into one reusable component
+  - [x] Refactor EditLocation and LocationForm components into one reusable component
+  - [ ] Refactor modal windows into reusable deleteConfirmation component
   - [ ] Refactor forms with usereducer hook
-  - [ ] Refactor modal windows with usereducer hook
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails
   - File Uploads
@@ -561,13 +561,21 @@
   - Aggregating Data for Dashboard Analytics
   - Searching/Filtering for Explorations/Users
 
-// Refactor CreateLocation, CreateExploration forms
+// Refactor delete modal window usages
+
+- profileinformation
+- adminfootercta
+- adminexplorationcardheaderdetails
+- currentlocations?
+- createexplorationcard
+- createlocationcard
+- endexplorationprogress
+
 // Refactor form usages with useReducer
-// Refactor modal window usages with useReducer
+// Implement ReactQuery into getExplorations workflow
 // Implement ReactQuery and Modal Window into EndExplorationProgress workflow
 
 // utilize getMe() api in profileLoader to load data there instead of inside profile info, etc
-// combine react router loader qith react query for explorers
 
 // create way for users to edit their names
 

@@ -6,7 +6,7 @@ import Input from "../../../../shared/components/form/Input";
 import TextArea from "../../../../shared/components/form/TextArea";
 import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+
 import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";
 import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";

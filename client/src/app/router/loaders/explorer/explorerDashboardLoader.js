@@ -1,9 +1,5 @@
-import { BsBadgeSd } from "react-icons/bs";
-import fakeExplorationsData from "../../../../features/explorer/pages/explorations/fakeExplorationsData";
-import badges from "../../../../../data/badges";
-
 export async function explorerDashboardLoader() {
-  const explorations = fakeExplorationsData;
+  const explorations = null;
   const profileData = {
     name: "Natalie Loader",
     title: "First Explorer",

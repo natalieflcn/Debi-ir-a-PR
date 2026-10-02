@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
-import fakeExplorationsData from "../../../explorer/pages/explorations/fakeExplorationsData";
+
 import Row from "../../../../shared/components/layout/Row";
 
 import Input from "../../../../shared/components/form/Input";

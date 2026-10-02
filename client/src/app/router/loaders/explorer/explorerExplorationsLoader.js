@@ -1,4 +1,3 @@
-import { useAuth } from "../../../../features/auth/contexts/AuthContext";
 import {
   getAllMyExplorationProgress,
   getExplorationProgress,

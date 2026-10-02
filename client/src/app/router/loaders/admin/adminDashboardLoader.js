@@ -1,5 +1,3 @@
-import fakeExplorationsData from "../../../../features/explorer/pages/explorations/fakeExplorationsData";
-
 export async function adminDashboardLoader() {
   const users = [
     {
@@ -74,7 +72,7 @@ export async function adminDashboardLoader() {
     isAdmin: true,
     createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
   };
-  const explorations = fakeExplorationsData;
+  const explorations = [];
 
   return { users, profileData, explorations };
 }

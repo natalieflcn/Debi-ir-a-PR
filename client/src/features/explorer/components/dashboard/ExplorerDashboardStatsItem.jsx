@@ -1,4 +1,3 @@
-import { fakeLocations } from "../../../../../data/fakeLocations";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
@@ -29,11 +28,11 @@ function getLocationTags(userHistory) {
     (visit) => visit.locationId,
   );
 
-  const locationTags = fakeLocations
-    .filter((location) => visitedLocationIds.includes(location.locationId))
-    .flatMap((location) => location.tags);
+  // const locationTags = fakeLocations
+  //   .filter((location) => visitedLocationIds.includes(location.locationId))
+  //   .flatMap((location) => location.tags);
 
-  return locationTags;
+  return null;
 }
 
 function ExplorerDashboardStatsItem({ userHistory }) {

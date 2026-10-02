@@ -1,5 +1,4 @@
-import fakeExplorationLocationData from "../../../features/explorer/pages/explorations/fakeExplorationLocationData";
-import { getExploration } from "../../../services/explorations";
+import { getExploration } from "../../../../services/explorations";
 
 export async function adminLocationLoader({ params }) {
   const { explorationId, locationId } = params;

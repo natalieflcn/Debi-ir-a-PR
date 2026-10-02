@@ -9,7 +9,7 @@ import { useState } from "react";
 import LocationBuilder from "../../../../shared/components/form/LocationBuilder";
 import CurrentLocations from "../../../../shared/components/form/CurrentLocations";
 
-import fakeExplorationData from "../../../explorer/pages/explorations/fakeExplorationData";
+
 import Row from "../../../../shared/components/layout/Row";
 import styled from "styled-components";
 import CityDropdown from "../../../../shared/components/dropdown/CityDropdown";

@@ -1,7 +1,6 @@
 import { IoCheckmarkCircleSharp, IoLocationSharp } from "react-icons/io5";
 import Row from "../../../shared/components/layout/Row";
 
-import fakeExplorationLocationData from "../../explorer/pages/explorations/fakeExplorationLocationData";
 import Bold from "../../../shared/components/typography/Bold";
 import Heading from "../../../shared/components/typography/Heading";
 import Button from "../../../shared/components/ui/Button";

@@ -1,73 +1,9 @@
-import fakeExplorationData from "../../../features/explorer/pages/explorations/fakeExplorationData";
-import { getExploration } from "../../../services/explorations";
-
-const fakeUsers = [
-  {
-    id: "user_001",
-    name: "Natalie Falcon",
-    role: "explorer",
-    title: "First Explorer",
-    explorationsCompleted: 6,
-    email: "natalie.dflcn@gmail.com",
-    dateJoined: "2025-01-17",
-    avatar: "/src/assets/images/content/TEMP.png",
-  },
-  {
-    id: "user_002",
-    name: "Alethia Ragland",
-    role: "ambassador",
-    title: "Ambassador",
-    email: "thearagland@gmail.com",
-    dateJoined: "2025-01-17",
-    isAdmin: true,
-    createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
-  },
-  {
-    id: "user_003",
-    name: "Jorge Gonzalez",
-    role: "explorer",
-    title: "First Explorer",
-    email: "genioa@gmail.com",
-    explorationsCompleted: 6,
-    dateJoined: "2025-01-17",
-  },
-  {
-    id: "user_004",
-    name: "Natalie Falcon",
-    role: "explorer",
-    title: "First Explorer",
-    explorationsCompleted: 6,
-    email: "natalie.dflcn@gmail.com",
-    dateJoined: "2025-01-17",
-  },
-  {
-    id: "user_005",
-    name: "Alethia Ragland",
-    role: "ambassador",
-    title: "First Explorer",
-    email: "thearagland@gmail.com",
-    dateJoined: "2025-01-17",
-    isAdmin: false,
-    createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
-  },
-  {
-    id: "user_006",
-    name: "Jorge Gonzalez",
-    role: "explorer",
-    explorationsCompleted: 6,
-    title: "First Explorer",
-    email: "genioa@gmail.com",
-    dateJoined: "2025-01-17",
-  },
-];
-
-const exploration = fakeExplorationData;
-const user = fakeUsers.find((user) => user.id === exploration.createdBy);
+import { getExploration } from "../../../../services/explorations";
 
 export async function adminExplorationLoader({ params }) {
   const { explorationId } = params;
 
   const { data } = await getExploration(explorationId);
 
-  return { exploration: data.data, user };
+  return { exploration: data.data };
 }

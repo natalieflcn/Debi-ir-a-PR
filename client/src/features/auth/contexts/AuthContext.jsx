@@ -5,12 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
-const fakeCurrentUser = {
-  id: "user_001",
-  name: "Natalie Falcon",
-  role: "explorer", // swap to "ambassador" or "admin" to test
-};
-
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

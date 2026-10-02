@@ -4,7 +4,7 @@ import { lazy } from "react";
 import { Route } from "react-router-dom";
 import RouteError from "../../errors/RouteError";
 import Unauthorized from "../../errors/Unauthorized";
-import { rootLoader } from "./loaders/rootLoader";
+import { rootLoader } from "./loaders/utils/rootLoader";
 
 // import signupLoader from "./loaders/signupLoader";
 

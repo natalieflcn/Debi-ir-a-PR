@@ -1,17 +1,26 @@
-import userHistory from "../../../../data/fakeUserHistory";
-import fakeExplorationsData from "../../../features/explorer/pages/explorations/fakeExplorationsData";
+import { getMe } from "../../../../services/auth";
 
-const explorers = [
+const users = [
   {
     id: "user_001",
     name: "Natalie Falcon",
     role: "explorer",
     title: "First Explorer",
     explorationsStarted: 10,
-    explorationsCompleted: 14,
+    explorationsCompleted: 4,
     email: "natalie.dflcn@gmail.com",
     dateJoined: "2028-01-17",
     avatar: "/src/assets/images/content/TEMP.png",
+  },
+  {
+    id: "user_002",
+    name: "Alethia Ragland",
+    role: "ambassador",
+    title: "Ambassador",
+    email: "thearagland@gmail.com",
+    dateJoined: "2022-06-17",
+    isAdmin: true,
+    createdExplorationIds: ["exp_001", "exp_002"],
   },
   {
     id: "user_003",
@@ -29,33 +38,31 @@ const explorers = [
     role: "explorer",
     title: "First Explorer",
     explorationsStarted: 8,
-    explorationsCompleted: 62,
+    explorationsCompleted: 6,
     email: "natalie.dflcn@gmail.com",
     dateJoined: "2024-03-17",
+  },
+  {
+    id: "user_005",
+    name: "Alethia Ragland",
+    role: "ambassador",
+    title: "First Explorer",
+    email: "thearagland@gmail.com",
+    dateJoined: "2023-01-12",
+    isAdmin: false,
+    createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
   },
   {
     id: "user_006",
     name: "Jorge Gonzalez",
     role: "explorer",
-    explorationsCompleted: 61,
+    explorationsCompleted: 6,
     explorationsStarted: 12,
     title: "First Explorer",
     email: "genioa@gmail.com",
     dateJoined: "2025-01-11",
   },
 ];
-
-const profileData = {
-  name: "Natalie Loader",
-  title: "Ambassador",
-  email: "natalie.dflcn@gmail.com",
-  password: "hello123",
-  dateJoined: "January 7, 2026",
-  isAdmin: false,
-  createdExplorationIds: ["exp_001", "exp_002"],
-};
-
-const explorations = fakeExplorationsData;
 
 function isActiveWithinDays(visitLog, days) {
   if (!visitLog?.length) return false;
@@ -68,7 +75,7 @@ function isActiveWithinDays(visitLog, days) {
 }
 
 export async function ambassadorDashboardLoader() {
-  const userHistories = userHistory;
+  const userHistories = [];
 
   const activeThisWeek = userHistories.filter((history) => {
     return isActiveWithinDays(history.visitLog, 7);
@@ -88,10 +95,21 @@ export async function ambassadorDashboardLoader() {
 
   const numExplorationsCompleted = completedExplorationIds.size;
 
+  const profileData = {
+    name: "Natalie Loader",
+    title: "Ambassador",
+    email: "natalie.dflcn@gmail.com",
+    password: "hello123",
+    dateJoined: "January 7, 2026",
+    isAdmin: true,
+    createdExplorationIds: ["exp_001", "exp_002", "exp_005"],
+  };
+  const explorations = [];
+
   return {
     profileData,
     explorations,
-    explorers,
+    explorers: users,
     numWeeklyExplorers: activeThisWeek.length,
     numMonthlyExplorers: activeThisMonth.length,
     numExplorationsCompleted,
