@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import CreateLocationCard from "../../../locations/components/CreateLocationCard";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
+import Row from "../../../../shared/components/layout/Row";
+import Button from "../../../../shared/components/ui/Button";
+import { FaArrowLeft } from "react-icons/fa";
 
 function CreateLocation() {
   const { exploration, location } = useLoaderData();
@@ -20,11 +24,11 @@ function CreateLocation() {
   // const [tags, setTags] = useState(location.tags || []);
   // const [formErrors, setFormErrors] = useState({});
   // const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isDeletingError, setIsDeletingError] = useState(false);
-  const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
-  const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeletingError, setIsDeletingError] = useState(false);
+  // const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
+  // const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
 
   // const navigate = useNavigate(); TODO
   // const { user } = useAuth();
@@ -148,15 +152,8 @@ function CreateLocation() {
   // }
 
   return (
-    <CreateLocationCard
-      exploration={exploration}
-      location={location}
-      // onSubmit={handleSubmit}
-    />
-  );
-  // <>
-  {
-    /* <Row $gap="var(--gap-lg)">
+    <>
+      <Row $gap="var(--gap-lg)">
         <RouterLink to={`/ambassador/explorations/${exploration.slug}`}>
           <Button $size="small" $variation="darkRed">
             <FaArrowLeft size={12} /> Back to{" "}
@@ -164,206 +161,14 @@ function CreateLocation() {
           </Button>
         </RouterLink>
 
-        <AppForm
-          formTitle={"EDIT LOCATION"}
-          onSubmit={handleSubmit}
-          // method={isEditing ? "patch" : "post"}
-        >
-          <StyledFormRow $gap="var(--gap-lg)">
-            <FormField label="Exploration">
-              <StyledHeading as="h6" $color="var(--color-red-300)">
-                {exploration.name}
-              </StyledHeading>
-            </FormField>
-
-            <FormField label="Name">
-              <StyledRow $gap="var(--gap-xs)">
-                <StyledInput
-                  name="name"
-                  placeholder="The name of the location"
-                  value={name}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, name: "" }));
-                    setName(e.target.value);
-                  }}
-                />
-                {formErrors.name && <Bold>{formErrors.name}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="Street">
-              <StyledRow $gap="var(--gap-xs)">
-                <Input
-                  name="street"
-                  placeholder="The street address of the location"
-                  value={street}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, street: "" }));
-                    setStreet(e.target.value);
-                  }}
-                />
-                {formErrors.street && <Bold>{formErrors.street}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="City">
-              <StyledRow $gap="var(--gap-xs)">
-                <CityDropdown
-                  name="city"
-                  value={city}
-                  onSelect={handleSetCity}
-                />
-                {formErrors.city && <Bold>{formErrors.city}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="Zipcode">
-              <StyledRow $gap="var(--gap-xs)">
-                <Input
-                  name="zipcode"
-                  placeholder="The zipcode of the location"
-                  value={zipcode}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, zipcode: "" }));
-                    setZipcode(e.target.value);
-                  }}
-                  type="text"
-                  maxLength={10}
-                />
-                {formErrors.zipcode && <Bold>{formErrors.zipcode}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="Header Image">
-              <StyledRow $gap="var(--gap-xs)">
-                <ImageUploader
-                  name="headerImage"
-                  multiple={false}
-                  maxImages={1}
-                  value={headerImage}
-                  onChange={setHeaderImage}
-                />
-                {formErrors.headerImage && (
-                  <Bold>{formErrors.headerImage}</Bold>
-                )}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="Description">
-              <StyledTextAreaRow $gap="var(--gap-xs)">
-                <TextArea
-                  name="description"
-                  placeholder="The description displayed beside the location"
-                  value={description}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, description: "" }));
-                    setDescription(e.target.value);
-                  }}
-                />
-                {formErrors.description && (
-                  <Bold>{formErrors.description}</Bold>
-                )}
-              </StyledTextAreaRow>
-            </FormField>
-
-            <FormField label="Images">
-              <StyledRow $gap="var(--gap-xs)">
-                <ImageUploader
-                  name="images"
-                  multiple={true}
-                  maxImages={3}
-                  value={images}
-                  onChange={setImages}
-                />
-                {formErrors.images && <Bold>{formErrors.images}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <FormField label="Tags">
-              <StyledRow $gap="var(--gap-xs)">
-                <LocationTagBuilder value={tags} onChange={handleSetTags} />
-                {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
-              </StyledRow>
-            </FormField>
-
-            <Row $direction="horizontal" $gap="var(--gap-md)">
-              <Button $variation="darkRed" $size="medium" type="submit">
-                {!isSubmitting && "Save Changes"}
-                {isSubmitting && "Saving Changes..."}
-              </Button>
-
-              <Button
-                $variation="primary"
-                $size="medium"
-                type="button"
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setIsDeleting(true);
-                }}
-              >
-                Delete Location
-              </Button>
-            </Row>
-            {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
-          </StyledFormRow>
-        </AppForm>
+        <CreateLocationCard
+          exploration={exploration}
+          location={location}
+          // onSubmit={handleSubmit}
+        />
       </Row>
-
-      {isModalOpen && (
-        <Modal
-          onClose={() => {
-            setIsModalOpen(false);
-            setIsDeletingError(false);
-            setIsDeletingErrorMessage("");
-          }}
-        >
-          <Row $align="center">
-            {isDeleting && (
-              <>
-                <Heading as="h6">
-                  Are you sure you want to delete this location from{" "}
-                  {exploration.name}?
-                </Heading>
-                <p>This action is irreversible.</p>
-                <Row $direction="horizontal" $gap="var(--gap-lg)">
-                  <Button
-                    $size="small"
-                    $variation="secondary"
-                    onClick={() => setIsModalOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    $size="small"
-                    $variation="primary"
-                    onClick={handleDeleteLocation}
-                  >
-                    Delete Location
-                  </Button>
-                </Row>
-              </>
-            )}
-
-            {isDeletingError && (
-              <Row $align="center">
-                <Bold>There was an error deleting this location.</Bold>
-                <Paragraph>{isDeletingErrorMessage}</Paragraph>
-              </Row>
-            )}
-
-            {isDeletingSuccess && (
-              <Row $align="center">
-                <Bold>You successfully deleted this location.</Bold>
-                <Paragraph>Redirecting you to {exploration.name}...</Paragraph>
-                <SpinnerMini />
-              </Row>
-            )}
-          </Row>
-        </Modal>
-      )}
     </>
-  // ); */
-  }
+  );
 }
 
 export default CreateLocation;

@@ -12,7 +12,7 @@ function DeleteConfirmationModal({
   onSuccess,
   options, // {itemName, redirect, data}
 }) {
-  const [status, setStatus] = useState("deleting"); //  deleting || error || success
+  const [status, setStatus] = useState("pending"); // pending || deleting || error || success
   const [errorMessage, setErrorMessage] = useState("");
 
   async function handleConfirmDelete() {
@@ -32,14 +32,14 @@ function DeleteConfirmationModal({
 
   async function handleModalClose() {
     onClose();
-    setStatus("deleting");
+    setStatus("pending");
     setErrorMessage("");
   }
 
   return (
     <Modal onClose={handleModalClose}>
       <Row $align="center" $gap="var(--gap-md)">
-        {status === "deleting" && (
+        {status === "pending" && (
           <>
             <Bold>Are you sure you want to delete {options.itemName}?</Bold>
             <SmallText>
@@ -63,6 +63,12 @@ function DeleteConfirmationModal({
               </Button>
             </Row>
           </>
+        )}
+
+        {status === "deleting" && (
+          <Row>
+            <SpinnerMini />
+          </Row>
         )}
 
         {status === "error" && (

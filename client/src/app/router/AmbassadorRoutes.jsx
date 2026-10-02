@@ -88,7 +88,7 @@ const AmbassadorRoutes = [
     element: <ExplorerDetails />,
     loader: adminUserLoader,
   },
-  { path: "profile", element: <AmbassadorProfile /> },
+  { path: "profile", element: <AmbassadorProfile />, loader: profileLoader },
 ];
 
 export default AmbassadorRoutes;

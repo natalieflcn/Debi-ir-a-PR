@@ -13,7 +13,7 @@ const StyledAmbassadorProfile = styled.div`
 
 function AmbassadorProfile() {
   // const { profileData } = useLoaderData();
-  const { user } = useAuth();
+  const { user } = useLoaderData();
 
   return (
     <StyledAmbassadorProfile>

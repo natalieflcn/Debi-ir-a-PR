@@ -12,7 +12,7 @@ const StyledAdminProfile = styled.div`
 `;
 
 function AdminProfile() {
-  const { user } = useAuth();
+  const { user } = useLoaderData();
 
   return (
     <StyledAdminProfile>

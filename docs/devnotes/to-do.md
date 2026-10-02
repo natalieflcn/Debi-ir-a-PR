@@ -578,19 +578,10 @@
   - Aggregating Data for Dashboard Analytics
 
 TODO TODO TODO TODO TODO TODO TODO TODO
-// Refactor delete modal window usages
-
-- currentlocations? TODO 4
-
-- endexplorationprogress TODO 3
 
 - note: recalcualte cities and derived data of explorations when deleting locations
 
-- note: add delete button to edit locaiton page and back to exploration button TODO 5
-
 // Refactor form usages with useReducer
-// Implement ReactQuery into getExplorations workflow
-// Implement ReactQuery and Modal Window into EndExplorationProgress workflow
 
 // utilize getMe() api in profileLoader to load data there instead of inside profile info, etc
 

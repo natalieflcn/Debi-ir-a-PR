@@ -104,7 +104,7 @@ const AdminRoutes = [
   {
     path: "profile",
     element: <AdminProfile />,
-    // loader: profileLoader
+    loader: profileLoader,
   },
 ];
 
