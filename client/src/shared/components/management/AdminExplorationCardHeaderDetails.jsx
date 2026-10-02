@@ -14,6 +14,7 @@ import Heading from "../typography/Heading";
 import SpinnerMini from "../ui/SpinnerMini";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 
 const StyledRow = styled(Row)`
   @media (max-width: 900px) {
@@ -28,27 +29,41 @@ function AdminExplorationCardHeaderDetails({
   author = "Unknown",
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [isDeleting, setIsDeleting] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
+  // const [isError, setIsError] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
   const { role } = useAuth();
   const navigate = useNavigate();
 
-  async function handleDeleteExploration(explorationId) {
-    try {
-      await deleteExploration(explorationId);
-      setIsDeleting(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        navigate(`/${role}/explorations`);
-      }, 1500);
-    } catch (err) {
-      setIsDeleting(false);
-      setIsError(true);
-      setErrorMessage(err.message);
-    }
-  }
+  // async function handleDeleteExploration(explorationId) {
+  //   try {
+  //     await deleteExploration(explorationId);
+  //     setIsDeleting(false);
+  //     setIsSuccess(true);
+  //     setTimeout(() => {
+  //       navigate(`/${role}/explorations`);
+  //     }, 1500);
+  //   } catch (err) {
+  //     setIsDeleting(false);
+  //     setIsError(true);
+  //     setErrorMessage(err.message);
+  //   }
+  // }
+
+  const handleConfirmDelete = async function () {
+    await deleteExploration(exploration._id);
+  };
+
+  const handleDeleteSuccess = async function () {
+    navigate(`/${role}/explorations`);
+  };
+
+  const handleDeleteOptions = {
+    itemName: exploration.name,
+    redirect: "the explorations page",
+    data: "exploration and related data",
+  };
 
   return (
     <>
@@ -76,7 +91,7 @@ function AdminExplorationCardHeaderDetails({
           $size="medium"
           onClick={() => {
             setIsModalOpen(true);
-            setIsDeleting(true);
+            // setIsDeleting(true);
           }}
         >
           Delete Exploration
@@ -84,62 +99,68 @@ function AdminExplorationCardHeaderDetails({
       </Row>
 
       {isModalOpen && (
-        <Modal
-          onClose={() => {
-            setIsModalOpen(false);
-            setIsDeleting(false);
-            setIsError(false);
-            setErrorMessage("");
-          }}
-        >
-          <Row $align="center">
-            {isDeleting && (
-              <>
-                <Heading as="h6">
-                  Are you sure you want to delete {exploration.name}?
-                </Heading>
-                <SmallText>
-                  This is an irreversible action and all exploration and related
-                  data will be lost.
-                </SmallText>
-                <Row $direction="horizontal" $gap="var(--gap-lg)">
-                  <Button
-                    $size="small"
-                    $variation="secondary"
-                    onClick={() => setIsModalOpen(false)}
-                  >
-                    No, Return to exploration
-                  </Button>
-                  <Button
-                    $size="small"
-                    $variation="primary"
-                    onClick={() => handleDeleteExploration(exploration._id)}
-                  >
-                    Yes, Delete this exploration
-                  </Button>
-                </Row>
-              </>
-            )}
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onConfirmDelete={handleConfirmDelete}
+          onSuccess={handleDeleteSuccess}
+          options={handleDeleteOptions}
+        />
+        // <Modal
+        //   onClose={() => {
+        //     setIsModalOpen(false);
+        //     setIsDeleting(false);
+        //     setIsError(false);
+        //     setErrorMessage("");
+        //   }}
+        // >
+        //   <Row $align="center">
+        //     {isDeleting && (
+        //       <>
+        //         <Heading as="h6">
+        //           Are you sure you want to delete {exploration.name}?
+        //         </Heading>
+        //         <SmallText>
+        //           This is an irreversible action and all exploration and related
+        //           data will be lost.
+        //         </SmallText>
+        //         <Row $direction="horizontal" $gap="var(--gap-lg)">
+        //           <Button
+        //             $size="small"
+        //             $variation="secondary"
+        //             onClick={() => setIsModalOpen(false)}
+        //           >
+        //             No, Return to exploration
+        //           </Button>
+        //           <Button
+        //             $size="small"
+        //             $variation="primary"
+        //             onClick={() => handleDeleteExploration(exploration._id)}
+        //           >
+        //             Yes, Delete this exploration
+        //           </Button>
+        //         </Row>
+        //       </>
+        //     )}
 
-            {isError && (
-              <>
-                <Bold>There was an error deleting this exploration.</Bold>
-                <SmallText>{errorMessage}</SmallText>
-                <SmallText>Please try again later.</SmallText>
-              </>
-            )}
+        //     {isError && (
+        //       <>
+        //         <Bold>There was an error deleting this exploration.</Bold>
+        //         <SmallText>{errorMessage}</SmallText>
+        //         <SmallText>Please try again later.</SmallText>
+        //       </>
+        //     )}
 
-            {isSuccess && (
-              <>
-                <Bold>This exploration has been successfully deleted!</Bold>
-                <SmallText>
-                  Redirecting you back to the Explorations page...
-                </SmallText>
-                <SpinnerMini />
-              </>
-            )}
-          </Row>
-        </Modal>
+        //     {isSuccess && (
+        //       <>
+        //         <Bold>This exploration has been successfully deleted!</Bold>
+        //         <SmallText>
+        //           Redirecting you back to the Explorations page...
+        //         </SmallText>
+        //         <SpinnerMini />
+        //       </>
+        //     )}
+        //   </Row>
+        // </Modal>
       )}
     </>
   );

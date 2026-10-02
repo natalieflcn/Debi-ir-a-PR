@@ -4,6 +4,7 @@ const factory = require("./handlerFactory");
 const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const ExplorationProgress = require("../models/ExplorationProgress");
 
 // Exploration Routes
 exports.getAllExplorationData = factory.getAll(Exploration);
@@ -54,7 +55,7 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
 // exports.deleteExploration = factory.deleteOne(Exploration);
 
 exports.deleteExploration = catchAsync(async (req, res, next) => {
-  const exploration = findOne(req.params.id);
+  const exploration = await Exploration.findOne({ _id: req.params.id });
 
   if (!exploration)
     next(new AppError("No exploration found with that ID", 404));

@@ -563,13 +563,14 @@
 // BUG with rendering Exploration page as ambassador (prob explorer n admin too)
 // Refactor delete modal window usages
 
-- profileinformation
-- adminfootercta
-- adminexplorationcardheaderdetails
+- adminfootercta DONE
+- adminexplorationcardheaderdetails DONE
 - currentlocations?
 - createexplorationcard
 - createlocationcard
 - endexplorationprogress
+
+- note: add delete button to edit locaiton page and back to exploration button
 
 // Refactor form usages with useReducer
 // Implement ReactQuery into getExplorations workflow

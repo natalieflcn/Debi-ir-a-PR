@@ -23,20 +23,6 @@ import { updateMyPassword, updateUserPassword } from "../../../services/auth";
 import SpinnerMini from "../ui/SpinnerMini";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
 
-// const StyledProfileInformation = styled.div`
-//   display: grid;
-//   grid-template-columns: 12rem 1fr auto;
-//   /* grid-template-rows: repeat(2, 1fr); */
-//   align-items: start;
-//   gap: var(--gap-lg) var(--gap-xl);
-//   color: var(--color-dark-100);
-
-//   @media (max-width: 800px) {
-//     grid-template-columns: 8rem 1fr auto;
-//     grid-template-rows: 1fr 1fr;
-//   }
-// `;
-
 const StyledProfileInformation = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,10 +130,7 @@ const ProfileInformation = function ({ user }) {
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isDeleted, setIsDeleted] = useState(false);
 
-  // const [isDeletingError, setIsDeletingError] = useState(false);
-  // const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState("");
   const isMyProfile = user._id === myUser._id;
   const navigate = useNavigate();
 
@@ -253,30 +236,6 @@ const ProfileInformation = function ({ user }) {
     redirect: isMyProfile ? "the home page" : "the users page",
     data: isMyProfile ? "your account data" : "this user's data",
   };
-  // const handleDeleteUser = async function () {
-  //   try {
-  //     if (isMyProfile) {
-  //       await deleteMe();
-  //       setIsDeleted(true);
-
-  //       setTimeout(async () => {
-  //         clearUser();
-  //         setTimeout(() => {
-  //           navigate("/", { replace: true });
-  //         }, 5);
-  //       }, 1000);
-  //     } else {
-  //       await deleteUser(user._id);
-  //       setIsDeleted(true);
-  //       setTimeout(() => {
-  //         navigate(`/${myUser.role}/users`);
-  //       }, 1000);
-  //     }
-  //   } catch (err) {
-  //     setIsDeletingError(true);
-  //     setIsDeletingErrorMessage(err.message);
-  //   }
-  // };
 
   return (
     <Card $cardColor="var(--color-light-200)" $cardShadow="outsetMD">
@@ -432,86 +391,14 @@ const ProfileInformation = function ({ user }) {
         </ProfileRow>
       </StyledProfileInformation>
 
-      {
-        isModalOpen && (
-          <DeleteConfirmationModal
-            onClose={() => setIsModalOpen(false)}
-            onConfirmDelete={handleConfirmDelete}
-            onSuccess={handleDeleteSuccess}
-            options={handleDeleteOptions}
-          />
-        )
-
-        // (
-        //   <Modal
-        //     onClose={() => {
-        //       setIsModalOpen(false);
-        //       setIsDeletingError(false);
-        //       setIsDeletingErrorMessage("");
-        //     }}
-        //   >
-        //     <Row $gap="var(--gap-md)">
-        //       {!isDeleted && (
-        //         <>
-        //           <Row $align="center" $gap="var(--gap-sm)">
-        //             <Bold $color="var(--color-red-300)">
-        //               {isMyProfile
-        //                 ? "Are you sure you want to delete your account?"
-        //                 : "Are you sure you want to delete this user?"}
-        //             </Bold>
-        //             <SmallText>
-        //               {isMyProfile
-        //                 ? "This is an irreversible action and all your data will be lost."
-        //                 : "This is an irreversible action and this user's data will be lost."}
-        //             </SmallText>
-        //           </Row>
-
-        //           <Button
-        //             $size="small"
-        //             $variation="secondary"
-        //             onClick={() => setIsModalOpen(false)}
-        //           >
-        //             No, Return to profile
-        //           </Button>
-        //           <Button
-        //             $size="small"
-        //             $variation="primary"
-        //             onClick={handleDeleteUser}
-        //           >
-        //             {isMyProfile
-        //               ? "Yes, Delete my account"
-        //               : "Yes, Delete this user"}
-        //           </Button>
-        //         </>
-        //       )}
-        //       {isDeletingError && (
-        //         <Row $align="center">
-        //           <Bold>An error has occurred. Please try again.</Bold>
-        //           <Paragraph>{isDeletingErrorMessage}</Paragraph>
-        //         </Row>
-        //       )}
-        //       {isDeleted && (
-        //         <Row $align="center">
-        //           {
-        //             <>
-        //               <Bold>
-        //                 {isMyProfile
-        //                   ? "Your account has been deleted!"
-        //                   : "This account has been deleted!"}
-        //               </Bold>
-        //               <SmallText>
-        //                 {isMyProfile
-        //                   ? "Redirecting you back to the Home page..."
-        //                   : "Redirecting you back to the Users page..."}
-        //               </SmallText>
-        //               <SpinnerMini />
-        //             </>
-        //           }
-        //         </Row>
-        //       )}
-        //     </Row>
-        //   </Modal>
-      }
+      {isModalOpen && (
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onConfirmDelete={handleConfirmDelete}
+          onSuccess={handleDeleteSuccess}
+          options={handleDeleteOptions}
+        />
+      )}
     </Card>
   );
 };
