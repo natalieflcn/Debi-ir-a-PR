@@ -24,41 +24,32 @@ function Exploration() {
 
   const handleStartExploration = useMutation({
     mutationFn: (explorationId) => startExploration(explorationId),
-    onSuccess: () =>
+
+    onSuccess: () => {
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
-      }),
+      });
+
+      QueryClient.invalidateQueries({
+        queryKey: ["allExplorationProgress"],
+      });
+    },
   });
 
   const handleEndExploration = useMutation({
     mutationFn: (explorationId) => endExploration(explorationId),
-    onSuccess: () =>
+    onSuccess: () => {
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
-      }),
+      });
+
+      QueryClient.invalidateQueries({
+        queryKey: ["allExplorationProgress"],
+      });
+    },
   });
 
   const userHistory = data?.data?.data || null;
-
-  // const [userHistory, setUserHistory] = useState(useLoaderData);
-
-  // const [hasStarted, setHasStarted] = useState(Boolean(userHistory?.status));
-
-  // async function handleStartExploration() {
-  //   console.log("button clicked");
-  //   try {
-  //     const { data } = await startExploration(exploration._id);
-  //     setUserHistory(data.data);
-  //     setHasStarted(true);
-  //     console.log(data.data);
-  //   } catch (err) {
-  //     console.log("Failed to start exploration", err);
-  //   }
-  // }
-
-  // const hasStarted = userHistory.explorationProgress.some(
-  //   (startedExploration) => startedExploration.explorationId === exploration.id,
-  // );
 
   const hasStarted =
     userHistory?.status === "in_progress" ||

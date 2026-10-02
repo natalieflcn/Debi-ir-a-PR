@@ -108,9 +108,7 @@ const explorationSchema = new mongoose.Schema(
 // Middlewares
 explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
-  console.log("running es save middleware");
 
-  console.log(this.locations);
   this.cities = [...new Set(this.locations.map((loc) => loc.address.city))];
   // this.numStops = this.locations.length;
 });

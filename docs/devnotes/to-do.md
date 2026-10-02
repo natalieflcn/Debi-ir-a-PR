@@ -552,6 +552,7 @@
   - [ ] Refactor forms with usereducer hook
 
 - [ ] Other Tasks (For the future)
+  - [ ] Need to implement List view of Explorations and Users for Admins
   - [ ] Center Exploration images... potentially make slideshow for more than three images?
   - [ ] Location name should wrap around in CurrentLocations, not stretch past container
   - [ ] Logo has incorrect hyperlink
@@ -579,7 +580,8 @@
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-- note: recalcualte cities and derived data of explorations when deleting locations TODO 1
+// END EXPLORATION PROGRES NO LONGER WORKING BUG BUG BUG
+after implementing updateUserTitle, it is no longer working...
 
 // Refactor form usages with useReducer TODO 7
 

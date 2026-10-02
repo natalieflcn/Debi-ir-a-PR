@@ -54,12 +54,33 @@ exports.createExplorationProgress = factory.createOne(
   }),
 );
 
-exports.deleteExplorationProgress = factory.deleteOne(
-  ExplorationProgress,
-  (req) => ({ user: req.user._id, exploration: req.params.explorationId }),
-);
+// exports.deleteExplorationProgress = factory.deleteOne(
+//   ExplorationProgress,
+//   (req) => ({ user: req.user._id, exploration: req.params.explorationId }),
+// );
+
+exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
+  const progress = await ExplorationProgress.findOneAndDelete({
+    user: req.user.id,
+    exploration: req.params.explorationId,
+  });
+
+  if (!progress)
+    return next(
+      new AppError("No exploration progress found with that ID.", 404),
+    );
+
+  // const user = User.findOne({ _id: req.user.id });
+  // await user.updateUserTitle(req.user.id);
+  // if (!user) {
+  //   return next(new AppError("No user found with that ID.", 404));
+  // }
+
+  res.status(204).json({ status: "success", data: null });
+});
 
 exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
+  console.log("running ecplorationprogressvisit");
   // Retrieving Existing Documents and Related Data
   const progress = await ExplorationProgress.findOne({
     user: req.user.id,
@@ -104,6 +125,13 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   await progress.save();
 
+  // Updating Explorer Title
+  // const user = await User.findById(req.user.id);
+
+  // if (!user) return next(new AppError("No user found with that ID.", 404));
+
+  // await user.updateUserTitle(req.user.id);
+
   res.status(200).json({ status: "success", data: { data: progress } });
 });
 
@@ -121,7 +149,7 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   // Updating Exploration Progress Visit Log
   const filteredVisits = progress.visitLog.filter(
-    (visit) => visit.location === req.params.locationId,
+    (visit) => visit.location !== req.params.locationId,
   );
 
   progress.visitLog = filteredVisits;
@@ -137,16 +165,42 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   await progress.save();
 
+  // Updating Explorer Title
+  // const user = await User.findById(req.user.id);
+  // if (!user) return next(new AppError("No user found with that ID.", 404));
+
+  // await user.updateUserTitle(req.user.id);
+
   res.status(200).json({ status: "success", data: { data: progress } });
 });
 
-exports.deleteExplorationProgress = factory.deleteOne(
-  ExplorationProgress,
-  (req) => ({
-    user: req.user._id,
-    exploration: req.params.explorationId,
-  }),
-);
+// exports.deleteExplorationProgress = factory.deleteOne(
+//   ExplorationProgress,
+//   (req) => ({
+//     user: req.user._id,
+//     exploration: req.params.explorationId,
+//   }),
+// );
+
+// exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
+//   const progress = await findOneAndDelete({
+//     user: req.user._id,
+//     exploration: req.params.explorationId,
+//   });
+
+//   if (!progress)
+//     return next(
+//       new AppError("No exploration progress found with that ID.", 404),
+//     );
+
+//   // Updating Explorer Title
+//   const user = await User.findById(req.user.id);
+//   if (!user) next(new AppError("No user found with that ID.", 404));
+
+//   await user.updateUserTitle(req.user._id);
+//   res.status(204).json({ status: "success", data: null });
+// });
+
 // exports.getUserExplorationProgress = catchAsync(async (req, res, next) => {
 //   console.log(req.params);
 //   const explorationProgress = await ExplorationProgress.find({

@@ -119,7 +119,6 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
               onDelete(getLocationId(editingLocation));
             }}
             onDeleteSuccess={() => {
-              console.log("running delete success");
               setEditingLocation(null);
             }}
           />

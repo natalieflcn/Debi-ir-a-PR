@@ -97,7 +97,7 @@ function ExplorationMiniCard({ exploration, city, buttonDetails }) {
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
-                {exploration.numStops} stops
+                {exploration.numStops} stop{exploration.numStops > 1 && "s"}
               </Bold>
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">

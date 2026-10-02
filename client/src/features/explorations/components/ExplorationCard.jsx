@@ -80,7 +80,8 @@ function ExplorationCard({
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoFlag color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
-                    {exploration.numStops} total stops
+                    {exploration.numStops} total stop
+                    {exploration.numStops > 1 && "s"}
                   </Bold>
                 </Row>
 

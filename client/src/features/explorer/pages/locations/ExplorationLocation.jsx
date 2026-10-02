@@ -126,9 +126,13 @@ function ExplorationLocation() {
   const mutateCompleteLocation = useMutation({
     mutationFn: ({ explorationId, locationId }) =>
       addVisitLocation(explorationId, locationId),
-    onSuccess: async () => {
+    onSuccess: () => {
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
+      });
+
+      QueryClient.invalidateQueries({
+        queryKey: ["allExplorationProgress"],
       });
     },
   });
@@ -136,10 +140,15 @@ function ExplorationLocation() {
   const mutateRemoveLocation = useMutation({
     mutationFn: ({ explorationId, locationId }) =>
       removeVisitLocation(explorationId, locationId),
-    onSuccess: () =>
+    onSuccess: () => {
       QueryClient.invalidateQueries({
         queryKey: ["explorationProgress", exploration._id],
-      }),
+      });
+
+      QueryClient.invalidateQueries({
+        queryKey: ["allExplorationProgress"],
+      });
+    },
   });
 
   const userHistory = data?.data?.data || null;

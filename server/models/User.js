@@ -3,6 +3,7 @@ const validator = require("validator");
 const helpers = require("../utils/helpers");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+const ExplorationProgress = require("../models/ExplorationProgress");
 
 // Schema Definition
 const userSchema = new mongoose.Schema(
@@ -104,6 +105,20 @@ userSchema.pre("save", async function () {
   this.passwordConfirm = undefined;
 });
 
+// userSchema.pre(/^find/, function (docs, next) {
+//   if (!docs) return next();
+
+//   if (!Array.isArray(docs)) {
+//     if (docs.role !== "explorer") return;
+//     docs.numStops = docs.locations.length;
+//   } else {
+//     docs.forEach((doc) => {
+//       if (doc.role !== "explorer") return;
+//       doc.numStops = doc.locations.length;
+//     });
+//   }
+// });
+
 // userSchema.pre(/^find/, async function () {
 //   this.find({ active: { $ne: false } });
 // });
@@ -182,6 +197,36 @@ userSchema.methods.populateUserData = async function () {
   return this;
 };
 
+userSchema.methods.updateUserTitle = async function (userId) {
+  if (this.role !== "explorer") return;
+  if (this.role === "explorer") {
+    const completedExplorations = await ExplorationProgress.countDocuments({
+      user: userId,
+      status: "completed",
+    });
+
+    if (completedExplorations <= 1) this.title = "Baby Turista";
+    if (completedExplorations > 1 && completedExplorations <= 3)
+      this.title = "Island Wanderer";
+    if (completedExplorations > 3 && completedExplorations <= 5)
+      this.title = "Tropical Cruiser";
+    if (completedExplorations > 5 && completedExplorations <= 10)
+      this.title = "Fluttering Mariposa";
+    if (completedExplorations > 10 && completedExplorations <= 15)
+      this.title = "Coqui Crawler";
+    if (completedExplorations > 15 && completedExplorations <= 20)
+      this.title = "Brutal Bouncer";
+    if (completedExplorations > 20 && completedExplorations <= 25)
+      this.title = "Barrio Member";
+    if (completedExplorations > 25 && completedExplorations < 30)
+      this.title = "Taino Trailblazer";
+    if (completedExplorations > 30 && completedExplorations <= 35)
+      this.title = "Isla Veteran";
+    if (completedExplorations > 35) return "Boricua at Heart";
+  }
+  await this.save();
+  console.log(this);
+};
 // Model Definition
 const User = mongoose.model("User", userSchema);
 

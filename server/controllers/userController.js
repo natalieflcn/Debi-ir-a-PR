@@ -3,6 +3,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");
 const helpers = require("../utils/helpers");
+const ExplorationProgress = require("../models/ExplorationProgress");
 
 const filterRequestBody = (body, ...allowedFields) => {
   const filteredRequestBody = {};
@@ -13,6 +14,27 @@ const filterRequestBody = (body, ...allowedFields) => {
 
   return filteredRequestBody;
 };
+
+// const getExplorerTitle = function (completedExplorations) {
+//   if (completedExplorations <= 1) return "Baby Turista";
+//   if (completedExplorations > 1 && completedExplorations <= 3)
+//     return "Island Wanderer";
+//   if (completedExplorations > 3 && completedExplorations <= 5)
+//     return "Tropical Cruiser";
+//   if (completedExplorations > 5 && completedExplorations <= 10)
+//     return "Fluttering Mariposa";
+//   if (completedExplorations > 10 && completedExplorations <= 15)
+//     return "Coqui Crawler";
+//   if (completedExplorations > 15 && completedExplorations <= 20)
+//     return "Brutal Bouncer";
+//   if (completedExplorations > 20 && completedExplorations <= 25)
+//     return "Barrio Member";
+//   if (completedExplorations > 25 && completedExplorations < 30)
+//     return "Taino Trailblazer";
+//   if (completedExplorations > 30 && completedExplorations <= 35)
+//     return "Isla Veteran";
+//   if (completedExplorations > 35) return "Boricua at Heart";
+// };
 
 exports.getUser = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ _id: req.params.id });
@@ -29,6 +51,11 @@ exports.getUser = catchAsync(async (req, res, next) => {
   //     .filter((progress) => progress.status === "completed")
   //     .map((progress) => progress.exploration.badge);
   // }
+
+  const completedExplorationsCount = await ExplorationProgress.countDocuments({
+    user: req.user.id,
+    status: "completed",
+  });
 
   res.status(200).json({ status: "success", data: { data: user } });
 });
@@ -108,3 +135,14 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 });
 
 // exports.updateUser = factory.updateOne(User);
+
+exports.updateExplorerTitle = catchAsync(async (req, res, next) => {
+  const completedExplorations = await ExplorationProgress.countDocuments({
+    user: req.user.id,
+    status: "completed",
+  });
+
+  const explorerTitle = getExplorerTitle(completedExplorations);
+
+  await User.findByIdAndUpdate(req.user.id, { title: explorerTitle });
+});

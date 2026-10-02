@@ -5,7 +5,7 @@ const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const ExplorationProgress = require("../models/ExplorationProgress");
-
+const User = require("../models/User");
 // Exploration Routes
 exports.getAllExplorationData = factory.getAll(Exploration);
 
@@ -55,14 +55,32 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
 // exports.deleteExploration = factory.deleteOne(Exploration);
 
 exports.deleteExploration = catchAsync(async (req, res, next) => {
+  // Retrieving Exploration and related documents
   const exploration = await Exploration.findOne({ _id: req.params.id });
 
   if (!exploration)
-    next(new AppError("No exploration found with that ID", 404));
+    return next(new AppError("No exploration found with that ID", 404));
 
+  const progress = await ExplorationProgress.find({
+    exploration: exploration._id,
+  }).select("user");
+
+  const userIds = [...new Set(progress.map((item) => item.user.toString()))];
+
+  // Deleting Related Exploration Progress objects
   await ExplorationProgress.deleteMany({ exploration: exploration._id });
 
+  // Deleting Exploration
   await exploration.deleteOne();
+
+  // Updating Explorer Titles
+  // await Promise.all(
+  //   userIds.map(async (userId) => {
+  //     const user = await User.findById(userId);
+
+  //     if (user) user.updateUserTitle(userId);
+  //   }),
+  // );
 
   res.status(204).json({
     status: "success",

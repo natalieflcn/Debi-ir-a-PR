@@ -54,13 +54,13 @@ function ExplorerExplorationCardHeaderDetails({
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
-                {stopsCompleted} stops completed
+                {stopsCompleted} stop{stopsCompleted > 1 && "s"} completed
               </Bold>
             </Row>
             <Row $direction="horizontal" $gap="var(--gap-sm)">
               <IoFlag color="var(--color-red-300)" />
               <Bold $color="var(--color-dark-200)">
-                {stopsRemaining} stops remaining
+                {stopsRemaining} stop{stopsCompleted > 1 && "s"} remaining
               </Bold>
             </Row>
           </StyledRow>

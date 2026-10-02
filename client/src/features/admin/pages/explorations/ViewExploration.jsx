@@ -7,12 +7,15 @@ import { useLoaderData } from "react-router-dom";
 import AdminFooterBadgeDisplay from "../../../../shared/components/management/AdminFooterBadgeDisplay";
 
 function ViewExploration() {
-  const { exploration, user } = useLoaderData();
+  const { exploration, users } = useLoaderData();
+
+  const author =
+    users.find((user) => user._id === exploration.createdBy)?.name || "Unknown";
 
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
       exploration={exploration}
-      author={exploration.createdBy}
+      author={author}
       lastUpdated={exploration.updatedAt}
     />
   );

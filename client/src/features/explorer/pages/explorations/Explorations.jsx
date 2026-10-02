@@ -87,14 +87,13 @@ function Explorations() {
   const { explorations } = useLoaderData();
 
   const { isPending, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["allMyExplorationProgress"],
+    queryKey: ["allExplorationProgress"],
     queryFn: getAllMyExplorationProgress,
   });
   // const QueryClient = useQueryClient();
 
-  console.log(data);
-  const userHistory = data.data.data;
-  console.log(userHistory);
+  const userHistory = data?.data?.data ?? [];
+
   const filteredExplorations = [...explorations].filter((exploration) => {
     if (filterBy === "all") return true;
 
