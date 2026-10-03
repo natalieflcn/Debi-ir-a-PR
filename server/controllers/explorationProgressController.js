@@ -70,17 +70,20 @@ exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
       new AppError("No exploration progress found with that ID.", 404),
     );
 
-  // const user = User.findOne({ _id: req.user.id });
-  // await user.updateUserTitle(req.user.id);
-  // if (!user) {
-  //   return next(new AppError("No user found with that ID.", 404));
-  // }
+  const user = await User.findOne({ _id: req.user.id });
+
+  console.log("DELETE EXPLORATION PROGRESS");
+  console.log(user);
+  if (!user) {
+    return next(new AppError("No user found with that ID.", 404));
+  }
+
+  await user.updateUserTitle(req.user.id);
 
   res.status(204).json({ status: "success", data: null });
 });
 
 exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
-  console.log("running ecplorationprogressvisit");
   // Retrieving Existing Documents and Related Data
   const progress = await ExplorationProgress.findOne({
     user: req.user.id,
@@ -126,11 +129,11 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
   await progress.save();
 
   // Updating Explorer Title
-  // const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id);
 
-  // if (!user) return next(new AppError("No user found with that ID.", 404));
+  if (!user) return next(new AppError("No user found with that ID.", 404));
 
-  // await user.updateUserTitle(req.user.id);
+  await user.updateUserTitle(req.user.id);
 
   res.status(200).json({ status: "success", data: { data: progress } });
 });
@@ -166,10 +169,10 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
   await progress.save();
 
   // Updating Explorer Title
-  // const user = await User.findById(req.user.id);
-  // if (!user) return next(new AppError("No user found with that ID.", 404));
+  const user = await User.findById(req.user.id);
+  if (!user) return next(new AppError("No user found with that ID.", 404));
 
-  // await user.updateUserTitle(req.user.id);
+  await user.updateUserTitle(req.user.id);
 
   res.status(200).json({ status: "success", data: { data: progress } });
 });

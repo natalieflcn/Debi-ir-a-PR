@@ -225,7 +225,6 @@ userSchema.methods.updateUserTitle = async function (userId) {
     if (completedExplorations > 35) return "Boricua at Heart";
   }
   await this.save();
-  console.log(this);
 };
 // Model Definition
 const User = mongoose.model("User", userSchema);

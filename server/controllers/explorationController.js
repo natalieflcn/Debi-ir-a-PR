@@ -74,13 +74,13 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
   await exploration.deleteOne();
 
   // Updating Explorer Titles
-  // await Promise.all(
-  //   userIds.map(async (userId) => {
-  //     const user = await User.findById(userId);
+  await Promise.all(
+    userIds.map(async (userId) => {
+      const user = await User.findById(userId);
 
-  //     if (user) user.updateUserTitle(userId);
-  //   }),
-  // );
+      if (user) await user.updateUserTitle(userId);
+    }),
+  );
 
   res.status(204).json({
     status: "success",
