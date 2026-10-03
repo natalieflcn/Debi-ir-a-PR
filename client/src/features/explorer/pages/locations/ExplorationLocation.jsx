@@ -35,6 +35,7 @@ function ExplorerHeaderDetails({
   locationName,
   mutateIsPending,
 }) {
+  console.log(visitedAt);
   return (
     <>
       {mutateIsPending && (
@@ -156,6 +157,10 @@ function ExplorationLocation() {
   const userCompleted = Boolean(
     userHistory?.visitLog?.some((visit) => visit.location === location._id),
   );
+  console.log(
+    userHistory?.visitLog.find((visit) => visit.location === location._id)
+      ?.visitedAt,
+  );
 
   function handleToggleCompleted() {
     if (userCompleted)
@@ -175,7 +180,7 @@ function ExplorationLocation() {
     <ExplorerHeaderDetails
       userCompleted={userCompleted}
       visitedAt={
-        userHistory?.visitLog.find((visit) => visit?.location === location._id)
+        userHistory?.visitLog.find((visit) => visit.location === location._id)
           ?.visitedAt
       }
       locationName={location.name}
@@ -193,7 +198,9 @@ function ExplorationLocation() {
 
   return (
     <>
-      {isPending && <Spinner />}
+      {(isPending ||
+        mutateCompleteLocation.isPending ||
+        mutateRemoveLocation.isPending) && <Spinner />}
 
       {isSuccess && (
         <ExplorationLocationCard

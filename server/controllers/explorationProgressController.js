@@ -126,6 +126,7 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   progress.lastVisitedAt = new Date();
 
+  console.log(progress.lastVisitedAt);
   await progress.save();
 
   // Updating Explorer Title
@@ -152,9 +153,10 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   // Updating Exploration Progress Visit Log
   const filteredVisits = progress.visitLog.filter(
-    (visit) => visit.location !== req.params.locationId,
+    (visit) => visit.location.toString() !== req.params.locationId,
   );
 
+  console.log(filteredVisits);
   progress.visitLog = filteredVisits;
 
   // Updating Exploration Progress Derived Data
