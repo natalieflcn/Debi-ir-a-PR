@@ -12,6 +12,10 @@ import Button from "../ui/Button";
 import { useSubmit } from "react-router-dom";
 import CondensedTable from "../ui/CondensedTable";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import { updateMe, updateUserInformation } from "../../../services/users";
+import Input from "../form/Input";
+import Bold from "../typography/Bold";
+import { capitalize } from "../../utils/helpers";
 
 const StyledProfileHeader = styled.div`
   display: grid;
@@ -144,11 +148,41 @@ const ProfileHeader = function ({ user, title }) {
   // const { user, role } = useAuth();
   // const { user } = profileLoader();
   // console.log(user);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [name, setName] = useState(user.name);
+  const [errors, setErrors] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(
     user?.avatar ?? "/src/assets/images/content/TEMP.png",
   );
+  const { user: myUser, updateUser } = useAuth();
+  const isMyProfile = myUser._id === user._id;
+
+  const handleSetName = function (value) {
+    setErrors((prev) => ({ ...prev, name: "" }));
+    setName(value);
+  };
+
+  const handleNameSubmit = async function (e) {
+    e.preventDefault();
+
+    if (!name.trim()) errors.name = "Please enter your name.";
+
+    const { data } = isMyProfile
+      ? await updateMe({ name: name })
+      : await updateUserInformation(user._id, { name: name });
+
+    if (isMyProfile) updateUser(data.data);
+
+    setIsEditingName(false);
+  };
+
+  const handleNameCancel = function () {
+    setName(user.name);
+    setIsEditingName(false);
+    setErrors((prev) => ({ ...prev, name: "" }));
+  };
 
   const fileInputRef = useRef(null);
   const submit = useSubmit();
@@ -198,9 +232,46 @@ const ProfileHeader = function ({ user, title }) {
       </Row>
 
       <Row $gap="var(--gap-sm)">
-        <Heading as="h2" $shadowColor="var(--color-blue-300)">
-          {user.name.toUpperCase()}
-        </Heading>
+        {isEditingName ? (
+          <Row $gap="var(--gap-md)" $direction="horizontal">
+            <Input
+              name="name"
+              value={name}
+              onChange={(e) => handleSetName(e.target.value)}
+            />
+            {errors?.name && <Bold>{errors?.name}</Bold>}
+
+            <Row $direction="horizontal" $gap="var(--gap-md)">
+              <Button
+                type="submit"
+                $variation="secondary"
+                $size="small"
+                onClick={handleNameSubmit}
+              >
+                Save
+              </Button>
+              <Button
+                type="button"
+                $variation="primary"
+                $size="small"
+                onClick={handleNameCancel}
+              >
+                Cancel
+              </Button>
+            </Row>
+          </Row>
+        ) : (
+          <Row $gap="var(--gap-lg)" $direction="horizontal" $align="start">
+            <Heading as="h2">{name.toUpperCase()}</Heading>
+            <Button
+              $size="extraSmall"
+              $variation="yellow"
+              onClick={() => setIsEditingName(true)}
+            >
+              Edit Name
+            </Button>
+          </Row>
+        )}
 
         <Row $direction="horizontal" $align="flex-start" $gap="var(--gap-sm)">
           <Heading as="h5" $color="var(--color-light-0)">
@@ -219,7 +290,6 @@ const ProfileHeader = function ({ user, title }) {
           </InfoButton>
         </Row>
       </Row>
-
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           {InfoButtonTexts[user.role]}

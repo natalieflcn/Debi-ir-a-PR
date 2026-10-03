@@ -544,7 +544,7 @@
   - [ ] "/" should always return to dashboard for logged in users TODO
   - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
   - [ ] Create way for users to edit their name
-  - [ ] Create document middleware that calculates number of explorations completed and changes user title
+  - [x] Create document middleware that calculates number of explorations completed and changes user title
   - [x] Implement way for users to end Exploration
 
 - [~] Refactor project
@@ -563,8 +563,7 @@
     - [ ] RouteError
     - [ ] ErrorFallback
   - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
-  - [ ] Figure out how to populate User data depending on role (REMOVE VIRTUALS)
-  - [ ] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
+  - [x] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
   - [ ] Add functionality to search inputs
     - [ ] Explorations
     - [ ] Users
@@ -577,26 +576,20 @@
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
+  - Polish up mobile responsiveness
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-// END EXPLORATION PROGRES NO LONGER WORKING BUG BUG BUG
-after implementing updateUserTitle, it is no longer working...
-
 // Refactor form usages with useReducer TODO 7
 
-// create way for users to edit their names TODO 3
-
-// create forgot password page TODO 8
+// create forgot password page TODO 6
 // create reset password page
 
-// center exploration images, possibly create slideshow TODO 6
-// fix pagination TODO 4
+// center exploration images, possibly create slideshow TODO 5
+// fix pagination TODO 2
 
-// fix broken layouts and actions for error pages TODO 5
+// fix broken layouts and actions for error pages TODO 3
 
-// add functionality to search input
-
-// create document middleware (on exp progress?) to calculate new title for explorers TODO 2
-
+// add functionality to search input TODO
+4
 // start adding google maps to exploration data
