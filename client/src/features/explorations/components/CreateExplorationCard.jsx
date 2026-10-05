@@ -63,6 +63,7 @@ function CreateExplorationCard({ exploration }) {
     getValues,
     setError,
     clearErrors,
+    isSubmitted,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -82,6 +83,8 @@ function CreateExplorationCard({ exploration }) {
 
   const navigate = useNavigate();
   const { user } = useAuth();
+
+  console.log("isSubmitted:", isSubmitted);
 
   // function handleAddLocation(formData) {
   //   setFormErrors((prev) => ({ ...prev, locations: "" }));
@@ -128,6 +131,8 @@ function CreateExplorationCard({ exploration }) {
   // }
 
   const handleFormSubmit = async function (formData) {
+    clearErrors("root.serverError");
+
     const submissionData = {
       ...formData,
       ...(isEditing && { _id: exploration._id }),
@@ -145,6 +150,11 @@ function CreateExplorationCard({ exploration }) {
       if (err.message.startsWith("E11000 duplicate key error"))
         errorMessage =
           "An exploration already exists with this name. Please create an exploration with a different name.";
+
+      setError("root.serverError", {
+        type: "server",
+        message: errorMessage,
+      });
     }
   };
 
@@ -254,11 +264,11 @@ function CreateExplorationCard({ exploration }) {
                       value: 15,
                       message:
                         "An exploration tagline must have more than 15 characters.",
-                      maxLength: {
-                        value: 175,
-                        message:
-                          "An exploration tagline must have less than 175 characters.",
-                      },
+                    },
+                    maxLength: {
+                      value: 175,
+                      message:
+                        "An exploration tagline must have less than 175 characters.",
                     },
                   })}
                 />
@@ -280,11 +290,11 @@ function CreateExplorationCard({ exploration }) {
                       value: 50,
                       message:
                         "An exploration description must have more than 50 characters.",
-                      maxLength: {
-                        value: 1000,
-                        message:
-                          "An exploration description must have less than 1000 characters.",
-                      },
+                    },
+                    maxLength: {
+                      value: 1000,
+                      message:
+                        "An exploration description must have less than 1000 characters.",
                     },
                   })}
                 />
@@ -456,8 +466,12 @@ function CreateExplorationCard({ exploration }) {
                 </Button>
               )}
             </Row>
-            {errors && (
+            {isSubmitted && Object.keys(errors).length > 0 && (
               <Bold>Please review your form submission and try again.</Bold>
+            )}
+
+            {errors.root?.serverError && (
+              <Bold>{errors.root.serverError.message}</Bold>
             )}
           </Row>
         </AppForm>
