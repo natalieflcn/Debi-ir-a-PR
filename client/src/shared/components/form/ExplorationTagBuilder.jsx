@@ -69,11 +69,11 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
   // ];
 
   function toggleTag(tagId) {
-    onChange((prev) =>
-      prev.includes(tagId)
-        ? prev.filter((id) => id !== tagId)
-        : [...prev, tagId],
-    );
+    if (tags.includes(tagId)) {
+      onChange(tags.filter((id) => id !== tagId));
+    } else {
+      onChange([...tags, tagId]);
+    }
   }
 
   return (
@@ -81,6 +81,7 @@ function ExplorationTagBuilder({ exploration, tags, onChange }) {
       <StyledRow>
         <Button
           $size="small"
+          type="button"
           $variation="primary"
           onClick={(e) => {
             e.preventDefault();

@@ -54,7 +54,6 @@ const Paragraph = styled.p`
 `;
 
 function CreateExplorationCard({ exploration }) {
-  //   const { exploration } = useLoaderData() || "";
   const isEditing = Boolean(exploration);
 
   const {
@@ -129,9 +128,10 @@ function CreateExplorationCard({ exploration }) {
   // }
 
   const handleFormSubmit = async function (formData) {
-    clearErrors("root.serverError");
-
-    const submissionData = { ...formData };
+    const submissionData = {
+      ...formData,
+      ...(isEditing && { _id: exploration._id }),
+    };
 
     try {
       const { data } = isEditing
@@ -145,105 +145,8 @@ function CreateExplorationCard({ exploration }) {
       if (err.message.startsWith("E11000 duplicate key error"))
         errorMessage =
           "An exploration already exists with this name. Please create an exploration with a different name.";
-
-      setError("root.serverError", errorMessage);
     }
   };
-
-  // const handleSubmit2 = async function (e) {
-  //   e.preventDefault();
-
-  //   const errors2 = {};
-
-  //   if (!name.trim()) errors.name = "An exploration name is required.";
-  //   else if (name.trim().length < 5)
-  //     errors.name = "An exploration name must have more than 5 characters.";
-  //   else if (name.trim().length > 40)
-  //     errors.name = "An exploration name must have less than 40 characters.";
-
-  //   // if (headerImage.length < 1)
-  //   //   errors.headerImage = "Please select a header image.";
-  //   if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
-  //   else if (tagline.trim().length < 15)
-  //     errors.tagline =
-  //       "An exploration tagline must have more than 15 characters.";
-  //   else if (tagline.trim().length > 175)
-  //     errors.tagline =
-  //       "An exploration tagline must have less than 175 characters.";
-
-  //   if (!description.trim())
-  //     errors.description = "Please provide a description.";
-  //   else if (description.trim().length < 50)
-  //     errors.description =
-  //       "An exploration description must have more than 50 characters.";
-  //   else if (description.trim().length > 1000)
-  //     errors.description =
-  //       "An exploration description must have less than 1000 characters.";
-
-  //   // if (images.length < 1) errors.images = "Please provide at least one image.";
-
-  //   if (locations.length < 1)
-  //     errors.locations = "Please provide at least one location.";
-  //   else if (locations.length > 10)
-  //     errors.locations = "An exploration can have at most 10 locations.";
-
-  //   if (!badge) errors.badge = "Please create a badge.";
-
-  //   if (tags.length < 1)
-  //     errors.tags = "Please select at least one exploration tag.";
-
-  //   if (Object.keys(errors).length > 0) {
-  //     errors.submit = "Please review your form submission and try again.";
-
-  //     // setFormErrors(errors);
-  //     return;
-  //   }
-
-  //   const formData = {
-  //     // name,
-  //     // // startingCity,
-  //     // // cities: locations.map...
-  //     // headerImage,
-  //     // tagline,
-  //     // description,
-  //     // images,
-  //     // cities: locations.map((loc) => loc.city),
-  //     // locations,
-  //     // badge,
-  //     // tags,
-  //     // featured,
-  //     createdBy: user._id,
-  //   };
-
-  //   if (isEditing) {
-  //     formData._id = exploration._id;
-  //     formData.updatedBy = user._id;
-  //   } else {
-  //     formData.createdBy = user._id;
-  //   }
-
-  //   setIsSubmitting(true);
-  //   try {
-  //     const { data } = isEditing
-  //       ? await updateExploration(formData)
-  //       : await createExploration(formData);
-
-  //     navigate(`/${user.role}/explorations/${data.data.slug}`);
-  //   } catch (err) {
-  //     let errorMessage = err.message;
-
-  //     if (err.message.startsWith("E11000 duplicate key error"))
-  //       errorMessage =
-  //         "An exploration already exists with this name. Please create an exploration with a different name.";
-
-  //     setFormErrors((prev) => ({
-  //       ...prev,
-  //       submit: errorMessage,
-  //     }));
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
 
   const handleConfirmDelete = async function () {
     await deleteExploration(exploration._id);
@@ -279,7 +182,9 @@ function CreateExplorationCard({ exploration }) {
 
         <AppForm
           formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
-          onSubmit={handleSubmit(handleFormSubmit)}
+          onSubmit={handleSubmit(handleFormSubmit, (errors) =>
+            console.log("FORM VALIDATION ERRORS:", errors),
+          )}
         >
           <Row $gap="var(--gap-lg)">
             <FormField label="Name">
@@ -316,9 +221,9 @@ function CreateExplorationCard({ exploration }) {
                       // required: (locations) =>
                       //   locations.length > 0 ||
                       //   "Please provide at least one location.",
-                      maxLength: (locations) =>
-                        locations.length === 1 ||
-                        "An exploration can only have one header image.",
+                      // maxLength: (locations) =>
+                      //   locations.length === 1 ||
+                      //   "An exploration can only have one header image.",
                     },
                   }}
                   render={({ field }) => (
@@ -332,7 +237,7 @@ function CreateExplorationCard({ exploration }) {
                   )}
                 />
 
-                {errors?.name?.headerImage && (
+                {errors?.headerImage?.message && (
                   <Bold>{errors?.headerImage?.message}</Bold>
                 )}
               </StyledRow>
@@ -402,14 +307,14 @@ function CreateExplorationCard({ exploration }) {
                       //   "Please provide at least one location.",
                     },
                   }}
-                  render={({ field }) => {
+                  render={({ field }) => (
                     <ImageUploader
                       name="images"
                       maxImages={3}
                       value={field.value}
                       onChange={field.onChange}
-                    />;
-                  }}
+                    />
+                  )}
                 />
 
                 {errors?.images?.message && (
@@ -433,7 +338,7 @@ function CreateExplorationCard({ exploration }) {
                         "An exploration can have at most 10 locations.",
                     },
                   }}
-                  render={({ field }) => {
+                  render={({ field }) => (
                     <>
                       <LocationBuilder
                         exploration={exploration || getValues("name")}
@@ -463,8 +368,8 @@ function CreateExplorationCard({ exploration }) {
                         }}
                         exploration={exploration || null}
                       />
-                    </>;
-                  }}
+                    </>
+                  )}
                 />
                 {errors?.locations?.message && (
                   <Bold>{errors?.locations?.message}</Bold>
@@ -499,21 +404,20 @@ function CreateExplorationCard({ exploration }) {
                   control={control}
                   rules={{
                     validate: {
-                      required: (tags) =>
-                        tags.length > 0 ||
+                      minLength: (tags) =>
+                        tags.length >= 1 ||
                         "Please select at least one exploration tag.",
                     },
                   }}
-                  render={({ field }) => {
+                  render={({ field }) => (
                     <ExplorationTagBuilder
                       exploration={exploration || null}
                       tags={field.value}
                       onChange={field.onChange}
-                    />;
-                  }}
+                    />
+                  )}
                 />
                 {errors?.tags?.message && <Bold>{errors?.tags?.message}</Bold>}
-                <StyledParagraph></StyledParagraph>
               </StyledRow>
             </FormField>
 
@@ -552,11 +456,8 @@ function CreateExplorationCard({ exploration }) {
                 </Button>
               )}
             </Row>
-            {errors.length > 1 && (
+            {errors && (
               <Bold>Please review your form submission and try again.</Bold>
-            )}
-            {errors.root?.serverError && (
-              <Bold>{errors.root.serverError.message}</Bold>
             )}
           </Row>
         </AppForm>
