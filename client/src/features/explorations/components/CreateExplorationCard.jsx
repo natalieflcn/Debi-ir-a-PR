@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "../../auth/contexts/AuthContext";
 import {
   createExploration,
@@ -56,155 +57,86 @@ function CreateExplorationCard({ exploration }) {
   //   const { exploration } = useLoaderData() || "";
   const isEditing = Boolean(exploration);
 
-  const [name, setName] = useState(isEditing ? exploration?.name : "");
-  const [headerImage, setHeaderImage] = useState(
-    isEditing ? exploration.headerImage : [],
-  );
+  const {
+    register,
+    control,
+    handleSubmit,
+    getValues,
+    setError,
+    clearErrors,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: exploration?.name ?? "",
+      headerImage: exploration?.headerImage ?? [],
+      tagline: exploration?.tagline ?? "",
+      description: exploration?.description ?? "",
+      images: exploration?.images ?? [],
+      locations: exploration?.locations ?? [],
+      badge: exploration?.badge ?? null,
+      tags: exploration?.tags ?? [],
+      featured: exploration?.featured ?? false,
+    },
+  });
 
-  const [tagline, setTagline] = useState(isEditing ? exploration?.tagline : "");
-  const [description, setDescription] = useState(
-    isEditing ? exploration?.description : "",
-  );
-  const [images, setImages] = useState(isEditing ? exploration?.images : []);
-  const [locations, setLocations] = useState(
-    isEditing ? exploration?.locations : [],
-  );
-  const [badge, setBadge] = useState(isEditing ? exploration?.badge : null);
-  const [tags, setTags] = useState(isEditing ? exploration?.tags : []);
-  const [featured, setFeatured] = useState(
-    isEditing ? exploration?.featured : false,
-  );
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isDeleting, setIsDeleting] = useState(false);
-  // const [isDeletingError, setIsDeletingError] = useState(false);
-  // const [isDeletingErrorMessage, setIsDeletingErrorMessage] = useState(false);
-  // const [isDeletingSuccess, setIsDeletingSucess] = useState(false);
+
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  function handleAddLocation(formData) {
-    setFormErrors((prev) => ({ ...prev, locations: "" }));
-    setLocations((prev) => [
-      ...prev,
-      { ...formData, tempId: `loc_${crypto.randomUUID()}` },
-    ]);
-  }
+  // function handleAddLocation(formData) {
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) => [
+  //     ...prev,
+  //     { ...formData, tempId: `loc_${crypto.randomUUID()}` },
+  //   ]);
+  // }
 
-  function handleDeleteLocation(tempId) {
-    console.log(tempId);
-    setFormErrors((prev) => ({ ...prev, locations: "" }));
-    setLocations((prev) =>
-      prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
-    );
-  }
+  // function handleDeleteLocation(tempId) {
+  //   console.log(tempId);
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) =>
+  //     prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
+  //   );
+  // }
 
-  function handleEditLocation(tempId, formData) {
-    setFormErrors((prev) => ({ ...prev, locations: "" }));
-    setLocations((prev) =>
-      prev.map((loc) =>
-        (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
-      ),
-    );
-  }
+  // function handleEditLocation(tempId, formData) {
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) =>
+  //     prev.map((loc) =>
+  //       (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
+  //     ),
+  //   );
+  // }
 
-  function handleSetBadge(value) {
-    setFormErrors((prev) => ({ ...prev, badge: "" }));
-    setBadge(value);
-  }
-  function handleSetHeaderImage(value) {
-    setFormErrors((prev) => ({ ...prev, headerImage: "" }));
-    setHeaderImage(value);
-  }
+  // function handleSetBadge(value) {
+  //   setFormErrors((prev) => ({ ...prev, badge: "" }));
+  //   setBadge(value);
+  // }
+  // function handleSetHeaderImage(value) {
+  //   setFormErrors((prev) => ({ ...prev, headerImage: "" }));
+  //   setHeaderImage(value);
+  // }
 
-  function handleSetImages(value) {
-    setFormErrors((prev) => ({ ...prev, images: "" }));
-    setImages(value);
-  }
+  // function handleSetImages(value) {
+  //   setFormErrors((prev) => ({ ...prev, images: "" }));
+  //   setImages(value);
+  // }
 
-  function handleSetTags(value) {
-    setFormErrors((prev) => ({ ...prev, tags: "" }));
-    setTags(value);
-  }
+  // function handleSetTags(value) {
+  //   setFormErrors((prev) => ({ ...prev, tags: "" }));
+  //   setTags(value);
+  // }
 
-  const handleSubmit = async function (e) {
-    e.preventDefault();
+  const handleFormSubmit = async function (formData) {
+    clearErrors("root.serverError");
 
-    const errors = {};
+    const submissionData = { ...formData };
 
-    if (!name.trim()) errors.name = "An exploration name is required.";
-    else if (name.trim().length < 5)
-      errors.name = "An exploration name must have more than 5 characters.";
-    else if (name.trim().length > 40)
-      errors.name = "An exploration name must have less than 40 characters.";
-
-    // if (headerImage.length < 1)
-    //   errors.headerImage = "Please select a header image.";
-    if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
-    else if (tagline.trim().length < 15)
-      errors.tagline =
-        "An exploration tagline must have more than 15 characters.";
-    else if (tagline.trim().length > 175)
-      errors.tagline =
-        "An exploration tagline must have less than 175 characters.";
-
-    if (!description.trim())
-      errors.description = "Please provide a description.";
-    else if (description.trim().length < 50)
-      errors.description =
-        "An exploration description must have more than 50 characters.";
-    else if (description.trim().length > 1000)
-      errors.description =
-        "An exploration description must have less than 1000 characters.";
-
-    // if (images.length < 1) errors.images = "Please provide at least one image.";
-
-    if (locations.length < 1)
-      errors.locations = "Please provide at least one location.";
-    else if (locations.length > 10)
-      errors.locations = "An exploration can have at most 10 locations.";
-
-    if (!badge) errors.badge = "Please create a badge.";
-
-    if (tags.length < 1)
-      errors.tags = "Please select at least one exploration tag.";
-
-    if (Object.keys(errors).length > 0) {
-      errors.submit = "Please review your form submission and try again.";
-
-      setFormErrors(errors);
-      return;
-    }
-
-    const formData = {
-      name,
-      // startingCity,
-      // cities: locations.map...
-      headerImage,
-      tagline,
-      description,
-      images,
-      cities: locations.map((loc) => loc.city),
-      locations,
-      badge,
-      tags,
-      featured,
-      createdBy: user._id,
-    };
-
-    if (isEditing) {
-      formData._id = exploration._id;
-      formData.updatedBy = user._id;
-    } else {
-      formData.createdBy = user._id;
-    }
-
-    setIsSubmitting(true);
     try {
       const { data } = isEditing
-        ? await updateExploration(formData)
-        : await createExploration(formData);
+        ? await updateExploration(submissionData)
+        : await createExploration(submissionData);
 
       navigate(`/${user.role}/explorations/${data.data.slug}`);
     } catch (err) {
@@ -214,31 +146,104 @@ function CreateExplorationCard({ exploration }) {
         errorMessage =
           "An exploration already exists with this name. Please create an exploration with a different name.";
 
-      setFormErrors((prev) => ({
-        ...prev,
-        submit: errorMessage,
-      }));
-    } finally {
-      setIsSubmitting(false);
+      setError("root.serverError", errorMessage);
     }
   };
 
-  // async function handleDeleteExploration() {
-  //   try {
-  //     await deleteExploration(exploration._id);
-  //     setIsDeleting(false);
-  //     setIsDeletingSucess(true);
-  //     setTimeout(() => {
-  //       setIsModalOpen(false);
-  //       setIsDeletingError(false);
-  //       navigate(`/${user.role}/explorations`);
-  //     }, 1500);
-  //   } catch (err) {
-  //     setIsDeleting(false);
-  //     setIsDeletingError(true);
-  //     setIsDeletingErrorMessage(err.message);
+  // const handleSubmit2 = async function (e) {
+  //   e.preventDefault();
+
+  //   const errors2 = {};
+
+  //   if (!name.trim()) errors.name = "An exploration name is required.";
+  //   else if (name.trim().length < 5)
+  //     errors.name = "An exploration name must have more than 5 characters.";
+  //   else if (name.trim().length > 40)
+  //     errors.name = "An exploration name must have less than 40 characters.";
+
+  //   // if (headerImage.length < 1)
+  //   //   errors.headerImage = "Please select a header image.";
+  //   if (!tagline.trim()) errors.tagline = "Please provide a tagline.";
+  //   else if (tagline.trim().length < 15)
+  //     errors.tagline =
+  //       "An exploration tagline must have more than 15 characters.";
+  //   else if (tagline.trim().length > 175)
+  //     errors.tagline =
+  //       "An exploration tagline must have less than 175 characters.";
+
+  //   if (!description.trim())
+  //     errors.description = "Please provide a description.";
+  //   else if (description.trim().length < 50)
+  //     errors.description =
+  //       "An exploration description must have more than 50 characters.";
+  //   else if (description.trim().length > 1000)
+  //     errors.description =
+  //       "An exploration description must have less than 1000 characters.";
+
+  //   // if (images.length < 1) errors.images = "Please provide at least one image.";
+
+  //   if (locations.length < 1)
+  //     errors.locations = "Please provide at least one location.";
+  //   else if (locations.length > 10)
+  //     errors.locations = "An exploration can have at most 10 locations.";
+
+  //   if (!badge) errors.badge = "Please create a badge.";
+
+  //   if (tags.length < 1)
+  //     errors.tags = "Please select at least one exploration tag.";
+
+  //   if (Object.keys(errors).length > 0) {
+  //     errors.submit = "Please review your form submission and try again.";
+
+  //     // setFormErrors(errors);
+  //     return;
   //   }
-  // }
+
+  //   const formData = {
+  //     // name,
+  //     // // startingCity,
+  //     // // cities: locations.map...
+  //     // headerImage,
+  //     // tagline,
+  //     // description,
+  //     // images,
+  //     // cities: locations.map((loc) => loc.city),
+  //     // locations,
+  //     // badge,
+  //     // tags,
+  //     // featured,
+  //     createdBy: user._id,
+  //   };
+
+  //   if (isEditing) {
+  //     formData._id = exploration._id;
+  //     formData.updatedBy = user._id;
+  //   } else {
+  //     formData.createdBy = user._id;
+  //   }
+
+  //   setIsSubmitting(true);
+  //   try {
+  //     const { data } = isEditing
+  //       ? await updateExploration(formData)
+  //       : await createExploration(formData);
+
+  //     navigate(`/${user.role}/explorations/${data.data.slug}`);
+  //   } catch (err) {
+  //     let errorMessage = err.message;
+
+  //     if (err.message.startsWith("E11000 duplicate key error"))
+  //       errorMessage =
+  //         "An exploration already exists with this name. Please create an exploration with a different name.";
+
+  //     setFormErrors((prev) => ({
+  //       ...prev,
+  //       submit: errorMessage,
+  //     }));
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   const handleConfirmDelete = async function () {
     await deleteExploration(exploration._id);
@@ -265,7 +270,7 @@ function CreateExplorationCard({ exploration }) {
             </Button>
           </RouterLink>
         ) : (
-          <RouterLink to="/ambassador/explorations">
+          <RouterLink to={`/${user.role}/explorations`}>
             <Button $size="small" $variation="darkRed">
               <FaArrowLeft size={12} /> Back to Explorations
             </Button>
@@ -274,37 +279,61 @@ function CreateExplorationCard({ exploration }) {
 
         <AppForm
           formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
-          // action={isEditing ? `/explorations/${exploration.id}` : "/explorations"}
-          // method={isEditing ? "patch" : "post"}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(handleFormSubmit)}
         >
           <Row $gap="var(--gap-lg)">
             <FormField label="Name">
               <StyledRow $gap="var(--gap-xs)">
                 <Input
-                  name="name"
+                  id="name"
                   placeholder="The title of the exploration"
-                  value={name}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, name: "" }));
-                    setName(e.target.value);
-                  }}
+                  {...register("name", {
+                    required: "An exploration name is required.",
+                    minLength: {
+                      value: 5,
+                      message:
+                        "An exploration name must have more than 5 characters.",
+                    },
+                    maxLength: {
+                      value: 40,
+                      message:
+                        "An exploration name must have less than 40 characters.",
+                    },
+                  })}
                 />
-                {formErrors.name && <Bold>{formErrors.name}</Bold>}
+
+                {errors?.name?.message && <Bold>{errors?.name?.message}</Bold>}
               </StyledRow>
             </FormField>
 
             <FormField label="Header Image">
               <StyledRow $gap="var(--gap-xs)">
-                <ImageUploader
+                <Controller
                   name="headerImage"
-                  multiple={false}
-                  maxImages={1}
-                  value={headerImage}
-                  onChange={handleSetHeaderImage}
+                  control={control}
+                  rules={{
+                    validate: {
+                      // required: (locations) =>
+                      //   locations.length > 0 ||
+                      //   "Please provide at least one location.",
+                      maxLength: (locations) =>
+                        locations.length === 1 ||
+                        "An exploration can only have one header image.",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <ImageUploader
+                      name="headerImage"
+                      value={field.value}
+                      multiple={false}
+                      maxImages={1}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-                {formErrors.headerImage && (
-                  <Bold>{formErrors.headerImage}</Bold>
+
+                {errors?.name?.headerImage && (
+                  <Bold>{errors?.headerImage?.message}</Bold>
                 )}
               </StyledRow>
             </FormField>
@@ -312,91 +341,193 @@ function CreateExplorationCard({ exploration }) {
             <FormField label="Tagline">
               <StyledRow $gap="var(--gap-xs)">
                 <Input
-                  name="tagline"
+                  id="tagline"
                   placeholder="The short description displayed on the Explorations page"
-                  value={tagline}
-                  onChange={(e) => {
-                    setFormErrors((prev) => ({ ...prev, tagline: "" }));
-                    setTagline(e.target.value);
-                  }}
+                  {...register("tagline", {
+                    required: "Please provide a tagline.",
+                    minLength: {
+                      value: 15,
+                      message:
+                        "An exploration tagline must have more than 15 characters.",
+                      maxLength: {
+                        value: 175,
+                        message:
+                          "An exploration tagline must have less than 175 characters.",
+                      },
+                    },
+                  })}
                 />
-                {formErrors.tagline && <Bold>{formErrors.tagline}</Bold>}
+
+                {errors?.tagline?.message && (
+                  <Bold>{errors?.tagline?.message}</Bold>
+                )}
               </StyledRow>
             </FormField>
 
             <FormField label="Description">
               <StyledTextAreaRow $gap="var(--gap-xs)">
                 <TextArea
-                  name="description"
+                  id="description"
                   placeholder="The long description shown on the Exploration page"
-                  value={description}
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                    setFormErrors((prev) => ({ ...prev, description: "" }));
-                  }}
+                  {...register("description", {
+                    required: "Please provide a description.",
+                    minLength: {
+                      value: 50,
+                      message:
+                        "An exploration description must have more than 50 characters.",
+                      maxLength: {
+                        value: 1000,
+                        message:
+                          "An exploration description must have less than 1000 characters.",
+                      },
+                    },
+                  })}
                 />
-                {formErrors.description && (
-                  <Bold>{formErrors.description}</Bold>
+
+                {errors?.description?.message && (
+                  <Bold>{errors?.description?.message}</Bold>
                 )}
               </StyledTextAreaRow>
             </FormField>
 
             <FormField label="Images">
               <StyledRow $gap="var(--gap-xs)">
-                <ImageUploader
+                <Controller
                   name="images"
-                  maxImages={3}
-                  value={images}
-                  onChange={handleSetImages}
+                  control={control}
+                  rules={{
+                    validate: {
+                      // required: (locations) =>
+                      //   locations.length > 0 ||
+                      //   "Please provide at least one location.",
+                    },
+                  }}
+                  render={({ field }) => {
+                    <ImageUploader
+                      name="images"
+                      maxImages={3}
+                      value={field.value}
+                      onChange={field.onChange}
+                    />;
+                  }}
                 />
-                {formErrors.images && <Bold>{formErrors.images}</Bold>}
+
+                {errors?.images?.message && (
+                  <Bold>{errors?.images?.message}</Bold>
+                )}
               </StyledRow>
             </FormField>
 
             <FormField label="Locations">
               <StyledRow $gap="var(--gap-md)">
-                <LocationBuilder
-                  exploration={exploration || name}
-                  locations={locations}
-                  onAdd={handleAddLocation}
+                <Controller
+                  name="locations"
+                  control={control}
+                  rules={{
+                    validate: {
+                      required: (locations) =>
+                        locations.length > 0 ||
+                        "Please provide at least one location.",
+                      maxLocations: (locations) =>
+                        locations.length <= 10 ||
+                        "An exploration can have at most 10 locations.",
+                    },
+                  }}
+                  render={({ field }) => {
+                    <>
+                      <LocationBuilder
+                        exploration={exploration || getValues("name")}
+                        locations={field.value}
+                        onAdd={(location) =>
+                          field.onChange([...field.value, location])
+                        }
+                      />
+
+                      <CurrentLocations
+                        locations={field.value}
+                        onEdit={(updatedLocation) => {
+                          field.onChange(
+                            field.value.map((location) =>
+                              location._id === updatedLocation._id
+                                ? updatedLocation
+                                : location,
+                            ),
+                          );
+                        }}
+                        onDelete={(locationId) => {
+                          field.onChange(
+                            field.value.filter(
+                              (location) => location._id !== locationId,
+                            ),
+                          );
+                        }}
+                        exploration={exploration || null}
+                      />
+                    </>;
+                  }}
                 />
-                <CurrentLocations
-                  locations={locations}
-                  onEdit={handleEditLocation}
-                  onDelete={handleDeleteLocation}
-                  exploration={exploration || null}
-                />
-                {formErrors.locations && <Bold>{formErrors.locations}</Bold>}
+                {errors?.locations?.message && (
+                  <Bold>{errors?.locations?.message}</Bold>
+                )}
               </StyledRow>
             </FormField>
 
             <FormField label="Badge">
               <StyledRow $gap="var(--gap-xs)">
-                <BadgeBuilder value={badge} onSelect={handleSetBadge} />
-                {formErrors.badge && <Bold>{formErrors.badge}</Bold>}
+                <Controller
+                  name="badge"
+                  control={control}
+                  rules={{ required: "Please create a badge." }}
+                  render={({ field }) => (
+                    <BadgeBuilder
+                      value={field.value}
+                      onSelect={field.onChange}
+                    />
+                  )}
+                />
+
+                {errors?.badge?.message && (
+                  <Bold>{errors?.badge?.message}</Bold>
+                )}
               </StyledRow>
             </FormField>
 
             <FormField label="Tags">
               <StyledRow $gap="var(--gap-xs)">
-                <ExplorationTagBuilder
-                  exploration={exploration || null}
-                  tags={tags}
-                  onChange={handleSetTags}
+                <Controller
+                  name="tags"
+                  control={control}
+                  rules={{
+                    validate: {
+                      required: (tags) =>
+                        tags.length > 0 ||
+                        "Please select at least one exploration tag.",
+                    },
+                  }}
+                  render={({ field }) => {
+                    <ExplorationTagBuilder
+                      exploration={exploration || null}
+                      tags={field.value}
+                      onChange={field.onChange}
+                    />;
+                  }}
                 />
-                {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
-                <StyledParagraph>
-                  {/* <Bold $color="var(--color-dark-200)">Note: </Bold>Tags are also
-                derived from the tag(s) you add to each location. */}
-                </StyledParagraph>
+                {errors?.tags?.message && <Bold>{errors?.tags?.message}</Bold>}
+                <StyledParagraph></StyledParagraph>
               </StyledRow>
             </FormField>
 
             <FormField label="Featured">
               <StyledRow $align="start">
-                <FeaturedFormToggle
-                  featured={featured}
-                  onFeatured={setFeatured}
+                <Controller
+                  name="featured"
+                  control={control}
+                  render={({ field }) => (
+                    <FeaturedFormToggle
+                      featured={field.value}
+                      onFeatured={field.onChange}
+                    />
+                  )}
                 />
               </StyledRow>
             </FormField>
@@ -421,7 +552,12 @@ function CreateExplorationCard({ exploration }) {
                 </Button>
               )}
             </Row>
-            {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
+            {errors.length > 1 && (
+              <Bold>Please review your form submission and try again.</Bold>
+            )}
+            {errors.root?.serverError && (
+              <Bold>{errors.root.serverError.message}</Bold>
+            )}
           </Row>
         </AppForm>
       </Row>
@@ -433,57 +569,6 @@ function CreateExplorationCard({ exploration }) {
           onSuccess={handleDeleteSuccess}
           options={handleDeleteOptions}
         />
-        // <Modal
-        //   onClose={() => {
-        //     setIsModalOpen(false);
-        //     setIsDeletingError(false);
-        //     setIsDeletingErrorMessage("");
-        //   }}
-        // >
-        //   <Row $align="center">
-        //     {isDeleting && (
-        //       <>
-        //         <Heading as="h6">
-        //           Are you sure you want to delete {exploration.name}?
-        //         </Heading>
-        //         <p>This action is irreversible.</p>
-        //         <Row $direction="horizontal" $gap="var(--gap-lg)">
-        //           <Button
-        //             $size="small"
-        //             $variation="secondary"
-        //             onClick={() => setIsModalOpen(false)}
-        //           >
-        //             Cancel
-        //           </Button>
-        //           <Button
-        //             $size="small"
-        //             $variation="primary"
-        //             onClick={handleDeleteExploration}
-        //           >
-        //             Delete Exploration
-        //           </Button>
-        //         </Row>
-        //       </>
-        //     )}
-
-        //     {isDeletingError && (
-        //       <Row $align="center">
-        //         <Bold>There was an error deleting this exploration.</Bold>
-        //         <Paragraph>{isDeletingErrorMessage}</Paragraph>
-        //       </Row>
-        //     )}
-
-        //     {isDeletingSuccess && (
-        //       <Row $align="center">
-        //         <Bold>You successfully deleted this exploration.</Bold>
-        //         <Paragraph>
-        //           Redirecting you to the Explorations page...
-        //         </Paragraph>
-        //         <SpinnerMini />
-        //       </Row>
-        //     )}
-        //   </Row>
-        // </Modal>
       )}
     </>
   );

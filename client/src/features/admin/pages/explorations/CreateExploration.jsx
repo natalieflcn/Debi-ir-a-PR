@@ -485,8 +485,9 @@ import CreateExplorationCard from "../../../explorations/components/CreateExplor
 
 function CreateExploration() {
   const { exploration } = useLoaderData() || "";
+
+  console.log("this is not returnging anything");
+
   return <CreateExplorationCard exploration={exploration} />;
 }
 export default CreateExploration;
-
-

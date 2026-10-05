@@ -36,6 +36,19 @@ function ErrorFallback({ error, resetErrorBoundary }) {
           {error?.message || "An unexpected error occurred."}
         </StyledParagraph>
 
+        {import.meta.env.DEV && error?.stack && (
+          <pre
+            style={{
+              maxWidth: "90%",
+              overflow: "auto",
+              whiteSpace: "pre-wrap",
+              textAlign: "left",
+            }}
+          >
+            {error.stack}
+          </pre>
+        )}
+
         <Button
           $size="small"
           $variation="secondary"

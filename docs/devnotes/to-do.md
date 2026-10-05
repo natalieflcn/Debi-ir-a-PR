@@ -580,9 +580,16 @@
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-// Refactor form usages with useReducer TODO 7
+// Refactor form usages with React Form Hook TODO 1
 
-// create forgot password page TODO 6
+- createexplorationcard
+- createlocationcard
+- login
+- signup page
+- reset password
+- forgot password
+
+// create forgot password page TODO 1
 // create reset password page
 
 // center exploration images, possibly create slideshow TODO 5

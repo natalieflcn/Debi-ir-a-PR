@@ -10,7 +10,7 @@ const ROLE_HOME = {
 export async function rootLoader() {
   try {
     const { data } = await getMe();
-    const home = ROLE_HOME[data.user.role];
+    const home = ROLE_HOME[data?.user?.role] || null;
     if (home) return redirect(home);
   } catch {
     // 401 / not logged in: fall through and show the landing page

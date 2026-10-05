@@ -35,24 +35,26 @@ function RouteError() {
   const { revalidate, state } = useRevalidator();
 
   const { user } = useAuth();
-  let userRedirect;
+  let userRedirect = "/";
 
-  switch (user.role) {
-    case "explorer":
-      userRedirect = "dashboard";
-      break;
+  if (user) {
+    switch (user.role) {
+      case "explorer":
+        userRedirect = "dashboard";
+        break;
 
-    case "ambassador":
-      userRedirect = "ambassador";
-      break;
+      case "ambassador":
+        userRedirect = "ambassador";
+        break;
 
-    case "admin":
-      userRedirect = "admin";
-      break;
+      case "admin":
+        userRedirect = "admin";
+        break;
 
-    default:
-      userRedirect = "/";
-      break;
+      default:
+        userRedirect = "/";
+        break;
+    }
   }
 
   console.log(error);
@@ -72,6 +74,20 @@ function RouteError() {
         <StyledParagraph>
           {error?.message || "An unexpected error occurred."}
         </StyledParagraph>
+
+        {import.meta.env.DEV && error?.stack && (
+          <pre
+            style={{
+              maxWidth: "90%",
+              overflow: "auto",
+              whiteSpace: "pre-wrap",
+              textAlign: "left",
+            }}
+          >
+            {error.stack}
+          </pre>
+        )}
+
         <Row $gap="var(--gap-lg)" $align="center">
           <Heading as="h6">Please refresh the page or try again later.</Heading>
           <Row $direction="horizontal" $gap="var(--gap-lg)">

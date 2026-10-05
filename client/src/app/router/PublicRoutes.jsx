@@ -23,6 +23,10 @@ const ExplorerSignup = lazy(
 const AmbassadorSignup = lazy(
   () => import("@/features/auth/pages/AmbassadorSignup"),
 );
+const ForgotPassword = lazy(
+  () => import("@/features/auth/pages/ForgotPassword"),
+);
+const ResetPassword = lazy(() => import("@/features/auth/pages/ResetPassword"));
 
 const PublicRoutes = [
   { index: true, element: <HomePage />, loader: rootLoader },
@@ -46,6 +50,18 @@ const PublicRoutes = [
     path: "signup/ambassador",
     element: <AmbassadorSignup />,
     loader: rootLoader,
+    // loader: signupLoader,
+  },
+  {
+    path: "forgot-password",
+    element: <ForgotPassword />,
+
+    // loader: signupLoader,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPassword />,
+
     // loader: signupLoader,
   },
 

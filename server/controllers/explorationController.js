@@ -13,7 +13,9 @@ exports.getExploration = factory.getOne(Exploration, (req) => ({
   slug: req.params.id,
 }));
 
-exports.createExploration = factory.createOne(Exploration, null);
+exports.createExploration = factory.createOne(Exploration, (req) => ({
+  createdBy: req.user.id,
+}));
 
 // exports.updateExploration = factory.updateOne(Exploration);
 
@@ -45,7 +47,7 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
 
   exploration.cities = exploration.locations.map((loc) => loc.city);
 
-  if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
+  exploration.updatedBy = req.user.id;
 
   await exploration.save();
 
