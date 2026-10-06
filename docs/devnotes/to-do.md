@@ -547,9 +547,9 @@
   - [x] Create document middleware that calculates number of explorations completed and changes user title
   - [x] Implement way for users to end Exploration
 
-- [~] Refactor project
+- [x] Refactor project
   - [x] Refactor modal windows into reusable deleteConfirmation component
-  - [ ] Refactor forms with React Form Hook
+  - [x] Refactor forms with React Form Hook
 
 - [ ] Other Tasks (For the future)
   - [ ] BUG: Need to prevent locations in the same exploration from having the same name
@@ -582,13 +582,6 @@
   - Polish up mobile responsiveness
 
 TODO TODO TODO TODO TODO TODO TODO TODO
-
-// Refactor form usages with React Form Hook TODO 1
-
-- createexplorationcard DONE
-- createlocationcard done
-- signup page
-- badgeform?
 
 // create forgot password page TODO 2
 // create reset password page

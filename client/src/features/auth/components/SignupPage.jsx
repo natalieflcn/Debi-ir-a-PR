@@ -173,7 +173,7 @@ function Signup({ $variant }) {
                 </Row>
               </FormField>
 
-              <FormField label="confirm Password">
+              <FormField label="Confirm Password">
                 <Row $gap="var(--gap-xs)">
                   <StyledInput
                     name="passwordConfirm"
