@@ -45,10 +45,11 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <RouteError />,
+
     children: [
       {
         children: [...PublicRoutes],
+        errorElement: <RouteError />,
       },
       { path: "*", element: <PageNotFound /> },
     ],
@@ -56,23 +57,23 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <ExplorerLayout />,
-    errorElement: <RouteError />,
+
     children: [
       {
         element: <ProtectedRoute allowedRoles={["explorer"]} />,
+        errorElement: <RouteError />,
         children: [...ExplorerRoutes],
       },
-      { path: "*", element: <PageNotFound /> },
     ],
   },
   {
     path: "/ambassador",
     element: <AmbassadorLayout />,
-    errorElement: <RouteError />,
+
     children: [
       {
         element: <ProtectedRoute allowedRoles={["ambassador"]} />,
-
+        errorElement: <RouteError />,
         children: [...AmbassadorRoutes],
       },
       { path: "*", element: <PageNotFound /> },
@@ -81,11 +82,11 @@ const AppRouter = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminLayout />,
-    errorElement: <RouteError />,
+
     children: [
       {
         element: <ProtectedRoute allowedRoles={["admin"]} />,
-
+        errorElement: <RouteError />,
         children: [...AdminRoutes],
       },
       { path: "*", element: <PageNotFound /> },

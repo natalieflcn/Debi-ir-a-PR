@@ -21,6 +21,7 @@ const ExplorationLocation = lazy(
 const ExplorerProfile = lazy(
   () => import("@/features/explorer/pages/profile/ExplorerProfile"),
 );
+const Unauthorized = lazy(() => import("@/errors/Unauthorized"));
 
 const ExplorerRoutes = [
   {
@@ -48,6 +49,7 @@ const ExplorerRoutes = [
     loader: explorerLocationLoader,
   },
   { path: "profile", element: <ExplorerProfile />, loader: profileLoader },
+  { path: "unauthorized", element: <Unauthorized /> },
 ];
 
 export default ExplorerRoutes;

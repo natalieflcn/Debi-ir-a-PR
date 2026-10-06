@@ -26,24 +26,26 @@ const StyledPageNotFound = styled.div`
 
 function PageNotFound() {
   const { user } = useAuth();
-  let userRedirect;
+  let userRedirect = "";
 
-  switch (user.role) {
-    case "explorer":
-      userRedirect = "dashboard";
-      break;
+  if (user) {
+    switch (user.role) {
+      case "explorer":
+        userRedirect = "dashboard";
+        break;
 
-    case "ambassador":
-      userRedirect = "ambassador";
-      break;
+      case "ambassador":
+        userRedirect = "ambassador";
+        break;
 
-    case "admin":
-      userRedirect = "admin";
-      break;
+      case "admin":
+        userRedirect = "admin";
+        break;
 
-    default:
-      userRedirect = "";
-      break;
+      default:
+        userRedirect = "/";
+        break;
+    }
   }
 
   return (
@@ -62,7 +64,7 @@ function PageNotFound() {
 
           <RouterLink to={`/${userRedirect}`}>
             <Button $size="small" $variation="yellow">
-              Back to Home
+              Back to {user ? "Dashboard" : "Home"}
             </Button>
           </RouterLink>
         </Row>

@@ -3,7 +3,7 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 import RouteError from "../../errors/RouteError";
-import Unauthorized from "../../errors/Unauthorized";
+
 import { rootLoader } from "./loaders/utils/rootLoader";
 
 // import signupLoader from "./loaders/signupLoader";
@@ -27,6 +27,7 @@ const ForgotPassword = lazy(
   () => import("@/features/auth/pages/ForgotPassword"),
 );
 const ResetPassword = lazy(() => import("@/features/auth/pages/ResetPassword"));
+const Unauthorized = lazy(() => import("@/errors/Unauthorized"));
 
 const PublicRoutes = [
   { index: true, element: <HomePage />, loader: rootLoader },
@@ -65,7 +66,7 @@ const PublicRoutes = [
     // loader: signupLoader,
   },
 
-  { path: "/unauthorized", element: <Unauthorized /> },
+  { path: "unauthorized", element: <Unauthorized /> },
 ];
 
 export default PublicRoutes;

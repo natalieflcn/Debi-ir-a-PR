@@ -41,6 +41,7 @@ const ManageExplorers = lazy(
 const ExplorerDetails = lazy(
   () => import("@/features/ambassador/pages/users/ExplorerDetails"),
 );
+const Unauthorized = lazy(() => import("@/errors/Unauthorized"));
 
 const AmbassadorRoutes = [
   {
@@ -89,6 +90,7 @@ const AmbassadorRoutes = [
     loader: adminUserLoader,
   },
   { path: "profile", element: <AmbassadorProfile />, loader: profileLoader },
+  { path: "unauthorized", element: <Unauthorized /> },
 ];
 
 export default AmbassadorRoutes;

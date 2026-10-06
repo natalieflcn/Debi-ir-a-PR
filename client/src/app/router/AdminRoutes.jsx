@@ -43,6 +43,7 @@ const AmbassadorDetails = lazy(
 const ExplorerDetails = lazy(
   () => import("@/features/admin/pages/users/ExplorerDetails"),
 );
+const Unauthorized = lazy(() => import("@/errors/Unauthorized"));
 
 const AdminRoutes = [
   {
@@ -106,6 +107,7 @@ const AdminRoutes = [
     element: <AdminProfile />,
     loader: profileLoader,
   },
+  { path: "unauthorized", element: <Unauthorized /> },
 ];
 
 export default AdminRoutes;

@@ -75,20 +75,20 @@ function RouteError() {
           {error?.message || "An unexpected error occurred."}
         </StyledParagraph>
 
-        {import.meta.env.DEV && error?.stack && (
-          <pre
-            style={{
-              maxWidth: "90%",
-              overflow: "auto",
-              whiteSpace: "pre-wrap",
-              textAlign: "left",
-            }}
-          >
-            {error.stack}
-          </pre>
-        )}
-
         <Row $gap="var(--gap-lg)" $align="center">
+          {import.meta.env.DEV && error?.stack && (
+            <pre
+              style={{
+                maxWidth: "90%",
+                overflow: "auto",
+                whiteSpace: "pre-wrap",
+                textAlign: "left",
+              }}
+            >
+              {error.stack}
+            </pre>
+          )}
+
           <Heading as="h6">Please refresh the page or try again later.</Heading>
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <Button
@@ -98,9 +98,10 @@ function RouteError() {
             >
               {state === "loading" ? "Trying Again..." : "Try Again"}
             </Button>
+
             <RouterLink to={`/${userRedirect}`}>
               <Button $size="small" $variation="primary">
-                Back to Home
+                Back to {user ? "Dashboard" : "Home"}
               </Button>
             </RouterLink>
           </Row>

@@ -9,8 +9,28 @@ function ProtectedRoute({ allowedRoles }) {
     return <Navigate to="/login" replace />;
   }
 
+  let prefix = "/";
+
+  if (user) {
+    switch (user.role) {
+      case "explorer":
+        prefix = "/explorer";
+        break;
+
+      case "ambassador":
+        prefix = "/ambassador";
+        break;
+
+      case "admin":
+        prefix = "/admin";
+        break;
+
+      default:
+        break;
+    }
+  }
   if (!allowedRoles.includes(user.role)) {
-    return <Navigate to="/unauthorized" replace />;
+    return <Navigate to={`${prefix}/unauthorized`} replace />;
   }
 
   return <Outlet />;

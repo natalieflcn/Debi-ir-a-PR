@@ -24,7 +24,7 @@ function ForgotPassword() {
   const [isSending, setIsSending] = useState("");
 
   return (
-    <StyledAppForm formTitle="PASSWORD RESET">
+    <StyledAppForm formTitle="FORGOT PASSWORD">
       <Row $gap="var(--gap-xl)">
         <StyledParagraph>
           <Bold $color="var(--color-dark-200)" as="h6">

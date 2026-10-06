@@ -47,7 +47,7 @@ function Unauthorized() {
       <Image src="/src/assets/images/content/PRDoor.png" $width="20rem" />
       <RouterLink to={`/${userRedirect}`}>
         <Button $size="small" $variation="yellow">
-          Back to Home
+          Back to {user ? "Dashboard" : "Home"}
         </Button>
       </RouterLink>
     </StyledUnauthorized>
