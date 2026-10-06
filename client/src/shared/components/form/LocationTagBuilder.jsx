@@ -69,10 +69,11 @@ function LocationTagBuilder({ value, onChange }) {
   // const [selectedTags, setSelectedTags] = useState(value);
 
   function toggleTag(tagId) {
-    const updated = value.includes(tagId)
-      ? value.filter((id) => id !== tagId)
-      : [...value, tagId];
-    onChange(updated);
+    if (value.includes(tagId)) {
+      onChange(value.filter((id) => id !== tagId));
+    } else {
+      onChange([...value, tagId]);
+    }
   }
 
   return (

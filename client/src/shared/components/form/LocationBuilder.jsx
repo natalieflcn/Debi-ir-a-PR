@@ -44,8 +44,8 @@ function LocationBuilder({ exploration, locations, onAdd }) {
             <CreateLocationCard
               onSubmit={(formData) => {
                 onAdd(formData);
-                setIsModalOpen(false);
               }}
+              onSubmitSuccess={() => setIsModalOpen(false)}
               exploration={exploration}
             />
           </Modal>

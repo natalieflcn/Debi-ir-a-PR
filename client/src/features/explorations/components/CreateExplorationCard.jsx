@@ -23,9 +23,7 @@ import ExplorationTagBuilder from "../../../shared/components/form/ExplorationTa
 import Bold from "../../../shared/components/typography/Bold";
 import FeaturedFormToggle from "../../../shared/components/form/FeaturedFormToggle";
 import BadgeBuilder from "../../../shared/components/form/BadgeBuilder";
-import SpinnerMini from "../../../shared/components/ui/SpinnerMini";
-import Modal from "../../../shared/components/modal/Modal";
-import Heading from "../../../shared/components/typography/Heading";
+
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
 
 const StyledRow = styled(Row)`
@@ -36,10 +34,6 @@ const StyledRow = styled(Row)`
   }
 `;
 
-const StyledParagraph = styled.p`
-  color: var(--color-dark-200);
-`;
-
 const StyledTextAreaRow = styled(Row)`
   flex: 1 1 0;
   height: 10rem;
@@ -47,10 +41,6 @@ const StyledTextAreaRow = styled(Row)`
   @media (max-width: 690px) {
     text-align: center;
   }
-`;
-
-const Paragraph = styled.p`
-  text-align: center;
 `;
 
 function CreateExplorationCard({ exploration }) {
@@ -83,52 +73,6 @@ function CreateExplorationCard({ exploration }) {
 
   const navigate = useNavigate();
   const { user } = useAuth();
-
-  console.log("isSubmitted:", isSubmitted);
-
-  // function handleAddLocation(formData) {
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) => [
-  //     ...prev,
-  //     { ...formData, tempId: `loc_${crypto.randomUUID()}` },
-  //   ]);
-  // }
-
-  // function handleDeleteLocation(tempId) {
-  //   console.log(tempId);
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) =>
-  //     prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
-  //   );
-  // }
-
-  // function handleEditLocation(tempId, formData) {
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) =>
-  //     prev.map((loc) =>
-  //       (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
-  //     ),
-  //   );
-  // }
-
-  // function handleSetBadge(value) {
-  //   setFormErrors((prev) => ({ ...prev, badge: "" }));
-  //   setBadge(value);
-  // }
-  // function handleSetHeaderImage(value) {
-  //   setFormErrors((prev) => ({ ...prev, headerImage: "" }));
-  //   setHeaderImage(value);
-  // }
-
-  // function handleSetImages(value) {
-  //   setFormErrors((prev) => ({ ...prev, images: "" }));
-  //   setImages(value);
-  // }
-
-  // function handleSetTags(value) {
-  //   setFormErrors((prev) => ({ ...prev, tags: "" }));
-  //   setTags(value);
-  // }
 
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
@@ -200,6 +144,7 @@ function CreateExplorationCard({ exploration }) {
             <FormField label="Name">
               <StyledRow $gap="var(--gap-xs)">
                 <Input
+                  name="name"
                   id="name"
                   placeholder="The title of the exploration"
                   {...register("name", {
@@ -256,6 +201,7 @@ function CreateExplorationCard({ exploration }) {
             <FormField label="Tagline">
               <StyledRow $gap="var(--gap-xs)">
                 <Input
+                  name="tagline"
                   id="tagline"
                   placeholder="The short description displayed on the Explorations page"
                   {...register("tagline", {
@@ -282,6 +228,7 @@ function CreateExplorationCard({ exploration }) {
             <FormField label="Description">
               <StyledTextAreaRow $gap="var(--gap-xs)">
                 <TextArea
+                  name="description"
                   id="description"
                   placeholder="The long description shown on the Exploration page"
                   {...register("description", {
@@ -354,26 +301,82 @@ function CreateExplorationCard({ exploration }) {
                         exploration={exploration || getValues("name")}
                         locations={field.value}
                         onAdd={(location) =>
-                          field.onChange([...field.value, location])
+                          field.onChange([
+                            ...field.value,
+                            {
+                              name: location.name,
+                              address: {
+                                street: location.street,
+                                city: location.city,
+                                zipcode: location.zipcode,
+                              },
+                              headerImage: location.headerImage,
+                              description: location.description,
+                              images: location.images,
+                              tags: location.tags,
+                              tempId: `loc_${crypto.randomUUID()}`,
+                            },
+                          ])
                         }
                       />
 
+                      {/* function handleAddLocation(formData) {
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) => [
+  //     ...prev,
+  //     { ...formData, tempId: `loc_${crypto.randomUUID()}` },
+  //   ]);
+  // }
+
+  // function handleDeleteLocation(tempId) {
+  //   console.log(tempId);
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) =>
+  //     prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
+  //   );
+
+  function handleEditLocation(tempId, formData) {
+  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
+  //   setLocations((prev) =>
+  //     prev.map((loc) =>
+  //       (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
+  //     ),
+  //   );
+  // }
+  // } */}
                       <CurrentLocations
                         locations={field.value}
-                        onEdit={(updatedLocation) => {
+                        onEdit={(locationId, formData) => {
                           field.onChange(
-                            field.value.map((location) =>
-                              location._id === updatedLocation._id
-                                ? updatedLocation
-                                : location,
-                            ),
+                            field.value.map((location) => {
+                              const currentId = location._id ?? location.tempId;
+
+                              return currentId === locationId
+                                ? {
+                                    ...location,
+                                    name: formData.name,
+                                    address: {
+                                      ...location.address,
+                                      street: formData.street,
+                                      city: formData.city,
+                                      zipcode: formData.zipcode,
+                                    },
+                                    headerImage: formData.headerImage,
+                                    description: formData.description,
+                                    images: formData.images,
+                                    tags: formData.tags,
+                                  }
+                                : location;
+                            }),
                           );
                         }}
                         onDelete={(locationId) => {
                           field.onChange(
-                            field.value.filter(
-                              (location) => location._id !== locationId,
-                            ),
+                            field.value.filter((location) => {
+                              const currentId = location._id ?? location.tempId;
+
+                              return currentId !== locationId.toString();
+                            }),
                           );
                         }}
                         exploration={exploration || null}

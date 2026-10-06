@@ -49,7 +49,12 @@ const ModalButton = styled.button`
 function Modal({ $width, children, onClose }) {
   return createPortal(
     <ModalOverlay onClick={onClose}>
-      <ModalContent $width={$width} onClick={(e) => e.stopPropagation()}>
+      <ModalContent
+        $width={$width}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <ModalButton>
           <BiX onClick={onClose} fill="var(--color-dark-100)" size={30} />
         </ModalButton>

@@ -19,7 +19,6 @@ import {
 } from "../../../services/explorations";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
-import { useForm, Controller } from "react-hook-form";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -38,38 +37,42 @@ function CreateLocationCard({
   exploration,
   location,
   onSubmit,
-  onSubmitSuccess,
   onConfirmDelete,
   onDeleteSuccess,
 }) {
   const isEditing = Boolean(location);
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    setError,
-    clearErrors,
-    isSubmitted,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    defaultValues: {
-      name: location?.name ?? "",
-      street: location?.address?.street ?? "",
-      city: location?.address?.city ?? null,
-      zipcode: location?.address?.zipcode ?? "",
-      headerImage: location?.headerImage ?? [],
-      description: location?.description ?? "",
-      images: location?.images ?? [],
-      tags: location?.tags ?? [],
-    },
-  });
-
-  console.log("CREATE LOCATION CARD");
-  console.log(location);
+  const [name, setName] = useState(isEditing ? location?.name : "");
+  const [street, setStreet] = useState(
+    isEditing ? location?.address?.street : "",
+  );
+  const [city, setCity] = useState(isEditing ? location?.address?.city : null);
+  const [zipcode, setZipcode] = useState(
+    isEditing ? location?.address?.zipcode : "",
+  );
+  const [headerImage, setHeaderImage] = useState(
+    isEditing ? location?.headerImage : [],
+  );
+  const [description, setDescription] = useState(
+    isEditing ? location?.description : "",
+  );
+  const [images, setImages] = useState(isEditing ? location?.images : []);
+  const [tags, setTags] = useState(isEditing ? location?.tags : []);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  function handleSetTags(value) {
+    setFormErrors((prev) => ({ ...prev, tags: "" }));
+    setTags(value);
+  }
+
+  function handleSetCity(value) {
+    setFormErrors((prev) => ({ ...prev, city: "" }));
+    setCity(value);
+  }
 
   const defaultSubmit = async function (formData) {
     const { data } = await updateExplorationLocation(
@@ -85,32 +88,69 @@ function CreateLocationCard({
     );
   };
 
-  const handleFormSubmit = async function (formData) {
-    clearErrors("root.serverError");
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-    try {
-      if (onSubmit) {
-        onSubmit(formData);
-        onSubmitSuccess();
-      } else {
-        await defaultSubmit(formData);
-      }
-    } catch (err) {
-      let errorMessage = err.message;
+    const errors = {};
 
-      console.log(err);
-      setError("root.serverError", {
-        type: "server",
-        message: errorMessage,
-      });
+    if (!name.trim()) errors.name = "A location name is required.";
+    else if (name.trim().length < 5)
+      errors.name = "A location name must have more than 5 characters.";
+    else if (name.trim().length > 40)
+      errors.name = "A location name must have less than 40 characters.";
+
+    if (!street.trim()) errors.street = "Location street address is required.";
+
+    if (!city) errors.city = "A city is required.";
+
+    if (!zipcode.trim()) errors.zipcode = "A location zipcode is required.";
+    else if (!verifyPRZipcode(zipcode.trim()))
+      errors.zipcode = "Please enter a valid Puerto Rican zipcode.";
+
+    // if (headerImage.length < 1)
+    //   errors.headerImage = "Please select a header image.";
+
+    if (!description.trim())
+      errors.description = "Please provide a description.";
+    else if (description.trim().length < 50)
+      errors.description =
+        "A location description must have more than 50 characters.";
+    else if (description.trim().length > 1000)
+      errors.description =
+        "A location description must have less than 1000 characters.";
+
+    // if (images.length < 1) errors.images = "Please provide at least one image.";
+
+    if (tags.length < 1) errors.tags = "Please select at least one tag.";
+
+    if (Object.keys(errors).length > 0) {
+      errors.submit = "Please review your form submission and try again.";
+      setFormErrors(errors);
+      return;
     }
-  };
 
-  const handleLocationSubmit = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+    const formData = {
+      name,
+      address: { street, city, zipcode },
+      city,
+      headerImage,
+      description,
+      images,
+      tags,
+      // explorationId: exploration.explorationId,
+    };
+    if (isEditing) formData.updatedBy = user._id;
 
-    handleSubmit(handleFormSubmit)(event);
+    setIsSubmitting(true);
+    try {
+      if (onSubmit) onSubmit(formData);
+      else defaultSubmit(formData);
+    } catch (err) {
+      setFormErrors({ submit: err.message });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDefaultConfirmDelete = async function () {
@@ -134,7 +174,8 @@ function CreateLocationCard({
     <>
       <AppForm
         formTitle={isEditing ? "EDIT LOCATION" : "CREATE A LOCATION"}
-        onSubmit={handleLocationSubmit}
+        onSubmit={handleSubmit}
+        method="post"
       >
         <Row $gap="var(--gap-lg)">
           {isEditing && exploration?.name && (
@@ -148,24 +189,15 @@ function CreateLocationCard({
           <FormField label="Name">
             <StyledRow $gap="var(--gap-xs)">
               <Input
-                id="name"
                 name="name"
                 placeholder="The name of the location"
-                {...register("name", {
-                  required: "A location name is required.",
-                  minLength: {
-                    value: 5,
-                    message:
-                      "A location name must have more than 5 characters.",
-                  },
-                  maxLength: {
-                    value: 40,
-                    message:
-                      "A location name must have less than 40 characters.",
-                  },
-                })}
+                value={name}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, name: "" }));
+                  setName(e.target.value);
+                }}
               />
-              {errors?.name?.message && <Bold>{errors?.name?.message}</Bold>}
+              {formErrors.name && <Bold>{formErrors.name}</Bold>}
             </StyledRow>
           </FormField>
 
@@ -173,36 +205,21 @@ function CreateLocationCard({
             <StyledRow $gap="var(--gap-xs)">
               <Input
                 name="street"
-                id="street"
                 placeholder="The street address of the location"
-                {...register("street", {
-                  required: "A location street address is required.",
-                })}
+                value={street}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, street: "" }));
+                  setStreet(e.target.value);
+                }}
               />
-              {errors?.street?.message && <Bold>{errors?.street.message}</Bold>}
+              {formErrors.street && <Bold>{formErrors.street}</Bold>}
             </StyledRow>
           </FormField>
 
           <FormField label="City">
             <StyledRow $gap="var(--gap-xs)">
-              <Controller
-                name="city"
-                control={control}
-                rules={{
-                  validate: {
-                    required: (city) => (city ? true : "A city is required."),
-                  },
-                }}
-                render={({ field }) => (
-                  <CityDropdown
-                    name="city"
-                    value={field.value}
-                    onSelect={field.onChange}
-                  />
-                )}
-              />
-
-              {errors?.city?.message && <Bold>{errors?.city?.message}</Bold>}
+              <CityDropdown name="city" value={city} onSelect={handleSetCity} />
+              {formErrors.city && <Bold>{formErrors.city}</Bold>}
             </StyledRow>
           </FormField>
 
@@ -210,45 +227,29 @@ function CreateLocationCard({
             <StyledRow $gap="var(--gap-xs)">
               <Input
                 name="zipcode"
-                id="zipcode"
                 placeholder="The zipcode of the location"
+                value={zipcode}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, zipcode: "" }));
+                  setZipcode(e.target.value);
+                }}
                 type="text"
                 maxLength={10}
-                {...register("zipcode", {
-                  required: "A location zipcode is required.",
-                  validate: {
-                    validZipcode: (zipcode) =>
-                      verifyPRZipcode(zipcode) ||
-                      "Please enter a valid Puerto Rican zipcode.",
-                  },
-                })}
               />
-              {errors?.zipcode?.message && (
-                <Bold>{errors?.zipcode?.message}</Bold>
-              )}
+              {formErrors.zipcode && <Bold>{formErrors.zipcode}</Bold>}
             </StyledRow>
           </FormField>
 
           <FormField label="Header Image">
             <StyledRow $gap="var(--gap-xs)">
-              <Controller
+              <ImageUploader
                 name="headerImage"
-                control={control}
-                rules={{}}
-                render={({ field }) => (
-                  <ImageUploader
-                    name="headerImage"
-                    multiple={false}
-                    maxImages={1}
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                )}
+                multiple={false}
+                maxImages={1}
+                value={headerImage}
+                onChange={setHeaderImage}
               />
-
-              {errors?.headerImage?.message && (
-                <Bold>{errors?.headerImage?.message}</Bold>
-              )}
+              {formErrors.headerImage && <Bold>{formErrors.headerImage}</Bold>}
             </StyledRow>
           </FormField>
 
@@ -256,71 +257,34 @@ function CreateLocationCard({
             <StyledTextAreaRow $gap="var(--gap-xs)">
               <TextArea
                 name="description"
-                id="description"
                 placeholder="The description displayed beside the location"
-                {...register("description", {
-                  register: "A location description is required.",
-                  minLength: {
-                    value: 50,
-                    message:
-                      "A location description must have more than 50 characters.",
-                  },
-                  maxLength: {
-                    value: 1000,
-                    message:
-                      "A location description must have less than 1000 characters.",
-                  },
-                })}
+                value={description}
+                onChange={(e) => {
+                  setFormErrors((prev) => ({ ...prev, description: "" }));
+                  setDescription(e.target.value);
+                }}
               />
-              {errors?.description?.message && (
-                <Bold>{errors?.description?.message}</Bold>
-              )}
+              {formErrors.description && <Bold>{formErrors.description}</Bold>}
             </StyledTextAreaRow>
           </FormField>
 
           <FormField label="Images">
             <StyledRow $gap="var(--gap-xs)">
-              <Controller
+              <ImageUploader
                 name="images"
-                control={control}
-                rules={{}}
-                render={({ field }) => (
-                  <ImageUploader
-                    name="images"
-                    multiple={true}
-                    maxImages={3}
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                )}
+                multiple={true}
+                maxImages={3}
+                value={images}
+                onChange={setImages}
               />
-
-              {errors?.images?.message && (
-                <Bold>{errors?.images?.message}</Bold>
-              )}
+              {formErrors.images && <Bold>{formErrors.images}</Bold>}
             </StyledRow>
           </FormField>
 
           <FormField label="Tags">
             <StyledRow $gap="var(--gap-xs)">
-              <Controller
-                name="tags"
-                control={control}
-                rules={{
-                  validate: {
-                    required: (tags) =>
-                      tags.length > 0 || "Please select at least one tag.",
-                  },
-                }}
-                render={({ field }) => (
-                  <LocationTagBuilder
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                )}
-              />
-
-              {errors?.tags?.message && <Bold>{errors?.tags?.message}</Bold>}
+              <LocationTagBuilder value={tags} onChange={handleSetTags} />
+              {formErrors.tags && <Bold>{formErrors.tags}</Bold>}
             </StyledRow>
           </FormField>
 
@@ -343,9 +307,7 @@ function CreateLocationCard({
               </Button>
             )}
           </Row>
-          {isSubmitted && Object.keys(errors).length > 0 && (
-            <Bold>Please review your form submission and try again.</Bold>
-          )}
+          {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
         </Row>
       </AppForm>
 

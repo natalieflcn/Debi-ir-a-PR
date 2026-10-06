@@ -543,15 +543,18 @@
   - [x] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
   - [ ] "/" should always return to dashboard for logged in users TODO
   - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
-  - [ ] Create way for users to edit their name
+  - [x] Create way for users to edit their name
   - [x] Create document middleware that calculates number of explorations completed and changes user title
   - [x] Implement way for users to end Exploration
 
 - [~] Refactor project
   - [x] Refactor modal windows into reusable deleteConfirmation component
-  - [ ] Refactor forms with usereducer hook
+  - [ ] Refactor forms with React Form Hook
 
 - [ ] Other Tasks (For the future)
+  - [ ] BUG: Need to prevent locations in the same exploration from having the same name
+    - [ ] Front-end validation
+    - [ ] Back-end validation
   - [ ] Need to implement List view of Explorations and Users for Admins
   - [ ] Center Exploration images... potentially make slideshow for more than three images?
   - [ ] Location name should wrap around in CurrentLocations, not stretch past container
@@ -582,21 +585,22 @@ TODO TODO TODO TODO TODO TODO TODO TODO
 
 // Refactor form usages with React Form Hook TODO 1
 
-- createexplorationcard
+- createexplorationcard DONE
 - createlocationcard
-- login
 - signup page
-- reset password
-- forgot password
+- badgebuilder
 
-// create forgot password page TODO 1
+// create forgot password page TODO 2
 // create reset password page
 
-// center exploration images, possibly create slideshow TODO 5
-// fix pagination TODO 2
+// center exploration images, possibly create slideshow TODO 3
+// fix pagination TODO 5
 
-// fix broken layouts and actions for error pages TODO 3
+// fix broken layouts and actions for error pages TODO 6
 
-// add functionality to search input TODO
+// add functionality to search input TODO 4
 4
+
+// implement List view for admins
+// create tool tip for admin toggle
 // start adding google maps to exploration data
