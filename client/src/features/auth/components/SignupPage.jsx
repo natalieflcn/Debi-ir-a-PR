@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupAmbassador, signupExplorer } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
+import { useForm } from "react-hook-form";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -65,46 +66,29 @@ const SignupWrapper = styled.div`
 //   width: 15rem;
 // `;
 function Signup({ $variant }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setConfirmPassword] = useState("");
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [passwordConfirm, setConfirmPassword] = useState("");
+  // const [formErrors, setFormErrors] = useState({});
+  // const [isSubmitting, setIsSubmitting] = useState(false);
   const { registerUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async function (e) {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    clearErrors,
+    isSubmitted,
+    getValues,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-    const errors = {};
-
-    if (!name.trim()) {
-      errors.name = "Name is required.";
-    }
-    if (!email.trim()) {
-      errors.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = "Please enter a valid email address";
-    }
-    if (!password.trim()) {
-      errors.password = "Password is required.";
-    } else if (password.length < 8) {
-      errors.password = "Password must be at least 8 characters.";
-    }
-    if (passwordConfirm.trim() !== password.trim()) {
-      errors.passwordConfirm = "Passwords must match.";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
-    const formData = { name, email, password, passwordConfirm };
+  const handleFormSubmit = async function (formData) {
+    clearErrors("root.serverError");
 
     try {
-      setIsSubmitting(true);
       const signupFunction =
         $variant === "ambassador" ? signupAmbassador : signupExplorer;
       const data = await signupFunction(formData);
@@ -117,9 +101,12 @@ function Signup({ $variant }) {
           : "/explorations",
       );
     } catch (err) {
-      setFormErrors({ submit: err.message });
-    } finally {
-      setIsSubmitting(false);
+      let errorMessage = err.message;
+
+      setError("root.serverError", {
+        type: "server",
+        message: errorMessage,
+      });
     }
   };
 
@@ -130,22 +117,19 @@ function Signup({ $variant }) {
           <StyledHeading as="h2" $variant={$variant}>
             BECOME AN {$variant === "explorer" ? "EXPLORER" : "AMBASSADOR"}
           </StyledHeading>
-          <AppForm
-            // action="/login"
-            // method="post"
-            $height="100%"
-            onSubmit={handleSubmit}
-          >
+          <AppForm $height="100%" onSubmit={handleSubmit(handleFormSubmit)}>
             <Row $gap="var(--gap-lg)">
               <FormField label="name">
                 <Row $gap="var(--gap-xs)">
                   <StyledInput
                     name="name"
                     placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    id="name"
+                    {...register("name", { required: "Name is required." })}
                   />
-                  {formErrors.name && <Bold>{formErrors.name}</Bold>}
+                  {errors?.name?.message && (
+                    <Bold>{errors?.name?.message}</Bold>
+                  )}
                 </Row>
               </FormField>
 
@@ -155,10 +139,17 @@ function Signup({ $variant }) {
                     name="email"
                     placeholder="Email address"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    id="email"
+                    {...register("email", {
+                      required: "Email is required.",
+                      validate: (email) =>
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+                        "Please enter a valid email.",
+                    })}
                   />
-                  {formErrors.email && <Bold>{formErrors.email}</Bold>}
+                  {errors?.email?.message && (
+                    <Bold>{errors?.email?.message}</Bold>
+                  )}
                 </Row>
               </FormField>
 
@@ -167,11 +158,18 @@ function Signup({ $variant }) {
                   <StyledInput
                     name="password"
                     placeholder="Password"
-                    value={password}
                     type="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password", {
+                      required: "Password is required.",
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters.",
+                      },
+                    })}
                   />
-                  {formErrors.password && <Bold>{formErrors.password}</Bold>}
+                  {errors?.password?.message && (
+                    <Bold>{errors?.password?.message}</Bold>
+                  )}
                 </Row>
               </FormField>
 
@@ -181,11 +179,17 @@ function Signup({ $variant }) {
                     name="passwordConfirm"
                     placeholder="Confirm Password"
                     type="password"
-                    value={passwordConfirm}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    {...register("passwordConfirm", {
+                      required: "Please confirm your password.",
+                      validate: {
+                        match: (passwordConfirm) =>
+                          passwordConfirm === getValues("password") ||
+                          "Passwords must match.",
+                      },
+                    })}
                   />
-                  {formErrors.passwordConfirm && (
-                    <Bold>{formErrors.passwordConfirm}</Bold>
+                  {errors?.passwordConfirm?.message && (
+                    <Bold>{errors?.passwordConfirm?.message}</Bold>
                   )}
                 </Row>
               </FormField>
@@ -197,7 +201,9 @@ function Signup({ $variant }) {
               >
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Button>
-              {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
+              {isSubmitted && Object.keys(errors).length > 0 && (
+                <Bold>Please review your form submission and try again.</Bold>
+              )}
             </Row>
           </AppForm>
 

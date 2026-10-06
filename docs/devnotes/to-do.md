@@ -586,9 +586,9 @@ TODO TODO TODO TODO TODO TODO TODO TODO
 // Refactor form usages with React Form Hook TODO 1
 
 - createexplorationcard DONE
-- createlocationcard
+- createlocationcard done
 - signup page
-- badgebuilder
+- badgeform?
 
 // create forgot password page TODO 2
 // create reset password page
