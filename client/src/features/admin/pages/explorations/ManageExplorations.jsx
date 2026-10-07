@@ -220,7 +220,7 @@ function ManageExplorations() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured, showMyExplorations]);
+  }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
 
   const handleSelectViewMode = function (mode) {
     setViewMode(mode);

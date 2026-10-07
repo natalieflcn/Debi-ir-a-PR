@@ -160,6 +160,7 @@ const filterCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageUsers() {
+  const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -170,7 +171,11 @@ function ManageUsers() {
     (filterBy === "ambassador" && ambassadorsTableTheme) ||
     undefined;
 
-  const filteredUsers = [...usersData].filter((user) => {
+  const queriedUsers = [...usersData].filter((user) =>
+    search ? user.name.toLowerCase().startsWith(search.toLowerCase()) : true,
+  );
+
+  const filteredUsers = [...queriedUsers].filter((user) => {
     if (filterBy === "all") return true;
     return user.role === filterBy;
   });
@@ -189,12 +194,16 @@ function ManageUsers() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy]);
+  }, [sortBy, filterBy, search]);
 
   return (
     <StyledUsers>
       <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Input placeholder="Search for an explorer by name..." />
+        <Input
+          placeholder="Search for an explorer by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <DropdownRow $direction="horizontal" $gap="var(--gap-lg)">
           <SortDropdown
             categories={sortCategories}

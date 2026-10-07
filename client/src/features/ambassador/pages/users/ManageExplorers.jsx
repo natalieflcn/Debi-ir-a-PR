@@ -115,11 +115,18 @@ const sortCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageExplorers() {
+  const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [currentPage, setCurrentPage] = useState(1);
   const explorersData = useLoaderData();
 
-  const sortedUsers = [...explorersData].sort((a, b) => {
+  const queriedUsers = [...explorersData].filter((explorer) =>
+    search
+      ? explorer.name.toLowerCase().startsWith(search.toLowerCase())
+      : true,
+  );
+
+  const sortedUsers = queriedUsers.sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     else return new Date(b.createdAt) - new Date(a.createdAt);
   });
@@ -133,12 +140,16 @@ function ManageExplorers() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy]);
+  }, [sortBy, search]);
 
   return (
     <StyledExplorers>
       <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Input placeholder="Search for an explorer by name..." />
+        <Input
+          placeholder="Search for an explorer by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <SortDropdown
           categories={sortCategories}
           initState="Date Joined"

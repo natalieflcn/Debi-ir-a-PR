@@ -137,7 +137,7 @@ function Explorations() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured]);
+  }, [sortBy, filterBy, showFeatured, search]);
 
   console.log(search);
 
