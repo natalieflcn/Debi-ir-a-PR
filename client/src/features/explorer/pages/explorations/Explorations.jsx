@@ -94,42 +94,77 @@ function Explorations() {
 
   const userHistory = data?.data?.data ?? [];
 
-  const filteredExplorations = [...explorations].filter((exploration) => {
-    if (filterBy === "all") return true;
+  // const filteredExplorations = [...explorations].filter((exploration) => {
+  //   if (filterBy === "all") return true;
 
-    return exploration.tags.some((tag) =>
-      tag.toLowerCase().includes(filterBy.toLowerCase()),
-    );
-  });
+  //   return exploration.tags.some((tag) =>
+  //     tag.toLowerCase().includes(filterBy.toLowerCase()),
+  //   );
+  // });
 
-  const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-    switch (sortBy) {
-      case "numStops":
-        return a.numStops - b.numStops;
+  // const sortedExplorations = [...filteredExplorations].sort((a, b) => {
+  //   switch (sortBy) {
+  //     case "numStops":
+  //       return a.numStops - b.numStops;
 
-      case "name":
-        return a.name.localeCompare(b.name);
+  //     case "name":
+  //       return a.name.localeCompare(b.name);
 
-      case "createdAt":
-      default:
-        return new Date(b.createdAt) - new Date(a.createdAt);
-    }
-  });
+  //     case "createdAt":
+  //     default:
+  //       return new Date(b.createdAt) - new Date(a.createdAt);
+  //   }
+  // });
 
-  const featuredExplorations = [...sortedExplorations].filter(
-    (exploration) => exploration.featured,
-  );
+  // const featuredExplorations = [...sortedExplorations].filter(
+  //   (exploration) => exploration.featured,
+  // );
 
-  const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  // const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
+  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  // const paginatedExplorations = showFeatured
+  //   ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+  //   : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const processedExplorations = [...explorations]
+    // Filter explorations
+    .filter((exploration) =>
+      filterBy === "all"
+        ? true
+        : exploration.tags.some((tag) =>
+            tag.toLowerCase().includes(filterBy.toLowerCase()),
+          ),
+    )
+    // Featured explorations
+    .filter((exploration) =>
+      showFeatured ? exploration.featured === true : true,
+    )
+    // Sort Explorations
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "numStops":
+          return a.numStops - b.numStops;
+
+        case "name":
+          return a.name.localeCompare(b.name);
+
+        case "createdAt":
+        default:
+          return new Date(b.createdAt) - new Date(a.createdAt);
+      }
+    });
+
+  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-
-  const paginatedExplorations = showFeatured
-    ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-    : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedExplorations = processedExplorations.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy, filterBy]);
+  }, [sortBy, filterBy, showFeatured]);
 
   return (
     <>

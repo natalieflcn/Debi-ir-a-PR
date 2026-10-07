@@ -561,10 +561,11 @@
   - [ ] Logo has incorrect hyperlink
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
   - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
-  - [ ] BUG: Error pages breaks out of user-based layout and uses guest layout
-    - [ ] PageNotFound
-    - [ ] RouteError
-    - [ ] ErrorFallback
+  - [x] BUG: Error pages breaks out of user-based layout and uses guest layout
+    - [x] PageNotFound
+    - [x] RouteError
+    - [?] ErrorFallback
+    - [x] Unauthorized
   - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
   - [x] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
   - [ ] Add functionality to search inputs
@@ -572,7 +573,8 @@
     - [ ] Users
   - [ ] TODO: Create more pages
     - [ ] Implement 'Forgot Password?' in login screen
-    - [ ] Create Reset Password page
+    - [x] Create Forgot Password page
+    - [x] Create Reset Password page
 
 - [ ] **PHASE 6:** Advanced Features
   - Automated Emails
@@ -585,11 +587,6 @@ TODO TODO TODO TODO TODO TODO TODO TODO
 
 // create forgot password page TODO 2
 // create reset password page
-
-// center exploration images, possibly create slideshow TODO 3
-// fix pagination TODO 5
-
-// fix broken layouts and actions for error pages TODO 6
 
 // add functionality to search input TODO 4
 4
