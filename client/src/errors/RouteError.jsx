@@ -40,19 +40,18 @@ function RouteError() {
   if (user) {
     switch (user.role) {
       case "explorer":
-        userRedirect = "dashboard";
+        userRedirect = "/dashboard";
         break;
 
       case "ambassador":
-        userRedirect = "ambassador";
+        userRedirect = "/ambassador";
         break;
 
       case "admin":
-        userRedirect = "admin";
+        userRedirect = "/admin";
         break;
 
       default:
-        userRedirect = "/";
         break;
     }
   }
@@ -99,7 +98,7 @@ function RouteError() {
               {state === "loading" ? "Trying Again..." : "Try Again"}
             </Button>
 
-            <RouterLink to={`/${userRedirect}`}>
+            <RouterLink to={`${userRedirect}`}>
               <Button $size="small" $variation="primary">
                 Back to {user ? "Dashboard" : "Home"}
               </Button>

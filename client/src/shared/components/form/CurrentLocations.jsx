@@ -25,6 +25,7 @@ const LocationRow = styled(Row)`
 `;
 
 const LocationNameRow = styled(Row)`
+  overflow-wrap: anywhere;
   @media (max-width: 600px) {
     flex-direction: column;
     gap: var(--gap-xs);

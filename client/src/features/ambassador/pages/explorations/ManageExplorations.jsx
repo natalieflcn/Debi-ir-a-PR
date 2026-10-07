@@ -32,12 +32,28 @@ const AmbassadorExplorationsTableColumns = function (users) {
       ),
     },
     { id: "numStops", heading: "# of Stops" },
-    { id: "city", heading: "City" },
+    {
+      id: "city",
+      heading: "City",
+      render: (row) => {
+        return <TableCell>{row.address.city}</TableCell>;
+      },
+    },
     {
       id: "createdBy",
       heading: "Created By",
       render: (row) => {
-        const user = users.find((user) => user.id === row.createdBy);
+        if (!row.createdBy) return <TableCell>Unknown User</TableCell>;
+
+        const user = users.find(
+          (user) => user?._id?.toString() === row?.createdBy.toString(),
+        );
+
+        if (!user) {
+          console.log("NO USER FOUND FOR:", row);
+          return <TableCell>Unknown User</TableCell>;
+        }
+
         return <TableCell>{user.name}</TableCell>;
       },
     },

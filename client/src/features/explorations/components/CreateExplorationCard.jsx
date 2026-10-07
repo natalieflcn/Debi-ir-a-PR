@@ -293,6 +293,16 @@ function CreateExplorationCard({ exploration }) {
                       maxLocations: (locations) =>
                         locations.length <= 10 ||
                         "An exploration can have at most 10 locations.",
+                      uniqueNames: (locations) => {
+                        const names = locations.map((location) =>
+                          location.name.trim().toLowerCase(),
+                        );
+
+                        return (
+                          new Set(names).size === names.length ||
+                          "An exploration cannot have duplicate location names. Please review your locations and make sure all names are unique.e"
+                        );
+                      },
                     },
                   }}
                   render={({ field }) => (
@@ -300,7 +310,7 @@ function CreateExplorationCard({ exploration }) {
                       <LocationBuilder
                         exploration={exploration || getValues("name")}
                         locations={field.value}
-                        onAdd={(location) =>
+                        onAdd={(location) => {
                           field.onChange([
                             ...field.value,
                             {
@@ -316,8 +326,8 @@ function CreateExplorationCard({ exploration }) {
                               tags: location.tags,
                               tempId: `loc_${crypto.randomUUID()}`,
                             },
-                          ])
-                        }
+                          ]);
+                        }}
                       />
 
                       {/* function handleAddLocation(formData) {

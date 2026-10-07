@@ -541,7 +541,7 @@
 
 - [ ] FRONT-END TWEAKS
   - [x] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
-  - [ ] "/" should always return to dashboard for logged in users TODO
+  - [x] "/" should always return to dashboard for logged in users
   - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
   - [x] Create way for users to edit their name
   - [x] Create document middleware that calculates number of explorations completed and changes user title
@@ -558,7 +558,7 @@
   - [ ] Need to implement List view of Explorations and Users for Admins
   - [ ] Center Exploration images... potentially make slideshow for more than three images?
   - [ ] Location name should wrap around in CurrentLocations, not stretch past container
-  - [ ] Logo has incorrect hyperlink
+  - [x] Logo has incorrect hyperlink
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
   - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
   - [x] BUG: Error pages breaks out of user-based layout and uses guest layout
@@ -566,11 +566,11 @@
     - [x] RouteError
     - [?] ErrorFallback
     - [x] Unauthorized
-  - [ ] BUG: Pagination buttons displaying for featured (<9) explorations
+  - [x] BUG: Pagination buttons displaying for featured (<9) explorations
   - [x] Need to determine why Explorer titles are being changed from Baby Turista to Explorer
-  - [ ] Add functionality to search inputs
-    - [ ] Explorations
-    - [ ] Users
+  - [x] Add functionality to search inputs
+    - [x] Explorations
+    - [x] Users
   - [ ] TODO: Create more pages
     - [ ] Implement 'Forgot Password?' in login screen
     - [x] Create Forgot Password page
@@ -585,18 +585,14 @@
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-// create forgot password page TODO 2
+// create forgot password page TODO 4
 // create reset password page
 
-// add functionality to search input TODO 4
-4
+// prevent locations from having same name in exploration TODO 1
+// front-end validate
+// back-end validate DONE
 
-- explorations
-- manage explorations
-- manage explorations
-- manage explorers
-- manage users
+// implement List view for admins TODO 2
+// create tool tip for admin toggle TODO 3
 
-// implement List view for admins
-// create tool tip for admin toggle
 // start adding google maps to exploration data

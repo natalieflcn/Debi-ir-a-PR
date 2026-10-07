@@ -41,7 +41,6 @@ function ErrorFallback({ error, resetErrorBoundary }) {
         break;
 
       default:
-        userRedirect = "/";
         break;
     }
   }
@@ -85,7 +84,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
             Try Again
           </Button>
 
-          <RouterLink to={`/${userRedirect}`}>
+          <RouterLink to={`${userRedirect}`}>
             <Button $size="small" $variation="primary">
               Back to {user ? "Dashboard" : "Home"}
             </Button>

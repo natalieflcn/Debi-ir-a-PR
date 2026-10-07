@@ -1,5 +1,6 @@
 import { redirect } from "react-router-dom";
 import { getMe } from "../../../../services/auth.js";
+import { useAuth } from "../../../../features/auth/contexts/AuthContext.jsx";
 
 const ROLE_HOME = {
   explorer: "/dashboard",
@@ -8,12 +9,15 @@ const ROLE_HOME = {
 };
 
 export async function rootLoader() {
-  try {
-    const { data } = await getMe();
-    const home = ROLE_HOME[data?.user?.role] || null;
-    if (home) return redirect(home);
-  } catch {
-    // 401 / not logged in: fall through and show the landing page
-  }
+  // const { data } = await getMe();
+
+  // try {
+  //   const home = ROLE_HOME[data?.data?.role] || null;
+
+  //   console.log(home);
+  //   if (home) return redirect(home);
+  // } catch (err) {
+  //   // 401 / not logged in: fall through and show the landing page
+  // }
   return null;
 }

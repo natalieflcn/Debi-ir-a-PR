@@ -43,7 +43,6 @@ function PageNotFound() {
         break;
 
       default:
-        userRedirect = "/";
         break;
     }
   }

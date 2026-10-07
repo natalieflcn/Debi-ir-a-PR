@@ -78,7 +78,7 @@ function Logo() {
   return (
     <div>
       <StyledLogo $logoTheme={logoTheme}>
-        <NavLink to={`${prefix}/dashboard`}>
+        <NavLink to={`/${prefix}`}>
           <Debi>DeBÍ</Debi>
           <IrAPR>iR a PR</IrAPR>
         </NavLink>

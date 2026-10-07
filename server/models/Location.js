@@ -10,7 +10,6 @@ const locationSchema = new mongoose.Schema({
     maxlength: [40, "A location name must have less than 40 characters."],
     trim: true,
     required: [true, "A location name is required."],
-    unique: true,
   },
   address: {
     street: {

@@ -83,6 +83,13 @@ const explorationSchema = new mongoose.Schema(
           validator: (arr) => arr.length > 0,
           message: "An exploration must have at least one location.",
         },
+        {
+          validator: (arr) => {
+            const names = arr.map((location) => location.name.toLowerCase());
+            return new Set(names).size === names.length;
+          },
+          message: "An exploration cannot have duplicate location names.",
+        },
       ],
     },
     numStops: { type: Number },

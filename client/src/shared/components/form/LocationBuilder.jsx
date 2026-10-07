@@ -45,6 +45,7 @@ function LocationBuilder({ exploration, locations, onAdd }) {
               onSubmit={(formData) => {
                 onAdd(formData);
               }}
+              locations={locations}
               onSubmitSuccess={() => setIsModalOpen(false)}
               exploration={exploration}
             />

@@ -3,7 +3,7 @@ import { useAuth } from "../../features/auth/contexts/AuthContext";
 
 function ProtectedRoute({ allowedRoles }) {
   //   const { user } = useLoaderData();
-  const { user } = useAuth();
+  const { user, logoutUser } = useAuth();
 
   if (!user) {
     return <Navigate to="/login" replace />;
@@ -13,10 +13,6 @@ function ProtectedRoute({ allowedRoles }) {
 
   if (user) {
     switch (user.role) {
-      case "explorer":
-        prefix = "/explorer";
-        break;
-
       case "ambassador":
         prefix = "/ambassador";
         break;
@@ -25,6 +21,7 @@ function ProtectedRoute({ allowedRoles }) {
         prefix = "/admin";
         break;
 
+      case "explorer":
       default:
         break;
     }
