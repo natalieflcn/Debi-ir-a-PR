@@ -591,6 +591,12 @@ TODO TODO TODO TODO TODO TODO TODO TODO
 // add functionality to search input TODO 4
 4
 
+- explorations
+- manage explorations
+- manage explorations
+- manage explorers
+- manage users
+
 // implement List view for admins
 // create tool tip for admin toggle
 // start adding google maps to exploration data

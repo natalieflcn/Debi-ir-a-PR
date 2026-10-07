@@ -163,6 +163,7 @@ const getAdminExplorationCardButton = function (explorationSlug) {
 const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
+  const [search, setSearch] = useState("");
   const { viewMode, setViewMode } = useAdminUI();
   const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
@@ -173,6 +174,12 @@ function ManageExplorations() {
   const { user } = useAuth();
 
   const processedExplorations = [...explorations]
+    // Queried explorations
+    .filter((exploration) =>
+      search
+        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
+        : true,
+    )
     // Filter explorations
     .filter((exploration) =>
       filterBy === "all"
@@ -230,7 +237,11 @@ function ManageExplorations() {
       </Row>
 
       <InputFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Input placeholder="Search for an exploration..." />
+        <Input
+          placeholder="Search for an exploration..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <FiltersAdminTogglesRow $direction="horizontal" $gap="var(--gap-lg)">
           <ExplorationsFilters
             onSort={setSortBy}

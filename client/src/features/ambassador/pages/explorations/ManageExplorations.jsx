@@ -166,6 +166,7 @@ const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();
+  const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [showFeatured, setShowFeatured] = useState(false);
@@ -175,6 +176,12 @@ function ManageExplorations() {
   const { user } = useAuth();
 
   const processedExplorations = [...explorations]
+    // Queried explorations
+    .filter((exploration) =>
+      search
+        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
+        : true,
+    )
     // Filter explorations
     .filter((exploration) =>
       filterBy === "all"
@@ -231,7 +238,11 @@ function ManageExplorations() {
         </RouterLink>
       </Row>
       <InputFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Input placeholder="Search for an exploration..." />
+        <Input
+          placeholder="Search for an exploration..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <FiltersAdminTogglesRow $direction="horizontal" $gap="var(--gap-lg)">
           <ExplorationsFilters
             onSort={setSortBy}

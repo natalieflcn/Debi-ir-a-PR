@@ -80,6 +80,7 @@ const ExplorerExplorationCardButton = function (explorationSlug, progress) {
 const ITEMS_PER_PAGE = 9;
 
 function Explorations() {
+  const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -90,44 +91,16 @@ function Explorations() {
     queryKey: ["allExplorationProgress"],
     queryFn: getAllMyExplorationProgress,
   });
-  // const QueryClient = useQueryClient();
 
   const userHistory = data?.data?.data ?? [];
 
-  // const filteredExplorations = [...explorations].filter((exploration) => {
-  //   if (filterBy === "all") return true;
-
-  //   return exploration.tags.some((tag) =>
-  //     tag.toLowerCase().includes(filterBy.toLowerCase()),
-  //   );
-  // });
-
-  // const sortedExplorations = [...filteredExplorations].sort((a, b) => {
-  //   switch (sortBy) {
-  //     case "numStops":
-  //       return a.numStops - b.numStops;
-
-  //     case "name":
-  //       return a.name.localeCompare(b.name);
-
-  //     case "createdAt":
-  //     default:
-  //       return new Date(b.createdAt) - new Date(a.createdAt);
-  //   }
-  // });
-
-  // const featuredExplorations = [...sortedExplorations].filter(
-  //   (exploration) => exploration.featured,
-  // );
-
-  // const totalPages = Math.ceil(sortedExplorations.length / ITEMS_PER_PAGE);
-  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-
-  // const paginatedExplorations = showFeatured
-  //   ? featuredExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-  //   : sortedExplorations.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
   const processedExplorations = [...explorations]
+    // Queried explorations
+    .filter((exploration) =>
+      search
+        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
+        : true,
+    )
     // Filter explorations
     .filter((exploration) =>
       filterBy === "all"
@@ -166,6 +139,8 @@ function Explorations() {
     setCurrentPage(1);
   }, [sortBy, filterBy, showFeatured]);
 
+  console.log(search);
+
   return (
     <>
       {isPending && <Spinner />}
@@ -175,7 +150,11 @@ function Explorations() {
       {isSuccess && (
         <StyledExplorations>
           <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
-            <Input placeholder="Search for an exploration..." />
+            <Input
+              placeholder="Search for an exploration..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <ExplorationsFilters
               onSort={setSortBy}
               onFilter={setFilterBy}
