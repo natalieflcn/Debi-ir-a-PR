@@ -555,12 +555,12 @@
   - [ ] BUG: Need to prevent locations in the same exploration from having the same name
     - [ ] Front-end validation
     - [ ] Back-end validation
-  - [ ] Need to implement List view of Explorations and Users for Admins
+  - [x] Need to implement List view of Explorations and Users for Admins
   - [ ] Center Exploration images... potentially make slideshow for more than three images?
   - [ ] Location name should wrap around in CurrentLocations, not stretch past container
   - [x] Logo has incorrect hyperlink
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
-  - [ ] Create tool-tip texts for Admin toggle buttons on ManageExplorations
+  - [x] Create tool-tip texts for Admin toggle buttons on ManageExplorations
   - [x] BUG: Error pages breaks out of user-based layout and uses guest layout
     - [x] PageNotFound
     - [x] RouteError
@@ -571,8 +571,8 @@
   - [x] Add functionality to search inputs
     - [x] Explorations
     - [x] Users
-  - [ ] TODO: Create more pages
-    - [ ] Implement 'Forgot Password?' in login screen
+  - [x] TODO: Create more pages
+    - [x] Implement 'Forgot Password?' in login screen
     - [x] Create Forgot Password page
     - [x] Create Reset Password page
 
@@ -587,12 +587,5 @@ TODO TODO TODO TODO TODO TODO TODO TODO
 
 // create forgot password page TODO 4
 // create reset password page
-
-// prevent locations from having same name in exploration TODO 1
-// front-end validate
-// back-end validate DONE
-
-// implement List view for admins TODO 2
-// create tool tip for admin toggle TODO 3
 
 // start adding google maps to exploration data

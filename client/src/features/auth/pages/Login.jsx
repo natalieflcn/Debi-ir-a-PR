@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Bold from "../../../shared/components/typography/Bold";
 import { login } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
+import SmallText from "../../../shared/components/typography/SmallText";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -57,6 +58,7 @@ const StyledHeading = styled(Heading)`
 const StyledInput = styled(Input)`
   width: 25rem;
 `;
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -116,7 +118,6 @@ function Login() {
       navigate(redirectLink);
     } catch (err) {
       setFormErrors({ submit: err.message });
- 
     } finally {
       setIsSubmitting(false);
     }
@@ -173,9 +174,24 @@ function Login() {
           </StyledAppForm>
 
           <Row>
+            <Row
+              $direction="horizontal"
+              $color="var(--color-dark-200)"
+              $align="center"
+              $gap="var(--gap-sm)"
+            >
+              <SmallText $color="var(--color-dark-200)">
+                Forgot your password?
+              </SmallText>
+              <RouterLink to="/forgot-password">
+                <Bold $color="var(--color-dark-100)">
+                  Recover your account here
+                </Bold>
+              </RouterLink>
+            </Row>
             <Row $direction="horizontal" $align="center">
               <StyledHeading as="h5" $color="var(--color-red-300)">
-                DON'T HAVE AN ACCOUNT YET?
+                OR
               </StyledHeading>
             </Row>
 

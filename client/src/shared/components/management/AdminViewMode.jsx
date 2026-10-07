@@ -28,6 +28,7 @@ function AdminViewMode({ viewMode, onViewModeChange }) {
         $variation="light"
         onClick={() => onViewModeChange("grid")}
         $active={viewMode === "grid"}
+        title="Grid View"
       >
         <IoMdGrid size={25} />
       </StyledButton>
@@ -37,6 +38,7 @@ function AdminViewMode({ viewMode, onViewModeChange }) {
         $variation="light"
         onClick={() => onViewModeChange("list")}
         $active={viewMode === "list"}
+        title="List View"
       >
         <IoListOutline size={25} />
       </StyledButton>

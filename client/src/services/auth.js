@@ -67,3 +67,11 @@ export async function updateUserPassword({
     }),
   });
 }
+
+export async function forgotPassword(email) {
+  console.log(email);
+  return await apiFetch(`/users/forgotPassword`, {
+    method: "POST",
+    body: JSON.stringify({ email: email }),
+  });
+}

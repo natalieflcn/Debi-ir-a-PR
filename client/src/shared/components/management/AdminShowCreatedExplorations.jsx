@@ -29,6 +29,7 @@ function AdminShowCreatedExplorations({
         $variation="light"
         onClick={() => onShowMyExplorations(!showMyExplorations)}
         $active={showMyExplorations}
+        title="My Explorations"
       >
         <IoPerson size={25} />
       </StyledButton>
