@@ -60,7 +60,7 @@ const PublicRoutes = [
     // loader: signupLoader,
   },
   {
-    path: "reset-password",
+    path: "reset-password/:token",
     element: <ResetPassword />,
 
     // loader: signupLoader,

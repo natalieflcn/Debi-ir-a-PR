@@ -535,7 +535,7 @@
 
 - [~] **PHASE 4:** Connect Front-end to Back-end
   - [~] Finish API service layer in client-side
-    - [ ] /forgotPassword
+    - [x] /forgotPassword
     - [ ] /resetForgottenPassword
     - [x] Utilize /getMe in profileLoader instead of useAuth hook in React profile components
 
@@ -551,13 +551,13 @@
   - [x] Refactor modal windows into reusable deleteConfirmation component
   - [x] Refactor forms with React Form Hook
 
-- [ ] Other Tasks (For the future)
-  - [ ] BUG: Need to prevent locations in the same exploration from having the same name
-    - [ ] Front-end validation
-    - [ ] Back-end validation
+- [~] Other Tasks (For the future)
+  - [~] BUG: Need to prevent locations in the same exploration from having the same name
+    - [~] Front-end validation
+    - [x] Back-end validation
   - [x] Need to implement List view of Explorations and Users for Admins
   - [ ] Center Exploration images... potentially make slideshow for more than three images?
-  - [ ] Location name should wrap around in CurrentLocations, not stretch past container
+  - [x] Location name should wrap around in CurrentLocations, not stretch past container
   - [x] Logo has incorrect hyperlink
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
   - [x] Create tool-tip texts for Admin toggle buttons on ManageExplorations
@@ -581,11 +581,11 @@
   - File Uploads
   - Google Maps API to render locations
   - Aggregating Data for Dashboard Analytics
+  - Create real data
   - Polish up mobile responsiveness
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-// create forgot password page TODO 4
 // create reset password page
 
 // start adding google maps to exploration data
