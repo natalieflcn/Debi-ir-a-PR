@@ -139,8 +139,6 @@ function Explorations() {
     setCurrentPage(1);
   }, [sortBy, filterBy, showFeatured, search]);
 
-  console.log(search);
-
   return (
     <>
       {isPending && <Spinner />}

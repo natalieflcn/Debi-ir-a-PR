@@ -534,12 +534,12 @@
 ## Week: October 1 - October 9
 
 - [~] **PHASE 4:** Connect Front-end to Back-end
-  - [~] Finish API service layer in client-side
+  - [x] Finish API service layer in client-side
     - [x] /forgotPassword
-    - [ ] /resetForgottenPassword
+    - [x] /resetForgottenPassword
     - [x] Utilize /getMe in profileLoader instead of useAuth hook in React profile components
 
-- [ ] FRONT-END TWEAKS
+- [~] FRONT-END TWEAKS
   - [x] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
   - [x] "/" should always return to dashboard for logged in users
   - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
@@ -586,6 +586,10 @@
 
 TODO TODO TODO TODO TODO TODO TODO TODO
 
-// create reset password page
-
 // start adding google maps to exploration data
+// (1) ambassador enters street, city, zip
+// (2) server validates it and returns coordinates,
+user can confirm recommended address
+// (3) frontend shows the pin on a map
+// (4) save confirmed lat/lng in database
+// (5) explorer-facing pages just read stored coordinates, never calls geocoding api

@@ -45,6 +45,14 @@ router
     authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExplorationLocation,
   );
+
+router
+  .route("/validate-address")
+  .post(
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.validateExplorationLocationAddress,
+  );
+
 // router
 //   .route("/:explorationId/badge")
 //   .get(explorationController.getExplorationBadge);

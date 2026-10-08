@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { apiFetch } from "./utils/apiFetch";
 
 export async function getExplorationsData() {
@@ -50,4 +51,12 @@ export async function deleteExplorationLocation({ explorationId, locationId }) {
       method: "DELETE",
     },
   );
+}
+
+export async function validateLocationAddress({ street, city, zipcode }) {
+  console.log(street, city, zipcode);
+  return await apiFetch(`/explorations/validate-address`, {
+    method: "POST",
+    body: JSON.stringify({ street: street, city: city, zipcode: zipcode }),
+  });
 }

@@ -41,8 +41,6 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
 
   const hasLocations = locations.length > 0;
 
-  console.log("current locations: EDITINGLOCATION, DELETINGLOCATION");
-  console.log(editingLocation, deletingLocation);
   function getLocationId(location) {
     return location?._id ?? location.tempId;
   }

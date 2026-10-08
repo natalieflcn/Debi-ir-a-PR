@@ -8,6 +8,7 @@ import Button from "../../../shared/components/ui/Button";
 import Row from "../../../shared/components/layout/Row";
 import { useParams } from "react-router-dom";
 import { resetPassword } from "../../../services/auth";
+import RouterLink from "../../../shared/components/routing/RouterLink";
 
 const StyledParagraph = styled.p`
   color: var(--color-dark-200);
@@ -55,7 +56,7 @@ function ResetPassword() {
       await resetPassword({ token, password, passwordConfirm });
       setIsSuccess(true);
     } catch (err) {
-      console.log(err);
+     
       setErrors({
         submit: `${err.message} Please try again.`,
       });
@@ -116,6 +117,20 @@ function ResetPassword() {
             {isSuccess && "Password Reset!"}
           </Button>
           {errors.submit && <Bold>{errors.submit}</Bold>}
+        </Row>
+
+        <Row $direction="horizontal" $gap="var(--gap-md)">
+          <RouterLink to="/">
+            <Button $size="medium" $variation="secondary">
+              Back to Home
+            </Button>
+          </RouterLink>
+
+          <RouterLink to="/login">
+            <Button $size="medium" $variation="primary">
+              Login Now
+            </Button>
+          </RouterLink>
         </Row>
       </Row>
     </StyledAppForm>

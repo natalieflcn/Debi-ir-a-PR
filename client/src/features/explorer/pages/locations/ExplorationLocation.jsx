@@ -35,7 +35,6 @@ function ExplorerHeaderDetails({
   locationName,
   mutateIsPending,
 }) {
-  console.log(visitedAt);
   return (
     <>
       {mutateIsPending && (

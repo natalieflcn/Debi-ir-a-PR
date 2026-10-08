@@ -16,6 +16,7 @@ import LocationTagBuilder from "../../../shared/components/form/LocationTagBuild
 import {
   deleteExplorationLocation,
   updateExplorationLocation,
+  validateLocationAddress,
 } from "../../../services/explorations";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
@@ -50,6 +51,7 @@ function CreateLocationCard({
     handleSubmit,
     setError,
     clearErrors,
+
     isSubmitted,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -58,6 +60,7 @@ function CreateLocationCard({
       street: location?.address?.street ?? "",
       city: location?.address?.city ?? null,
       zipcode: location?.address?.zipcode ?? "",
+      map: location?.map ?? null,
       headerImage: location?.headerImage ?? [],
       description: location?.description ?? "",
       images: location?.images ?? [],
@@ -66,7 +69,7 @@ function CreateLocationCard({
   });
 
   console.log("CREATE LOCATION CARD");
-  console.log(location);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -89,9 +92,29 @@ function CreateLocationCard({
     clearErrors("root.serverError");
 
     try {
+      //   const submissionData = {
+      //     name: formData.name,
+      //     headerImage: formData.headerImage,
+      //     description: formData.description,
+      //     images: formData.images,
+      //     tags: formData.tags,
+      //     address: {
+      //       city: formData.city,
+      //       street: formData.street,
+      //       zipcode: formData.zipcode,
+      //     },
+      //   };
+      //   const x = geocodeLocationAddress({explorationId: exploration.slug, loc})
+
+      await validateLocationAddressData({
+        street: formData.street,
+        city: formData.city,
+        zipcode: formData.zipcode,
+      });
+
       if (onSubmit) {
         onSubmit(formData);
-        onSubmitSuccess();
+        if (onSubmitSuccess) onSubmitSuccess();
       } else {
         await defaultSubmit(formData);
       }
@@ -104,6 +127,19 @@ function CreateLocationCard({
         message: errorMessage,
       });
     }
+  };
+
+  const validateLocationAddressData = async function ({
+    street,
+    city,
+    zipcode,
+  }) {
+    await validateLocationAddress({ street, city, zipcode });
+    // await geocodeLocationAddress({
+    //   street: getValues("street"),
+    //   city: getValues("city"),
+    //   zipcode: getValues("zipcode"),
+    // });
   };
 
   const handleLocationSubmit = (event) => {

@@ -82,6 +82,9 @@ function CreateExplorationCard({ exploration }) {
       ...(isEditing && { _id: exploration._id }),
     };
 
+    console.log("CREATE EXPLORATION CARD");
+    console.log(submissionData);
+
     try {
       const { data } = isEditing
         ? await updateExploration(submissionData)
@@ -136,9 +139,7 @@ function CreateExplorationCard({ exploration }) {
 
         <AppForm
           formTitle={isEditing ? "EDIT EXPLORATION" : "CREATE AN EXPLORATION"}
-          onSubmit={handleSubmit(handleFormSubmit, (errors) =>
-            console.log("FORM VALIDATION ERRORS:", errors),
-          )}
+          onSubmit={handleSubmit(handleFormSubmit)}
         >
           <Row $gap="var(--gap-lg)">
             <FormField label="Name">
