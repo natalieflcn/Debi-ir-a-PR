@@ -188,6 +188,6 @@ exports.validateExplorationLocationAddress = catchAsync(
     });
 
     console.log(result);
-    res.status(200).json({ status: "success", data: null });
+    res.status(200).json({ status: "success", data: { data: result } });
   },
 );

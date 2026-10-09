@@ -35,8 +35,13 @@ exports.validateAddress = async function ({ street, city, zipcode }) {
 
   const { result } = await res.json();
   const { verdict, geocode, address } = result;
+  const found =
+    !!geocode?.location &&
+    verdict?.validationGranularity &&
+    verdict.validationGranularity !== "OTHER";
 
   return {
+    found,
     // (string) The post-processed address, formatted as a single-line address following the address formatting rules of the region where the address is located.
     formattedAddress: address?.formattedAddress,
 
