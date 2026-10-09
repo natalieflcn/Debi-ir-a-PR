@@ -20,8 +20,9 @@ import {
 } from "../../../services/explorations";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import AddressConfirmationModal from "../../../shared/components/modal/AddressConfirmationModal";
+import MapBuilder from "../../../shared/components/map/MapBuilder";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -51,6 +52,8 @@ function CreateLocationCard({
     handleSubmit,
     setError,
     clearErrors,
+    trigger,
+    getValues,
     formState: { errors, isSubmitting, isSubmitted },
   } = useForm({
     defaultValues: {
@@ -65,11 +68,18 @@ function CreateLocationCard({
       tags: location?.tags ?? [],
     },
   });
-  const [pendingAddress, setPendingAddress] = useState(null);
-  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  //   const [pendingAddress, setPendingAddress] = useState(null);
+  //   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const [street, city, zipcode] = useWatch({
+    control,
+    name: ["street", "city", "zipcode"],
+  });
+  const isAddressReady =
+    Boolean(street?.trim()) && Boolean(city) && verifyPRZipcode(zipcode);
 
   // HANDLING SUBMIT FUNCTIONS
   // Default Submit Function (if onSubmit, onSuccess functions not passed down via props)
@@ -92,26 +102,22 @@ function CreateLocationCard({
     clearErrors("root.serverError");
 
     try {
-      const { data } = await validateLocationAddress({
-        street: formData.street,
-        city: formData.city,
-        zipcode: formData.zipcode,
-      });
+      //   const { data } = await validateLocationAddress({
+      //     street: formData.street,
+      //     city: formData.city,
+      //     zipcode: formData.zipcode,
+      //   });
 
-      const validated = await data.data;
+      //   const validated = await data.data;
 
-      console.log("VALIDATED");
-      console.log(validated);
-      const needsReview = validated.found;
+      //   const needsReview = validated.found;
 
-      console.log("NEEDS REVIEW");
-      console.log(needsReview);
-
-      if (needsReview) {
-        setPendingAddress({ formData, validated });
-        setIsAddressModalOpen(true);
-        return; // stop here; the modal continues the flow
-      }
+      //   // TODO might delete this later
+      //   if (needsReview) {
+      //     setPendingAddress({ formData, validated });
+      //     setIsAddressModalOpen(true);
+      // return; // stop here; the modal continues the flow
+      //   }
 
       //   if (onSubmit) {
       //     onSubmit(formData);
@@ -120,9 +126,16 @@ function CreateLocationCard({
       //     await defaultSubmit(formData);
       //   }
 
-      console.log("FORM SUBMIT PAYLOAD");
+      //   console.log("FORM SUBMIT PAYLOAD");
+      console.log(formData);
 
-      await saveLocation(buildPayload(formData, validated));
+      if (onSubmit) {
+        await onSubmit(formData);
+        onSubmitSuccess?.();
+      } else {
+        await defaultSubmit(formData);
+      }
+      //   await saveLocation(formData);
     } catch (err) {
       console.log(err);
       setError("root.serverError", {
@@ -171,32 +184,32 @@ function CreateLocationCard({
 
   // HANDLE CONFIRM LOCATION ADDRESS
 
-  const handleConfirmAddress = async function (choice) {
-    setIsAddressModalOpen(false);
+  //   const handleConfirmAddress = async function (choice) {
+  //     setIsAddressModalOpen(false);
 
-    const useRecommended = choice === "recommended";
-    console.log("CONFIRM ADDRESS PAYLOAD");
+  //     const useRecommended = choice === "recommended";
+  //     console.log("CONFIRM ADDRESS PAYLOAD");
 
-    const confirmed = buildPayload(
-      pendingAddress.formData,
-      pendingAddress.validated,
-      useRecommended,
-    );
+  //     const confirmed = buildPayload(
+  //       pendingAddress.formData,
+  //       pendingAddress.validated,
+  //       useRecommended,
+  //     );
 
-    console.log(useRecommended, confirmed);
-    try {
-      await saveLocation(
-        buildPayload(pendingAddress.formData, pendingAddress.validated, choice),
-      );
-    } catch (err) {
-      setError("root.serverError", { type: "server", message: err.message });
-    }
-  };
+  //     console.log(useRecommended, confirmed);
+  //     try {
+  //       await saveLocation(
+  //         buildPayload(pendingAddress.formData, pendingAddress.validated, choice),
+  //       );
+  //     } catch (err) {
+  //       setError("root.serverError", { type: "server", message: err.message });
+  //     }
+  //   };
 
-  const handleAddressOptions = {
-    enteredAddress: `${pendingAddress?.formData?.street}, ${pendingAddress?.formData?.city}, ${pendingAddress?.formData?.zipcode}, Puerto Rico `,
-    recommendedAddress: pendingAddress?.validated?.formattedAddress,
-  };
+  //   const handleAddressOptions = {
+  //     enteredAddress: `${pendingAddress?.formData?.street}, ${pendingAddress?.formData?.city}, ${pendingAddress?.formData?.zipcode}, Puerto Rico `,
+  //     recommendedAddress: pendingAddress?.validated?.formattedAddress,
+  //   };
 
   // HANDLE DELETE LOCATION
   const handleDefaultConfirmDelete = async function () {
@@ -312,6 +325,36 @@ function CreateLocationCard({
               {errors?.zipcode?.message && (
                 <Bold>{errors?.zipcode?.message}</Bold>
               )}
+            </StyledRow>
+          </FormField>
+
+          <FormField label="Map">
+            <StyledRow $gap="var(--gap-xs)">
+              <Controller
+                name="map"
+                control={control}
+                rules={{
+                  validate: {
+                    required: (map) =>
+                      map ? true : "Please generate a map marker.",
+                  },
+                }}
+                render={({ field }) => (
+                  <MapBuilder
+                    address={{
+                      street: getValues("street"),
+                      city: getValues("city"),
+                      zipcode: getValues("zipcode"),
+                    }}
+                    isAddressReady={isAddressReady}
+                    onValidateAddressFields={() =>
+                      trigger(["street", "city", "zipcode"])
+                    }
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
             </StyledRow>
           </FormField>
 
@@ -444,7 +487,7 @@ function CreateLocationCard({
         />
       )}
 
-      {isAddressModalOpen && (
+      {/* {isAddressModalOpen && (
         <AddressConfirmationModal
           onClose={() => {
             handleConfirmAddress("entered");
@@ -452,7 +495,7 @@ function CreateLocationCard({
           onConfirmAddress={handleConfirmAddress}
           options={handleAddressOptions}
         />
-      )}
+      )} */}
     </>
   );
 }

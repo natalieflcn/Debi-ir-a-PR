@@ -576,10 +576,28 @@
     - [x] Create Forgot Password page
     - [x] Create Reset Password page
 
-- [ ] **PHASE 6:** Advanced Features
+- [~] **PHASE 6:** Advanced Features
   - Automated Emails
   - File Uploads
   - Google Maps API to render locations
+    - [ ] Address Validation API
+      - [ ] Admin/Ambassador enters street, city, zipcode
+      - [ ] Server validates address data and
+    - [ ] Google Maps API
+      - [ ] Generate Map Marker
+        - [ ] Generate Map Marker form button
+        - [ ] ValidateAddressService runs silently, retrieves coordinates for marker (if no manual pin state registered, use coordinates from address validation)
+        - [ ] Allows users to adjust marker
+        - [ ] Address Confirmation modal runs in the end, shouldn't affect map marker because coordinates correspond to the validated address
+      - [ ] Editing Map Marker
+        - [ ] Leave button that allows users to auto-generate new address
+        - [ ] If no, the original coordinates stay the same
+        - [ ] If yes, re-validate address and create a map with address validation coordinates
+      - [ ] Render Map Marker for Location
+        - [ ] Save confirmed lat/lng in database
+        - [ ] Frontend reads stored coordinates
+        - [ ] Displays the pin on a map
+      - [ ] Rendering Map Markers for Exploration
   - Aggregating Data for Dashboard Analytics
   - Create real data
   - Polish up mobile responsiveness
@@ -587,9 +605,27 @@
 TODO TODO TODO TODO TODO TODO TODO TODO
 
 // start adding google maps to exploration data
-// (1) ambassador enters street, city, zip
+
+// address validation DONE
+// (1) ambassador enters street, city, zip DONE
 // (2) server validates it and returns coordinates,
-user can confirm recommended address
-// (3) frontend shows the pin on a map
-// (4) save confirmed lat/lng in database
-// (5) explorer-facing pages just read stored coordinates, never calls geocoding api
+user can confirm recommended address DONE
+
+// map marker (CREATING LOCATION)
+// (1) generate map marker form button
+// (2) validateaddressservice runs silently, get coordinates from there
+// (3) allow users to adjust pin (manualPin state, if no manual pin state registered, use coords from address validation)
+// (4) if pin has manual selection, always choose that over address validation coords
+// (5) address confirmation modal runs in the end, this doesn't affect map marker bc the coords correspond to the validated address
+// (6) always prompt a user to generate map marker
+
+// map marker (EDITING LOCATION)
+// (1) leave a button that allows users to auto-generate new address
+// (2) if no, the original coords stay the same
+// (3) if yes, re-validate address and create a map marker with address validation
+
+// TODO add address validation afterwards
+// explorer-side
+// (1) save confirmed lat/lng in database DONE
+// (2) frontend shows the pin on a map
+// (3) explorer-facing pages just read stored coordinates, never calls geocoding api

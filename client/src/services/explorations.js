@@ -54,6 +54,7 @@ export async function deleteExplorationLocation({ explorationId, locationId }) {
 }
 
 export async function validateLocationAddress({ street, city, zipcode }) {
+  console.log("validate location address api running");
   console.log(street, city, zipcode);
   return await apiFetch(`/explorations/validate-address`, {
     method: "POST",
