@@ -23,6 +23,7 @@ import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConf
 import { useForm, Controller, useWatch } from "react-hook-form";
 import AddressConfirmationModal from "../../../shared/components/modal/AddressConfirmationModal";
 import MapBuilder from "../../../shared/components/map/MapBuilder";
+import LocationMap from "../../../shared/components/map/LocationMap";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -340,19 +341,22 @@ function CreateLocationCard({
                   },
                 }}
                 render={({ field }) => (
-                  <MapBuilder
-                    address={{
-                      street: getValues("street"),
-                      city: getValues("city"),
-                      zipcode: getValues("zipcode"),
-                    }}
-                    isAddressReady={isAddressReady}
-                    onValidateAddressFields={() =>
-                      trigger(["street", "city", "zipcode"])
-                    }
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
+                  <Row $gap="var(--gap-md)">
+                    <MapBuilder
+                      address={{
+                        street: getValues("street"),
+                        city: getValues("city"),
+                        zipcode: getValues("zipcode"),
+                      }}
+                      isAddressReady={isAddressReady}
+                      onValidateAddressFields={() =>
+                        trigger(["street", "city", "zipcode"])
+                      }
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                    <LocationMap />
+                  </Row>
                 )}
               />
             </StyledRow>
