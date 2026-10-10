@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { BiX } from "react-icons/bi";
 import { createPortal } from "react-dom";
+import { useRef } from "react";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -47,8 +48,20 @@ const ModalButton = styled.button`
 `;
 
 function Modal({ $width, children, onClose }) {
+  const pressStartedOnOverlay = useRef(false);
+
   return createPortal(
-    <ModalOverlay onClick={onClose}>
+    <ModalOverlay
+      onMouseDown={(e) => {
+        pressStartedOnOverlay.current = e.target === e.currentTarget;
+      }}
+      onClick={(e) => {
+        if (pressStartedOnOverlay.current && e.target === e.currentTarget) {
+          onClose();
+        }
+        pressStartedOnOverlay.current = false;
+      }}
+    >
       <ModalContent
         $width={$width}
         onClick={(e) => {

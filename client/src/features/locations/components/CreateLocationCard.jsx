@@ -358,6 +358,7 @@ function CreateLocationCard({
                     <LocationMap
                       coordinates={field.value?.coordinates}
                       value={field.value}
+                      isAddressReady={isAddressReady}
                       onChange={(coords) =>
                         field.onChange({
                           ...field.value,
@@ -369,6 +370,7 @@ function CreateLocationCard({
                   </Row>
                 )}
               />
+              {errors?.map?.message && <Bold>{errors?.map?.message}</Bold>}
             </StyledRow>
           </FormField>
 
