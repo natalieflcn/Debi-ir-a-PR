@@ -2,10 +2,8 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const explorationProgressAdminRouter = require("./explorationProgressAdminRoutes");
-const multer = require("multer");
-const router = express.Router();
 
-const upload = multer({ dest: "public/img/users" });
+const router = express.Router();
 
 router.post("/signup/explorer", authController.signupExplorer);
 router.post("/signup/ambassador", authController.signupAmbassador);
@@ -34,7 +32,7 @@ router.patch(
   "/updateMe",
   // authController.protect,
   // authController.protect,
-  upload.single("avatar"),
+
   userController.updateMe,
 );
 router.delete(

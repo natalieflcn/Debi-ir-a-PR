@@ -69,7 +69,7 @@ exports.getMe = (req, res, next) => {
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   console.log(req.body);
-  console.log(req.file);
+
   // Create error is user tries to update password
   if (req.body.password || req.body.passwordConfirm)
     next(

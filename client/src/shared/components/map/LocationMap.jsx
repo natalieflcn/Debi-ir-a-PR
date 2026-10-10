@@ -1,5 +1,11 @@
-import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+} from "@vis.gl/react-google-maps";
 import styled from "styled-components";
+import CustomPin from "./CustomPin";
 
 const StyledMap = styled.div`
   height: ${({ $height }) => $height}px;
@@ -20,7 +26,7 @@ function LocationMap({ coordinates, onChange, isAddressReady, height = 350 }) {
         <Map
           mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
           defaultZoom={coordinates ? 15 : 10}
-          minZoom={7}
+          minZoom={13}
           maxZoom={17}
           defaultCenter={coordinates ?? PR_START}
           gestureHandling={canEdit ? "greedy" : "none"}
@@ -41,7 +47,9 @@ function LocationMap({ coordinates, onChange, isAddressReady, height = 350 }) {
                 e.latLng &&
                 onChange({ lat: e.latLng.lat(), lng: e.latLng.lng() })
               }
-            />
+            >
+              <CustomPin />
+            </AdvancedMarker>
           )}
         </Map>
       </APIProvider>

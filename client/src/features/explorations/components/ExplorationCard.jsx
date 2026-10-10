@@ -31,6 +31,7 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
 import { startExploration } from "../../../services/explorationProgress";
 import Spinner from "../../../shared/components/ui/Spinner";
+import ExplorationMap from "../../../shared/components/map/ExplorationMap";
 
 function ExplorationCard({
   exploration,
@@ -52,6 +53,14 @@ function ExplorationCard({
   //     console.log("Failed to start exploration", err);
   //   }
   // }
+  const coordinates = exploration?.locations.map((loc) => {
+    if (!loc?.map) return null;
+
+    return {
+      name: loc?.name,
+      location: loc?.map?.coordinates,
+    };
+  });
 
   return (
     <Row $gap="var(--gap-lg)">
@@ -140,12 +149,7 @@ function ExplorationCard({
             </ExplorationCardLocations>
           </ExplorationDetailsRow>
 
-          <Image
-            src="/src/assets/images/content/TEMP.png"
-            $height="25rem"
-            $objectFit="cover"
-            $width="100%"
-          />
+          <ExplorationMap coordinates={coordinates} />
 
           <ExplorationImagesRow
             $direction="horizontal"
