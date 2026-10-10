@@ -542,7 +542,6 @@
 - [~] FRONT-END TWEAKS
   - [x] Utilize React Query and DeleteConfirmationModal in EndExplorationProgress workflow
   - [x] "/" should always return to dashboard for logged in users
-  - [ ] BUG: Keep being redirected to Login page before AuthContext can retrieve /me
   - [x] Create way for users to edit their name
   - [x] Create document middleware that calculates number of explorations completed and changes user title
   - [x] Implement way for users to end Exploration
@@ -556,10 +555,8 @@
     - [~] Front-end validation
     - [x] Back-end validation
   - [x] Need to implement List view of Explorations and Users for Admins
-  - [ ] Center Exploration images... potentially make slideshow for more than three images?
   - [x] Location name should wrap around in CurrentLocations, not stretch past container
   - [x] Logo has incorrect hyperlink
-  - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
   - [x] Create tool-tip texts for Admin toggle buttons on ManageExplorations
   - [x] BUG: Error pages breaks out of user-based layout and uses guest layout
     - [x] PageNotFound
@@ -577,55 +574,43 @@
     - [x] Create Reset Password page
 
 - [~] **PHASE 6:** Advanced Features
-  - Automated Emails
-  - File Uploads
-  - Google Maps API to render locations
-    - [ ] Address Validation API
-      - [ ] Admin/Ambassador enters street, city, zipcode
-      - [ ] Server validates address data and
-    - [ ] Google Maps API
-      - [ ] Generate Map Marker
-        - [ ] Generate Map Marker form button
-        - [ ] ValidateAddressService runs silently, retrieves coordinates for marker (if no manual pin state registered, use coordinates from address validation)
-        - [ ] Allows users to adjust marker
-        - [ ] Address Confirmation modal runs in the end, shouldn't affect map marker because coordinates correspond to the validated address
-      - [ ] Editing Map Marker
-        - [ ] Leave button that allows users to auto-generate new address
-        - [ ] If no, the original coordinates stay the same
-        - [ ] If yes, re-validate address and create a map with address validation coordinates
-      - [ ] Render Map Marker for Location
-        - [ ] Save confirmed lat/lng in database
-        - [ ] Frontend reads stored coordinates
-        - [ ] Displays the pin on a map
+  - [~] Google Maps API to render locations
+    - [x] Geocoding API
+      - [x] Admin/Ambassador enters street, city, zipcode
+      - [x] Server validates address data and sends back coordinates
+    - [~] Google Maps API
+      - [x] Generate Map Marker
+        - [x] Generate Map Marker form button
+        - [x] GeocodeService runs silently, retrieves coordinates for marker (if no pin found, show general San Juan area)
+        - [x] Allows users to adjust marker
+      - [x] Editing Map Marker
+        - [x] Leave button that allows users to auto-generate new address
+        - [x] If no, the original coordinates stay the same
+        - [x] If yes, re-validate address and create a map with geocoded coordinates
+
+## Week: October 10 - October 18
+
+- [~] Trivial Tasks
+  - [ ] LOW: Keep being redirected to Login page before AuthContext can retrieve /me
+  - [ ] LOW: Center Exploration images... potentially make slideshow for more than three images?
+  - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
+
+- [~] **PHASE 6:** Advanced Features
+  - [ ] Google Maps API to render locations
+    - [~] Google Maps API
+      - [x] Render Map Marker for Location
+        - [x] Save confirmed lat/lng in database
+        - [x] Frontend reads stored coordinates
+        - [x] Displays the pin on a map
       - [ ] Rendering Map Markers for Exploration
-  - Aggregating Data for Dashboard Analytics
+
+  - File Uploads (Cloudinary) TODO 1
   - Create real data
+    - [ ] Explorations
+    - [ ] Locations
+    - [ ] Sample explorers completing explorations, simulating real exploration progress
+  - Aggregating Data for Dashboard Analytics
+  - Automated Emails
   - Polish up mobile responsiveness
 
 TODO TODO TODO TODO TODO TODO TODO TODO
-
-// start adding google maps to exploration data
-
-// address validation DONE
-// (1) ambassador enters street, city, zip DONE
-// (2) server validates it and returns coordinates,
-user can confirm recommended address DONE
-
-// map marker (CREATING LOCATION)
-// (1) generate map marker form button
-// (2) validateaddressservice runs silently, get coordinates from there
-// (3) allow users to adjust pin (manualPin state, if no manual pin state registered, use coords from address validation)
-// (4) if pin has manual selection, always choose that over address validation coords
-// (5) address confirmation modal runs in the end, this doesn't affect map marker bc the coords correspond to the validated address
-// (6) always prompt a user to generate map marker
-
-// map marker (EDITING LOCATION)
-// (1) leave a button that allows users to auto-generate new address
-// (2) if no, the original coords stay the same
-// (3) if yes, re-validate address and create a map marker with address validation
-
-// TODO add address validation afterwards
-// explorer-side
-// (1) save confirmed lat/lng in database DONE
-// (2) frontend shows the pin on a map
-// (3) explorer-facing pages just read stored coordinates, never calls geocoding api

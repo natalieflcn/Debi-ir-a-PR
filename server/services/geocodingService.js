@@ -48,23 +48,10 @@ exports.geocodeAddress = async function ({ street, city, zipcode }) {
   const coordinates = inPuertoRico(loc) ? { lat: loc.lat, lng: loc.lng } : null;
 
   return {
-    // found,
-    // (string) The post-processed address, formatted as a single-line address following the address formatting rules of the region where the address is located.
-    formattedAddress: result?.formatted_address,
-
     // (object {lat, lng}) The geocoded location of the input. Using place IDs is preferred over using addresses, latitude/longitude coordinates, or plus codes.  Additionally, when a location is reverse geocoded, there is no guarantee that the returned address will match the original.
     coordinates: coordinates,
 
     // (string) The PlaceID of the place this input geocodes to.
     placeId: result?.place_id,
-
-    // // (enum) The level of granularity for the post-processed address that the API can fully validate. PREMISE, PREMISE_PROXIMITY, ROUTE, OTHER...
-    // granularity: verdict?.validationGranularity,
-
-    // // (boolean) The post-processed address is considered complete if there are no unresolved tokens, no unexpected or missing address components. If unset, indicates that the value is false.
-    // isComplete: !!verdict?.addressComplete,
-
-    // // (boolean) At least one address component cannot be categorized or validated
-    // hasUnconfirmedParts: !!verdict?.hasUnconfirmedComponents,
   };
 };

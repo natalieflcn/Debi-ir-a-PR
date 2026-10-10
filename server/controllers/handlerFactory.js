@@ -59,7 +59,8 @@ exports.updateOne = (Model, filter = {}) =>
       typeof filter === "function" ? filter(req) : { _id: req.params.id };
 
     const doc = await Model.findOneAndUpdate(queryFilter, req.body, {
-      new: true,
+      // new: true,
+      returnDocument: 'after',
       runValidators: true,
     });
 

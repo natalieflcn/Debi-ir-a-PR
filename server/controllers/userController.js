@@ -68,6 +68,8 @@ exports.getMe = (req, res, next) => {
 // exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file);
   // Create error is user tries to update password
   if (req.body.password || req.body.passwordConfirm)
     next(
@@ -125,7 +127,8 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   if (role) req.body.title = helpers.capitalize(role);
 
   const doc = await User.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true,
+    // new: true,
+    returnDocument: "after",
     runValidators: true,
   });
 

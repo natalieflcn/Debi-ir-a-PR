@@ -21,7 +21,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
 import { useForm, Controller, useWatch } from "react-hook-form";
-import AddressConfirmationModal from "../../../shared/components/modal/AddressConfirmationModal";
+
 import MapBuilder from "../../../shared/components/map/MapBuilder";
 import LocationMap from "../../../shared/components/map/LocationMap";
 
@@ -98,80 +98,23 @@ function CreateLocationCard({
     );
   };
 
-  // Handler functions to validate address, build payload, and save location
+  // Intentional submit function that runs either default submit function or onSubmit/onSuccess passed down via props
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
 
     try {
-      //   const { data } = await validateLocationAddress({
-      //     street: formData.street,
-      //     city: formData.city,
-      //     zipcode: formData.zipcode,
-      //   });
-
-      //   const validated = await data.data;
-
-      //   const needsReview = validated.found;
-
-      //   // TODO might delete this later
-      //   if (needsReview) {
-      //     setPendingAddress({ formData, validated });
-      //     setIsAddressModalOpen(true);
-      // return; // stop here; the modal continues the flow
-      //   }
-
-      //   if (onSubmit) {
-      //     onSubmit(formData);
-      //     if (onSubmitSuccess) onSubmitSuccess();
-      //   } else {
-      //     await defaultSubmit(formData);
-      //   }
-
-      //   console.log("FORM SUBMIT PAYLOAD");
-      console.log(formData);
-
       if (onSubmit) {
         await onSubmit(formData);
         onSubmitSuccess?.();
       } else {
         await defaultSubmit(formData);
       }
-      //   await saveLocation(formData);
     } catch (err) {
       console.log(err);
       setError("root.serverError", {
         type: "server",
         message: err.message,
       });
-    }
-  };
-
-  // Build payload with original data or reformatted data from Google Address Validation API
-  const buildPayload = function (formData, validated, useRecommended = true) {
-    const [recStreet, recCity, recZipcode] =
-      validated.formattedAddress.split(", ");
-    const trimmedRecZipcode = recZipcode.slice(3);
-
-    console.log(recStreet, recCity, recZipcode);
-    console.log(trimmedRecZipcode);
-    return {
-      ...formData,
-      street: useRecommended && recStreet ? recStreet : formData.street,
-      city: useRecommended && recCity ? recCity : formData.city,
-      zipcode:
-        useRecommended && recZipcode ? trimmedRecZipcode : formData.zipcode,
-      coordinates: validated.coordinates,
-      placeId: validated.placeId,
-    };
-  };
-
-  // Submit location and save to database with reviewed address and corresponding coordinates
-  const saveLocation = async (payload) => {
-    if (onSubmit) {
-      await onSubmit(payload);
-      onSubmitSuccess?.();
-    } else {
-      await defaultSubmit(payload);
     }
   };
 
@@ -182,35 +125,6 @@ function CreateLocationCard({
 
     handleSubmit(handleFormSubmit)(event);
   };
-
-  // HANDLE CONFIRM LOCATION ADDRESS
-
-  //   const handleConfirmAddress = async function (choice) {
-  //     setIsAddressModalOpen(false);
-
-  //     const useRecommended = choice === "recommended";
-  //     console.log("CONFIRM ADDRESS PAYLOAD");
-
-  //     const confirmed = buildPayload(
-  //       pendingAddress.formData,
-  //       pendingAddress.validated,
-  //       useRecommended,
-  //     );
-
-  //     console.log(useRecommended, confirmed);
-  //     try {
-  //       await saveLocation(
-  //         buildPayload(pendingAddress.formData, pendingAddress.validated, choice),
-  //       );
-  //     } catch (err) {
-  //       setError("root.serverError", { type: "server", message: err.message });
-  //     }
-  //   };
-
-  //   const handleAddressOptions = {
-  //     enteredAddress: `${pendingAddress?.formData?.street}, ${pendingAddress?.formData?.city}, ${pendingAddress?.formData?.zipcode}, Puerto Rico `,
-  //     recommendedAddress: pendingAddress?.validated?.formattedAddress,
-  //   };
 
   // HANDLE DELETE LOCATION
   const handleDefaultConfirmDelete = async function () {
@@ -502,16 +416,6 @@ function CreateLocationCard({
           options={handleDeleteOptions}
         />
       )}
-
-      {/* {isAddressModalOpen && (
-        <AddressConfirmationModal
-          onClose={() => {
-            handleConfirmAddress("entered");
-          }}
-          onConfirmAddress={handleConfirmAddress}
-          options={handleAddressOptions}
-        />
-      )} */}
     </>
   );
 }
