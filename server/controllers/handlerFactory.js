@@ -49,6 +49,7 @@ exports.createOne = (Model, additionalData) =>
 
     const doc = await Model.create({ ...req.body, ...additionalDataOptions });
 
+    console.log(doc);
     res.status(201).json({ status: "success", data: { data: doc } });
   });
 

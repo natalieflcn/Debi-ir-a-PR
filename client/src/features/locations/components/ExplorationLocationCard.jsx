@@ -20,6 +20,7 @@ import {
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
 import styled from "styled-components";
+import LocationMap from "../../../shared/components/map/LocationMap";
 
 const StyledRow = styled(Row)`
   @media (max-width: 800px) {
@@ -51,6 +52,7 @@ function ExplorationLocationCard({
   footerCTA,
   type = "",
 }) {
+  console.log(location);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations/${exploration.slug}`}>
@@ -107,6 +109,11 @@ function ExplorationLocationCard({
               </TagCollection>
             </ExplorationLocationAbout>
             <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
+          </StyledRow>
+          <StyledRow>
+            {location?.map?.coordinates && (
+              <LocationMap coordinates={location.map.coordinates} />
+            )}
           </StyledRow>
           <StyledRow $direction="horizontal">
             {location.images.map((image, i) => (

@@ -325,36 +325,13 @@ function CreateExplorationCard({ exploration }) {
                               description: location.description,
                               images: location.images,
                               tags: location.tags,
+                              map: location.map,
                               tempId: `loc_${crypto.randomUUID()}`,
                             },
                           ]);
                         }}
                       />
 
-                      {/* function handleAddLocation(formData) {
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) => [
-  //     ...prev,
-  //     { ...formData, tempId: `loc_${crypto.randomUUID()}` },
-  //   ]);
-  // }
-
-  // function handleDeleteLocation(tempId) {
-  //   console.log(tempId);
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) =>
-  //     prev.filter((loc) => (loc._id ?? loc.tempId) !== tempId),
-  //   );
-
-  function handleEditLocation(tempId, formData) {
-  //   setFormErrors((prev) => ({ ...prev, locations: "" }));
-  //   setLocations((prev) =>
-  //     prev.map((loc) =>
-  //       (loc._id ?? loc.tempId) === tempId ? { ...loc, ...formData } : loc,
-  //     ),
-  //   );
-  // }
-  // } */}
                       <CurrentLocations
                         locations={field.value}
                         onEdit={(locationId, formData) => {
@@ -372,6 +349,7 @@ function CreateExplorationCard({ exploration }) {
                                       city: formData.city,
                                       zipcode: formData.zipcode,
                                     },
+                                    map: formData.map,
                                     headerImage: formData.headerImage,
                                     description: formData.description,
                                     images: formData.images,
