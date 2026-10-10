@@ -16,7 +16,7 @@ import LocationTagBuilder from "../../../shared/components/form/LocationTagBuild
 import {
   deleteExplorationLocation,
   updateExplorationLocation,
-  validateLocationAddress,
+  validateLocation,
 } from "../../../services/explorations";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
@@ -355,7 +355,17 @@ function CreateLocationCard({
                       value={field.value}
                       onChange={field.onChange}
                     />
-                    <LocationMap />
+                    <LocationMap
+                      coordinates={field.value?.coordinates}
+                      value={field.value}
+                      onChange={(coords) =>
+                        field.onChange({
+                          ...field.value,
+                          coordinates: coords,
+                          placeId: null,
+                        })
+                      }
+                    />
                   </Row>
                 )}
               />

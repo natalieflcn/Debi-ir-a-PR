@@ -26,13 +26,10 @@ const locationSchema = new mongoose.Schema({
       required: true,
     },
   },
-  location: {
-    type: {
-      type: String,
-      enum: ["Point"],
-      default: "Point",
-    },
-    coordinates: [Number], // [longitude, latitude]
+  map: {
+    placeId: String,
+    formattedAddress: String,
+    coordinates: Object, // [longitude, latitude]
   },
   description: {
     type: String,

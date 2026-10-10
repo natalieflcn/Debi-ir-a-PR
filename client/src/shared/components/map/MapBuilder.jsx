@@ -9,7 +9,7 @@ import Modal from "../modal/Modal";
 import SmallText from "../typography/SmallText";
 import Bold from "../typography/Bold";
 import { useMutation } from "@tanstack/react-query";
-import { validateLocationAddress } from "../../../services/explorations";
+import { validateLocation } from "../../../services/explorations";
 
 const StyledMapBuilder = styled.div`
   align-self: flex-start;
@@ -38,17 +38,18 @@ function MapBuilder({
 }) {
   //   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mutate, isPending, error } = useMutation({
-    mutationFn: () => validateLocationAddress(address),
+    mutationFn: validateLocation,
     onSuccess: ({ data }) => {
       const validated = data.data;
 
       console.log("MAP BUILDER ON SUCCESS FUNCTION");
       console.log(validated);
-      onChange({
-        formattedAddress: validated.formattedAddress,
-        coordinates: validated?.coordinates,
-        placeId: validated?.placeId,
-      });
+      if (validated.coordinates)
+        onChange({
+          formattedAddress: validated.formattedAddress,
+          coordinates: validated?.coordinates,
+          placeId: validated?.placeId,
+        });
       // if validated, show pin
       // else put pin on zipcode, let drag manually
     },

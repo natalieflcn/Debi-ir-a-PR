@@ -6,7 +6,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const ExplorationProgress = require("../models/ExplorationProgress");
 const User = require("../models/User");
-const addressValidationService = require("../services/addressValidationService");
+const geocodingService = require("../services/geocodingService");
 // Exploration Routes
 exports.getAllExplorationData = factory.getAll(Exploration);
 
@@ -125,6 +125,7 @@ exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
     "description",
     "images",
     "tags",
+    "map",
   ];
 
   // Updating Location
@@ -175,19 +176,17 @@ exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
 });
 
 // Geocoding API
-exports.validateExplorationLocationAddress = catchAsync(
-  async (req, res, next) => {
-    console.log("CONTROLLER: validateExplorationLocationAddress");
+exports.validateExplorationLocation = catchAsync(async (req, res, next) => {
+  console.log("CONTROLLER: validateExplorationLocationAddress");
 
-    console.log(req.body);
+  console.log(req.body);
 
-    const result = await addressValidationService.validateAddress({
-      street: req.body.street,
-      city: req.body.city,
-      zipcode: req.body.zipcode,
-    });
+  const result = await geocodingService.geocodeAddress({
+    street: req.body.street,
+    city: req.body.city,
+    zipcode: req.body.zipcode,
+  });
 
-    console.log(result);
-    res.status(200).json({ status: "success", data: { data: result } });
-  },
-);
+  console.log(result);
+  res.status(200).json({ status: "success", data: { data: result } });
+});

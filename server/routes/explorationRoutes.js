@@ -47,10 +47,10 @@ router
   );
 
 router
-  .route("/validate-address")
+  .route("/validate-location")
   .post(
     authController.restrictTo("admin", "ambassador"),
-    explorationController.validateExplorationLocationAddress,
+    explorationController.validateExplorationLocation,
   );
 
 // router
