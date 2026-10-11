@@ -11,9 +11,6 @@ const inPuertoRico = ({ lat, lng }) =>
   lng <= PR_BOUNDS.maxLng;
 
 exports.geocodeAddress = async function ({ street, city, zipcode }) {
-  console.log("SERVICE: GEOCODEService");
-  console.log(street, city, zipcode);
-
   if (!street?.trim() || !city || !zipcode)
     throw new AppError("Street, city, and zipcode are required.", 400);
 
@@ -25,7 +22,6 @@ exports.geocodeAddress = async function ({ street, city, zipcode }) {
   url.searchParams.set("components", "country:PR");
   url.searchParams.set("key", process.env.GOOGLE_MAPS_KEY);
 
-  console.log(url);
   const res = await fetch(url);
 
   if (!res.ok) {

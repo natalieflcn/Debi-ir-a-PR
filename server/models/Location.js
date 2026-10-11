@@ -54,7 +54,7 @@ const locationSchema = new mongoose.Schema({
       message: "A location can only have one header image.",
     },
   },
-  images: { type: [{ url: String }], default: [] },
+  images: { type: [{ url: String, publicId: String }], default: [] },
   tags: {
     type: [String],
     enum: constants.LOCATION_TAGS,

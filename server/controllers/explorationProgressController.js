@@ -72,8 +72,7 @@ exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({ _id: req.user.id });
 
-  console.log("DELETE EXPLORATION PROGRESS");
-  console.log(user);
+ 
   if (!user) {
     return next(new AppError("No user found with that ID.", 404));
   }
@@ -126,7 +125,7 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   progress.lastVisitedAt = new Date();
 
-  console.log(progress.lastVisitedAt);
+  
   await progress.save();
 
   // Updating Explorer Title
@@ -156,7 +155,7 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
     (visit) => visit.location.toString() !== req.params.locationId,
   );
 
-  console.log(filteredVisits);
+
   progress.visitLog = filteredVisits;
 
   // Updating Exploration Progress Derived Data

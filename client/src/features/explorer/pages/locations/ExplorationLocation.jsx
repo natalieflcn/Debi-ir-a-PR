@@ -156,10 +156,6 @@ function ExplorationLocation() {
   const userCompleted = Boolean(
     userHistory?.visitLog?.some((visit) => visit.location === location._id),
   );
-  console.log(
-    userHistory?.visitLog.find((visit) => visit.location === location._id)
-      ?.visitedAt,
-  );
 
   function handleToggleCompleted() {
     if (userCompleted)

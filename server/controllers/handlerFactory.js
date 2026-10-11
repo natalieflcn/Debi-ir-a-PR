@@ -49,7 +49,6 @@ exports.createOne = (Model, additionalData) =>
 
     const doc = await Model.create({ ...req.body, ...additionalDataOptions });
 
-    console.log(doc);
     res.status(201).json({ status: "success", data: { data: doc } });
   });
 
@@ -60,7 +59,7 @@ exports.updateOne = (Model, filter = {}) =>
 
     const doc = await Model.findOneAndUpdate(queryFilter, req.body, {
       // new: true,
-      returnDocument: 'after',
+      returnDocument: "after",
       runValidators: true,
     });
 

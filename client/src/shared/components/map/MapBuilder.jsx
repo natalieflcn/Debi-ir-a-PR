@@ -42,8 +42,6 @@ function MapBuilder({
     onSuccess: ({ data }) => {
       const validated = data.data;
 
-      console.log("MAP BUILDER ON SUCCESS FUNCTION");
-      console.log(validated);
       if (validated.coordinates)
         onChange({
           formattedAddress: validated.formattedAddress,

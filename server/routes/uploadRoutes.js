@@ -8,15 +8,13 @@ router.use(authController.protect);
 
 router.post(
   "/exploration-signature/:explorationId",
-  authController.protect,
   authController.restrictTo("admin", "ambassador"),
   uploadController.signExplorationUpload,
 );
 
-router.post(
-  "/user-signature",
-  authController.protect,
-  uploadController.signUserUpload,
-);
+router.post("/user-signature", uploadController.signUserUpload);
 
+router.use(authController.restrictTo("admin", "ambassador"));
+
+router.post("/user-signature/:userId", uploadController.signUserUpload);
 module.exports = router;

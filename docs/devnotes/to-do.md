@@ -605,11 +605,10 @@
       - [x] Rendering Map Markers for Exploration
 
   - [~] Image Uploads (Multer + Cloudinary)
-    - [ ] User prompted to crop image on front-end?
-    - [ ] Front-end sends image to Express backend
-    - [ ] Multer catches incoming image on the server
-    - [ ] Multer validates size of image or extension
-    - [ ] Multer uses Cloudinary SDK to push image to the cloud
+    - [ ] User uploading their own profile picture
+    - [ ] Admin/Ambassador editing user profile picture
+    - [ ] Uploading exploration photos
+    - [ ] Uploading location photos
   - Create real data
     - [ ] Explorations
     - [ ] Locations

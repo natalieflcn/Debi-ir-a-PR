@@ -68,7 +68,7 @@ exports.getMe = (req, res, next) => {
 // exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.body);
+  
 
   // Create error is user tries to update password
   if (req.body.password || req.body.passwordConfirm)

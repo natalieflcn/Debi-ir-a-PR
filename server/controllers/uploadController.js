@@ -9,7 +9,6 @@ const ALLOWED_FORMATS = "jpg,jpeg,png,webp";
 const buildSignature = function (folder, options) {
   const timestamp = Math.round(Date.now() / 1000);
 
-  console.log(options);
   const params = {
     timestamp,
     folder,
@@ -17,8 +16,6 @@ const buildSignature = function (folder, options) {
     ...options,
   };
 
-  console.log("BUILD SIGNATURE");
-  console.log(params, process.env.CLOUDINARY_SECRET);
   const signature = cloudinary.utils.api_sign_request(
     params,
     process.env.CLOUDINARY_SECRET,
@@ -51,8 +48,10 @@ exports.signExplorationUpload = catchAsync(async (req, res, next) => {
 });
 
 exports.signUserUpload = (req, res) => {
+  const userId = req.body.userId ?? req.user.id;
+
   res.status(200).json({
     status: "success",
-    data: buildSignature(`users`, { public_id: req.user.id, overwrite: true }),
+    data: buildSignature(`users`, { public_id: userId, overwrite: true }),
   });
 };

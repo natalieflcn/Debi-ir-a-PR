@@ -154,6 +154,7 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: var(--border-radius-md);
 `;
 
 const ProfileHeader = function ({ user, title }) {
@@ -178,8 +179,6 @@ const ProfileHeader = function ({ user, title }) {
     setName(value);
   };
 
-  console.log(myUser);
-  console.log(avatarPreviewSrc);
   const handleNameSubmit = async function (e) {
     e.preventDefault();
 
@@ -228,12 +227,15 @@ const ProfileHeader = function ({ user, title }) {
     // TODO adjust to accomodate for admins/ambassadors changing users avatars
     try {
       const [avatar] = await resolveImages([file], "user"); // { url, publicId }
-      console.log(avatar[0]);
-      const { data } = await updateMe({ avatar });
-      updateUser(data.data); // keep auth context in sync
+
+      const { data } = isMyProfile
+        ? await updateMe({ avatar })
+        : await updateUserInformation(user._id, { avatar });
+
+      if (isMyProfile) updateUser(data.data); // keep auth context in sync
+
       setAvatarPreviewSrc(avatar.url); // update state
     } catch (err) {
-      console.log(err);
       setAvatarPreviewSrc(previousAvatarSrc); // roll back the preview
       setErrors((prev) => ({ ...prev, avatar: err.message }));
     } finally {

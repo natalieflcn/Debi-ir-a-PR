@@ -50,7 +50,7 @@ const explorationSchema = new mongoose.Schema(
       default: [],
     },
     headerImage: {
-      type: { url: String },
+      type: { url: String, publicId: String },
       default: [],
       validate: {
         validator: function (value) {

@@ -53,10 +53,10 @@ const getAdminExplorationsTableColumns = function (users) {
         const user = users.find(
           (user) => user?._id?.toString() === row?.createdBy.toString(),
         );
-        console.log(user);
+       
 
         if (!user) {
-          console.log("NO USER FOUND FOR:", row);
+         
           return <TableCell>Unknown User</TableCell>;
         }
 

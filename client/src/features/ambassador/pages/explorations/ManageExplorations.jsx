@@ -50,7 +50,7 @@ const AmbassadorExplorationsTableColumns = function (users) {
         );
 
         if (!user) {
-          console.log("NO USER FOUND FOR:", row);
+      
           return <TableCell>Unknown User</TableCell>;
         }
 

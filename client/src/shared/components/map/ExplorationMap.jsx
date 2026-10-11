@@ -25,8 +25,6 @@ function ExplorationMap({
 
   height = 350,
 }) {
-  console.log(coordinates);
-
   if (!coordinates?.length) return null;
 
   const isSingle = coordinates.length === 1;

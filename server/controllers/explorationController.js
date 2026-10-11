@@ -183,16 +183,11 @@ exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
 
 // Geocoding API
 exports.validateExplorationLocation = catchAsync(async (req, res, next) => {
-  console.log("CONTROLLER: validateExplorationLocationAddress");
-
-  console.log(req.body);
-
   const result = await geocodingService.geocodeAddress({
     street: req.body.street,
     city: req.body.city,
     zipcode: req.body.zipcode,
   });
 
-  console.log(result);
   res.status(200).json({ status: "success", data: { data: result } });
 });

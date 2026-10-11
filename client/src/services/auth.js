@@ -69,7 +69,7 @@ export async function updateUserPassword({
 }
 
 export async function forgotPassword(email) {
-  console.log(email);
+
   return await apiFetch(`/users/forgotPassword`, {
     method: "POST",
     body: JSON.stringify({ email: email }),
@@ -77,7 +77,7 @@ export async function forgotPassword(email) {
 }
 
 export async function resetPassword({ token, password, passwordConfirm }) {
-  console.log(token, password, passwordConfirm);
+ 
   return await apiFetch(`/users/resetPassword/${token}`, {
     method: "PATCH",
     body: JSON.stringify({

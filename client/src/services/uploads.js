@@ -9,7 +9,6 @@ async function uploadFiles(files, type) {
   const { data } = await apiFetch(SIGNATURE_ROUTES[type], { method: "POST" });
   const signature = data; // adjust to your envelope
 
-  console.log(signature);
   const uploadOne = async (file) => {
     const form = new FormData();
     form.append("file", file);
@@ -23,8 +22,6 @@ async function uploadFiles(files, type) {
     if (signature.public_id) form.append("public_id", signature.public_id);
     if (signature.overwrite) form.append("overwrite", signature.overwrite);
 
-    console.log("UPLOAD ONE FUNCTION");
-    console.log(Object.fromEntries(form));
     const res = await fetch(
       `https://api.cloudinary.com/v1_1/${signature.cloudName}/image/upload`,
       { method: "POST", body: form },
@@ -33,15 +30,14 @@ async function uploadFiles(files, type) {
     if (!res.ok) {
       const err = await res.json();
       console.log(err);
-      throw new Error(`Image upload failed. ${err.message}`);
+      throw new Error(`Image Upload Failed: ${err.error.message}`);
     }
-    console.log("posted successfully");
+
     const { secure_url, public_id } = await res.json();
 
     return { url: secure_url, publicId: public_id };
   };
 
-  console.log("got url and public id");
   const results = [];
 
   for (let i = 0; i < files.length; i += 4) {
@@ -54,8 +50,7 @@ async function uploadFiles(files, type) {
 // uploads only the new ones, and keeps the original order.
 export async function resolveImages(items = [], type) {
   const files = items.filter((item) => item instanceof File);
-  console.log("RESOLVE IMAGES FUNCTION");
-  console.log(items, files, type);
+
   const uploaded = await uploadFiles(files, type);
 
   let next = 0;
