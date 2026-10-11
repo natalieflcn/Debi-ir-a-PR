@@ -7,6 +7,7 @@ const hpp = require("hpp");
 const explorationRouter = require("./routes/explorationRoutes");
 const userRouter = require("./routes/userRoutes");
 const explorationProgressRouter = require("./routes/explorationProgressRoutes");
+const uploadRouter = require("./routes/uploadRoutes");
 const AppError = require("./utils/appError");
 const GlobalErrorHandler = require("./controllers/errorController");
 const cookieParser = require("cookie-parser");
@@ -43,6 +44,7 @@ app.use(hpp({ whitelist: [] }));
 app.use("/api/v1/explorations", explorationRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/exploration-progress", explorationProgressRouter);
+app.use("/api/v1/uploads", uploadRouter);
 
 app.all("/{*splat}", (req, res, next) => {
   next(

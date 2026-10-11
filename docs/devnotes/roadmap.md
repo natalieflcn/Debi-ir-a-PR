@@ -59,13 +59,13 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 - [x] Create Auth system
 - [x] Implement middleware to protect routes and restrict access
-- [~] Connect to frontend
+- [x] Connect to frontend
 
 ### Phase 4: Connect frontend to backend
 
-- [ ] Create an API layer
-- [ ] Replace static data with real-time backend data
-- [ ] Error handling
+- [x] Create an API layer
+- [~] Replace static data with real-time backend data
+- [x] Error handling
 
 ### Phase 5: Role-Based UI
 
@@ -75,21 +75,21 @@ To provide a platform that connects both tourists AND locals to Puerto Rican tre
 
 ### Phase 6: Advanced Features
 
-- [ ] Show tour locations with Google Maps API
-- [ ] Image uploads for tours
+- [x] Show tour locations with Google Maps API
+- [~] Image uploads for tours
 - [ ] Email system
 
 ### Phase 7: Testing and Polish
 
-- [ ] Test auth flows
-- [ ] Test CRUD opeartions
-- [ ] Test protected routes
+- [x] Test auth flows
+- [x] Test CRUD opeartions
+- [x] Test protected routes
 
 - [ ] Polish production version
-  - [ ] Refactor front-end code for reusability and readability
+  - [~] Refactor front-end code for reusability and readability
   - [ ] Remove console.logs
   - [ ] Clean API responses
-  - [ ] Handle erros gracefully
+  - [ ] Handle errors gracefully
   - [ ] Optimize performance
   - [ ] Ensure mobile responsiveness
 - [ ] Conduct user testing and gather feedback

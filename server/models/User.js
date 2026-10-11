@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema(
         else return helpers.capitalize(this.role);
       },
     },
-    avatar: { type: String, trim: true },
+    avatar: { type: { url: String, publicId: String }, trim: true },
 
     passwordChangedAt: Date,
     passwordResetToken: String,

@@ -45,7 +45,7 @@ const locationSchema = new mongoose.Schema({
     required: [true, "A location description is required."],
   },
   headerImage: {
-    type: [String],
+    type: { url: String },
     // required: [true, "A location header image is required."],
     validate: {
       validator: function (value) {
@@ -54,7 +54,7 @@ const locationSchema = new mongoose.Schema({
       message: "A location can only have one header image.",
     },
   },
-  images: { type: [String], default: [] },
+  images: { type: [{ url: String }], default: [] },
   tags: {
     type: [String],
     enum: constants.LOCATION_TAGS,

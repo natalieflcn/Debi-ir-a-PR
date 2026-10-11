@@ -80,7 +80,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     );
 
   // Filter out unwanted fields from request body
-  const filteredBody = filterRequestBody(req.body, "name", "email");
+  const filteredBody = filterRequestBody(req.body, "name", "email", "avatar");
 
   // Update user
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

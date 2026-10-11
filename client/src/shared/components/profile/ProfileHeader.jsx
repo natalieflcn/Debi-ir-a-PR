@@ -16,6 +16,8 @@ import { updateMe, updateUserInformation } from "../../../services/users";
 import Input from "../form/Input";
 import Bold from "../typography/Bold";
 import { capitalize } from "../../utils/helpers";
+import { resolveImages } from "../../../services/uploads";
+import SpinnerMini from "../ui/SpinnerMini";
 
 const StyledProfileHeader = styled.div`
   display: grid;
@@ -144,6 +146,16 @@ const InfoButtonTexts = {
     </StyledInfoButtonText>
   ),
 };
+
+const ImageContainer = styled.div`
+  width: 18rem;
+  height: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
+
 const ProfileHeader = function ({ user, title }) {
   // const { user, role } = useAuth();
   // const { user } = profileLoader();
@@ -153,17 +165,21 @@ const ProfileHeader = function ({ user, title }) {
   const [errors, setErrors] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [avatarPreview, setAvatarPreview] = useState(
-    user?.avatar ?? "/src/assets/images/content/TEMP.png",
+  const [avatarPreviewSrc, setAvatarPreviewSrc] = useState(
+    user?.avatar?.url ?? "/src/assets/images/content/TEMP.png",
   );
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
   const { user: myUser, updateUser } = useAuth();
   const isMyProfile = myUser._id === user._id;
 
+  // Handle Name Functions
   const handleSetName = function (value) {
     setErrors((prev) => ({ ...prev, name: "" }));
     setName(value);
   };
 
+  console.log(myUser);
+  console.log(avatarPreviewSrc);
   const handleNameSubmit = async function (e) {
     e.preventDefault();
 
@@ -184,35 +200,58 @@ const ProfileHeader = function ({ user, title }) {
     setErrors((prev) => ({ ...prev, name: "" }));
   };
 
+  // Handle Avatar Functions
   const fileInputRef = useRef(null);
-  const submit = useSubmit();
 
-  function handleAvatarChange(e) {
+  async function handleAvatarChange(e) {
     const file = e.target.files[0];
+    e.target.value = "";
     if (!file) return;
 
-    if (avatarPreview.startsWith("blob:")) {
-      URL.revokeObjectURL(avatarPreview);
+    if (!file.type.startsWith("image/") || file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        avatar: "Please choose an image under 5 MB.",
+      }));
+      return;
     }
 
-    const previewURL = URL.createObjectURL(file);
-    setAvatarPreview(previewURL);
+    // Grabbing the current avatar URL in case new image upload fails
+    const previousAvatarSrc = avatarPreviewSrc;
 
-    const formData = new FormData();
+    // Preparing to upload new avatar image
+    const previewUrl = URL.createObjectURL(file);
 
-    formData.append("avatar", file);
+    setIsUploadingAvatar(true);
+    setErrors((prev) => ({ ...prev, avatar: "" }));
 
-    submit(formData, {
-      method: "patch",
-      action: "/profile/avatar",
-      encType: "multipart/form-data",
-    });
+    // TODO adjust to accomodate for admins/ambassadors changing users avatars
+    try {
+      const [avatar] = await resolveImages([file], "user"); // { url, publicId }
+      console.log(avatar[0]);
+      const { data } = await updateMe({ avatar });
+      updateUser(data.data); // keep auth context in sync
+      setAvatarPreviewSrc(avatar.url); // update state
+    } catch (err) {
+      console.log(err);
+      setAvatarPreviewSrc(previousAvatarSrc); // roll back the preview
+      setErrors((prev) => ({ ...prev, avatar: err.message }));
+    } finally {
+      URL.revokeObjectURL(previewUrl);
+      setIsUploadingAvatar(false);
+    }
   }
 
   return (
     <StyledProfileHeader>
-      <Row>
-        <Image src={avatarPreview} $width="100%" $height="auto" />
+      <Row $gap="var(--gap-md)">
+        <ImageContainer>
+          {isUploadingAvatar ? (
+            <SpinnerMini />
+          ) : (
+            <Image src={avatarPreviewSrc} $width="100%" $height="auto" />
+          )}
+        </ImageContainer>
 
         <HiddenInput
           ref={fileInputRef}
@@ -222,13 +261,19 @@ const ProfileHeader = function ({ user, title }) {
           onChange={handleAvatarChange}
         />
 
-        <Button
-          $variation="yellow"
-          $size="small"
-          onClick={() => fileInputRef.current.click()}
-        >
-          Change Avatar
-        </Button>
+        <Row $gap="var(--gap-xs)">
+          <Button
+            $variation={isUploadingAvatar ? "darkYellow" : "yellow"}
+            $size="small"
+            onClick={() => fileInputRef.current.click()}
+            disabled={isUploadingAvatar}
+          >
+            {isUploadingAvatar ? "Uploading..." : "Change Avatar"}
+          </Button>
+          {errors?.avatar && (
+            <Bold $color="var(--color-light-0)">{errors?.avatar}</Bold>
+          )}
+        </Row>
       </Row>
 
       <Row $gap="var(--gap-sm)">

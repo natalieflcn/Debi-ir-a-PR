@@ -7,8 +7,8 @@
 - React.js
   - React Router
   - React Icons
-  - React Query ?
-- Auth.js
+  - React Query
+  - React Form
 - Styled Components
 - Node.js
 - Express

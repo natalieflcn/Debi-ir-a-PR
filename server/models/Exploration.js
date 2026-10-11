@@ -50,7 +50,7 @@ const explorationSchema = new mongoose.Schema(
       default: [],
     },
     headerImage: {
-      type: [String],
+      type: { url: String },
       default: [],
       validate: {
         validator: function (value) {
@@ -93,7 +93,7 @@ const explorationSchema = new mongoose.Schema(
       ],
     },
     numStops: { type: Number },
-    images: { type: [String], default: [] },
+    images: { type: [{ url: String }], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

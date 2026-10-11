@@ -596,16 +596,16 @@
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
 
 - [~] **PHASE 6:** Advanced Features
-  - [~] Google Maps API to render locations
-    - [~] Google Maps API
+  - [x] Google Maps API to render locations
+    - [x] Google Maps API
       - [x] Render Map Marker for Location
         - [x] Save confirmed lat/lng in database
         - [x] Frontend reads stored coordinates
         - [x] Displays the pin on a map
-      - [ ] Rendering Map Markers for Exploration
+      - [x] Rendering Map Markers for Exploration
 
   - [~] Image Uploads (Multer + Cloudinary)
-    - [ ] User prompted to crop image on front-end
+    - [ ] User prompted to crop image on front-end?
     - [ ] Front-end sends image to Express backend
     - [ ] Multer catches incoming image on the server
     - [ ] Multer validates size of image or extension
@@ -616,6 +616,7 @@
     - [ ] Sample explorers completing explorations, simulating real exploration progress
   - Aggregating Data for Dashboard Analytics
   - Automated Emails
-  - Polish up mobile responsiveness
+  - Reinforce mobile responsiveness
+  - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

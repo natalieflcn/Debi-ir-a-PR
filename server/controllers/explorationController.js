@@ -18,6 +18,12 @@ exports.createExploration = factory.createOne(Exploration, (req) => ({
   createdBy: req.user.id,
 }));
 
+exports.getNewExplorationId = (req, res) => {
+  res.status(200).json({
+    status: "success",
+    data: { id: new mongoose.Types.ObjectId().toString() },
+  });
+};
 // exports.updateExploration = factory.updateOne(Exploration);
 
 exports.updateExploration = catchAsync(async (req, res, next) => {
