@@ -70,7 +70,7 @@ function ExplorationCard({
         </Button>
       </RouterLink>
       <StyledExplorationCard $cardShadow="outsetLG">
-        <ExplorationCardHeaderImage $image={exploration.headerImage}>
+        <ExplorationCardHeaderImage $image={exploration.headerImage[0]?.url}>
           <ExplorationCardHeaderDetails $gap="var(--gap-lg)">
             <ExplorationCardHeading
               as="h2"
@@ -157,7 +157,7 @@ function ExplorationCard({
             $gap="var(--gap-md)"
           >
             {exploration.images.map((image, i) => (
-              <Image src={image} $align="center" key={i} $width="30%" />
+              <Image src={image.url} $align="center" key={i} $width="30%" />
             ))}
           </ExplorationImagesRow>
 

@@ -27,7 +27,7 @@ const StyledExplorationCard = styled(Card)`
 `;
 
 const ExplorationCardBackground = styled.div`
-  background-image: url("/src/assets/images/content/TEMP.png");
+  background-image: ${({ $image }) => `url(${$image})`};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -77,7 +77,7 @@ const ExplorationDescription = styled.p`
 function ExplorationMiniCard({ exploration, city, buttonDetails }) {
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
-      <ExplorationCardBackground>
+      <ExplorationCardBackground $image={exploration.headerImage[0]?.url}>
         <ExplorationCardHeading
           as="h3"
           $color="var(--color-red-200)"
