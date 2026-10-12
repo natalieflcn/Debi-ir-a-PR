@@ -3,6 +3,7 @@ const slugify = require("slugify");
 const constants = require("../utils/constants");
 const locationSchema = require("./Location");
 const badgeSchema = require("./Badge");
+const imageSchema = require("./Image");
 
 const explorationSchema = new mongoose.Schema(
   {
@@ -50,7 +51,7 @@ const explorationSchema = new mongoose.Schema(
       default: [],
     },
     headerImage: {
-      type: { url: String, publicId: String },
+      type: [imageSchema],
       default: [],
       validate: {
         validator: function (value) {
@@ -58,6 +59,7 @@ const explorationSchema = new mongoose.Schema(
         },
         message: "An exploration can only have one header image.",
       },
+
       // required: [true, "A header image is required."],
     },
     // numStops: { type: Number },
@@ -93,7 +95,7 @@ const explorationSchema = new mongoose.Schema(
       ],
     },
     numStops: { type: Number },
-    images: { type: [{ url: String }], default: [] },
+    images: { type: [imageSchema], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

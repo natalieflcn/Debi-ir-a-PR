@@ -604,11 +604,14 @@
         - [x] Displays the pin on a map
       - [x] Rendering Map Markers for Exploration
 
-  - [~] Image Uploads (Multer + Cloudinary)
-    - [ ] User uploading their own profile picture
-    - [ ] Admin/Ambassador editing user profile picture
+  - [~] Image Uploads (Cloudinary)
+    - [x] User uploading their own profile picture
+    - [x] Admin/Ambassador editing user profile picture
     - [ ] Uploading exploration photos
     - [ ] Uploading location photos
+    - [ ] Deleting photos upon Editing
+      - [ ] Deleting exploration photos
+      - [ ] Deleting location photos
   - Create real data
     - [ ] Explorations
     - [ ] Locations

@@ -226,7 +226,9 @@ const ProfileHeader = function ({ user, title }) {
 
     // TODO adjust to accomodate for admins/ambassadors changing users avatars
     try {
-      const [avatar] = await resolveImages([file], "user"); // { url, publicId }
+      const [avatar] = isMyProfile
+        ? await resolveImages([file], "myUser")
+        : await resolveImages([file], "otherUser", user._id); // { url, publicId }
 
       const { data } = isMyProfile
         ? await updateMe({ avatar })

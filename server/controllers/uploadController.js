@@ -33,23 +33,20 @@ const buildSignature = function (folder, options) {
 };
 
 exports.signExplorationUpload = catchAsync(async (req, res, next) => {
-  const { explorationId } = req.params;
-
   // Making sure the explorationId is a valid mongoDB object
-  if (!mongoose.isValidObjectId(explorationId))
-    return next(new AppError("Invalid exploration.", 400));
+  //   if (!mongoose.isValidObjectId(explorationId))
+  //     return next(new AppError("Invalid exploration.", 400));
 
   res.status(200).json({
     status: "success",
-    data: buildSignature(`explorations/${explorationId}`, {
-      public_id: req.params.explorationId,
-    }),
+    data: buildSignature(`explorations`),
   });
 });
 
 exports.signUserUpload = (req, res) => {
-  const userId = req.body.userId ?? req.user.id;
+  const userId = req.params.userId ?? req.user.id;
 
+  console.log("SIGNUSERUPLOAD", userId);
   res.status(200).json({
     status: "success",
     data: buildSignature(`users`, { public_id: userId, overwrite: true }),

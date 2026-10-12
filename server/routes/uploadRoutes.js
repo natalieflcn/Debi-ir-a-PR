@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(authController.protect);
 
 router.post(
-  "/exploration-signature/:explorationId",
+  "/exploration-signature",
   authController.restrictTo("admin", "ambassador"),
   uploadController.signExplorationUpload,
 );

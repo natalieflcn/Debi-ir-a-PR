@@ -25,6 +25,8 @@ import FeaturedFormToggle from "../../../shared/components/form/FeaturedFormTogg
 import BadgeBuilder from "../../../shared/components/form/BadgeBuilder";
 
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
+import { resolveImages } from "../../../services/uploads";
+import UploadingModal from "../../../shared/components/modal/UploadingModal";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -54,6 +56,7 @@ function CreateExplorationCard({ exploration }) {
     setError,
     clearErrors,
     isSubmitted,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -69,23 +72,59 @@ function CreateExplorationCard({ exploration }) {
     },
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isUploadingModalOpen, setIsUploadingModalOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
   const navigate = useNavigate();
   const { user } = useAuth();
 
+  // Handle Form Submit
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
 
-    const submissionData = {
-      ...formData,
-      ...(isEditing && { _id: exploration._id }),
-    };
-
     console.log("CREATE EXPLORATION CARD");
-    console.log(submissionData);
+    // console.log(submissionData);
 
+    console.log(formData);
     try {
+      setIsUploading(true);
+      setIsUploadingModalOpen(true);
+      // Uploading image files to Cloudinary
+      const headerImage = await resolveImages(
+        formData.headerImage,
+        "exploration",
+      );
+      setValue("headerImage", { ...headerImage });
+      console.log(getValues("headerImage"));
+
+      const images = await resolveImages(formData.images, "exploration");
+      setValue("images", images);
+      console.log(getValues("images"));
+
+      // TODO upload files inside of each location
+      const locations = [];
+      for (const loc of formData.locations) {
+        locations.push({
+          ...loc,
+          headerImage: await resolveImages(loc.headerImage, "exploration"),
+          images: await resolveImages(loc.images, "exploration"),
+        });
+      }
+      setValue("locations", locations);
+      console.log(getValues("locations"));
+
+      setIsUploading(false);
+
+      const submissionData = {
+        ...formData,
+        headerImage,
+        images,
+        locations,
+        ...(isEditing && { _id: exploration._id }),
+      };
+
+      // Keep uploaded files in the form, so if save fails, the files are not uploaded again
       const { data } = isEditing
         ? await updateExploration(submissionData)
         : await createExploration(submissionData);
@@ -105,6 +144,7 @@ function CreateExplorationCard({ exploration }) {
     }
   };
 
+  // Handle Delete
   const handleConfirmDelete = async function () {
     await deleteExploration(exploration._id);
   };
@@ -268,7 +308,6 @@ function CreateExplorationCard({ exploration }) {
                   render={({ field }) => (
                     <ImageUploader
                       name="images"
-                      maxImages={3}
                       value={field.value}
                       onChange={field.onChange}
                     />
@@ -451,8 +490,9 @@ function CreateExplorationCard({ exploration }) {
                   $size="medium"
                   type="button"
                   onClick={() => {
-                    setIsModalOpen(true);
+                    setIsDeleteModalOpen(true);
                   }}
+                  disabled={isSubmitting}
                 >
                   Delete Exploration
                 </Button>
@@ -469,12 +509,20 @@ function CreateExplorationCard({ exploration }) {
         </AppForm>
       </Row>
 
-      {isModalOpen && (
+      {isDeleteModalOpen && (
         <DeleteConfirmationModal
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => setIsDeleteModalOpen(false)}
           onConfirmDelete={handleConfirmDelete}
           onSuccess={handleDeleteSuccess}
           options={handleDeleteOptions}
+        />
+      )}
+
+      {isUploadingModalOpen && (
+        <UploadingModal
+          isUploading={isUploading}
+          isSubmitting={isSubmitting}
+          name={getValues("name")}
         />
       )}
     </>

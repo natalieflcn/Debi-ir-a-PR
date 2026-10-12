@@ -2,11 +2,22 @@ import { apiFetch } from "./utils/apiFetch";
 
 const SIGNATURE_ROUTES = {
   exploration: "/uploads/exploration-signature",
-  user: "/uploads/user-signature",
+  myUser: "/uploads/user-signature",
+  otherUser: "/uploads/user-signature",
 };
 
-async function uploadFiles(files, type) {
-  const { data } = await apiFetch(SIGNATURE_ROUTES[type], { method: "POST" });
+async function uploadFiles(files, type, id) {
+  if (files.length === 0) return [];
+
+  console.log("UPLOAD FILES ID");
+  console.log(files, type, id);
+  console.log(`${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`);
+  const { data } = await apiFetch(
+    `${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`,
+    {
+      method: "POST",
+    },
+  );
   const signature = data; // adjust to your envelope
 
   const uploadOne = async (file) => {
@@ -48,10 +59,10 @@ async function uploadFiles(files, type) {
 
 // Takes a mix of File objects and already-uploaded images,
 // uploads only the new ones, and keeps the original order.
-export async function resolveImages(items = [], type) {
+export async function resolveImages(items = [], type, id) {
   const files = items.filter((item) => item instanceof File);
 
-  const uploaded = await uploadFiles(files, type);
+  const uploaded = await uploadFiles(files, type, id);
 
   let next = 0;
   return items.map((item) => (item instanceof File ? uploaded[next++] : item));

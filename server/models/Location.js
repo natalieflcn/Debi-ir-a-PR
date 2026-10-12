@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 const constants = require("../utils/constants");
+const imageSchema = require("./Image");
 
 const locationSchema = new mongoose.Schema({
   slug: { type: String },
@@ -45,7 +46,8 @@ const locationSchema = new mongoose.Schema({
     required: [true, "A location description is required."],
   },
   headerImage: {
-    type: { url: String },
+    type: [imageSchema],
+
     // required: [true, "A location header image is required."],
     validate: {
       validator: function (value) {
@@ -54,7 +56,11 @@ const locationSchema = new mongoose.Schema({
       message: "A location can only have one header image.",
     },
   },
-  images: { type: [{ url: String, publicId: String }], default: [] },
+  images: {
+    type: [imageSchema],
+
+    default: [],
+  },
   tags: {
     type: [String],
     enum: constants.LOCATION_TAGS,

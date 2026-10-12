@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 import Image from "../ui/Image";
 import Input from "../form/Input";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 const StyledFileInput = styled.input`
   position: relative;
@@ -44,48 +45,72 @@ const UploadButton = styled(Button)`
 function ImageUploader({
   name,
   multiple = true,
-  maxImages = 3,
+  maxImages = 10,
   value = [],
   onChange,
 }) {
   // const [value, setPreviews] = useState([]);
 
   const inputRef = useRef(null);
+  const objectUrls = useRef(new Map()); // File -> blob URL
 
-  const previews = value.map((item) => {
+  // Normalize: handles [], a single object, a legacy string, or null
+  const items = Array.isArray(value) ? value : value ? [value] : [];
+
+  function getPreviewUrl(item) {
     if (item instanceof File) {
-      return {
-        id: `img_${crypto.randomUUID()}`,
-        url: URL.createObjectURL(item),
-        name: item.name,
-      };
+      if (!objectUrls.current.has(item))
+        objectUrls.current.set(item, URL.createObjectURL(item));
+      return objectUrls.current.get(item);
     }
-    // handles strings (headerImage) and objects with imageURL (images array)
-    const url = typeof item === "string" ? item : item.imageURL;
-    return {
-      id: `img_${crypto.randomUUID()}`,
-      url,
-      name: url,
+    return typeof item === "string" ? item : item.url;
+  }
+
+  function getKey(item, index) {
+    if (item instanceof File)
+      return `${item.name}-${item.size}-${item.lastModified}`;
+    return typeof item === "string"
+      ? item
+      : (item.publicId ?? item.url ?? index);
+  }
+
+  // Revoke blob URLs for files that were removed or replaced by uploaded results
+  useEffect(() => {
+    const current = new Set(items.filter((item) => item instanceof File));
+    for (const [file, url] of objectUrls.current) {
+      if (!current.has(file)) {
+        URL.revokeObjectURL(url);
+        objectUrls.current.delete(file);
+      }
+    }
+  }, [items]);
+
+  // Revoke everything on unmount
+  useEffect(() => {
+    const urls = objectUrls.current;
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url));
+      urls.clear();
     };
-  });
+  }, []);
 
   function handleFileChange(e) {
-    const files = Array.from(e.target.files);
-    const slotsRemaining = maxImages - value.length;
+    const files = Array.from(e.target.files).filter(
+      (f) => f.type.startsWith("image/") && f.size <= 5 * 1024 * 1024,
+    );
+    e.target.value = ""; // lets the user pick the same file again
 
-    if (slotsRemaining <= 0) {
-      alert(`Maximum of ${maxImages} images allowed`);
-      return;
-    }
+    const slotsRemaining = maxImages - items.length;
+    if (slotsRemaining <= 0) return;
 
-    const acceptedFiles = files.slice(0, slotsRemaining);
-
-    onChange([...value, ...acceptedFiles]);
+    onChange([...items, ...files.slice(0, slotsRemaining)]);
   }
 
-  function handleDelete(fileName) {
-    onChange(value.filter((file) => file.name !== fileName));
+  function handleDelete(index) {
+    onChange(items.filter((_, i) => i !== index));
   }
+
+  const isFull = items.length >= maxImages;
 
   return (
     <InputWrapper>
@@ -102,21 +127,21 @@ function ImageUploader({
         <UploadButton
           type="button"
           onClick={() => inputRef.current.click()}
-          disabled={value.length >= maxImages}
+          disabled={isFull}
           $size="small"
-          $variation={value.length === maxImages ? "darkRed" : "primary"}
-          $limitReached={value.length === maxImages}
+          $variation={isFull ? "darkRed" : "primary"}
+          $limitReached={isFull}
         >
-          {value.length === maxImages ? "Limit Reached" : "Upload Images"} (
-          {value.length}/{maxImages})
+          {isFull ? "Limit Reached" : "Upload Images"} ({items.length}/
+          {maxImages})
         </UploadButton>
 
-        {previews.length > 0 && (
+        {items.length > 0 && (
           <ImagesRow $direction="horizontal" $gap="var(--gap-md)">
-            {previews.map((preview) => (
-              <Row $gap="var(--gap-sm)" key={preview.id}>
+            {items.map((item, index) => (
+              <Row $gap="var(--gap-sm)" key={getKey(item, index)}>
                 <Image
-                  src={preview.url}
+                  src={getPreviewUrl(item)}
                   $width="7rem"
                   $height="7rem"
                   $objectFit="cover"
@@ -125,7 +150,7 @@ function ImageUploader({
                   type="button"
                   $variation="darkRed"
                   $size="extraSmall"
-                  onClick={() => handleDelete(preview.name)}
+                  onClick={() => handleDelete(index)}
                 >
                   Delete
                 </Button>

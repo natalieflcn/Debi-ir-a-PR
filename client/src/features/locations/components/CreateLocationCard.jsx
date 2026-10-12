@@ -183,6 +183,55 @@ function CreateLocationCard({
             </StyledRow>
           </FormField>
 
+          <FormField label="Description">
+            <StyledTextAreaRow $gap="var(--gap-xs)">
+              <TextArea
+                name="description"
+                id="description"
+                placeholder="The description displayed beside the location"
+                {...register("description", {
+                  required: "A location description is required.",
+                  minLength: {
+                    value: 50,
+                    message:
+                      "A location description must have more than 50 characters.",
+                  },
+                  maxLength: {
+                    value: 1000,
+                    message:
+                      "A location description must have less than 1000 characters.",
+                  },
+                })}
+              />
+              {errors?.description?.message && (
+                <Bold>{errors?.description?.message}</Bold>
+              )}
+            </StyledTextAreaRow>
+          </FormField>
+
+          <FormField label="Header Image">
+            <StyledRow $gap="var(--gap-xs)">
+              <Controller
+                name="headerImage"
+                control={control}
+                rules={{}}
+                render={({ field }) => (
+                  <ImageUploader
+                    name="headerImage"
+                    multiple={false}
+                    maxImages={1}
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
+
+              {errors?.headerImage?.message && (
+                <Bold>{errors?.headerImage?.message}</Bold>
+              )}
+            </StyledRow>
+          </FormField>
+
           <FormField label="Street">
             <StyledRow $gap="var(--gap-xs)">
               <Input
@@ -288,55 +337,6 @@ function CreateLocationCard({
             </StyledRow>
           </FormField>
 
-          <FormField label="Header Image">
-            <StyledRow $gap="var(--gap-xs)">
-              <Controller
-                name="headerImage"
-                control={control}
-                rules={{}}
-                render={({ field }) => (
-                  <ImageUploader
-                    name="headerImage"
-                    multiple={false}
-                    maxImages={1}
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                )}
-              />
-
-              {errors?.headerImage?.message && (
-                <Bold>{errors?.headerImage?.message}</Bold>
-              )}
-            </StyledRow>
-          </FormField>
-
-          <FormField label="Description">
-            <StyledTextAreaRow $gap="var(--gap-xs)">
-              <TextArea
-                name="description"
-                id="description"
-                placeholder="The description displayed beside the location"
-                {...register("description", {
-                  required: "A location description is required.",
-                  minLength: {
-                    value: 50,
-                    message:
-                      "A location description must have more than 50 characters.",
-                  },
-                  maxLength: {
-                    value: 1000,
-                    message:
-                      "A location description must have less than 1000 characters.",
-                  },
-                })}
-              />
-              {errors?.description?.message && (
-                <Bold>{errors?.description?.message}</Bold>
-              )}
-            </StyledTextAreaRow>
-          </FormField>
-
           <FormField label="Images">
             <StyledRow $gap="var(--gap-xs)">
               <Controller
@@ -347,7 +347,6 @@ function CreateLocationCard({
                   <ImageUploader
                     name="images"
                     multiple={true}
-                    maxImages={3}
                     value={field.value}
                     onChange={field.onChange}
                   />

@@ -4,6 +4,7 @@ const helpers = require("../utils/helpers");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const ExplorationProgress = require("../models/ExplorationProgress");
+const imageSchema = require("./Image");
 
 // Schema Definition
 const userSchema = new mongoose.Schema(
@@ -53,7 +54,7 @@ const userSchema = new mongoose.Schema(
         else return helpers.capitalize(this.role);
       },
     },
-    avatar: { type: { url: String, publicId: String }, trim: true },
+    avatar: { type: imageSchema },
 
     passwordChangedAt: Date,
     passwordResetToken: String,
