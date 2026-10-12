@@ -24,6 +24,8 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 
 import MapBuilder from "../../../shared/components/map/MapBuilder";
 import LocationMap from "../../../shared/components/map/LocationMap";
+import { resolveImages } from "../../../services/uploads";
+import UploadingModal from "../../../shared/components/modal/UploadingModal";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -55,6 +57,7 @@ function CreateLocationCard({
     clearErrors,
     trigger,
     getValues,
+    setValue,
     formState: { errors, isSubmitting, isSubmitted },
   } = useForm({
     defaultValues: {
@@ -72,6 +75,9 @@ function CreateLocationCard({
   //   const [pendingAddress, setPendingAddress] = useState(null);
   //   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingModalOpen, setIsUploadingModalOpen] = useState(false);
+
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -85,10 +91,32 @@ function CreateLocationCard({
   // HANDLING SUBMIT FUNCTIONS
   // Default Submit Function (if onSubmit, onSuccess functions not passed down via props)
   const defaultSubmit = async function (formData) {
+    setIsUploading(true);
+    setIsUploadingModalOpen(true);
+
+    const headerImage = await resolveImages(
+      formData.headerImage,
+      "exploration",
+    );
+    setValue("headerImage", { ...headerImage });
+    console.log(getValues("headerImage"));
+
+    const images = await resolveImages(formData.images, "exploration");
+    setValue("images", images);
+    console.log(getValues("images"));
+
+    setIsUploading(false);
+
+    const submissionData = {
+      ...formData,
+      headerImage,
+      images,
+    };
+
     const { data } = await updateExplorationLocation(
       exploration.slug,
       location.slug,
-      formData,
+      submissionData,
     );
 
     const updatedLocation = data.data;
@@ -101,6 +129,7 @@ function CreateLocationCard({
   // Intentional submit function that runs either default submit function or onSubmit/onSuccess passed down via props
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
+    console.log(Object.entries(formData));
 
     try {
       if (onSubmit) {
@@ -413,6 +442,14 @@ function CreateLocationCard({
           onConfirmDelete={onConfirmDelete || handleDefaultConfirmDelete}
           onSuccess={onDeleteSuccess || handleDefaultDeleteSuccess}
           options={handleDeleteOptions}
+        />
+      )}
+
+      {isUploadingModalOpen && (
+        <UploadingModal
+          isUploading={isUploading}
+          isSubmitting={isSubmitting}
+          name={getValues("name")}
         />
       )}
     </>

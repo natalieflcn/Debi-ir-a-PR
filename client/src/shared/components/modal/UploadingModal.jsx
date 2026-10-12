@@ -6,7 +6,7 @@ import SmallText from "../typography/SmallText";
 import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
 
-function UploadingModal({ name, isUploading, isSubmitting }) {
+function UploadingModal({ isUploading, isSubmitting }) {
   console.log("running uploadingmodal");
   return (
     <Modal>
@@ -36,7 +36,7 @@ function UploadingModal({ name, isUploading, isSubmitting }) {
         {!isSubmitting && (
           <>
             <Bold>Save Complete!</Bold>
-            <SmallText>Redirecting you to {name}...</SmallText>
+            <SmallText>Redirecting you...</SmallText>
           </>
         )}
       </Row>
