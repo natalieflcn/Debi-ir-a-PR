@@ -67,6 +67,7 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
   // Retrieving Exploration and related documents
   const exploration = await Exploration.findOne({ _id: req.params.id });
 
+  console.log("deleting exploration");
   if (!exploration)
     return next(new AppError("No exploration found with that ID", 404));
 

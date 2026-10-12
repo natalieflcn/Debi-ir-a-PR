@@ -61,7 +61,7 @@ function ExplorationLocationCard({
       </RouterLink>
 
       <StyledExplorationLocation $cardShadow="outsetLG">
-        <ExplorationLocationHeaderImage $image={location?.headerImage}>
+        <ExplorationLocationHeaderImage $image={location?.headerImage[0]?.url}>
           <ExplorationLocationHeaderDetails>
             <Row $gap="var(--gap-sm)">
               <ExplorationLocationHeading as="h2" $color="var(--color-red-300)">
@@ -116,7 +116,7 @@ function ExplorationLocationCard({
           </StyledRow>
           <StyledRow $direction="horizontal">
             {location.images.map((image, i) => (
-              <Image src={image} $align="center" $width="30%" key={i} />
+              <Image src={image?.url} $align="center" $width="30%" key={i} />
             ))}
           </StyledRow>
 

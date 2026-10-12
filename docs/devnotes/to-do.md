@@ -592,7 +592,7 @@
 
 - [~] Trivial Tasks
   - [ ] LOW: Keep being redirected to Login page before AuthContext can retrieve /me
-  - [ ] LOW: Center Exploration images... potentially make slideshow for more than three images?
+  - [ ] TODO: Center Exploration images... potentially make slideshow for more than three images?
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
 
 - [~] **PHASE 6:** Advanced Features
@@ -604,14 +604,11 @@
         - [x] Displays the pin on a map
       - [x] Rendering Map Markers for Exploration
 
-  - [~] Image Uploads (Cloudinary)
+  - [x] Image Uploads (Cloudinary)
     - [x] User uploading their own profile picture
     - [x] Admin/Ambassador editing user profile picture
-    - [ ] Uploading exploration photos
-    - [ ] Uploading location photos
-    - [ ] Deleting photos upon Editing
-      - [ ] Deleting exploration photos
-      - [ ] Deleting location photos
+    - [x] Uploading exploration photos
+    - [x] Uploading location photos
   - Create real data
     - [ ] Explorations
     - [ ] Locations

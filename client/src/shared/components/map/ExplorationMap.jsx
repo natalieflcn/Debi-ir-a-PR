@@ -9,8 +9,9 @@ const StyledMap = styled.div`
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
 function calculateMapBounds(coordinates) {
-  const lats = coordinates.map((coord) => coord.location.lat);
-  const lngs = coordinates.map((coord) => coord.location.lng);
+  if (!coordinates.location) return null;
+  const lats = coordinates.map((coord) => coord.location?.lat);
+  const lngs = coordinates.map((coord) => coord.location?.lng);
 
   return {
     north: Math.max(...lats),
@@ -25,23 +26,28 @@ function ExplorationMap({
 
   height = 350,
 }) {
-  if (!coordinates?.length) return null;
+  const filteredCoordinates = coordinates.filter((coord) => coord != null);
+  console.log(filteredCoordinates);
 
-  const isSingle = coordinates.length === 1;
+  if (filteredCoordinates.length === 0) return null;
+  const isSingle = filteredCoordinates.length === 1;
 
   return (
     <>
-      {coordinates && (
+      {filteredCoordinates && (
         <StyledMap $height={height}>
           <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
             <Map
               mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
               defaultZoom={15}
               {...(isSingle
-                ? { defaultCenter: coordinates[0].location, defaultZoom: 15 }
+                ? {
+                    defaultCenter: filteredCoordinates[0].location,
+                    defaultZoom: 15,
+                  }
                 : {
                     defaultBounds: {
-                      ...calculateMapBounds(coordinates),
+                      ...calculateMapBounds(filteredCoordinates),
                       padding: 60,
                     },
                   })}
@@ -50,15 +56,19 @@ function ExplorationMap({
               gestureHandling={isSingle ? "cooperative" : "greedy"}
               disableDefaultUI
               restriction={{ latLngBounds: PR_BOUNDS, strictBounds: true }}
-              key={coordinates
+              key={filteredCoordinates
                 .map((coord) => `${coord.location.lat},${coord.location.lng}`)
                 .join("|")}
             >
-              {coordinates.map((loc, i) => (
-                <AdvancedMarker key={i} position={loc.location}>
-                  <CustomPin />
-                </AdvancedMarker>
-              ))}
+              {filteredCoordinates.map((loc, i) => {
+                if (!loc?.location) return null;
+
+                return (
+                  <AdvancedMarker key={i} position={loc?.location}>
+                    <CustomPin />
+                  </AdvancedMarker>
+                );
+              })}
             </Map>
           </APIProvider>
         </StyledMap>
