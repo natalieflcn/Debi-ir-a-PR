@@ -22,7 +22,7 @@ import {
   StyledExplorationCard,
   StyledHeaderDetailsRow,
 } from "../../explorations/components/explorationCard.styles";
-
+import { Carousel } from "nuka-carousel";
 import {
   ExplorationLocationTag,
   TagCollection,
@@ -151,15 +151,32 @@ function ExplorationCard({
 
           <ExplorationMap coordinates={coordinates} />
 
-          <ExplorationImagesRow
+          {/* <ExplorationImagesRow
             $direction="horizontal"
             $wrap="wrap"
+            $align="center"
             $gap="var(--gap-md)"
           >
+            {" "} */}
+          <Carousel
+            autoplay
+            showDots
+            showArrows="hover"
+            autoPlay={true}
+            autoplayInterval={4000}
+            wrapMode="wrap"
+          >
             {exploration.images.map((image, i) => (
-              <Image src={image.url} $align="center" key={i} $width="30%" />
+              <Image
+                src={image?.url}
+                $align="center"
+                $width="100%"
+                $height="23rem"
+                key={i}
+              />
             ))}
-          </ExplorationImagesRow>
+          </Carousel>
+          {/* </ExplorationImagesRow> */}
 
           {footerCTA}
         </ExplorationCardBody>

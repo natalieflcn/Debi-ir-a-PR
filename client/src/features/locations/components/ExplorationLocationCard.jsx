@@ -5,6 +5,7 @@ import Bold from "../../../shared/components/typography/Bold";
 import Heading from "../../../shared/components/typography/Heading";
 import Button from "../../../shared/components/ui/Button";
 import Image from "../../../shared/components/ui/Image";
+import { Carousel } from "nuka-carousel";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
 import {
   ExplorationLocationAbout,
@@ -114,11 +115,25 @@ function ExplorationLocationCard({
               <LocationMap coordinates={location.map.coordinates} />
             )}
           </StyledRow>
-          <StyledRow $direction="horizontal">
+
+          <Carousel
+            autoplay
+            showDots
+            showArrows="hover"
+            autoPlay={true}
+            autoplayInterval={4000}
+            wrapMode="wrap"
+          >
             {location.images.map((image, i) => (
-              <Image src={image?.url} $align="center" $width="30%" key={i} />
+              <Image
+                src={image?.url}
+                $align="center"
+                $width="100%"
+                $height="23rem"
+                key={i}
+              />
             ))}
-          </StyledRow>
+          </Carousel>
 
           <ExplorationLocationFooter $cardColor="var(--color-light-100)">
             {footerCTA}
