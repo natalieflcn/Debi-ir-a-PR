@@ -151,7 +151,12 @@ function ImageUploader({
         </Row>
 
         {items.length > 0 && (
-          <ImagesRow $direction="horizontal" $gap="var(--gap-md)">
+          <ImagesRow
+            $direction="horizontal"
+            $gap="var(--gap-lg)"
+            $wrap="wrap"
+            $align="start"
+          >
             {items.map((item, index) => (
               <Row $gap="var(--gap-sm)" key={getKey(item, index)}>
                 <Image

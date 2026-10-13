@@ -90,13 +90,13 @@ function CreateExplorationCard({ exploration }) {
     try {
       setIsUploading(true);
       setIsUploadingModalOpen(true);
-      setIsUploadingError("");
+
       // Uploading image files to Cloudinary
       const headerImage = await resolveImages(
         formData.headerImage,
         "exploration",
       );
-      setValue("headerImage", { ...headerImage });
+      setValue("headerImage", headerImage);
       console.log(getValues("headerImage"));
 
       const images = await resolveImages(formData.images, "exploration");

@@ -9,10 +9,18 @@ const StyledMap = styled.div`
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
 function calculateMapBounds(coordinates) {
-  if (!coordinates.location) return null;
+  console.log(coordinates);
+  if (!coordinates?.length) return null;
+
   const lats = coordinates.map((coord) => coord.location?.lat);
   const lngs = coordinates.map((coord) => coord.location?.lng);
 
+  console.log(
+    Math.max(...lats),
+    Math.min(...lats),
+    Math.max(...lngs),
+    Math.min(...lngs),
+  );
   return {
     north: Math.max(...lats),
     south: Math.min(...lats),
@@ -24,9 +32,10 @@ function calculateMapBounds(coordinates) {
 function ExplorationMap({
   coordinates,
 
-  height = 350,
+  height = 550,
 }) {
   const filteredCoordinates = coordinates.filter((coord) => coord != null);
+  console.log(filteredCoordinates);
 
   if (filteredCoordinates.length === 0) return null;
   const isSingle = filteredCoordinates.length === 1;
@@ -50,7 +59,7 @@ function ExplorationMap({
                       padding: 60,
                     },
                   })}
-              minZoom={12}
+              // minZoom={}
               maxZoom={17}
               gestureHandling={isSingle ? "cooperative" : "greedy"}
               disableDefaultUI

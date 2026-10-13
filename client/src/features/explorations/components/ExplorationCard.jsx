@@ -22,7 +22,7 @@ import {
   StyledExplorationCard,
   StyledHeaderDetailsRow,
 } from "../../explorations/components/explorationCard.styles";
-import { Carousel } from "nuka-carousel";
+// import { Carousel } from "nuka-carousel";
 import {
   ExplorationLocationTag,
   TagCollection,
@@ -32,6 +32,7 @@ import { capitalize } from "../../../shared/utils/helpers";
 import { startExploration } from "../../../services/explorationProgress";
 import Spinner from "../../../shared/components/ui/Spinner";
 import ExplorationMap from "../../../shared/components/map/ExplorationMap";
+import Carousel from "../../../shared/components/ui/Carousel";
 
 function ExplorationCard({
   exploration,
@@ -149,7 +150,7 @@ function ExplorationCard({
             </ExplorationCardLocations>
           </ExplorationDetailsRow>
 
-          <ExplorationMap coordinates={coordinates} />
+          {/* <ExplorationMap coordinates={coordinates} /> */}
 
           {/* <ExplorationImagesRow
             $direction="horizontal"
@@ -158,12 +159,12 @@ function ExplorationCard({
             $gap="var(--gap-md)"
           >
             {" "} */}
-          <Carousel
-            autoplay
-            showDots
+          {/* <Carousel
+            // autoplay
+            // showDots
             showArrows="hover"
-            autoPlay={true}
-            autoplayInterval={4000}
+            // autoPlay={true}
+            // autoplayInterval={3000}
             wrapMode="wrap"
           >
             {exploration.images.map((image, i) => (
@@ -172,11 +173,15 @@ function ExplorationCard({
                 $align="center"
                 $width="100%"
                 $height="23rem"
+                $objectFit="cover"
                 key={i}
               />
             ))}
-          </Carousel>
+          </Carousel> */}
+
           {/* </ExplorationImagesRow> */}
+
+          <Carousel images={exploration.images} />
 
           {footerCTA}
         </ExplorationCardBody>

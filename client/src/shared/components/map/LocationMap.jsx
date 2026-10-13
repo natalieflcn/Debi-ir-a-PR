@@ -8,13 +8,20 @@ import styled from "styled-components";
 import CustomPin from "./CustomPin";
 
 const StyledMap = styled.div`
-  height: ${({ $height }) => $height}px;
+  height: ${({ $height }) => $height}rem;
+  /* width: 50%; */
 `;
 
 const PR_START = { lat: 18.379, lng: -66.029 };
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
-function LocationMap({ coordinates, onChange, isAddressReady, height = 350 }) {
+function LocationMap({
+  coordinates,
+  onChange,
+  isAddressReady,
+  width = 30,
+  height = 25,
+}) {
   const editingLocation = Boolean(onChange);
   const canEdit = editingLocation && isAddressReady;
 
@@ -27,7 +34,7 @@ function LocationMap({ coordinates, onChange, isAddressReady, height = 350 }) {
           minZoom={13}
           maxZoom={17}
           defaultCenter={coordinates ?? PR_START}
-          gestureHandling={canEdit ? "greedy" : "none"}
+          gestureHandling={canEdit ? "greedy" : "cooperative"}
           disableDefaultUI
           restriction={{ latLngBounds: PR_BOUNDS, strictBounds: true }}
           key={coordinates ? `${coordinates.lat},${coordinates.lng}` : "empty"}

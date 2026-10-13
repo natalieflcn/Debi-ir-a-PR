@@ -592,7 +592,7 @@
 
 - [~] Trivial Tasks
   - [ ] LOW: Keep being redirected to Login page before AuthContext can retrieve /me
-  - [ ] TODO: Center Exploration images... potentially make slideshow for more than three images?
+  - [x] Use React-Material UI to create slideshow for images
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
 
 - [~] **PHASE 6:** Advanced Features
@@ -609,13 +609,17 @@
     - [x] Admin/Ambassador editing user profile picture
     - [x] Uploading exploration photos
     - [x] Uploading location photos
-  - Create real data
-    - [ ] Explorations
+    - [~] BUG: Handle errors while uploading images
+
+  - [ ] Create real data
+    - [~] Explorations
     - [ ] Locations
     - [ ] Sample explorers completing explorations, simulating real exploration progress
+
   - Aggregating Data for Dashboard Analytics
   - Automated Emails
   - Reinforce mobile responsiveness
+  - Polish all data, complete adding data to explorations
   - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

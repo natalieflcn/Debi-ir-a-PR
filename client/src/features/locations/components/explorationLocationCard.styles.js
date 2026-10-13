@@ -73,9 +73,10 @@ export const ExplorationLocationAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
-
+  width: 60%;
   @media (max-width: 800px) {
     padding: 1rem;
+    width: 100%;
     font-size: var(--font-size-xs);
   }
 `;

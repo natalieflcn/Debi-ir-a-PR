@@ -10,14 +10,14 @@ function UploadingModal({ isUploading, isSubmitting, errors, onClose }) {
   console.log("running uploadingmodal");
 
   function handleClose() {
-    if (!errors) return;
+    if (!errors?.root?.serverError?.message) return;
 
     onClose();
   }
   return (
     <Modal onClose={handleClose}>
       <Row $align="center" $gap="var(--gap-md)">
-        {isUploading && !errors && (
+        {isUploading && !errors?.root?.serverError?.message && (
           <>
             <Bold>Uploading Images...</Bold>
 
@@ -28,25 +28,27 @@ function UploadingModal({ isUploading, isSubmitting, errors, onClose }) {
           </>
         )}
 
-        {!isUploading && isSubmitting && !errors && (
-          <>
-            <Bold>Saving...</Bold>
+        {!isUploading &&
+          isSubmitting &&
+          !errors?.root?.serverError?.message && (
+            <>
+              <Bold>Saving...</Bold>
 
-            <SmallText>
-              Please do not leave this page or your data will be lost.
-            </SmallText>
-            <SpinnerMini />
-          </>
-        )}
+              <SmallText>
+                Please do not leave this page or your data will be lost.
+              </SmallText>
+              <SpinnerMini />
+            </>
+          )}
 
-        {!isSubmitting && !errors && (
+        {!isSubmitting && !errors?.root?.serverError?.message && (
           <>
             <Bold>Save Complete!</Bold>
             <SmallText>Redirecting you...</SmallText>
           </>
         )}
 
-        {!isSubmitting && errors && (
+        {!isSubmitting && errors?.root?.serverError?.message && (
           <>
             <Bold>There was an error.</Bold>
             <SmallText>{errors?.root?.serverError?.message}</SmallText>

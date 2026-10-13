@@ -5,7 +5,6 @@ import Bold from "../../../shared/components/typography/Bold";
 import Heading from "../../../shared/components/typography/Heading";
 import Button from "../../../shared/components/ui/Button";
 import Image from "../../../shared/components/ui/Image";
-import { Carousel } from "nuka-carousel";
 import { FaArrowLeft, FaRegCircle } from "react-icons/fa";
 import {
   ExplorationLocationAbout,
@@ -22,14 +21,24 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
 import styled from "styled-components";
 import LocationMap from "../../../shared/components/map/LocationMap";
+import Carousel from "../../../shared/components/ui/Carousel";
 
 const StyledRow = styled(Row)`
+  width: 100%;
   @media (max-width: 800px) {
     flex-direction: column;
 
     img {
       width: 100%;
     }
+  }
+`;
+
+const MapRow = styled(Row)`
+  width: 70%;
+
+  @media (max-width: 800px) {
+    width: 100%;
   }
 `;
 
@@ -108,32 +117,33 @@ function ExplorationLocationCard({
                 ))}
               </TagCollection>
             </ExplorationLocationAbout>
-            <Image src="/src/assets/images/content/TEMP.png" $width="50%" />
-          </StyledRow>
-          <StyledRow>
-            {location?.map?.coordinates && (
-              <LocationMap coordinates={location.map.coordinates} />
-            )}
+            <MapRow>
+              {/* {location?.map?.coordinates && (
+                <LocationMap coordinates={location.map.coordinates} />
+              )} */}
+            </MapRow>
           </StyledRow>
 
-          <Carousel
-            autoplay
-            showDots
-            showArrows="hover"
+          {/* <Carousel
             autoPlay={true}
-            autoplayInterval={4000}
+            showArrows={true}
             wrapMode="wrap"
+            afterSlide={(slide) => console.log(slide)}
           >
-            {location.images.map((image, i) => (
+            {location.images.slice(0, 3).map((image, i) => (
               <Image
                 src={image?.url}
                 $align="center"
                 $width="100%"
                 $height="23rem"
+                $objectFit="cover"
                 key={i}
+                $borderRadius="none"
               />
             ))}
-          </Carousel>
+          </Carousel> */}
+
+          <Carousel images={location.images} />
 
           <ExplorationLocationFooter $cardColor="var(--color-light-100)">
             {footerCTA}
