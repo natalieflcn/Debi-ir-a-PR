@@ -5,6 +5,8 @@ import Image from "../ui/Image";
 import Input from "../form/Input";
 import styled from "styled-components";
 import { useEffect } from "react";
+import SmallText from "../typography/SmallText";
+import Bold from "../typography/Bold";
 
 const StyledFileInput = styled.input`
   position: relative;
@@ -41,6 +43,9 @@ const UploadButton = styled(Button)`
       $limitReached && `background-color: var(--color-red-400)`};
   }
 `;
+
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_SIZE = 5 * 1024 * 1024;
 
 function ImageUploader({
   name,
@@ -96,7 +101,7 @@ function ImageUploader({
 
   function handleFileChange(e) {
     const files = Array.from(e.target.files).filter(
-      (f) => f.type.startsWith("image/") && f.size <= 5 * 1024 * 1024,
+      (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
     );
     e.target.value = ""; // lets the user pick the same file again
 
@@ -124,17 +129,26 @@ function ImageUploader({
           ref={inputRef}
         />
 
-        <UploadButton
-          type="button"
-          onClick={() => inputRef.current.click()}
-          disabled={isFull}
-          $size="small"
-          $variation={isFull ? "darkRed" : "primary"}
-          $limitReached={isFull}
-        >
-          {isFull ? "Limit Reached" : "Upload Images"} ({items.length}/
-          {maxImages})
-        </UploadButton>
+        <Row $gap="var(--gap-sm)">
+          <UploadButton
+            type="button"
+            onClick={() => inputRef.current.click()}
+            disabled={isFull}
+            $size="small"
+            $variation={isFull ? "darkRed" : "primary"}
+            $limitReached={isFull}
+          >
+            {isFull ? "Limit Reached" : "Upload Images"} ({items.length}/
+            {maxImages})
+          </UploadButton>
+          <SmallText $color="var(--color-dark-200)">
+            Only image files with{" "}
+            <Bold $color="var(--color-dark-200)">.jpg</Bold>,{" "}
+            <Bold $color="var(--color-dark-200)">.jpeg</Bold>,{" "}
+            <Bold $color="var(--color-dark-200)">.png</Bold>, and{" "}
+            <Bold $color="var(--color-dark-200)">.webp</Bold>, will be accepted.
+          </SmallText>
+        </Row>
 
         {items.length > 0 && (
           <ImagesRow $direction="horizontal" $gap="var(--gap-md)">

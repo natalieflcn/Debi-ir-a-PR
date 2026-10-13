@@ -6,12 +6,18 @@ import SmallText from "../typography/SmallText";
 import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
 
-function UploadingModal({ isUploading, isSubmitting }) {
+function UploadingModal({ isUploading, isSubmitting, errors, onClose }) {
   console.log("running uploadingmodal");
+
+  function handleClose() {
+    if (!errors) return;
+
+    onClose();
+  }
   return (
-    <Modal>
+    <Modal onClose={handleClose}>
       <Row $align="center" $gap="var(--gap-md)">
-        {isUploading && (
+        {isUploading && !errors && (
           <>
             <Bold>Uploading Images...</Bold>
 
@@ -22,7 +28,7 @@ function UploadingModal({ isUploading, isSubmitting }) {
           </>
         )}
 
-        {!isUploading && isSubmitting && (
+        {!isUploading && isSubmitting && !errors && (
           <>
             <Bold>Saving...</Bold>
 
@@ -33,10 +39,17 @@ function UploadingModal({ isUploading, isSubmitting }) {
           </>
         )}
 
-        {!isSubmitting && (
+        {!isSubmitting && !errors && (
           <>
             <Bold>Save Complete!</Bold>
             <SmallText>Redirecting you...</SmallText>
+          </>
+        )}
+
+        {!isSubmitting && errors && (
+          <>
+            <Bold>There was an error.</Bold>
+            <SmallText>{errors?.root?.serverError?.message}</SmallText>
           </>
         )}
       </Row>

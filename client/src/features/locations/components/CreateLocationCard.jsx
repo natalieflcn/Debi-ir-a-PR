@@ -450,6 +450,8 @@ function CreateLocationCard({
           isUploading={isUploading}
           isSubmitting={isSubmitting}
           name={getValues("name")}
+          onClose={() => setIsUploadingModalOpen(false)}
+          errors={errors}
         />
       )}
     </>

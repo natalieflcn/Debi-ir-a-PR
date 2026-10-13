@@ -90,6 +90,7 @@ function CreateExplorationCard({ exploration }) {
     try {
       setIsUploading(true);
       setIsUploadingModalOpen(true);
+      setIsUploadingError("");
       // Uploading image files to Cloudinary
       const headerImage = await resolveImages(
         formData.headerImage,
@@ -523,6 +524,8 @@ function CreateExplorationCard({ exploration }) {
           isUploading={isUploading}
           isSubmitting={isSubmitting}
           name={getValues("name")}
+          onClose={() => setIsUploadingModalOpen(false)}
+          errors={errors}
         />
       )}
     </>
