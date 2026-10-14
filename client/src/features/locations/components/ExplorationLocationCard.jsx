@@ -21,7 +21,7 @@ import RouterLink from "../../../shared/components/routing/RouterLink";
 import { capitalize } from "../../../shared/utils/helpers";
 import styled from "styled-components";
 import LocationMap from "../../../shared/components/map/LocationMap";
-import Carousel from "../../../shared/components/ui/Carousel";
+import ImageCarousel from "../../../shared/components/carousel/ImageCarousel";
 
 const StyledRow = styled(Row)`
   width: 100%;
@@ -143,7 +143,7 @@ function ExplorationLocationCard({
             ))}
           </Carousel> */}
 
-          <Carousel images={location.images} />
+          <ImageCarousel images={location.images} />
 
           <ExplorationLocationFooter $cardColor="var(--color-light-100)">
             {footerCTA}

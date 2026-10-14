@@ -32,7 +32,7 @@ import { capitalize } from "../../../shared/utils/helpers";
 import { startExploration } from "../../../services/explorationProgress";
 import Spinner from "../../../shared/components/ui/Spinner";
 import ExplorationMap from "../../../shared/components/map/ExplorationMap";
-import Carousel from "../../../shared/components/ui/Carousel";
+import ImageCarousel from "../../../shared/components/carousel/ImageCarousel";
 
 function ExplorationCard({
   exploration,
@@ -188,7 +188,7 @@ function ExplorationCard({
 
           {/* </ExplorationImagesRow> */}
 
-          <Carousel images={derivedImages} />
+          <ImageCarousel images={derivedImages} />
 
           {footerCTA}
         </ExplorationCardBody>

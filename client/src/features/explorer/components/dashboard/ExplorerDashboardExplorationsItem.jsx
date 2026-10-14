@@ -7,6 +7,7 @@ import Button from "../../../../shared/components/ui/Button";
 import styled from "styled-components";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
 import Bold from "../../../../shared/components/typography/Bold";
+import ExplorationCarousel from "../../../../shared/components/carousel/ExplorationCarousel";
 
 const ExplorationGrid = styled.div`
   display: grid;
@@ -37,7 +38,11 @@ function ExplorerDashboardExplorationsItem({
         <Heading as="h4" $color="var(--color-dark-100)">
           {title}
         </Heading>
-        <ExplorationGrid>
+        <ExplorationCarousel
+          explorationData={explorationData}
+          userProgress={userProgress}
+        />
+        {/* <ExplorationGrid>
           {explorationData.map((exploration) => (
             <Card
               $cardColor="var(--color-light-200)"
@@ -73,7 +78,7 @@ function ExplorerDashboardExplorationsItem({
               </StyledRow>
             </Card>
           ))}
-        </ExplorationGrid>
+        </ExplorationGrid> */}
       </DashboardItem>
     </>
   );

@@ -620,6 +620,9 @@
   - [ ] Aggregating Data for Dashboard Analytics
     - Requirements Before Testing
       - [ ] Explorer
+        - [ ] # Locations completed this week
+        - [ ] # Locations completed this month
+        - [ ] # Locations completed this year
       - [ ] Ambassador/Admin
         - [ ] Top Ambassadors: # of Explorations Created
         - [ ] Top Explorers: # of Explorations Started
@@ -633,6 +636,7 @@
         - [ ] # of Total Locations
         - [ ] # of Locations Completed
         - [ ] Top Locations: # of Explorers Completed
+      - [ ] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
   - Automated Emails
   - Reinforce mobile responsiveness
   - Polish all data, complete adding data to explorations

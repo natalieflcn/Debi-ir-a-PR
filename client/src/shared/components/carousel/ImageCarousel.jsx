@@ -1,7 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import styled from "styled-components";
-import Image from "./Image";
-import Button from "./Button";
+import Image from "../ui/Image";
+import Button from "../ui/Button";
 import Row from "../layout/Row";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import { useState } from "react";
@@ -36,7 +36,7 @@ const CarouselButton = styled(Button)`
   }
 `;
 
-function Carousel({ images }) {
+function ImageCarousel({ images }) {
   const autoplay = useRef(
     Autoplay({
       delay: 4000,
@@ -105,4 +105,4 @@ function Carousel({ images }) {
   );
 }
 
-export default Carousel;
+export default ImageCarousel;
