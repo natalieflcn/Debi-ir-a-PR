@@ -24,15 +24,17 @@ const explorerStatsTableTheme = {
 };
 
 function getLocationTags(userHistory) {
-  const visitedLocationIds = userHistory.visitLog.map(
-    (visit) => visit.locationId,
-  );
+  const visitedLocationIds = userHistory
+    .flatMap((explorationProgress) => explorationProgress.visitLog)
+    .map((visit) => visit.location);
+
+  // userHistory.visitLog.map((visit) => visit.locationId);
 
   // const locationTags = fakeLocations
   //   .filter((location) => visitedLocationIds.includes(location.locationId))
   //   .flatMap((location) => location.tags);
 
-  return null;
+  return visitedLocationIds;
 }
 
 function ExplorerDashboardStatsItem({ userHistory }) {

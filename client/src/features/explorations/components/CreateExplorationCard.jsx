@@ -84,10 +84,9 @@ function CreateExplorationCard({ exploration }) {
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
 
-    console.log("CREATE EXPLORATION CARD");
     // console.log(submissionData);
 
-    console.log(formData);
+
     try {
       setIsUploading(true);
       setIsUploadingModalOpen(true);
@@ -98,7 +97,7 @@ function CreateExplorationCard({ exploration }) {
         "exploration",
       );
       setValue("headerImage", headerImage);
-      console.log(getValues("headerImage"));
+   
 
       // const images = await resolveImages(formData.images, "exploration");
       // setValue("images", images);

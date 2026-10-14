@@ -60,15 +60,17 @@ const StyledRow = styled(Row)`
 function getCurrentExplorations(explorations, userHistory) {
   const explorationIds = [
     ...new Set(
-      userHistory.explorationProgress
-        .filter((exploration) => exploration.status === "in_progress")
-        .map((exploration) => exploration.explorationId),
+      userHistory
+        .filter(
+          (explorationProgress) => explorationProgress.status === "in_progress",
+        )
+        .map((explorationProgress) => explorationProgress.exploration),
     ),
   ];
 
-  const currentExplorations = explorations.filter((exploration) =>
-    explorationIds.includes(exploration.id),
-  );
+  const currentExplorations = explorations.filter((exploration) => {
+    return explorationIds.includes(exploration.id);
+  });
 
   return currentExplorations;
 }
@@ -82,16 +84,16 @@ function getFeaturedExplorations(explorations) {
 }
 
 function getUserProgress(explorations, userHistory) {
-  const userProgress = userHistory.explorationProgress.map((exploration) => {
+  const userProgress = userHistory.map((explorationProgress) => {
     const totalLocations = explorations.find(
       (currentExploration) =>
-        currentExploration.id === exploration.explorationId,
-    ).locationIds.length;
+        currentExploration._id === explorationProgress.exploration,
+    )?.locations.length;
 
     return {
-      explorationId: exploration.explorationId,
-      userProgress: Math.round(
-        (exploration.locationsVisited / totalLocations) * 100,
+      explorationId: explorationProgress.exploration,
+      progress: Math.round(
+        (explorationProgress.visitLog.length / totalLocations) * 100,
       ),
     };
   });
@@ -99,24 +101,46 @@ function getUserProgress(explorations, userHistory) {
   return userProgress;
 }
 
+function getBadgeCollection(explorations, userHistory) {
+  console.log(userHistory);
+  const completedExplorations = userHistory
+    .filter((explorationProgress) => explorationProgress.status === "completed")
+    ?.map((explorationProgress) => explorationProgress.exploration);
+
+  if (!completedExplorations) return [];
+
+  const earnedBadges = explorations
+    .filter((exploration) => completedExplorations.includes(exploration._id))
+    .map((exploration) => {
+      return { ...exploration.badge, exploration: exploration._id };
+    });
+
+  return earnedBadges;
+}
+
 function ExplorerDashboard() {
   const { profileData, explorations, userHistory } = useLoaderData();
 
-  // const currentExplorations = getCurrentExplorations(explorations, userHistory);
-  // const featuredExplorations = getFeaturedExplorations(explorations);
-  // const userProgress = getUserProgress(explorations, userHistory);
+  const currentExplorations = getCurrentExplorations(explorations, userHistory);
+  const featuredExplorations = getFeaturedExplorations(explorations);
+  const userProgress = getUserProgress(explorations, userHistory);
+  const earnedBadges = getBadgeCollection(explorations, userHistory);
 
   return (
     <Row $gap="var(--gap-lg)">
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
         WELCOME, NATALIE
       </Heading>
-      {/* <StyledExplorerDashboard>
+      <StyledExplorerDashboard>
         <GridArea $area="profile">
           <ExplorerDashboardProfileItem profileData={profileData} />
         </GridArea>
         <GridArea $area="badge">
-          <ExplorerDashboardBadgeItem userHistory={userHistory} />
+          <ExplorerDashboardBadgeItem
+            userHistory={userHistory}
+            totalBadges={explorations.length}
+            earnedBadges={earnedBadges}
+          />
         </GridArea>
         <GridArea $area="history">
           <ExplorerDashboardHistoryItem userHistory={userHistory} />
@@ -140,8 +164,8 @@ function ExplorerDashboard() {
             explorationData={featuredExplorations}
             userProgress={userProgress}
           />
-        </GridArea> */}
-      {/* </StyledExplorerDashboard> */}
+        </GridArea>
+      </StyledExplorerDashboard>
     </Row>
   );
 }

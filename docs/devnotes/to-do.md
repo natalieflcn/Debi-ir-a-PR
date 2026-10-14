@@ -594,6 +594,7 @@
   - [ ] LOW: Keep being redirected to Login page before AuthContext can retrieve /me
   - [x] Use React-Material UI to create slideshow for images
   - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
+  - [x] Note: Map all location images into Exploration images
 
 - [~] **PHASE 6:** Advanced Features
   - [x] Google Maps API to render locations
@@ -611,13 +612,27 @@
     - [x] Uploading location photos
     - [~] BUG: Handle errors while uploading images
 
-  - [ ] Create real data
+  - [~] Create real data
     - [~] Explorations
-    - [ ] Locations
+    - [~] Locations
     - [ ] Sample explorers completing explorations, simulating real exploration progress
 
-- [ ] Note: Map all location images into Exploration images
-  - Aggregating Data for Dashboard Analytics
+  - [ ] Aggregating Data for Dashboard Analytics
+    - Requirements Before Testing
+      - [ ] Explorer
+      - [ ] Ambassador/Admin
+        - [ ] Top Ambassadors: # of Explorations Created
+        - [ ] Top Explorers: # of Explorations Started
+        - [ ] Top Explorers: # of Explorations Completed
+        - [ ] # of Monthly Explorers (active this month)
+        - [ ] # of Weekly Explorers (active this week)
+        - [ ] # of Total Explorations
+        - [ ] # of Explorations Completed
+        - [ ] Top Explorations: # of Explorers Started
+        - [ ] Top Explorations: # of Exploreres Completed
+        - [ ] # of Total Locations
+        - [ ] # of Locations Completed
+        - [ ] Top Locations: # of Explorers Completed
   - Automated Emails
   - Reinforce mobile responsiveness
   - Polish all data, complete adding data to explorations

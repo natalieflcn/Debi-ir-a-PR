@@ -9,18 +9,12 @@ const StyledMap = styled.div`
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
 function calculateMapBounds(coordinates) {
-  console.log(coordinates);
+
   if (!coordinates?.length) return null;
 
   const lats = coordinates.map((coord) => coord.location?.lat);
   const lngs = coordinates.map((coord) => coord.location?.lng);
 
-  console.log(
-    Math.max(...lats),
-    Math.min(...lats),
-    Math.max(...lngs),
-    Math.min(...lngs),
-  );
   return {
     north: Math.max(...lats),
     south: Math.min(...lats),

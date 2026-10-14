@@ -70,8 +70,6 @@ function ExplorationCard({
   const locationImages = exploration.locations.map((loc) => loc.images[0]);
   const derivedImages = [...locationHeaderImages, ...locationImages];
 
-  console.log(derivedImages);
-
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations`}>

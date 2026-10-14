@@ -99,11 +99,9 @@ function CreateLocationCard({
       "exploration",
     );
     setValue("headerImage", headerImage);
-    console.log(getValues("headerImage"));
 
     const images = await resolveImages(formData.images, "exploration");
     setValue("images", images);
-    console.log(getValues("images"));
 
     setIsUploading(false);
 
@@ -129,7 +127,6 @@ function CreateLocationCard({
   // Intentional submit function that runs either default submit function or onSubmit/onSuccess passed down via props
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
-    console.log(Object.entries(formData));
 
     try {
       if (onSubmit) {

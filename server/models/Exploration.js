@@ -72,6 +72,7 @@ const explorationSchema = new mongoose.Schema(
     badge: {
       type: badgeSchema,
       required: [true, "A badge is required."],
+      _id: false,
     },
     locations: {
       type: [locationSchema],

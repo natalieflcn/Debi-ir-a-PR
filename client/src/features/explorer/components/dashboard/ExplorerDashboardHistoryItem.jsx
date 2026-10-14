@@ -47,29 +47,33 @@ function ExplorerDashboardHistoryItem({ userHistory }) {
 
   const cutoffYear = getCurrentYear(now);
 
+  console.log(userHistory);
   const numWeeklyLocations = new Set(
-    userHistory.visitLog
+    userHistory
+      .flatMap((explorationProgress) => explorationProgress.visitLog)
       .filter((visit) => new Date(visit.visitedAt) > cutoffWeek)
       .map((visit) => visit.locationId),
   ).size;
 
   const numMonthlyLocations = new Set(
-    userHistory.visitLog
+    userHistory
+      .flatMap((explorationProgress) => explorationProgress.visitLog)
       .filter((visit) => new Date(visit.visitedAt) > cutoffMonth)
       .map((visit) => visit.locationId),
   ).size;
 
   const numYearlyLocations = new Set(
-    userHistory.visitLog
+    userHistory
+      .flatMap((explorationProgress) => explorationProgress.visitLog)
       .filter((visit) => new Date(visit.visitedAt) > cutoffYear)
       .map((visit) => visit.locationId),
   ).size;
 
-  const numExplorationsCompleted = userHistory.explorationProgress.filter(
-    (exploration) => exploration.status === "completed",
+  const numExplorationsCompleted = userHistory.filter(
+    (explorationProgress) => explorationProgress.status === "completed",
   ).length;
 
-  const numExplorationsStarted = userHistory.explorationProgress.length;
+  const numExplorationsStarted = userHistory.length;
 
   return (
     <DashboardItem $variation="center">

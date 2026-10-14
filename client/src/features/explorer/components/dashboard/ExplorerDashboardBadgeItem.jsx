@@ -16,18 +16,31 @@ const StyledExplorerDashboardBadgeItem = styled.div`
   align-content: space-between;
 `;
 
-function ExplorerDashboardBadgeItem({ userHistory = [], badges = [] }) {
+function ExplorerDashboardBadgeItem({
+  userHistory = [],
+  totalBadges,
+  earnedBadges,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const numBadges = badges.length;
+  // Calc
 
-  const recentBadge = userHistory.badgeCollection.sort(
-    (a, b) => a.earnedAt > b.earnedAt,
-  )[0];
+  // const recentBadge = userHistory.badgeCollection.sort(
+  //   (a, b) => a.earnedAt > b.earnedAt,
+  // )[0];
 
-  const recentBadgeName = badges?.find(
-    (badge) => badge.id === recentBadge.badgeId,
-  )?.name;
+  // Calculating Last Earned Badge
+  const lastCompletedExploration = userHistory
+    .filter((explorationProgress) => explorationProgress.status === "completed")
+    .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))[0];
+
+  const recentBadge = earnedBadges.find(
+    (badge) => lastCompletedExploration.exploration === badge.exploration,
+  );
+
+  // const recentBadgeName = badges?.find(
+  //   (badge) => badge.id === recentBadge.badgeId,
+  // )?.name;
 
   return (
     <DashboardItem $variation="center">
@@ -38,12 +51,11 @@ function ExplorerDashboardBadgeItem({ userHistory = [], badges = [] }) {
           </Heading>
           <Row $gap="var(--gap-md)" $align="center">
             <Image src="/src/assets/images/content/TEMP.png" $width="5rem" />
-            <Heading as="h6">{recentBadgeName} Badge</Heading>
+            <Heading as="h6">{recentBadge.name} Badge</Heading>
           </Row>
 
           <Bold $color="var(--color-dark-200)">
-            {userHistory.badgeCollection.length} out of {numBadges} badges
-            collected
+            {earnedBadges.length} out of {totalBadges.length} badges collected
           </Bold>
 
           <Button
@@ -67,8 +79,8 @@ function ExplorerDashboardBadgeItem({ userHistory = [], badges = [] }) {
               $wrap="wrap"
               $align="start"
             >
-              {userHistory.badgeCollection.map((badge) => (
-                <Image src="" $width="5rem" key={badge.badgeId} />
+              {earnedBadges.map((badge) => (
+                <Image src="" $width="5rem" key={badge.exploration} />
               ))}
             </Row>
           </Row>

@@ -7,8 +7,6 @@ import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
 
 function UploadingModal({ isUploading, isSubmitting, errors, onClose }) {
-  console.log("running uploadingmodal");
-
   function handleClose() {
     if (!errors?.root?.serverError?.message) return;
 
