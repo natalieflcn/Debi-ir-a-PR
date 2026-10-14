@@ -616,6 +616,7 @@
     - [ ] Locations
     - [ ] Sample explorers completing explorations, simulating real exploration progress
 
+- [ ] Note: Map all location images into Exploration images
   - Aggregating Data for Dashboard Analytics
   - Automated Emails
   - Reinforce mobile responsiveness

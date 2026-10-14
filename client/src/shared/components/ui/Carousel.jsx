@@ -39,7 +39,7 @@ const CarouselButton = styled(Button)`
 function Carousel({ images }) {
   const autoplay = useRef(
     Autoplay({
-      delay: 3000,
+      delay: 4000,
       stopOnInteraction: true,
     }),
   );
@@ -63,7 +63,7 @@ function Carousel({ images }) {
       <CarouselViewport ref={emblaRef}>
         <CarouselContainer>
           {images.map((img, i) => (
-            <CarouselSlide>
+            <CarouselSlide key={i}>
               <Image
                 src={img?.url}
                 $align="center"
@@ -71,35 +71,36 @@ function Carousel({ images }) {
                 $height="23rem"
                 $objectFit="cover"
                 $borderRadius="none"
-                key={i}
               />
             </CarouselSlide>
           ))}
         </CarouselContainer>
       </CarouselViewport>
 
-      <Row $direction="horizontal" $align="center" $gap="var(--gap-xl)">
-        <CarouselButton className="embla__prev" onClick={goToPrev}>
-          <FaCircleChevronLeft
-            size={20}
-            color={
-              isLeftHovered ? "var(--color-red-100)" : "var(--color-red-300)"
-            }
-            onMouseEnter={() => setIsLeftHovered(true)}
-            onMouseLeave={() => setIsLeftHovered(false)}
-          />
-        </CarouselButton>
-        <CarouselButton className="embla__next" onClick={goToNext}>
-          <FaCircleChevronRight
-            size={20}
-            color={
-              isRightHovered ? "var(--color-red-100)" : "var(--color-red-300)"
-            }
-            onMouseEnter={() => setIsRightHovered(true)}
-            onMouseLeave={() => setIsRightHovered(false)}
-          />
-        </CarouselButton>
-      </Row>
+      {images.length > 0 && (
+        <Row $direction="horizontal" $align="center" $gap="var(--gap-xl)">
+          <CarouselButton className="embla__prev" onClick={goToPrev}>
+            <FaCircleChevronLeft
+              size={20}
+              color={
+                isLeftHovered ? "var(--color-red-100)" : "var(--color-red-300)"
+              }
+              onMouseEnter={() => setIsLeftHovered(true)}
+              onMouseLeave={() => setIsLeftHovered(false)}
+            />
+          </CarouselButton>
+          <CarouselButton className="embla__next" onClick={goToNext}>
+            <FaCircleChevronRight
+              size={20}
+              color={
+                isRightHovered ? "var(--color-red-100)" : "var(--color-red-300)"
+              }
+              onMouseEnter={() => setIsRightHovered(true)}
+              onMouseLeave={() => setIsRightHovered(false)}
+            />
+          </CarouselButton>
+        </Row>
+      )}
     </CarouselWrapper>
   );
 }

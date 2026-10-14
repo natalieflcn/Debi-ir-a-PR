@@ -54,14 +54,23 @@ function ExplorationCard({
   //     console.log("Failed to start exploration", err);
   //   }
   // }
-  const coordinates = exploration?.locations.map((loc) => {
-    if (!loc?.map) return null;
+  // const coordinates = exploration?.locations.map((loc) => {
+  //   if (!loc?.map) return null;
 
-    return {
-      name: loc?.name,
-      location: loc?.map?.coordinates,
-    };
-  });
+  //   return {
+  //     name: loc?.name,
+  //     location: loc?.map?.coordinates,
+  //   };
+  // });
+
+  // Deriving Images from Locations
+  const locationHeaderImages = exploration.locations.flatMap(
+    (loc) => loc.headerImage,
+  );
+  const locationImages = exploration.locations.map((loc) => loc.images[0]);
+  const derivedImages = [...locationHeaderImages, ...locationImages];
+
+  console.log(derivedImages);
 
   return (
     <Row $gap="var(--gap-lg)">
@@ -181,7 +190,7 @@ function ExplorationCard({
 
           {/* </ExplorationImagesRow> */}
 
-          <Carousel images={exploration.images} />
+          <Carousel images={derivedImages} />
 
           {footerCTA}
         </ExplorationCardBody>

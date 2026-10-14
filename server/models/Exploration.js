@@ -95,7 +95,7 @@ const explorationSchema = new mongoose.Schema(
       ],
     },
     numStops: { type: Number },
-    images: { type: [imageSchema], default: [] },
+    // images: { type: [imageSchema], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

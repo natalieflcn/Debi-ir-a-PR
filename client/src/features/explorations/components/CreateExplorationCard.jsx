@@ -27,6 +27,7 @@ import BadgeBuilder from "../../../shared/components/form/BadgeBuilder";
 import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConfirmationModal";
 import { resolveImages } from "../../../services/uploads";
 import UploadingModal from "../../../shared/components/modal/UploadingModal";
+import SmallText from "../../../shared/components/typography/SmallText";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -64,7 +65,7 @@ function CreateExplorationCard({ exploration }) {
       headerImage: exploration?.headerImage ?? [],
       tagline: exploration?.tagline ?? "",
       description: exploration?.description ?? "",
-      images: exploration?.images ?? [],
+      // images: exploration?.images ?? [],
       locations: exploration?.locations ?? [],
       badge: exploration?.badge ?? null,
       tags: exploration?.tags ?? [],
@@ -99,9 +100,9 @@ function CreateExplorationCard({ exploration }) {
       setValue("headerImage", headerImage);
       console.log(getValues("headerImage"));
 
-      const images = await resolveImages(formData.images, "exploration");
-      setValue("images", images);
-      console.log(getValues("images"));
+      // const images = await resolveImages(formData.images, "exploration");
+      // setValue("images", images);
+      // console.log(getValues("images"));
 
       // TODO upload files inside of each location
       const locations = [];
@@ -120,7 +121,7 @@ function CreateExplorationCard({ exploration }) {
       const submissionData = {
         ...formData,
         headerImage,
-        images,
+        // images,
         locations,
         ...(isEditing && { _id: exploration._id }),
       };
@@ -294,33 +295,6 @@ function CreateExplorationCard({ exploration }) {
               </StyledTextAreaRow>
             </FormField>
 
-            <FormField label="Images">
-              <StyledRow $gap="var(--gap-xs)">
-                <Controller
-                  name="images"
-                  control={control}
-                  rules={{
-                    validate: {
-                      // required: (locations) =>
-                      //   locations.length > 0 ||
-                      //   "Please provide at least one location.",
-                    },
-                  }}
-                  render={({ field }) => (
-                    <ImageUploader
-                      name="images"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-
-                {errors?.images?.message && (
-                  <Bold>{errors?.images?.message}</Bold>
-                )}
-              </StyledRow>
-            </FormField>
-
             <FormField label="Locations">
               <StyledRow $gap="var(--gap-md)">
                 <Controller
@@ -418,6 +392,37 @@ function CreateExplorationCard({ exploration }) {
                 )}
               </StyledRow>
             </FormField>
+
+            {/* <FormField label="Images">
+              <StyledRow $gap="var(--gap-xs)">
+                <Controller
+                  name="images"
+                  control={control}
+                  rules={{
+                    validate: {
+                      // required: (locations) =>
+                      //   locations.length > 0 ||
+                      //   "Please provide at least one location.",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <ImageUploader
+                      name="images"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
+                />
+                <SmallText $color="var(--color-dark-200)">
+                  <Bold $color="var(--color-dark-200)">Note:</Bold> Header
+                  images from your locations will also be displayed on the
+                  Exploration page.
+                </SmallText>
+                {errors?.images?.message && (
+                  <Bold>{errors?.images?.message}</Bold>
+                )}
+              </StyledRow>
+            </FormField> */}
 
             <FormField label="Badge">
               <StyledRow $gap="var(--gap-xs)">
