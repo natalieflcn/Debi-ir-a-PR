@@ -74,11 +74,11 @@ const userSchema = new mongoose.Schema(
 //   foreignField: "createdBy",
 // });
 
-userSchema.virtual("explorationProgress", {
-  ref: "ExplorationProgress",
-  localField: "_id",
-  foreignField: "user",
-});
+// userSchema.virtual("explorationProgress", {
+//   ref: "ExplorationProgress",
+//   localField: "_id",
+//   foreignField: "user",
+// });
 
 // userSchema.virtual("badgeCollection").get(function () {
 //   if (!this.explorationProgress) return [];

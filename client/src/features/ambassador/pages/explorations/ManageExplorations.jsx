@@ -25,7 +25,7 @@ const AmbassadorExplorationsTableColumns = function (users) {
       heading: "name",
       render: (row) => (
         <TableNameCell>
-          <RouterLink to={`${row.id}`}>
+          <RouterLink to={`${row.slug}`}>
             <Bold $color="var(--color-dark-200)">{row.name}</Bold>
           </RouterLink>
         </TableNameCell>
@@ -36,7 +36,9 @@ const AmbassadorExplorationsTableColumns = function (users) {
       id: "city",
       heading: "City",
       render: (row) => {
-        return <TableCell>{row.address.city}</TableCell>;
+        const city =
+          row.cities.length === 1 ? row.cities[0] : "Multiple Cities";
+        return <TableCell>{city}</TableCell>;
       },
     },
     {
@@ -50,7 +52,6 @@ const AmbassadorExplorationsTableColumns = function (users) {
         );
 
         if (!user) {
-      
           return <TableCell>Unknown User</TableCell>;
         }
 

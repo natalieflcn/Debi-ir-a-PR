@@ -26,39 +26,45 @@ function LocationMap({
   const canEdit = editingLocation && isAddressReady;
 
   return (
-    <StyledMap $height={height}>
-      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
-        <Map
-          mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
-          defaultZoom={coordinates ? 15 : 10}
-          minZoom={13}
-          maxZoom={17}
-          defaultCenter={coordinates ?? PR_START}
-          gestureHandling={canEdit ? "greedy" : "cooperative"}
-          disableDefaultUI
-          restriction={{ latLngBounds: PR_BOUNDS, strictBounds: true }}
-          key={coordinates ? `${coordinates.lat},${coordinates.lng}` : "empty"}
-          onClick={
-            editingLocation && isAddressReady
-              ? (e) => e.detail.latLng && onChange(e.detail.latLng)
-              : undefined
-          }
-        >
-          {coordinates && (
-            <AdvancedMarker
-              position={coordinates}
-              draggable={canEdit}
-              onDragEnd={(e) =>
-                e.latLng &&
-                onChange({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+    <>
+      {coordinates && (
+        <StyledMap $height={height}>
+          <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
+            <Map
+              mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+              defaultZoom={coordinates ? 15 : 10}
+              minZoom={13}
+              maxZoom={17}
+              defaultCenter={coordinates ?? PR_START}
+              gestureHandling={canEdit ? "greedy" : "cooperative"}
+              disableDefaultUI
+              restriction={{ latLngBounds: PR_BOUNDS, strictBounds: true }}
+              key={
+                coordinates ? `${coordinates.lat},${coordinates.lng}` : "empty"
+              }
+              onClick={
+                editingLocation && isAddressReady
+                  ? (e) => e.detail.latLng && onChange(e.detail.latLng)
+                  : undefined
               }
             >
-              <CustomPin />
-            </AdvancedMarker>
-          )}
-        </Map>
-      </APIProvider>
-    </StyledMap>
+              {coordinates && (
+                <AdvancedMarker
+                  position={coordinates}
+                  draggable={canEdit}
+                  onDragEnd={(e) =>
+                    e.latLng &&
+                    onChange({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+                  }
+                >
+                  <CustomPin />
+                </AdvancedMarker>
+              )}
+            </Map>
+          </APIProvider>
+        </StyledMap>
+      )}
+    </>
   );
 }
 

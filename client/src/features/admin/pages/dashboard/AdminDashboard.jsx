@@ -45,33 +45,43 @@ const GridArea = styled.div`
 `;
 
 function AdminDashboard() {
-  const { users, profileData } = useLoaderData();
+  const { users, profileData, explorations } = useLoaderData();
 
   const explorersData = users.filter((user) => user.role === "explorer");
-  const ambassadorsData = users.filter((user) => user.role === "ambassador");
+  const ambassadorsData = users.filter(
+    (user) => user.role === "ambassador" || user.role === "admin",
+  );
 
   return (
     <StyledAdminDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">
-        WELCOME, ADMIN
+        WELCOME, {profileData.name.split(" ")[0].toUpperCase()}
       </Heading>
 
       <StyledAdminHighlights>
         <GridArea $area="profile">
           <AdminDashboardProfileItem profileData={profileData} />
         </GridArea>
+
         <GridArea $area="explorationsCreated">
-          <DashboardExplorationsCreated type="admin" profile={profileData} />
+          <DashboardExplorationsCreated
+            profile={profileData}
+            explorations={explorations}
+          />
         </GridArea>
+
         <GridArea $area="userStats">
           <AdminDashboardUserStats users={users} />
         </GridArea>
       </StyledAdminHighlights>
       <Row>
-        <DashboardNewExplorers usersData={explorersData} />
-        <DashboardTopExplorers usersData={explorersData} />
+        {/* <DashboardNewExplorers usersData={explorersData} />
+        <DashboardTopExplorers usersData={explorersData} />*/}
         <AdminDashboardNewAmbassadors usersData={ambassadorsData} />
-        <AdminDashboardTopAmbassadors usersData={ambassadorsData} />
+        <AdminDashboardTopAmbassadors
+          usersData={ambassadorsData}
+          explorations={explorations}
+        />
       </Row>
     </StyledAdminDashboard>
   );

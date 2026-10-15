@@ -140,5 +140,6 @@ exports.LOCATION_TAGS = [
   "shopping",
   "sports",
   "trail",
+  "theater",
   "waterfall",
 ];

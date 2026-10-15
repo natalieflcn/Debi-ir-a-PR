@@ -4,6 +4,30 @@ export async function getUsers() {
   return await apiFetch(`/users`);
 }
 
+// export async function getUsers({
+//   page = 1,
+//   limit = 10,
+//   search = "",
+//   role = "all",
+//   sort = "-createdAt",
+// } = {}) {
+//   const params = new URLSearchParams({
+//     page: String(page),
+//     limit: String(limit),
+//     sort,
+//   });
+
+//   if (search.trim()) {
+//     params.set("search", search.trim());
+//   }
+
+//   if (role !== "all") {
+//     params.set("role", role);
+//   }
+
+//   return await apiFetch(`/users?${params.toString()}`);
+// }
+
 export async function getExplorers() {
   return await apiFetch(`/users?role=explorer`);
 }

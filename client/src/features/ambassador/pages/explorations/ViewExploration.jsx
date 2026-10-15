@@ -5,13 +5,16 @@ import AdminFooterBadgeDisplay from "../../../../shared/components/management/Ad
 import ExplorationCard from "../../../explorations/components/ExplorationCard";
 
 function ViewExploration() {
-  const { exploration } = useLoaderData();
+  const { exploration, users } = useLoaderData();
+
+  const author =
+    users.find((user) => user._id === exploration.createdBy)?.name || "Unknown";
 
   // need to use GET user with user.id here
   const headerDetails = (
     <AdminExplorationCardHeaderDetails
       exploration={exploration}
-      author={exploration.createdBy}
+      author={author}
       lastUpdated={exploration.updatedAt}
       type="ambassador"
     />

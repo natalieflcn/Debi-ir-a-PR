@@ -32,7 +32,8 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <Button
             $size="square"
-            $variation={page === currentPage ? highlightedPage : $variation}
+            $variation={page === currentPage ? "disabled" : $variation}
+            disabled={currentPage === page}
             onClick={() => onPageChange(page)}
             key={page}
           >
@@ -42,7 +43,7 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
       </Row>
       <Button
         $size="square"
-        $variation={currentPage === totalPages ? "disabled" : $variation}
+        $variation={currentPage >= totalPages ? "disabled" : $variation}
         disabled={currentPage === totalPages}
         onClick={() => onPageChange((prev) => prev + 1)}
       >

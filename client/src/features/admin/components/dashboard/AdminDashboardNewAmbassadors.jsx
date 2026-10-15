@@ -4,22 +4,27 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
+import { formatDate } from "../../../../shared/utils/helpers";
 
 const newAmbassadorsTableColumns = [
   {
     id: "name",
     heading: "Name",
     render: (row) => (
-      <TableNameCell>
+      <TableCell>
         <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableNameCell>
+      </TableCell>
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "createdAt", heading: "Date Joined" },
+  {
+    id: "createdAt",
+    heading: "Date Joined",
+    render: (row) => <TableCell>{formatDate(row.createdAt)}</TableCell>,
+  },
 ];
 
-const TableNameCell = styled.div`
+const TableCell = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +54,7 @@ const newAmbassadorsTableTheme = {
 
 function AdminDashboardNewAmbassadors({ usersData }) {
   const sortedUsers = usersData.sort(
-    (a, b) => new Date(b.created) - new Date(a.createdAt),
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
 
   const fiveSortedUsers = sortedUsers.slice(0, 5);
@@ -57,7 +62,7 @@ function AdminDashboardNewAmbassadors({ usersData }) {
   return (
     <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
-        New Ambassadors
+        Newest Ambassadors
       </Heading>
 
       <CondensedTable

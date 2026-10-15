@@ -25,7 +25,7 @@ const getAdminExplorationsTableColumns = function (users) {
       heading: "Exploration Name",
       render: (row) => (
         <TableNameCell>
-          <RouterLink to={`${row.id}`}>
+          <RouterLink to={`${row.slug}`}>
             <Bold $color="var(--color-dark-200)">{row.name}</Bold>
           </RouterLink>
         </TableNameCell>
@@ -53,10 +53,8 @@ const getAdminExplorationsTableColumns = function (users) {
         const user = users.find(
           (user) => user?._id?.toString() === row?.createdBy.toString(),
         );
-       
 
         if (!user) {
-         
           return <TableCell>Unknown User</TableCell>;
         }
 

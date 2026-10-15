@@ -7,7 +7,11 @@ import Heading from "../typography/Heading";
 import RouterLink from "../routing/RouterLink";
 import styled from "styled-components";
 
-function DashboardExplorationsCreated({ type, profile }) {
+function DashboardExplorationsCreated({ profile, explorations }) {
+  const createdExplorations = explorations.filter(
+    (exploration) => exploration.createdBy === profile._id,
+  );
+
   return (
     <DashboardItem $variation="center">
       <Row $gap="var(--gap-xl)">
@@ -15,17 +19,17 @@ function DashboardExplorationsCreated({ type, profile }) {
           Explorations Created
         </Heading>
         <Row $direction="horizontal" $gap="var(--gap-md)" $align="center">
-          <InsetSpan>{profile.createdExplorationIds.length}</InsetSpan>{" "}
+          <InsetSpan>{createdExplorations.length}</InsetSpan>
           <Bold>explorations created</Bold>
         </Row>
         <Row>
-          <RouterLink to={`/${type}/explorations/create`}>
+          <RouterLink to={`/${profile.role}/explorations/create`}>
             <Button $variation="secondary" $size="small">
               Create Exploration
             </Button>
           </RouterLink>
 
-          <RouterLink to={`/${type}/explorations`}>
+          <RouterLink to={`/${profile.role}/explorations`}>
             <Button $variation="primary" $size="small">
               Manage Explorations
             </Button>

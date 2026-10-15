@@ -20,7 +20,7 @@ const topAmbassadorsTableColumns = [
     id: "numExplorationsCreated",
     heading: "Explorations Created",
     render: (row) => (
-      <TableNameCell>{row.createdExplorationIds.length}</TableNameCell>
+      <TableNameCell>{row.createdExplorations.length}</TableNameCell>
     ),
   },
 ];
@@ -53,9 +53,21 @@ const topAmbassadorsTableTheme = {
   borderColor: "var(--color-red-300)",
 };
 
-function AdminDashboardTopAmbassadors({ usersData }) {
-  const topAmbassadors = usersData.sort(
-    (a, b) => b.createdExplorationIds.length - a.createdExplorationIds.length,
+function AdminDashboardTopAmbassadors({ usersData, explorations }) {
+  console.log(usersData);
+  const ambassadors = usersData
+    .filter((user) => user.role === "ambassador" || user.role === "admin")
+    .map((user) => {
+      return {
+        ...user,
+        createdExplorations: explorations.filter(
+          (exploration) => exploration.createdBy === user._id,
+        ),
+      };
+    });
+
+  const topAmbassadors = ambassadors.sort(
+    (a, b) => b.createdExplorations.length - a.createdExplorations.length,
   );
 
   const fiveTopAmbassadors = topAmbassadors.slice(0, 5);
@@ -63,7 +75,7 @@ function AdminDashboardTopAmbassadors({ usersData }) {
   return (
     <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
-        Top Ambassadors
+        Top Ambassadors and Admins
       </Heading>
 
       <CondensedTable

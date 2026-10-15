@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
 import { useLoaderData } from "react-router-dom";
 import { capitalize, formatDate } from "../../../../shared/utils/helpers";
+import { getUsers } from "../../../../services/users";
+import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
 
 export const UsersTableColumns = [
   {
@@ -164,8 +166,27 @@ function ManageUsers() {
   const [sortBy, setSortBy] = useState("createdAt");
   const [filterBy, setFilterBy] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  // const [loading, setLoading] = useState(false);
   const usersData = useLoaderData();
+  // const [users, setUsers] = useState([]);
+  // const [totalUsers, setTotalUsers] = useState(0);
+  // useEffect(() => {
+  //   async function loadUsers() {
+  //     setLoading(true);
 
+  //     try {
+  //       const { data } = await getUsers(currentPage, 10);
+  //       setTotalUsers(data.total);
+  //       setUsers(data.data);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+
+  //   loadUsers();
+  // }, [currentPage]);
+
+  // console.log(users);
   const tableTheme =
     (filterBy === "explorer" && explorersTableTheme) ||
     (filterBy === "ambassador" && ambassadorsTableTheme) ||
@@ -186,6 +207,7 @@ function ManageUsers() {
   });
 
   const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
+  console.log(totalPages, currentPage);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedUsers = sortedUsers.slice(
     startIndex,
@@ -218,11 +240,15 @@ function ManageUsers() {
         </DropdownRow>
       </StyledRow>
 
+      {/* {loading ? (
+        <SpinnerMini />
+      ) : ( */}
       <CondensedTable
         columns={UsersTableColumns}
         rows={paginatedUsers}
         $theme={tableTheme}
       />
+      {/* )} */}
 
       <Pagination
         totalPages={totalPages}

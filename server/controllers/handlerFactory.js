@@ -3,6 +3,7 @@ const Exploration = require("../models/Exploration");
 const APIFeatures = require("../utils/apiFeatures");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const User = require("../models/User");
 
 exports.getAll = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
@@ -17,9 +18,12 @@ exports.getAll = (Model, filter = {}) =>
 
     const doc = await features.query;
 
+    const total = await Model.countDocuments(queryFilter);
+
     // SEND RESPONSE
     res.status(200).json({
       status: "success",
+      total,
       results: doc.length,
       data: { data: doc },
     });

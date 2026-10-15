@@ -54,22 +54,25 @@ function ExplorationCard({
   //     console.log("Failed to start exploration", err);
   //   }
   // }
-  // const coordinates = exploration?.locations.map((loc) => {
-  //   if (!loc?.map) return null;
+  const coordinates = exploration?.locations.map((loc) => {
+    if (!loc?.map) return null;
 
-  //   return {
-  //     name: loc?.name,
-  //     location: loc?.map?.coordinates,
-  //   };
-  // });
+    return {
+      name: loc?.name,
+      location: loc?.map?.coordinates,
+    };
+  });
 
   // Deriving Images from Locations
   const locationHeaderImages = exploration.locations.flatMap(
     (loc) => loc.headerImage,
   );
-  const locationImages = exploration.locations.map((loc) => loc.images[0]);
-  const derivedImages = [...locationHeaderImages, ...locationImages];
+  const locationImages = exploration.locations.flatMap((loc) => loc.images[0]);
+  const derivedImages = [...locationHeaderImages, ...locationImages].filter(
+    (img) => img !== undefined && img !== null,
+  );
 
+  console.log(derivedImages);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations`}>
@@ -85,7 +88,7 @@ function ExplorationCard({
               $color="var(--color-red-200)"
               $shadowColor="var(--color-brown-400)"
             >
-              {exploration.name}
+              {exploration.name.toUpperCase()}
             </ExplorationCardHeading>
 
             <Row $gap="var(--gap-md)">
@@ -156,8 +159,8 @@ function ExplorationCard({
               {locationDetails}
             </ExplorationCardLocations>
           </ExplorationDetailsRow>
-
-          {/* <ExplorationMap coordinates={coordinates} /> */}
+          {/* 
+          <ExplorationMap coordinates={coordinates} /> */}
 
           {/* <ExplorationImagesRow
             $direction="horizontal"
@@ -188,7 +191,7 @@ function ExplorationCard({
 
           {/* </ExplorationImagesRow> */}
 
-          <ImageCarousel images={derivedImages} />
+          {derivedImages.length > 0 && <ImageCarousel images={derivedImages} />}
 
           {footerCTA}
         </ExplorationCardBody>

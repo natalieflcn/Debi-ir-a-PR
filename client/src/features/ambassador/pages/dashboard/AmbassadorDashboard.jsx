@@ -13,6 +13,7 @@ import DashboardExplorationsCreated from "../../../../shared/components/dashboar
 import DashboardNewExplorers from "../../../../shared/components/dashboard/DashboardNewExplorers";
 import DashboardTopExplorers from "../../../../shared/components/dashboard/DashboardTopExplorers";
 import { useLoaderData } from "react-router-dom";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledAmbassadorDashboard = styled.div`
   display: flex;
@@ -81,10 +82,12 @@ function AmbassadorDashboard() {
     userHistories,
   } = useLoaderData();
 
+  const { user } = useAuth();
+
   return (
     <StyledAmbassadorDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">
-        WELCOME, AMBASSADOR
+        WELCOME, {user.name.split(" ")[0].toUpperCase()}
       </Heading>
 
       <StyledAmbassadorHighlights>
