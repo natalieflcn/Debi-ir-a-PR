@@ -615,7 +615,7 @@
   - [~] Create real data
     - [~] Explorations
     - [~] Locations
-    - [ ] Sample explorers completing explorations, simulating real exploration progress
+    - [x] Sample explorers completing explorations, simulating real exploration progress
 
   - [ ] Aggregating Data for Dashboard Analytics
     - Requirements Before Testing
@@ -623,20 +623,22 @@
         - [ ] # Locations completed this week
         - [ ] # Locations completed this month
         - [ ] # Locations completed this year
-      - [ ] Ambassador/Admin
+        - [ ] Link ExplorationCarousel Buttons to Exploration Pages
+        - [ ] Hyperlink explorations and locations to respective pages in admin/ambassador UI
+      - [x] Ambassador/Admin
         - [x] Top Ambassadors: # of Explorations Created
         - [x] Top Explorers: # of Explorations Started
         - [x] Top Explorers: # of Explorations Completed
-        - [ ] # of Monthly Explorers (active this month)
-        - [ ] # of Weekly Explorers (active this week)
-        - [ ] # of Total Explorations
-        - [ ] # of Explorations Completed
-        - [ ] Top Explorations: # of Explorers Started
-        - [ ] Top Explorations: # of Exploreres Completed
-        - [ ] # of Total Locations
-        - [ ] # of Locations Completed
-        - [ ] Top Locations: # of Explorers Completed
-      - [ ] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
+        - [x] # of Monthly Explorers (active this month)
+        - [x] # of Weekly Explorers (active this week)
+        - [x] # of Total Explorations
+        - [x] # of Explorations Completed
+        - [x] Top Explorations: # of Explorers Started
+        - [x] Top Explorations: # of Exploreres Completed
+        - [x] # of Total Locations
+        - [x] # of Locations Completed
+        - [x] Top Locations: # of Explorers Completed
+      - [x] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
   - Automated Emails
   - Reinforce mobile responsiveness
   - Polish all data, complete adding data to explorations

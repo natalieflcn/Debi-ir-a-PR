@@ -19,6 +19,7 @@ const Row = styled.div`
   padding: ${({ $padding }) => $padding || 0};
   ${({ $direction }) => variants[$direction || "vertical"]};
   flex-wrap: ${({ $wrap }) => $wrap || "no-wrap"};
+  /* border: solid 1px red; */
 `;
 
 export default Row;

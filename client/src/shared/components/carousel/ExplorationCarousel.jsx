@@ -51,6 +51,8 @@ const CarouselButton = styled(Button)`
 `;
 
 const StyledRow = styled(Row)`
+  flex: 1;
+
   @media (max-width: 1150px) {
     flex-direction: column;
   }
@@ -95,46 +97,60 @@ function ExplorationCarousel({ explorationData, userProgress }) {
     <CarouselWrapper>
       <CarouselViewport ref={emblaRef}>
         <CarouselContainer>
-          {explorationData.map((exploration) => (
-            <CarouselSlide key={exploration.id}>
-              <Card
-                $cardColor="var(--color-light-200)"
-                $shadowColor="var(--color-brown-200)"
-                $cardShadow="insetMD"
-              >
-                <StyledRow
-                  $direction="horizontal"
-                  $align="flex-start"
-                  $gap="var(--gap-lg)"
+          {explorationData.map((exploration) => {
+            const progress =
+              userProgress.find(
+                (explorationProgress) =>
+                  explorationProgress.explorationId === exploration._id,
+              )?.progress ?? 0;
+
+            return (
+              <CarouselSlide key={exploration.id}>
+                <Card
+                  $cardColor="var(--color-light-200)"
+                  $shadowColor="var(--color-brown-200)"
+                  $cardShadow="insetMD"
+                  $height="100%"
                 >
-                  <Image
-                    src="/src/assets/images/content/TEMP.png"
-                    $width="40%"
-                  />
-                  <Row $gap="var(--gap-lg)">
+                  <StyledRow $direction="vertical" $align="space-between">
+                    <StyledRow
+                      $direction="horizontal"
+                      $align="flex-start"
+                      $gap="var(--gap-lg)"
+                    >
+                      <Image
+                        src="/src/assets/images/content/TEMP.png"
+                        $width="40%"
+                      />
+                      <Row $gap="var(--gap-lg)">
+                        <Row>
+                          <Heading as="h5">{exploration.name}</Heading>
+                          <p>{exploration.description}</p>
+                        </Row>
+                      </Row>
+                    </StyledRow>
                     <Row>
-                      <Heading as="h5">{exploration.name}</Heading>
-                      <p>{exploration.description}</p>
+                      {progress > 0 ? (
+                        <Row $gap="var(--gap-sm)">
+                          <Bold $color="var(--color-dark-200)">
+                            {progress}% complete
+                          </Bold>
+                          <ProgressBar completed={progress} label={false} />
+                          <Button $variation="primary" $size="small">
+                            Continue Exploring
+                          </Button>
+                        </Row>
+                      ) : (
+                        <Button $variation="darkRed" $size="small">
+                          Start Exploring
+                        </Button>
+                      )}
                     </Row>
-                    <Row $gap="var(--gap-sm)">
-                      <Bold $color="var(--color-dark-200)">
-                        {userProgress.find(
-                          (explorationProgress) =>
-                            explorationProgress.explorationId ===
-                            exploration.id,
-                        )?.userProgress ?? 0}
-                        % complete
-                      </Bold>
-                      <ProgressBar label={false} />
-                      <Button $variation="primary" $size="small">
-                        Continue Exploring
-                      </Button>
-                    </Row>
-                  </Row>
-                </StyledRow>
-              </Card>
-            </CarouselSlide>
-          ))}
+                  </StyledRow>
+                </Card>
+              </CarouselSlide>
+            );
+          })}
         </CarouselContainer>
       </CarouselViewport>
 

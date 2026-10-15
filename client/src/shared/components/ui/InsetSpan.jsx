@@ -5,7 +5,8 @@ const StyledInsetSpan = styled.span`
   border-radius: var(--border-radius-sm);
   box-shadow: var(--box-shadow-inset-sm) var(--color-dark-200);
   padding: 0.5rem 0.7rem;
-  /* width: 1rem; */
+  width: 2.6rem;
+
   height: 1.9rem;
   min-width: 1rem;
   text-align: center;

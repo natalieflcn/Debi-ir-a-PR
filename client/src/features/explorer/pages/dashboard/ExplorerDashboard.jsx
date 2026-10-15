@@ -98,6 +98,7 @@ function getUserProgress(explorations, userHistory) {
     };
   });
 
+  console.log(userProgress);
   return userProgress;
 }
 
@@ -146,7 +147,10 @@ function ExplorerDashboard() {
         </GridArea>
 
         <GridArea $area="stats">
-          <ExplorerDashboardStatsItem userHistory={userHistory} />
+          <ExplorerDashboardStatsItem
+            explorations={explorations}
+            userHistory={userHistory}
+          />
         </GridArea>
 
         <GridArea $area="current">

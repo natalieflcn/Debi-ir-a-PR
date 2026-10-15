@@ -51,11 +51,11 @@ function ExplorerDashboardBadgeItem({
           </Heading>
           <Row $gap="var(--gap-md)" $align="center">
             <Image src="/src/assets/images/content/TEMP.png" $width="5rem" />
-            <Heading as="h6">{recentBadge.name} Badge</Heading>
+            <Heading as="h6">{recentBadge.name}</Heading>
           </Row>
 
           <Bold $color="var(--color-dark-200)">
-            {earnedBadges.length} out of {totalBadges.length} badges collected
+            {earnedBadges.length} out of {totalBadges} badges collected
           </Bold>
 
           <Button
@@ -80,7 +80,11 @@ function ExplorerDashboardBadgeItem({
               $align="start"
             >
               {earnedBadges.map((badge) => (
-                <Image src="" $width="5rem" key={badge.exploration} />
+                <Image
+                  src={badge?.image?.url}
+                  $width="5rem"
+                  key={badge.exploration}
+                />
               ))}
             </Row>
           </Row>

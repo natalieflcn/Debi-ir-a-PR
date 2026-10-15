@@ -23,7 +23,7 @@ const explorerStatsTableTheme = {
   borderColor: "var(--color-blue-300)",
 };
 
-function getLocationTags(userHistory) {
+function getLocationIds(userHistory) {
   const visitedLocationIds = userHistory
     .flatMap((explorationProgress) => explorationProgress.visitLog)
     .map((visit) => visit.location);
@@ -37,46 +37,97 @@ function getLocationTags(userHistory) {
   return visitedLocationIds;
 }
 
-function ExplorerDashboardStatsItem({ userHistory }) {
+function getLocationTags(explorations, locationIds) {
+  const locationData = locationIds.flatMap((locId) => {
+    return explorations
+      .find((exploration) =>
+        exploration.locations.some((currentLoc) => currentLoc._id === locId),
+      )
+      .locations.find((currentLoc) => currentLoc._id === locId).tags;
+  });
+
+  const locationTags = locationData.flatMap((data) => data);
+
+  return locationTags;
+}
+
+function ExplorerDashboardStatsItem({ explorations, userHistory }) {
   const data = {
-    restaurants: 0,
-    bars: 0,
-    landmarks: 0,
-    landscapes: 0,
-    beaches: 0,
+    culture: 0,
+    art: 0,
+    food: 0,
+    entertainment: 0,
+    nature: 0,
     other: 0,
   };
 
-  const locationTags = getLocationTags(userHistory);
+  const locationIds = getLocationIds(userHistory);
+  const locationTags = getLocationTags(explorations, locationIds);
 
   locationTags.forEach((tag) => {
     switch (tag) {
-      case "restaurant":
-        data.restaurants += 1;
-        break;
-
-      case "bar":
-        data.bars += 1;
-        break;
-
+      case "attraction":
+      case "bachata":
+      case "castle":
+      case "church":
+      case "historical-site":
       case "landmark":
-        data.landmarks += 1;
+      case "monument":
+      case "reggaeton":
+      case "salsa":
+        data.culture += 1;
         break;
 
-      case "landscape":
-        data.landscapes += 1;
+      case "art":
+      case "gallery":
+      case "museum":
+      case "theater":
+        data.art += 1;
         break;
 
+      case "bakery":
+      case "cafe":
+      case "food-truck":
+        data.food += 1;
+        break;
+
+      case "entertainment":
+      case "bar":
+      case "billiards":
+      case "boutique":
+      case "club":
+      case "concert":
+      case "dancing":
+      case "excursion":
+      case "park":
+      case "sports":
+        data.entertainment += 1;
+        break;
+
+      case "nature":
       case "beach":
-        data.beaches += 1;
+      case "cave":
+      case "forest":
+      case "hiking":
+      case "landscape":
+      case "mountain":
+      case "river":
+      case "trail":
+      case "waterfall":
+        data.nature += 1;
         break;
 
       default:
+      case "shopping":
+      case "plaza":
+      case "market":
+      case "other":
         data.other += 1;
         break;
     }
   });
 
+  console.log(data);
   return (
     <>
       <DashboardItem $variation="center">
