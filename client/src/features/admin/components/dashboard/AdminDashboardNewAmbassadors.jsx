@@ -62,7 +62,7 @@ function AdminDashboardNewAmbassadors({ usersData }) {
   return (
     <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
-        Newest Ambassadors
+        Newest Ambassadors and Admins
       </Heading>
 
       <CondensedTable

@@ -19,12 +19,16 @@ const topExplorersTableColumns = [
   {
     id: "numExplorationsStarted",
     heading: "Explorations Started",
-    render: (row) => <TableNameCell>{row.explorationsStarted}</TableNameCell>,
+    render: (row) => (
+      <TableNameCell>{row.explorationsStarted.length}</TableNameCell>
+    ),
   },
   {
     id: "numExplorationsCompleted",
     heading: "Explorations Completed",
-    render: (row) => <TableNameCell>{row.explorationsCompleted}</TableNameCell>,
+    render: (row) => (
+      <TableNameCell>{row.explorationsCompleted.length}</TableNameCell>
+    ),
   },
 ];
 
@@ -56,9 +60,26 @@ const topExplorersTableTheme = {
   borderColor: "var(--color-red-300)",
 };
 
-function DashboardTopExplorers({ usersData }) {
-  const topExplorers = usersData.sort(
-    (a, b) => b.explorationsCompleted - a.explorationsCompleted,
+function DashboardTopExplorers({ usersData, explorationProgress }) {
+  console.log(usersData);
+  console.log(explorationProgress);
+
+  const explorers = usersData.map((user) => {
+    return {
+      ...user,
+      explorationsStarted: explorationProgress.filter(
+        (progress) => progress.user === user._id,
+      ),
+      explorationsCompleted: explorationProgress
+        .filter((progress) => progress.user === user._id)
+        .filter((progress) => progress.status === "completed"),
+    };
+  });
+
+  console.log(explorers);
+
+  const topExplorers = explorers.sort(
+    (a, b) => b.explorationsCompleted.length - a.explorationsCompleted.length,
   );
 
   const fiveTopExplorers = topExplorers.slice(0, 5);

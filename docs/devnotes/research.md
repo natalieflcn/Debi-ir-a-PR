@@ -84,15 +84,15 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
    Hierarchy: numCompleted > numStarted > completedAt > Name
    1. Nadia Woodlawn (10 explorations started, 9 completed) DONE
    2. Vivian Ma (10 explorations started, 5 completed) DONE
-   3. Alethia Ragland (8 explorations started, 3 completed)
-   4. Nika Chooi (7 explorations started, 3 completed)
-   5. Allen Lima (4 explorations started, 2 completed)
-   6. Sebastian Garcia (6 explorations started, 6 completed)
-   7. Emmaly Merced (6 explorations started, 2 completed)
-   8. Mario Leon (5 explorations started, 2 completed)
-   9. Ralph Makombo (4 explorations started, 1 completed)
-   10. Carlos Dejesus (1 explorations started, 1 completed)
-   11. Shanna Mohan (6 explorations started, 0 completed)
+   3. Alethia Ragland (8 explorations started, 3 completed) DONE
+   4. Nika Chooi (7 explorations started, 3 completed) DONE
+   5. Allen Lima (5 explorations started, 3 completed) DONE
+   6. Sebastian Garcia (6 explorations started, 3 completed) DONE
+   7. Emmaly Merced (6 explorations started, 2 completed) DONE
+   8. Mario Leon (5 explorations started, 0 completed) DONE
+   9. Ralph Makombo (4 explorations started, 1 completed) DONE
+   10. Carlos Dejesus (1 explorations started, 1 completed) DONE
+   11. Shanna Mohan (0 explorations started, 0 completed) DONE
 4. Configure Admin Dashboard
    - explorations started
    - explorations completed

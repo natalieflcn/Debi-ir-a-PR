@@ -4,6 +4,7 @@ import Heading from "../typography/Heading";
 import Table from "../ui/Table";
 import Bold from "../typography/Bold";
 import CondensedTable from "../ui/CondensedTable";
+import { formatDate } from "../../utils/helpers";
 
 // const StyledDashboardItem = styled(DashboardItem)`
 //   width: 100%;
@@ -27,7 +28,11 @@ const newExplorersTableColumns = [
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "createdAt", heading: "Date Joined" },
+  {
+    id: "createdAt",
+    heading: "Date Joined",
+    render: (row) => <TableNameCell>{formatDate(row.createdAt)}</TableNameCell>,
+  },
 ];
 
 const TableNameCell = styled.div`

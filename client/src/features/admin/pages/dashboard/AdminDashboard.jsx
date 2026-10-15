@@ -45,7 +45,8 @@ const GridArea = styled.div`
 `;
 
 function AdminDashboard() {
-  const { users, profileData, explorations } = useLoaderData();
+  const { users, profileData, explorations, explorationProgress } =
+    useLoaderData();
 
   const explorersData = users.filter((user) => user.role === "explorer");
   const ambassadorsData = users.filter(
@@ -75,8 +76,12 @@ function AdminDashboard() {
         </GridArea>
       </StyledAdminHighlights>
       <Row>
-        {/* <DashboardNewExplorers usersData={explorersData} />
-        <DashboardTopExplorers usersData={explorersData} />*/}
+        <DashboardNewExplorers usersData={explorersData} />
+
+        <DashboardTopExplorers
+          usersData={explorersData}
+          explorationProgress={explorationProgress}
+        />
         <AdminDashboardNewAmbassadors usersData={ambassadorsData} />
         <AdminDashboardTopAmbassadors
           usersData={ambassadorsData}

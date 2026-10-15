@@ -18,6 +18,10 @@ export async function getUserExplorationProgress(userId) {
   return await apiFetch(`/${userId}/explorations/user-exploration-progress`);
 }
 
+export async function getAllExplorationProgress() {
+  return await apiFetch(`/exploration-progress`);
+}
+
 export async function startExploration(explorationId) {
   //   const { data } = await apiFetch(`/explorations/${explorationSlug}`);
 
