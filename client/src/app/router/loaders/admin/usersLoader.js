@@ -5,6 +5,5 @@ export async function usersLoader() {
 
   const users = data.data;
 
-  console.log(users);
   return users;
 }

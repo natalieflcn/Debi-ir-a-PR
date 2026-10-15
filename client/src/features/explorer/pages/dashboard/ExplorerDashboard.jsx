@@ -102,7 +102,6 @@ function getUserProgress(explorations, userHistory) {
 }
 
 function getBadgeCollection(explorations, userHistory) {
-  console.log(userHistory);
   const completedExplorations = userHistory
     .filter((explorationProgress) => explorationProgress.status === "completed")
     ?.map((explorationProgress) => explorationProgress.exploration);

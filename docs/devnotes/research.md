@@ -82,8 +82,8 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
    10. Calle Loiza Eats
 3. Create exploration progress objects for calculations
    Hierarchy: numCompleted > numStarted > completedAt > Name
-   1. Nadia Woodlawn (10 explorations started, 9 completed)
-   2. Vivian Ma (10 explorations started, 6 completed)
+   1. Nadia Woodlawn (10 explorations started, 9 completed) DONE
+   2. Vivian Ma (10 explorations started, 5 completed) DONE
    3. Alethia Ragland (8 explorations started, 3 completed)
    4. Nika Chooi (7 explorations started, 3 completed)
    5. Allen Lima (4 explorations started, 2 completed)

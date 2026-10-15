@@ -20,6 +20,7 @@ import {
 } from "../../../../services/explorationProgress";
 import Spinner from "../../../../shared/components/ui/Spinner";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledRow = styled(Row)`
   text-align: center;
@@ -47,7 +48,7 @@ function ExplorerHeaderDetails({
           {userCompleted && (
             <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
               <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
-              <Bold $color="var(--color-light-0)">
+              <Bold $color="var(--color-brown-200)">
                 Visited on {formatDate(visitedAt)}
               </Bold>
             </Row>
@@ -117,9 +118,9 @@ function ExplorerFooterCTA({
 function ExplorationLocation() {
   const { exploration, location } = useLoaderData();
   const QueryClient = useQueryClient();
-
+  const { user } = useAuth();
   const { isPending, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["explorationProgress", exploration._id],
+    queryKey: ["explorationProgress", exploration._id, user._id],
     queryFn: () => getExplorationProgress(exploration._id),
   });
 
@@ -128,11 +129,11 @@ function ExplorationLocation() {
       addVisitLocation(explorationId, locationId),
     onSuccess: () => {
       QueryClient.invalidateQueries({
-        queryKey: ["explorationProgress", exploration._id],
+        queryKey: ["explorationProgress", exploration._id, user._id],
       });
 
       QueryClient.invalidateQueries({
-        queryKey: ["allExplorationProgress"],
+        queryKey: ["allExplorationProgress", user._id],
       });
     },
   });
@@ -142,11 +143,11 @@ function ExplorationLocation() {
       removeVisitLocation(explorationId, locationId),
     onSuccess: () => {
       QueryClient.invalidateQueries({
-        queryKey: ["explorationProgress", exploration._id],
+        queryKey: ["explorationProgress", exploration._id, user._id],
       });
 
       QueryClient.invalidateQueries({
-        queryKey: ["allExplorationProgress"],
+        queryKey: ["allExplorationProgress", user._id],
       });
     },
   });

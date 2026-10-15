@@ -16,6 +16,7 @@ import {
   getExplorationProgress,
 } from "../../../../services/explorationProgress";
 import Spinner from "../../../../shared/components/ui/Spinner";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledExplorations = styled.div`
   display: flex;
@@ -86,9 +87,9 @@ function Explorations() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showFeatured, setShowFeatured] = useState(false);
   const { explorations } = useLoaderData();
-
+  const { user } = useAuth();
   const { isPending, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["allExplorationProgress"],
+    queryKey: ["allExplorationProgress", user._id],
     queryFn: getAllMyExplorationProgress,
   });
 

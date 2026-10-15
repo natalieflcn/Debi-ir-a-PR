@@ -2,12 +2,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { getMe, login, logout } from "../../../services/auth";
 
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     getMe()
@@ -17,8 +20,8 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function loginUser(credentials) {
+    queryClient.clear();
     const { data } = await login(credentials);
-
     setUser(data.user);
 
     return data.user;
@@ -26,7 +29,7 @@ export function AuthProvider({ children }) {
 
   async function logoutUser() {
     await logout();
-
+    queryClient.clear();
     setUser(null);
   }
 

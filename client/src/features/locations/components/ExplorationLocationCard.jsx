@@ -83,11 +83,10 @@ function ExplorationLocationCard({
                 $gap="var(--gap-sm)"
                 $align="center"
               >
-                {" "}
                 <IoLocationSharp color="var(--color-red-300)" />
                 <Bold $color="var(--color-dark-200)">
                   {location.address.street},
-                </Bold>{" "}
+                </Bold>
                 <Bold $color="var(--color-dark-200)">
                   {location.address.city}, PR {location.address.zipcode}
                 </Bold>

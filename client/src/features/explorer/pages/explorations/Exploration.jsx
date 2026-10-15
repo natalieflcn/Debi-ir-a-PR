@@ -13,12 +13,14 @@ import {
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../../../shared/components/ui/Spinner";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
 function Exploration() {
   const { exploration } = useLoaderData();
   const QueryClient = useQueryClient();
+  const { user } = useAuth();
   const { isPending, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["explorationProgress", exploration._id],
+    queryKey: ["explorationProgress", exploration._id, user._id],
     queryFn: () => getExplorationProgress(exploration._id),
   });
 
@@ -27,11 +29,11 @@ function Exploration() {
 
     onSuccess: () => {
       QueryClient.invalidateQueries({
-        queryKey: ["explorationProgress", exploration._id],
+        queryKey: ["explorationProgress", exploration._id, user._id],
       });
 
       QueryClient.invalidateQueries({
-        queryKey: ["allExplorationProgress"],
+        queryKey: ["allExplorationProgress", user._id],
       });
     },
   });
@@ -40,11 +42,11 @@ function Exploration() {
     mutationFn: (explorationId) => endExploration(explorationId),
     onSuccess: () => {
       QueryClient.invalidateQueries({
-        queryKey: ["explorationProgress", exploration._id],
+        queryKey: ["explorationProgress", exploration._id, user._id],
       });
 
       QueryClient.invalidateQueries({
-        queryKey: ["allExplorationProgress"],
+        queryKey: ["allExplorationProgress", user._id],
       });
     },
   });

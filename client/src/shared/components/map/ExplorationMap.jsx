@@ -9,7 +9,6 @@ const StyledMap = styled.div`
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
 function calculateMapBounds(coordinates) {
-
   if (!coordinates?.length) return null;
 
   const lats = coordinates.map((coord) => coord.location?.lat);
@@ -29,7 +28,6 @@ function ExplorationMap({
   height = 550,
 }) {
   const filteredCoordinates = coordinates.filter((coord) => coord != null);
-  console.log(filteredCoordinates);
 
   if (filteredCoordinates.length === 0) return null;
   const isSingle = filteredCoordinates.length === 1;

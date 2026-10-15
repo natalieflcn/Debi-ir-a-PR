@@ -41,7 +41,7 @@ export const ExplorationLocationHeaderDetails = styled(Row)`
   position: absolute;
   justify-self: center;
   bottom: 20%;
-  width: 60%;
+  width: 75%;
   background-color: rgba(241, 198, 202, 0.8);
 
   padding: 1.25rem 1.75rem;

@@ -207,7 +207,7 @@ function ManageUsers() {
   });
 
   const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
-  console.log(totalPages, currentPage);
+
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedUsers = sortedUsers.slice(
     startIndex,

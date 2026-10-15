@@ -72,7 +72,6 @@ function ExplorationCard({
     (img) => img !== undefined && img !== null,
   );
 
-  console.log(derivedImages);
   return (
     <Row $gap="var(--gap-lg)">
       <RouterLink to={`/${type}${type && "/"}explorations`}>
