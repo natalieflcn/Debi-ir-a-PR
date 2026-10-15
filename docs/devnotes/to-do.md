@@ -640,6 +640,7 @@
   - Automated Emails
   - Reinforce mobile responsiveness
   - Polish all data, complete adding data to explorations
+  - Complete Landing Page summary
   - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

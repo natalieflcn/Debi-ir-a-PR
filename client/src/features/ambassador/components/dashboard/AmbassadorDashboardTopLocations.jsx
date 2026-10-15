@@ -5,38 +5,28 @@ import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 
-const topLocationsTableData = {
-  columns: [
-    {
-      id: "name",
-      heading: "Name",
-      render: (row) => (
-        <TableNameCell>
-          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-        </TableNameCell>
-      ),
-    },
-    { id: "location", heading: "Location" },
-    { id: "numCompleted", heading: "# of Explorers Completed" },
-  ],
-  rows: [
-    {
-      name: "San Juan food",
-      location: "San Juan, PR",
-      numCompleted: 64,
-    },
-    {
-      name: "Hato Rey food",
-      location: "Hato Rey, PR",
-      numCompleted: 43,
-    },
-    {
-      name: "Bayamon food",
-      location: "Bayamon, PR",
-      numCompleted: 24,
-    },
-  ],
-};
+const topLocationsTableColumns = [
+  {
+    id: "exploration",
+    heading: "Exploration",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.exploration}</Bold>
+      </TableNameCell>
+    ),
+  },
+  {
+    id: "name",
+    heading: "Name",
+    render: (row) => (
+      <TableNameCell>
+        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+      </TableNameCell>
+    ),
+  },
+  { id: "location", heading: "Location" },
+  { id: "numCompleted", heading: "# of Explorers Completed" },
+];
 
 const TableNameCell = styled.div`
   display: flex;
@@ -67,8 +57,38 @@ const topLocationsTableTheme = {
 };
 
 function AmbassadorDashboardTopLocations({
-  tableData = topLocationsTableData,
+  explorations,
+  explorationProgress,
 }) {
+  const locations = explorations.flatMap((exploration) =>
+    exploration.locations.map((location) => ({
+      ...location,
+      exploration: exploration.name,
+    })),
+  );
+
+  const topLocations = locations
+    .map((location) => {
+      const visited = [
+        ...new Set(
+          explorationProgress
+            .filter((progress) =>
+              progress.visitLog.some((log) => log.location === location._id),
+            )
+            .map((progress) => progress.user),
+        ),
+      ].length;
+
+      return {
+        name: location.name,
+        id: location._id,
+        numCompleted: visited,
+        location: location.address.city,
+        exploration: location.exploration,
+      };
+    })
+    .sort((a, b) => b.numCompleted - a.numCompleted)
+    .slice(0, 5); // most completed first
   return (
     <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">
@@ -76,8 +96,8 @@ function AmbassadorDashboardTopLocations({
       </Heading>
 
       <CondensedTable
-        columns={tableData.columns}
-        rows={tableData.rows}
+        columns={topLocationsTableColumns}
+        rows={topLocations}
         $theme={topLocationsTableTheme}
       />
     </DashboardItem>

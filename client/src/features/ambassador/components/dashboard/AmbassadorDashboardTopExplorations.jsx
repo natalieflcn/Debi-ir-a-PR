@@ -48,27 +48,31 @@ const topExplorationsTableTheme = {
   borderColor: "var(--color-green-300)",
 };
 
-function AmbassadorDashboardTopExplorations({ explorations, userHistories }) {
+function AmbassadorDashboardTopExplorations({
+  explorations,
+  explorationProgress,
+}) {
   const explorationEngagement = explorations
     .map((exploration) => {
-      const started = userHistories.filter((history) =>
-        history.explorationProgress.some(
-          (entry) =>
-            entry.explorationId === exploration.id &&
-            entry.status !== "not_started",
+      const started = [
+        ...new Set(
+          explorationProgress
+            .filter((progress) => progress.exploration === exploration._id)
+            .map((progress) => progress.user),
         ),
-      ).length;
+      ].length;
 
-      const completed = userHistories.filter((history) =>
-        history.explorationProgress.some(
-          (entry) =>
-            entry.explorationId === exploration.id &&
-            entry.status === "completed",
+      const completed = [
+        ...new Set(
+          explorationProgress
+            .filter((progress) => progress.exploration === exploration._id)
+            .filter((progress) => progress.status === "completed")
+            .map((progress) => progress.user),
         ),
-      ).length;
+      ].length;
 
       return {
-        id: exploration.id,
+        id: exploration,
         name: exploration.name,
         numStops: exploration.numStops,
         numStarted: started,
@@ -82,6 +86,42 @@ function AmbassadorDashboardTopExplorations({ explorations, userHistories }) {
       return b.numStarted - a.numStarted;
     }) // most completed first
     .slice(0, 5); // top 5 only
+
+  //
+
+  // const explorationEngagement2 = explorations
+  //   .map((exploration) => {
+  //     const started = userHistories.filter((history) =>
+  //       history.explorationProgress.some(
+  //         (entry) =>
+  //           entry.explorationId === exploration.id &&
+  //           entry.status !== "not_started",
+  //       ),
+  //     ).length;
+
+  //     const completed = userHistories.filter((history) =>
+  //       history.explorationProgress.some(
+  //         (entry) =>
+  //           entry.explorationId === exploration.id &&
+  //           entry.status === "completed",
+  //       ),
+  //     ).length;
+
+  //     return {
+  //       id: exploration.id,
+  //       name: exploration.name,
+  //       numStops: exploration.numStops,
+  //       numStarted: started,
+  //       numCompleted: completed,
+  //     };
+  //   })
+  //   .sort((a, b) => {
+  //     if (b.numCompleted !== a.numCompleted) {
+  //       return b.numCompleted - a.numCompleted; // primary: most completed first
+  //     }
+  //     return b.numStarted - a.numStarted;
+  //   }) // most completed first
+  //   .slice(0, 5); // top 5 only
 
   return (
     <DashboardItem $variation="center">

@@ -88,8 +88,6 @@ export async function ambassadorDashboardLoader() {
     (user) => user.role === "explorer",
   );
 
-  console.log(explorationProgress.data);
-
   const activeThisWeek = [
     ...new Set(
       explorationProgress.data
@@ -99,7 +97,6 @@ export async function ambassadorDashboardLoader() {
         .map((progress) => progress.user),
     ),
   ];
-  console.log(activeThisWeek);
 
   const activeThisMonth = [
     ...new Set(
@@ -126,7 +123,6 @@ export async function ambassadorDashboardLoader() {
     numMonthlyExplorers: activeThisMonth,
   };
 
-  console.log(userStats);
   return {
     profileData: profileData.data.data,
     explorations: explorations.data.data,

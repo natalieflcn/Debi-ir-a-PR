@@ -67,15 +67,22 @@ const NumExplorationsCompleted = function ({ numExplorationsCompleted }) {
 
 function AmbassadorDashboardExplorationStats({
   explorations,
-  numExplorationsCompleted,
+  explorationProgress,
 }) {
   const numExplorations = explorations.length;
+  const numExplorationsCompleted = [
+    ...new Set(
+      explorationProgress
+        .filter((progress) => progress.status === "completed")
+        .map((progress) => progress.exploration),
+    ),
+  ];
 
   return (
     <StyledRow $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
       <NumTotalExplorations numExplorations={numExplorations} />
       <NumExplorationsCompleted
-        numExplorationsCompleted={numExplorationsCompleted}
+        numExplorationsCompleted={numExplorationsCompleted.length}
       />
     </StyledRow>
   );

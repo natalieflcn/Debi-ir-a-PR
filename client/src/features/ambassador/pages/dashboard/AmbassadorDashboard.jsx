@@ -116,26 +116,29 @@ function AmbassadorDashboard() {
         </GridArea>
 
         <GridArea $area="explorationStats">
-          {/* <AmbassadorDashboardExplorationStats
+          <AmbassadorDashboardExplorationStats
             explorations={explorations}
-            numExplorationsCompleted={numExplorationsCompleted}
-          /> */}
+            explorationProgress={explorationProgress}
+          />
         </GridArea>
         <GridArea $area="topExplorations">
-          {/* <AmbassadorDashboardTopExplorations
+          <AmbassadorDashboardTopExplorations
             explorations={explorations}
-            userHistories={userHistories}
-          /> */}
+            explorationProgress={explorationProgress}
+          />
         </GridArea>
         <GridArea $area="locationStats">
-          {/* <AmbassadorDashboardLocationStats
+          <AmbassadorDashboardLocationStats
             explorations={explorations}
-            userHistories={userHistories}
-          /> */}
+            explorationProgress={explorationProgress}
+          />
         </GridArea>
-        {/* <GridArea $area="topLocations">
-          <AmbassadorDashboardTopLocations />
-        </GridArea> */}
+        <GridArea $area="topLocations">
+          <AmbassadorDashboardTopLocations
+            explorations={explorations}
+            explorationProgress={explorationProgress}
+          />
+        </GridArea>
       </StyledAmbassadorStats>
     </StyledAmbassadorDashboard>
   );

@@ -30,7 +30,7 @@ const DashboardItemContentRow = styled(Row)`
 
 const NumTotalLocations = function ({ explorations }) {
   const numLocations = explorations.flatMap(
-    (exploration) => exploration.locationIds,
+    (exploration) => exploration.locations,
   ).length;
 
   return (
@@ -51,12 +51,14 @@ const NumTotalLocations = function ({ explorations }) {
   );
 };
 
-const NumLocationsExplored = function ({ userHistories }) {
-  const locationsExplored = new Set(
-    userHistories.flatMap((history) =>
-      history.visitLog.map((log) => log.locationId),
+const NumLocationsExplored = function ({ explorationProgress }) {
+  const locationsExplored = [
+    ...new Set(
+      explorationProgress.flatMap((progress) =>
+        progress.visitLog.map((log) => log.location),
+      ),
     ),
-  );
+  ].length;
 
   return (
     <DashboardItem>
@@ -70,18 +72,21 @@ const NumLocationsExplored = function ({ userHistories }) {
             PR)
           </SmallText>
         </Row>
-        <InsetSpan>{locationsExplored.size}</InsetSpan>
+        <InsetSpan>{locationsExplored}</InsetSpan>
       </DashboardItemContentRow>
     </DashboardItem>
   );
 };
-function AmbassadorDashboardLocationStats({ explorations, userHistories }) {
+function AmbassadorDashboardLocationStats({
+  explorations,
+  explorationProgress,
+}) {
   return (
     <StyledRow $direction="horizontal" $gap="var(--gap-xl)" $align="stretch">
       <NumTotalLocations explorations={explorations} />
       <NumLocationsExplored
         explorations={explorations}
-        userHistories={userHistories}
+        explorationProgress={explorationProgress}
       />
     </StyledRow>
   );
