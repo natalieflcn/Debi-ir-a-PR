@@ -61,9 +61,6 @@ const topExplorersTableTheme = {
 };
 
 function DashboardTopExplorers({ usersData, explorationProgress }) {
-  console.log(usersData);
-  console.log(explorationProgress);
-
   const explorers = usersData.map((user) => {
     return {
       ...user,
@@ -76,10 +73,11 @@ function DashboardTopExplorers({ usersData, explorationProgress }) {
     };
   });
 
-  console.log(explorers);
-
   const topExplorers = explorers.sort(
-    (a, b) => b.explorationsCompleted.length - a.explorationsCompleted.length,
+    (a, b) =>
+      b.explorationsCompleted.length - a.explorationsCompleted.length ||
+      b.explorationsStarted.length - a.explorationsStarted.length ||
+      a.name.localeCompare(b.name),
   );
 
   const fiveTopExplorers = topExplorers.slice(0, 5);

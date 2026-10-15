@@ -54,7 +54,6 @@ const topAmbassadorsTableTheme = {
 };
 
 function AdminDashboardTopAmbassadors({ usersData, explorations }) {
-  console.log(usersData);
   const ambassadors = usersData
     .filter((user) => user.role === "ambassador" || user.role === "admin")
     .map((user) => {

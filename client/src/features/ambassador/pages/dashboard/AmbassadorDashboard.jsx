@@ -72,15 +72,10 @@ const GridArea = styled.div`
 `;
 
 function AmbassadorDashboard() {
-  const {
-    explorers,
-    profileData,
-    explorations,
-    numWeeklyExplorers,
-    numMonthlyExplorers,
-    numExplorationsCompleted,
-    userHistories,
-  } = useLoaderData();
+  const { users, profileData, explorations, explorationProgress, userStats } =
+    useLoaderData();
+
+  // const explorersData = users.filter((user) => user.role === "explorer");
 
   const { user } = useAuth();
 
@@ -96,48 +91,51 @@ function AmbassadorDashboard() {
         </GridArea>
         <GridArea $area="explorationsCreated">
           <DashboardExplorationsCreated
-            type="ambassador"
             profile={profileData}
+            explorations={explorations}
           />
         </GridArea>
         <GridArea $area="userStats">
           <AmbassadorDashboardUserStats
-            usersData={explorers}
-            numWeeklyExplorers={numWeeklyExplorers}
-            numMonthlyExplorers={numMonthlyExplorers}
+            usersData={users}
+            numWeeklyExplorers={userStats.numWeeklyExplorers.length}
+            numMonthlyExplorers={userStats.numMonthlyExplorers.length}
           />
         </GridArea>
       </StyledAmbassadorHighlights>
 
       <StyledAmbassadorStats>
         <GridArea $area="newExplorers">
-          <DashboardNewExplorers usersData={explorers} />
+          <DashboardNewExplorers usersData={users} />
         </GridArea>
         <GridArea $area="topExplorers">
-          <DashboardTopExplorers usersData={explorers} />
+          <DashboardTopExplorers
+            usersData={users}
+            explorationProgress={explorationProgress}
+          />
         </GridArea>
 
         <GridArea $area="explorationStats">
-          <AmbassadorDashboardExplorationStats
+          {/* <AmbassadorDashboardExplorationStats
             explorations={explorations}
             numExplorationsCompleted={numExplorationsCompleted}
-          />
+          /> */}
         </GridArea>
         <GridArea $area="topExplorations">
-          <AmbassadorDashboardTopExplorations
+          {/* <AmbassadorDashboardTopExplorations
             explorations={explorations}
             userHistories={userHistories}
-          />
+          /> */}
         </GridArea>
         <GridArea $area="locationStats">
-          <AmbassadorDashboardLocationStats
+          {/* <AmbassadorDashboardLocationStats
             explorations={explorations}
             userHistories={userHistories}
-          />
+          /> */}
         </GridArea>
-        <GridArea $area="topLocations">
+        {/* <GridArea $area="topLocations">
           <AmbassadorDashboardTopLocations />
-        </GridArea>
+        </GridArea> */}
       </StyledAmbassadorStats>
     </StyledAmbassadorDashboard>
   );

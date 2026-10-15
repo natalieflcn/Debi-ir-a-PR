@@ -97,3 +97,4 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
    - explorations started
    - explorations completed
    - explorations created
+5. Configure Ambassador Dashboard

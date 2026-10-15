@@ -624,9 +624,9 @@
         - [ ] # Locations completed this month
         - [ ] # Locations completed this year
       - [ ] Ambassador/Admin
-        - [ ] Top Ambassadors: # of Explorations Created
-        - [ ] Top Explorers: # of Explorations Started
-        - [ ] Top Explorers: # of Explorations Completed
+        - [x] Top Ambassadors: # of Explorations Created
+        - [x] Top Explorers: # of Explorations Started
+        - [x] Top Explorers: # of Explorations Completed
         - [ ] # of Monthly Explorers (active this month)
         - [ ] # of Weekly Explorers (active this week)
         - [ ] # of Total Explorations
