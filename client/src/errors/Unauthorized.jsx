@@ -5,6 +5,7 @@ import Heading from "../shared/components/typography/Heading";
 import Button from "../shared/components/ui/Button";
 import Bold from "../shared/components/typography/Bold";
 import Image from "../shared/components/ui/Image";
+import Row from "../shared/components/layout/Row";
 
 const StyledUnauthorized = styled.div`
   display: flex;
@@ -12,8 +13,15 @@ const StyledUnauthorized = styled.div`
   align-items: center;
   gap: var(--gap-lg);
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
+const ImageContainer = styled(Row)`
+  width: 20rem;
+  @media (max-width: 500px) {
+    width: 14rem;
+  }
+`;
 function Unauthorized() {
   const { user } = useAuth();
   let userRedirect;
@@ -44,7 +52,9 @@ function Unauthorized() {
       <Bold $color="var(--color-light-0)">
         Sorry, you don't have access to this page.
       </Bold>
-      <Image src="/src/assets/images/content/PRDoor.png" $width="20rem" />
+      <ImageContainer>
+        <Image src="/src/assets/images/content/PRDoor.png" $width="100%" />
+      </ImageContainer>
       <RouterLink to={`/${userRedirect}`}>
         <Button $size="small" $variation="yellow">
           Back to {user ? "Dashboard" : "Home"}

@@ -1,6 +1,14 @@
 import { Navigate, Outlet, useLoaderData } from "react-router-dom";
 import { useAuth } from "../../features/auth/contexts/AuthContext";
 
+function rolePrefix(user) {
+  return user?.role === "admin"
+    ? "/admin"
+    : user?.role === "ambassador"
+      ? "/ambassador"
+      : "";
+}
+
 function ProtectedRoute({ allowedRoles }) {
   //   const { user } = useLoaderData();
   const { user, logoutUser } = useAuth();

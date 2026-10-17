@@ -3,10 +3,18 @@ import Image from "../shared/components/ui/Image";
 import Heading from "../shared/components/typography/Heading";
 import Button from "../shared/components/ui/Button";
 import Row from "../shared/components/layout/Row";
-import { useRevalidator, useRouteError } from "react-router-dom";
+import { Navigate, useRevalidator, useRouteError } from "react-router-dom";
 import RouterLink from "../shared/components/routing/RouterLink";
 import Background from "../shared/components/decorative/Background";
 import { useAuth } from "../features/auth/contexts/AuthContext";
+
+function rolePrefix(user) {
+  return user?.role === "admin"
+    ? "/admin"
+    : user?.role === "ambassador"
+      ? "/ambassador"
+      : "";
+}
 
 const Styled404 = styled.div`
   position: absolute;
@@ -72,6 +80,10 @@ function RouteError() {
 
   const { user } = useAuth();
   let userRedirect = "/";
+
+  if (error?.status === 401) return <Navigate to="/login" replace />;
+  if (error?.status === 403)
+    return <Navigate to={`${rolePrefix(user)}/unauthorized`} replace />;
 
   if (user) {
     switch (user.role) {
