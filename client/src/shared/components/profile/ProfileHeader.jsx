@@ -163,6 +163,7 @@ const ImageContainer = styled.div`
 `;
 
 const NameRow = styled(Row)`
+  min-width: 0;
   @media (max-width: 1000px) {
     flex-direction: column;
     gap: var(--gap-sm);
@@ -174,6 +175,30 @@ const NameRow = styled(Row)`
   }
 `;
 
+const NameButton = styled(Button)`
+  display: inline-flex; /* must be inline-level to sit beside the text */
+  vertical-align: auto;
+`;
+
+const NameHeading = styled(Heading)`
+  border: 1px solid red;
+  display: inline; /* flows like text, so the box wraps with it */
+  margin-right: var(--gap-xs);
+`;
+
+const StyledRow = styled(Row)`
+  align-items: center;
+  @media (max-width: 650px) {
+    text-align: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
+    align-items: center;
+  }
+`;
 const ProfileHeader = function ({ user, title }) {
   // const { user, role } = useAuth();
   // const { user } = profileLoader();
@@ -297,7 +322,7 @@ const ProfileHeader = function ({ user, title }) {
         </Row>
       </Row>
 
-      <NameRow $gap="var(--gap-sm)">
+      <Row $gap="var(--gap-sm)">
         {isEditingName ? (
           <Row $gap="var(--gap-md)" $direction="horizontal">
             <Input
@@ -327,19 +352,23 @@ const ProfileHeader = function ({ user, title }) {
             </Row>
           </Row>
         ) : (
-          <Row $gap="var(--gap-lg)" $direction="horizontal" $align="start">
-            <Heading as="h2">{name.toUpperCase()}</Heading>
-            <Button
+          <NameRow $gap="var(--gap-lg)" $direction="horizontal" $align="start">
+            <NameHeading as="h2">{name.toUpperCase()}</NameHeading>
+            <NameButton
               $size="extraSmall"
               $variation="yellow"
               onClick={() => setIsEditingName(true)}
             >
               Edit Name
-            </Button>
-          </Row>
+            </NameButton>
+          </NameRow>
         )}
 
-        <Row $direction="horizontal" $align="flex-start" $gap="var(--gap-sm)">
+        <StyledRow
+          $direction="horizontal"
+          $align="flex-start"
+          $gap="var(--gap-sm)"
+        >
           <Heading as="h5" $color="var(--color-light-0)">
             {title ?? user.title}
           </Heading>
@@ -354,8 +383,8 @@ const ProfileHeader = function ({ user, title }) {
               <IoIosInformationCircleOutline size={23} />
             )}
           </InfoButton>
-        </Row>
-      </NameRow>
+        </StyledRow>
+      </Row>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           {InfoButtonTexts[user.role]}

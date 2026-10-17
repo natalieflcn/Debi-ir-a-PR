@@ -28,9 +28,6 @@ const StyledProfileInformation = styled.div`
   flex-direction: column;
   gap: var(--gap-lg);
   color: var(--color-dark-100);
-  @media (max-width: 800px) {
-    gap: var(--gap-2xl);
-  }
 `;
 
 const ProfileRow = styled.div`
@@ -55,7 +52,7 @@ const ProfileRow = styled.div`
       "value"
       "button";
     row-gap: var(--gap-sm);
-    justify-items: center;
+    /* justify-items: center; */
     text-align: center;
   }
 `;
@@ -91,6 +88,10 @@ const StyledRow = styled(Row)`
   align-items: start;
   gap: var(--gap-xl);
 
+  > * {
+    min-width: 0;
+  }
+
   input {
     width: 100%;
     min-width: 0;
@@ -98,9 +99,16 @@ const StyledRow = styled(Row)`
   }
 
   @media (max-width: 900px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--gap-md);
   }
+
+  /* @media (max-width: 500px) {
+    input {
+      justify-items: center;
+      width: 75%;
+    }
+  } */
 `;
 
 const InformationLabel = styled(Heading)`
@@ -118,6 +126,24 @@ const StyledButton = styled(Button)`
 
 const StyledForm = styled(Form)`
   display: contents;
+  width: 100%;
+`;
+
+const ButtonsRow = styled(Row)`
+  display: flex;
+  flex: 1;
+
+  width: 100%;
+
+  button {
+    width: 100%;
+    /* flex-grow: 1; */
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const ProfileInformation = function ({ user }) {
@@ -256,7 +282,7 @@ const ProfileInformation = function ({ user }) {
                   />
                   {emailErrors && <Bold>{emailErrors}</Bold>}
                 </Row>
-                <Row
+                <ButtonsRow
                   $direction="horizontal"
                   $gap="var(--gap-md)"
                   $align="start"
@@ -277,7 +303,7 @@ const ProfileInformation = function ({ user }) {
                   >
                     Cancel
                   </Button>
-                </Row>
+                </ButtonsRow>
               </StyledForm>
             </StyledRow>
           ) : (
@@ -326,7 +352,7 @@ const ProfileInformation = function ({ user }) {
                   </Row>
                 </Row>
 
-                <Row
+                <ButtonsRow
                   $direction="horizontal"
                   $gap="var(--gap-md)"
                   $align="start"
@@ -347,7 +373,7 @@ const ProfileInformation = function ({ user }) {
                   >
                     Cancel
                   </Button>
-                </Row>
+                </ButtonsRow>
               </StyledForm>
             </StyledRow>
           ) : (

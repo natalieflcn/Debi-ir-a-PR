@@ -73,7 +73,7 @@ const ExplorerExplorationCardButton = function (explorationSlug, progress) {
       id: buttonId,
       buttonVariation: buttonVariation,
       buttonName: buttonName,
-      buttonLink: `/ambassador/explorations/${explorationSlug}`,
+      buttonLink: `explorations/${explorationSlug}`,
     },
   ];
 };

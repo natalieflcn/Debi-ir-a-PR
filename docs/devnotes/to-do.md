@@ -623,8 +623,8 @@
         - [x] # Locations completed this week
         - [x] # Locations completed this month
         - [x] # Locations completed this year
-        - [ ] TODO: Link ExplorationCarousel Buttons to Exploration Pages
-        - [ ] TODO: Hyperlink explorations and locations to respective pages in admin/ambassador UI
+        - [ ] TODO 1: Link ExplorationCarousel Buttons to Exploration Pages
+        - [ ] TODO 2: Hyperlink explorations and locations to respective pages in admin/ambassador UI
       - [x] Ambassador/Admin
         - [x] Top Ambassadors: # of Explorations Created
         - [x] Top Explorers: # of Explorations Started
@@ -639,8 +639,8 @@
         - [x] # of Locations Completed
         - [x] Top Locations: # of Explorers Completed
       - [x] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
-  - Automated Emails
-  - Reinforce mobile responsiveness
+  - [ ] Automated Emails
+  - [~] Reinforce mobile responsiveness TODO 3
     - [ ] Landing page
       - [x] Home
       - [x] How It Works
@@ -651,18 +651,18 @@
       - [x] Signup/Ambassador
       - [x] Forgot Password
       - [x] Reset Password
-    - [ ] Errors
+    - [x] Errors
       - [x] Page Not Found
-      - [ ] Render Error Boundary
+      - [x] Render Error Boundary
       - [x] Route Error
-      - [ ] Unauthorized
-    - [ ] Explorer POV
+      - [x] Unauthorized
+    - [ ] Explorer POV TODO 3
       - [ ] Dashboard
       - [ ] Explorations
       - [ ] Exploration page
       - [ ] Location page
       - [ ] Profile
-    - [ ] Ambassador POV
+    - [ ] Ambassador POV TODO 4
       - [ ] Dashboard
       - [ ] Explorations
       - [ ] Create Exploration
@@ -670,7 +670,7 @@
       - [ ] Location page
       - [ ] Create Location page
       - [ ] Profile
-    - [ ] Admin POV
+    - [ ] Admin POV TODO 5
       - [ ] Dashboard
       - [ ] Explorations
       - [ ] Create Exploration
@@ -679,7 +679,7 @@
       - [ ] Create Location page
       - [ ] Profile
   - Polish all data, complete adding data to explorations
-  - Complete Landing Page summary
+  - Complete Landing Page summary TODO 6
   - Add family's voices to Brush Up Your Spanish
   - Begin deploying project
 

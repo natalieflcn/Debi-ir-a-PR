@@ -5,6 +5,18 @@ import Bold from "../typography/Bold";
 import SmallText from "../typography/SmallText";
 import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
+import styled from "styled-components";
+
+const ButtonsRow = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
 
 function DeleteConfirmationModal({
   onConfirmDelete,
@@ -46,7 +58,7 @@ function DeleteConfirmationModal({
               This action is irreversible and all {options.data} will be lost.
             </SmallText>
 
-            <Row $direction="horizontal" $gap="var(--gap-md)">
+            <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
               <Button
                 $size="small"
                 $variation="secondary"
@@ -61,7 +73,7 @@ function DeleteConfirmationModal({
               >
                 Delete {options.itemName}
               </Button>
-            </Row>
+            </ButtonsRow>
           </>
         )}
 
