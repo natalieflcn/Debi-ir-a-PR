@@ -37,7 +37,7 @@ const spanishVocab = {
     },
     { spanish: "Diantre!", english: "Damn!", audio: "" },
     { spanish: "En verdad?", english: "For real?", audio: "" },
-    { spanish: "Bonchinche", english: "Gossip", audio: "" },
+    { spanish: "Bochinche", english: "Gossip", audio: "" },
     { spanish: "Eso es embuste!", english: "That's a lie!", audio: "" },
     { spanish: "Vamos a janguear!", english: "Let's hang out!", audio: "" },
     {

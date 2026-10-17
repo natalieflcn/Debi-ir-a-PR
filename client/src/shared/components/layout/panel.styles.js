@@ -39,8 +39,12 @@ export const StyledPanel = styled.div`
       `var(--text-shadow-offset-md) ${$theme.panelHeadingHoverShadow}`};
   }
 
-  @media (max-width: 800px) {
-    width: 90%;
+  /* @media (max-width: 800px) {
+    width: 100%;
+  } */
+
+  @media (max-width: 400px) {
+    padding: 1rem;
   }
 `;
 
@@ -64,8 +68,13 @@ export const StyledHeading = styled(Heading)`
   }
 
   @media (max-width: 600px) {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     line-height: var(--line-height-md);
+  }
+
+  @media (max-width: 400px) {
+    padding: 0 0.25rem 0 0.5rem;
+    font-size: var(--font-size-sm);
   }
 `;
 
@@ -77,6 +86,11 @@ export const StyledButton = styled(Button)`
     justify-self: flex-end;
     bottom: 0;
   }
+
+  @media (max-width: 400px) {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 `;
 
 const TogglePanel = css`
@@ -87,6 +101,11 @@ const TogglePanel = css`
   height: 1.7rem;
   opacity: 90%;
   color: var(--color-light-0);
+
+  @media (max-width: 400px) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 export const OpenPanel = styled(BiPlus)`

@@ -16,8 +16,8 @@ import SmallText from "../../../shared/components/typography/SmallText";
 
 const StyledLoginBackground = styled.div`
   position: relative;
-  width: 40%;
-  flex: 0 0 40%;
+  max-width: 40%;
+  flex: 1 0 40%;
 
   background-image: url("src/assets/images/content/TEMP.png");
   background-size: cover;
@@ -26,6 +26,10 @@ const StyledLoginBackground = styled.div`
 
   align-self: stretch;
   min-height: 100%;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const StyledAppForm = styled(AppForm)`
@@ -36,6 +40,17 @@ const StyledAppForm = styled(AppForm)`
 const LoginWrapper = styled.div`
   display: flex;
   align-items: stretch;
+
+  justify-self: center;
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    width: auto;
+  }
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
 `;
 
 const StyledLoginForm = styled.div`
@@ -45,10 +60,20 @@ const StyledLoginForm = styled.div`
   border-top-right-radius: var(--border-radius-lg);
   border-bottom-right-radius: var(--border-radius-lg);
   height: 100%;
-  flex: 1;
+  flex: 1 1 0;
+  /* width: 60%; */
   padding: 1.5rem;
   box-sizing: border-box;
   justify-content: center;
+
+  @media (max-width: 1200px) {
+    border-top-left-radius: var(--border-radius-lg);
+    border-bottom-left-radius: var(--border-radius-lg);
+  }
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -56,7 +81,44 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledInput = styled(Input)`
-  width: 25rem;
+  flex: 1 1 0;
+  width: 20rem;
+  min-width: 0;
+
+  @media (max-width: 1200px) {
+    width: 28rem;
+  }
+
+  @media (max-width: 900px) {
+    width: 22rem;
+  }
+
+  @media (max-width: 780px) {
+    width: 17rem;
+  }
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
+`;
+
+const ButtonsRow = styled(Row)`
+  @media (max-width: 680px) {
+    flex-direction: column;
+    flex: 1;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+const ForgotPasswordRow = styled(Row)`
+  @media (max-width: 560px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
+    text-align: center;
+  }
 `;
 
 function Login() {
@@ -174,7 +236,7 @@ function Login() {
           </StyledAppForm>
 
           <Row>
-            <Row
+            <ForgotPasswordRow
               $direction="horizontal"
               $color="var(--color-dark-200)"
               $align="center"
@@ -188,14 +250,14 @@ function Login() {
                   Recover your account here
                 </Bold>
               </RouterLink>
-            </Row>
+            </ForgotPasswordRow>
             <Row $direction="horizontal" $align="center">
               <StyledHeading as="h5" $color="var(--color-red-300)">
                 OR
               </StyledHeading>
             </Row>
 
-            <Row $direction="horizontal" $gap="var(--gap-md)">
+            <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
               <RouterLink to="/signup/explorer">
                 <Button $variation="secondary" $size="small">
                   Become an Explorer
@@ -213,7 +275,7 @@ function Login() {
                   Learn More
                 </Button>
               </RouterLink>
-            </Row>
+            </ButtonsRow>
           </Row>
         </Row>
       </StyledLoginForm>

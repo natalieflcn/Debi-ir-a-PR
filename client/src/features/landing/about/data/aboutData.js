@@ -55,12 +55,6 @@ const aboutData = [
         link: "/about",
         content: LessonsSection,
       },
-      {
-        id: "the-results",
-        heading: "The Results",
-        link: "/about",
-        content: TheResultsSection,
-      },
     ],
   },
 ];

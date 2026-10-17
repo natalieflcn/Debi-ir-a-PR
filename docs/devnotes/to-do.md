@@ -617,14 +617,14 @@
     - [~] Locations
     - [x] Sample explorers completing explorations, simulating real exploration progress
 
-  - [ ] Aggregating Data for Dashboard Analytics
+  - [x] Aggregating Data for Dashboard Analytics
     - Requirements Before Testing
-      - [ ] Explorer
-        - [ ] # Locations completed this week
-        - [ ] # Locations completed this month
-        - [ ] # Locations completed this year
-        - [ ] Link ExplorationCarousel Buttons to Exploration Pages
-        - [ ] Hyperlink explorations and locations to respective pages in admin/ambassador UI
+      - [x] Explorer
+        - [x] # Locations completed this week
+        - [x] # Locations completed this month
+        - [x] # Locations completed this year
+        - [ ] TODO: Link ExplorationCarousel Buttons to Exploration Pages
+        - [ ] TODO: Hyperlink explorations and locations to respective pages in admin/ambassador UI
       - [x] Ambassador/Admin
         - [x] Top Ambassadors: # of Explorations Created
         - [x] Top Explorers: # of Explorations Started
@@ -641,8 +641,46 @@
       - [x] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
   - Automated Emails
   - Reinforce mobile responsiveness
+    - [ ] Landing page
+      - [x] Home
+      - [x] How It Works
+      - [x] About
+      - [x] Resources
+      - [x] Login
+      - [x] Signup/Explorer
+      - [x] Signup/Ambassador
+      - [x] Forgot Password
+      - [x] Reset Password
+    - [ ] Errors
+      - [x] Page Not Found
+      - [ ] Render Error Boundary
+      - [x] Route Error
+      - [ ] Unauthorized
+    - [ ] Explorer POV
+      - [ ] Dashboard
+      - [ ] Explorations
+      - [ ] Exploration page
+      - [ ] Location page
+      - [ ] Profile
+    - [ ] Ambassador POV
+      - [ ] Dashboard
+      - [ ] Explorations
+      - [ ] Create Exploration
+      - [ ] Exploration page
+      - [ ] Location page
+      - [ ] Create Location page
+      - [ ] Profile
+    - [ ] Admin POV
+      - [ ] Dashboard
+      - [ ] Explorations
+      - [ ] Create Exploration
+      - [ ] Exploration page
+      - [ ] Location page
+      - [ ] Create Location page
+      - [ ] Profile
   - Polish all data, complete adding data to explorations
   - Complete Landing Page summary
+  - Add family's voices to Brush Up Your Spanish
   - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

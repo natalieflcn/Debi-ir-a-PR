@@ -51,6 +51,7 @@ const StyledNavBar = styled.nav`
 
   @media (max-width: 1200px) {
     /* width: 90%; */
+    gap: 3rem;
   }
 
   @media (max-width: 800px) {

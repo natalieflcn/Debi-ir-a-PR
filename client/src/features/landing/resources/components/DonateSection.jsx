@@ -13,6 +13,7 @@ import {
 import Card from "../../../../shared/components/layout/Card";
 import { useRef } from "react";
 import ExternalLink from "../../../../shared/components/routing/ExternalLink";
+import styled from "styled-components";
 
 const organizations = [
   {
@@ -119,6 +120,12 @@ const CoquiSlicedPhotos = function ({ children }) {
   );
 };
 
+const ButtonsRow = styled(Row)`
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+`;
+
 export default function DonateSection({ theme }) {
   return (
     <StyledDonateSection>
@@ -148,7 +155,7 @@ export default function DonateSection({ theme }) {
                   </ExternalLink>
                   <SmallText>{organization.description}</SmallText>
                 </Row>
-                <Row $direction="horizontal" $gap="var(--gap-md)">
+                <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
                   <Button $size="medium" $variation="primary">
                     <ExternalLink href={organization.donate}>
                       Donate Now
@@ -160,7 +167,7 @@ export default function DonateSection({ theme }) {
                       Learn More
                     </ExternalLink>
                   </Button>
-                </Row>
+                </ButtonsRow>
               </Row>
             </StyledOrganization>
           </Card>

@@ -26,6 +26,7 @@ function ProtectedRoute({ allowedRoles }) {
         break;
     }
   }
+  console.log("running protected route");
   if (!allowedRoles.includes(user.role)) {
     return <Navigate to={`${prefix}/unauthorized`} replace />;
   }

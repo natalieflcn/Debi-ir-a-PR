@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Panel from "./Panel";
 import styled from "styled-components";
 import Heading from "../typography/Heading";
+import Row from "./Row";
 
 const StyledPanelGroup = styled.div`
   display: flex;
@@ -9,6 +10,7 @@ const StyledPanelGroup = styled.div`
   /* flex-grow: 1; */
   gap: 1rem;
   font-size: var(--font-size-sm);
+  max-width: 100%;
 
   @media (max-width: 1000px) {
     margin: 0 auto;
@@ -23,11 +25,14 @@ const StyledPanelGroup = styled.div`
   }
 `;
 
+const StyledRow = styled(Row)`
+  /* max-width: 90%; */
+`;
 const StyledHeading = styled(Heading)`
   font-size: var(--font-size-2xl);
   line-height: var(--line-height-3xl);
   text-transform: uppercase;
-
+  /* max-width: 90%; */
   scroll-margin-top: 9.5rem;
 
   color: ${({ $theme }) => $theme.headingColor};
@@ -92,17 +97,18 @@ function PanelGroup({ menuSections, isOpen, setIsOpen, theme }) {
     <StyledPanelGroup>
       {menuSections.map((menuSection) => (
         <React.Fragment key={menuSection.id}>
-          <StyledHeading
-            as="h2"
-            onClick={() => handleSidebarHeadingClick(menuSection.heading)}
-            ref={(heading) =>
-              (headingRefs.current[menuSection.heading] = heading)
-            }
-            $theme={theme}
-          >
-            {menuSection.heading}
-          </StyledHeading>
-
+          <Row>
+            <StyledHeading
+              as="h2"
+              onClick={() => handleSidebarHeadingClick(menuSection.heading)}
+              ref={(heading) =>
+                (headingRefs.current[menuSection.heading] = heading)
+              }
+              $theme={theme}
+            >
+              {menuSection.heading}
+            </StyledHeading>
+          </Row>
           {menuSection.sections.map((section, index) => {
             const Content = section.content;
 

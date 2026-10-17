@@ -38,13 +38,13 @@ const StyledCard = styled(Card)`
 
   @media (max-width: 830px) {
     /* flex-direction: column; */
-    height: 10rem;
+    height: 12rem;
     align-self: center;
   }
 
   @media (max-width: 700px) {
     /* flex-direction: column; */
-    height: 5rem;
+    height: 6rem;
   }
 
   @media (max-width: 450px) {
@@ -61,7 +61,7 @@ const MeetPuertoRicoCard = function ({ image, spotData }) {
         <StyledCard
           $cardColor="var(--color-light-0)"
           $cardShadow="outsetSM"
-          $height="7rem"
+          $height="8.5rem"
         >
           <p>{spotData}</p>
         </StyledCard>

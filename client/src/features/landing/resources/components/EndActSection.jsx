@@ -69,7 +69,7 @@ const ActSectionCTA = function ({ theme }) {
           </ExternalLink>
           <ExternalLink href="https://actionnetwork.org/letters/end-tax-evasion-close-act-22-loophole">
             <Button $size="medium" $variation="treeLeaf">
-              Sign Petition on ActionNetwork.org
+              Sign Petition on Action Network
             </Button>
           </ExternalLink>
         </Row>

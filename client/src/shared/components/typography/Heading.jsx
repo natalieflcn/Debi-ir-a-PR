@@ -16,6 +16,11 @@ const variants = {
     @media (max-width: 800px) {
       font-size: var(--font-size-xl);
     }
+
+    @media (max-width: 400px) {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-lg);
+    }
   `,
 
   h3: css`
@@ -25,6 +30,11 @@ const variants = {
 
     @media (max-width: 800px) {
       font-size: var(--font-size-lg);
+    }
+
+    @media (max-width: 400px) {
+      font-size: var(--font-size-md);
+      /* line-height: var(--line-height-lg); */
     }
   `,
 
@@ -37,6 +47,11 @@ const variants = {
     @media (max-width: 800px) {
       font-size: var(--font-size-md);
     }
+
+    @media (max-width: 400px) {
+      font-size: var(--font-size-sm);
+      /* line-height: var(--line-height-lg); */
+    }
   `,
 
   h5: css`
@@ -47,8 +62,13 @@ const variants = {
     text-transform: uppercase;
     line-height: var(--line-height-lg);
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       font-size: var(--font-size-md);
+    }
+
+    @media (max-width: 400px) {
+      font-size: var(--font-size-sm);
+      /* line-height: var(--line-height-lg); */
     }
   `,
 
@@ -60,6 +80,10 @@ const variants = {
 
     @media (max-width: 800px) {
       font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+    }
+
+    @media (max-width: 400px) {
       font-size: var(--font-size-xs);
     }
   `,

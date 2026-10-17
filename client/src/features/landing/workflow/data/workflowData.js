@@ -77,8 +77,8 @@ const workflowData = [
         id: 2,
         heading: "Curate Explorations",
         description: [
-          "Create explorations of your favorite spots in Puerto Rico -- restaurants, landscapes, activities, landmarks, bars, billiards, and clubs.",
-          "Design explorations around the places you love and the places that deserve more love — restaurants, scenic landscapes, cultural landmarks, local bars, hidden beaches, and everything in between.",
+          "Design explorations around the places you love and the places that deserve more love.",
+          "Invite people to your favorite restaurants, scenic landscapes, cultural landmarks, local bars, hidden beaches, and everything in between.",
         ],
         cardImage: "",
         demo: "",

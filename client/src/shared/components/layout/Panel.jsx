@@ -9,7 +9,9 @@ import {
 } from "./panel.styles";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import Row from "./Row";
+import styled from "styled-components";
 
+const StyledRow = styled(Row)``;
 function playPanelButtonAudio(buttonAudio) {
   if (!buttonAudio) return;
   new Audio(buttonAudio).play();
@@ -65,7 +67,7 @@ const Panel = forwardRef(function Panel(
 
   return (
     <StyledPanel ref={ref} $index={index} $theme={theme}>
-      <Row $direction="horizontal">
+      <StyledRow $direction="horizontal">
         <StyledHeading as="h2" $isOpen={isOpen} $theme={theme} ref={headingRef}>
           {heading}
         </StyledHeading>
@@ -81,7 +83,7 @@ const Panel = forwardRef(function Panel(
         >
           {isOpen ? <ClosePanel /> : <OpenPanel />}
         </StyledButton>
-      </Row>
+      </StyledRow>
       <StyledContent $isOpen={isOpen} ref={contentRef}>
         <StyledContentInner>{children}</StyledContentInner>
       </StyledContent>

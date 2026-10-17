@@ -20,14 +20,14 @@ const StyledRow = styled(Row)`
 const StyledProgressBarRow = styled(Row)`
   width: 75%;
 
-  @media (max-width: 700px) {
+  @media (max-width: 1150px) {
     width: 100%;
   }
 `;
 
 const StyledProgressRow = styled(Row)`
   align-items: start;
-  @media (max-width: 700px) {
+  @media (max-width: 1150px) {
     flex-direction: column;
     gap: var(--gap-md);
   }
@@ -35,7 +35,7 @@ const StyledProgressRow = styled(Row)`
 function TrackYourJourneySection() {
   return (
     <StyledTrackYourJourneySection>
-      <StyledRow $direction="horizontal">
+      <StyledRow $direction="horizontal" $gap="var(--gap-xl)">
         <Row>
           <Heading as="h2">TRacK YOuR JoURNEY</Heading>
           <Row $gap="var(--gap-xs)">

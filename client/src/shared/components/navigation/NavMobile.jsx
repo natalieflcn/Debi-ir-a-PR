@@ -109,7 +109,14 @@ function NavMobile({ menuItems }) {
             </NavLink>
           </MenuItem>
         ))}
-        <User />
+
+        <MenuItem>
+          <NavLink to="/login" onClick={handleClick}>
+            <StyledHeading as="h5">
+              <User />
+            </StyledHeading>
+          </NavLink>
+        </MenuItem>
       </MobileMenu>
     </StyledNavMobile>
   );

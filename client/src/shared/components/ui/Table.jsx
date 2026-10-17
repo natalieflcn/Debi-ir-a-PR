@@ -29,8 +29,8 @@ const StyledTable = styled.table`
   table-layout: fixed; */
   min-width: 100%;
   width: max-content;
-  justify-items: center;
-  justify-self: center;
+  /* justify-items: center;
+  justify-self: center; */
   table-layout: auto;
 
   border-collapse: collapse;

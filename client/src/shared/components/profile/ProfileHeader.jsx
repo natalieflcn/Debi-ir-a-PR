@@ -148,13 +148,30 @@ const InfoButtonTexts = {
 };
 
 const ImageContainer = styled.div`
-  width: 18rem;
-  height: 18rem;
+  width: 100%;
+  /* height: 18rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   border-radius: var(--border-radius-md);
+
+  /* @media (max-width: 1200px) {
+    width: 15rem;
+    height: 15rem;
+  } */
+`;
+
+const NameRow = styled(Row)`
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: var(--gap-sm);
+  }
+
+  @media (max-width: 650px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const ProfileHeader = function ({ user, title }) {
@@ -280,7 +297,7 @@ const ProfileHeader = function ({ user, title }) {
         </Row>
       </Row>
 
-      <Row $gap="var(--gap-sm)">
+      <NameRow $gap="var(--gap-sm)">
         {isEditingName ? (
           <Row $gap="var(--gap-md)" $direction="horizontal">
             <Input
@@ -338,7 +355,7 @@ const ProfileHeader = function ({ user, title }) {
             )}
           </InfoButton>
         </Row>
-      </Row>
+      </NameRow>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           {InfoButtonTexts[user.role]}

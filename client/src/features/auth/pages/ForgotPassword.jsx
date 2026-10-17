@@ -18,6 +18,21 @@ const StyledAppForm = styled(AppForm)`
   justify-self: center;
   padding: 5rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 1200px) {
+    p {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    padding: 3rem;
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    padding: 2rem;
+  }
 `;
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -58,8 +73,10 @@ function ForgotPassword() {
           <Bold $color="var(--color-dark-200)" as="h6">
             Lost access to your account?
           </Bold>{" "}
-          Don't worry! Enter your email below and we'll send you instructions on
-          how to reset your password.
+          <p>
+            Don't worry! Enter your email below and we'll send you instructions
+            on how to reset your password.
+          </p>
         </StyledParagraph>
 
         <FormField label="Email">

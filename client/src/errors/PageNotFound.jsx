@@ -15,6 +15,26 @@ const Styled404 = styled.div`
   opacity: 90%;
   text-shadow: 3px 3px var(--color-dark-200);
   z-index: -100;
+
+  @media (max-width: 1000px) {
+    top: 11rem;
+    font-size: 15rem;
+  }
+
+  @media (max-width: 800px) {
+    top: 13rem;
+    font-size: 14rem;
+  }
+
+  @media (max-width: 650px) {
+    top: 13rem;
+    font-size: 10rem;
+  }
+
+  @media (max-width: 450px) {
+    top: 10rem;
+    font-size: 7rem;
+  }
 `;
 
 const StyledPageNotFound = styled.div`
@@ -22,8 +42,20 @@ const StyledPageNotFound = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
+const ImageContainer = styled.div`
+  width: 20rem;
+
+  @media (max-width: 1000px) {
+    width: 15rem;
+  }
+
+  @media (max-width: 450px) {
+    width: 10rem;
+  }
+`;
 function PageNotFound() {
   const { user } = useAuth();
   let userRedirect = "";
@@ -55,7 +87,9 @@ function PageNotFound() {
           PaGE NoT FOuND
         </Heading>
         <Styled404>404</Styled404>
-        <Image src="/src/assets/images/content/Concho.png" $width="20rem" />
+        <ImageContainer>
+          <Image src="/src/assets/images/content/Concho.png" $width="100%" />
+        </ImageContainer>
         <Row $gap="var(--gap-lg)">
           <Heading as="h6">
             Perdón! The page you're looking for does not exist.

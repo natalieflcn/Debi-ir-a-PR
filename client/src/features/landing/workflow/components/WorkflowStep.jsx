@@ -20,8 +20,10 @@ const StyledStep = styled.div`
 
 const StyledCard = styled(Card)`
   width: 40%;
+  min-width: 45%;
   display: flex;
   flex-direction: row;
+
   gap: var(--gap-lg);
 
   h2 {
@@ -29,15 +31,35 @@ const StyledCard = styled(Card)`
     margin-right: 1rem;
   }
 
-  @media (max-width: 800px) {
-    width: 90%;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
+    hr {
+      width: 100%;
+    }
   }
 `;
 
+const StyledRow = styled(Row)`
+  width: 55%;
+  height: 28rem;
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    height: auto;
+  }
+`;
 const WorkflowStep = function ({ step, index, stepIndex }) {
   return (
     <StyledStep $index={index} key={step.id}>
-      <Image src="src/assets/images/content/TEMP.png" $width="25%" />
+      <StyledRow>
+        <Image src="src/assets/images/content/TEMP.png" $width="100%" />
+      </StyledRow>
       <StyledCard
         $cardShadow="outsetLG"
         $cardColor='url("src/assets/images/ui/WorkflowCard.png")'

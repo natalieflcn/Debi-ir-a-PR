@@ -20,9 +20,43 @@ const StyledParagraph = styled.p`
   font-weight: var(--font-weight-medium);
 `;
 
-function ErrorFallback({ error, resetErrorBoundary }) {
-  console.log(error);
+const ErrorWrapper = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+`;
 
+const ImageContainer = styled.div`
+  width: 40rem;
+
+  @media (max-width: 800rem) {
+    width: 30rem;
+  }
+
+  @media (max-width: 500rem) {
+    width: 19rem;
+  }
+`;
+
+const StackRow = styled(Row)`
+  flex-wrap: wrap;
+  max-width: 90%;
+  overflow-wrap: anywhere;
+  min-width: 0;
+`;
+
+const ButtonsRow = styled(Row)`
+  flex: 1;
+  @media (max-width: 700rem) {
+    flex-direction: column;
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+function ErrorFallback({ error, resetErrorBoundary }) {
   const { user } = useAuth();
   let userRedirect = "/";
 
@@ -46,23 +80,21 @@ function ErrorFallback({ error, resetErrorBoundary }) {
   }
 
   return (
-    <>
+    <ErrorWrapper>
       <Background />
       <StyledError>
         <Heading as="h2" $shadowColor="var(--color-brown-400)">
           SOMETHiNG WeNT WRoNG
         </Heading>
 
-        <Image
-          src="/src/assets/images/content/Chairs.svg"
-          $width="40rem"
-          $height="23rem"
-        />
+        <ImageContainer>
+          <Image src="/src/assets/images/content/Chairs.svg" $width="100%" />
+        </ImageContainer>
         <StyledParagraph>
           {error?.message || "An unexpected error occurred."}
         </StyledParagraph>
 
-        <Row $direction="horizontal" $gap="var(--gap-lg)">
+        <StackRow $direction="horizontal" $gap="var(--gap-lg)">
           {import.meta.env.DEV && error?.stack && (
             <pre
               style={{
@@ -76,22 +108,25 @@ function ErrorFallback({ error, resetErrorBoundary }) {
             </pre>
           )}
 
-          <Button
-            $size="small"
-            $variation="secondary"
-            onClick={() => resetErrorBoundary}
-          >
-            Try Again
-          </Button>
-
-          <RouterLink to={`${userRedirect}`}>
-            <Button $size="small" $variation="primary">
-              Back to {user ? "Dashboard" : "Home"}
+          <Heading as="h6">Please refresh the page or try again later.</Heading>
+          <ButtonsRow $direction="horizontal" $gap="var(--gap-lg)">
+            <Button
+              $size="small"
+              $variation="secondary"
+              onClick={() => resetErrorBoundary}
+            >
+              Try Again
             </Button>
-          </RouterLink>
-        </Row>
+
+            <RouterLink to={`${userRedirect}`}>
+              <Button $size="small" $variation="primary">
+                Back to {user ? "Dashboard" : "Home"}
+              </Button>
+            </RouterLink>
+          </ButtonsRow>
+        </StackRow>
       </StyledError>
-    </>
+    </ErrorWrapper>
   );
 }
 

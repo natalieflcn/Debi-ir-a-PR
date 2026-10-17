@@ -19,6 +19,24 @@ const StyledAppForm = styled(AppForm)`
   justify-self: center;
   padding: 5rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    padding: 3rem;
+
+    p {
+      text-align: center;
+    }
+  }
+`;
+
+const ButtonsRow = styled(Row)`
+  flex-direction: column;
+  gap: var(--gap-xl);
+
+  button {
+    width: 100%;
+  }
 `;
 
 function ResetPassword() {
@@ -56,7 +74,6 @@ function ResetPassword() {
       await resetPassword({ token, password, passwordConfirm });
       setIsSuccess(true);
     } catch (err) {
-     
       setErrors({
         submit: `${err.message} Please try again.`,
       });
@@ -119,7 +136,7 @@ function ResetPassword() {
           {errors.submit && <Bold>{errors.submit}</Bold>}
         </Row>
 
-        <Row $direction="horizontal" $gap="var(--gap-md)">
+        <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
           <RouterLink to="/">
             <Button $size="medium" $variation="secondary">
               Back to Home
@@ -131,7 +148,7 @@ function ResetPassword() {
               Login Now
             </Button>
           </RouterLink>
-        </Row>
+        </ButtonsRow>
       </Row>
     </StyledAppForm>
   );

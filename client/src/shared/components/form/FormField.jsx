@@ -7,7 +7,7 @@ const FormLabel = styled(Heading)`
   min-width: 12rem;
   align-self: flex-start;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     min-width: 10rem;
   }
 
@@ -19,7 +19,7 @@ const FormLabel = styled(Heading)`
 `;
 
 const StyledRow = styled(Row)`
-  @media (max-width: 690px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     align-items: stretch;
     gap: var(--gap-sm);

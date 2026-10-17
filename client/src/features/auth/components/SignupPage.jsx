@@ -15,8 +15,8 @@ import { useForm } from "react-hook-form";
 
 const StyledSignupBackground = styled.div`
   position: relative;
-  width: 45%;
-  flex: 0 0 45%;
+  max-width: 40%;
+  flex: 1 0 40%;
 
   /* left: 50%; */
   background-image: url("/src/assets/images/content/TEMP.png");
@@ -26,6 +26,10 @@ const StyledSignupBackground = styled.div`
   align-self: stretch;
   min-height: 100%;
   /* height: 100vh; */
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const StyledSignup = styled.div`
@@ -36,14 +40,39 @@ const StyledSignup = styled.div`
   border-bottom-left-radius: var(--border-radius-lg);
   height: 100%;
   flex: 1;
-  padding: 2rem;
+  padding: 1.5rem;
   box-sizing: border-box;
   justify-content: center;
+
+  @media (max-width: 1200px) {
+    border-top-right-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+  }
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
 `;
 
 const StyledInput = styled(Input)`
-  flex: 1 1 0;
-  width: 25rem;
+  width: 20rem;
+  min-width: 0;
+
+  @media (max-width: 1200px) {
+    width: 28rem;
+  }
+
+  @media (max-width: 900px) {
+    width: 22rem;
+  }
+
+  @media (max-width: 780px) {
+    width: 17rem;
+  }
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
 `;
 const StyledHeading = styled(Heading)`
   text-align: center;
@@ -58,8 +87,23 @@ const StyledHeading = styled(Heading)`
 
 const SignupWrapper = styled.div`
   display: flex;
-
   align-items: stretch;
+
+  justify-self: center;
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    width: auto;
+  }
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+`;
+
+const LoginRow = styled(Row)`
+  flex-direction: column;
+  text-align: center;
 `;
 
 // const StyledInput = styled(Input)`
@@ -207,7 +251,7 @@ function Signup({ $variant }) {
             </Row>
           </AppForm>
 
-          <Row $direction="horizontal" $gap="var(--gap-md)">
+          <LoginRow $direction="horizontal" $gap="var(--gap-md)">
             <Heading
               as="h6"
               $color={
@@ -227,7 +271,7 @@ function Signup({ $variant }) {
                 Login
               </Button>
             </RouterLink>
-          </Row>
+          </LoginRow>
         </Row>
       </StyledSignup>
       <StyledSignupBackground />

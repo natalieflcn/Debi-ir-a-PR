@@ -55,6 +55,15 @@ const StyledRow = styled(Row)`
 
   @media (max-width: 1150px) {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  width: 40%;
+
+  @media screen {
   }
 `;
 
@@ -123,10 +132,10 @@ function ExplorationCarousel({ explorationData, userProgress }) {
                         $width="40%"
                       />
                       <Row $gap="var(--gap-lg)">
-                        <Row>
+                        <StyledRow>
                           <Heading as="h5">{exploration.name}</Heading>
                           <p>{exploration.description}</p>
-                        </Row>
+                        </StyledRow>
                       </Row>
                     </StyledRow>
                     <Row>

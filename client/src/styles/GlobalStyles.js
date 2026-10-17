@@ -96,6 +96,14 @@ body {
   background-color: ${({ theme }) => theme.backgroundColor};
   color: var(--color-light-100);
   line-height: var(--line-height-md);
+
+ @media (max-width: 800px) {
+      font-size: var(--font-size-sm);
+    }
+
+    @media (max-width: 400px) {
+      font-size: var(--font-size-xs);
+    }
 }
 
 body::before{

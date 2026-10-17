@@ -30,6 +30,42 @@ const StyledParagraph = styled.p`
   margin-bottom: 1rem;
   font-weight: var(--font-weight-medium);
 `;
+
+const ErrorWrapper = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+const ImageContainer = styled.div`
+  width: 40rem;
+
+  @media (max-width: 800rem) {
+    width: 30rem;
+  }
+
+  @media (max-width: 500rem) {
+    width: 19rem;
+  }
+`;
+
+const StackRow = styled(Row)`
+  flex-wrap: wrap;
+  max-width: 90%;
+  overflow-wrap: anywhere;
+  min-width: 0;
+`;
+
+const ButtonsRow = styled(Row)`
+  flex: 1;
+  @media (max-width: 700rem) {
+    flex-direction: column;
+    button {
+      width: 100%;
+    }
+  }
+`;
 function RouteError() {
   const error = useRouteError();
   const { revalidate, state } = useRevalidator();
@@ -58,23 +94,25 @@ function RouteError() {
 
   console.log(error);
   return (
-    <>
+    <ErrorWrapper>
       <Background />
       <StyledError>
         <Heading as="h2" $shadowColor="var(--color-brown-400)">
           SOMETHiNG WeNT WRoNG
         </Heading>
 
-        <Image
-          src="/src/assets/images/content/Chairs.svg"
-          $width="40rem"
-          $height="23rem"
-        />
+        <ImageContainer>
+          <Image
+            src="/src/assets/images/content/Chairs.svg"
+            $width="100%"
+            // $height="23rem"
+          />
+        </ImageContainer>
         <StyledParagraph>
           {error?.message || "An unexpected error occurred."}
         </StyledParagraph>
 
-        <Row $gap="var(--gap-lg)" $align="center">
+        <StackRow $gap="var(--gap-lg)" $align="center">
           {import.meta.env.DEV && error?.stack && (
             <pre
               style={{
@@ -89,7 +127,7 @@ function RouteError() {
           )}
 
           <Heading as="h6">Please refresh the page or try again later.</Heading>
-          <Row $direction="horizontal" $gap="var(--gap-lg)">
+          <ButtonsRow $direction="horizontal" $gap="var(--gap-lg)">
             <Button
               $size="small"
               $variation="secondary"
@@ -103,10 +141,10 @@ function RouteError() {
                 Back to {user ? "Dashboard" : "Home"}
               </Button>
             </RouterLink>
-          </Row>
-        </Row>
+          </ButtonsRow>
+        </StackRow>
       </StyledError>
-    </>
+    </ErrorWrapper>
   );
 }
 

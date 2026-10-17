@@ -8,6 +8,11 @@ const sizes = {
     border-radius: ${({ $borderRadius }) =>
       $borderRadius || "var(--border-radius-sm)"};
     --shadow-offset: var(--box-shadow-offset-sm);
+
+    /* @media (max-width: 400px) {
+      height: 1.5rem;
+      width: 1.5rem;
+    } */
   `,
 
   extraSmall: css`
@@ -28,7 +33,6 @@ const sizes = {
   `,
   medium: css`
     justify-items: center;
-
     flex-grow: 1;
     padding: 0.8rem 1rem;
     font-weight: 700;
@@ -38,7 +42,6 @@ const sizes = {
   `,
   large: css`
     justify-content: center;
-
     flex-grow: 1;
     padding: 1.5rem 2rem;
     font-weight: 900;
@@ -180,6 +183,10 @@ const Button = styled.button`
   svg {
     fill: currentColor;
     color: inherit;
+  }
+
+  @media (max-width: 400px) {
+    font-size: var(--font-size-xs);
   }
 
   ${({ $size }) => sizes[$size]}

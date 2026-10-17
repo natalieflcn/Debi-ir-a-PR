@@ -9,7 +9,7 @@ const meetPuertoRicoData = [
     id: "landmarks",
     image: "src/assets/images/content/TEMP.png",
     description:
-      "Walk through history in places that have outlasted everything on the island. Witness what has shaped the island for centuries.  ",
+      "Walk through history in places that have outlasted everything on the island. Witness what shaped the island for centuries.  ",
   },
   {
     id: "bars",
