@@ -657,11 +657,11 @@
       - [x] Route Error
       - [x] Unauthorized
     - [ ] Explorer POV TODO 3
-      - [ ] Dashboard
-      - [ ] Explorations
+      - [x] Dashboard
+      - [x] Explorations
       - [ ] Exploration page
       - [ ] Location page
-      - [ ] Profile
+      - [x] Profile
     - [ ] Ambassador POV TODO 4
       - [ ] Dashboard
       - [ ] Explorations
@@ -681,6 +681,7 @@
   - Polish all data, complete adding data to explorations
   - Complete Landing Page summary TODO 6
   - Add family's voices to Brush Up Your Spanish
+  - Final review of mobile responsiveness
   - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

@@ -36,7 +36,7 @@ const variants = {
     @media (max-width: 400px) {
       font-size: var(--font-size-md);
       letter-spacing: var(--letter-spacing-dtmf-sm);
-      /* line-height: var(--line-height-lg); */
+      /* line-height: var(--line-height-xs); */
     }
   `,
 

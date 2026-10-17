@@ -30,6 +30,7 @@ const sizes = {
     border-radius: ${({ $borderRadius }) =>
       $borderRadius || "var(--border-radius-md)"};
     --shadow-offset: var(--box-shadow-offset-md);
+    line-height: var(--line-height-md);
   `,
   medium: css`
     justify-items: center;

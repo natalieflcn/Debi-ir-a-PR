@@ -26,6 +26,12 @@ const StyledRow = styled(Row)`
   }
 `;
 
+const ExplorationItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  text-align: center;
+`;
 const StyledGapRow = styled(Row)``;
 function ExplorerDashboardExplorationsItem({
   explorationData,
@@ -35,14 +41,15 @@ function ExplorerDashboardExplorationsItem({
   return (
     <>
       <DashboardItem>
-        <Heading as="h4" $color="var(--color-dark-100)">
-          {title}
-        </Heading>
-        <ExplorationCarousel
-          explorationData={explorationData}
-          userProgress={userProgress}
-        />
-        {/* <ExplorationGrid>
+        <ExplorationItemWrapper>
+          <Heading as="h4" $color="var(--color-dark-100)">
+            {title}
+          </Heading>
+          <ExplorationCarousel
+            explorationData={explorationData}
+            userProgress={userProgress}
+          />
+          {/* <ExplorationGrid>
           {explorationData.map((exploration) => (
             <Card
               $cardColor="var(--color-light-200)"
@@ -79,6 +86,7 @@ function ExplorerDashboardExplorationsItem({
             </Card>
           ))}
         </ExplorationGrid> */}
+        </ExplorationItemWrapper>
       </DashboardItem>
     </>
   );
