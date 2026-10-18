@@ -623,7 +623,7 @@
         - [x] # Locations completed this week
         - [x] # Locations completed this month
         - [x] # Locations completed this year
-        - [ ] TODO 1: Link ExplorationCarousel Buttons to Exploration Pages
+        - [x] Link ExplorationCarousel Buttons to Exploration Pages
         - [ ] TODO 2: Hyperlink explorations and locations to respective pages in admin/ambassador UI
       - [x] Ambassador/Admin
         - [x] Top Ambassadors: # of Explorations Created
@@ -640,8 +640,8 @@
         - [x] Top Locations: # of Explorers Completed
       - [x] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
   - [ ] Automated Emails
-  - [~] Reinforce mobile responsiveness TODO 3
-    - [ ] Landing page
+  - [x] Reinforce mobile responsiveness
+    - [x] Landing page
       - [x] Home
       - [x] How It Works
       - [x] About
@@ -662,7 +662,7 @@
       - [x] Exploration page
       - [x] Location page
       - [x] Profile
-    - [x] Ambassador POV TODO 4
+    - [x] Ambassador POV
       - [x] Dashboard
       - [x] Explorations
       - [x] Create Exploration
@@ -670,7 +670,7 @@
       - [x] Location page
       - [x] Create Location page
       - [x] Profile
-    - [x] Admin POV TODO 5
+    - [x] Admin POV
       - [x] Dashboard
       - [x] Explorations
       - [x] Create Exploration

@@ -77,13 +77,13 @@ const getAdminExplorationsTableColumns = function (users) {
       render: (row) => (
         <TableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${row.id}`}>
+            <RouterLink to={`${row.slug}`}>
               <Button $size="extraSmall" $variation="secondary">
                 View
               </Button>
             </RouterLink>
 
-            <RouterLink to={`${row.id}/edit`}>
+            <RouterLink to={`${row.slug}/edit`}>
               <Button $size="extraSmall" $variation="primary">
                 Edit
               </Button>

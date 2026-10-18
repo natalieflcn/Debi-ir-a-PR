@@ -4,6 +4,7 @@ import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const topAmbassadorsTableColumns = [
   {
@@ -11,7 +12,9 @@ const topAmbassadorsTableColumns = [
     heading: "Name",
     render: (row) => (
       <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+        <RouterLink to={`/admin/users/ambassadors/${row._id}`}>
+          <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+        </RouterLink>
       </TableNameCell>
     ),
   },

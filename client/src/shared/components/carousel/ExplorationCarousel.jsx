@@ -11,6 +11,7 @@ import Bold from "../typography/Bold";
 import ProgressBar from "../ui/ProgressBar";
 import { useRef } from "react";
 import { useEffect } from "react";
+import RouterLink from "../routing/RouterLink";
 
 const CarouselViewport = styled.div`
   overflow: hidden;
@@ -55,16 +56,14 @@ const StyledRow = styled(Row)`
 
   @media (max-width: 1150px) {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     text-align: center;
+    /* width: 100%; */
   }
 `;
 
-const StyledImage = styled(Image)`
-  width: 40%;
-
-  @media screen {
-  }
+const StyledParagraph = styled.p`
+  justify-self: start;
 `;
 
 function ExplorationCarousel({ explorationData, userProgress }) {
@@ -142,17 +141,23 @@ function ExplorationCarousel({ explorationData, userProgress }) {
                       {progress > 0 ? (
                         <Row $gap="var(--gap-sm)">
                           <Bold $color="var(--color-dark-200)">
-                            {progress}% complete
+                            <StyledParagraph>
+                              {progress}% complete
+                            </StyledParagraph>
                           </Bold>
                           <ProgressBar completed={progress} label={false} />
-                          <Button $variation="primary" $size="small">
-                            Continue Exploring
-                          </Button>
+                          <RouterLink to={`/explorations/${exploration.slug}`}>
+                            <Button $variation="primary" $size="small">
+                              Continue Exploring
+                            </Button>
+                          </RouterLink>
                         </Row>
                       ) : (
-                        <Button $variation="darkRed" $size="small">
-                          Start Exploring
-                        </Button>
+                        <RouterLink to={`/explorations/${exploration.slug}`}>
+                          <Button $variation="darkRed" $size="small">
+                            Start Exploring
+                          </Button>
+                        </RouterLink>
                       )}
                     </Row>
                   </StyledRow>

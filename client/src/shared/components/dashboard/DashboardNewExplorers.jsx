@@ -5,6 +5,8 @@ import Table from "../ui/Table";
 import Bold from "../typography/Bold";
 import CondensedTable from "../ui/CondensedTable";
 import { formatDate } from "../../utils/helpers";
+import RouterLink from "../routing/RouterLink";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
 // const StyledDashboardItem = styled(DashboardItem)`
 //   width: 100%;
@@ -17,23 +19,33 @@ const TableWrapper = styled.div`
   min-width: 0;
   overflow-x: auto;
 `;
-const newExplorersTableColumns = [
-  {
-    id: "name",
-    heading: "Name",
-    render: (row) => (
-      <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableNameCell>
-    ),
-  },
-  { id: "email", heading: "Email" },
-  {
-    id: "createdAt",
-    heading: "Date Joined",
-    render: (row) => <TableNameCell>{formatDate(row.createdAt)}</TableNameCell>,
-  },
-];
+const newExplorersTableColumns = function (role) {
+  return [
+    {
+      id: "name",
+      heading: "Name",
+      render: (row) => {
+        const prefix = role === "admin" ? "/explorers" : "";
+
+        return (
+          <TableNameCell>
+            <RouterLink to={`/${role}/users${prefix}/${row._id}`}>
+              <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+            </RouterLink>
+          </TableNameCell>
+        );
+      },
+    },
+    { id: "email", heading: "Email" },
+    {
+      id: "createdAt",
+      heading: "Date Joined",
+      render: (row) => (
+        <TableNameCell>{formatDate(row.createdAt)}</TableNameCell>
+      ),
+    },
+  ];
+};
 
 const TableNameCell = styled.div`
   display: flex;
@@ -64,6 +76,8 @@ const newExplorersTableTheme = {
 };
 
 function DashboardNewExplorers({ usersData }) {
+  const { role } = useAuth();
+
   const sortedUsers = usersData.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
@@ -77,7 +91,7 @@ function DashboardNewExplorers({ usersData }) {
       </Heading>
 
       <CondensedTable
-        columns={newExplorersTableColumns}
+        columns={newExplorersTableColumns(role)}
         rows={fiveSortedUsers}
         $theme={newExplorersTableTheme}
       />

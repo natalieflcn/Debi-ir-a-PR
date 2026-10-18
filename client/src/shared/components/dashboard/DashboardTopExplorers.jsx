@@ -4,33 +4,43 @@ import Heading from "../typography/Heading";
 import Table from "../ui/Table";
 import Bold from "../typography/Bold";
 import CondensedTable from "../ui/CondensedTable";
+import RouterLink from "../routing/RouterLink";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
-const topExplorersTableColumns = [
-  {
-    id: "name",
-    heading: "Name",
-    render: (row) => (
-      <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableNameCell>
-    ),
-  },
-  { id: "email", heading: "Email" },
-  {
-    id: "numExplorationsStarted",
-    heading: "Explorations Started",
-    render: (row) => (
-      <TableNameCell>{row.explorationsStarted.length}</TableNameCell>
-    ),
-  },
-  {
-    id: "numExplorationsCompleted",
-    heading: "Explorations Completed",
-    render: (row) => (
-      <TableNameCell>{row.explorationsCompleted.length}</TableNameCell>
-    ),
-  },
-];
+const topExplorersTableColumns = function (role) {
+  return [
+    {
+      id: "name",
+      heading: "Name",
+      render: (row) => {
+        const prefix = role === "admin" ? "/explorers" : "";
+
+        return (
+          <TableNameCell>
+            <RouterLink to={`/${role}/users${prefix}/${row._id}`}>
+              <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+            </RouterLink>
+          </TableNameCell>
+        );
+      },
+    },
+    { id: "email", heading: "Email" },
+    {
+      id: "numExplorationsStarted",
+      heading: "Explorations Started",
+      render: (row) => (
+        <TableNameCell>{row.explorationsStarted.length}</TableNameCell>
+      ),
+    },
+    {
+      id: "numExplorationsCompleted",
+      heading: "Explorations Completed",
+      render: (row) => (
+        <TableNameCell>{row.explorationsCompleted.length}</TableNameCell>
+      ),
+    },
+  ];
+};
 
 const TableNameCell = styled.div`
   display: flex;
@@ -61,6 +71,8 @@ const topExplorersTableTheme = {
 };
 
 function DashboardTopExplorers({ usersData, explorationProgress }) {
+  const { role } = useAuth();
+
   const explorers = usersData.map((user) => {
     return {
       ...user,
@@ -89,7 +101,7 @@ function DashboardTopExplorers({ usersData, explorationProgress }) {
       </Heading>
 
       <CondensedTable
-        columns={topExplorersTableColumns}
+        columns={topExplorersTableColumns(role)}
         rows={fiveTopExplorers}
         $theme={topExplorersTableTheme}
       />

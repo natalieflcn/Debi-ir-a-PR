@@ -4,21 +4,27 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
+import { useAuth } from "../../../auth/contexts/AuthContext";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
-const topExplorationsTableColumns = [
-  {
-    id: "name",
-    heading: "Name",
-    render: (row) => (
-      <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableNameCell>
-    ),
-  },
-  { id: "numStops", heading: "# of Stops" },
-  { id: "numStarted", heading: "# of Explorers Started" },
-  { id: "numCompleted", heading: "# of Explorers Completed" },
-];
+const topExplorationsTableColumns = function (role) {
+  return [
+    {
+      id: "name",
+      heading: "Name",
+      render: (row) => (
+        <TableNameCell>
+          <RouterLink to={`/${role}/explorations/${row.slug}`}>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </RouterLink>
+        </TableNameCell>
+      ),
+    },
+    { id: "numStops", heading: "# of Stops" },
+    { id: "numStarted", heading: "# of Explorers Started" },
+    { id: "numCompleted", heading: "# of Explorers Completed" },
+  ];
+};
 
 const TableNameCell = styled.div`
   display: flex;
@@ -52,6 +58,8 @@ function AmbassadorDashboardTopExplorations({
   explorations,
   explorationProgress,
 }) {
+  const { role } = useAuth();
+
   const explorationEngagement = explorations
     .map((exploration) => {
       const started = [
@@ -74,6 +82,7 @@ function AmbassadorDashboardTopExplorations({
       return {
         id: exploration,
         name: exploration.name,
+        slug: exploration.slug,
         numStops: exploration.numStops,
         numStarted: started,
         numCompleted: completed,
@@ -130,7 +139,7 @@ function AmbassadorDashboardTopExplorations({
       </Heading>
 
       <CondensedTable
-        columns={topExplorationsTableColumns}
+        columns={topExplorationsTableColumns(role)}
         rows={explorationEngagement}
         $theme={topExplorationsTableTheme}
       />

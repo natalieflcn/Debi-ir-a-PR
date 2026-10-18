@@ -74,13 +74,13 @@ const AmbassadorExplorationsTableColumns = function (users) {
       render: (row) => (
         <TableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`/ambassador/explorations/${row.id}`}>
+            <RouterLink to={`/ambassador/explorations/${row.slug}`}>
               <Button $size="extraSmall" $variation="secondary">
                 View
               </Button>
             </RouterLink>
 
-            <RouterLink to={`/ambassador/explorations/${row.id}/edit`}>
+            <RouterLink to={`/ambassador/explorations/${row.slug}/edit`}>
               <Button $size="extraSmall" $variation="primary">
                 Edit
               </Button>

@@ -5,16 +5,21 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
 import { formatDate } from "../../../../shared/utils/helpers";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
 const newAmbassadorsTableColumns = [
   {
     id: "name",
     heading: "Name",
-    render: (row) => (
-      <TableCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableCell>
-    ),
+    render: (row) => {
+      return (
+        <TableCell>
+          <RouterLink to={`/admin/users/ambassadors/${row._id}`}>
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </RouterLink>
+        </TableCell>
+      );
+    },
   },
   { id: "email", heading: "Email" },
   {

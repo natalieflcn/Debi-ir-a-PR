@@ -14,68 +14,71 @@ import { useLoaderData } from "react-router-dom";
 import { capitalize, formatDate } from "../../../../shared/utils/helpers";
 import { getUsers } from "../../../../services/users";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
+import { useAuth } from "../../../auth/contexts/AuthContext";
 
-export const UsersTableColumns = [
-  {
-    id: "name",
-    heading: "Name",
-    render: (row) => {
-      const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
+export const UsersTableColumns = function (role) {
+  return [
+    {
+      id: "name",
+      heading: "Name",
+      render: (row) => {
+        const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
 
-      return (
-        <RouterLink to={`${prefix}/${row.id}`}>
-          <TableNameCell role={row.role}>
-            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-          </TableNameCell>
-        </RouterLink>
-      );
+        return (
+          <RouterLink to={`/${role}/users/${prefix}/${row.id}`}>
+            <TableNameCell role={row.role}>
+              <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+            </TableNameCell>
+          </RouterLink>
+        );
+      },
     },
-  },
-  {
-    id: "role",
-    heading: "User Type",
-    render: (row) => (
-      <ActionTableCell>
-        <Row $direction="horizontal" $gap="var(--gap-sm)">
-          {capitalize(row.role)}
-        </Row>
-      </ActionTableCell>
-    ),
-  },
-  { id: "email", heading: "Email" },
-  {
-    id: "createdAt",
-    heading: "Date Joined",
-    render: (row) => {
-      return (
+    {
+      id: "role",
+      heading: "User Type",
+      render: (row) => (
         <ActionTableCell>
           <Row $direction="horizontal" $gap="var(--gap-sm)">
-            {formatDate(row.createdAt)}
+            {capitalize(row.role)}
           </Row>
         </ActionTableCell>
-      );
+      ),
     },
-  },
-  {
-    id: "action",
-    heading: "Action",
-    render: (row) => {
-      const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
+    { id: "email", heading: "Email" },
+    {
+      id: "createdAt",
+      heading: "Date Joined",
+      render: (row) => {
+        return (
+          <ActionTableCell>
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              {formatDate(row.createdAt)}
+            </Row>
+          </ActionTableCell>
+        );
+      },
+    },
+    {
+      id: "action",
+      heading: "Action",
+      render: (row) => {
+        const prefix = row.role === "explorer" ? "explorers" : "ambassadors";
 
-      return (
-        <ActionTableCell>
-          <Row $direction="horizontal" $gap="var(--gap-sm)">
-            <RouterLink to={`${prefix}/${row.id}`}>
-              <Button $size="extraSmall" $variation="primary">
-                View
-              </Button>
-            </RouterLink>
-          </Row>
-        </ActionTableCell>
-      );
+        return (
+          <ActionTableCell>
+            <Row $direction="horizontal" $gap="var(--gap-sm)">
+              <RouterLink to={`${prefix}/${row.id}`}>
+                <Button $size="extraSmall" $variation="primary">
+                  View
+                </Button>
+              </RouterLink>
+            </Row>
+          </ActionTableCell>
+        );
+      },
     },
-  },
-];
+  ];
+};
 
 const StyledUsers = styled.div`
   display: flex;
@@ -168,6 +171,7 @@ function ManageUsers() {
   const [currentPage, setCurrentPage] = useState(1);
   // const [loading, setLoading] = useState(false);
   const usersData = useLoaderData();
+  const { role } = useAuth();
   // const [users, setUsers] = useState([]);
   // const [totalUsers, setTotalUsers] = useState(0);
   // useEffect(() => {
@@ -244,7 +248,7 @@ function ManageUsers() {
         <SpinnerMini />
       ) : ( */}
       <CondensedTable
-        columns={UsersTableColumns}
+        columns={UsersTableColumns(role)}
         rows={paginatedUsers}
         $theme={tableTheme}
       />

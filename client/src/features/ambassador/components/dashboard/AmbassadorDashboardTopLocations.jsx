@@ -4,29 +4,39 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Table from "../../../../shared/components/ui/Table";
 import Bold from "../../../../shared/components/typography/Bold";
 import CondensedTable from "../../../../shared/components/ui/CondensedTable";
+import { useAuth } from "../../../auth/contexts/AuthContext";
+import RouterLink from "../../../../shared/components/routing/RouterLink";
 
-const topLocationsTableColumns = [
-  {
-    id: "exploration",
-    heading: "Exploration",
-    render: (row) => (
-      <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.exploration}</Bold>
-      </TableNameCell>
-    ),
-  },
-  {
-    id: "name",
-    heading: "Name",
-    render: (row) => (
-      <TableNameCell>
-        <Bold $color="var(--color-dark-200)">{row.name}</Bold>
-      </TableNameCell>
-    ),
-  },
-  { id: "location", heading: "Location" },
-  { id: "numCompleted", heading: "# of Explorers Completed" },
-];
+const topLocationsTableColumns = function (role) {
+  return [
+    {
+      id: "exploration",
+      heading: "Exploration",
+      render: (row) => (
+        <TableNameCell>
+          <RouterLink to={`/${role}/explorations/${row.explorationSlug}`}>
+            <Bold $color="var(--color-dark-200)">{row.exploration}</Bold>
+          </RouterLink>
+        </TableNameCell>
+      ),
+    },
+    {
+      id: "name",
+      heading: "Name",
+      render: (row) => (
+        <TableNameCell>
+          <RouterLink
+            to={`/${role}/explorations/${row.explorationSlug}/locations/${row.slug}`}
+          >
+            <Bold $color="var(--color-dark-200)">{row.name}</Bold>
+          </RouterLink>
+        </TableNameCell>
+      ),
+    },
+    { id: "location", heading: "Location" },
+    { id: "numCompleted", heading: "# of Explorers Completed" },
+  ];
+};
 
 const TableNameCell = styled.div`
   display: flex;
@@ -60,10 +70,13 @@ function AmbassadorDashboardTopLocations({
   explorations,
   explorationProgress,
 }) {
+  const { role } = useAuth();
+
   const locations = explorations.flatMap((exploration) =>
     exploration.locations.map((location) => ({
       ...location,
       exploration: exploration.name,
+      explorationSlug: exploration.slug,
     })),
   );
 
@@ -81,10 +94,12 @@ function AmbassadorDashboardTopLocations({
 
       return {
         name: location.name,
+        slug: location.slug,
         id: location._id,
         numCompleted: visited,
         location: location.address.city,
         exploration: location.exploration,
+        explorationSlug: location.explorationSlug,
       };
     })
     .sort((a, b) => b.numCompleted - a.numCompleted)
@@ -96,7 +111,7 @@ function AmbassadorDashboardTopLocations({
       </Heading>
 
       <CondensedTable
-        columns={topLocationsTableColumns}
+        columns={topLocationsTableColumns(role)}
         rows={topLocations}
         $theme={topLocationsTableTheme}
       />
