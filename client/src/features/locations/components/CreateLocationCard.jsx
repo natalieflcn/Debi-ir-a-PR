@@ -29,10 +29,29 @@ import UploadingModal from "../../../shared/components/modal/UploadingModal";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
 `;
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
+
+  @media (max-width: 690px) {
+    text-align: center;
+  }
+`;
+
+const ButtonsRow = styled(Row)`
+  flex: 1;
+  @media (max-width: 690px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
 `;
 
 const StyledTextAreaRow = styled(Row)`
@@ -408,7 +427,7 @@ function CreateLocationCard({
             </StyledRow>
           </FormField>
 
-          <Row $direction="horizontal" $gap="var(--gap-md)">
+          <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
             <Button $variation="darkRed" $size="medium" type="submit">
               {!isSubmitting && "Save Changes"}
               {isSubmitting && "Saving Changes..."}
@@ -426,7 +445,7 @@ function CreateLocationCard({
                 Delete Location
               </Button>
             )}
-          </Row>
+          </ButtonsRow>
           {isSubmitted && Object.keys(errors).length > 0 && (
             <Bold>Please review your form submission and try again.</Bold>
           )}

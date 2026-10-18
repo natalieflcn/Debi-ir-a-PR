@@ -26,12 +26,16 @@ export const ExplorationCardHeaderImage = styled.div`
   height: 25rem;
   width: 100%;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     height: 27rem;
   }
 
+  @media (max-width: 700px) {
+    height: 32rem;
+  }
+
   @media (max-width: 500px) {
-    height: 30rem;
+    height: 35rem;
   }
 `;
 

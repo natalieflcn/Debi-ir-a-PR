@@ -137,11 +137,10 @@ const StyledExplorations = styled.div`
 `;
 
 const ExplorationCards = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   gap: var(--gap-xl);
-  justify-content: center;
+  width: 100%;
 `;
 
 const FiltersAdminTogglesRow = styled(Row)`

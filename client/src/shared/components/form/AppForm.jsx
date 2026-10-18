@@ -41,7 +41,7 @@ function AppForm({
       $height={$height}
       className={className}
     >
-      <Row $align="center" $gap="var(--gap-lg)">
+      <Row $align="center" $gap="var(--gap-md)">
         <StyledHeading
           as="h2"
           $color="var(--color-red-200)"

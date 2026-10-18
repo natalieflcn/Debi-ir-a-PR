@@ -156,10 +156,10 @@ const ImageContainer = styled.div`
   overflow: hidden;
   border-radius: var(--border-radius-md);
 
-  /* @media (max-width: 1200px) {
-    width: 15rem;
-    height: 15rem;
-  } */
+  @media (max-width: 650px) {
+    width: 80%;
+    align-self: center;
+  }
 `;
 
 const NameRow = styled(Row)`

@@ -60,6 +60,7 @@ export const ExplorationLocationBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-xl);
+  width: 100%;
 
   @media (max-width: 800px) {
     padding: 1rem;
@@ -73,7 +74,7 @@ export const ExplorationLocationAbout = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
-  width: 60%;
+  width: 70%;
   @media (max-width: 800px) {
     padding: 1rem;
     width: 100%;

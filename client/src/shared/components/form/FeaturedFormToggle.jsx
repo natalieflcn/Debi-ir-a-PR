@@ -15,13 +15,14 @@ const StyledFeaturedFormToggle = styled.div`
 
 const StyledIcon = styled.div`
   display: inline-block;
+
   cursor: pointer;
 `;
 
 function FeaturedFormToggle({ featured, onFeatured }) {
   return (
     <StyledFeaturedFormToggle>
-      <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">
+      <Row $direction="horizontal" $gap="var(--gap-xs)" $align="flex-start">
         <StyledIcon onClick={() => onFeatured((prev) => !prev)}>
           {featured ? (
             <IoIosCheckbox size={25} fill="var(--color-red-200" />

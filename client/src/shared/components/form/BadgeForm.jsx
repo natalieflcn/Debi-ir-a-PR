@@ -103,7 +103,7 @@ function BadgeForm({ badge, onSubmit }) {
         </FormField>
 
         <FormField label="Badge Image">
-          <StyledRow $gap="var(--gap-xs)">
+          <StyledRow $gap="var(--gap-xs)" $align="start">
             <ImageUploader
               name="image"
               multiple={false}

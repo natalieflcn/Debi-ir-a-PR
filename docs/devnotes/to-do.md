@@ -662,22 +662,22 @@
       - [x] Exploration page
       - [x] Location page
       - [x] Profile
-    - [~] Ambassador POV TODO 4
+    - [x] Ambassador POV TODO 4
       - [x] Dashboard
       - [x] Explorations
-      - [ ] Create Exploration
+      - [x] Create Exploration
       - [x] Exploration page
-      - [ ] Location page
-      - [ ] Create Location page
-      - [ ] Profile
-    - [ ] Admin POV TODO 5
+      - [x] Location page
+      - [x] Create Location page
+      - [x] Profile
+    - [x] Admin POV TODO 5
       - [x] Dashboard
-      - [ ] Explorations
-      - [ ] Create Exploration
-      - [ ] Exploration page
-      - [ ] Location page
-      - [ ] Create Location page
-      - [ ] Profile
+      - [x] Explorations
+      - [x] Create Exploration
+      - [x] Exploration page
+      - [x] Location page
+      - [x] Create Location page
+      - [x] Profile
   - Polish all data, complete adding data to explorations
   - Complete Landing Page summary TODO 6
   - Add family's voices to Brush Up Your Spanish

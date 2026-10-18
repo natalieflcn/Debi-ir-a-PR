@@ -32,6 +32,8 @@ const ModalContent = styled.div`
 
   @media (max-width: 600px) {
     min-width: 10rem;
+    padding: 1rem;
+    max-width: 80%;
     text-align: center;
   }
 `;
