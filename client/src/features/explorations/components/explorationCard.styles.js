@@ -100,7 +100,7 @@ export const ExplorationCardLocations = styled(Row)`
   width: 100%;
 
   @media (max-width: 700px) {
-    gap: var(--gap-2xl);
+    gap: var(--gap-xl);
   }
 `;
 

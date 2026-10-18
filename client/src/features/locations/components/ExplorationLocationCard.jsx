@@ -43,7 +43,7 @@ const MapRow = styled(Row)`
 `;
 
 const AddressRow = styled(Row)`
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     flex-direction: column;
     gap: var(--gap-sm);
     text-align: center;
@@ -117,9 +117,9 @@ function ExplorationLocationCard({
               </TagCollection>
             </ExplorationLocationAbout>
             <MapRow>
-              {/* {location?.map?.coordinates && (
+              {location?.map?.coordinates && (
                 <LocationMap coordinates={location.map.coordinates} />
-              )} */}
+              )}
             </MapRow>
           </StyledRow>
 

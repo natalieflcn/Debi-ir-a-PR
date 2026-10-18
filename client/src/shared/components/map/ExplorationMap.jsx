@@ -3,7 +3,24 @@ import styled from "styled-components";
 import CustomPin from "./CustomPin";
 
 const StyledMap = styled.div`
-  height: ${({ $height }) => $height}px;
+  height: 550px;
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    height: 500px;
+  }
+
+  @media (max-width: 800px) {
+    height: 400px;
+  }
+
+  @media (max-width: 500px) {
+    height: 300px;
+  }
+
+  @media (max-width: 400px) {
+    height: 250px;
+  }
 `;
 
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
@@ -22,11 +39,7 @@ function calculateMapBounds(coordinates) {
   };
 }
 
-function ExplorationMap({
-  coordinates,
-
-  height = 550,
-}) {
+function ExplorationMap({ coordinates }) {
   const filteredCoordinates = coordinates.filter((coord) => coord != null);
 
   if (filteredCoordinates.length === 0) return null;
@@ -35,7 +48,7 @@ function ExplorationMap({
   return (
     <>
       {filteredCoordinates && (
-        <StyledMap $height={height}>
+        <StyledMap>
           <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
             <Map
               mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}

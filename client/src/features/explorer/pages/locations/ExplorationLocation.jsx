@@ -24,9 +24,24 @@ import { useAuth } from "../../../auth/contexts/AuthContext";
 
 const StyledRow = styled(Row)`
   text-align: center;
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     flex-direction: column;
     gap: var(--gap-md);
+  }
+`;
+
+const VisitedRow = styled(Row)`
+  text-align: center;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
+  }
+`;
+
+const CompletedRow = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: var(--gap-xs);
   }
 `;
 
@@ -46,12 +61,16 @@ function ExplorerHeaderDetails({
       {!mutateIsPending && (
         <Row>
           {userCompleted && (
-            <Row $direction="horizontal" $align="center" $gap="var(--gap-sm)">
-              <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" />
+            <VisitedRow
+              $direction="horizontal"
+              $align="center"
+              $gap="var(--gap-sm)"
+            >
+              <IoCheckmarkCircleSharp size={20} color="var(--color-red-300)" />
               <Bold $color="var(--color-brown-200)">
                 Visited on {formatDate(visitedAt)}
               </Bold>
-            </Row>
+            </VisitedRow>
           )}
         </Row>
       )}
@@ -85,7 +104,7 @@ function ExplorerFooterCTA({
           </Row>
 
           {userCompleted && (
-            <Row
+            <CompletedRow
               $direction="horizontal"
               $gap="var(--gap-sm
               )"
@@ -94,7 +113,7 @@ function ExplorerFooterCTA({
                 Completed!
               </Heading>
               <IoCheckmarkCircleSharp size={40} color="var(--color-red-300)" />
-            </Row>
+            </CompletedRow>
           )}
         </>
       )}

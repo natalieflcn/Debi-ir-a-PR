@@ -682,6 +682,7 @@
   - Complete Landing Page summary TODO 6
   - Add family's voices to Brush Up Your Spanish
   - Final review of mobile responsiveness
+    - Will need to fix pagination responsiveness when more pages are available
   - Begin deploying project
 
 TODO TODO TODO TODO TODO TODO TODO TODO

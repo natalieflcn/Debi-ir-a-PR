@@ -20,6 +20,14 @@ const CarouselSlide = styled.div`
   flex: 0 0 auto;
   min-width: 0;
   height: 23rem;
+  /* 
+  @media (max-width: 700px) {
+    height: 15rem;
+  }*/
+
+  @media (max-width: 450px) {
+    height: 18rem;
+  }
 `;
 
 const CarouselWrapper = styled.div`
@@ -68,7 +76,7 @@ function ImageCarousel({ images }) {
                 src={img?.url}
                 $align="center"
                 $width="100%"
-                $height="23rem"
+                $height="100%"
                 $objectFit="cover"
                 $borderRadius="none"
               />

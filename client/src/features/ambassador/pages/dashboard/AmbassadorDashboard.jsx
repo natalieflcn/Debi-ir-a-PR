@@ -77,12 +77,12 @@ function AmbassadorDashboard() {
 
   // const explorersData = users.filter((user) => user.role === "explorer");
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <StyledAmbassadorDashboard>
       <Heading as="h2" $shadowColor="var(--color-red-300)">
-        WELCOME, {user.name.split(" ")[0].toUpperCase()}
+        WELCOME, {profileData.name.split(" ")[0].toUpperCase()}
       </Heading>
 
       <StyledAmbassadorHighlights>

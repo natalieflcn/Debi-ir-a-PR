@@ -8,27 +8,29 @@ import styled from "styled-components";
 import CustomPin from "./CustomPin";
 
 const StyledMap = styled.div`
-  height: ${({ $height }) => $height}rem;
+  height: 25rem;
   /* width: 50%; */
+
+  @media (max-width: 700px) {
+    height: 20rem;
+  }
+
+  @media (max-width: 400px) {
+    height: 15rem;
+  }
 `;
 
 const PR_START = { lat: 18.379, lng: -66.029 };
 const PR_BOUNDS = { north: 18.6, south: 17.8, east: -65.1, west: -67.4 };
 
-function LocationMap({
-  coordinates,
-  onChange,
-  isAddressReady,
-  width = 30,
-  height = 25,
-}) {
+function LocationMap({ coordinates, onChange, isAddressReady, width = 30 }) {
   const editingLocation = Boolean(onChange);
   const canEdit = editingLocation && isAddressReady;
 
   return (
     <>
       {coordinates && (
-        <StyledMap $height={height}>
+        <StyledMap>
           <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
             <Map
               mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}

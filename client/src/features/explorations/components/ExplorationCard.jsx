@@ -158,8 +158,8 @@ function ExplorationCard({
               {locationDetails}
             </ExplorationCardLocations>
           </ExplorationDetailsRow>
-          {/* 
-          <ExplorationMap coordinates={coordinates} /> */}
+
+          {/* <ExplorationMap coordinates={coordinates} /> */}
 
           {/* <ExplorationImagesRow
             $direction="horizontal"

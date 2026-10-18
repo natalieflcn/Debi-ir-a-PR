@@ -129,7 +129,7 @@ function ExplorerDashboard() {
   return (
     <Row $gap="var(--gap-lg)">
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
-        WELCOME, NATALIE
+        WELCOME, {profileData.name.split(" ")[0].toUpperCase()}
       </Heading>
       <StyledExplorerDashboard>
         <GridArea $area="profile">
