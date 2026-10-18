@@ -4,10 +4,10 @@ import Heading from "../typography/Heading";
 
 const FormLabel = styled(Heading)`
   /* width: 15rem; */
-  min-width: 12rem;
+  width: 12rem;
   align-self: flex-start;
 
-  @media (max-width: 900px) {
+  @media (max-width: 800px) {
     min-width: 10rem;
   }
 
@@ -19,7 +19,7 @@ const FormLabel = styled(Heading)`
 `;
 
 const StyledRow = styled(Row)`
-  @media (max-width: 800px) {
+  @media (max-width: 690px) {
     flex-direction: column;
     align-items: stretch;
     gap: var(--gap-sm);

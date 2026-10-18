@@ -72,6 +72,10 @@ export const ExplorationCardBody = styled.div`
   flex-direction: column;
 
   gap: var(--gap-3xl);
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
   @media (max-width: 800px) {
     padding: 1.5rem;
   }

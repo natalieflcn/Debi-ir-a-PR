@@ -23,6 +23,16 @@ const StyledRow = styled(Row)`
   }
 `;
 
+const ButtonsRow = styled(Row)`
+  @media (max-width: 700px) {
+    flex-direction: column;
+    flex: 1;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
 function AdminExplorationCardHeaderDetails({
   exploration,
   lastUpdated,
@@ -80,7 +90,7 @@ function AdminExplorationCardHeaderDetails({
           </Bold>
         </Row>
       </StyledRow>
-      <Row $direction="horizontal" $gap="var(--gap-md)">
+      <ButtonsRow $direction="horizontal" $gap="var(--gap-md)">
         <RouterLink to={`edit`}>
           <Button $variation="darkRed" $size="medium">
             Edit Exploration
@@ -96,7 +106,7 @@ function AdminExplorationCardHeaderDetails({
         >
           Delete Exploration
         </Button>
-      </Row>
+      </ButtonsRow>
 
       {isModalOpen && (
         <DeleteConfirmationModal

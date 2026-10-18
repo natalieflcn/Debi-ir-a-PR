@@ -656,22 +656,22 @@
       - [x] Render Error Boundary
       - [x] Route Error
       - [x] Unauthorized
-    - [ ] Explorer POV TODO 3
+    - [x] Explorer POV
       - [x] Dashboard
       - [x] Explorations
-      - [ ] Exploration page
-      - [ ] Location page
+      - [x] Exploration page
+      - [x] Location page
       - [x] Profile
-    - [ ] Ambassador POV TODO 4
-      - [ ] Dashboard
-      - [ ] Explorations
+    - [~] Ambassador POV TODO 4
+      - [x] Dashboard
+      - [x] Explorations
       - [ ] Create Exploration
-      - [ ] Exploration page
+      - [x] Exploration page
       - [ ] Location page
       - [ ] Create Location page
       - [ ] Profile
     - [ ] Admin POV TODO 5
-      - [ ] Dashboard
+      - [x] Dashboard
       - [ ] Explorations
       - [ ] Create Exploration
       - [ ] Exploration page

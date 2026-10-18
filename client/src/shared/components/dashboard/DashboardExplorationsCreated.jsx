@@ -7,6 +7,10 @@ import Heading from "../typography/Heading";
 import RouterLink from "../routing/RouterLink";
 import styled from "styled-components";
 
+const StyledRow = styled(Row)`
+  flex-direction: column;
+`;
+
 function DashboardExplorationsCreated({ profile, explorations }) {
   const createdExplorations = explorations.filter(
     (exploration) => exploration.createdBy === profile._id,
@@ -14,14 +18,16 @@ function DashboardExplorationsCreated({ profile, explorations }) {
 
   return (
     <DashboardItem $variation="center">
-      <Row $gap="var(--gap-xl)">
+      <Row $gap="var(--gap-lg)">
         <Heading as="h4" $color="var(--color-red-400)">
           Explorations Created
         </Heading>
-        <Row $direction="horizontal" $gap="var(--gap-md)" $align="center">
+        <StyledRow $direction="horizontal" $gap="var(--gap-md)" $align="center">
           <InsetSpan>{createdExplorations.length}</InsetSpan>
-          <Bold>explorations created</Bold>
-        </Row>
+          <Bold>
+            exploration{createdExplorations.length !== 1 && "s"} created
+          </Bold>
+        </StyledRow>
         <Row>
           <RouterLink to={`/${profile.role}/explorations/create`}>
             <Button $variation="secondary" $size="small">

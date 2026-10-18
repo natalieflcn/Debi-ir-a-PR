@@ -41,6 +41,7 @@ const StyledSignup = styled.div`
   height: 100%;
   flex: 1;
   padding: 1.5rem;
+
   box-sizing: border-box;
   justify-content: center;
 
@@ -55,24 +56,13 @@ const StyledSignup = styled.div`
 `;
 
 const StyledInput = styled(Input)`
-  width: 20rem;
+  width: 100%;
   min-width: 0;
+`;
 
-  @media (max-width: 1200px) {
-    width: 28rem;
-  }
-
-  @media (max-width: 900px) {
-    width: 22rem;
-  }
-
-  @media (max-width: 780px) {
-    width: 17rem;
-  }
-
-  @media (max-width: 680px) {
-    width: 100%;
-  }
+const StyledRow = styled(Row)`
+  flex: 1;
+  border: 1px solid red;
 `;
 const StyledHeading = styled(Heading)`
   text-align: center;
@@ -102,8 +92,10 @@ const SignupWrapper = styled.div`
 `;
 
 const LoginRow = styled(Row)`
-  flex-direction: column;
-  text-align: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 // const StyledInput = styled(Input)`
@@ -164,7 +156,7 @@ function Signup({ $variant }) {
           <AppForm $height="100%" onSubmit={handleSubmit(handleFormSubmit)}>
             <Row $gap="var(--gap-lg)">
               <FormField label="name">
-                <Row $gap="var(--gap-xs)">
+                <StyledRow $gap="var(--gap-xs)">
                   <StyledInput
                     name="name"
                     placeholder="Name"
@@ -174,11 +166,11 @@ function Signup({ $variant }) {
                   {errors?.name?.message && (
                     <Bold>{errors?.name?.message}</Bold>
                   )}
-                </Row>
+                </StyledRow>
               </FormField>
 
               <FormField label="email">
-                <Row $gap="var(--gap-xs)">
+                <StyledRow $gap="var(--gap-xs)">
                   <StyledInput
                     name="email"
                     placeholder="Email address"
@@ -194,11 +186,11 @@ function Signup({ $variant }) {
                   {errors?.email?.message && (
                     <Bold>{errors?.email?.message}</Bold>
                   )}
-                </Row>
+                </StyledRow>
               </FormField>
 
               <FormField label="password">
-                <Row $gap="var(--gap-xs)">
+                <StyledRow $gap="var(--gap-xs)">
                   <StyledInput
                     name="password"
                     placeholder="Password"
@@ -214,11 +206,11 @@ function Signup({ $variant }) {
                   {errors?.password?.message && (
                     <Bold>{errors?.password?.message}</Bold>
                   )}
-                </Row>
+                </StyledRow>
               </FormField>
 
               <FormField label="Confirm Password">
-                <Row $gap="var(--gap-xs)">
+                <StyledRow $gap="var(--gap-xs)">
                   <StyledInput
                     name="passwordConfirm"
                     placeholder="Confirm Password"
@@ -235,7 +227,7 @@ function Signup({ $variant }) {
                   {errors?.passwordConfirm?.message && (
                     <Bold>{errors?.passwordConfirm?.message}</Bold>
                   )}
-                </Row>
+                </StyledRow>
               </FormField>
 
               <Button

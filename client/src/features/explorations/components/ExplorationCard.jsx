@@ -81,7 +81,7 @@ function ExplorationCard({
       </RouterLink>
       <StyledExplorationCard $cardShadow="outsetLG">
         <ExplorationCardHeaderImage $image={exploration.headerImage[0]?.url}>
-          <ExplorationCardHeaderDetails $gap="var(--gap-lg)">
+          <ExplorationCardHeaderDetails $gap="var(--gap-md)">
             <ExplorationCardHeading
               as="h2"
               $color="var(--color-red-200)"
@@ -159,7 +159,7 @@ function ExplorationCard({
             </ExplorationCardLocations>
           </ExplorationDetailsRow>
 
-          {/* <ExplorationMap coordinates={coordinates} /> */}
+          <ExplorationMap coordinates={coordinates} />
 
           {/* <ExplorationImagesRow
             $direction="horizontal"

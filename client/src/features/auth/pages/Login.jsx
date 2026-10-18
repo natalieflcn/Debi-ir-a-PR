@@ -82,15 +82,18 @@ const StyledHeading = styled(Heading)`
 
 const StyledInput = styled(Input)`
   flex: 1 1 0;
-  width: 20rem;
+  width: 100%;
   min-width: 0;
 
   @media (max-width: 1200px) {
-    width: 28rem;
+  }
+
+  /* @media (max-width: 900px) {
+    width: 22rem;
   }
 
   @media (max-width: 900px) {
-    width: 22rem;
+    width: 20rem;
   }
 
   @media (max-width: 780px) {
@@ -99,7 +102,7 @@ const StyledInput = styled(Input)`
 
   @media (max-width: 680px) {
     width: 100%;
-  }
+  } */
 `;
 
 const ButtonsRow = styled(Row)`
@@ -111,6 +114,10 @@ const ButtonsRow = styled(Row)`
       width: 100%;
     }
   }
+`;
+
+const StyledRow = styled(Row)`
+  flex: 1;
 `;
 
 const ForgotPasswordRow = styled(Row)`
@@ -203,7 +210,7 @@ function Login() {
               </StyledHeading>
               <Row $gap="var(--gap-xl)">
                 <FormField label="email">
-                  <Row $gap="var(--gap-xs)">
+                  <StyledRow $gap="var(--gap-xs)">
                     <StyledInput
                       name="email"
                       placeholder="Email address"
@@ -211,11 +218,11 @@ function Login() {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                     {formErrors.email && <Bold>{formErrors.email}</Bold>}
-                  </Row>
+                  </StyledRow>
                 </FormField>
 
                 <FormField label="password">
-                  <Row $gap="var(--gap-xs)">
+                  <StyledRow $gap="var(--gap-xs)">
                     <StyledInput
                       name="password"
                       placeholder="Password"
@@ -224,7 +231,7 @@ function Login() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     {formErrors.password && <Bold>{formErrors.password}</Bold>}
-                  </Row>
+                  </StyledRow>
                 </FormField>
 
                 <Button $variation="darkRed" $size="small" type="submit">
