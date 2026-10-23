@@ -30,11 +30,11 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
   (4) Mirador La Plata
   (5) Chito's Bar
 
-- ** Falcon Favorites **
-  (1) Sammy's Pizza
-  (2) Sammy's Café
-  (3) Samuelito's Tres Leches
-  (4) Papo's Ferreteria
+- ** Santurce Exploration **
+  (1) Calle Cerra
+  (2) La Placita
+  (3) Billiard
+  (4) Food
 
 - ** Guavate Lechonera Chinchorreo ** DONE
   (1) Lechonera El Rancho Original

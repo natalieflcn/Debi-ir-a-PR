@@ -692,6 +692,10 @@
 - [ ] Change how paginated information is fetched from the front-end TODO 2
   - [ ] Explorations
   - [ ] Users
+  - [ ] Fix broken endpoints
+    - [x] /explorations/summary?tag=river
+    - [x] /explorations/summary?sort=numStops
+    - [x] /explorations/summary?featured=true&createdBy=<id>&sort=numStops
 - [ ] Test all Explorer titles TODO 3
 - [ ] Make sure all badges map properly throughout Badge Collections TODO 5
 

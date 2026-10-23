@@ -10,7 +10,11 @@ import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAdminUI } from "../../contexts/AdminUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
-import { useLoaderData } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 import ExplorationsFilters from "../../../explorations/components/ExplorationsFilters";
 import ExplorationMiniCard from "../../../explorations/components/ExplorationMiniCard";
 import Bold from "../../../../shared/components/typography/Bold";
@@ -182,15 +186,65 @@ const getAdminExplorationCardButton = function (explorationSlug) {
 const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
-  const [search, setSearch] = useState("");
   const { viewMode, setViewMode } = useAdminUI();
-  const [sortBy, setSortBy] = useState("createdAt");
-  const [filterBy, setFilterBy] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showFeatured, setShowFeatured] = useState(false);
-  const [showMyExplorations, setShowMyExplorations] = useState(false);
-  const { explorations, users } = useLoaderData();
+  const { explorations, total, results, users } = useLoaderData();
   const { user } = useAuth();
+  const { navigation } = useNavigation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+  const sortBy = searchParams.get("sort") ?? "createdAt";
+  const filterBy = searchParams.get("tag") ?? "All";
+  const showFeatured = searchParams.get("featured") === "true";
+  const showMyExplorations = searchParams.get("createdBy") === user.id;
+  const isLoading = navigation.state === "loading";
+
+  // Resets to page 1 unless page is being set explicitly
+  function updateParams(updates) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === null || value === "" || value === false)
+            next.delete(key);
+          else next.set(key, value);
+        }
+        if (!("page" in updates)) next.delete("page");
+        return next;
+      },
+      { replace: true },
+    );
+  }
+
+  // Debounced search; the guard stops it from resetting the page on mount
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchInput, setSearchInput] = useState(urlSearch);
+
+  useEffect(() => {
+    if (searchInput === urlSearch) return;
+    const id = setTimeout(() => updateParams({ search: searchInput }), 300);
+    return () => clearTimeout(id);
+  }, [searchInput, urlSearch]);
+
+  const handleSort = (value) =>
+    updateParams({ sort: value === "createdAt" ? null : value });
+  const handleFilter = (value) =>
+    updateParams({ tag: value === "All" ? null : value });
+  const handleFeatured = (checked) =>
+    updateParams({ featured: checked ? "true" : null });
+  const handleMine = (checked) =>
+    updateParams({ createdBy: checked ? user.id : null });
+
+  const handleSelectViewMode = (mode) => setViewMode(mode);
+
+  // const [search, setSearch] = useState("");
+  // const [sortBy, setSortBy] = useState("createdAt");
+  // const [filterBy, setFilterBy] = useState("all");
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [showFeatured, setShowFeatured] = useState(false);
+  // const [showMyExplorations, setShowMyExplorations] = useState(false);
 
   const processedExplorations = [...explorations]
     // Queried explorations
@@ -230,7 +284,7 @@ function ManageExplorations() {
       }
     });
 
-  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
+  // const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedExplorations = processedExplorations.slice(
     startIndex,
@@ -241,9 +295,9 @@ function ManageExplorations() {
     setCurrentPage(1);
   }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
 
-  const handleSelectViewMode = function (mode) {
-    setViewMode(mode);
-  };
+  // const handleSelectViewMode = function (mode) {
+  //   setViewMode(mode);
+  // };
 
   return (
     <StyledExplorations>

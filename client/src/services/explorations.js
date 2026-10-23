@@ -5,8 +5,11 @@ export async function getExplorationsData() {
   return apiFetch("/explorations");
 }
 
-export async function getExplorationsSummary() {
-  return await apiFetch("/explorations/summary");
+export async function getExplorationsSummary(params = "") {
+  const queryString = new URLSearchParams(params).toString();
+  return await apiFetch(
+    `/explorations/summary${queryString ? `?${queryString}` : ""}`,
+  );
 }
 
 export async function getExploration(explorationId) {

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Exploration = require("../models/Exploration");
 
 const DB = process.env.DB.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 

@@ -7,8 +7,19 @@ const AppError = require("../utils/appError");
 const ExplorationProgress = require("../models/ExplorationProgress");
 const User = require("../models/User");
 const geocodingService = require("../services/geocodingService");
+
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 // Exploration Routes
-exports.getAllExplorationData = factory.getAll(Exploration);
+exports.getAllExplorationData = factory.getAll(Exploration, (req) => {
+  const f = {};
+  const { search, tag } = req.query;
+
+  if (search) f.name = { $regex: `^${escapeRegex(search)}`, $options: "i" };
+  if (tag && tag !== "all")
+    f.tags = { $regex: escapeRegex(tag), $options: "i" };
+
+  return f;
+});
 
 exports.getExploration = factory.getOne(Exploration, (req) => ({
   slug: req.params.id,
@@ -98,16 +109,26 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
   });
 });
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 9;
 
 exports.aliasExplorationsSummary = (req, res, next) => {
   //   req.query.filter = {tags: }
 
-  req.query.sort = req.query.sort || "-createdAt";
-  req.query.fields =
-    "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags";
-  req.query.limit = String(ITEMS_PER_PAGE);
-  req.query.page = req.query.page || 1;
+  const query = {
+    ...req.query,
+    sort: req.query.sort || "-createdAt",
+    fields:
+      "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags,featured,createdBy",
+    limit: String(ITEMS_PER_PAGE),
+    page: req.query.page || "1",
+  };
+
+  Object.defineProperty(req, "query", {
+    value: query,
+    writable: true,
+    configurable: true,
+    enumerable: true,
+  });
 
   next();
 };

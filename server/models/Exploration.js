@@ -95,7 +95,7 @@ const explorationSchema = new mongoose.Schema(
         },
       ],
     },
-    numStops: { type: Number },
+    numStops: { type: Number, index: true },
     // images: { type: [imageSchema], default: [] },
     // createdAt: { type: Date, default: Date.now },
     createdBy: {
@@ -127,20 +127,25 @@ explorationSchema.pre("save", function () {
 //   this.numStops = this.locations.length;
 // });
 
-explorationSchema.post(/^find/, function (docs, next) {
-  if (!docs) return next();
-
-  if (!Array.isArray(docs)) {
-    docs.numStops = docs.locations.length;
-  } else {
-    docs.forEach((doc) => {
-      doc.numStops = doc.locations.length;
-    });
-  }
-
-  // console.log(docs);
+explorationSchema.pre("save", function (next) {
+  this.numStops = this.locations.length;
   next();
 });
+
+// explorationSchema.post(/^find/, function (docs, next) {
+//   if (!docs) return next();
+
+//   if (!Array.isArray(docs)) {
+//     docs.numStops = docs.locations.length;
+//   } else {
+//     docs.forEach((doc) => {
+//       doc.numStops = doc.locations.length;
+//     });
+//   }
+
+//   // console.log(docs);
+//   next();
+// });
 
 // explorationSchema.post("find", function (docs, next) {
 //   if (!docs) return next();
