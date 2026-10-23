@@ -71,7 +71,7 @@ const explorerTitlesTable = {
     { title: "Island Wanderer", milestones: "1-3 Explorations" },
     { title: "Tropical Cruiser", milestones: "3-5 Explorations" },
     { title: "Fluttering Mariposa", milestones: "5-10 Explorations" },
-    { title: "Coqui Crawler", milestones: "10-15 Explorations" },
+    { title: "Crawling Coqui", milestones: "10-15 Explorations" },
     { title: "Brutal Bouncer", milestones: "15-20 Explorations" },
     { title: "Barrio Member", milestones: "20-25 Explorations" },
     { title: "Taino Trailblazer", milestones: "25-30 Explorations" },
@@ -181,7 +181,6 @@ const NameButton = styled(Button)`
 `;
 
 const NameHeading = styled(Heading)`
-  border: 1px solid red;
   display: inline; /* flows like text, so the box wraps with it */
   margin-right: var(--gap-xs);
 `;

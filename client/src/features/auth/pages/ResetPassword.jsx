@@ -31,11 +31,12 @@ const StyledAppForm = styled(AppForm)`
 `;
 
 const ButtonsRow = styled(Row)`
-  flex-direction: column;
-  gap: var(--gap-xl);
-
-  button {
-    width: 100%;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: var(--gap-xl);
+    button {
+      width: 100%;
+    }
   }
 `;
 

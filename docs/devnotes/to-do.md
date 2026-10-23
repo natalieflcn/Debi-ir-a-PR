@@ -591,9 +591,7 @@
 ## Week: October 10 - October 18
 
 - [~] Trivial Tasks
-  - [ ] LOW: Keep being redirected to Login page before AuthContext can retrieve /me
   - [x] Use React-Material UI to create slideshow for images
-  - [ ] Redirect users to error page? or home page when logged-in users try to access /signup or /login
   - [x] Note: Map all location images into Exploration images
 
 - [~] **PHASE 6:** Advanced Features
@@ -624,7 +622,7 @@
         - [x] # Locations completed this month
         - [x] # Locations completed this year
         - [x] Link ExplorationCarousel Buttons to Exploration Pages
-        - [ ] TODO 2: Hyperlink explorations and locations to respective pages in admin/ambassador UI
+        - [x] Hyperlink explorations and locations to respective pages in admin/ambassador UI
       - [x] Ambassador/Admin
         - [x] Top Ambassadors: # of Explorations Created
         - [x] Top Explorers: # of Explorations Started
@@ -639,7 +637,9 @@
         - [x] # of Locations Completed
         - [x] Top Locations: # of Explorers Completed
       - [x] NOTE: Organize Featured Explorations and Current Explorations into Carousels on Explorer Dashboard
-  - [ ] Automated Emails
+  - [x] Automated Emails
+    - [x] Welcome
+    - [x] Password Reset
   - [x] Reinforce mobile responsiveness
     - [x] Landing page
       - [x] Home
@@ -678,11 +678,44 @@
       - [x] Location page
       - [x] Create Location page
       - [x] Profile
-  - Polish all data, complete adding data to explorations
-  - Complete Landing Page summary TODO 6
-  - Add family's voices to Brush Up Your Spanish
-  - Final review of mobile responsiveness
-    - Will need to fix pagination responsiveness when more pages are available
-  - Begin deploying project
+  - [~] Polish all data, complete adding data to explorations
+  - [x] Complete Landing Page summaries
 
-TODO TODO TODO TODO TODO TODO TODO TODO
+## Week: October 19 - October 26
+
+- [~] Add more data to project
+  - [~] Explorations
+  - [~] Locations
+  - [~] Images
+  - [ ] Descriptions TODO 6
+  - [ ] Badges TODO 4
+- [ ] Change how paginated information is fetched from the front-end TODO 2
+  - [ ] Explorations
+  - [ ] Users
+- [ ] Test all Explorer titles TODO 3
+- [ ] Make sure all badges map properly throughout Badge Collections TODO 5
+
+- [ ] Add family's voices to Brush Up Your Spanish TODO 8
+  - [ ] TONY: "Qué es la qué hay?"
+  - [ ] MIMI: "Buen provecho!"
+  - [ ] PAYI: "Vamos a chinchorrear!"
+  - [ ] GAEL: "Diantre!"
+  - [ ] SAMMI: "En verdad?"
+  - [ ] SOFIA: "Bochinche"
+  - [ ] FRAN: "Eso es embuste!"
+  - [ ] HARRY: "Vamos a janguear!"
+  - [ ] ANTHONY: "Hay mucho tapón."
+  - [ ] LISI: "Nos vemos ahorita!"
+- [ ] Create photos, GIFs, and/or videos for landing pages TODO 7
+  - [ ] User avatars
+  - [ ] Home page
+  - [ ] How It Works page
+  - [ ] About page
+- [ ] FINAL REVIEW of mobile responsiveness TODO 9
+  - [ ] Will need to fix pagination responsiveness when more pages of data are available
+  - [ ] Fix Footer line height and link gaps
+- [ ] DEPLOY PROJECT
+  - [ ] Front-end: Netlify
+  - [ ] Back-end: Bonto.dev
+- [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
+- [ ] Redirect users to dashboard when logged-in users try to access /signup or /login

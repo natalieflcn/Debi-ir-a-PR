@@ -1,10 +1,10 @@
 import ChallengesSection from "../components/ChallengesSection";
 import KeyFeaturesSection from "../components/KeyFeaturesSection";
-import LessonsSection from "../components/LessonsSection";
+import FutureImprovements from "../components/FutureImprovements";
 import MissionSection from "../components/MissionSection";
 import MotivationSection from "../components/MotivationSection";
 import TechStackSection from "../components/TechStackSection";
-import TheResultsSection from "../components/TheResultsSection";
+
 
 const aboutData = [
   {
@@ -50,10 +50,10 @@ const aboutData = [
         content: ChallengesSection,
       },
       {
-        id: "lessons-learned",
-        heading: "Lessons Learned",
+        id: "future-improvements",
+        heading: "Future Improvements",
         link: "/about",
-        content: LessonsSection,
+        content: FutureImprovements,
       },
     ],
   },

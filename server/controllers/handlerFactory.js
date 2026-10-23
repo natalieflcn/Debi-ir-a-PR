@@ -7,18 +7,29 @@ const User = require("../models/User");
 
 exports.getAll = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
+    // const queryFilter = typeof filter === "function" ? filter(req) : filter;
+
+    // // EXECUTE QUERY
+    // const features = new APIFeatures(Model.find(queryFilter), req.query)
+    //   .filter()
+    //   .sort()
+    //   .limitFields()
+    //   .paginate();
+
     const queryFilter = typeof filter === "function" ? filter(req) : filter;
 
-    // EXECUTE QUERY
     const features = new APIFeatures(Model.find(queryFilter), req.query)
       .filter()
       .sort()
-      .limitFields()
-      .paginate();
+      .limitFields();
+
+    const total = await Model.countDocuments(features.query.getFilter());
+
+    features.paginate();
 
     const doc = await features.query;
 
-    const total = await Model.countDocuments(queryFilter);
+    // const total = await Model.countDocuments(queryFilter);
 
     // SEND RESPONSE
     res.status(200).json({

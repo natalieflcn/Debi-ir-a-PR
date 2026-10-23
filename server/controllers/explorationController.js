@@ -98,13 +98,15 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
   });
 });
 
+const ITEMS_PER_PAGE = 12;
+
 exports.aliasExplorationsSummary = (req, res, next) => {
   //   req.query.filter = {tags: }
 
   req.query.sort = req.query.sort || "-createdAt";
   req.query.fields =
     "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags";
-  req.query.limit = "2";
+  req.query.limit = String(ITEMS_PER_PAGE);
   req.query.page = req.query.page || 1;
 
   next();

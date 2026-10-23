@@ -112,6 +112,7 @@ function ExplorerDashboardStatsItem({ explorations, userHistory }) {
       case "landscape":
       case "mountain":
       case "river":
+      case "lake":
       case "trail":
       case "waterfall":
         data.nature += 1;

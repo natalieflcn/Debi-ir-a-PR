@@ -6,7 +6,7 @@ function CustomPin() {
       style={{
         display: "flex",
         alignItems: "center",
-        transform: "translateY(-50%)", // Shift anchor point if needed
+        // transform: "translateY(-50%)", // Shift anchor point if needed
       }}
     >
       <img src={diapr} alt="thumb" style={{ width: 65, height: 65 }} />

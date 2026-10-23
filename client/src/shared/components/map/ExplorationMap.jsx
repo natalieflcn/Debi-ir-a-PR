@@ -77,7 +77,7 @@ function ExplorationMap({ coordinates }) {
                 if (!loc?.location) return null;
 
                 return (
-                  <AdvancedMarker key={i} position={loc?.location}>
+                  <AdvancedMarker key={i} position={loc?.location} anchor='CENTER'>
                     <CustomPin />
                   </AdvancedMarker>
                 );

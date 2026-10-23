@@ -125,6 +125,7 @@ exports.LOCATION_TAGS = [
   "gallery",
   "hiking",
   "historical-site",
+  "lake",
   "landmark",
   "landscape",
   "market",

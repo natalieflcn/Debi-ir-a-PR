@@ -54,6 +54,7 @@ function LocationMap({ coordinates, onChange, isAddressReady, width = 30 }) {
                 <AdvancedMarker
                   position={coordinates}
                   draggable={canEdit}
+                  anchor="CENTER"
                   onDragEnd={(e) =>
                     e.latLng &&
                     onChange({ lat: e.latLng.lat(), lng: e.latLng.lng() })

@@ -35,6 +35,7 @@ const TagCategories = [
   { id: "gallery", name: "Gallery" },
   { id: "hiking", name: "Hiking" },
   { id: "historical-site", name: "Historical Site" },
+  { id: "lake", name: "Lake" },
   { id: "landmark", name: "Landmark" },
   { id: "landscape", name: "Landscape" },
   { id: "market", name: "Market" },

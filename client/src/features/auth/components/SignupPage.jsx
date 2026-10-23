@@ -62,7 +62,6 @@ const StyledInput = styled(Input)`
 
 const StyledRow = styled(Row)`
   flex: 1;
-  border: 1px solid red;
 `;
 const StyledHeading = styled(Heading)`
   text-align: center;
