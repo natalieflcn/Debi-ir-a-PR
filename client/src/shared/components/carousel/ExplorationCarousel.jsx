@@ -133,7 +133,7 @@ function ExplorationCarousel({ explorationData, userProgress }) {
                       <Row $gap="var(--gap-lg)">
                         <StyledRow>
                           <Heading as="h5">{exploration.name}</Heading>
-                          <p>{exploration.description}</p>
+                          <p>{exploration.tagline}</p>
                         </StyledRow>
                       </Row>
                     </StyledRow>

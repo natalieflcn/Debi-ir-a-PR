@@ -19,7 +19,17 @@ router.route("/summary").get(
   explorationController.getAllExplorationData,
 );
 
+router
+  .route("/getAllBadges")
+  .get(explorationController.aliasBadges, explorationController.getAllBadges);
 // router.use();
+
+router
+  .route("/validate-location")
+  .post(
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.validateExplorationLocation,
+  );
 
 router
   .route("/:id")
@@ -44,13 +54,6 @@ router
   .delete(
     authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExplorationLocation,
-  );
-
-router
-  .route("/validate-location")
-  .post(
-    authController.restrictTo("admin", "ambassador"),
-    explorationController.validateExplorationLocation,
   );
 
 // router

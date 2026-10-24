@@ -21,6 +21,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import { formatDate } from "../../../../shared/utils/helpers";
 import AdminShowCreatedExplorations from "../../../../shared/components/management/AdminShowCreatedExplorations";
 import { useAuth } from "../../../auth/contexts/AuthContext";
+import Spinner from "../../../../shared/components/ui/Spinner";
 
 const getAdminExplorationsTableColumns = function (users) {
   return [
@@ -195,13 +196,13 @@ function ManageExplorations() {
 
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
-  const sortBy = searchParams.get("sort") ?? "createdAt";
-  const filterBy = searchParams.get("tag") ?? "All";
+  // const sortBy = searchParams.get("sort") ?? "createdAt";
+  // const filterBy = searchParams.get("tag") ?? "All";
   const showFeatured = searchParams.get("featured") === "true";
   const showMyExplorations = searchParams.get("createdBy") === user.id;
   const isLoading = navigation.state === "loading";
 
-  console.log(totalPages);
+  
   // Resets to page 1 unless page is being set explicitly
   function updateParams(updates) {
     setSearchParams(
@@ -239,7 +240,6 @@ function ManageExplorations() {
     updateParams({ createdBy: checked ? user.id : null });
 
   const handleSelectViewMode = (mode) => setViewMode(mode);
-
 
   // const [search, setSearch] = useState("");
   // const [sortBy, setSortBy] = useState("createdAt");
@@ -338,6 +338,7 @@ function ManageExplorations() {
         </FiltersAdminTogglesRow>
       </InputFiltersRow>
 
+      {isLoading && <Spinner />}
       {viewMode === "grid" && !isLoading && (
         <ExplorationCards>
           {explorations.map((exploration) => {
@@ -346,7 +347,6 @@ function ManageExplorations() {
                 ? exploration.cities[0]
                 : "Multiple Cities";
 
-          
             return (
               <ExplorationMiniCard
                 exploration={exploration}

@@ -12,11 +12,17 @@ import Button from "../../../../shared/components/ui/Button";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useAmbassadorUI } from "../../contexts/AmbassadorUIContext";
 import Pagination from "../../../../shared/components/ui/Pagination";
-import { useLoaderData } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
 import { formatDate } from "../../../../shared/utils/helpers";
 import { useAuth } from "../../../auth/contexts/AuthContext";
 import AdminShowCreatedExplorations from "../../../../shared/components/management/AdminShowCreatedExplorations";
+import Spinner from "../../../../shared/components/ui/Spinner";
+import { useAdminUI } from "../../../admin/contexts/AdminUIContext";
 
 const AmbassadorExplorationsTableColumns = function (users) {
   return [
@@ -188,67 +194,56 @@ const ITEMS_PER_PAGE = 9;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("createdAt");
-  const [filterBy, setFilterBy] = useState("all");
-  const [showFeatured, setShowFeatured] = useState(false);
-  const [showMyExplorations, setShowMyExplorations] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const { explorations, users } = useLoaderData();
+  const { explorations, total, results, users } = useLoaderData();
   const { user } = useAuth();
+  const navigation = useNavigation();
 
-  const processedExplorations = [...explorations]
-    // Queried explorations
-    .filter((exploration) =>
-      search
-        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
-        : true,
-    )
-    // Filter explorations
-    .filter((exploration) =>
-      filterBy === "all"
-        ? true
-        : exploration.tags.some((tag) =>
-            tag.toLowerCase().includes(filterBy.toLowerCase()),
-          ),
-    )
-    // Featured explorations
-    .filter((exploration) =>
-      showFeatured ? exploration.featured === true : true,
-    )
-    // My Explorations
-    .filter((exploration) =>
-      showMyExplorations ? exploration.createdBy === user.id : true,
-    )
-    // Sort Explorations
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "numStops":
-          return a.numStops - b.numStops;
+  const [searchParams, setSearchParams] = useSearchParams();
 
-        case "name":
-          return a.name.localeCompare(b.name);
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+  // const sortBy = searchParams.get("sort") ?? "createdAt";
+  // const filterBy = searchParams.get("tag") ?? "All";
+  const showFeatured = searchParams.get("featured") === "true";
+  const showMyExplorations = searchParams.get("createdBy") === user.id;
+  const isLoading = navigation.state === "loading";
 
-        case "createdAt":
-        default:
-          return new Date(b.createdAt) - new Date(a.createdAt);
-      }
-    });
+  function updateParams(updates) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === null || value === "" || value === false)
+            next.delete(key);
+          else next.set(key, value);
+        }
+        if (!("page" in updates)) next.delete("page");
+        return next;
+      },
+      { replace: true },
+    );
+  }
 
-  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = processedExplorations.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  // Debounced search; the guard stops it from resetting the page on mount
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchInput, setSearchInput] = useState(urlSearch);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
+    if (searchInput === urlSearch) return;
+    const id = setTimeout(() => updateParams({ search: searchInput }), 300);
+    return () => clearTimeout(id);
+  }, [searchInput, urlSearch]);
 
-  const handleSelectViewMode = function (mode) {
-    setViewMode(mode);
-  };
+  const handleSort = (value) =>
+    updateParams({ sort: value === "createdAt" ? null : value });
+  const handleFilter = (value) =>
+    updateParams({ tag: value === "All" ? null : value });
+  const handleFeatured = (checked) =>
+    updateParams({ featured: checked ? "true" : null });
+  const handleMine = (checked) =>
+    updateParams({ createdBy: checked ? user.id : null });
+
+  const handleSelectViewMode = (mode) => setViewMode(mode);
 
   return (
     <StyledExplorations>
@@ -262,22 +257,22 @@ function ManageExplorations() {
       <InputFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input
           placeholder="Search for an exploration..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <FiltersAdminTogglesRow $direction="horizontal" $gap="var(--gap-lg)">
           <ExplorationsFilters
-            onSort={setSortBy}
-            onFilter={setFilterBy}
-            filterInitState="All"
+            onSort={handleSort}
+            onFilter={handleFilter}
+            filterInitState={searchParams.get("tag") ?? "All"}
             showFeatured={showFeatured}
-            onShowFeatured={setShowFeatured}
+            onShowFeatured={handleFeatured}
           />
 
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <AdminShowCreatedExplorations
               showMyExplorations={showMyExplorations}
-              onShowMyExplorations={setShowMyExplorations}
+              onShowMyExplorations={handleMine}
             />
             <AdminViewMode
               viewMode={viewMode}
@@ -287,9 +282,11 @@ function ManageExplorations() {
         </FiltersAdminTogglesRow>
       </InputFiltersRow>
 
-      {viewMode === "grid" && (
+      {isLoading && <Spinner />}
+
+      {viewMode === "grid" && !isLoading && (
         <ExplorationCards>
-          {paginatedExplorations.map((exploration) => {
+          {explorations.map((exploration) => {
             const city =
               exploration.cities.length === 1
                 ? exploration.cities[0]
@@ -309,15 +306,15 @@ function ManageExplorations() {
         </ExplorationCards>
       )}
 
-      {viewMode === "list" && (
+      {viewMode === "list" && !isLoading && (
         <CondensedTable
           columns={AmbassadorExplorationsTableColumns(users)}
-          rows={paginatedExplorations}
+          rows={explorations}
           $theme={explorationsTableTheme}
         />
       )}
 
-      {paginatedExplorations.length === 0 && (
+      {explorations.length === 0 && !isLoading && (
         <Row $align="center">
           <Bold $color="var(--color-light-0)">
             There are no explorations to show.
@@ -328,7 +325,7 @@ function ManageExplorations() {
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={setCurrentPage}
+        onPageChange={(page) => updateParams({ page })}
         $variation="secondary"
       />
     </StyledExplorations>

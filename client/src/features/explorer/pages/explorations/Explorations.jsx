@@ -8,7 +8,11 @@ import Input from "../../../../shared/components/form/Input";
 import Row from "../../../../shared/components/layout/Row";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
-import { useLoaderData } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 import Bold from "../../../../shared/components/typography/Bold";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -86,89 +90,79 @@ const ExplorerExplorationCardButton = function (explorationSlug, progress) {
 const ITEMS_PER_PAGE = 9;
 
 function Explorations() {
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("createdAt");
-  const [filterBy, setFilterBy] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showFeatured, setShowFeatured] = useState(false);
-  const { explorations } = useLoaderData();
+  const { explorations, total } = useLoaderData();
   const { user } = useAuth();
   const { isPending, isError, data, error, isSuccess } = useQuery({
     queryKey: ["allExplorationProgress", user._id],
     queryFn: getAllMyExplorationProgress,
   });
-
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
   const userHistory = data?.data?.data ?? [];
 
-  const processedExplorations = [...explorations]
-    // Queried explorations
-    .filter((exploration) =>
-      search
-        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
-        : true,
-    )
-    // Filter explorations
-    .filter((exploration) =>
-      filterBy === "all"
-        ? true
-        : exploration.tags.some((tag) =>
-            tag.toLowerCase().includes(filterBy.toLowerCase()),
-          ),
-    )
-    // Featured explorations
-    .filter((exploration) =>
-      showFeatured ? exploration.featured === true : true,
-    )
-    // Sort Explorations
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "numStops":
-          return a.numStops - b.numStops;
+  const [searchParams, setSearchParams] = useSearchParams();
 
-        case "name":
-          return a.name.localeCompare(b.name);
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
 
-        case "createdAt":
-        default:
-          return new Date(b.createdAt) - new Date(a.createdAt);
-      }
-    });
+  const showFeatured = searchParams.get("featured") === "true";
 
-  const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = processedExplorations.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  function updateParams(updates) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === null || value === "" || value === false)
+            next.delete(key);
+          else next.set(key, value);
+        }
+        if (!("page" in updates)) next.delete("page");
+        return next;
+      },
+      { replace: true },
+    );
+  }
+
+  // Debounced search; the guard stops it from resetting the page on mount
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchInput, setSearchInput] = useState(urlSearch);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured, search]);
+    if (searchInput === urlSearch) return;
+    const id = setTimeout(() => updateParams({ search: searchInput }), 300);
+    return () => clearTimeout(id);
+  }, [searchInput, urlSearch]);
 
+  const handleSort = (value) =>
+    updateParams({ sort: value === "createdAt" ? null : value });
+  const handleFilter = (value) =>
+    updateParams({ tag: value === "All" ? null : value });
+  const handleFeatured = (checked) =>
+    updateParams({ featured: checked ? "true" : null });
   return (
     <>
-      {isPending && <Spinner />}
+      <StyledExplorations>
+        <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
+          <Input
+            placeholder="Search for an exploration..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <ExplorationsFilters
+            onSort={handleSort}
+            onFilter={handleFilter}
+            showFeatured={showFeatured}
+            onShowFeatured={handleFeatured}
+          />
+        </ExplorationFiltersRow>
 
-      {isError && <span>Error: {error.message}</span>}
+        {(isPending || isLoading) && <Spinner />}
 
-      {isSuccess && (
-        <StyledExplorations>
-          <ExplorationFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
-            <Input
-              placeholder="Search for an exploration..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <ExplorationsFilters
-              onSort={setSortBy}
-              onFilter={setFilterBy}
-              showFeatured={showFeatured}
-              onShowFeatured={setShowFeatured}
-            />
-          </ExplorationFiltersRow>
+        {isError && <span>Error: {error.message}</span>}
 
+        {isSuccess && !isLoading && (
           <ExplorationCards>
-            {paginatedExplorations.map((exploration) => {
+            {explorations.map((exploration) => {
               const city =
                 exploration.cities.length === 1
                   ? exploration.cities[0]
@@ -191,22 +185,22 @@ function Explorations() {
               );
             })}
           </ExplorationCards>
+        )}
 
-          {paginatedExplorations.length === 0 && (
-            <Row $align="center">
-              <Bold $color="var(--color-light-0)">
-                There are no explorations to show.
-              </Bold>
-            </Row>
-          )}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-            $variation="primary"
-          />
-        </StyledExplorations>
-      )}
+        {explorations.length === 0 && (
+          <Row $align="center">
+            <Bold $color="var(--color-light-0)">
+              There are no explorations to show.
+            </Bold>
+          </Row>
+        )}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => updateParams({ page })}
+          $variation="primary"
+        />
+      </StyledExplorations>
     </>
   );
 }

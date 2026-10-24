@@ -55,7 +55,7 @@ function ExplorerDashboardBadgeItem({
           </Row>
 
           <Bold $color="var(--color-dark-200)">
-            {earnedBadges.length} out of {totalBadges} badges collected
+            {earnedBadges.length || 0} out of {totalBadges} badges collected
           </Bold>
 
           <Button

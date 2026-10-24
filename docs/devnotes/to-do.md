@@ -690,14 +690,20 @@
   - [ ] Descriptions TODO 6
   - [ ] Badges TODO 4
 - [ ] Change how paginated information is fetched from the front-end TODO 2
-  - [ ] Explorations
+  - [x] Explorations
+    - [x] Manage Explorations (Admin)
+    - [x] Manage Explorations (Ambassador)
+    - [x] Explorations
   - [ ] Users
+    - [ ] Manage Users
+    - [ ] Manage Explorers
   - [ ] Fix broken endpoints
     - [x] /explorations/summary?tag=river
     - [x] /explorations/summary?sort=numStops
     - [x] /explorations/summary?featured=true&createdBy=<id>&sort=numStops
 - [ ] Test all Explorer titles TODO 3
 - [ ] Make sure all badges map properly throughout Badge Collections TODO 5
+- [ ] Handle edge case for 'Recent Badge Earned' when no badges are earned
 
 - [ ] Add family's voices to Brush Up Your Spanish TODO 8
   - [ ] TONY: "Qué es la qué hay?"

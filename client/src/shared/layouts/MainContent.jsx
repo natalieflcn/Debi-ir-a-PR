@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Spinner from "../components/ui/Spinner";
 
 const StyledMainContent = styled.main`
@@ -19,13 +19,14 @@ const StyledMainContent = styled.main`
 `;
 function MainContent() {
   const navigate = useNavigation();
+  const location = useLocation();
 
+  const isPageTransition =
+    navigate.state === "loading" &&
+    navigate.location.pathname !== location.pathname;
   return (
     <StyledMainContent>
-      <>
-        {navigate.state === "loading" && <Spinner />}
-        {navigate.state !== "loading" && <Outlet />}
-      </>
+      <>{isPageTransition ? <Spinner /> : <Outlet />}</>
     </StyledMainContent>
   );
 }

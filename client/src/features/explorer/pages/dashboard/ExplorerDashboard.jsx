@@ -88,7 +88,7 @@ function getUserProgress(explorations, userHistory) {
     const totalLocations = explorations.find(
       (currentExploration) =>
         currentExploration._id === explorationProgress.exploration,
-    )?.locations.length;
+    )?.numStops;
 
     return {
       explorationId: explorationProgress.exploration,
@@ -98,34 +98,35 @@ function getUserProgress(explorations, userHistory) {
     };
   });
 
-
   return userProgress;
 }
 
-function getBadgeCollection(explorations, userHistory) {
+function getBadgeCollection(badges, userHistory) {
   const completedExplorations = userHistory
     .filter((explorationProgress) => explorationProgress.status === "completed")
     ?.map((explorationProgress) => explorationProgress.exploration);
 
   if (!completedExplorations) return [];
 
-  const earnedBadges = explorations
+  const earnedBadges = badges
     .filter((exploration) => completedExplorations.includes(exploration._id))
     .map((exploration) => {
       return { ...exploration.badge, exploration: exploration._id };
     });
 
+  console.log(earnedBadges);
   return earnedBadges;
 }
 
 function ExplorerDashboard() {
-  const { profileData, explorations, userHistory } = useLoaderData();
+  const { profileData, explorations, userHistory, badges } = useLoaderData();
 
   const currentExplorations = getCurrentExplorations(explorations, userHistory);
   const featuredExplorations = getFeaturedExplorations(explorations);
   const userProgress = getUserProgress(explorations, userHistory);
-  const earnedBadges = getBadgeCollection(explorations, userHistory);
+  const earnedBadges = getBadgeCollection(badges, userHistory);
 
+  console.log(explorations);
   return (
     <Row $gap="var(--gap-lg)">
       <Heading as="h2" $shadowColor="var(--color-blue-300)">
@@ -138,7 +139,7 @@ function ExplorerDashboard() {
         <GridArea $area="badge">
           <ExplorerDashboardBadgeItem
             userHistory={userHistory}
-            totalBadges={explorations.length}
+            totalBadges={badges.length}
             earnedBadges={earnedBadges}
           />
         </GridArea>

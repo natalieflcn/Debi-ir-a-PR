@@ -1,9 +1,15 @@
 import { getAllMyExplorationProgress } from "../../../../services/explorationProgress";
 import { getMe } from "../../../../services/auth";
-import { getExplorationsData } from "../../../../services/explorations";
+import {
+  getAllBadges,
+  getExplorationsData,
+  getExplorationsSummary,
+  getTotalExplorationsSummary,
+} from "../../../../services/explorations";
 
 export async function explorerDashboardLoader() {
   const explorations = await getExplorationsData();
+  const badges = await getAllBadges();
   // const profileData = {
   //   name: "Natalie Loader",
   //   title: "First Explorer",
@@ -155,6 +161,7 @@ export async function explorerDashboardLoader() {
   //   ],
   // };
 
+  console.log(explorations.data.data);
   const explorationProgress = await getAllMyExplorationProgress();
 
   const profile = await getMe();
@@ -163,5 +170,6 @@ export async function explorerDashboardLoader() {
     explorations: explorations.data.data,
     userHistory: explorationProgress.data.data,
     profileData: profile.data.data,
+    badges: badges.data.data,
   };
 }

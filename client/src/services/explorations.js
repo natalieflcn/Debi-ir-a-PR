@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { apiFetch } from "./utils/apiFetch";
 
 export async function getExplorationsData() {
-  return apiFetch("/explorations");
+  return apiFetch("/explorations?limit=500");
 }
 
 export async function getExplorationsSummary(params = "") {
@@ -10,6 +10,15 @@ export async function getExplorationsSummary(params = "") {
   return await apiFetch(
     `/explorations/summary${queryString ? `?${queryString}` : ""}`,
   );
+}
+
+export async function getTotalExplorationsSummary(params = {}) {
+  const qs = new URLSearchParams({
+    fields: "_id,name,headerImage,tagline,slug,tags,numStops",
+    limit: "500",
+    ...params,
+  });
+  return await apiFetch(`/explorations?${qs}`);
 }
 
 export async function getExploration(explorationId) {
@@ -54,6 +63,10 @@ export async function deleteExplorationLocation({ explorationId, locationId }) {
       method: "DELETE",
     },
   );
+}
+
+export async function getAllBadges() {
+  return await apiFetch(`/explorations/getAllBadges`);
 }
 
 export async function validateLocation({ street, city, zipcode }) {

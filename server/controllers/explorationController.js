@@ -205,6 +205,26 @@ exports.deleteExplorationLocation = catchAsync(async (req, res, next) => {
   });
 });
 
+// Badge Collection
+exports.aliasBadges = (req, res, next) => {
+  const query = {
+    ...req.query,
+    fields: "badge",
+    limit: "500",
+  };
+
+  Object.defineProperty(req, "query", {
+    value: query,
+    writable: true,
+    configurable: true,
+    enumerable: true,
+  });
+
+  next();
+};
+
+exports.getAllBadges = factory.getAll(Exploration);
+
 // Geocoding API
 exports.validateExplorationLocation = catchAsync(async (req, res, next) => {
   const result = await geocodingService.geocodeAddress({
