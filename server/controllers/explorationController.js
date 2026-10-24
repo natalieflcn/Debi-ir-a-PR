@@ -109,7 +109,7 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
   });
 });
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 exports.aliasExplorationsSummary = (req, res, next) => {
   //   req.query.filter = {tags: }
@@ -223,7 +223,7 @@ exports.aliasBadges = (req, res, next) => {
   next();
 };
 
-exports.getAllBadges = factory.getAll(Exploration);
+exports.getAllBadges = factory.getAll(Exploration, (req) => {});
 
 // Geocoding API
 exports.validateExplorationLocation = catchAsync(async (req, res, next) => {

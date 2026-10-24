@@ -190,7 +190,7 @@ const AmbassadorExplorationCardButton = function (explorationSlug) {
   ];
 };
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAmbassadorUI();

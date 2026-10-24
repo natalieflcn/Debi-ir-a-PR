@@ -11,15 +11,17 @@ export async function getExplorationProgress(explorationId) {
 }
 
 export async function getAllMyExplorationProgress() {
-  return await apiFetch(`/exploration-progress/me`);
+  return await apiFetch(`/exploration-progress/me?limit=all`);
 }
 
 export async function getUserExplorationProgress(userId) {
-  return await apiFetch(`/${userId}/explorations/user-exploration-progress`);
+  return await apiFetch(
+    `/${userId}/explorations/user-exploration-progress?limit=all`,
+  );
 }
 
 export async function getAllExplorationProgress() {
-  return await apiFetch(`/exploration-progress`);
+  return await apiFetch(`/exploration-progress?limit=all`);
 }
 
 export async function startExploration(explorationId) {

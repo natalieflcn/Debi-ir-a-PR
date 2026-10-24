@@ -6,6 +6,9 @@ export async function getUsers(params = "") {
   return await apiFetch(`/users${queryString ? `?${queryString}` : ""}`);
 }
 
+export async function getAllUsers() {
+  return apiFetch("/users?limit=500");
+}
 // export async function getUsers({
 //   page = 1,
 //   limit = 10,

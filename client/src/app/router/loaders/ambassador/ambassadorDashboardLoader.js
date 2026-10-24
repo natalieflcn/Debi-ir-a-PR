@@ -1,7 +1,7 @@
 import { getMe } from "../../../../services/auth";
 import { getAllExplorationProgress } from "../../../../services/explorationProgress";
 import { getExplorationsData } from "../../../../services/explorations";
-import { getUsers } from "../../../../services/users";
+import { getAllUsers, getUsers } from "../../../../services/users";
 
 // const users = [
 //   {
@@ -78,7 +78,7 @@ function isActiveWithinDays(visitLog, days) {
 
 export async function ambassadorDashboardLoader() {
   // Fetching data from database
-  const users = await getUsers();
+  const users = await getAllUsers();
   const explorations = await getExplorationsData();
   const profileData = await getMe();
   const { data: explorationProgress } = await getAllExplorationProgress();

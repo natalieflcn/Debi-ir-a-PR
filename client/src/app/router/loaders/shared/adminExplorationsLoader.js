@@ -1,12 +1,12 @@
 import { getExplorationsSummary } from "../../../../services/explorations";
-import { getUsers } from "../../../../services/users";
+import { getAllUsers, getUsers } from "../../../../services/users";
 
 export async function adminExplorationsLoader({ request }) {
   const { searchParams } = new URL(request.url);
 
   const { data: explorations, total } =
     await getExplorationsSummary(searchParams);
-  const { data: users } = await getUsers();
+  const { data: users } = await getAllUsers();
 
   console.log(total);
   // console.log(await getExplorationsSummary());

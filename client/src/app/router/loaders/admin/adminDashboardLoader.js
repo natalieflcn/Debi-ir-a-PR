@@ -1,7 +1,7 @@
 import { getMe } from "../../../../services/auth";
 import { getAllExplorationProgress } from "../../../../services/explorationProgress";
 import { getExplorationsData } from "../../../../services/explorations";
-import { getUsers } from "../../../../services/users";
+import { getAllUsers, getUsers } from "../../../../services/users";
 
 export async function adminDashboardLoader() {
   // const users = [
@@ -79,11 +79,12 @@ export async function adminDashboardLoader() {
   // };
   // const explorations = [];
 
-  const users = await getUsers();
+  const users = await getAllUsers();
   const profile = await getMe();
   const explorations = await getExplorationsData();
   const explorationProgress = await getAllExplorationProgress();
 
+  console.log(users.data.data);
   return {
     users: users.data.data,
     profileData: profile.data.data,

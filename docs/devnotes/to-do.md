@@ -687,8 +687,8 @@
   - [~] Explorations
   - [~] Locations
   - [~] Images
-  - [ ] Descriptions TODO 6
-  - [ ] Badges TODO 4
+  - [ ] Descriptions TODO 5
+  - [ ] Badges TODO 2
 - [x] Change how paginated information is fetched from the front-end
   - [x] Explorations
     - [x] Manage Explorations (Admin)
@@ -702,10 +702,10 @@
     - [x] /explorations/summary?sort=numStops
     - [x] /explorations/summary?featured=true&createdBy=<id>&sort=numStops
 - [ ] Test all Explorer titles TODO 3
-- [ ] Make sure all badges map properly throughout Badge Collections TODO 5
+- [ ] Make sure all badges map properly throughout Badge Collections TODO 4
 - [ ] Handle edge case for 'Recent Badge Earned' when no badges are earned
-- [ ] Fix broken dashboard calculations
-- [ ] Add family's voices to Brush Up Your Spanish TODO 8
+- [ ] Fix broken dashboard calculations from paginated server-side info (users too, created by unknown) TODO 1 HIGH
+- [ ] Add family's voices to Brush Up Your Spanish TODO 7
   - [ ] TONY: "Qué es la qué hay?"
   - [ ] MIMI: "Buen provecho!"
   - [ ] PAYI: "Vamos a chinchorrear!"
@@ -716,7 +716,7 @@
   - [ ] HARRY: "Vamos a janguear!"
   - [ ] ANTHONY: "Hay mucho tapón."
   - [ ] LISI: "Nos vemos ahorita!"
-- [ ] Create photos, GIFs, and/or videos for landing pages TODO 7
+- [ ] Create photos, GIFs, and/or videos for landing pages TODO 6
   - [ ] User avatars
   - [ ] Home page
   - [ ] How It Works page

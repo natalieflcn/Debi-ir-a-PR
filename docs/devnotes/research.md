@@ -33,8 +33,15 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
 - ** Santurce Exploration **
   (1) Calle Cerra
   (2) La Placita
-  (3) Billiard
-  (4) Food
+  (3) El Nie Bar
+  (4) Lote 23
+  (5) Museo de Arte Contemporaneo
+
+- Nika's First Trip
+  (1) Playa Caracas
+  (2) Fuente Raíces
+  (3) Marina Puerto del Ray
+  (4) Plaza Las Delicias
 
 - ** Guavate Lechonera Chinchorreo ** DONE
   (1) Lechonera El Rancho Original

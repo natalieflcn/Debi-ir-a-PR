@@ -57,7 +57,7 @@ exports.getOne = (Model, filter = {}, popOptions) =>
   });
 
 exports.createOne = (Model, additionalData) =>
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res) => {
     let additionalDataOptions;
 
     if (additionalData) additionalDataOptions = additionalData(req);

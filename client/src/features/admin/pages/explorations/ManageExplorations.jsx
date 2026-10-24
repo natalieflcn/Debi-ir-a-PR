@@ -184,7 +184,7 @@ const getAdminExplorationCardButton = function (explorationSlug) {
   ];
 };
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 function ManageExplorations() {
   const { viewMode, setViewMode } = useAdminUI();
@@ -202,7 +202,6 @@ function ManageExplorations() {
   const showMyExplorations = searchParams.get("createdBy") === user.id;
   const isLoading = navigation.state === "loading";
 
-  
   // Resets to page 1 unless page is being set explicitly
   function updateParams(updates) {
     setSearchParams(

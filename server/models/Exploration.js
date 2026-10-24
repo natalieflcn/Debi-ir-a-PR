@@ -129,7 +129,7 @@ explorationSchema.pre("save", function () {
 
 explorationSchema.pre("save", function (next) {
   this.numStops = this.locations.length;
-  next();
+  // next();
 });
 
 // explorationSchema.post(/^find/, function (docs, next) {

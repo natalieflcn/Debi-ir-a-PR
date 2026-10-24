@@ -87,7 +87,7 @@ const ExplorerExplorationCardButton = function (explorationSlug, progress) {
   ];
 };
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 function Explorations() {
   const { explorations, total } = useLoaderData();
