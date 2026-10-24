@@ -132,9 +132,7 @@ function ExplorationMiniCard({ exploration, city, buttonDetails }) {
       </ExplorationCardBackground>
 
       <ExplorationCardBody>
-        <ExplorationDescription>
-          {exploration.description}
-        </ExplorationDescription>
+        <ExplorationDescription>{exploration.tagline}</ExplorationDescription>
 
         <StyledRow>
           <AddressRow $direction="horizontal" $align="space-evenly">

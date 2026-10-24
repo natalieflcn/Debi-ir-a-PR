@@ -86,7 +86,6 @@ function CreateExplorationCard({ exploration }) {
 
     // console.log(submissionData);
 
-
     try {
       setIsUploading(true);
       setIsUploadingModalOpen(true);
@@ -97,7 +96,6 @@ function CreateExplorationCard({ exploration }) {
         "exploration",
       );
       setValue("headerImage", headerImage);
-   
 
       // const images = await resolveImages(formData.images, "exploration");
       // setValue("images", images);
@@ -113,7 +111,6 @@ function CreateExplorationCard({ exploration }) {
         });
       }
       setValue("locations", locations);
-      console.log(getValues("locations"));
 
       setIsUploading(false);
 

@@ -128,7 +128,6 @@ function ExplorerDashboardStatsItem({ explorations, userHistory }) {
     }
   });
 
-  console.log(data);
   return (
     <>
       <DashboardItem $variation="center">

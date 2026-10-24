@@ -98,7 +98,7 @@ function getUserProgress(explorations, userHistory) {
     };
   });
 
-  console.log(userProgress);
+
   return userProgress;
 }
 

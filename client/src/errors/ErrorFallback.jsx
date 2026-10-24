@@ -30,11 +30,11 @@ const ErrorWrapper = styled.div`
 const ImageContainer = styled.div`
   width: 40rem;
 
-  @media (max-width: 800rem) {
+  @media (max-width: 800px) {
     width: 30rem;
   }
 
-  @media (max-width: 500rem) {
+  @media (max-width: 500px) {
     width: 19rem;
   }
 `;
@@ -48,7 +48,7 @@ const StackRow = styled(Row)`
 
 const ButtonsRow = styled(Row)`
   flex: 1;
-  @media (max-width: 700rem) {
+  @media (max-width: 700px) {
     flex-direction: column;
     button {
       width: 100%;

@@ -189,7 +189,7 @@ function ManageExplorations() {
   const { viewMode, setViewMode } = useAdminUI();
   const { explorations, total, results, users } = useLoaderData();
   const { user } = useAuth();
-  const { navigation } = useNavigation();
+  const navigation = useNavigation();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -201,6 +201,7 @@ function ManageExplorations() {
   const showMyExplorations = searchParams.get("createdBy") === user.id;
   const isLoading = navigation.state === "loading";
 
+  console.log(totalPages);
   // Resets to page 1 unless page is being set explicitly
   function updateParams(updates) {
     setSearchParams(
@@ -239,6 +240,7 @@ function ManageExplorations() {
 
   const handleSelectViewMode = (mode) => setViewMode(mode);
 
+
   // const [search, setSearch] = useState("");
   // const [sortBy, setSortBy] = useState("createdAt");
   // const [filterBy, setFilterBy] = useState("all");
@@ -246,54 +248,54 @@ function ManageExplorations() {
   // const [showFeatured, setShowFeatured] = useState(false);
   // const [showMyExplorations, setShowMyExplorations] = useState(false);
 
-  const processedExplorations = [...explorations]
-    // Queried explorations
-    .filter((exploration) =>
-      search
-        ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
-        : true,
-    )
-    // Filter explorations
-    .filter((exploration) =>
-      filterBy === "all"
-        ? true
-        : exploration.tags.some((tag) =>
-            tag.toLowerCase().includes(filterBy.toLowerCase()),
-          ),
-    )
-    // Featured explorations
-    .filter((exploration) =>
-      showFeatured ? exploration.featured === true : true,
-    )
-    // My Explorations
-    .filter((exploration) =>
-      showMyExplorations ? exploration.createdBy === user.id : true,
-    )
-    // Sort Explorations
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "numStops":
-          return a.numStops - b.numStops;
+  // const processedExplorations = [...explorations]
+  //   // Queried explorations
+  //   .filter((exploration) =>
+  //     search
+  //       ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
+  //       : true,
+  //   )
+  //   // Filter explorations
+  //   .filter((exploration) =>
+  //     filterBy === "all"
+  //       ? true
+  //       : exploration.tags.some((tag) =>
+  //           tag.toLowerCase().includes(filterBy.toLowerCase()),
+  //         ),
+  //   )
+  //   // Featured explorations
+  //   .filter((exploration) =>
+  //     showFeatured ? exploration.featured === true : true,
+  //   )
+  //   // My Explorations
+  //   .filter((exploration) =>
+  //     showMyExplorations ? exploration.createdBy === user.id : true,
+  //   )
+  //   // Sort Explorations
+  //   .sort((a, b) => {
+  //     switch (sortBy) {
+  //       case "numStops":
+  //         return a.numStops - b.numStops;
 
-        case "name":
-          return a.name.localeCompare(b.name);
+  //       case "name":
+  //         return a.name.localeCompare(b.name);
 
-        case "createdAt":
-        default:
-          return new Date(b.createdAt) - new Date(a.createdAt);
-      }
-    });
+  //       case "createdAt":
+  //       default:
+  //         return new Date(b.createdAt) - new Date(a.createdAt);
+  //     }
+  //   });
 
-  // const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedExplorations = processedExplorations.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  // // const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
+  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  // const paginatedExplorations = processedExplorations.slice(
+  //   startIndex,
+  //   startIndex + ITEMS_PER_PAGE,
+  // );
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
+  // useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
 
   // const handleSelectViewMode = function (mode) {
   //   setViewMode(mode);
@@ -312,21 +314,21 @@ function ManageExplorations() {
       <InputFiltersRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input
           placeholder="Search for an exploration..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <FiltersAdminTogglesRow $direction="horizontal" $gap="var(--gap-lg)">
           <ExplorationsFilters
-            onSort={setSortBy}
-            onFilter={setFilterBy}
-            filterInitState="All"
+            onSort={handleSort}
+            onFilter={handleFilter}
+            filterInitState={searchParams.get("tag") ?? "All"}
             showFeatured={showFeatured}
-            onShowFeatured={setShowFeatured}
+            onShowFeatured={handleFeatured}
           />
           <Row $direction="horizontal" $gap="var(--gap-lg)">
             <AdminShowCreatedExplorations
               showMyExplorations={showMyExplorations}
-              onShowMyExplorations={setShowMyExplorations}
+              onShowMyExplorations={handleMine}
             />
             <AdminViewMode
               viewMode={viewMode}
@@ -335,14 +337,16 @@ function ManageExplorations() {
           </Row>
         </FiltersAdminTogglesRow>
       </InputFiltersRow>
-      {viewMode === "grid" && (
+
+      {viewMode === "grid" && !isLoading && (
         <ExplorationCards>
-          {paginatedExplorations.map((exploration) => {
+          {explorations.map((exploration) => {
             const city =
               exploration.cities.length === 1
                 ? exploration.cities[0]
                 : "Multiple Cities";
 
+          
             return (
               <ExplorationMiniCard
                 exploration={exploration}
@@ -354,26 +358,28 @@ function ManageExplorations() {
           })}
         </ExplorationCards>
       )}
-      {viewMode === "list" && (
+      {viewMode === "list" && !isLoading && (
         <CondensedTable
           columns={getAdminExplorationsTableColumns(users)}
-          rows={paginatedExplorations}
+          rows={explorations}
           $theme={explorationsTableTheme}
         />
       )}
-      {paginatedExplorations.length === 0 && (
+      {explorations.length === 0 && !isLoading && (
         <Row $align="center">
           <Bold $color="var(--color-light-0)">
             There are no explorations to show.
           </Bold>
         </Row>
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-        $variation="secondary"
-      />
+      {!isLoading && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => updateParams({ page })}
+          $variation="secondary"
+        />
+      )}
     </StyledExplorations>
   );
 }

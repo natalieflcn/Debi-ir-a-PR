@@ -1,16 +1,18 @@
 import { getExplorationsSummary } from "../../../../services/explorations";
 import { getUsers } from "../../../../services/users";
 
-export async function adminExplorationsLoader({ req }) {
-  const { searchParams } = new URL(req.url);
+export async function adminExplorationsLoader({ request }) {
+  const { searchParams } = new URL(request.url);
 
-  const { data: explorations } = await getExplorationsSummary(searchParams);
+  const { data: explorations, total } =
+    await getExplorationsSummary(searchParams);
   const { data: users } = await getUsers();
 
+  console.log(total);
   // console.log(await getExplorationsSummary());
   return {
     explorations: explorations.data,
-    total: explorations.total,
+    total: total,
     results: explorations.results,
     users: users.data,
   };
