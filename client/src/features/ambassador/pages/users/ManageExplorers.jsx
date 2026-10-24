@@ -8,7 +8,7 @@ import Bold from "../../../../shared/components/typography/Bold";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { formatDate } from "../../../../shared/utils/helpers";
 
 const AmbassadorExplorersTableColumns = [
@@ -115,58 +115,94 @@ const sortCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageExplorers() {
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("createdAt");
-  const [currentPage, setCurrentPage] = useState(1);
-  const explorersData = useLoaderData();
+  // const [search, setSearch] = useState("");
+  // const [sortBy, setSortBy] = useState("createdAt");
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const explorersData = useLoaderData();
 
-  const queriedUsers = [...explorersData].filter((explorer) =>
-    search
-      ? explorer.name.toLowerCase().startsWith(search.toLowerCase())
-      : true,
-  );
+  // const queriedUsers = [...explorersData].filter((explorer) =>
+  //   search
+  //     ? explorer.name.toLowerCase().startsWith(search.toLowerCase())
+  //     : true,
+  // );
 
-  const sortedUsers = queriedUsers.sort((a, b) => {
-    if (sortBy === "name") return a.name.localeCompare(b.name);
-    else return new Date(b.createdAt) - new Date(a.createdAt);
-  });
+  // const sortedUsers = queriedUsers.sort((a, b) => {
+  //   if (sortBy === "name") return a.name.localeCompare(b.name);
+  //   else return new Date(b.createdAt) - new Date(a.createdAt);
+  // });
 
-  const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedUsers = sortedUsers.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  // const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
+  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  // const paginatedUsers = sortedUsers.slice(
+  //   startIndex,
+  //   startIndex + ITEMS_PER_PAGE,
+  // );
+
+  // useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [sortBy, search]);
+
+  const { users, total } = useLoaderData();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+
+  function updateParams(updates) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === null || value === "" || value === false)
+            next.delete(key);
+          else next.set(key, value);
+        }
+        if (!("page" in updates)) next.delete("page");
+        return next;
+      },
+      { replace: true },
+    );
+  }
+
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchInput, setSearchInput] = useState(urlSearch);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, search]);
+    if (searchInput === urlSearch) return;
+    const id = setTimeout(() => updateParams({ search: searchInput }), 300);
+    return () => clearTimeout(id);
+  }, [searchInput, urlSearch]);
+
+  const handleSort = (value) =>
+    updateParams({ sort: value === "name" ? "name" : null });
+  const handleFilter = (value) =>
+    updateParams({ role: value === "all" ? null : value });
 
   return (
     <StyledExplorers>
       <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input
           placeholder="Search for an explorer by name..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <SortDropdown
           categories={sortCategories}
           initState="Date Joined"
-          onSort={setSortBy}
+          onSort={handleSort}
         />
       </StyledRow>
 
       <CondensedTable
         columns={AmbassadorExplorersTableColumns}
-        rows={paginatedUsers}
+        rows={users}
         $theme={explorersTableTheme}
       />
 
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
-        onPageChange={setCurrentPage}
+        onPageChange={(page) => updateParams({ page })}
         $variation="secondary"
       />
     </StyledExplorers>

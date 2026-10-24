@@ -1,7 +1,9 @@
 import { apiFetch } from "./utils/apiFetch";
 
-export async function getUsers() {
-  return await apiFetch(`/users`);
+export async function getUsers(params = "") {
+  const queryString = new URLSearchParams(params).toString();
+
+  return await apiFetch(`/users${queryString ? `?${queryString}` : ""}`);
 }
 
 // export async function getUsers({

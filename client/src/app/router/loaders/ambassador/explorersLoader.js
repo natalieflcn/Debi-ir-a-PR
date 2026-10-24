@@ -1,9 +1,17 @@
 import { getExplorers } from "../../../../services/users";
 
-export async function explorersLoader() {
-  const { data } = await getExplorers();
+const ITEMS_PER_PAGE = 10;
 
-  const users = data.data;
+export async function explorersLoader({ request }) {
+  const { searchParams } = new URL(request.url);
 
-  return users;
+  const params = new URLSearchParams();
+  for (const key of ["search", "role", "sort", "page"]) {
+    const value = searchParams.get(key);
+    if (value) params.set(key, value);
+  }
+  params.set("limit", String(ITEMS_PER_PAGE));
+
+  const { data: users, total } = await getExplorers(params);
+  return { users: users.data, total: total };
 }

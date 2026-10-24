@@ -14,7 +14,14 @@ const filterRequestBody = (body, ...allowedFields) => {
 
   return filteredRequestBody;
 };
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+exports.getAllUsers = factory.getAll(User, (req) => {
+  const f = {};
+  const { search } = req.query;
+  if (search) f.name = { $regex: `^${escapeRegex(search)}`, $options: "i" };
+  return f;
+});
 // const getExplorerTitle = function (completedExplorations) {
 //   if (completedExplorations <= 1) return "Baby Turista";
 //   if (completedExplorations > 1 && completedExplorations <= 3)
@@ -68,8 +75,6 @@ exports.getMe = (req, res, next) => {
 // exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  
-
   // Create error is user tries to update password
   if (req.body.password || req.body.passwordConfirm)
     next(
@@ -114,8 +119,6 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteUser = factory.deleteOne(User);
-
-exports.getAllUsers = factory.getAll(User);
 
 exports.updateUser = catchAsync(async (req, res, next) => {
   const { role } = req.body;

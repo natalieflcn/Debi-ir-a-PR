@@ -88,7 +88,7 @@ function getUserProgress(explorations, userHistory) {
     const totalLocations = explorations.find(
       (currentExploration) =>
         currentExploration._id === explorationProgress.exploration,
-    )?.numStops;
+    )?.locations.length;
 
     return {
       explorationId: explorationProgress.exploration,

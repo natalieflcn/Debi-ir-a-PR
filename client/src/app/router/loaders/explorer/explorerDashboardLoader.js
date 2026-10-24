@@ -3,8 +3,6 @@ import { getMe } from "../../../../services/auth";
 import {
   getAllBadges,
   getExplorationsData,
-  getExplorationsSummary,
-  getTotalExplorationsSummary,
 } from "../../../../services/explorations";
 
 export async function explorerDashboardLoader() {

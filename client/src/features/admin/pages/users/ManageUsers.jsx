@@ -10,7 +10,7 @@ import FilterDropdown from "../../../../shared/components/dropdown/FilterDropdow
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useEffect, useState } from "react";
 import Pagination from "../../../../shared/components/ui/Pagination";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { capitalize, formatDate } from "../../../../shared/utils/helpers";
 import { getUsers } from "../../../../services/users";
 import SpinnerMini from "../../../../shared/components/ui/SpinnerMini";
@@ -165,81 +165,98 @@ const filterCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageUsers() {
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("createdAt");
-  const [filterBy, setFilterBy] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  // const [loading, setLoading] = useState(false);
-  const usersData = useLoaderData();
+  const { users, total } = useLoaderData();
   const { role } = useAuth();
-  // const [users, setUsers] = useState([]);
-  // const [totalUsers, setTotalUsers] = useState(0);
-  // useEffect(() => {
-  //   async function loadUsers() {
-  //     setLoading(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  //     try {
-  //       const { data } = await getUsers(currentPage, 10);
-  //       setTotalUsers(data.total);
-  //       setUsers(data.data);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+  const filterBy = searchParams.get("role") ?? "all";
 
-  //   loadUsers();
-  // }, [currentPage]);
-
-  // console.log(users);
   const tableTheme =
     (filterBy === "explorer" && explorersTableTheme) ||
     (filterBy === "ambassador" && ambassadorsTableTheme) ||
     undefined;
 
-  const queriedUsers = [...usersData].filter((user) =>
-    search ? user.name.toLowerCase().startsWith(search.toLowerCase()) : true,
-  );
+  function updateParams(updates) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === null || value === "" || value === false)
+            next.delete(key);
+          else next.set(key, value);
+        }
+        if (!("page" in updates)) next.delete("page");
+        return next;
+      },
+      { replace: true },
+    );
+  }
 
-  const filteredUsers = [...queriedUsers].filter((user) => {
-    if (filterBy === "all") return true;
-    return user.role === filterBy;
-  });
-
-  const sortedUsers = [...filteredUsers].sort((a, b) => {
-    if (sortBy === "name") return a.name.localeCompare(b.name);
-    else return new Date(b.createdAt) - new Date(a.createdAt);
-  });
-
-  const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
-
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedUsers = sortedUsers.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchInput, setSearchInput] = useState(urlSearch);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [sortBy, filterBy, search]);
+    if (searchInput === urlSearch) return;
+    const id = setTimeout(() => updateParams({ search: searchInput }), 300);
+    return () => clearTimeout(id);
+  }, [searchInput, urlSearch]);
+
+  const handleSort = (value) =>
+    updateParams({ sort: value === "name" ? "name" : null });
+  const handleFilter = (value) =>
+    updateParams({ role: value === "all" ? null : value });
+
+  // const [search, setSearch] = useState("");
+  // const [sortBy, setSortBy] = useState("createdAt");
+  // const [filterBy, setFilterBy] = useState("all");
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  // const queriedUsers = [...usersData].filter((user) =>
+  //   search ? user.name.toLowerCase().startsWith(search.toLowerCase()) : true,
+  // );
+
+  // const filteredUsers = [...queriedUsers].filter((user) => {
+  //   if (filterBy === "all") return true;
+  //   return user.role === filterBy;
+  // });
+
+  // const sortedUsers = [...filteredUsers].sort((a, b) => {
+  //   if (sortBy === "name") return a.name.localeCompare(b.name);
+  //   else return new Date(b.createdAt) - new Date(a.createdAt);
+  // });
+
+  // const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
+
+  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  // const paginatedUsers = sortedUsers.slice(
+  //   startIndex,
+  //   startIndex + ITEMS_PER_PAGE,
+  // );
+
+  // useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [sortBy, filterBy, search]);
 
   return (
     <StyledUsers>
       <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
         <Input
           placeholder="Search for an explorer by name..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <DropdownRow $direction="horizontal" $gap="var(--gap-lg)">
           <SortDropdown
             categories={sortCategories}
             initState="Date Joined"
-            onSort={setSortBy}
+            onSort={handleSort}
           />
           <FilterDropdown
             categories={filterCategories}
             initState="All"
-            onFilter={setFilterBy}
+            onFilter={handleFilter}
           />
         </DropdownRow>
       </StyledRow>
@@ -249,7 +266,7 @@ function ManageUsers() {
       ) : ( */}
       <CondensedTable
         columns={UsersTableColumns(role)}
-        rows={paginatedUsers}
+        rows={users}
         $theme={tableTheme}
       />
       {/* )} */}
@@ -257,7 +274,7 @@ function ManageUsers() {
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
-        onPageChange={setCurrentPage}
+        onPageChange={(page) => updateParams({ page })}
         $variation="secondary"
       />
     </StyledUsers>

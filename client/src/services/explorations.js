@@ -12,15 +12,6 @@ export async function getExplorationsSummary(params = "") {
   );
 }
 
-export async function getTotalExplorationsSummary(params = {}) {
-  const qs = new URLSearchParams({
-    fields: "_id,name,headerImage,tagline,slug,tags,numStops",
-    limit: "500",
-    ...params,
-  });
-  return await apiFetch(`/explorations?${qs}`);
-}
-
 export async function getExploration(explorationId) {
   return await apiFetch(`/explorations/${explorationId}`);
 }
