@@ -112,11 +112,18 @@ function CreateExplorationCard({ exploration }) {
       }
       setValue("locations", locations);
 
+      // Uploading Badge image
+
+      const badge = {
+        ...formData.badge,
+        image: await resolveImages(formData.badge.image, "exploration"),
+      };
       setIsUploading(false);
 
       const submissionData = {
         ...formData,
         headerImage,
+        badge,
         // images,
         locations,
         ...(isEditing && { _id: exploration._id }),

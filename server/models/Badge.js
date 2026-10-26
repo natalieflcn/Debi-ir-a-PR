@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const imageSchema = require("./Image");
 
 const badgeSchema = new mongoose.Schema(
   {
@@ -11,8 +12,16 @@ const badgeSchema = new mongoose.Schema(
       required: [true, "A badge description is required."],
     },
     image: {
-      type: String,
-      // required: [true, "A badge icon is required."]
+      type: [imageSchema],
+      default: [],
+      validate: {
+        validator: function (value) {
+          return value.length <= 1;
+        },
+        message: "An exploration can only have one header image.",
+      },
+
+      // required: [true, "A header image is required."],
     },
     // exploration: {
     //   type: mongoose.Schema.Types.ObjectId,

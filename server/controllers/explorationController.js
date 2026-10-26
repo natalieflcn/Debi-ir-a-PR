@@ -118,7 +118,7 @@ exports.aliasExplorationsSummary = (req, res, next) => {
     ...req.query,
     sort: req.query.sort || "-createdAt",
     fields:
-      "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags,featured,createdBy",
+      "_id,slug,name,tagline,locations,numStops,cities,headerImage,tags,featured,createdBy,createdAt,updatedAt",
     limit: String(ITEMS_PER_PAGE),
     page: req.query.page || "1",
   };

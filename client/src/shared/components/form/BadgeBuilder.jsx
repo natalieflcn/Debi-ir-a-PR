@@ -6,6 +6,8 @@ import Modal from "../modal/Modal";
 import styled from "styled-components";
 import BadgeForm from "./BadgeForm";
 import Image from "../ui/Image";
+import { useMemo } from "react";
+import { useEffect } from "react";
 
 const StyledBadgeBuilder = styled.div`
   align-self: flex-start;
@@ -28,6 +30,20 @@ const StyledRow = styled(Row)`
 function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const img = Array.isArray(value?.image) ? value.image[0] : value?.image;
+
+  const previewUrl = useMemo(() => {
+    if (!img) return null;
+    if (img instanceof File) return URL.createObjectURL(img);
+    return typeof img === "string" ? img : img.url;
+  }, [img]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl?.startsWith("blob:")) URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
+  console.log(value);
   return (
     <StyledBadgeBuilder>
       <StyledRow $direction="horizontal" $gap="var(--gap-md)" $align="start">
@@ -42,7 +58,7 @@ function BadgeBuilder({ value, onSelect }) {
 
         {value && (
           <Image
-            src={value.image}
+            src={previewUrl}
             $width="6rem"
             $height="6rem"
             $objectFit="cover"

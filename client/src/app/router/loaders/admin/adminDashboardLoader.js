@@ -84,7 +84,6 @@ export async function adminDashboardLoader() {
   const explorations = await getExplorationsData();
   const explorationProgress = await getAllExplorationProgress();
 
-  console.log(users.data.data);
   return {
     users: users.data.data,
     profileData: profile.data.data,

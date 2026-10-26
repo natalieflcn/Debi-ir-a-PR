@@ -687,8 +687,9 @@
   - [~] Explorations
   - [~] Locations
   - [~] Images
-  - [ ] Descriptions TODO 5
-  - [ ] Badges TODO 2
+  - [ ] Descriptions & Taglines TODO 5
+  - [ ] Header Images
+  - [ ] Badges TODO 1
 - [x] Change how paginated information is fetched from the front-end
   - [x] Explorations
     - [x] Manage Explorations (Admin)
@@ -703,8 +704,8 @@
     - [x] /explorations/summary?featured=true&createdBy=<id>&sort=numStops
 - [ ] Test all Explorer titles TODO 3
 - [ ] Make sure all badges map properly throughout Badge Collections TODO 4
-- [ ] Handle edge case for 'Recent Badge Earned' when no badges are earned
-- [ ] Fix broken dashboard calculations from paginated server-side info (users too, created by unknown) TODO 1 HIGH
+- [x] Handle edge case for 'Recent Badge Earned' when no badges are earned
+- [x] Fix broken dashboard calculations from paginated server-side info
 - [ ] Add family's voices to Brush Up Your Spanish TODO 7
   - [ ] TONY: "Qué es la qué hay?"
   - [ ] MIMI: "Buen provecho!"
@@ -721,6 +722,7 @@
   - [ ] Home page
   - [ ] How It Works page
   - [ ] About page
+  - [~] Badges
 - [ ] FINAL REVIEW of mobile responsiveness TODO 9
   - [ ] Will need to fix pagination responsiveness when more pages of data are available
   - [ ] Fix Footer line height and link gaps

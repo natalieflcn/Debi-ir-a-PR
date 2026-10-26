@@ -16,6 +16,7 @@ const BadgeRow = styled(Row)`
 `;
 
 function AdminFooterBadgeDisplay({ badge }) {
+  console.log(badge);
   return (
     <StyledCard
       $cardColor="var(--color-light-100)"
@@ -23,8 +24,8 @@ function AdminFooterBadgeDisplay({ badge }) {
       $gap="var(--gap-md)"
     >
       Upon completion of this exploration, Explorers will earn:
-      <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
-        <Image $width="5rem" src={badge.image} />
+      <BadgeRow $direction="horizontal" $gap="var(--gap-md)">
+        <Image $width="7rem" src={badge.image[0].url} />
         <Heading as="h5" $color="var(--color-red-300)">
           {badge.name}
         </Heading>

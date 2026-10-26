@@ -89,7 +89,11 @@ const ProfileBadgeCollection = function ({ userHistory, badges = [] }) {
                 onClick={() => onBadgeItemClick(badge.id, isEarned)}
               >
                 {isEarned ? (
-                  <Image src={badge.image} alt={badge.name} $width="5rem" />
+                  <Image
+                    src={badge.image[0].url}
+                    alt={badge.name}
+                    $width="5rem"
+                  />
                 ) : (
                   <FaLock size={50} fill="var(--color-dark-200)" />
                 )}

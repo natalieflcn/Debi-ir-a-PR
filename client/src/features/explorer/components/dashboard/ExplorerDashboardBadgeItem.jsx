@@ -9,6 +9,7 @@ import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import Modal from "../../../../shared/components/modal/Modal";
+import SmallText from "../../../../shared/components/typography/SmallText";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -31,7 +32,9 @@ function ExplorerDashboardBadgeItem({
 
   // Calculating Last Earned Badge
   const lastCompletedExploration = userHistory
-    .filter((explorationProgress) => explorationProgress.status === "completed")
+    .filter(
+      (explorationProgress) => explorationProgress?.status === "completed",
+    )
     .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))[0];
 
   const recentBadge = earnedBadges.find(
@@ -49,9 +52,27 @@ function ExplorerDashboardBadgeItem({
           <Heading as="h4" $color="var(--color-dark-100)">
             Most Recent Badge
           </Heading>
+
           <Row $gap="var(--gap-md)" $align="center">
-            <Image src="/src/assets/images/content/TEMP.png" $width="5rem" />
-            <Heading as="h6">{recentBadge.name}</Heading>
+            {recentBadge ? (
+              <>
+                <Image
+                  src="/src/assets/images/content/TEMP.png"
+                  $width="5rem"
+                />
+                <Heading as="h6">{recentBadge?.name}</Heading>
+              </>
+            ) : (
+              <>
+                <Image
+                  src="/src/assets/images/content/TEMP.png"
+                  $width="5rem"
+                />
+                <SmallText>
+                  Start exploring to earn your first badge...
+                </SmallText>
+              </>
+            )}
           </Row>
 
           <Bold $color="var(--color-dark-200)">
@@ -84,6 +105,7 @@ function ExplorerDashboardBadgeItem({
                   src={badge?.image?.url}
                   $width="5rem"
                   key={badge.exploration}
+                  title={badge?.description}
                 />
               ))}
             </Row>

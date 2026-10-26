@@ -114,7 +114,6 @@ function getBadgeCollection(badges, userHistory) {
       return { ...exploration.badge, exploration: exploration._id };
     });
 
-  console.log(earnedBadges);
   return earnedBadges;
 }
 
@@ -126,7 +125,6 @@ function ExplorerDashboard() {
   const userProgress = getUserProgress(explorations, userHistory);
   const earnedBadges = getBadgeCollection(badges, userHistory);
 
-  console.log(explorations);
   return (
     <Row $gap="var(--gap-lg)">
       <Heading as="h2" $shadowColor="var(--color-blue-300)">

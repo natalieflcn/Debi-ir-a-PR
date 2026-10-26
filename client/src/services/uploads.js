@@ -4,6 +4,7 @@ const SIGNATURE_ROUTES = {
   exploration: "/uploads/exploration-signature",
   myUser: "/uploads/user-signature",
   otherUser: "/uploads/user-signature",
+  // badge: "/uploads/badge-signature",
 };
 
 async function uploadFiles(files, type, id) {

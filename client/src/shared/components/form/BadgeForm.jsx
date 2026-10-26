@@ -45,7 +45,7 @@ function BadgeForm({ badge, onSubmit }) {
   const isEditing = Boolean(badge);
 
   const [name, setName] = useState(isEditing ? badge.name : "");
-  const [image, setImage] = useState(isEditing ? badge.image : []);
+  const [image, setImage] = useState(isEditing ? badge.image[0].url : []);
   const [description, setDescription] = useState(
     isEditing ? badge.description : "",
   );
@@ -81,9 +81,10 @@ function BadgeForm({ badge, onSubmit }) {
     const formData = {
       name,
       description,
-      image: "",
+      image,
     };
 
+    console.log(image);
     onSubmit(formData);
   };
 

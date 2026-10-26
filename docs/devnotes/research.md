@@ -12,6 +12,7 @@
 10. Boricua at Heart - Nadia
 
 ** Ambassador Responsibilties **
+
 Hush - City Explorations
 Indy - Specialized Explorations (i.e. Artist Explorations)
 Naty - Family Explorations
@@ -30,14 +31,14 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
   (4) Mirador La Plata
   (5) Chito's Bar
 
-- ** Santurce Exploration **
+- ** Santurce Exploration ** DONE
   (1) Calle Cerra
   (2) La Placita
   (3) El Nie Bar
   (4) Lote 23
   (5) Museo de Arte Contemporaneo
 
-- Nika's First Trip
+- Nika's First Trip DONE
   (1) Playa Caracas
   (2) Fuente Raíces
   (3) Marina Puerto del Ray
@@ -251,3 +252,40 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
   (5) Cara del Indio
   (6) Crash Boat Beach
   (7) La Casita de Rones
+
+** Designing Badges **
+
+- San Juan Badge: San Juan Flag ✅
+- Ponce Badge: Ponce Flag ✅
+- Toa Alta Badge: Toa Alta Flag ✅
+- Luquillo Badge: Luquillo Flag ✅
+- Arecibo Badge: Arecibo Flag ✅
+- Cabo Rojo Badge: Cabo Rojo Flag ✅
+- Bayamon Badge: Bayamon Flag ✅
+- Fajardo Badge: Fajardo Flag ✅
+- Toa Baja Badge: Toa Baja Flag ✅
+- Rio Piedras Badge: Rio Piedras Flag ✅
+- Santurce Exploration: Black PR Flag ✅
+- Payi's Favorites: Plane arriving to PR icon ✅
+- Nika's First Trip: Plane leaving US icon ✅
+- Guavate Lechonera Chinchorreo: Coors with pig ✅
+- Central Mountain Chinchorreo: Corona by tree icon ✅
+- Pinones Chinchorreo: Medalla in beach icon ✅
+- Luquillo Chinchorreo: Heneiken in beach icon ✅
+- Excursionista Badge: Fish Icon ✅
+- El Yunque Badge: Rainforest Icon ✅
+- San Juan Parks and Rec: Park bench and trees icon ✅
+- Sightseeing: Mountains and clouds icon ✅
+- History: Museum Icon ✅
+- Puerto Rican Fusion foods: Globe Icon ✅
+- Abuelita's Cooking: Abuela cooking ✅
+- Lechon Master: Pig with crown ✅
+- Sweet Tooth: Tooth surrounded by sweets ✅
+- Sofia's Favorite Places: PR maga flower ✅
+- Tony's Favorites: Coqui symbol ✅
+- Playa Pioneer: Beach & Palm Tree ✅
+- History (Spain): Spain flag ✅
+- Memory Lane: Photo albumn book icon ✅
+- Marc Anthony Exploration: Shadow of dancing salsa ✅
+- Bad Bunny Exploration: UVST icon ✅
+- Rauw Alejandro Exploration: Fox icon ✅

@@ -159,7 +159,6 @@ export async function explorerDashboardLoader() {
   //   ],
   // };
 
-  console.log(explorations.data.data);
   const explorationProgress = await getAllMyExplorationProgress();
 
   const profile = await getMe();

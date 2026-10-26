@@ -84,8 +84,6 @@ function DashboardTopExplorers({ usersData, explorationProgress }) {
         .filter((progress) => progress.status === "completed"),
     };
   });
-  console.log(explorationProgress);
-  console.log(explorers);
 
   const topExplorers = explorers.sort(
     (a, b) =>
