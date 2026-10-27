@@ -18,10 +18,27 @@ const StyledExplorerDetails = styled.div`
   gap: var(--gap-xl);
 `;
 
+function getBadgeCollection(badges, userHistory) {
+  const completedExplorations = userHistory
+    .filter((explorationProgress) => explorationProgress.status === "completed")
+    ?.map((explorationProgress) => explorationProgress.exploration);
+
+  if (!completedExplorations) return [];
+
+  const earnedBadges = badges
+    .filter((exploration) => completedExplorations.includes(exploration._id))
+    .map((exploration) => {
+      return { ...exploration.badge, exploration: exploration._id };
+    });
+
+  return earnedBadges;
+}
+
 function ExplorerDetails() {
   const userId = useParams().userId;
-  const { user } = useLoaderData(userId);
+  const { user, userHistory, badges } = useLoaderData(userId);
 
+  const badgeCollection = getBadgeCollection(badges, userHistory);
   return (
     <Row $gap="var(--gap-xl)">
       <RouterLink to="/ambassador/users">
@@ -32,7 +49,10 @@ function ExplorerDetails() {
       <StyledExplorerDetails>
         <ProfileHeader user={user} />
         <ProfileInformation user={user} />
-        <ProfileBadgeCollection userHistory={{ badgeCollection: [] }} />
+        <ProfileBadgeCollection
+          earnedBadges={badgeCollection}
+          badges={badges}
+        />
       </StyledExplorerDetails>
     </Row>
   );

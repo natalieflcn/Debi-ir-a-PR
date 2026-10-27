@@ -24,7 +24,19 @@ const AmbassadorExplorersTableColumns = [
     ),
   },
   { id: "email", heading: "Email" },
-  { id: "explorationsCompleted", heading: "Explorations Completed" },
+  {
+    id: "explorationsCompleted",
+    heading: "Explorations Completed",
+    render: (row) => (
+      <TableCell>
+        <Bold $color="var(--color-dark-200)">
+          {row.completedExplorations.length}{" "}
+        </Bold>
+        exploration
+        {row.completedExplorations.length !== 1 && "s"} completed
+      </TableCell>
+    ),
+  },
   {
     id: "createdAt",
     heading: "Date Joined",
@@ -95,6 +107,13 @@ const TableNameCell = styled.div`
   }
 `;
 
+const TableCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
 const explorersTableTheme = {
   boxShadow: "var(--box-shadow-offset-lg)",
   shadowColor: "var(--color-blue-400)",
@@ -144,6 +163,8 @@ function ManageExplorers() {
 
   const { users, total } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log(users);
 
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);

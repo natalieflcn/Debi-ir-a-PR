@@ -1,3 +1,4 @@
+import { getAllExplorationProgress } from "../../../../services/explorationProgress";
 import { getExplorers } from "../../../../services/users";
 
 const ITEMS_PER_PAGE = 10;
@@ -12,6 +13,18 @@ export async function explorersLoader({ request }) {
   }
   params.set("limit", String(ITEMS_PER_PAGE));
 
+  const { data: explorationProgress } = await getAllExplorationProgress();
+
   const { data: users, total } = await getExplorers(params);
-  return { users: users.data, total: total };
+
+  const usersData = users.data;
+
+  const completeUsersData = usersData.map((user) => ({
+    ...user,
+    completedExplorations: explorationProgress.data
+      .filter((progress) => progress.user === user._id)
+      .filter((progress) => progress.status === "completed"),
+  }));
+
+  return { users: completeUsersData, total: total };
 }
