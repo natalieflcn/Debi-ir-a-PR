@@ -6,7 +6,7 @@ import Explorations from "../../features/explorer/pages/explorations/Exploration
 import { explorerExplorationsLoader } from "./loaders/explorer/explorerExplorationsLoader";
 import { explorerExplorationLoader } from "./loaders/explorer/explorerExplorationLoader";
 import { explorerLocationLoader } from "./loaders/explorer/explorerLocationLoader";
-import { profileLoader } from "./loaders/shared/profileLoader";
+import { explorerProfileLoader } from "./loaders/explorer/explorerProfileLoader";
 import { explorerDashboardLoader } from "./loaders/explorer/explorerDashboardLoader";
 
 const ExplorerDashboard = lazy(
@@ -48,7 +48,11 @@ const ExplorerRoutes = [
     element: <ExplorationLocation />,
     loader: explorerLocationLoader,
   },
-  { path: "profile", element: <ExplorerProfile />, loader: profileLoader },
+  {
+    path: "profile",
+    element: <ExplorerProfile />,
+    loader: explorerProfileLoader,
+  },
   { path: "unauthorized", element: <Unauthorized /> },
 ];
 

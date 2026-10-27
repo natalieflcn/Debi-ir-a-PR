@@ -289,3 +289,5 @@ Tony Falcon - Rainforest Exploration, Chinchorreo Chaser Exploration, Billiards 
 - Marc Anthony Exploration: Shadow of dancing salsa ✅
 - Bad Bunny Exploration: UVST icon ✅
 - Rauw Alejandro Exploration: Fox icon ✅
+- City Corredor Exploration
+- Default Badge Icon

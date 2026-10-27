@@ -89,7 +89,7 @@ function ExplorerExplorationCardFooterCTA({
             >
               Complete this exploration to earn:
               <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
-                <Image $width="5rem" src={exploration.badge.image[0].url} />
+                <Image $width="5rem" src={exploration.badge?.image[0]?.url} />
                 <Heading as="h5" $color="var(--color-red-300)">
                   {exploration.badge.name}
                 </Heading>
@@ -108,7 +108,7 @@ function ExplorerExplorationCardFooterCTA({
               Congratulations! You completed this exploration and earned the
               following badge:
               <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
-                <Image $width="5rem" src={exploration.badge.image[0].url} />
+                <Image $width="5rem" src={exploration.badge?.image[0]?.url} />
                 <Heading as="h5" $color="var(--color-red-300)">
                   {exploration.badge.name}
                 </Heading>

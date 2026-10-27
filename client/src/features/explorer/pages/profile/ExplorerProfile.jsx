@@ -12,9 +12,28 @@ const StyledExplorerProfile = styled.div`
   gap: var(--gap-xl);
 `;
 
+function getBadgeCollection(badges, userHistory) {
+  const completedExplorations = userHistory
+    .filter((explorationProgress) => explorationProgress.status === "completed")
+    ?.map((explorationProgress) => explorationProgress.exploration);
+
+  if (!completedExplorations) return [];
+
+  const earnedBadges = badges
+    .filter((exploration) => completedExplorations.includes(exploration._id))
+    .map((exploration) => {
+      return { ...exploration.badge, exploration: exploration._id };
+    });
+
+  return earnedBadges;
+}
+
 function ExplorerProfile() {
   // const { user, userHistory } = useLoaderData();
-  const { user } = useLoaderData();
+  const { user, userHistory, badges } = useLoaderData();
+
+  const badgeCollection = getBadgeCollection(badges, userHistory);
+
   return (
     <StyledExplorerProfile>
       <ProfileHeader
@@ -24,7 +43,7 @@ function ExplorerProfile() {
         user={user}
       />
       <ProfileInformation user={user} />
-      {/* <ProfileBadgeCollection userHistory={userHistory} /> */}
+      <ProfileBadgeCollection earnedBadges={badgeCollection} badges={badges} />
     </StyledExplorerProfile>
   );
 }

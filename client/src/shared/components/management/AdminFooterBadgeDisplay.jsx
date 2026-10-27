@@ -25,7 +25,7 @@ function AdminFooterBadgeDisplay({ badge }) {
     >
       Upon completion of this exploration, Explorers will earn:
       <BadgeRow $direction="horizontal" $gap="var(--gap-md)">
-        <Image $width="7rem" src={badge.image[0].url} />
+        <Image $width="7rem" src={badge?.image[0]?.url} />
         <Heading as="h5" $color="var(--color-red-300)">
           {badge.name}
         </Heading>

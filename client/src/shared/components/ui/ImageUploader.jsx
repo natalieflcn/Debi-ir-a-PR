@@ -99,17 +99,36 @@ function ImageUploader({
     };
   }, []);
 
+  // function handleFileChange(e) {
+  //   const files = Array.from(e.target.files).filter(
+  //     (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
+  //   );
+  //   e.target.value = ""; // lets the user pick the same file again
+
+  //   const slotsRemaining = maxImages - items.length;
+  //   if (slotsRemaining <= 0) return;
+
+  //   onChange([...items, ...files.slice(0, slotsRemaining)]);
+  // }
+
   function handleFileChange(e) {
     const files = Array.from(e.target.files).filter(
       (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
     );
-    e.target.value = ""; // lets the user pick the same file again
+    e.target.value = "";
+    if (files.length === 0) return;
+
+    if (maxImages === 1) {
+      onChange([files[0]]); // replace
+      return;
+    }
 
     const slotsRemaining = maxImages - items.length;
     if (slotsRemaining <= 0) return;
-
     onChange([...items, ...files.slice(0, slotsRemaining)]);
   }
+
+  // const isFull = items.length >= maxImages && maxImages > 1;
 
   function handleDelete(index) {
     onChange(items.filter((_, i) => i !== index));

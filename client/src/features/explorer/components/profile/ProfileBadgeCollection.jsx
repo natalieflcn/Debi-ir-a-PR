@@ -16,8 +16,9 @@ const StyledProfileBadgeCollection = styled.div`
 
 const BadgesRow = styled(Row)`
   gap: var(--gap-2xl);
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
+  flex-wrap: wrap;
 
   @media (max-width: 800px) {
     align-items: flex-start;
@@ -48,13 +49,13 @@ const TitleRow = styled(Row)`
   }
 `;
 
-const ProfileBadgeCollection = function ({ userHistory, badges = [] }) {
+const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
   // console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);
 
-  const { badgeCollection } = userHistory;
-
+  // const { badgeCollection } = userHistory;
+  console.log(earnedBadges, badges);
   function onBadgeItemClick(badgeId, isEarned) {
     setIsModalOpen(true);
 
@@ -72,17 +73,18 @@ const ProfileBadgeCollection = function ({ userHistory, badges = [] }) {
           BADGE COLLECTION
         </Heading>
         <Heading as="h6">
-          {badgeCollection.length} out of 100 badges collected
+          {earnedBadges.length} out of {badges.length} badges collected
         </Heading>
       </TitleRow>
       <Card $cardColor="var(--color-light-100)" $cardShadow="insetMd">
         {/* replace later with badge info */}
         <BadgesRow $direction="horizontal" $wrap="wrap">
           {badges.map((badge) => {
-            const isEarned = badgeCollection.some(
-              (earned) => earned.badgeId === badge.id,
+            const isEarned = earnedBadges.some(
+              (earned) => earned.exploration === badge._id,
             );
 
+            console.log(isEarned);
             return (
               <BadgeItem
                 key={badge.id}
@@ -90,12 +92,12 @@ const ProfileBadgeCollection = function ({ userHistory, badges = [] }) {
               >
                 {isEarned ? (
                   <Image
-                    src={badge.image[0].url}
+                    src={badge?.badge?.image[0]?.url}
                     alt={badge.name}
                     $width="5rem"
                   />
                 ) : (
-                  <FaLock size={50} fill="var(--color-dark-200)" />
+                  <FaLock size={50} fill="var(--color-red-300)" />
                 )}
               </BadgeItem>
             );

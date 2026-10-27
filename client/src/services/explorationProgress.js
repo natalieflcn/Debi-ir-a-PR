@@ -15,9 +15,7 @@ export async function getAllMyExplorationProgress() {
 }
 
 export async function getUserExplorationProgress(userId) {
-  return await apiFetch(
-    `/${userId}/explorations/user-exploration-progress?limit=all`,
-  );
+  return await apiFetch(`/users/${userId}/user-exploration-progress?limit=all`);
 }
 
 export async function getAllExplorationProgress() {
