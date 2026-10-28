@@ -10,6 +10,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import { useState } from "react";
 import Modal from "../../../../shared/components/modal/Modal";
 import SmallText from "../../../../shared/components/typography/SmallText";
+import diapr from "../../../../assets/images/brand/diapr.svg";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -17,6 +18,9 @@ const StyledExplorerDashboardBadgeItem = styled.div`
   align-content: space-between;
 `;
 
+const StyledRow = styled(Row)`
+  text-align: center;
+`;
 function ExplorerDashboardBadgeItem({
   userHistory = [],
   totalBadges,
@@ -61,10 +65,7 @@ function ExplorerDashboardBadgeItem({
               </>
             ) : (
               <>
-                <Image
-                  src="/src/assets/images/content/TEMP.png"
-                  $width="5rem"
-                />
+                <Image src={diapr} $width="5rem" />
                 <SmallText>
                   Start exploring to earn your first badge...
                 </SmallText>
@@ -87,26 +88,26 @@ function ExplorerDashboardBadgeItem({
       </StyledExplorerDashboardBadgeItem>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)} $width="50%">
-          <Row $gap="var(--gap-lg)">
+          <StyledRow $gap="var(--gap-lg)">
             <Heading as="h3" $color="var(--color-blue-200)">
               YOUR BADGE COLLECTION
             </Heading>
             <Row
               $direction="horizontal"
-              $gap="var(--gap-lg)"
+              $gap="var(--gap-xl)"
               $wrap="wrap"
-              $align="start"
+              $align="center"
             >
               {earnedBadges.map((badge) => (
                 <Image
-                  src={badge?.image?.url}
+                  src={badge?.image[0]?.url}
                   $width="5rem"
                   key={badge.exploration}
                   title={badge?.description}
                 />
               ))}
             </Row>
-          </Row>
+          </StyledRow>
         </Modal>
       )}
     </DashboardItem>

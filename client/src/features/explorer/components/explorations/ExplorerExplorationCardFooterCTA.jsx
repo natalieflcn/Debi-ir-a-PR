@@ -10,6 +10,7 @@ import { useState } from "react";
 import Modal from "../../../../shared/components/modal/Modal";
 import DeleteConfirmationModal from "../../../../shared/components/modal/DeleteConfirmationModal";
 import { useNavigate, useNavigation } from "react-router-dom";
+import diapr from "../../../../assets/images/brand/diapr.svg";
 
 const BadgeRow = styled(Row)`
   @media (max-width: 500px) {
@@ -50,6 +51,7 @@ function ExplorerExplorationCardFooterCTA({
     navigate(`/explorations/${exploration.slug}`);
   };
 
+  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       <Card $cardColor="var(--color-light-100)">
@@ -63,7 +65,7 @@ function ExplorerExplorationCardFooterCTA({
           <Row $direction="horizontal" $align="space-evenly">
             <Row $direction="horizontal" $gap="var(--gap-lg)">
               <Image
-                src="/src/assets/images/content/TEMP.png"
+                src={exploration?.badge?.image[0]?.url ?? diapr}
                 $borderRadius="round"
                 $width="4rem"
               />

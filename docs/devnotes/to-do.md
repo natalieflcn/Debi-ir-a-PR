@@ -714,7 +714,7 @@
 
 - [~] Add more data to project
   - [x] Descriptions & Taglines
-  - [ ] Header Images TODO 3
+  - [ ] Header Images TODO 1
 - [x] Test all Explorer titles
 - [x] Choose which explorations are featured
 - [ ] Check Badge Collection on dashboard
@@ -745,6 +745,6 @@
 - Miscellaneous Tasks
   - [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
   - [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
-  - [ ] Throw error when too many requests
+  - [x] Throw error when too many requests
   - [ ] Logo as default badge
   - [ ] Concho as default avatar
