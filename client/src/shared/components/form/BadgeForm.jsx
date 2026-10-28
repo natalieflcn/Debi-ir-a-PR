@@ -87,7 +87,6 @@ function BadgeForm({ badge, onSubmit }) {
       image,
     };
 
-    console.log(image);
     onSubmit(formData);
   };
 

@@ -16,7 +16,6 @@ const BadgeRow = styled(Row)`
 `;
 
 function AdminFooterBadgeDisplay({ badge }) {
-  console.log(badge);
   return (
     <StyledCard
       $cardColor="var(--color-light-100)"

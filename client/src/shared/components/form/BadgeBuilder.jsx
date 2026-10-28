@@ -30,7 +30,6 @@ const StyledRow = styled(Row)`
 function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(value);
   const img = Array.isArray(value?.image) ? value.image[0] : value?.image;
   const isFile = img instanceof File;
   const [blobUrl, setBlobUrl] = useState(null);
@@ -63,14 +62,14 @@ function BadgeBuilder({ value, onSelect }) {
           {value ? value.name : "Create a Badge"}
         </Button>
 
-        {value && (
+        {/* {value && (
           <Image
             src={previewUrl}
             $width="6rem"
             $height="6rem"
             $objectFit="cover"
           />
-        )}
+        )} */}
 
         {value && (
           <Button

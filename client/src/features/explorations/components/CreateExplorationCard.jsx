@@ -129,6 +129,7 @@ function CreateExplorationCard({ exploration }) {
         ...(isEditing && { _id: exploration._id }),
       };
 
+      console.log(submissionData);
       // Keep uploaded files in the form, so if save fails, the files are not uploaded again
       const { data } = isEditing
         ? await updateExploration(submissionData)

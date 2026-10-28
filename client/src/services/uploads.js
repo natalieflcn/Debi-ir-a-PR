@@ -10,9 +10,9 @@ const SIGNATURE_ROUTES = {
 async function uploadFiles(files, type, id) {
   if (files.length === 0) return [];
 
-  console.log("UPLOAD FILES ID");
-  console.log(files, type, id);
-  console.log(`${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`);
+  // console.log("UPLOAD FILES ID");
+  // console.log(files, type, id);
+  // console.log(`${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`);
   const { data } = await apiFetch(
     `${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`,
     {

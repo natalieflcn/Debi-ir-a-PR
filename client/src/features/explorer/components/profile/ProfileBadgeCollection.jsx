@@ -54,8 +54,6 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);
 
-  // const { badgeCollection } = userHistory;
-  console.log(earnedBadges, badges);
   function onBadgeItemClick(badgeId, isEarned) {
     setIsModalOpen(true);
 
@@ -84,7 +82,6 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
               (earned) => earned.exploration === badge._id,
             );
 
-            console.log(isEarned);
             return (
               <BadgeItem
                 key={badge.id}

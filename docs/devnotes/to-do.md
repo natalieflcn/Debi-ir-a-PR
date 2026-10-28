@@ -715,8 +715,8 @@
 - [~] Add more data to project
   - [ ] Descriptions & Taglines TODO 2
   - [ ] Header Images TODO 3
-- [ ] Test all Explorer titles TODO 1
-- [ ] Choose which explorations are featured
+- [x] Test all Explorer titles
+- [x] Choose which explorations are featured
 
 - [ ] Add family's voices to Brush Up Your Spanish TODO 7
   - [ ] TONY: "Qué es la qué hay?"

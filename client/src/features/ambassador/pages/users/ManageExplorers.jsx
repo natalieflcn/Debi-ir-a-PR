@@ -164,8 +164,6 @@ function ManageExplorers() {
   const { users, total } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(users);
-
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
 
