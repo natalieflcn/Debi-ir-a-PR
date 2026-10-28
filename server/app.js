@@ -17,8 +17,15 @@ const app = express();
 const limiter = rateLimit({
   max: 10000,
   windowMs: 60 * 60 * 1000,
-  message:
-    "Too many requests from this IP address. Please try again in an hour! ",
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (req, res) => {
+    res.status(429).json({
+      status: "fail",
+      message:
+        "Too many requests from this IP address. Please try again in an hour.",
+    });
+  },
 });
 
 const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";

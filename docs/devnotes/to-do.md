@@ -713,10 +713,11 @@
 ## Week: October 27 - November 3
 
 - [~] Add more data to project
-  - [ ] Descriptions & Taglines TODO 2
+  - [x] Descriptions & Taglines
   - [ ] Header Images TODO 3
 - [x] Test all Explorer titles
 - [x] Choose which explorations are featured
+- [ ] Check Badge Collection on dashboard
 
 - [ ] Add family's voices to Brush Up Your Spanish TODO 7
   - [ ] TONY: "Qué es la qué hay?"

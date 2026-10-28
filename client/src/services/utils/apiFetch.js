@@ -19,15 +19,21 @@ export async function apiFetch(path, options = {}) {
   });
 
   if (!res.ok) {
-    const errorData = await res.json().catch(() => ({}));
+    let message = "Something went wrong.";
 
-    console.log(errorData);
+    try {
+      const body = await res.json();
+      message = body.message ?? message;
+    } catch {
+      // body wasn't JSON, keep the fallback
+    }
 
-    throw new APIError(
-      errorData.message || "Request failed",
-      res.status,
-      errorData,
-    );
+    if (res.status === 429) {
+      message =
+        "You're making too many requests. Please wait a bit and try again.";
+    }
+
+    throw new APIError(message || "Request failed", res.status, res.status);
   }
 
   return res.status === 204 ? null : res.json();

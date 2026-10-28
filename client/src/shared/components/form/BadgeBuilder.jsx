@@ -20,10 +20,10 @@ const StyledBadgeBuilder = styled.div`
 `;
 
 const StyledRow = styled(Row)`
-  flex-direction: column;
+  align-items: center;
 
   @media (max-width: 690px) {
-    align-items: center;
+    flex-direction: column;
   }
 `;
 

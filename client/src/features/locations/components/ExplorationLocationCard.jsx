@@ -117,9 +117,9 @@ function ExplorationLocationCard({
               </TagCollection>
             </ExplorationLocationAbout>
             <MapRow>
-              {/* {location?.map?.coordinates && (
+              {location?.map?.coordinates && (
                 <LocationMap coordinates={location.map.coordinates} />
-              )} */}
+              )}
             </MapRow>
           </StyledRow>
 

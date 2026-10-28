@@ -56,10 +56,7 @@ function ExplorerDashboardBadgeItem({
           <Row $gap="var(--gap-md)" $align="center">
             {recentBadge ? (
               <>
-                <Image
-                  src="/src/assets/images/content/TEMP.png"
-                  $width="5rem"
-                />
+                <Image src={recentBadge?.image[0].url} $width="5rem" />
                 <Heading as="h6">{recentBadge?.name}</Heading>
               </>
             ) : (

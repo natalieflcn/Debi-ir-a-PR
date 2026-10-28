@@ -113,7 +113,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
             <Button
               $size="small"
               $variation="secondary"
-              onClick={() => resetErrorBoundary}
+              onClick={() => resetErrorBoundary()}
             >
               Try Again
             </Button>
