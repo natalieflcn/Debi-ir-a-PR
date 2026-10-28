@@ -34,6 +34,7 @@ function DeleteConfirmationModal({
 
       setTimeout(() => {
         onSuccess();
+        onClose();
       }, 1500);
     } catch (err) {
       console.log(err);

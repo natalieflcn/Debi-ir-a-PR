@@ -4,12 +4,12 @@
 2. Island Wanderer - DONE
 3. Tropical Cruiser - DONE
 4. Fluttering Mariposa - DONE
-5. Crawling Coqui - Allen
-6. Brutal Bouncer - Thea
-7. Barrio Member - Vivian
-8. Taino Trailblazer - Sebas
-9. Isla Veteran - Nika
-10. Boricua at Heart - Nadia
+5. Crawling Coqui - Thea (11 explorations) ✅
+<!-- 6. Brutal Bouncer - Thea (16 explorations) -->
+6. Barrio Member - Vivian (21 explorations) ✅
+7. Taino Trailblazer - Sebas (26 explorations) ✅
+8. Isla Veteran - Nika (31 explorations) ✅
+9. Boricua at Heart - Nadia (35 explorations)
 
 ** Ambassador Responsibilties **
 

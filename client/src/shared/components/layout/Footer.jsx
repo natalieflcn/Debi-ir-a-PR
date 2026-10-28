@@ -20,12 +20,10 @@ const StyledFooter = styled.footer`
     font-size: var(--font-size-sm);
   }
 
-  @media (max-width: 798px) {
-    font-size: var(--font-size-sm);
+  @media (max-width: 900px) {
     letter-spacing: 0.05rem;
     align-items: center;
-    gap: var(--gap-sm);
-    padding-top: 1.25rem;
+    gap: var(--gap-md);
 
     span {
       font-size: var(--font-size-xs);
@@ -34,13 +32,18 @@ const StyledFooter = styled.footer`
 
     flex-direction: column;
   }
+
+  @media (max-width: 800px) {
+    padding-top: 1.25rem;
+    font-size: var(--font-size-lg);
+  }
 `;
 
 const StyledRow = styled(Row)`
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     text-align: center;
     flex-direction: column;
-    gap: var(--gap-sm);
+    gap: var(--gap-xs);
   }
 `;
 const StyledGitHub = styled(BiLogoGithub)`

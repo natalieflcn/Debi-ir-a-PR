@@ -206,24 +206,25 @@ userSchema.methods.updateUserTitle = async function (userId) {
       status: "completed",
     });
 
+    console.log(completedExplorations);
     if (completedExplorations <= 1) this.title = "Baby Turista";
-    if (completedExplorations > 1 && completedExplorations <= 3)
+    if (completedExplorations > 1 && completedExplorations <= 5)
       this.title = "Island Wanderer";
-    if (completedExplorations > 3 && completedExplorations <= 5)
-      this.title = "Tropical Cruiser";
     if (completedExplorations > 5 && completedExplorations <= 10)
-      this.title = "Fluttering Mariposa";
+      this.title = "Tropical Cruiser";
     if (completedExplorations > 10 && completedExplorations <= 15)
-      this.title = "Crawling Coqui";
+      this.title = "Fluttering Mariposa";
     if (completedExplorations > 15 && completedExplorations <= 20)
-      this.title = "Brutal Bouncer";
+      this.title = "Crawling Coqui";
+    // if (completedExplorations > 15 && completedExplorations <= 20)
+    //   this.title = "Brutal Bouncer";
     if (completedExplorations > 20 && completedExplorations <= 25)
       this.title = "Barrio Member";
     if (completedExplorations > 25 && completedExplorations < 30)
       this.title = "Taino Trailblazer";
-    if (completedExplorations > 30 && completedExplorations <= 35)
+    if (completedExplorations > 30 && completedExplorations <= 34)
       this.title = "Isla Veteran";
-    if (completedExplorations > 35) return "Boricua at Heart";
+    if (completedExplorations >= 35) this.title = "Boricua at Heart";
   }
   await this.save();
 };

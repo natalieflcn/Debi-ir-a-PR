@@ -30,20 +30,27 @@ const StyledRow = styled(Row)`
 function BadgeBuilder({ value, onSelect }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  console.log(value);
   const img = Array.isArray(value?.image) ? value.image[0] : value?.image;
-
-  const previewUrl = useMemo(() => {
-    if (!img) return null;
-    if (img instanceof File) return URL.createObjectURL(img);
-    return typeof img === "string" ? img : img.url;
-  }, [img]);
+  const isFile = img instanceof File;
+  const [blobUrl, setBlobUrl] = useState(null);
 
   useEffect(() => {
-    return () => {
-      if (previewUrl?.startsWith("blob:")) URL.revokeObjectURL(previewUrl);
-    };
-  }, [previewUrl]);
-  console.log(value);
+    if (!isFile) {
+      setBlobUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(img);
+    setBlobUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [img, isFile]);
+
+  const previewUrl = isFile
+    ? blobUrl
+    : typeof img === "string"
+      ? img
+      : (img?.url ?? null);
+
   return (
     <StyledBadgeBuilder>
       <StyledRow $direction="horizontal" $gap="var(--gap-md)" $align="start">

@@ -685,11 +685,9 @@
 
 - [~] Add more data to project
   - [~] Explorations
-  - [~] Locations
-  - [~] Images
-  - [ ] Descriptions & Taglines TODO 5
-  - [ ] Header Images
-  - [ ] Badges TODO 1
+  - [x] Locations
+  - [x] Images
+  - [x] Badges
 - [x] Change how paginated information is fetched from the front-end
   - [x] Explorations
     - [x] Manage Explorations (Admin)
@@ -702,10 +700,24 @@
     - [x] /explorations/summary?tag=river
     - [x] /explorations/summary?sort=numStops
     - [x] /explorations/summary?featured=true&createdBy=<id>&sort=numStops
-- [ ] Test all Explorer titles TODO 3
-- [ ] Make sure all badges map properly throughout Badge Collections TODO 4
+- [x] Make sure all badges map properly throughout Badge Collections
 - [x] Handle edge case for 'Recent Badge Earned' when no badges are earned
 - [x] Fix broken dashboard calculations from paginated server-side info
+- [~] Create photos, GIFs, and/or videos for landing pages
+  - [ ] User avatars
+  - [ ] Home page
+  - [ ] How It Works page
+  - [ ] About page
+  - [~] Badges
+
+## Week: October 27 - November 3
+
+- [~] Add more data to project
+  - [ ] Descriptions & Taglines TODO 2
+  - [ ] Header Images TODO 3
+- [ ] Test all Explorer titles TODO 1
+- [ ] Choose which explorations are featured
+
 - [ ] Add family's voices to Brush Up Your Spanish TODO 7
   - [ ] TONY: "Qué es la qué hay?"
   - [ ] MIMI: "Buen provecho!"
@@ -717,17 +729,21 @@
   - [ ] HARRY: "Vamos a janguear!"
   - [ ] ANTHONY: "Hay mucho tapón."
   - [ ] LISI: "Nos vemos ahorita!"
-- [ ] Create photos, GIFs, and/or videos for landing pages TODO 6
+- [ ] Create photos, GIFs, and/or videos for landing pages TODO 4
   - [ ] User avatars
   - [ ] Home page
   - [ ] How It Works page
   - [ ] About page
   - [~] Badges
-- [ ] FINAL REVIEW of mobile responsiveness TODO 9
+- [ ] FINAL REVIEW of mobile responsiveness TODO 5
   - [ ] Will need to fix pagination responsiveness when more pages of data are available
-  - [ ] Fix Footer line height and link gaps
+  - [x] Fix Footer line height and link gaps
 - [ ] DEPLOY PROJECT
   - [ ] Front-end: Netlify
   - [ ] Back-end: Bonto.dev
-- [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
-- [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
+- Miscellaneous Tasks
+  - [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
+  - [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
+  - [ ] Throw error when too many requests
+  - [ ] Logo as default badge
+  - [ ] Concho as default avatar
