@@ -14,6 +14,11 @@ import {
 } from "./historySection.styles";
 import Card from "../../../../shared/components/layout/Card";
 import ExternalLink from "../../../../shared/components/routing/ExternalLink";
+import WarAgainstAllPuertoRicans from "../../../../assets/images/content/WarAgainstAllPuertoRicansCover.png";
+import BattleForParadise from "../../../../assets/images/content/TheBattleForParadiseCover.png";
+import AftershocksOfDisaster from "../../../../assets/images/content/AftershocksOfDisasterCover.png";
+import MattersOfChoice from "../../../../assets/images/content/MattersOfChoiceCover.png";
+import LasCarpetas from "../../../../assets/images/content/LasCarpetasCover.png";
 
 const videos = [
   {
@@ -80,7 +85,7 @@ const books = [
   {
     id: "war-against-all-puerto-ricans",
     title: "War Against All Puerto Ricans",
-    image: "src/assets/images/content/WarAgainstAllPuertoRicansCover.png",
+    image: WarAgainstAllPuertoRicans,
     goodreadsURL:
       "https://www.goodreads.com/book/show/22928891-war-against-all-puerto-ricans",
     description:
@@ -89,7 +94,7 @@ const books = [
   {
     id: "the-battle-for-paradise",
     title: "The Battle for Paradise",
-    image: "src/assets/images/content/TheBattleForParadiseCover.png",
+    image: BattleForParadise,
     goodreadsURL:
       "https://www.goodreads.com/book/show/39791088-the-battle-for-paradise",
     description:
@@ -98,7 +103,7 @@ const books = [
   {
     id: "aftershocks-of-disaster",
     title: "Aftershocks of Disaster",
-    image: "src/assets/images/content/AftershocksOfDisasterCover.png",
+    image: AftershocksOfDisaster,
     goodreadsURL:
       "https://www.goodreads.com/book/show/45156634-aftershocks-of-disaster",
     description:
@@ -107,7 +112,7 @@ const books = [
   {
     id: "matters-of-choice",
     title: "Matters of Choice",
-    image: "src/assets/images/content/MattersOfChoiceCover.png",
+    image: MattersOfChoice,
     goodreadsURL:
       "https://www.goodreads.com/book/show/8962015-matters-of-choice",
     description:
@@ -116,7 +121,7 @@ const books = [
   {
     id: "las-carpetas",
     title: "Las Carpetas",
-    image: "src/assets/images/content/LasCarpetasCover.png",
+    image: LasCarpetas,
     goodreadsURL:
       "https://www.goodreads.com/book/show/240619474-the-story-of-las-carpetas",
     description:

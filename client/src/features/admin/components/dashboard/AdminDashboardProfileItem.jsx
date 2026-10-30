@@ -7,6 +7,7 @@ import RouterLink from "../../../../shared/components/routing/RouterLink";
 import concho from "../../../../assets/images/brand/default_avatar.png";
 
 function AdminDashboardProfileItem({ profileData }) {
+  console.log(profileData);
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-lg)">
@@ -15,7 +16,7 @@ function AdminDashboardProfileItem({ profileData }) {
             Admin
           </Heading>
           <Image
-            src={profileData.avatar?.image[0]?.url || concho}
+            src={profileData?.avatar?.url || concho}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
             $height="8rem"

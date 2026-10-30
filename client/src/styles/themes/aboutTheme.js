@@ -1,10 +1,11 @@
 import TearPaper from "../../assets/audios/TearPaper.mp3";
+import ScrapPaper from "../../assets/images/ui/ScrapPaper.png";
 
 export const AboutTheme = {
   headingColor: `var(--color-red-200)`,
   headingShadow: `var(--color-brown-400)`,
 
-  panelBackground: "url(/src/assets/images/ui/ScrapPaper.png)",
+  panelBackground: `url(${ScrapPaper})`,
   panelBoxShadow: `var(--color-dark-200)`,
   panelBoxHoverColor: `var(--color-brown-100)`,
   panelBoxHoverShadow: `var(--color-yellow-300)`,
@@ -17,7 +18,7 @@ export const AboutTheme = {
 
   panelButtonVariation: "scrapPaper",
   panelActiveButtonVariation: "scrapPaperInverted",
-  sidebarBackground: "url(/src/assets/images/ui/ScrapPaper.png)",
+  sidebarBackground: `url(${ScrapPaper})`,
   sidebarShadow: `var(--color-brown-300)`,
   sidebarHeadingColor: `var(--color-red-300)`,
   sidebarHeadingShadow: `none`,
@@ -31,7 +32,7 @@ export const AboutTheme = {
   sidebarMenuItemActiveColor: `var(--color-red-200)`,
   sidebarMenuItemBorderActive: `var(--color-red-200)`,
 
-  cardBackground: "url(/src/assets/images/ui/ScrapPaper.png)",
+  cardBackground: `url(${ScrapPaper})`,
   imageShadow: `var(--box-shadow-lg) var(--color-brown-400)`,
 
   buttonAudio: TearPaper,

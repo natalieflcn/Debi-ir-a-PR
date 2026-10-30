@@ -15,7 +15,7 @@ function AmbassadorDashboardProfileItem({ profileData }) {
             Ambassador
           </Heading>
           <Image
-            src={profileData.avatar?.image[0]?.url || concho}
+            src={profileData?.avatar?.url || concho}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
             $height="8rem"

@@ -730,13 +730,13 @@
   - [ ] HARRY: "Vamos a janguear!"
   - [ ] ANTHONY: "Hay mucho tapón."
   - [ ] LISI: "Nos vemos ahorita!"
-- [~] Create photos, GIFs, and/or videos for landing pages TODO 3
+- [x] Create photos, GIFs, and/or videos for landing pages TODO 3
   - [~] User avatars TODO 2
   - [x] Home page
-  - [ ] How It Works page
+  - [x] How It Works page
   - [x] About page
   - [~] Badges
-- [ ] FINAL REVIEW of mobile responsiveness TODO 5
+- [x] FINAL REVIEW of mobile responsiveness TODO 5
   - [x] Will need to fix pagination responsiveness when more pages of data are available
   - [x] Fix Footer line height and link gaps
 - [ ] DEPLOY PROJECT TODO 6
@@ -751,4 +751,11 @@
   - [x] Add warning before leaving page if unsaved data
   - [x] Add image validation back to server
   - [x] Revise badge modal
-  - [ ] Test avatar dashboard uploaded images
+  - [x] Test avatar dashboard uploaded images
+  - [ ] Fix broken image imports
+    - Tech Stack ✅
+    - Tree Bark Interior ✅
+    - Additional Literature ✅
+    - Donate to Puerto Rican Groups ✅
+    - End Act 20-22-60 ✅
+    - Keep Up with Puerto Rican News ✅

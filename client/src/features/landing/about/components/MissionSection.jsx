@@ -3,13 +3,14 @@ import Card from "../../../../shared/components/layout/Card";
 import Image from "../../../../shared/components/ui/Image";
 import Heading from "../../../../shared/components/typography/Heading";
 import styled from "styled-components";
+import diapr from "../../../../assets/images/brand/diapr.gif";
 
 const sectionItems = [
   {
     id: "for-puerto-rico",
     heading: "For Puerto Rico",
     body: "Debí ir a PR is a gamified scavenger hunt app designed to help people discover the hidden gems of Puerto Rico. Whether you’re a visitor seeking inspiration on where to go or a local wanting a fresh way to experience the island, the app transforms exploration into an adventure.",
-    photo: "src/assets/images/brand/diapr.gif",
+    photo: diapr,
   },
   {
     id: "for-tourists",

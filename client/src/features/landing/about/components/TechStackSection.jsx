@@ -4,6 +4,11 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Bold from "../../../../shared/components/typography/Bold";
 import Image from "../../../../shared/components/ui/Image";
 import styled from "styled-components";
+import React from "../../../../assets/images/content/ReactLogo.png";
+import NodeJs from "../../../../assets/images/content/NodeJSLogo.png";
+import Express from "../../../../assets/images/content/ExpressLogo.png";
+import MongoDB from "../../../../assets/images/content/MongoDBLogo.svg";
+import TainoBullet from "../../../../assets/images/ui/PRSun.png";
 
 const sectionItems = [
   {
@@ -13,22 +18,22 @@ const sectionItems = [
       {
         id: 0,
         content: "React",
-        logo: "src/assets/images/content/ReactLogo.png",
+        logo: React,
       },
       {
         id: 1,
         content: "Node.js",
-        logo: "src/assets/images/content/NodeJSLogo.png",
+        logo: NodeJs,
       },
       {
         id: 2,
         content: "Express",
-        logo: "src/assets/images/content/ExpressLogo.png",
+        logo: Express,
       },
       {
         id: 3,
         content: "MongoDB",
-        logo: "src/assets/images/content/MongoDBLogo.svg",
+        logo: MongoDB,
       },
     ],
   },
@@ -112,7 +117,7 @@ export default function TechStackSection() {
                     $align="flex-start"
                     $gap="var(--gap-md)"
                   >
-                    <Image src="src/assets/images/ui/PRSun.png" $width="25px" />
+                    <Image src={TainoBullet} $width="25px" />
                     {item.content}
                   </Row>
                 ))}

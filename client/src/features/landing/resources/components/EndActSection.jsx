@@ -10,6 +10,8 @@ import {
   StyledEndActSection,
 } from "./endActSection.styles";
 import ExternalLink from "../../../../shared/components/routing/ExternalLink";
+import PRxDC from "../../../../assets/images/content/PRxDC.jpg";
+import PRProtest from "../../../../assets/images/content/PRProtest.jpg";
 
 const acts = [
   {
@@ -36,7 +38,7 @@ const ActSectionCTA = function ({ theme }) {
   return (
     <StyledActSectionCTA>
       <Image
-        src="src/assets/images/content/PRxDC.jpg"
+        src={PRxDC}
         alt="A Puerto Rican flag"
         $width="43%"
         $objectFit="cover"
@@ -91,7 +93,7 @@ export default function EndActSection({ theme }) {
         </Row>
       </Card>
       <Image
-        src="src/assets/images/content/PRProtest.jpg"
+        src={PRProtest}
         alt="A protest in Puerto Rico"
         $imageShadow={theme.imageShadow}
       />

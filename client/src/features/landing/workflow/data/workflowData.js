@@ -22,7 +22,7 @@ const workflowData = [
           "Create a free account to get started.",
           " It only takes a minute — and your adventure begins the moment you sign up.",
         ],
-        cardImage: `url("src/assets/images/content/Step-0-1.png")`,
+
         demo: explorerSignup,
       },
       {
@@ -32,7 +32,7 @@ const workflowData = [
           "Browse curated explorations across the island.",
           "Discover spots by town, find adventures near you, or explore themed journeys inspired by Puerto Rican culture, history, and art.",
         ],
-        cardImage: "",
+
         demo: explorations,
       },
       {
@@ -42,7 +42,7 @@ const workflowData = [
           "As you visit each location, mark it complete and watch your progress grow.",
           "Every check-in brings you one step closer to finishing the exploration.",
         ],
-        cardImage: "",
+
         demo: trackProgress,
       },
       {
@@ -52,7 +52,7 @@ const workflowData = [
           "Complete an exploration to earn a badge!",
           "Show off your collection on your profile and see how much of the island you've truly experienced.",
         ],
-        cardImage: "",
+
         demo: badgeCollection,
       },
     ],
@@ -78,7 +78,7 @@ const workflowData = [
           "To become an Ambassador, reach out to our team to request an account.",
           "We'll get you set up and ready to start building explorations.",
         ],
-        cardImage: "",
+
         demo: ambassadorSignup,
       },
       {
@@ -88,7 +88,7 @@ const workflowData = [
           "Design explorations around the places you love and the places that deserve more love.",
           "Invite people to your favorite restaurants, scenic landscapes, cultural landmarks, local bars, hidden beaches, and everything in between.",
         ],
-        cardImage: "",
+
         demo: createExploration,
       },
       {
@@ -98,7 +98,7 @@ const workflowData = [
           "Watch in real time as Explorers discover your favorite spots.",
           "See which locations are getting the most visits and grow your impact across the island.",
         ],
-        cardImage: "",
+
         demo: dashboardAnalytics,
       },
     ],

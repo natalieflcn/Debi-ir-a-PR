@@ -278,7 +278,7 @@ function Login() {
                 </Button>
               </RouterLink>
 
-              <RouterLink to="how-it-works">
+              <RouterLink to="/how-it-works">
                 <Button $variation="yellow" $size="small">
                   Learn More
                 </Button>

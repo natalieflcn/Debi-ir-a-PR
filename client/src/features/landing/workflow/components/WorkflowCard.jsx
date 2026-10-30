@@ -7,6 +7,7 @@ import WorkflowStep from "./WorkflowStep";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import BlueCard from "../../../../assets/images/ui/blue-water.gif";
 import RedCard from "../../../../assets/images/ui/red-sand.gif";
+import Sand from "../../../../assets/images/ui/Sand.png";
 
 const StyledWorkFlowCard = styled(Card)`
   /* max-width: 83%; */
@@ -81,7 +82,7 @@ const WorkFlowCard = function ({ section, index }) {
       ))}
 
       <StyledCTA
-        $cardColor={`url("src/assets/images/ui/Sand.png")`}
+        $cardColor={`url(${Sand})`}
         $align="center"
         $cardShadow="outsetMD"
         $shadowColor="var(--color-light-0)"

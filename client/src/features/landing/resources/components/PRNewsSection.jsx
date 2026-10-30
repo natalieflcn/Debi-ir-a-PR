@@ -6,6 +6,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Card from "../../../../shared/components/layout/Card";
 import ExternalLink from "../../../../shared/components/routing/ExternalLink";
+import SanJuan from "../../../../assets/images/content/SanJuan.jpg";
 
 const StyledPRNewsSection = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ export default function PRNewsSection({ theme }) {
   return (
     <StyledPRNewsSection>
       <Image
-        src="src/assets/images/content/SanJuan.jpg"
+        src={SanJuan}
         alt="Old San Juan buildings"
         $width="47%"
         $objectFit="cover"

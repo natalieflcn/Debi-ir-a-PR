@@ -1,10 +1,12 @@
 import leavesRustling from "../../assets/audios/LeavesRustling.mp3";
+import TreeBark from "../../assets/images/ui/TreeBark.png";
+import TreeInterior from "../../assets/images/ui/TreeInterior.png";
 
 export const ResourcesTheme = {
   headingColor: `var(--color-green-300)`,
   headingShadow: `var(--color-brown-400)`,
 
-  panelBackground: "url(/src/assets/images/ui/TreeBark.png)",
+  panelBackground: `url(${TreeBark})`,
   panelBoxShadow: `var(--color-brown-100)`,
   panelBoxHoverColor: `var(--color-brown-100)`,
   panelBoxHoverShadow: `var(--color-light-100)`,
@@ -17,7 +19,7 @@ export const ResourcesTheme = {
 
   panelButtonVariation: "treeBark",
   panelActiveButtonVariation: "treeBarkInverted",
-  sidebarBackground: "url(/src/assets/images/ui/TreeBark.png)",
+  sidebarBackground: `url(${TreeBark})`,
   sidebarShadow: `var(--color-brown-100)`,
   sidebarHeadingColor: `var(--color-green-200)`,
   sidebarHeadingShadow: `var(--color-brown-300)`,
@@ -31,7 +33,7 @@ export const ResourcesTheme = {
   sidebarMenuItemActiveColor: `var(--color-green-200)`,
   sidebarMenuItemBorderActive: `var(--color-green-200)`,
 
-  cardBackground: "url(/src/assets/images/ui/TreeInterior.png)",
+  cardBackground: `url(${TreeInterior})`,
   imageShadow: `var(--box-shadow-lg) var(--color-brown-400)`,
 
   buttonAudio: leavesRustling,

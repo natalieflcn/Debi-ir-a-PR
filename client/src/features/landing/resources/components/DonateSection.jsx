@@ -14,12 +14,17 @@ import Card from "../../../../shared/components/layout/Card";
 import { useRef } from "react";
 import ExternalLink from "../../../../shared/components/routing/ExternalLink";
 import styled from "styled-components";
+import FCPRLogo from "../../../../assets/images/content/FundacionComunitaria.png";
+import CSPRLogo from "../../../../assets/images/content/ComedoresSociales.png";
+import PRxPRLogo from "../../../../assets/images/content/PRxPR.png";
+import PRBlackout from "../../../../assets/images/content/PRBlackout.jpg";
+import PRParadise from "../../../../assets/images/content/PuertoRicanParadise.jpg";
 
 const organizations = [
   {
     id: "fcpr",
     name: "Fundación de Puerto Rico",
-    logo: "src/assets/images/content/FundacionComunitaria.png",
+    logo: FCPRLogo,
     website: "https://www.fcpr.org/",
     donate: "https://www.fcpr.org/donations/donate-now/",
     learnMore:
@@ -30,7 +35,7 @@ const organizations = [
   {
     id: "cspr",
     name: "Comedores Sociales de Puerto Rico",
-    logo: "src/assets/images/content/ComedoresSociales.png",
+    logo: CSPRLogo,
     website: "https://www.comedoressocialespr.org/",
     donate:
       "https://www.gofundme.com/charity/comedores-sociales-de-puerto-rico-inc/donate",
@@ -41,7 +46,7 @@ const organizations = [
   {
     id: "prxpr",
     name: "PRxPR",
-    logo: "src/assets/images/content/PRxPR.png",
+    logo: PRxPRLogo,
     website: "https://www.prxpr.org/",
     donate: "https://fundly.com/prxpr",
     learnMore: "https://www.prxpr.org/funds-at-work/",
@@ -66,14 +71,8 @@ const Introduction = function ({ theme }) {
 
         <CoquiSlicedPhotos>
           <SlicedPhotos>
-            <Image
-              src="src/assets/images/content/PuertoRicanParadise.jpg"
-              alt="A beach on Puerto Rico"
-            />
-            <Image
-              src="src/assets/images/content/PRBlackout.jpg"
-              alt="A blackout in Puerto Rico"
-            />
+            <Image src={PRParadise} alt="A beach on Puerto Rico" />
+            <Image src={PRBlackout} alt="A blackout in Puerto Rico" />
           </SlicedPhotos>
         </CoquiSlicedPhotos>
 
