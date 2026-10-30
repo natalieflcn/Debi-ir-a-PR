@@ -4,6 +4,7 @@ import Button from "../../../../shared/components/ui/Button";
 import Row from "../../../../shared/components/layout/Row";
 import Card from "../../../../shared/components/layout/Card";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import Sand from "../../../../assets/images/ui/Sand.png";
 
 const StyledCTASection = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ const StyledButtonGroup = styled(Row)`
 
 function CTASection() {
   return (
-    <Card $cardColor="url(src/assets/images/ui/Sand.png)">
+    <Card $cardColor={`url(${Sand})`}>
       <StyledCTASection>
         <Heading
           as="h2"

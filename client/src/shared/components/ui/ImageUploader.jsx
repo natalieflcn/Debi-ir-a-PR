@@ -47,6 +47,32 @@ const UploadButton = styled(Button)`
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_SIZE = 5 * 1024 * 1024;
 
+function PreviewImage({ item, ...props }) {
+  const isFile = item instanceof File;
+  const [blobUrl, setBlobUrl] = useState(null);
+
+  useEffect(() => {
+    if (!isFile) return;
+    const url = URL.createObjectURL(item);
+    setBlobUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [item, isFile]);
+
+  const src = isFile
+    ? blobUrl
+    : typeof item === "string"
+      ? item
+      : (item?.url ?? item?.secure_url);
+
+  return src ? <Image src={src} {...props} /> : null;
+}
+
+function getKey(item, index) {
+  if (item instanceof File)
+    return `${item.name}-${item.size}-${item.lastModified}`;
+  return typeof item === "string" ? item : (item.publicId ?? item.url ?? index);
+}
+
 function ImageUploader({
   name,
   multiple = true,
@@ -57,47 +83,62 @@ function ImageUploader({
   // const [value, setPreviews] = useState([]);
 
   const inputRef = useRef(null);
-  const objectUrls = useRef(new Map()); // File -> blob URL
+  // const objectUrls = useRef(new Map()); // File -> blob URL
 
   // Normalize: handles [], a single object, a legacy string, or null
   const items = Array.isArray(value) ? value : value ? [value] : [];
 
-  function getPreviewUrl(item) {
-    if (item instanceof File) {
-      if (!objectUrls.current.has(item))
-        objectUrls.current.set(item, URL.createObjectURL(item));
-      return objectUrls.current.get(item);
+  const isFull = items.length >= maxImages && maxImages > 1;
+
+  function handleFileChange(e) {
+    const files = Array.from(e.target.files).filter(
+      (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
+    );
+    e.target.value = ""; // lets the user pick the same file again
+    if (files.length === 0) return;
+
+    if (maxImages === 1) {
+      onChange([files[0]]); // replace
+      return;
     }
-    return typeof item === "string" ? item : item.url;
+
+    const slotsRemaining = maxImages - items.length;
+    if (slotsRemaining <= 0) return;
+    onChange([...items, ...files.slice(0, slotsRemaining)]);
   }
 
-  function getKey(item, index) {
-    if (item instanceof File)
-      return `${item.name}-${item.size}-${item.lastModified}`;
-    return typeof item === "string"
-      ? item
-      : (item.publicId ?? item.url ?? index);
+  function handleDelete(index) {
+    onChange(items.filter((_, i) => i !== index));
   }
 
-  // Revoke blob URLs for files that were removed or replaced by uploaded results
-  useEffect(() => {
-    const current = new Set(items.filter((item) => item instanceof File));
-    for (const [file, url] of objectUrls.current) {
-      if (!current.has(file)) {
-        URL.revokeObjectURL(url);
-        objectUrls.current.delete(file);
-      }
-    }
-  }, [items]);
+  // function getPreviewUrl(item) {
+  //   if (item instanceof File) {
+  //     if (!objectUrls.current.has(item))
+  //       objectUrls.current.set(item, URL.createObjectURL(item));
+  //     return objectUrls.current.get(item);
+  //   }
+  //   return typeof item === "string" ? item : item.url;
+  // }
 
-  // Revoke everything on unmount
-  useEffect(() => {
-    const urls = objectUrls.current;
-    return () => {
-      urls.forEach((url) => URL.revokeObjectURL(url));
-      urls.clear();
-    };
-  }, []);
+  // // Revoke blob URLs for files that were removed or replaced by uploaded results
+  // useEffect(() => {
+  //   const current = new Set(items.filter((item) => item instanceof File));
+  //   for (const [file, url] of objectUrls.current) {
+  //     if (!current.has(file)) {
+  //       URL.revokeObjectURL(url);
+  //       objectUrls.current.delete(file);
+  //     }
+  //   }
+  // }, [items]);
+
+  // // Revoke everything on unmount
+  // useEffect(() => {
+  //   const urls = objectUrls.current;
+  //   return () => {
+  //     urls.forEach((url) => URL.revokeObjectURL(url));
+  //     urls.clear();
+  //   };
+  // }, []);
 
   // function handleFileChange(e) {
   //   const files = Array.from(e.target.files).filter(
@@ -111,30 +152,28 @@ function ImageUploader({
   //   onChange([...items, ...files.slice(0, slotsRemaining)]);
   // }
 
-  function handleFileChange(e) {
-    const files = Array.from(e.target.files).filter(
-      (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
-    );
-    e.target.value = "";
-    if (files.length === 0) return;
+  // function handleFileChange(e) {
+  //   const files = Array.from(e.target.files).filter(
+  //     (f) => ALLOWED_TYPES.includes(f.type) && f.size <= MAX_SIZE,
+  //   );
+  //   e.target.value = "";
+  //   if (files.length === 0) return;
 
-    if (maxImages === 1) {
-      onChange([files[0]]); // replace
-      return;
-    }
+  //   if (maxImages === 1) {
+  //     onChange([files[0]]); // replace
+  //     return;
+  //   }
 
-    const slotsRemaining = maxImages - items.length;
-    if (slotsRemaining <= 0) return;
-    onChange([...items, ...files.slice(0, slotsRemaining)]);
-  }
+  //   const slotsRemaining = maxImages - items.length;
+  //   if (slotsRemaining <= 0) return;
+  //   onChange([...items, ...files.slice(0, slotsRemaining)]);
+  // }
 
-  // const isFull = items.length >= maxImages && maxImages > 1;
+  // function handleDelete(index) {
+  //   onChange(items.filter((_, i) => i !== index));
+  // }
 
-  function handleDelete(index) {
-    onChange(items.filter((_, i) => i !== index));
-  }
-
-  const isFull = items.length >= maxImages;
+  // const isFull = items.length >= maxImages;
 
   return (
     <InputWrapper>
@@ -178,8 +217,8 @@ function ImageUploader({
           >
             {items.map((item, index) => (
               <Row $gap="var(--gap-sm)" key={getKey(item, index)}>
-                <Image
-                  src={getPreviewUrl(item)}
+                <PreviewImage
+                  item={item}
                   $width="7rem"
                   $height="7rem"
                   $objectFit="cover"

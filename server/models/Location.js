@@ -48,7 +48,7 @@ const locationSchema = new mongoose.Schema({
   headerImage: {
     type: [imageSchema],
 
-    // required: [true, "A location header image is required."],
+    required: [true, "A location header image is required."],
     validate: {
       validator: function (value) {
         return value.length <= 1;
@@ -58,7 +58,9 @@ const locationSchema = new mongoose.Schema({
   },
   images: {
     type: [imageSchema],
-
+    required: [true, "At least one location image is required."],
+    validator: (arr) => arr.length <= 10,
+    message: "A location can have at most 10 images.",
     default: [],
   },
   tags: {

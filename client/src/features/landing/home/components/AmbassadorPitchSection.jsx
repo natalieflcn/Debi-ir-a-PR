@@ -7,6 +7,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import ambassadorPitchData from "../data/ambassadorPitchData";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+// import CreamOverlay from "../../../../assets/images/ui/CreamOverlay.png";
 
 const StyledAmbassadorPitchSection = styled.div`
   display: flex;
@@ -35,10 +36,7 @@ const StyledButtons = styled(Row)`
 
 function AmbassadorPitchSection() {
   return (
-    <Card
-      $cardShadow="outsetLG"
-      $cardColor="url(src/assets/images/ui/CreamOverlay.png)"
-    >
+    <Card $cardShadow="outsetLG" $cardColor="var(--color-light-200)">
       <StyledAmbassadorPitchSection>
         <Row $gap="var(--gap-sm)">
           <Heading as="h6" $color="var(--color-red-300)">

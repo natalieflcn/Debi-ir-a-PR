@@ -45,6 +45,7 @@ const CarouselButton = styled(Button)`
 `;
 
 function ImageCarousel({ images }) {
+  console.log(images);
   const autoplay = useRef(
     Autoplay({
       delay: 4000,

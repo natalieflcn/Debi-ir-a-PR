@@ -18,6 +18,7 @@ import Bold from "../typography/Bold";
 import { capitalize } from "../../utils/helpers";
 import { resolveImages } from "../../../services/uploads";
 import SpinnerMini from "../ui/SpinnerMini";
+import concho from "../../../assets/images/brand/default_avatar.png";
 
 const StyledProfileHeader = styled.div`
   display: grid;
@@ -208,7 +209,7 @@ const ProfileHeader = function ({ user, title }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreviewSrc, setAvatarPreviewSrc] = useState(
-    user?.avatar?.url ?? "/src/assets/images/content/TEMP.png",
+    user?.avatar?.url ?? concho,
   );
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
   const { user: myUser, updateUser } = useAuth();

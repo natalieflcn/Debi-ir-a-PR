@@ -5,6 +5,8 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import WorkflowStep from "./WorkflowStep";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import BlueCard from "../../../../assets/images/ui/blue-water.gif";
+import RedCard from "../../../../assets/images/ui/red-sand.gif";
 
 const StyledWorkFlowCard = styled(Card)`
   /* max-width: 83%; */
@@ -42,7 +44,9 @@ const WorkFlowCard = function ({ section, index }) {
       $gap="var(--gap-md)"
       $cardShadow="insetLG"
       $shadowColor="var(--color-dark-200)"
-      $cardColor={section.cardColor}
+      $cardColor={
+        section.cardColor === "red" ? `url(${RedCard})` : `url(${BlueCard})`
+      }
     >
       <Heading
         as="h2"

@@ -28,6 +28,8 @@ import DeleteConfirmationModal from "../../../shared/components/modal/DeleteConf
 import { resolveImages } from "../../../services/uploads";
 import UploadingModal from "../../../shared/components/modal/UploadingModal";
 import SmallText from "../../../shared/components/typography/SmallText";
+import { useUnsavedChangesWarning } from "../../../shared/hooks/useUnsavedChangesWarning";
+import { useEffect } from "react";
 
 const StyledRow = styled(Row)`
   flex: 1 1 0;
@@ -58,7 +60,7 @@ function CreateExplorationCard({ exploration }) {
     clearErrors,
     isSubmitted,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
   } = useForm({
     defaultValues: {
       name: exploration?.name ?? "",
@@ -73,12 +75,25 @@ function CreateExplorationCard({ exploration }) {
     },
   });
 
+  const { blocker, allowNavigation } = useUnsavedChangesWarning(isDirty);
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isUploadingModalOpen, setIsUploadingModalOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
   const navigate = useNavigate();
   const { user } = useAuth();
+
+  useEffect(() => {
+    if (blocker.state !== "blocked") return;
+
+    const leave = window.confirm(
+      "You have unsaved changes to this exploration. Leave without saving?",
+    );
+
+    if (leave) blocker.proceed();
+    else blocker.reset();
+  }, [blocker]);
 
   // Handle Form Submit
   const handleFormSubmit = async function (formData) {
@@ -135,6 +150,8 @@ function CreateExplorationCard({ exploration }) {
         ? await updateExploration(submissionData)
         : await createExploration(submissionData);
 
+      allowNavigation();
+
       navigate(`/${user.role}/explorations/${data.data.slug}`);
     } catch (err) {
       let errorMessage = err.message;
@@ -156,6 +173,7 @@ function CreateExplorationCard({ exploration }) {
   };
 
   const handleDeleteSuccess = async function () {
+    allowNavigation();
     navigate(`/${user.role}/explorations`);
   };
 
@@ -219,13 +237,12 @@ function CreateExplorationCard({ exploration }) {
                   name="headerImage"
                   control={control}
                   rules={{
-                    validate: {
-                      // required: (locations) =>
-                      //   locations.length > 0 ||
-                      //   "Please provide at least one location.",
-                      // maxLength: (locations) =>
-                      //   locations.length === 1 ||
-                      //   "An exploration can only have one header image.",
+                    validate: (headerImage) => {
+                      if (!headerImage || headerImage.length === 0)
+                        return "Please provide an exploration header image.";
+                      if (headerImage.length > 1)
+                        return "An exploration can only have one header image.";
+                      return true;
                     },
                   }}
                   render={({ field }) => (
@@ -259,9 +276,9 @@ function CreateExplorationCard({ exploration }) {
                         "An exploration tagline must have more than 15 characters.",
                     },
                     maxLength: {
-                      value: 175,
+                      value: 150,
                       message:
-                        "An exploration tagline must have less than 175 characters.",
+                        "An exploration tagline must have less than 150 characters.",
                     },
                   })}
                 />

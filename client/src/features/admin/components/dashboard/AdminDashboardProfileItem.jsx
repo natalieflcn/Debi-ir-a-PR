@@ -4,6 +4,7 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
+import concho from "../../../../assets/images/brand/default_avatar.png";
 
 function AdminDashboardProfileItem({ profileData }) {
   return (
@@ -14,7 +15,7 @@ function AdminDashboardProfileItem({ profileData }) {
             Admin
           </Heading>
           <Image
-            src={profileData.avatar}
+            src={profileData.avatar?.image[0]?.url || concho}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
             $height="8rem"

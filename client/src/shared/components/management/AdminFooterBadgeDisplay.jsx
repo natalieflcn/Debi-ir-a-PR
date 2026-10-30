@@ -3,6 +3,7 @@ import Card from "../layout/Card";
 import Row from "../layout/Row";
 import Heading from "../typography/Heading";
 import Image from "../ui/Image";
+import diapr from "../../../assets/images/brand/diapr.svg";
 
 const StyledCard = styled(Card)`
   text-align: center;
@@ -24,7 +25,7 @@ function AdminFooterBadgeDisplay({ badge }) {
     >
       Upon completion of this exploration, Explorers will earn:
       <BadgeRow $direction="horizontal" $gap="var(--gap-md)">
-        <Image $width="7rem" src={badge?.image[0]?.url} />
+        <Image $width="7rem" src={badge?.image[0]?.url ?? diapr} />
         <Heading as="h5" $color="var(--color-red-300)">
           {badge.name}
         </Heading>

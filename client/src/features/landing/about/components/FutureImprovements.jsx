@@ -51,8 +51,8 @@ export default function FutureImprovements() {
           <Row $gap="var(--gap-sm)">
             <Bold $color="var(--color-red-300)">{item.title}</Bold>
             <Row $align="start" $gap="var(--gap-md)">
-              {item.explanation.map((sentence) => (
-                <SmallText>{sentence}</SmallText>
+              {item.explanation.map((sentence, i) => (
+                <SmallText key={i}>{sentence}</SmallText>
               ))}
             </Row>
           </Row>

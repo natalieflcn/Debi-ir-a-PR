@@ -26,8 +26,8 @@ const explorationSchema = new mongoose.Schema(
         "An exploration tagline must have more than 15 characters.",
       ],
       maxlength: [
-        175,
-        "An exploration tagline must have less than 175 characters.",
+        150,
+        "An exploration tagline must have less than 150 characters.",
       ],
       trim: true,
       required: [true, "An exploration tagline is required."],
@@ -60,7 +60,7 @@ const explorationSchema = new mongoose.Schema(
         message: "An exploration can only have one header image.",
       },
 
-      // required: [true, "A header image is required."],
+      required: [true, "A header image is required."],
     },
     // numStops: { type: Number },
     tags: {

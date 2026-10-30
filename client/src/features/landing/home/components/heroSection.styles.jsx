@@ -4,13 +4,15 @@ import Link from "../../../../shared/components/routing/ExternalLink";
 import Row from "../../../../shared/components/layout/Row";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 
+import HeroBackground from "../../../../assets/images/ui/PRHeroSection.gif";
+
 export const StyledHeroSectionBackground = styled.div`
   position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
 
-  background-image: url("src/assets/images/ui/PRHeroSection.gif");
+  background-image: url(${HeroBackground});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -2,6 +2,29 @@ import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
+import pai from "../../../../assets/images/about/pai.png";
+import ImageCarousel from "../../../../shared/components/carousel/ImageCarousel";
+import img1 from "../../../../assets/images/about/concho_animation.jpeg";
+import img2 from "../../../../assets/images/about/concho_illustration.jpg";
+import img3 from "../../../../assets/images/about/concho_stamp.jpeg";
+import img4 from "../../../../assets/images/about/dtmf_poster_red.jpg";
+import img5 from "../../../../assets/images/about/dtmf_poster.jpeg";
+import img6 from "../../../../assets/images/about/dtmf_tracklist.jpg";
+import img7 from "../../../../assets/images/about/dtmf_visual.jpeg";
+import img8 from "../../../../assets/images/about/dtmf_website.png";
+
+//  `url(${img1})`,
+//   `url(${img2})`,
+//   `url(${img3})`,
+//   `url(${img4})`,
+//   `url(${img5})`,
+//   `url(${img6})`,
+//   `url(${img7})`,
+//   `url(${img8})`,
+
+const badBunnyImages = [img1, img2, img3, img4, img5, img6, img7, img8].map(
+  (url) => ({ url }),
+);
 
 const sectionItems = [
   {
@@ -49,8 +72,8 @@ export default function MotivationSection() {
 
       <StyledInspoSection>
         <Card $cardColor="var(--color-light-0)">
-          <Row $direction="horizontal" $gap="var(--gap-md)">
-            <Image src="src/assets/images/content/TEMP.png" $width="40%" />
+          <Row $direction="horizontal" $gap="var(--gap-lg)">
+            <Image src={pai} $width="60%" />
             <Row $gap="var(--gap-md)">
               <Row>{sectionItems[2].content}</Row>
               <Row>{sectionItems[3].content}</Row>
@@ -59,10 +82,11 @@ export default function MotivationSection() {
         </Card>
       </StyledInspoSection>
 
-      <Card $cardColor="var(--color-light-0)">
+      <Card $cardColor="var(--color-light-0)" $gap="var(--gap-md)">
         {sectionItems[4].content}
         <Row $align="center">
-          <Image src="src/assets/images/content/TEMP.png" $width="40%" />{" "}
+          <ImageCarousel images={badBunnyImages} />
+          {/* <Image src={section} $width="40%" /> */}
         </Row>
       </Card>
     </Row>

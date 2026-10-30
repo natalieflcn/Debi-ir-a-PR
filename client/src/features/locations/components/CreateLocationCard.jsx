@@ -26,6 +26,8 @@ import MapBuilder from "../../../shared/components/map/MapBuilder";
 import LocationMap from "../../../shared/components/map/LocationMap";
 import { resolveImages } from "../../../services/uploads";
 import UploadingModal from "../../../shared/components/modal/UploadingModal";
+import { useEffect } from "react";
+import { useUnsavedChangesWarning } from "../../../shared/hooks/useUnsavedChangesWarning";
 
 const StyledHeading = styled(Heading)`
   flex: 1 1 0;
@@ -77,7 +79,7 @@ function CreateLocationCard({
     trigger,
     getValues,
     setValue,
-    formState: { errors, isSubmitting, isSubmitted },
+    formState: { errors, isSubmitting, isSubmitted, isDirty },
   } = useForm({
     defaultValues: {
       name: location?.name ?? "",
@@ -91,6 +93,8 @@ function CreateLocationCard({
       tags: location?.tags ?? [],
     },
   });
+
+  const { blocker, allowNavigation } = useUnsavedChangesWarning(isDirty);
   //   const [pendingAddress, setPendingAddress] = useState(null);
   //   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
@@ -106,6 +110,17 @@ function CreateLocationCard({
   });
   const isAddressReady =
     Boolean(street?.trim()) && Boolean(city) && verifyPRZipcode(zipcode);
+
+  useEffect(() => {
+    if (blocker.state !== "blocked") return;
+
+    const leave = window.confirm(
+      "You have unsaved changes to this exploration. Leave without saving?",
+    );
+
+    if (leave) blocker.proceed();
+    else blocker.reset();
+  }, [blocker]);
 
   // HANDLING SUBMIT FUNCTIONS
   // Default Submit Function (if onSubmit, onSuccess functions not passed down via props)
@@ -138,6 +153,7 @@ function CreateLocationCard({
 
     const updatedLocation = data.data;
 
+    allowNavigation();
     navigate(
       `/${user.role}/explorations/${exploration.slug}/locations/${updatedLocation.slug}`,
     );
@@ -259,7 +275,15 @@ function CreateLocationCard({
               <Controller
                 name="headerImage"
                 control={control}
-                rules={{}}
+                rules={{
+                  validate: (headerImage) => {
+                    if (!headerImage || headerImage.length === 0)
+                      return "Please provide a location header image.";
+                    if (headerImage.length > 1)
+                      return "A location can only have one header image.";
+                    return true;
+                  },
+                }}
                 render={({ field }) => (
                   <ImageUploader
                     name="headerImage"
@@ -387,7 +411,15 @@ function CreateLocationCard({
               <Controller
                 name="images"
                 control={control}
-                rules={{}}
+                rules={{
+                  validate: (images) => {
+                    if (!images || images.length === 0)
+                      return "Please provide at least one image.";
+                    if (images.length > 10)
+                      return "A location can have at most ten images.";
+                    return true;
+                  },
+                }}
                 render={({ field }) => (
                   <ImageUploader
                     name="images"

@@ -38,6 +38,9 @@ const Card = styled.div`
   gap: ${({ $gap }) => $gap};
   background: ${({ $cardColor }) => $cardColor};
   ${({ $cardShadow }) => variants[$cardShadow] || variants["insetSM"]};
+  /* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
   height: ${({ $height }) => $height};
   width: ${({ $width }) => $width};
   flex-wrap: ${({ $wrap }) => $wrap || "nowrap"};

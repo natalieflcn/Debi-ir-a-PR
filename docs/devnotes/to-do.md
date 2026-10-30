@@ -714,12 +714,12 @@
 
 - [~] Add more data to project
   - [x] Descriptions & Taglines
-  - [ ] Header Images TODO 1
+  - [x] Header Images
 - [x] Test all Explorer titles
 - [x] Choose which explorations are featured
-- [ ] Check Badge Collection on dashboard
+- [x] Check Badge Collection on dashboard
 
-- [ ] Add family's voices to Brush Up Your Spanish TODO 7
+- [ ] Add family's voices to Brush Up Your Spanish TODO 4
   - [ ] TONY: "Qué es la qué hay?"
   - [ ] MIMI: "Buen provecho!"
   - [ ] PAYI: "Vamos a chinchorrear!"
@@ -730,21 +730,23 @@
   - [ ] HARRY: "Vamos a janguear!"
   - [ ] ANTHONY: "Hay mucho tapón."
   - [ ] LISI: "Nos vemos ahorita!"
-- [ ] Create photos, GIFs, and/or videos for landing pages TODO 4
-  - [ ] User avatars
+- [ ] Create photos, GIFs, and/or videos for landing pages TODO 3
+  - [~] User avatars TODO 2
   - [ ] Home page
   - [ ] How It Works page
   - [ ] About page
   - [~] Badges
 - [ ] FINAL REVIEW of mobile responsiveness TODO 5
-  - [ ] Will need to fix pagination responsiveness when more pages of data are available
+  - [x] Will need to fix pagination responsiveness when more pages of data are available
   - [x] Fix Footer line height and link gaps
-- [ ] DEPLOY PROJECT
+- [ ] DEPLOY PROJECT TODO 6
   - [ ] Front-end: Netlify
   - [ ] Back-end: Bonto.dev
 - Miscellaneous Tasks
   - [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
   - [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
   - [x] Throw error when too many requests
-  - [ ] Logo as default badge
+  - [x] Logo as default badge
   - [ ] Concho as default avatar
+  - [x] Add warning before leaving page if unsaved data
+  - [x] Add image validation back to server
