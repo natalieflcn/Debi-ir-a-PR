@@ -730,11 +730,11 @@
   - [ ] HARRY: "Vamos a janguear!"
   - [ ] ANTHONY: "Hay mucho tapón."
   - [ ] LISI: "Nos vemos ahorita!"
-- [ ] Create photos, GIFs, and/or videos for landing pages TODO 3
+- [~] Create photos, GIFs, and/or videos for landing pages TODO 3
   - [~] User avatars TODO 2
-  - [ ] Home page
+  - [x] Home page
   - [ ] How It Works page
-  - [ ] About page
+  - [x] About page
   - [~] Badges
 - [ ] FINAL REVIEW of mobile responsiveness TODO 5
   - [x] Will need to fix pagination responsiveness when more pages of data are available
@@ -747,6 +747,8 @@
   - [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
   - [x] Throw error when too many requests
   - [x] Logo as default badge
-  - [ ] Concho as default avatar
+  - [x] Concho as default avatar
   - [x] Add warning before leaving page if unsaved data
   - [x] Add image validation back to server
+  - [x] Revise badge modal
+  - [ ] Test avatar dashboard uploaded images

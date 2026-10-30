@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { signupAmbassador, signupExplorer } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
 import { useForm } from "react-hook-form";
+import explorer from "../../../assets/images/about/explorerSignup.jpeg";
+import ambassador from "../../../assets/images/about/ambassadorSignup.jpeg";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -19,7 +21,8 @@ const StyledSignupBackground = styled.div`
   flex: 1 0 40%;
 
   /* left: 50%; */
-  background-image: url("/src/assets/images/content/TEMP.png");
+  background-image: ${({ $variant }) =>
+    $variant === "explorer" ? `url(${explorer})` : `url(${ambassador})`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -265,7 +268,7 @@ function Signup({ $variant }) {
           </LoginRow>
         </Row>
       </StyledSignup>
-      <StyledSignupBackground />
+      <StyledSignupBackground $variant={$variant} />
     </SignupWrapper>
   );
 }

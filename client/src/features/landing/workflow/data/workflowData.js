@@ -1,3 +1,11 @@
+import ambassadorSignup from "../../../../assets/videos/ambassadorSignup.mp4";
+import badgeCollection from "../../../../assets/videos/badgeCollection.mp4";
+import createExploration from "../../../../assets/videos/createExploration.mp4";
+import dashboardAnalytics from "../../../../assets/videos/dashboardAnalytics.mp4";
+import explorations from "../../../../assets/videos/explorations.mp4";
+import explorerSignup from "../../../../assets/videos/explorerSignup.mp4";
+import trackProgress from "../../../../assets/videos/trackProgress.mp4";
+
 const workflowData = [
   {
     id: "for-explorers",
@@ -15,7 +23,7 @@ const workflowData = [
           " It only takes a minute — and your adventure begins the moment you sign up.",
         ],
         cardImage: `url("src/assets/images/content/Step-0-1.png")`,
-        demo: "",
+        demo: explorerSignup,
       },
       {
         id: 2,
@@ -25,7 +33,7 @@ const workflowData = [
           "Discover spots by town, find adventures near you, or explore themed journeys inspired by Puerto Rican culture, history, and art.",
         ],
         cardImage: "",
-        demo: "",
+        demo: explorations,
       },
       {
         id: 3,
@@ -35,7 +43,7 @@ const workflowData = [
           "Every check-in brings you one step closer to finishing the exploration.",
         ],
         cardImage: "",
-        demo: "",
+        demo: trackProgress,
       },
       {
         id: 4,
@@ -45,7 +53,7 @@ const workflowData = [
           "Show off your collection on your profile and see how much of the island you've truly experienced.",
         ],
         cardImage: "",
-        demo: "",
+        demo: badgeCollection,
       },
     ],
     CTA: {
@@ -71,7 +79,7 @@ const workflowData = [
           "We'll get you set up and ready to start building explorations.",
         ],
         cardImage: "",
-        demo: "",
+        demo: ambassadorSignup,
       },
       {
         id: 2,
@@ -81,7 +89,7 @@ const workflowData = [
           "Invite people to your favorite restaurants, scenic landscapes, cultural landmarks, local bars, hidden beaches, and everything in between.",
         ],
         cardImage: "",
-        demo: "",
+        demo: createExploration,
       },
       {
         id: 3,
@@ -91,7 +99,7 @@ const workflowData = [
           "See which locations are getting the most visits and grow your impact across the island.",
         ],
         cardImage: "",
-        demo: "",
+        demo: dashboardAnalytics,
       },
     ],
     CTA: {

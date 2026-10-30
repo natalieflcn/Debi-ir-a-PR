@@ -13,13 +13,14 @@ import Bold from "../../../shared/components/typography/Bold";
 import { login } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
 import SmallText from "../../../shared/components/typography/SmallText";
+import loginBg from "../../../assets/images/about/login.jpeg";
 
 const StyledLoginBackground = styled.div`
   position: relative;
   max-width: 40%;
   flex: 1 0 40%;
 
-  background-image: url("src/assets/images/content/TEMP.png");
+  background-image: url(${loginBg});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

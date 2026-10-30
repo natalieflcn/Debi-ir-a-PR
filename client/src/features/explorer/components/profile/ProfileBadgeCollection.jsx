@@ -7,6 +7,7 @@ import { forwardRef, useState } from "react";
 
 import { FaLock } from "react-icons/fa6";
 import Modal from "../../../../shared/components/modal/Modal";
+import diapr from "../../../../assets/images/brand/diapr.svg";
 
 const StyledProfileBadgeCollection = styled.div`
   display: flex;
@@ -41,6 +42,8 @@ const BadgeDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
+  align-items: center;
+  text-align: center;
 `;
 
 const TitleRow = styled(Row)`
@@ -57,9 +60,11 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
   function onBadgeItemClick(badgeId, isEarned) {
     setIsModalOpen(true);
 
-    const { name, description, image } = badges.find(
-      (badge) => badge.id === badgeId,
-    );
+    const { badge } = badges.find((badge) => badge._id === badgeId);
+    const { name, description } = badge;
+    const image = badge?.image[0]?.url ?? diapr;
+
+    console.log(badge);
 
     setCurrentBadgeDetails({ name, description, image, isEarned });
   }
@@ -77,15 +82,16 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
       <Card $cardColor="var(--color-light-100)" $cardShadow="insetMd">
         {/* replace later with badge info */}
         <BadgesRow $direction="horizontal" $wrap="wrap">
-          {badges.map((badge) => {
+          {badges.map((badge, i) => {
             const isEarned = earnedBadges.some(
               (earned) => earned.exploration === badge._id,
             );
 
             return (
               <BadgeItem
-                key={badge.id}
-                onClick={() => onBadgeItemClick(badge.id, isEarned)}
+                key={i}
+                title={badge.badge.description}
+                onClick={() => onBadgeItemClick(badge._id, isEarned)}
               >
                 {isEarned ? (
                   <Image

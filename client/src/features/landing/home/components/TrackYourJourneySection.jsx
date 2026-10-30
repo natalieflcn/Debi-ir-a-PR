@@ -3,6 +3,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Image from "../../../../shared/components/ui/Image";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
+import badges from "../../../../assets/images/about/badges.png";
 
 const StyledTrackYourJourneySection = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ function TrackYourJourneySection() {
           </p>
         </Row>
         <Row>
-          <Image src="src/assets/images/content/TEMP.png"></Image>
+          <Image src={badges} />
         </Row>
       </StyledRow>
       <StyledProgressRow $direction="horizontal">

@@ -4,12 +4,14 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Image from "../../../../shared/components/ui/Image";
 import Card from "../../../../shared/components/layout/Card";
+import WorkflowCard from "../../../../assets/images/ui/WorkflowCard.png";
 
 const StyledStep = styled.div`
   display: flex;
   flex-direction: ${({ $index }) => ($index % 2 === 0 ? "row" : "row-reverse")};
   gap: var(--gap-lg);
   margin-top: 1rem;
+  align-items: stretch;
 
   @media (max-width: 900px) {
     flex-direction: ${({ $index }) =>
@@ -31,11 +33,11 @@ const StyledCard = styled(Card)`
     margin-right: 1rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     width: 100%;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     gap: var(--gap-xs);
     hr {
@@ -44,9 +46,14 @@ const StyledCard = styled(Card)`
   }
 `;
 
+const StyledVideo = styled.video`
+  width: 100%;
+  height: auto;
+`;
+
 const StyledRow = styled(Row)`
   width: 55%;
-  height: 28rem;
+  /* height: 28rem; */
   overflow: hidden;
 
   @media (max-width: 900px) {
@@ -54,16 +61,22 @@ const StyledRow = styled(Row)`
     height: auto;
   }
 `;
+
+const StyledHeading = styled(Heading)`
+  @media (max-width: 1200px) {
+    font-size: var(--font-size-sm);
+  }
+`;
 const WorkflowStep = function ({ step, index, stepIndex }) {
   return (
     <StyledStep $index={index} key={step.id}>
       <StyledRow>
-        <Image src="src/assets/images/content/TEMP.png" $width="100%" />
+        {/* <Image src="src/assets/images/content/TEMP.png" $width="100%" /> */}
+        <StyledVideo autoPlay loop muted playsInline preload="metadata">
+          <source src={step.demo} type="video/mp4" />
+        </StyledVideo>
       </StyledRow>
-      <StyledCard
-        $cardShadow="outsetLG"
-        $cardColor='url("src/assets/images/ui/WorkflowCard.png")'
-      >
+      <StyledCard $cardShadow="outsetLG" $cardColor={`url(${WorkflowCard})`}>
         <Heading
           as="h2"
           $color="var(--color-yellow-200)"
@@ -82,9 +95,9 @@ const WorkflowStep = function ({ step, index, stepIndex }) {
             {step.heading}
           </Heading>
           {step.description.map((sentence, index) => (
-            <Heading as="h6" $color="var(--color-dark-100)" key={index}>
+            <StyledHeading as="h6" $color="var(--color-dark-100)" key={index}>
               {sentence}
-            </Heading>
+            </StyledHeading>
           ))}
         </Row>
       </StyledCard>
