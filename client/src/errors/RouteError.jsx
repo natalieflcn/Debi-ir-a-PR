@@ -7,6 +7,7 @@ import { Navigate, useRevalidator, useRouteError } from "react-router-dom";
 import RouterLink from "../shared/components/routing/RouterLink";
 import Background from "../shared/components/decorative/Background";
 import { useAuth } from "../features/auth/contexts/AuthContext";
+import Chairs from "../assets/images/content/Chairs.svg";
 
 function rolePrefix(user) {
   return user?.role === "admin"
@@ -83,8 +84,11 @@ function RouteError() {
   let userRedirect = "/";
 
   if (error?.status === 401) return <Navigate to="/login" replace />;
-  if (error?.status === 403)
+
+  if (error?.status === 403) {
+    console.log("forbidden ");
     return <Navigate to={`${rolePrefix(user)}/unauthorized`} replace />;
+  }
 
   if (user) {
     switch (user.role) {
@@ -116,7 +120,7 @@ function RouteError() {
 
         <ImageContainer>
           <Image
-            src="/src/assets/images/content/Chairs.svg"
+            src={Chairs}
             $width="100%"
             // $height="23rem"
           />

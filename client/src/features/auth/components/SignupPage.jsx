@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { signupAmbassador, signupExplorer } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
 import { useForm } from "react-hook-form";
-import explorer from "../../../assets/images/about/explorerSignup.jpeg";
-import ambassador from "../../../assets/images/about/ambassadorSignup.jpeg";
+import explorer from "../../../assets/images/about/explorerSignup.webp";
+import ambassador from "../../../assets/images/about/ambassadorSignup.webp";
 
 const StyledSignupBackground = styled.div`
   position: relative;

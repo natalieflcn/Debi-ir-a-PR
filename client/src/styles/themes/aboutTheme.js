@@ -1,5 +1,5 @@
 import TearPaper from "../../assets/audios/TearPaper.mp3";
-import ScrapPaper from "../../assets/images/ui/ScrapPaper.png";
+import ScrapPaper from "../../assets/images/ui/ScrapPaper.webp";
 
 export const AboutTheme = {
   headingColor: `var(--color-red-200)`,

@@ -5,17 +5,18 @@ import AppRouter from "./app/router/AppRouter";
 import { useAuth } from "./features/auth/contexts/AuthContext";
 import ErrorFallback from "./errors/ErrorFallback";
 import { ErrorBoundary } from "react-error-boundary";
-
+import BlueOverlay from "./assets/images/ui/BlueOverlay.webp";
+import RedOverlay from "./assets/images/ui/RedOverlay.webp";
 const themeVariants = {
   blue: {
     backgroundColor: "var(--color-blue-200)",
-    backgroundImage: "url(/src/assets/images/ui/BlueOverlay.png)",
+    backgroundImage: `url(${BlueOverlay})`,
     textShadow: "var(--text-shadow-offset-md) var(--color-blue-300)",
     hoverColor: "var(--color-red-200)",
   },
   red: {
     backgroundColor: "var(--color-red-200)",
-    backgroundImage: "url(/src/assets/images/ui/RedOverlay.png)",
+    backgroundImage: `url(${RedOverlay})`,
     textShadow: "var(--text-shadow-offset-md) var(--color-red-300)",
     hoverColor: "var(--color-blue-200)",
   },

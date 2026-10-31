@@ -27,3 +27,10 @@ export const verifyPRZipcode = function (zipcode) {
 
   return prZipRegex.test(zipcode);
 };
+
+export function optimize(url, width) {
+  if (!url?.includes("/upload/")) return url;
+  const w = width ? `,c_limit,w_${width}` : "";
+
+  return url.replace("/upload/", `/upload/f_auto,q_auto:eco${w}/`);
+}

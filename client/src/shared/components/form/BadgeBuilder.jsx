@@ -8,6 +8,7 @@ import BadgeForm from "./BadgeForm";
 import Image from "../ui/Image";
 import { useMemo } from "react";
 import { useEffect } from "react";
+import { optimize } from "../../utils/helpers";
 
 const StyledBadgeBuilder = styled.div`
   align-self: flex-start;
@@ -48,7 +49,7 @@ function BadgeBuilder({ value, onSelect }) {
     ? blobUrl
     : typeof img === "string"
       ? img
-      : (img?.url ?? null);
+      : (optimize(img?.url) ?? null);
 
   return (
     <StyledBadgeBuilder>

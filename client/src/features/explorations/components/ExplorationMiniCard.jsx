@@ -9,6 +9,7 @@ import Button from "../../../shared/components/ui/Button";
 import RouterLink from "../../../shared/components/routing/RouterLink";
 import { useQuery } from "@tanstack/react-query";
 import { getExplorationProgress } from "../../../services/explorationProgress";
+import { optimize } from "../../../shared/utils/helpers";
 
 const StyledExplorationCard = styled(Card)`
   /* align-items: flex-start;
@@ -121,7 +122,9 @@ const AddressRow = styled(Row)`
 function ExplorationMiniCard({ exploration, city, buttonDetails }) {
   return (
     <StyledExplorationCard $cardShadow="outsetLG">
-      <ExplorationCardBackground $image={exploration.headerImage[0]?.url}>
+      <ExplorationCardBackground
+        $image={optimize(exploration.headerImage[0]?.url)}
+      >
         <ExplorationCardHeading
           as="h3"
           $color="var(--color-red-200)"

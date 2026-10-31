@@ -752,10 +752,37 @@
   - [x] Add image validation back to server
   - [x] Revise badge modal
   - [x] Test avatar dashboard uploaded images
-  - [ ] Fix broken image imports
+  - [x] Fix broken image imports
     - Tech Stack ✅
     - Tree Bark Interior ✅
     - Additional Literature ✅
     - Donate to Puerto Rican Groups ✅
     - End Act 20-22-60 ✅
     - Keep Up with Puerto Rican News ✅
+  - [ ] Compress Images
+    - [ ] ui images
+      - BlueOverlay (500kb) ✅ ✅
+      - PRHeroSection (1MB)
+      - PRSun (100kb) ✅ ✅
+      - RedOverlay (500kb) ✅ ✅
+      - Sand (100kb) ✅ ✅
+      - ScrapPaper (300kb) ✅ ✅
+      - TreeBark (300kb) ✅ ✅
+      - TreeInterior ✅ ✅
+        ~~- blue-water (1MB)~~
+        ~~- red-sand (1MB)~~
+    - [x] content images
+      - Concho (300kb) ✅ ✅
+      - MongoDBLogo (100kb) ✅ ✅
+      - NodeJSLogo (100kb) ✅ ✅
+    - [x] about images
+      - ambassadorSignup (1MB) ✅ ✅
+      - badges.png (500kb) ✅ ✅
+      - dtmf_website (300kb) ✅ ✅
+      - explorerSignup (1MB) ✅ ✅
+      - login.jpeg (1MB) ✅ ✅
+      - pai.png (300kb) ✅ ✅
+    - [x] brand images
+      - default_Avatar (300kb) ✅ ✅
+      - diapr.gif (300kb) ✅ ✅ ✅
+    - [x] Cloudinary images

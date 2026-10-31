@@ -8,6 +8,7 @@ import { forwardRef, useState } from "react";
 import { FaLock } from "react-icons/fa6";
 import Modal from "../../../../shared/components/modal/Modal";
 import diapr from "../../../../assets/images/brand/diapr.svg";
+import { optimize } from "../../../../shared/utils/helpers";
 
 const StyledProfileBadgeCollection = styled.div`
   display: flex;
@@ -62,7 +63,7 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
 
     const { badge } = badges.find((badge) => badge._id === badgeId);
     const { name, description } = badge;
-    const image = badge?.image[0]?.url ?? diapr;
+    const image = optimize(badge?.image[0]?.url) ?? diapr;
 
     console.log(badge);
 
@@ -95,7 +96,7 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
               >
                 {isEarned ? (
                   <Image
-                    src={badge?.badge?.image[0]?.url}
+                    src={optimize(badge?.badge?.image[0]?.url)}
                     alt={badge.name}
                     $width="5rem"
                   />

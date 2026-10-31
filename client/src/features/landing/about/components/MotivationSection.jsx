@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Card from "../../../../shared/components/layout/Card";
 import Row from "../../../../shared/components/layout/Row";
 import Image from "../../../../shared/components/ui/Image";
-import pai from "../../../../assets/images/about/pai.png";
+import pai from "../../../../assets/images/about/pai.webp";
 import ImageCarousel from "../../../../shared/components/carousel/ImageCarousel";
 import img1 from "../../../../assets/images/about/concho_animation.jpeg";
 import img2 from "../../../../assets/images/about/concho_illustration.jpg";
@@ -11,7 +11,7 @@ import img4 from "../../../../assets/images/about/dtmf_poster_red.jpg";
 import img5 from "../../../../assets/images/about/dtmf_poster.jpeg";
 import img6 from "../../../../assets/images/about/dtmf_tracklist.jpg";
 import img7 from "../../../../assets/images/about/dtmf_visual.jpeg";
-import img8 from "../../../../assets/images/about/dtmf_website.png";
+import img8 from "../../../../assets/images/about/dtmf_website.webp";
 
 //  `url(${img1})`,
 //   `url(${img2})`,

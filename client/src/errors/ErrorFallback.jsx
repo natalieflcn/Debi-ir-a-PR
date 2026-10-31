@@ -6,6 +6,7 @@ import Button from "../shared/components/ui/Button";
 import Row from "../shared/components/layout/Row";
 import { useAuth } from "../features/auth/contexts/AuthContext";
 import RouterLink from "../shared/components/routing/RouterLink";
+import Chairs from "../assets/images/content/Chairs.svg";
 
 const StyledError = styled.div`
   display: flex;
@@ -88,7 +89,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
         </Heading>
 
         <ImageContainer>
-          <Image src="/src/assets/images/content/Chairs.svg" $width="100%" />
+          <Image src={Chairs} $width="100%" />
         </ImageContainer>
         <StyledParagraph>
           {error?.message || "An unexpected error occurred."}

@@ -13,6 +13,7 @@ function ProtectedRoute({ allowedRoles }) {
   //   const { user } = useLoaderData();
   const { user, logoutUser } = useAuth();
 
+  console.log("running protecedtoure");
   if (!user) {
     return <Navigate to="/login" replace />;
   }

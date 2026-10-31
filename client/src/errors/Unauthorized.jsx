@@ -6,6 +6,7 @@ import Button from "../shared/components/ui/Button";
 import Bold from "../shared/components/typography/Bold";
 import Image from "../shared/components/ui/Image";
 import Row from "../shared/components/layout/Row";
+import PRDoor from "../assets/images/content/PRDoor.png";
 
 const StyledUnauthorized = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ function Unauthorized() {
   const { user } = useAuth();
   let userRedirect;
 
-  switch (user.role) {
+  switch (user?.role) {
     case "explorer":
       userRedirect = "dashboard";
       break;
@@ -53,7 +54,7 @@ function Unauthorized() {
         Sorry, you don't have access to this page.
       </Bold>
       <ImageContainer>
-        <Image src="/src/assets/images/content/PRDoor.png" $width="100%" />
+        <Image src={PRDoor} $width="100%" />
       </ImageContainer>
       <RouterLink to={`/${userRedirect}`}>
         <Button $size="small" $variation="yellow">

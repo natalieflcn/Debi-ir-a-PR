@@ -3,7 +3,7 @@ import Logo from "../brand/Logo";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
 import Bubbles from "../decorative/Bubbles";
-import BlueOverlay from "../../../assets/images/ui/BlueOverlay.png";
+import BlueOverlay from "../../../assets/images/ui/BlueOverlay.webp";
 
 const StyledNavWrapper = styled.div`
   position: sticky;

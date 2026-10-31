@@ -6,7 +6,8 @@ import Button from "../../../../shared/components/ui/Button";
 import DashboardItem from "../../../../shared/components/layout/DashboardItem";
 import Row from "../../../../shared/components/layout/Row";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
-import concho from "../../../../assets/images/brand/default_avatar.png";
+import concho from "../../../../assets/images/brand/default_avatar.webp";
+import { optimize } from "../../../../shared/utils/helpers";
 const StyledExplorerDashboardProfileItem = styled.div`
   /* max-width: 50%; */
 `;
@@ -20,7 +21,7 @@ function ExplorerDashboardProfileItem({ profileData }) {
             {profileData.title}
           </Heading>
           <Image
-            src={profileData?.avatar?.url || concho}
+            src={optimize(profileData?.avatar?.url) || concho}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
             $height="8rem"

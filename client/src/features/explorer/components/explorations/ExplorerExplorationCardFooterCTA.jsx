@@ -11,6 +11,7 @@ import Modal from "../../../../shared/components/modal/Modal";
 import DeleteConfirmationModal from "../../../../shared/components/modal/DeleteConfirmationModal";
 import { useNavigate, useNavigation } from "react-router-dom";
 import diapr from "../../../../assets/images/brand/diapr.svg";
+import { optimize } from "../../../../shared/utils/helpers";
 
 const BadgeRow = styled(Row)`
   @media (max-width: 500px) {
@@ -65,7 +66,7 @@ function ExplorerExplorationCardFooterCTA({
           <Row $direction="horizontal" $align="space-evenly">
             <Row $direction="horizontal" $gap="var(--gap-lg)">
               <Image
-                src={exploration?.badge?.image[0]?.url ?? diapr}
+                src={optimize(exploration?.badge?.image[0]?.url) ?? diapr}
                 $borderRadius="round"
                 $width="4rem"
               />
@@ -91,7 +92,10 @@ function ExplorerExplorationCardFooterCTA({
             >
               Complete this exploration to earn:
               <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
-                <Image $width="5rem" src={exploration.badge?.image[0]?.url} />
+                <Image
+                  $width="5rem"
+                  src={optimize(exploration.badge?.image[0]?.url)}
+                />
                 <Heading as="h5" $color="var(--color-red-300)">
                   {exploration.badge.name}
                 </Heading>
@@ -110,7 +114,10 @@ function ExplorerExplorationCardFooterCTA({
               Congratulations! You completed this exploration and earned the
               following badge:
               <BadgeRow $direction="horizontal" $gap="var(--gap-lg)">
-                <Image $width="5rem" src={exploration.badge?.image[0]?.url} />
+                <Image
+                  $width="5rem"
+                  src={optimize(exploration.badge?.image[0]?.url)}
+                />
                 <Heading as="h5" $color="var(--color-red-300)">
                   {exploration.badge.name}
                 </Heading>

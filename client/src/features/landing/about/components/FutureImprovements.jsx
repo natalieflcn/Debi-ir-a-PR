@@ -49,7 +49,7 @@ export default function FutureImprovements() {
       {sectionItems.map((item) => (
         <Card $cardColor="var(--color-light-0)" key={item.id}>
           <Row $gap="var(--gap-sm)">
-            <Bold $color="var(--color-red-300)">{item.title}</Bold>
+            <Bold $color="var(--color-blue-200)">{item.title}</Bold>
             <Row $align="start" $gap="var(--gap-md)">
               {item.explanation.map((sentence, i) => (
                 <SmallText key={i}>{sentence}</SmallText>

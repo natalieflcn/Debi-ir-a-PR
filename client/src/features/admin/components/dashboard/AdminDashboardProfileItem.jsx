@@ -4,7 +4,8 @@ import Heading from "../../../../shared/components/typography/Heading";
 import Button from "../../../../shared/components/ui/Button";
 import Image from "../../../../shared/components/ui/Image";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
-import concho from "../../../../assets/images/brand/default_avatar.png";
+import concho from "../../../../assets/images/brand/default_avatar.webp";
+import { optimize } from "../../../../shared/utils/helpers";
 
 function AdminDashboardProfileItem({ profileData }) {
   console.log(profileData);
@@ -16,7 +17,7 @@ function AdminDashboardProfileItem({ profileData }) {
             Admin
           </Heading>
           <Image
-            src={profileData?.avatar?.url || concho}
+            src={optimize(profileData?.avatar?.url) || concho}
             $borderRadius="var(--border-radius-round)"
             $width="8rem"
             $height="8rem"

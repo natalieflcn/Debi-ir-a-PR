@@ -3,7 +3,7 @@ import Row from "../../../../shared/components/layout/Row";
 import Heading from "../../../../shared/components/typography/Heading";
 import Image from "../../../../shared/components/ui/Image";
 import ProgressBar from "../../../../shared/components/ui/ProgressBar";
-import badges from "../../../../assets/images/about/badges.png";
+import badges from "../../../../assets/images/about/badges.webp";
 
 const StyledTrackYourJourneySection = styled.div`
   display: flex;

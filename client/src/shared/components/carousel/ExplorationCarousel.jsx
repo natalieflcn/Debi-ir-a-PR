@@ -12,6 +12,8 @@ import ProgressBar from "../ui/ProgressBar";
 import { useRef } from "react";
 import { useEffect } from "react";
 import RouterLink from "../routing/RouterLink";
+import diapr from "../../../assets/images/brand/diapr.svg";
+import { optimize } from "../../utils/helpers";
 
 const CarouselViewport = styled.div`
   overflow: hidden;
@@ -53,6 +55,7 @@ const CarouselButton = styled(Button)`
 
 const StyledRow = styled(Row)`
   flex: 1;
+  text-align: start;
 
   @media (max-width: 1150px) {
     flex-direction: column;
@@ -64,6 +67,11 @@ const StyledRow = styled(Row)`
 
 const StyledParagraph = styled.p`
   justify-self: start;
+`;
+
+const ImageContainer = styled.div`
+  height: 8rem;
+  width: 100%;
 `;
 
 function ExplorationCarousel({ explorationData, userProgress }) {
@@ -101,67 +109,87 @@ function ExplorationCarousel({ explorationData, userProgress }) {
     };
   }, [emblaApi]);
 
+  console.log(explorationData);
   return (
     <CarouselWrapper>
       <CarouselViewport ref={emblaRef}>
         <CarouselContainer>
-          {explorationData.map((exploration) => {
-            const progress =
-              userProgress.find(
-                (explorationProgress) =>
-                  explorationProgress.explorationId === exploration._id,
-              )?.progress ?? 0;
+          {explorationData.length > 0 &&
+            explorationData.map((exploration) => {
+              const progress =
+                userProgress.find(
+                  (explorationProgress) =>
+                    explorationProgress.explorationId === exploration._id,
+                )?.progress ?? 0;
 
-            return (
-              <CarouselSlide key={exploration.id}>
-                <Card
-                  $cardColor="var(--color-light-200)"
-                  $shadowColor="var(--color-brown-200)"
-                  $cardShadow="insetMD"
-                  $height="100%"
-                >
-                  <StyledRow $direction="vertical" $align="space-between">
-                    <StyledRow
-                      $direction="horizontal"
-                      $align="flex-start"
-                      $gap="var(--gap-lg)"
-                    >
-                      <Image src={exploration.headerImage} $width="40%" />
-                      <Row $gap="var(--gap-lg)">
-                        <StyledRow>
-                          <Heading as="h5">{exploration.name}</Heading>
-                          <p>{exploration.tagline}</p>
-                        </StyledRow>
-                      </Row>
-                    </StyledRow>
-                    <Row>
-                      {progress > 0 ? (
-                        <Row $gap="var(--gap-sm)">
-                          <Bold $color="var(--color-dark-200)">
-                            <StyledParagraph>
-                              {progress}% complete
-                            </StyledParagraph>
-                          </Bold>
-                          <ProgressBar completed={progress} label={false} />
+              return (
+                <CarouselSlide key={exploration.id}>
+                  <Card
+                    $cardColor="var(--color-light-200)"
+                    $shadowColor="var(--color-brown-200)"
+                    $cardShadow="insetMD"
+                    $height="100%"
+                  >
+                    <StyledRow $direction="vertical" $align="space-between">
+                      <StyledRow
+                        $direction="horizontal"
+                        $align="flex-start"
+                        $gap="var(--gap-lg)"
+                      >
+                        <ImageContainer>
+                          <Image
+                            src={
+                              optimize(exploration.headerImage[0]?.url) ?? diapr
+                            }
+                            $width="100%"
+                            $height="100%"
+                            $objectFit="cover"
+                          />
+                        </ImageContainer>
+                        <Row $gap="var(--gap-lg)">
+                          <StyledRow>
+                            <Heading as="h5">{exploration.name}</Heading>
+                            <p>{exploration.tagline}</p>
+                          </StyledRow>
+                        </Row>
+                      </StyledRow>
+                      <Row>
+                        {progress > 0 ? (
+                          <Row $gap="var(--gap-sm)">
+                            <Bold $color="var(--color-dark-200)">
+                              <StyledParagraph>
+                                {progress}% complete
+                              </StyledParagraph>
+                            </Bold>
+                            <ProgressBar completed={progress} label={false} />
+                            <RouterLink
+                              to={`/explorations/${exploration.slug}`}
+                            >
+                              <Button $variation="primary" $size="small">
+                                Continue Exploring
+                              </Button>
+                            </RouterLink>
+                          </Row>
+                        ) : (
                           <RouterLink to={`/explorations/${exploration.slug}`}>
-                            <Button $variation="primary" $size="small">
-                              Continue Exploring
+                            <Button $variation="darkRed" $size="small">
+                              Start Exploring
                             </Button>
                           </RouterLink>
-                        </Row>
-                      ) : (
-                        <RouterLink to={`/explorations/${exploration.slug}`}>
-                          <Button $variation="darkRed" $size="small">
-                            Start Exploring
-                          </Button>
-                        </RouterLink>
-                      )}
-                    </Row>
-                  </StyledRow>
-                </Card>
-              </CarouselSlide>
-            );
-          })}
+                        )}
+                      </Row>
+                    </StyledRow>
+                  </Card>
+                </CarouselSlide>
+              );
+            })}
+          {explorationData.length < 1 && (
+            <RouterLink to="/explorations">
+              <Button $size="medium" $variation="primary">
+                Start Exploring Now
+              </Button>
+            </RouterLink>
+          )}
         </CarouselContainer>
       </CarouselViewport>
 

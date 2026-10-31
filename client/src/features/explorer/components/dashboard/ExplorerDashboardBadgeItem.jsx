@@ -11,6 +11,7 @@ import { useState } from "react";
 import Modal from "../../../../shared/components/modal/Modal";
 import SmallText from "../../../../shared/components/typography/SmallText";
 import diapr from "../../../../assets/images/brand/diapr.svg";
+import { optimize } from "../../../../shared/utils/helpers";
 
 const StyledExplorerDashboardBadgeItem = styled.div`
   display: flex;
@@ -60,7 +61,10 @@ function ExplorerDashboardBadgeItem({
           <Row $gap="var(--gap-md)" $align="center">
             {recentBadge ? (
               <>
-                <Image src={recentBadge?.image[0].url} $width="5rem" />
+                <Image
+                  src={optimize(recentBadge?.image[0].url)}
+                  $width="5rem"
+                />
                 <Heading as="h6">{recentBadge?.name}</Heading>
               </>
             ) : (
@@ -100,7 +104,7 @@ function ExplorerDashboardBadgeItem({
             >
               {earnedBadges.map((badge) => (
                 <Image
-                  src={badge?.image[0]?.url}
+                  src={optimize(badge?.image[0]?.url)}
                   $width="5rem"
                   key={badge.exploration}
                   title={badge?.description}

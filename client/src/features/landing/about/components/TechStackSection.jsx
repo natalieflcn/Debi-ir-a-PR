@@ -5,9 +5,9 @@ import Bold from "../../../../shared/components/typography/Bold";
 import Image from "../../../../shared/components/ui/Image";
 import styled from "styled-components";
 import React from "../../../../assets/images/content/ReactLogo.png";
-import NodeJs from "../../../../assets/images/content/NodeJSLogo.png";
+import NodeJs from "../../../../assets/images/content/NodeJSLogo.webp";
 import Express from "../../../../assets/images/content/ExpressLogo.png";
-import MongoDB from "../../../../assets/images/content/MongoDBLogo.svg";
+import MongoDB from "../../../../assets/images/content/MongoDBLogo.webp";
 import TainoBullet from "../../../../assets/images/ui/PRSun.png";
 
 const sectionItems = [

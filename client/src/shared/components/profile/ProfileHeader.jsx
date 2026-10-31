@@ -15,10 +15,10 @@ import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import { updateMe, updateUserInformation } from "../../../services/users";
 import Input from "../form/Input";
 import Bold from "../typography/Bold";
-import { capitalize } from "../../utils/helpers";
+import { capitalize, optimize } from "../../utils/helpers";
 import { resolveImages } from "../../../services/uploads";
 import SpinnerMini from "../ui/SpinnerMini";
-import concho from "../../../assets/images/brand/default_avatar.png";
+import concho from "../../../assets/images/brand/default_avatar.webp";
 
 const StyledProfileHeader = styled.div`
   display: grid;
@@ -209,7 +209,7 @@ const ProfileHeader = function ({ user, title }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [avatarPreviewSrc, setAvatarPreviewSrc] = useState(
-    user?.avatar?.url ?? concho,
+    optimize(user?.avatar?.url) ?? concho,
   );
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
   const { user: myUser, updateUser } = useAuth();
@@ -278,7 +278,7 @@ const ProfileHeader = function ({ user, title }) {
 
       if (isMyProfile) updateUser(data.data); // keep auth context in sync
 
-      setAvatarPreviewSrc(avatar.url); // update state
+      setAvatarPreviewSrc(optimize(avatar.url)); // update state
     } catch (err) {
       setAvatarPreviewSrc(previousAvatarSrc); // roll back the preview
       setErrors((prev) => ({ ...prev, avatar: err.message }));

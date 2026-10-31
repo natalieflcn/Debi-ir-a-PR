@@ -6,6 +6,7 @@ import Row from "../shared/components/layout/Row";
 import Background from "../shared/components/decorative/Background";
 import { useAuth } from "../features/auth/contexts/AuthContext";
 import RouterLink from "../shared/components/routing/RouterLink";
+import Concho from "../assets/images/content/Concho.webp";
 
 const Styled404 = styled.div`
   position: absolute;
@@ -88,7 +89,7 @@ function PageNotFound() {
         </Heading>
         <Styled404>404</Styled404>
         <ImageContainer>
-          <Image src="/src/assets/images/content/Concho.png" $width="100%" />
+          <Image src={Concho} $width="100%" />
         </ImageContainer>
         <Row $gap="var(--gap-lg)">
           <Heading as="h6">

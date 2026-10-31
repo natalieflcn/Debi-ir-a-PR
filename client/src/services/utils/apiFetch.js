@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5173/api/v1";
 
 export class APIError extends Error {
   constructor(message, status, data) {
@@ -33,7 +33,7 @@ export async function apiFetch(path, options = {}) {
         "You're making too many requests. Please wait a bit and try again.";
     }
 
-    throw new APIError(message || "Request failed", res.status, res.status);
+    throw new APIError(message || "Request failed", res.status, res.data);
   }
 
   return res.status === 204 ? null : res.json();

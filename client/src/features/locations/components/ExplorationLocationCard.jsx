@@ -18,7 +18,7 @@ import {
   StyledExplorationLocation,
 } from "./explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
-import { capitalize } from "../../../shared/utils/helpers";
+import { capitalize, optimize } from "../../../shared/utils/helpers";
 import styled from "styled-components";
 import LocationMap from "../../../shared/components/map/LocationMap";
 import ImageCarousel from "../../../shared/components/carousel/ImageCarousel";
@@ -71,7 +71,9 @@ function ExplorationLocationCard({
       </RouterLink>
 
       <StyledExplorationLocation $cardShadow="outsetLG">
-        <ExplorationLocationHeaderImage $image={location?.headerImage[0]?.url}>
+        <ExplorationLocationHeaderImage
+          $image={optimize(location?.headerImage[0]?.url)}
+        >
           <ExplorationLocationHeaderDetails>
             <Row $gap="var(--gap-sm)">
               <ExplorationLocationHeading as="h2" $color="var(--color-red-300)">

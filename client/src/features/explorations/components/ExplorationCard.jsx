@@ -28,7 +28,7 @@ import {
   TagCollection,
 } from "../../locations/components/explorationLocationCard.styles";
 import RouterLink from "../../../shared/components/routing/RouterLink";
-import { capitalize } from "../../../shared/utils/helpers";
+import { capitalize, optimize } from "../../../shared/utils/helpers";
 import { startExploration } from "../../../services/explorationProgress";
 import Spinner from "../../../shared/components/ui/Spinner";
 import ExplorationMap from "../../../shared/components/map/ExplorationMap";
@@ -80,7 +80,9 @@ function ExplorationCard({
         </Button>
       </RouterLink>
       <StyledExplorationCard $cardShadow="outsetLG">
-        <ExplorationCardHeaderImage $image={exploration.headerImage[0]?.url}>
+        <ExplorationCardHeaderImage
+          $image={optimize(exploration.headerImage[0]?.url)}
+        >
           <ExplorationCardHeaderDetails $gap="var(--gap-md)">
             <ExplorationCardHeading
               as="h2"

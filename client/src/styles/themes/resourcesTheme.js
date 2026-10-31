@@ -1,6 +1,6 @@
 import leavesRustling from "../../assets/audios/LeavesRustling.mp3";
-import TreeBark from "../../assets/images/ui/TreeBark.png";
-import TreeInterior from "../../assets/images/ui/TreeInterior.png";
+import TreeBark from "../../assets/images/ui/TreeBark.webp";
+import TreeInterior from "../../assets/images/ui/TreeInterior.webp";
 
 export const ResourcesTheme = {
   headingColor: `var(--color-green-300)`,

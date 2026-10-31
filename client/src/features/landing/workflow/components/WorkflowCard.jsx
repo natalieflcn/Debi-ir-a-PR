@@ -7,7 +7,7 @@ import WorkflowStep from "./WorkflowStep";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import BlueCard from "../../../../assets/images/ui/blue-water.gif";
 import RedCard from "../../../../assets/images/ui/red-sand.gif";
-import Sand from "../../../../assets/images/ui/Sand.png";
+import Sand from "../../../../assets/images/ui/Sand.webp";
 
 const StyledWorkFlowCard = styled(Card)`
   /* max-width: 83%; */
@@ -46,7 +46,9 @@ const WorkFlowCard = function ({ section, index }) {
       $cardShadow="insetLG"
       $shadowColor="var(--color-dark-200)"
       $cardColor={
-        section.cardColor === "red" ? `url(${RedCard})` : `url(${BlueCard})`
+        section.cardColor === "red"
+          ? `var(--color-red-300)`
+          : `var(--color-blue-300)`
       }
     >
       <Heading

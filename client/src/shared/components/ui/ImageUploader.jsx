@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import SmallText from "../typography/SmallText";
 import Bold from "../typography/Bold";
+import { optimize } from "../../utils/helpers";
 
 const StyledFileInput = styled.input`
   position: relative;
@@ -62,7 +63,7 @@ function PreviewImage({ item, ...props }) {
     ? blobUrl
     : typeof item === "string"
       ? item
-      : (item?.url ?? item?.secure_url);
+      : (optimize(item?.url) ?? item?.secure_url);
 
   return src ? <Image src={src} {...props} /> : null;
 }
@@ -70,7 +71,9 @@ function PreviewImage({ item, ...props }) {
 function getKey(item, index) {
   if (item instanceof File)
     return `${item.name}-${item.size}-${item.lastModified}`;
-  return typeof item === "string" ? item : (item.publicId ?? item.url ?? index);
+  return typeof item === "string"
+    ? item
+    : (item.publicId ?? optimize(item.url) ?? index);
 }
 
 function ImageUploader({

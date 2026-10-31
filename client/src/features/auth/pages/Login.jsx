@@ -13,7 +13,7 @@ import Bold from "../../../shared/components/typography/Bold";
 import { login } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
 import SmallText from "../../../shared/components/typography/SmallText";
-import loginBg from "../../../assets/images/about/login.jpeg";
+import loginBg from "../../../assets/images/about/login.webp";
 
 const StyledLoginBackground = styled.div`
   position: relative;

@@ -7,6 +7,7 @@ import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+import { optimize } from "../../utils/helpers";
 
 const CarouselViewport = styled.div`
   overflow: hidden;
@@ -74,7 +75,7 @@ function ImageCarousel({ images }) {
           {images.map((img, i) => (
             <CarouselSlide key={i}>
               <Image
-                src={img?.url}
+                src={optimize(img?.url)}
                 $align="center"
                 $width="100%"
                 $height="100%"
