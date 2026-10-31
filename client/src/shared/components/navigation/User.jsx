@@ -13,7 +13,7 @@ function User() {
     await logoutUser();
     setTimeout(() => {
       navigate("/", { replace: true });
-    }, 500);
+    }, 10);
   }
 
   return (
