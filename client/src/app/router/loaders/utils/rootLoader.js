@@ -9,13 +9,12 @@ const ROLE_HOME = {
 };
 
 export async function rootLoader() {
-  // const { data } = await getMe();
-  // try {
-  //   const home = ROLE_HOME[data?.data?.role] || null;
-  //   console.log(home);
-  //   if (home) return redirect(home);
-  // } catch (err) {
-  //   // 401 / not logged in: fall through and show the landing page
-  // }
+  try {
+    const res = await getMe();
+    const home = ROLE_HOME[res?.data?.data?.role];
+    if (home) return redirect(home);
+  } catch {
+    // 401 or network error: not logged in, show the public page
+  }
   return null;
 }

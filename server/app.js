@@ -28,7 +28,7 @@ const limiter = rateLimit({
   },
 });
 
-const allowedOrigin = process.env.CLIENT_URL || "http://localhost:4173";
+const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";
 
 app.use(
   cors({

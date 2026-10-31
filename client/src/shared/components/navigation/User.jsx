@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 const StyledUser = styled.div``;
 
 function User() {
-  const { isAuthenticated, loading, user, logoutUser } = useAuth();
+  const { isAuthenticated, loading, user, logoutUser, clearUser } = useAuth();
   const navigate = useNavigate();
 
   async function handleLogoutUser() {
+    // clearUser();
     await logoutUser();
     setTimeout(() => {
       navigate("/", { replace: true });
@@ -19,9 +20,7 @@ function User() {
   return (
     <StyledUser>
       {!loading && isAuthenticated ? (
-        <RouterLink to="/">
-          <p onClick={handleLogoutUser}>Logout</p>
-        </RouterLink>
+        <p onClick={handleLogoutUser}>Logout</p>
       ) : (
         <RouterLink to="/login">
           <p>Login</p>
