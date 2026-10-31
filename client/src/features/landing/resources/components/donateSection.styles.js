@@ -32,13 +32,6 @@ export const SlicedPhotos = styled.div`
   width: 100%;
 
   img {
-    /* --_p: calc(-1 * var(--g));
-    grid-area: 1/1;
-
-    aspect-ratio: 16/8;
-    cursor: pointer;
-    transition: 0.7s 0.2s; */
-
     width: 100%;
     display: block;
 

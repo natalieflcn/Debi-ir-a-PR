@@ -18,6 +18,4 @@ function App() {
   );
 }
 
-//TODO add protected routes for staff and explorers
-
 export default App;

@@ -11,7 +11,6 @@ export const StyledLayout = styled.div`
   @media (max-width: 800px) {
     padding: 0.5rem;
     width: 100%;
-    /* margin: 0 auto; */
   }
 `;
 

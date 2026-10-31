@@ -27,7 +27,7 @@ const StyledCardsRow = styled(Row)`
 
   @media (max-width: 428px) {
     flex-direction: column;
-    /* width: 80%; */
+
     align-self: center;
   }
 
@@ -58,18 +58,15 @@ const StyledCard = styled(Card)`
   justify-content: center;
 
   @media (max-width: 830px) {
-    /* flex-direction: column; */
     height: 12rem;
     align-self: center;
   }
 
   @media (max-width: 700px) {
-    /* flex-direction: column; */
     height: 6rem;
   }
 
   @media (max-width: 450px) {
-    /* flex-direction: column; */
     height: 9rem;
   }
 `;

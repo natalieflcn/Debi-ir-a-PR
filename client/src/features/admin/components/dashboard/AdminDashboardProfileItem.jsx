@@ -8,7 +8,6 @@ import concho from "../../../../assets/images/brand/default_avatar.webp";
 import { optimize } from "../../../../shared/utils/helpers";
 
 function AdminDashboardProfileItem({ profileData }) {
-  console.log(profileData);
   return (
     <DashboardItem $variation="center" $height="18rem">
       <Row $gap="var(--gap-lg)">

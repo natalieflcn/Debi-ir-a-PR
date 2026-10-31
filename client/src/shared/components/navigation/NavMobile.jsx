@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 import User from "./User";
 import Heading from "../typography/Heading";
 
-//TODO revise this later, when creating mobile version...
 const StyledNavMobile = styled.ul`
   display: flex;
   position: relative;
@@ -22,7 +21,6 @@ const StyledNavMobile = styled.ul`
 const StyledButton = styled(Button)`
   position: relative;
   bottom: 0.8rem;
-  /* right: 0.5rem; */
 `;
 
 const Hamburger = styled(BiMenuAltRight)`
@@ -35,9 +33,9 @@ const Hamburger = styled(BiMenuAltRight)`
 const CloseMenu = styled(BiX)`
   display: ${({ $isOpen }) => ($isOpen ? `` : `none`)};
   position: relative;
-  /* position: fixed; */
+
   bottom: 0.55rem;
-  /* right: 4rem; */
+
   z-index: 5;
   width: 2rem;
   height: 2rem;
@@ -46,9 +44,9 @@ const CloseMenu = styled(BiX)`
 
 const MobileMenu = styled.ul`
   display: flex;
-  /* z-index: 10000; */
+
   flex-direction: column;
-  /* justify-content: space-between; */
+
   position: fixed;
   left: 0;
   right: 0;
@@ -111,11 +109,9 @@ function NavMobile({ menuItems }) {
         ))}
 
         <MenuItem onClick={handleClick}>
-          {/* <NavLink to="/login" onClick={handleClick}> */}
           <StyledHeading as="h5">
             <User />
           </StyledHeading>
-          {/* </NavLink> */}
         </MenuItem>
       </MobileMenu>
     </StyledNavMobile>

@@ -8,10 +8,6 @@ const rotate = keyframes`
 `;
 
 const SpinnerMini = styled(BiLoaderAlt)`
-  /* margin: 1rem auto; */
-  /* width: 100%; */
-  /* display: block; */
-
   height: 2.4rem;
   width: 2.4rem;
   color: var(--color-blue-0);

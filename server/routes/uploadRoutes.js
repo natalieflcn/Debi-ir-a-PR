@@ -12,10 +12,5 @@ router.use(authController.restrictTo("admin", "ambassador"));
 
 router.post("/exploration-signature", uploadController.signExplorationUpload);
 
-// router.post(
-//   "/badge-signature",
-//   uploadController.signExplorationUpload,
-// );
-
 router.post("/user-signature/:userId", uploadController.signUserUpload);
 module.exports = router;

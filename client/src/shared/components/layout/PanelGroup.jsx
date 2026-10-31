@@ -7,7 +7,7 @@ import Row from "./Row";
 const StyledPanelGroup = styled.div`
   display: flex;
   flex-direction: column;
-  /* flex-grow: 1; */
+
   gap: 1rem;
   font-size: var(--font-size-sm);
   max-width: 100%;
@@ -17,22 +17,18 @@ const StyledPanelGroup = styled.div`
   }
 
   @media (max-width: 800px) {
-    /* width: 100%; */
     align-items: center;
     font-size: var(--font-size-xs);
     line-height: var(--line-height-xs);
-    /* width: 100%; */
   }
 `;
 
-const StyledRow = styled(Row)`
-  /* max-width: 90%; */
-`;
+const StyledRow = styled(Row)``;
 const StyledHeading = styled(Heading)`
   font-size: var(--font-size-2xl);
   line-height: var(--line-height-3xl);
   text-transform: uppercase;
-  /* max-width: 90%; */
+
   scroll-margin-top: 9.5rem;
 
   color: ${({ $theme }) => $theme.headingColor};

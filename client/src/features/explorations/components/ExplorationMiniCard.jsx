@@ -12,23 +12,9 @@ import { getExplorationProgress } from "../../../services/explorationProgress";
 import { optimize } from "../../../shared/utils/helpers";
 
 const StyledExplorationCard = styled(Card)`
-  /* align-items: flex-start;
-
-  /* max-width: 31%; */
-  /* min-width: 18rem;
-  max-width: 31%;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  overflow: hidden;
-  flex-grow: 1;
-  position: relative;
-  background-color: var(--color-light-0);
-  color: var(--color-dark-200);  */
-
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; /* was flex-start */
+  align-items: stretch;
   width: 100%;
   padding: 0;
   overflow: hidden;
@@ -69,25 +55,17 @@ const ExplorationCardHeading = styled(Heading)`
 const ExplorationCardBody = styled.div`
   display: flex;
   padding: 1.6rem;
-  /* max-width: 100%; */
+
   gap: var(--gap-md);
   flex-direction: column;
   flex: 1;
-
-  /* flex-wrap: wrap; */
 `;
 
 const StyledRow = styled(Row)`
   margin-top: auto;
 `;
-// const ExplorationDescription = styled.p`
-//   line-height: var(--line-height-md);
-// `;
 
 const ExplorationDescription = styled.p`
-  /* overflow-wrap: anywhere;
-  margin-bottom: auto; */
-
   overflow-wrap: anywhere;
   margin-bottom: auto;
   display: -webkit-box;

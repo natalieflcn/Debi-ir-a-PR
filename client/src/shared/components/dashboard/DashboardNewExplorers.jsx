@@ -8,12 +8,6 @@ import { formatDate } from "../../utils/helpers";
 import RouterLink from "../routing/RouterLink";
 import { useAuth } from "../../../features/auth/contexts/AuthContext";
 
-// const StyledDashboardItem = styled(DashboardItem)`
-//   width: 100%;
-//   min-width: 0;
-//   overflow-x: auto;
-// `;
-
 const TableWrapper = styled.div`
   width: 100%;
   min-width: 0;

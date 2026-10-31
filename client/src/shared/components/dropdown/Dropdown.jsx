@@ -78,12 +78,6 @@ function Dropdown({
     onSelect?.(category);
   };
 
-  //   const filteredItems = data.filter((item) => {
-  //     if (selectedCategory === "All") return true;
-
-  //     return item.category === selectedCategory;
-  //   });
-
   return (
     <StyledDropdown
       className={className}

@@ -63,15 +63,6 @@ function BadgeBuilder({ value, onSelect }) {
           {value ? value.name : "Create a Badge"}
         </Button>
 
-        {/* {value && (
-          <Image
-            src={previewUrl}
-            $width="6rem"
-            $height="6rem"
-            $objectFit="cover"
-          />
-        )} */}
-
         {value && (
           <Button
             type="button"

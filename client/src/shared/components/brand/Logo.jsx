@@ -14,7 +14,6 @@ const themeVariants = {
 };
 
 const StyledLogo = styled.h1`
-  /* margin-right: 5rem; */
   font-family: DtMF;
   letter-spacing: var(--letter-spacing-dtmf-tight);
   transition: all 0.25s;
@@ -54,7 +53,6 @@ const IrAPR = styled.p`
 function Logo() {
   const { role } = useAuth();
 
-  // const role = "admin";
   let prefix = "";
 
   switch (role) {

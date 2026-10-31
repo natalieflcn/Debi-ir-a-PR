@@ -10,7 +10,6 @@ import RedCard from "../../../../assets/images/ui/red-sand.gif";
 import Sand from "../../../../assets/images/ui/Sand.webp";
 
 const StyledWorkFlowCard = styled(Card)`
-  /* max-width: 83%; */
   display: flex;
   justify-items: center;
 
@@ -32,10 +31,6 @@ const StyledCTA = styled(Card)`
   h5 {
     text-align: center;
   }
-
-  /* @media (max-width: 900px) {
-    text-align: center;
-  } */
 `;
 
 const WorkFlowCard = function ({ section, index }) {

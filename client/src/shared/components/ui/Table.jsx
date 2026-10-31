@@ -22,15 +22,9 @@ const TableWrapper = styled.div`
 `;
 
 const StyledTable = styled.table`
-  /* width: 100%;
-  justify-items: center;
-  justify-self: center;
-  overflow: hidden;
-  table-layout: fixed; */
   min-width: 100%;
   width: max-content;
-  /* justify-items: center;
-  justify-self: center; */
+
   table-layout: auto;
 
   border-collapse: collapse;

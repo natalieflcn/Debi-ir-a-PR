@@ -9,15 +9,6 @@ export async function explorerLocationLoader({ params }) {
     (loc) => loc.slug === locationId,
   );
 
-  // const { data: explorationProgress } = await getExplorationProgress(
-  //   explorationData._id,
-  // );
-
-  // console.log(
-  //   explorationProgress.data.visitLog.find(
-  //     (visit) => visit.location === location._id,
-  //   ),
-  // );
   return {
     exploration: {
       _id: explorationData._id,
@@ -25,8 +16,5 @@ export async function explorerLocationLoader({ params }) {
       slug: explorationData.slug,
     },
     location: location,
-    // userHistory: explorationProgress.data.visitLog.find(
-    //   (visit) => visit.location === location._id,
-    // ),
   };
 }

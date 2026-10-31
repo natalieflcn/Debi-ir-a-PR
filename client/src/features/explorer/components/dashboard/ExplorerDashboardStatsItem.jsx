@@ -28,12 +28,6 @@ function getLocationIds(userHistory) {
     .flatMap((explorationProgress) => explorationProgress.visitLog)
     .map((visit) => visit.location);
 
-  // userHistory.visitLog.map((visit) => visit.locationId);
-
-  // const locationTags = fakeLocations
-  //   .filter((location) => visitedLocationIds.includes(location.locationId))
-  //   .flatMap((location) => location.tags);
-
   return visitedLocationIds;
 }
 

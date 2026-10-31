@@ -35,7 +35,7 @@ function getBadgeCollection(badges, userHistory) {
 
 function ExplorerDetails() {
   const userId = useParams().userId;
-  // const { user, userHistory2 } = useLoaderData(userId);
+
   const { user, userHistory, badges } = useLoaderData(userId);
 
   const badgeCollection = getBadgeCollection(badges, userHistory);

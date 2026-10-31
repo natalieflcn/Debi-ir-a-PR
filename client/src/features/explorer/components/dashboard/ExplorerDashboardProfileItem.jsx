@@ -8,9 +8,6 @@ import Row from "../../../../shared/components/layout/Row";
 import RouterLink from "../../../../shared/components/routing/RouterLink";
 import concho from "../../../../assets/images/brand/default_avatar.webp";
 import { optimize } from "../../../../shared/utils/helpers";
-const StyledExplorerDashboardProfileItem = styled.div`
-  /* max-width: 50%; */
-`;
 
 function ExplorerDashboardProfileItem({ profileData }) {
   return (

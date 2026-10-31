@@ -64,7 +64,6 @@ function ExplorationMap({ coordinates }) {
                       padding: 60,
                     },
                   })}
-              // minZoom={}
               maxZoom={17}
               gestureHandling={isSingle ? "cooperative" : "greedy"}
               disableDefaultUI
@@ -77,7 +76,11 @@ function ExplorationMap({ coordinates }) {
                 if (!loc?.location) return null;
 
                 return (
-                  <AdvancedMarker key={i} position={loc?.location} anchor='CENTER'>
+                  <AdvancedMarker
+                    key={i}
+                    position={loc?.location}
+                    anchor="CENTER"
+                  >
                     <CustomPin />
                   </AdvancedMarker>
                 );

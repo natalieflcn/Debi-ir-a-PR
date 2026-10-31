@@ -60,7 +60,6 @@ export const StyledHeroLogin = styled.p`
   transition: all 0.3s;
   &:hover {
     text-shadow: var(--text-shadow-md) var(--color-light-0);
-    /* color: red; */
   }
 `;
 

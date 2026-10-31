@@ -39,20 +39,11 @@ function ExplorerExplorationCardFooterCTA({
     redirect: "the exploration",
     data: "exploration progress",
   };
-  // async function handleClearExploration(explorationId) {
-  //   console.log(explorationId);
-  //   try {
-  //     await endExploration(explorationId);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   const handleDeleteSuccess = async function () {
     navigate(`/explorations/${exploration.slug}`);
   };
 
-  console.log(exploration);
   return (
     <Row $gap="var(--gap-lg)">
       <Card $cardColor="var(--color-light-100)">

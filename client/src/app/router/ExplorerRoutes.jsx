@@ -1,5 +1,3 @@
-// explorer dashboard, hunts, profile
-
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 import Explorations from "../../features/explorer/pages/explorations/Explorations";

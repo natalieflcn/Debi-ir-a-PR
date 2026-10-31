@@ -18,8 +18,6 @@ const StyledRow = styled(Row)`
 const StyledButton = styled(Button)`
   width: 100%;
   min-width: 0;
-  /* max-width: 25rem; */
-  /* width: 100%; */
 `;
 
 const StyledCityDropdown = styled(StyledDropdown)`
@@ -29,12 +27,8 @@ const StyledCityDropdown = styled(StyledDropdown)`
 `;
 
 const StyledDropdownMenuCard = styled(DropdownMenuCard)`
-  /* width: 100%; */
   width: 100%;
   min-width: 0;
-
-  /* position: relative;
-  bottom: 3px; */
 `;
 
 const StyledDropdownMenuItem = styled(DropdownMenuItem)`
@@ -42,7 +36,6 @@ const StyledDropdownMenuItem = styled(DropdownMenuItem)`
 `;
 const StyledInput = styled(Input)`
   width: 100%;
-  /* position: relative; */
 `;
 const puertoRicoCities = [
   { id: "adjuntas", name: "Adjuntas" },
@@ -127,7 +120,7 @@ const puertoRicoCities = [
 
 function CityDropdown({ onSelect, value }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [selectedCity, setSelectedCity] = useState(null);
+
   const [search, setSearch] = useState("");
 
   const dropdownRef = useClickOutside(() => setIsOpen(false));

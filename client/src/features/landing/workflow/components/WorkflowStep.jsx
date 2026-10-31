@@ -53,7 +53,7 @@ const StyledVideo = styled.video`
 
 const StyledRow = styled(Row)`
   width: 55%;
-  /* height: 28rem; */
+
   overflow: hidden;
 
   @media (max-width: 900px) {
@@ -71,7 +71,6 @@ const WorkflowStep = function ({ step, index, stepIndex }) {
   return (
     <StyledStep $index={index} key={step.id}>
       <StyledRow>
-        {/* <Image src="src/assets/images/content/TEMP.png" $width="100%" /> */}
         <StyledVideo autoPlay loop muted playsInline preload="metadata">
           <source src={step.demo} type="video/mp4" />
         </StyledVideo>

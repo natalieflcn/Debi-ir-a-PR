@@ -62,7 +62,7 @@ const StyledLoginForm = styled.div`
   border-bottom-right-radius: var(--border-radius-lg);
   height: 100%;
   flex: 1 1 0;
-  /* width: 60%; */
+
   padding: 1.5rem;
   box-sizing: border-box;
   justify-content: center;
@@ -88,22 +88,6 @@ const StyledInput = styled(Input)`
 
   @media (max-width: 1200px) {
   }
-
-  /* @media (max-width: 900px) {
-    width: 22rem;
-  }
-
-  @media (max-width: 900px) {
-    width: 20rem;
-  }
-
-  @media (max-width: 780px) {
-    width: 17rem;
-  }
-
-  @media (max-width: 680px) {
-    width: 100%;
-  } */
 `;
 
 const ButtonsRow = styled(Row)`
@@ -200,8 +184,6 @@ function Login() {
         <Row $gap="var(--gap-xl)">
           <StyledAppForm
             formTitle="WELCOME BACK"
-            // action="/login"
-            // method="post"
             $height="100%"
             onSubmit={handleSubmit}
           >

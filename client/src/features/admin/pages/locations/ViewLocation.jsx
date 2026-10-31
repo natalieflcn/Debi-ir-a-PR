@@ -10,8 +10,6 @@ import { useParams } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 
 function ViewLocation() {
-  // const location = useLoaderData();
-
   const { exploration, location } = useLoaderData();
 
   const footerCTA = <AdminFooterCTA exploration={exploration} />;

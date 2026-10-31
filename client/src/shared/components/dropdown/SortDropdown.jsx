@@ -9,12 +9,6 @@ const StyledSortDropdown = styled.div`
 `;
 
 function SortDropdown({ categories, onSort, initState }) {
-  //   const filteredItems = data.filter((item) => {
-  //     if (selectedCategory === "All") return true;
-
-  //     return item.category === selectedCategory;
-  //   });
-
   return (
     <Dropdown
       categories={categories}

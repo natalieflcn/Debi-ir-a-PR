@@ -12,7 +12,6 @@ const StyledAmbassadorProfile = styled.div`
 `;
 
 function AmbassadorProfile() {
-  // const { profileData } = useLoaderData();
   const { user } = useLoaderData();
 
   return (

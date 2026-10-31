@@ -8,7 +8,6 @@ export async function adminExplorationsLoader({ request }) {
     await getExplorationsSummary(searchParams);
   const { data: users } = await getAllUsers();
 
-  // console.log(await getExplorationsSummary());
   return {
     explorations: explorations.data,
     total: total,

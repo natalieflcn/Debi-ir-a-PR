@@ -35,7 +35,6 @@ exports.getNewExplorationId = (req, res) => {
     data: { id: new mongoose.Types.ObjectId().toString() },
   });
 };
-// exports.updateExploration = factory.updateOne(Exploration);
 
 exports.updateExploration = catchAsync(async (req, res, next) => {
   const { id } = req.params;
@@ -72,13 +71,10 @@ exports.updateExploration = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { data: exploration } });
 });
 
-// exports.deleteExploration = factory.deleteOne(Exploration);
-
 exports.deleteExploration = catchAsync(async (req, res, next) => {
   // Retrieving Exploration and related documents
   const exploration = await Exploration.findOne({ _id: req.params.id });
 
-  console.log("deleting exploration");
   if (!exploration)
     return next(new AppError("No exploration found with that ID", 404));
 
@@ -112,8 +108,6 @@ exports.deleteExploration = catchAsync(async (req, res, next) => {
 const ITEMS_PER_PAGE = 12;
 
 exports.aliasExplorationsSummary = (req, res, next) => {
-  //   req.query.filter = {tags: }
-
   const query = {
     ...req.query,
     sort: req.query.sort || "-createdAt",
@@ -166,7 +160,7 @@ exports.updateExplorationLocation = catchAsync(async (req, res, next) => {
   });
 
   // Updating Exploration
-  // exploration.cities = exploration.locations.map((loc) => loc.city);
+
   if (req.body.updatedBy) exploration.updatedBy = req.body.updatedBy;
 
   await exploration.save({ validateModifiedOnly: true });

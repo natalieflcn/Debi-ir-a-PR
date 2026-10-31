@@ -15,32 +15,6 @@ import PageNotFound from "../../errors/PageNotFound";
 import RouteError from "../../errors/RouteError";
 import ProtectedRoute from "./ProtectedRoute";
 
-// function AppRouter() {
-//   return (
-//     <Suspense fallback={<SpinnerMini />}>
-//       <Routes>
-//         <Route path="/" element={<MainLayout />}>
-//           {PublicRoutes}
-//         </Route>
-
-//         {/* {Add Protected Route wrapping around this later} */}
-//         <Route element={<ExplorerLayout />}>{ExplorerRoutes}</Route>
-
-//         <Route path="ambassador" element={<AmbassadorLayout />}>
-//           {AmbassadorRoutes}
-//         </Route>
-
-//         {/* {Add Protected Route wrapping around this later} */}
-//         <Route path="admin" element={<AdminLayout />}>
-//           {AdminRoutes}
-//         </Route>
-
-//         <Route path="*" element={<PageNotFound />} />
-//       </Routes>
-//     </Suspense>
-//   );
-// }
-
 const AppRouter = createBrowserRouter([
   {
     path: "/",

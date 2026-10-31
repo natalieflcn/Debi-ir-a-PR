@@ -4,7 +4,7 @@ import Heading from "../typography/Heading";
 import Button from "../ui/Button";
 import { useEffect, useState } from "react";
 import Modal from "../modal/Modal";
-// import LocationForm from "./LocationForm";
+
 import Bold from "../typography/Bold";
 import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";
 import DeleteConfirmationModal from "../modal/DeleteConfirmationModal";
@@ -125,48 +125,14 @@ function CurrentLocations({ locations, exploration, onEdit, onDelete }) {
           />
         </Modal>
       )}
-      {
-        deletingLocation && (
-          <DeleteConfirmationModal
-            onClose={() => setDeletingLocation(null)}
-            onConfirmDelete={() => onDelete(deletingLocation)}
-            onSuccess={() => setDeletingLocation(null)}
-            options={handleDeleteOptions}
-          />
-        )
-
-        /* 
       {deletingLocation && (
-        <Modal onClose={() => setDeletingLocation(null)}>
-          <Row $align="center">
-            <Heading as="h6">
-              Are you sure you want to delete this location from{" "}
-              {exploration?.name ?? "this exploration"}?
-            </Heading>
-            <p>This action is irreversible.</p>
-            <Row $direction="horizontal" $gap="var(--gap-lg)">
-              <Button
-                $size="small"
-                $variation="secondary"
-                onClick={() => setDeletingLocation(null)}
-              >
-                Cancel
-              </Button>
-              <Button
-                $size="small"
-                $variation="primary"
-                onClick={() => {
-                  onDelete(deletingLocation.id);
-                  setDeletingLocation(null);
-                }}
-              >
-                Delete Location
-              </Button>
-            </Row>
-          </Row>
-        </Modal> */
-      }
-      {/* )} */}
+        <DeleteConfirmationModal
+          onClose={() => setDeletingLocation(null)}
+          onConfirmDelete={() => onDelete(deletingLocation)}
+          onSuccess={() => setDeletingLocation(null)}
+          options={handleDeleteOptions}
+        />
+      )}
     </>
   );
 }

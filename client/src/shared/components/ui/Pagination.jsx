@@ -22,7 +22,6 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
           $size="square"
           $variation={currentPage === 1 ? "disabled" : $variation}
           disabled={currentPage === 1}
-          // onClick={() => onPageChange((prev) => prev - 1)}
           onClick={() => onPageChange(currentPage - 1)}
         >
           <FaArrowLeft size={18} />
@@ -46,7 +45,6 @@ function Pagination({ currentPage, totalPages, onPageChange, $variation }) {
         $size="square"
         $variation={currentPage >= totalPages ? "disabled" : $variation}
         disabled={currentPage === totalPages}
-        // onClick={() => onPageChange((prev) => prev + 1)}
         onClick={() => onPageChange(currentPage + 1)}
       >
         <FaArrowRight size={18} />

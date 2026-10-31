@@ -20,7 +20,6 @@ const StyledSignupBackground = styled.div`
   max-width: 40%;
   flex: 1 0 40%;
 
-  /* left: 50%; */
   background-image: ${({ $variant }) =>
     $variant === "explorer" ? `url(${explorer})` : `url(${ambassador})`};
   background-size: cover;
@@ -28,7 +27,6 @@ const StyledSignupBackground = styled.div`
   background-position: center;
   align-self: stretch;
   min-height: 100%;
-  /* height: 100vh; */
 
   @media (max-width: 1200px) {
     display: none;
@@ -100,16 +98,7 @@ const LoginRow = styled(Row)`
   }
 `;
 
-// const StyledInput = styled(Input)`
-//   width: 15rem;
-// `;
 function Signup({ $variant }) {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [passwordConfirm, setConfirmPassword] = useState("");
-  // const [formErrors, setFormErrors] = useState({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
   const { registerUser } = useAuth();
   const navigate = useNavigate();
 

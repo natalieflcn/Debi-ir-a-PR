@@ -12,9 +12,6 @@ import ExplorerDashboardStatsItem from "../../components/dashboard/ExplorerDashb
 import { useLoaderData } from "react-router-dom";
 
 const StyledExplorerDashboard = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  gap: var(--gap-xl); */
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -173,29 +170,3 @@ function ExplorerDashboard() {
 }
 
 export default ExplorerDashboard;
-
-//  <Heading as="h2" $shadowColor="var(--color-blue-300)">
-//         WELCOME, NATALIE
-//       </Heading>
-
-//       <StyledRow $direction="horizontal" $gap="var(--gap-xl)">
-//         <ExplorerDashboardProfileItem profileData={profileData} />
-//         <ExplorerDashboardBadgeItem userHistory={userHistory} />
-//         <ExplorerDashboardHistoryItem userHistory={userHistory} />
-//       </StyledRow>
-
-//       <ExplorerDashboardStatsItem userHistory={userHistory} />
-
-//       <Row $gap="var(--gap-xl)">
-//         <ExplorerDashboardExplorationsItem
-//           title="Current Explorations"
-//           explorationData={currentExplorations}
-//           userProgress={userProgress}
-//         />
-
-//         <ExplorerDashboardExplorationsItem
-//           title="Featured Explorations"
-//           explorationData={featuredExplorations}
-//           userProgress={userProgress}
-//         />
-//       </Row>

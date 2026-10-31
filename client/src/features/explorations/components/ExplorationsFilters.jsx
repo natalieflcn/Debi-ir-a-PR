@@ -70,8 +70,6 @@ function ExplorationsFilters({
   showFeatured,
   onShowFeatured,
 }) {
-  // const dropdownRef = useClickOutside();
-
   return (
     <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
       <FeaturedExplorationToggle

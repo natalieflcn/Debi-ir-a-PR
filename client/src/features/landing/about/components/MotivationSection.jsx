@@ -13,15 +13,6 @@ import img6 from "../../../../assets/images/about/dtmf_tracklist.jpg";
 import img7 from "../../../../assets/images/about/dtmf_visual.jpeg";
 import img8 from "../../../../assets/images/about/dtmf_website.webp";
 
-//  `url(${img1})`,
-//   `url(${img2})`,
-//   `url(${img3})`,
-//   `url(${img4})`,
-//   `url(${img5})`,
-//   `url(${img6})`,
-//   `url(${img7})`,
-//   `url(${img8})`,
-
 const badBunnyImages = [img1, img2, img3, img4, img5, img6, img7, img8].map(
   (url) => ({ url }),
 );
@@ -86,7 +77,6 @@ export default function MotivationSection() {
         {sectionItems[4].content}
         <Row $align="center">
           <ImageCarousel images={badBunnyImages} />
-          {/* <Image src={section} $width="40%" /> */}
         </Row>
       </Card>
     </Row>

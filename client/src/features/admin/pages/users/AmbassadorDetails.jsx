@@ -37,12 +37,9 @@ function AmbassadorDetails() {
 
   const { user: loaderUser } = useLoaderData();
   const [user, setUser] = useState(loaderUser);
-  // const [title, setTitle] = useState(user.title);
+
   const [isAdmin, setIsAdmin] = useState(user.role === "admin");
 
-  // const ambassador = usersData.find(
-  //   (user) => String(user.id) === String(ambassadorId),
-  // );
   async function handleSetIsAdmin() {
     const newRole = isAdmin ? "ambassador" : "admin";
 
@@ -50,10 +47,8 @@ function AmbassadorDetails() {
       const { data } = await toggleAdmin(userId, newRole);
       setUser(data.data);
       setIsAdmin(data.data.role === "admin");
-      // trust the server's response, not your own guess
     } catch (err) {
       console.error("Failed to update role:", err);
-      // optionally surface an error to the UI here
     }
   }
 
@@ -65,12 +60,7 @@ function AmbassadorDetails() {
         </Button>
       </RouterLink>
       <StyledExplorerDetails>
-        <ProfileHeader
-          user={user}
-          title={user.title}
-          // userName={user.name}
-          // userTitle={isAdmin ? "Admin" : "Ambassador"}
-        />
+        <ProfileHeader user={user} title={user.title} />
 
         <StyledCard $cardColor="var(--color-light-100)">
           <Row $direction="horizontal" $gap="var(--gap-sm)" $align="flex-start">

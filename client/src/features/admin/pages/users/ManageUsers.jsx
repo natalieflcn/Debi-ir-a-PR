@@ -208,37 +208,6 @@ function ManageUsers() {
   const handleFilter = (value) =>
     updateParams({ role: value === "all" ? null : value });
 
-  // const [search, setSearch] = useState("");
-  // const [sortBy, setSortBy] = useState("createdAt");
-  // const [filterBy, setFilterBy] = useState("all");
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // const queriedUsers = [...usersData].filter((user) =>
-  //   search ? user.name.toLowerCase().startsWith(search.toLowerCase()) : true,
-  // );
-
-  // const filteredUsers = [...queriedUsers].filter((user) => {
-  //   if (filterBy === "all") return true;
-  //   return user.role === filterBy;
-  // });
-
-  // const sortedUsers = [...filteredUsers].sort((a, b) => {
-  //   if (sortBy === "name") return a.name.localeCompare(b.name);
-  //   else return new Date(b.createdAt) - new Date(a.createdAt);
-  // });
-
-  // const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
-
-  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  // const paginatedUsers = sortedUsers.slice(
-  //   startIndex,
-  //   startIndex + ITEMS_PER_PAGE,
-  // );
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [sortBy, filterBy, search]);
-
   return (
     <StyledUsers>
       <StyledRow $direction="horizontal" $gap="var(--gap-lg)">
@@ -261,15 +230,11 @@ function ManageUsers() {
         </DropdownRow>
       </StyledRow>
 
-      {/* {loading ? (
-        <SpinnerMini />
-      ) : ( */}
       <CondensedTable
         columns={UsersTableColumns(role)}
         rows={users}
         $theme={tableTheme}
       />
-      {/* )} */}
 
       <Pagination
         totalPages={totalPages}

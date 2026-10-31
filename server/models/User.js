@@ -67,30 +67,8 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-// Virtuals
-// userSchema.virtual("createdExplorations", {
-//   ref: "Exploration",
-//   localField: "_id",
-//   foreignField: "createdBy",
-// });
-
-// userSchema.virtual("explorationProgress", {
-//   ref: "ExplorationProgress",
-//   localField: "_id",
-//   foreignField: "user",
-// });
-
-// userSchema.virtual("badgeCollection").get(function () {
-//   if (!this.explorationProgress) return [];
-
-//   return this.explorationProgress
-//     .filter((progress) => progress.status === "completed")
-//     .map((progress) => progress.exploration.badge);
-// });
-
 userSchema.index({ name: 1 });
 userSchema.index({ createdAt: -1 });
-// userSchema.index({ email: 1 });
 
 // Middleware
 userSchema.pre("save", async function () {
@@ -105,46 +83,6 @@ userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 });
-
-// userSchema.pre(/^find/, function (docs, next) {
-//   if (!docs) return next();
-
-//   if (!Array.isArray(docs)) {
-//     if (docs.role !== "explorer") return;
-//     docs.numStops = docs.locations.length;
-//   } else {
-//     docs.forEach((doc) => {
-//       if (doc.role !== "explorer") return;
-//       doc.numStops = doc.locations.length;
-//     });
-//   }
-// });
-
-// userSchema.pre(/^find/, async function () {
-//   this.find({ active: { $ne: false } });
-// });
-
-// userSchema.post(/^find/, function () {
-//   if (!docs) return next();
-
-//   const docsArray = Array.isArray(docs) ? docs : [docs];
-
-//   docsArray.forEach((doc) => {
-//     if (doc.role === "ambassador" || doc.role === "admin") {
-//       doc.title = helpers.capitalize(doc.role);
-//     }
-//   });
-
-//   next();
-// });
-
-// userSchema.post("findOneAndUpdate", function (doc, next) {
-//   if (!doc) return next();
-//   if (doc.role === "ambassador" || doc.role === "admin") {
-//     doc.title = helpers.capitalize(doc.role);
-//   }
-//   next();
-// });
 
 // Instance Methods
 userSchema.methods.correctPassword = async function (
@@ -206,7 +144,6 @@ userSchema.methods.updateUserTitle = async function (userId) {
       status: "completed",
     });
 
-    console.log(completedExplorations);
     if (completedExplorations <= 1) this.title = "Baby Turista";
     if (completedExplorations > 1 && completedExplorations <= 5)
       this.title = "Island Wanderer";
@@ -216,8 +153,7 @@ userSchema.methods.updateUserTitle = async function (userId) {
       this.title = "Fluttering Mariposa";
     if (completedExplorations > 15 && completedExplorations <= 20)
       this.title = "Crawling Coqui";
-    // if (completedExplorations > 15 && completedExplorations <= 20)
-    //   this.title = "Brutal Bouncer";
+
     if (completedExplorations > 20 && completedExplorations <= 25)
       this.title = "Barrio Member";
     if (completedExplorations > 25 && completedExplorations < 30)
@@ -232,9 +168,3 @@ userSchema.methods.updateUserTitle = async function (userId) {
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
-// check if you can login with no token TODO
-// check if you can login with token after manipulating token TODO
-// check if you can login with token, after deleting user from mongo compass TODO
-// check if you can login with token, after token expires -- change expires_in in env variables TODO
-// check if you can login with token, after changing password

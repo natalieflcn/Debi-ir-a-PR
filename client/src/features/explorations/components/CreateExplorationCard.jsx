@@ -67,7 +67,7 @@ function CreateExplorationCard({ exploration }) {
       headerImage: exploration?.headerImage ?? [],
       tagline: exploration?.tagline ?? "",
       description: exploration?.description ?? "",
-      // images: exploration?.images ?? [],
+
       locations: exploration?.locations ?? [],
       badge: exploration?.badge ?? null,
       tags: exploration?.tags ?? [],
@@ -99,8 +99,6 @@ function CreateExplorationCard({ exploration }) {
   const handleFormSubmit = async function (formData) {
     clearErrors("root.serverError");
 
-    // console.log(submissionData);
-
     try {
       setIsUploading(true);
       setIsUploadingModalOpen(true);
@@ -112,11 +110,6 @@ function CreateExplorationCard({ exploration }) {
       );
       setValue("headerImage", headerImage);
 
-      // const images = await resolveImages(formData.images, "exploration");
-      // setValue("images", images);
-      // console.log(getValues("images"));
-
-      // TODO upload files inside of each location
       const locations = [];
       for (const loc of formData.locations) {
         locations.push({
@@ -139,12 +132,11 @@ function CreateExplorationCard({ exploration }) {
         ...formData,
         headerImage,
         badge,
-        // images,
+
         locations,
         ...(isEditing && { _id: exploration._id }),
       };
 
-      console.log(submissionData);
       // Keep uploaded files in the form, so if save fails, the files are not uploaded again
       const { data } = isEditing
         ? await updateExploration(submissionData)
@@ -413,37 +405,6 @@ function CreateExplorationCard({ exploration }) {
                 )}
               </StyledRow>
             </FormField>
-
-            {/* <FormField label="Images">
-              <StyledRow $gap="var(--gap-xs)">
-                <Controller
-                  name="images"
-                  control={control}
-                  rules={{
-                    validate: {
-                      // required: (locations) =>
-                      //   locations.length > 0 ||
-                      //   "Please provide at least one location.",
-                    },
-                  }}
-                  render={({ field }) => (
-                    <ImageUploader
-                      name="images"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <SmallText $color="var(--color-dark-200)">
-                  <Bold $color="var(--color-dark-200)">Note:</Bold> Header
-                  images from your locations will also be displayed on the
-                  Exploration page.
-                </SmallText>
-                {errors?.images?.message && (
-                  <Bold>{errors?.images?.message}</Bold>
-                )}
-              </StyledRow>
-            </FormField> */}
 
             <FormField label="Badge">
               <StyledRow $gap="var(--gap-xs)">

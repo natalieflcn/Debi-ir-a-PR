@@ -17,12 +17,7 @@ function AdminProfile() {
   return (
     <StyledAdminProfile>
       <ProfileHeader user={user} />
-      <ProfileInformation
-        // userEmail={user.email}
-        // userPassword={user.password}
-        // dateJoined={formatDate(user.createdAt)}
-        user={user}
-      />
+      <ProfileInformation user={user} />
     </StyledAdminProfile>
   );
 }

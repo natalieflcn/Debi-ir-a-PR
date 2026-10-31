@@ -67,7 +67,7 @@ const StyledIcon = styled.div`
 
 function LocationTagBuilder({ value, onChange }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedTags, setSelectedTags] = useState(value);
+ 
 
   function toggleTag(tagId) {
     if (value.includes(tagId)) {

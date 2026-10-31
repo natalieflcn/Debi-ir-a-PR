@@ -1,12 +1,8 @@
-// landing, login, create account
-
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 import RouteError from "../../errors/RouteError";
 
 import { rootLoader } from "./loaders/utils/rootLoader";
-
-// import signupLoader from "./loaders/signupLoader";
 
 const HomePage = lazy(() => import("@/features/landing/home/page/HomePage"));
 const Workflow = lazy(
@@ -30,7 +26,11 @@ const ResetPassword = lazy(() => import("@/features/auth/pages/ResetPassword"));
 const Unauthorized = lazy(() => import("@/errors/Unauthorized"));
 
 const PublicRoutes = [
-  { index: true, element: <HomePage />, loader: rootLoader },
+  {
+    index: true,
+    element: <HomePage />,
+    // loader: rootLoader
+  },
   { path: "how-it-works", element: <Workflow /> },
   { path: "about", element: <About /> },
   { path: "resources", element: <Resources /> },
@@ -38,37 +38,28 @@ const PublicRoutes = [
   {
     path: "login",
     element: <Login />,
-    loader: rootLoader,
-    //  loader: loginLoader
+    // loader: rootLoader,
   },
   {
     path: "signup/explorer",
     element: <ExplorerSignup />,
-    loader: rootLoader,
-    // loader: signupLoader,
+    // loader: rootLoader,
   },
   {
     path: "signup/ambassador",
     element: <AmbassadorSignup />,
-    loader: rootLoader,
-    // loader: signupLoader,
+    // loader: rootLoader,
   },
   {
     path: "forgot-password",
     element: <ForgotPassword />,
-
-    // loader: signupLoader,
   },
   {
     path: "reset-password/:token",
     element: <ResetPassword />,
-
-    // loader: signupLoader,
   },
 
   { path: "unauthorized", element: <Unauthorized /> },
 ];
 
 export default PublicRoutes;
-
-// { path: "profile", element: <ExplorerProfile />, loader: profileLoader },

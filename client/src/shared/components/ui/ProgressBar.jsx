@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const OuterBar = styled.div`
-  /* position: relative; */
   height: 2rem;
   width: 100%;
   background-color: var(--color-light-100);
@@ -12,9 +11,6 @@ const OuterBar = styled.div`
 
 const InnerBar = styled.div`
   height: 100%;
-
-  /* height: 75%; */
-  /* top: 10%; */
 
   background-color: var(--color-red-200);
   width: ${({ $width }) => $width};
@@ -29,7 +25,6 @@ const CompletedNumber = styled.span`
   font-weight: var(--font-weight-boldest);
 
   @media (max-width: 450px) {
-    /* font-weight: var(--font-weight-medium); */
     font-size: var(--font-size-xs);
     padding: 1rem 0.5rem;
   }

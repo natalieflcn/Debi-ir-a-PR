@@ -78,12 +78,6 @@ function ExplorerHeaderDetails({
   );
 }
 
-// {userCompleted ? ( <ExplorationLocationHeading as="h6" $color="var(--color-dark-200)">
-
-//         <IoCheckmarkCircleSharp size={25} color="var(--color-red-300)" /> <p>Completed on {userHistory.visitedAt}</p>
-
-//     </ExplorationLocationHeading>}
-
 function ExplorerFooterCTA({
   userCompleted,
   onToggleCompleted,

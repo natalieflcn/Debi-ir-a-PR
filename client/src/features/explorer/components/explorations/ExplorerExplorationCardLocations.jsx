@@ -38,25 +38,13 @@ const StyledHeadingName = styled(Heading)`
   }
 `;
 
-// function getUserCompletedLocations(locations, userHistory) {
-//   const completedLocations = locations.filter((location) =>
-//     userHistory.visitLog.some((visit) => visit.locationId === location.id),
-//   );
-
-//   return completedLocations;
-// }
-
 function ExplorerExplorationCardLocations({
   locations,
   hasStarted,
-  // exploration,
+
   userHistory,
   mutateIsPending = false,
 }) {
-  // const completedLocationIds = new Set(
-  //   userHistory.visitLog.map((visit) => visit.locationId),
-  // );
-
   return locations.map((location, i) => {
     const isCompleted = userHistory?.visitLog?.some(
       (visit) => visit.location.toString() === location._id.toString(),
@@ -64,7 +52,6 @@ function ExplorerExplorationCardLocations({
 
     return (
       <Row key={i}>
-        {/* KEY HERE */}
         {mutateIsPending && (
           <Row $align="center">
             <Spinner />

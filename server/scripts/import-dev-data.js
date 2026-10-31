@@ -6,12 +6,12 @@ const Exploration = require("../models/Exploration");
 
 const User = require("../models/User");
 
-// const ExplorationProgress = require("../models/ExplorationProgress");
+
 
 // Connecting to database
 dotenv.config({ path: `${__dirname}/../config.env` });
 
-// console.log(process.env);
+
 
 const DB = process.env.DB.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 
@@ -23,45 +23,6 @@ mongoose
     console.log(err);
   });
 
-// Location Data
-// const locations = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/locations.json`),
-// );
-
-// const importLocationData = async () => {
-//   try {
-//     // Retrieving explorations and creating an object that matches each explorationId with their _id
-//     const explorations = await Exploration.find();
-//     const explorationMap = {};
-
-//     explorations.forEach((exp) => (explorationMap[exp.slug] = exp._id));
-
-//     // Updating locations with exploration's _id
-//     const updatedLocations = locations.map((loc) => {
-//       const explorationMongoId = explorationMap[loc.explorationId];
-
-//       return { ...loc, explorationId: explorationMongoId };
-//     });
-
-//     await Location.create(updatedLocations);
-//     console.log("Locations data successfully updated and imported!");
-//   } catch (err) {
-//     console.log("Updating and importing locations data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
-
-// const deleteLocationData = async () => {
-//   try {
-//     await Location.collection.drop();
-//     console.log("Locations collection successfully dropped and deleted!");
-//   } catch (err) {
-//     console.log("Deleting locations data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
 
 // Exploration Data
 const explorations = JSON.parse(
@@ -90,59 +51,6 @@ const deleteExplorationData = async () => {
   process.exit();
 };
 
-// // Badges Data
-// const badges = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/badges.json`, "utf-8"),
-// );
-
-// const importBadgeData = async () => {
-//   try {
-//     await Badge.create(badges);
-//     console.log("Badges data successfully imported!");
-//   } catch (err) {
-//     console.log("Importing Badges data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
-
-// const deleteBadgeData = async () => {
-//   try {
-//     await Badge.deleteMany();
-//     console.log("Badges data successfully deleted!");
-//   } catch (err) {
-//     console.log("Deleting badges data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
-
-// // BadgeCollections Data
-// const BadgeCollections = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/BadgeCollections.json`, "utf-8"),
-// );
-
-// const importBadgeCollectionData = async () => {
-//   try {
-//     await BadgeCollection.create(BadgeCollections);
-//     console.log("BadgeCollections data successfully imported!");
-//   } catch (err) {
-//     console.log("Importing BadgeCollections data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
-
-// const deleteBadgeCollectionData = async () => {
-//   try {
-//     await BadgeCollection.deleteMany();
-//     console.log("BadgeCollections data successfully deleted!");
-//   } catch (err) {
-//     console.log("Deleting BadgeCollections data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
 
 // Users Data
 const users = JSON.parse(
@@ -170,33 +78,6 @@ const deleteUsersData = async () => {
   }
   process.exit();
 };
-
-// // Visit Data
-// const visits = JSON.parse(
-//   fs.readFileSync(`${__dirname}/../dev-data/visit.json`, "utf-8"),
-// );
-
-// const importVisitData = async () => {
-//   try {
-//     await Visit.create(visit);
-//     console.log("Visits data successfully imported!");
-//   } catch (err) {
-//     console.log("Importing visits data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
-
-// const deleteVisitData = async () => {
-//   try {
-//     await Visit.deleteMany();
-//     console.log("Visits data successfully deleted!");
-//   } catch (err) {
-//     console.log("Deleting visits data failed.");
-//     console.log(err);
-//   }
-//   process.exit();
-// };
 
 // // ExplorationProgress Data
 const explorationProgress = JSON.parse(

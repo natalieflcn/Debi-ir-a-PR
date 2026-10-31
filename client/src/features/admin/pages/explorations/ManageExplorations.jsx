@@ -196,8 +196,7 @@ function ManageExplorations() {
 
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
-  // const sortBy = searchParams.get("sort") ?? "createdAt";
-  // const filterBy = searchParams.get("tag") ?? "All";
+
   const showFeatured = searchParams.get("featured") === "true";
   const showMyExplorations = searchParams.get("createdBy") === user.id;
   const isLoading = navigation.state === "loading";
@@ -239,66 +238,6 @@ function ManageExplorations() {
     updateParams({ createdBy: checked ? user.id : null });
 
   const handleSelectViewMode = (mode) => setViewMode(mode);
-
-  // const [search, setSearch] = useState("");
-  // const [sortBy, setSortBy] = useState("createdAt");
-  // const [filterBy, setFilterBy] = useState("all");
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [showFeatured, setShowFeatured] = useState(false);
-  // const [showMyExplorations, setShowMyExplorations] = useState(false);
-
-  // const processedExplorations = [...explorations]
-  //   // Queried explorations
-  //   .filter((exploration) =>
-  //     search
-  //       ? exploration.name.toLowerCase().startsWith(search.toLowerCase())
-  //       : true,
-  //   )
-  //   // Filter explorations
-  //   .filter((exploration) =>
-  //     filterBy === "all"
-  //       ? true
-  //       : exploration.tags.some((tag) =>
-  //           tag.toLowerCase().includes(filterBy.toLowerCase()),
-  //         ),
-  //   )
-  //   // Featured explorations
-  //   .filter((exploration) =>
-  //     showFeatured ? exploration.featured === true : true,
-  //   )
-  //   // My Explorations
-  //   .filter((exploration) =>
-  //     showMyExplorations ? exploration.createdBy === user.id : true,
-  //   )
-  //   // Sort Explorations
-  //   .sort((a, b) => {
-  //     switch (sortBy) {
-  //       case "numStops":
-  //         return a.numStops - b.numStops;
-
-  //       case "name":
-  //         return a.name.localeCompare(b.name);
-
-  //       case "createdAt":
-  //       default:
-  //         return new Date(b.createdAt) - new Date(a.createdAt);
-  //     }
-  //   });
-
-  // // const totalPages = Math.ceil(processedExplorations.length / ITEMS_PER_PAGE);
-  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  // const paginatedExplorations = processedExplorations.slice(
-  //   startIndex,
-  //   startIndex + ITEMS_PER_PAGE,
-  // );
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [sortBy, filterBy, showFeatured, showMyExplorations, search]);
-
-  // const handleSelectViewMode = function (mode) {
-  //   setViewMode(mode);
-  // };
 
   return (
     <StyledExplorations>

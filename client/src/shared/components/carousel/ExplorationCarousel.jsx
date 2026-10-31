@@ -59,9 +59,8 @@ const StyledRow = styled(Row)`
 
   @media (max-width: 1150px) {
     flex-direction: column;
-    /* align-items: center; */
+
     text-align: center;
-    /* width: 100%; */
   }
 `;
 
@@ -76,7 +75,6 @@ const ImageContainer = styled.div`
 
 function ExplorationCarousel({ explorationData, userProgress }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    // loop: explorationData.length > 1,
     align: "start",
     slidesToScroll: 1,
   });
@@ -109,7 +107,6 @@ function ExplorationCarousel({ explorationData, userProgress }) {
     };
   }, [emblaApi]);
 
-  console.log(explorationData);
   return (
     <CarouselWrapper>
       <CarouselViewport ref={emblaRef}>

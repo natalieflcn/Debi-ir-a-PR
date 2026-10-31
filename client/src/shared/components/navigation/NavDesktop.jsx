@@ -12,7 +12,6 @@ const StyledNavDesktop = styled.ul`
   letter-spacing: var(--letter-spacing-museo-tight);
   text-transform: uppercase;
 
-  // TODO fix media queries later
   @media (max-width: 1200px) {
     font-size: var(--font-size-md);
   }

@@ -1,5 +1,3 @@
-// admin dashboard, manage hunts, manage users
-
 import { lazy } from "react";
 import { redirect, Route } from "react-router-dom";
 
@@ -72,11 +70,7 @@ const AdminRoutes = [
     element: <CreateExploration />,
     loader: adminExplorationLoader,
   },
-  // {
-  //   path: "explorations/:explorationId/locations/create",
-  //   element: <CreateLocation />,
-  //   loader: adminExplorationLoader,
-  // },
+
   {
     path: "explorations/:explorationId/locations/:locationId",
     element: <ViewLocation />,

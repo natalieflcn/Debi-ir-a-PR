@@ -70,7 +70,6 @@ function Exploration() {
   const locationDetails = (
     <ExplorerExplorationCardLocations
       hasStarted={hasStarted}
-      // exploration={exploration}
       locations={exploration.locations}
       userHistory={userHistory}
       mutateIsPending={handleStartExploration.isPending}
@@ -82,7 +81,6 @@ function Exploration() {
       hasStarted={hasStarted}
       exploration={exploration}
       userHistory={userHistory}
-      // onStartExploration={handleStartExploration}
       onStartExploration={() => handleStartExploration.mutate(exploration._id)}
       onEndExploration={() => handleEndExploration.mutate(exploration._id)}
       mutateIsPending={handleStartExploration.isPending}
@@ -96,10 +94,6 @@ function Exploration() {
       {(isError || handleStartExploration.isError) && (
         <span>Error: {error.message}</span>
       )}
-
-      {/* {
-    mutation.isSuccess ? "Exploration Started!" : null;
-  } */}
 
       {isSuccess && (
         <ExplorationCard

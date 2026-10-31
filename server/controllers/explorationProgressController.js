@@ -18,16 +18,6 @@ exports.getUserExplorationProgress = factory.getAll(
   }),
 );
 
-// Exploration Progress Routes (Return Exploration Progress object for specific exploration -- as the logged in user)
-
-// exports.getMyExplorationProgress = factory.getOne(
-//   ExplorationProgress,
-//   (req) => ({
-//     user: req.user.id,
-//     exploration: req.params.explorationId,
-//   }),
-// );
-
 exports.getAllMyExplorationProgress = factory.getAll(
   ExplorationProgress,
   (req) => ({ user: req.user.id }),
@@ -41,8 +31,6 @@ exports.getMyExplorationProgress = catchAsync(async (req, res, next) => {
 
   const doc = await query;
 
-  // if (!doc) return next(new AppError("No document found with that ID.", 404));
-
   res.status(200).json({ status: "success", data: { data: doc || null } });
 });
 
@@ -53,11 +41,6 @@ exports.createExplorationProgress = factory.createOne(
     exploration: req.params.explorationId,
   }),
 );
-
-// exports.deleteExplorationProgress = factory.deleteOne(
-//   ExplorationProgress,
-//   (req) => ({ user: req.user._id, exploration: req.params.explorationId }),
-// );
 
 exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
   const progress = await ExplorationProgress.findOneAndDelete({
@@ -72,7 +55,6 @@ exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({ _id: req.user.id });
 
- 
   if (!user) {
     return next(new AppError("No user found with that ID.", 404));
   }
@@ -125,7 +107,6 @@ exports.addExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   progress.lastVisitedAt = new Date();
 
-  
   await progress.save();
 
   // Updating Explorer Title
@@ -155,7 +136,6 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
     (visit) => visit.location.toString() !== req.params.locationId,
   );
 
-
   progress.visitLog = filteredVisits;
 
   // Updating Exploration Progress Derived Data
@@ -177,96 +157,3 @@ exports.deleteExplorationProgressVisit = catchAsync(async (req, res, next) => {
 
   res.status(200).json({ status: "success", data: { data: progress } });
 });
-
-// exports.deleteExplorationProgress = factory.deleteOne(
-//   ExplorationProgress,
-//   (req) => ({
-//     user: req.user._id,
-//     exploration: req.params.explorationId,
-//   }),
-// );
-
-// exports.deleteExplorationProgress = catchAsync(async (req, res, next) => {
-//   const progress = await findOneAndDelete({
-//     user: req.user._id,
-//     exploration: req.params.explorationId,
-//   });
-
-//   if (!progress)
-//     return next(
-//       new AppError("No exploration progress found with that ID.", 404),
-//     );
-
-//   // Updating Explorer Title
-//   const user = await User.findById(req.user.id);
-//   if (!user) next(new AppError("No user found with that ID.", 404));
-
-//   await user.updateUserTitle(req.user._id);
-//   res.status(204).json({ status: "success", data: null });
-// });
-
-// exports.getUserExplorationProgress = catchAsync(async (req, res, next) => {
-//   console.log(req.params);
-//   const explorationProgress = await ExplorationProgress.find({
-//     user: req.params.userId,
-//   });
-
-//   if (!explorationProgress)
-//     return next(
-//       new AppError("No exploration progress found for this user.", 404),
-//     );
-
-//   res.status(200).json({
-//     status: "success",
-//     results: explorationProgress.length,
-//     data: { explorationProgress },
-//   });
-// });
-
-// exports.getMyExplorationProgress = catchAsync(async (req, res, next) => {
-//   const explorationProgress = await ExplorationProgress.findOne({
-//     user: req.user._id,
-//     exploration: req.params.explorationId,
-//   });
-
-//   if (!explorationProgress)
-//     return next(
-//       new AppError(
-//         "No exploration progress found for this user and exploration.",
-//         404,
-//       ),
-//     );
-
-//   res.status(200).json({ status: "success", data: { explorationProgress } });
-// });
-
-// exports.createExplorationProgress = catchAsync(async (req, res, next) => {
-//   const newExplorationProgress = await ExplorationProgress.create({
-//     exploration: req.params.explorationId,
-//     user: req.user._id,
-//     ...req.body,
-//   });
-
-//   res.status(201).json({
-//     status: "success",
-//     data: { explorationProgress: newExplorationProgress },
-//   });
-// });
-
-// exports.updateExplorationProgress = catchAsync(async (req, res, next) => {
-//   const explorationProgress = await ExplorationProgress.findOneAndUpdate(
-//     { user: req.user._id, exploration: req.params.explorationId },
-//     req.body,
-//     { new: true, runValidators: true },
-//   );
-
-//   if (!explorationProgress)
-//     return next(
-//       new AppError(
-//         "No exploration progress found for this user and exploration.",
-//         404,
-//       ),
-//     );
-
-//   res.status(200).json({ status: "success", data: { explorationProgress } });
-// });

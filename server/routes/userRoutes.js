@@ -23,22 +23,19 @@ router.patch(
 
 router.get(
   "/me",
-  // authController.protect,
+
   userController.getMe,
   userController.getUser, //TODO
 );
 
 router.patch(
   "/updateMe",
-  // authController.protect,
-  // authController.protect,
 
   userController.updateMe,
 );
 router.delete(
   "/deleteMe",
-  // authController.protect,
-  // authController.protect,
+
   userController.deleteMe,
 );
 
@@ -46,23 +43,17 @@ router.use(authController.restrictTo("admin", "ambassador"));
 
 router.get(
   "/",
-  // authController.protect,
-  // authController.restrictTo("admin", "ambassador"),
+
   userController.getAllUsers,
 );
 
 router
-  .route(
-    "/:id",
-    // authController.protect,
-    // authController.restrictTo("admin", "ambassador"),
-  )
+  .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
 router.route("/:id/updatePassword").patch(authController.updateUserPassword);
-// router.get("/:userId/badgeCollection");
 
 router.use(
   "/:userId/user-exploration-progress",

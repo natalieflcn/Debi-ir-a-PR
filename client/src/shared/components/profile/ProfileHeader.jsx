@@ -73,7 +73,7 @@ const explorerTitlesTable = {
     { title: "Tropical Cruiser", milestones: "6-10 Explorations" },
     { title: "Fluttering Mariposa", milestones: "11-15 Explorations" },
     { title: "Crawling Coqui", milestones: "16-20 Explorations" },
-    // { title: "Brutal Bouncer", milestones: "21-25 Explorations" },
+
     { title: "Barrio Member", milestones: "21-25 Explorations" },
     { title: "Taino Trailblazer", milestones: "26-30 Explorations" },
     { title: "Isla Veteran", milestones: "31-34 Explorations" },
@@ -150,7 +150,7 @@ const InfoButtonTexts = {
 
 const ImageContainer = styled.div`
   width: 100%;
-  /* height: 18rem; */
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,9 +200,6 @@ const StyledRow = styled(Row)`
   }
 `;
 const ProfileHeader = function ({ user, title }) {
-  // const { user, role } = useAuth();
-  // const { user } = profileLoader();
-  // console.log(user);
   const [isEditingName, setIsEditingName] = useState(false);
   const [name, setName] = useState(user.name);
   const [errors, setErrors] = useState(null);
@@ -266,7 +263,6 @@ const ProfileHeader = function ({ user, title }) {
     setIsUploadingAvatar(true);
     setErrors((prev) => ({ ...prev, avatar: "" }));
 
-    // TODO adjust to accomodate for admins/ambassadors changing users avatars
     try {
       const [avatar] = isMyProfile
         ? await resolveImages([file], "myUser")

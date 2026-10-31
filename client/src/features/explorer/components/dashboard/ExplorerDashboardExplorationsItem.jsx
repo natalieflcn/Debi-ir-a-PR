@@ -49,43 +49,6 @@ function ExplorerDashboardExplorationsItem({
             explorationData={explorationData}
             userProgress={userProgress}
           />
-          {/* <ExplorationGrid>
-          {explorationData.map((exploration) => (
-            <Card
-              $cardColor="var(--color-light-200)"
-              $shadowColor="var(--color-brown-200)"
-              $cardShadow="insetMD"
-              key={exploration.id}
-            >
-              <StyledRow
-                $direction="horizontal"
-                $align="flex-start"
-                $gap="var(--gap-lg)"
-              >
-                <Image src="/src/assets/images/content/TEMP.png" $width="40%" />
-                <Row $gap="var(--gap-lg)">
-                  <Row>
-                    <Heading as="h5">{exploration.name}</Heading>
-                    <p>{exploration.description}</p>
-                  </Row>
-                  <Row $gap="var(--gap-sm)">
-                    <Bold $color="var(--color-dark-200)">
-                      {userProgress.find(
-                        (explorationProgress) =>
-                          explorationProgress.explorationId === exploration.id,
-                      )?.userProgress ?? 0}
-                      % complete
-                    </Bold>
-                    <ProgressBar label={false} />
-                    <Button $variation="primary" $size="small">
-                      Continue Exploring
-                    </Button>
-                  </Row>
-                </Row>
-              </StyledRow>
-            </Card>
-          ))}
-        </ExplorationGrid> */}
         </ExplorationItemWrapper>
       </DashboardItem>
     </>

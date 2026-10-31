@@ -32,9 +32,6 @@ const ManageExplorations = lazy(
 const AmbassadorProfile = lazy(
   () => import("@/features/ambassador/pages/profile/AmbassadorProfile"),
 );
-// const EditAmbassadorProfile = lazy(
-//   () => import("@/features/ambassador/pages/profile/EditAmbassadorProfile"),
-// );
 const ManageExplorers = lazy(
   () => import("@/features/ambassador/pages/users/ManageExplorers"),
 );

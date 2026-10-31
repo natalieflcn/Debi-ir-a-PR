@@ -4,22 +4,18 @@ const SIGNATURE_ROUTES = {
   exploration: "/uploads/exploration-signature",
   myUser: "/uploads/user-signature",
   otherUser: "/uploads/user-signature",
-  // badge: "/uploads/badge-signature",
 };
 
 async function uploadFiles(files, type, id) {
   if (files.length === 0) return [];
 
-  // console.log("UPLOAD FILES ID");
-  // console.log(files, type, id);
-  // console.log(`${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`);
   const { data } = await apiFetch(
     `${SIGNATURE_ROUTES[type]}${id ? `/${id}` : ""}`,
     {
       method: "POST",
     },
   );
-  const signature = data; // adjust to your envelope
+  const signature = data;
 
   const uploadOne = async (file) => {
     const form = new FormData();
@@ -41,7 +37,7 @@ async function uploadFiles(files, type, id) {
 
     if (!res.ok) {
       const err = await res.json();
-      console.log(err);
+      // console.log(err);
       throw new Error(`Image Upload Failed: ${err.error.message}`);
     }
 

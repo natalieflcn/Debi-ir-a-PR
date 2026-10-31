@@ -71,7 +71,7 @@ input:focus,
 button:focus,
 textarea:focus,
 select:focus {
-  // TODO add custom color later
+
 }
 
 a, a:visited, a:hover, a:active{
@@ -83,16 +83,13 @@ ul {
   list-style: none;
 }
 
-/* *, *::before, *::after {
-  box-sizing: border-box;
-} */
 
   
 // My Global Styles
 body {
   font-family:  sans-serif, Helvetica;
   font-weight: 300;
-  /* background-color: var(--color-blue-200); */
+ 
   background-color: ${({ theme }) => theme.backgroundColor};
   color: var(--color-light-100);
   line-height: var(--line-height-md);
@@ -107,20 +104,14 @@ body {
 }
 
 body::before{
-  /* content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.9; 
-  background-image: url('src/assets/images/ui/BlueOverlay.png'); */
+ 
 
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
 
-  /* background-image: url('/src/assets/images/ui/BlueOverlay.png'); */
+
   background-image: ${({ theme }) => theme.backgroundImage};
   background-size: cover;
   background-position: center;
@@ -134,9 +125,6 @@ body::before{
 }
 
 
-/* * {
-  outline: 1px solid red;
-} */
 
 `;
 

@@ -37,7 +37,6 @@ function DeleteConfirmationModal({
         onClose();
       }, 1500);
     } catch (err) {
-      console.log(err);
       setStatus("error");
       setErrorMessage(err.message);
     }

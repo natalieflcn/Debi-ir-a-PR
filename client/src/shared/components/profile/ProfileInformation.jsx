@@ -37,14 +37,6 @@ const ProfileRow = styled.div`
   align-items: start;
   gap: var(--gap-lg) var(--gap-xl);
 
-  /* @media (max-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "label value"
-      "button button";
-    row-gap: var(--gap-sm);
-  } */
-
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -52,7 +44,7 @@ const ProfileRow = styled.div`
       "value"
       "button";
     row-gap: var(--gap-sm);
-    /* justify-items: center; */
+
     text-align: center;
   }
 `;
@@ -65,11 +57,10 @@ const ButtonArea = styled.div`
   grid-area: button;
   justify-self: flex-end;
   width: 13rem;
-  /* border: 1px solid red; */
 
   @media (max-width: 800px) {
     width: 100%;
-    justify-self: inherit; // or flex-end, your call
+    justify-self: inherit;
   }
 `;
 
@@ -102,13 +93,6 @@ const StyledRow = styled(Row)`
     grid-template-columns: minmax(0, 1fr);
     gap: var(--gap-md);
   }
-
-  /* @media (max-width: 500px) {
-    input {
-      justify-items: center;
-      width: 75%;
-    }
-  } */
 `;
 
 const InformationLabel = styled(Heading)`
@@ -137,7 +121,6 @@ const ButtonsRow = styled(Row)`
 
   button {
     width: 100%;
-    /* flex-grow: 1; */
   }
 
   @media (max-width: 500px) {

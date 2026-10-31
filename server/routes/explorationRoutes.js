@@ -7,22 +7,24 @@ const router = express.Router();
 
 router.use(authController.protect);
 // Flat Routes
-router.route("/").get(explorationController.getAllExplorationData).post(
-  // authController.protect(),
-  authController.restrictTo("admin", "ambassador"),
-  explorationController.createExploration,
-);
+router
+  .route("/")
+  .get(explorationController.getAllExplorationData)
+  .post(
+    authController.restrictTo("admin", "ambassador"),
+    explorationController.createExploration,
+  );
 
-router.route("/summary").get(
-  // authController.protect(),
-  explorationController.aliasExplorationsSummary,
-  explorationController.getAllExplorationData,
-);
+router
+  .route("/summary")
+  .get(
+    explorationController.aliasExplorationsSummary,
+    explorationController.getAllExplorationData,
+  );
 
 router
   .route("/getAllBadges")
   .get(explorationController.aliasBadges, explorationController.getAllBadges);
-// router.use();
 
 router
   .route("/validate-location")
@@ -35,12 +37,10 @@ router
   .route("/:id")
   .get(explorationController.getExploration)
   .patch(
-    // authController.protect,
     authController.restrictTo("admin", "ambassador"),
     explorationController.updateExploration,
   )
   .delete(
-    // authController.protect,
     authController.restrictTo("admin", "ambassador"),
     explorationController.deleteExploration,
   );
@@ -56,9 +56,6 @@ router
     explorationController.deleteExplorationLocation,
   );
 
-// router
-//   .route("/:explorationId/badge")
-//   .get(explorationController.getExplorationBadge);
 router.use(
   "/:explorationId/my-exploration-progress",
   explorationProgressExplorerRouter,

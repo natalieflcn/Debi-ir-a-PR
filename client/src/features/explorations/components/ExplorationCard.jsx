@@ -22,7 +22,7 @@ import {
   StyledExplorationCard,
   StyledHeaderDetailsRow,
 } from "../../explorations/components/explorationCard.styles";
-// import { Carousel } from "nuka-carousel";
+
 import {
   ExplorationLocationTag,
   TagCollection,
@@ -41,19 +41,6 @@ function ExplorationCard({
   footerCTA,
   type = "",
 }) {
-  // const derivedLocationTags = [
-  //   ...new Set(exploration.locations.flatMap((location) => location.tags)),
-  // ];
-
-  // async function handleStartExploration() {
-  //   console.log("button clicked");
-  //   try {
-  //     const { data } = await startExploration(exploration._id);
-  //     console.log(data.data);
-  //   } catch (err) {
-  //     console.log("Failed to start exploration", err);
-  //   }
-  // }
   const coordinates = exploration?.locations.map((loc) => {
     if (!loc?.map) return null;
 
@@ -106,13 +93,6 @@ function ExplorationCard({
                   </Bold>
                 </Row>
 
-                {/* {exploration.cities.map((city, i) => (
-                <Row $direction="horizontal" $gap="var(--gap-sm)" key={i}>
-                  <IoLocationSharp color="var(--color-red-300)" />
-                  <Bold $color="var(--color-dark-200)">{city}, PR</Bold>
-                </Row>
-              ))} */}
-
                 <Row $direction="horizontal" $gap="var(--gap-sm)">
                   <IoLocationSharp color="var(--color-red-300)" />
                   <Bold $color="var(--color-dark-200)">
@@ -144,11 +124,6 @@ function ExplorationCard({
                 {exploration.tags.map((tag) => (
                   <ExplorationTag key={tag}>{capitalize(tag)}</ExplorationTag>
                 ))}
-                {/* {derivedLocationTags.map((tag) => (
-                <ExplorationLocationTag key={tag}>
-                  {capitalize(tag)}
-                </ExplorationLocationTag>
-              ))} */}
               </TagCollection>
             </ExplorationCardAbout>
 
@@ -162,35 +137,6 @@ function ExplorationCard({
           </ExplorationDetailsRow>
 
           <ExplorationMap coordinates={coordinates} />
-
-          {/* <ExplorationImagesRow
-            $direction="horizontal"
-            $wrap="wrap"
-            $align="center"
-            $gap="var(--gap-md)"
-          >
-            {" "} */}
-          {/* <Carousel
-            // autoplay
-            // showDots
-            showArrows="hover"
-            // autoPlay={true}
-            // autoplayInterval={3000}
-            wrapMode="wrap"
-          >
-            {exploration.images.map((image, i) => (
-              <Image
-                src={image?.url}
-                $align="center"
-                $width="100%"
-                $height="23rem"
-                $objectFit="cover"
-                key={i}
-              />
-            ))}
-          </Carousel> */}
-
-          {/* </ExplorationImagesRow> */}
 
           {derivedImages.length > 0 && <ImageCarousel images={derivedImages} />}
 

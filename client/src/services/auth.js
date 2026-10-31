@@ -7,14 +7,6 @@ export async function signup(path, { name, email, password, passwordConfirm }) {
     method: "POST",
     body: JSON.stringify({ name, email, password, passwordConfirm }),
   });
-
-  //   if (!res.ok) {
-  //     throw new Response("Sign up failed. Please try again.", {
-  //       status: res.status,
-  //     });
-  //   }
-
-  //   return res.json();
 }
 
 export const signupExplorer = (data) => signup("explorer", data);
@@ -27,13 +19,7 @@ export async function login({ email, password }) {
     body: JSON.stringify({ email, password }),
   });
 
-  //   if (!res.ok) {
-  //     throw new Response("Login failed. Please try again.", {
-  //       status: res.status,
-  //     });
-  //   }
 
-  //   return res.json();
 }
 
 export async function logout() {
@@ -69,7 +55,6 @@ export async function updateUserPassword({
 }
 
 export async function forgotPassword(email) {
-
   return await apiFetch(`/users/forgotPassword`, {
     method: "POST",
     body: JSON.stringify({ email: email }),
@@ -77,7 +62,6 @@ export async function forgotPassword(email) {
 }
 
 export async function resetPassword({ token, password, passwordConfirm }) {
- 
   return await apiFetch(`/users/resetPassword/${token}`, {
     method: "PATCH",
     body: JSON.stringify({

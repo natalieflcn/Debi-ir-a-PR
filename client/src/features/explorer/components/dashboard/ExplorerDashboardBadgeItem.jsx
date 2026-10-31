@@ -29,12 +29,6 @@ function ExplorerDashboardBadgeItem({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Calc
-
-  // const recentBadge = userHistory.badgeCollection.sort(
-  //   (a, b) => a.earnedAt > b.earnedAt,
-  // )[0];
-
   // Calculating Last Earned Badge
   const lastCompletedExploration = userHistory
     .filter(
@@ -45,10 +39,6 @@ function ExplorerDashboardBadgeItem({
   const recentBadge = earnedBadges.find(
     (badge) => lastCompletedExploration.exploration === badge.exploration,
   );
-
-  // const recentBadgeName = badges?.find(
-  //   (badge) => badge.id === recentBadge.badgeId,
-  // )?.name;
 
   return (
     <DashboardItem $variation="center">

@@ -98,40 +98,6 @@ function AmbassadorDashboardTopExplorations({
 
   //
 
-  // const explorationEngagement2 = explorations
-  //   .map((exploration) => {
-  //     const started = userHistories.filter((history) =>
-  //       history.explorationProgress.some(
-  //         (entry) =>
-  //           entry.explorationId === exploration.id &&
-  //           entry.status !== "not_started",
-  //       ),
-  //     ).length;
-
-  //     const completed = userHistories.filter((history) =>
-  //       history.explorationProgress.some(
-  //         (entry) =>
-  //           entry.explorationId === exploration.id &&
-  //           entry.status === "completed",
-  //       ),
-  //     ).length;
-
-  //     return {
-  //       id: exploration.id,
-  //       name: exploration.name,
-  //       numStops: exploration.numStops,
-  //       numStarted: started,
-  //       numCompleted: completed,
-  //     };
-  //   })
-  //   .sort((a, b) => {
-  //     if (b.numCompleted !== a.numCompleted) {
-  //       return b.numCompleted - a.numCompleted; // primary: most completed first
-  //     }
-  //     return b.numStarted - a.numStarted;
-  //   }) // most completed first
-  //   .slice(0, 5); // top 5 only
-
   return (
     <DashboardItem $variation="center">
       <Heading as="h4" $color="var(--color-red-400)">

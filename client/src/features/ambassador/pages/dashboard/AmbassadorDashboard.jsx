@@ -19,15 +19,6 @@ const StyledAmbassadorDashboard = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--gap-xl);
-
-  /* profile exploration userstats
-  newexplorers
-  top explorers
-  totalexplorations explorationscompleted
-  topexplorations
-  totallocations locationsexplored
-  toplocations
-   */
 `;
 
 const StyledAmbassadorHighlights = styled.div`
@@ -74,10 +65,6 @@ const GridArea = styled.div`
 function AmbassadorDashboard() {
   const { users, profileData, explorations, explorationProgress, userStats } =
     useLoaderData();
-
-  // const explorersData = users.filter((user) => user.role === "explorer");
-
-  // const { user } = useAuth();
 
   return (
     <StyledAmbassadorDashboard>

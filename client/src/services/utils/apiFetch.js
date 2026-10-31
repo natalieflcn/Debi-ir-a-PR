@@ -25,7 +25,7 @@ export async function apiFetch(path, options = {}) {
       const body = await res.json();
       message = body.message ?? message;
     } catch {
-      // body wasn't JSON, keep the fallback
+      //fallback
     }
 
     if (res.status === 429) {

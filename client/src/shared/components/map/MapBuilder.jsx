@@ -36,7 +36,6 @@ function MapBuilder({
   value,
   onChange,
 }) {
-  //   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mutate, isPending, error } = useMutation({
     mutationFn: validateLocation,
     onSuccess: ({ data }) => {
@@ -48,8 +47,6 @@ function MapBuilder({
           coordinates: validated?.coordinates,
           placeId: validated?.placeId,
         });
-      // if validated, show pin
-      // else put pin on zipcode, let drag manually
     },
   });
 

@@ -25,14 +25,6 @@ function ExplorerExplorationCardHeaderDetails({
   const stopsCompleted = userHistory?.visitLog?.length ?? 0;
   const stopsRemaining = exploration.numStops - stopsCompleted;
 
-  // const userProgress = Math.round(
-  //   (userHistory.explorationProgress.find(
-  //     (visitedExploration) =>
-  //       visitedExploration.explorationId === exploration.id,
-  //   ).locationsVisited /
-  //     exploration.numStops) *
-  //     100,
-  // );
   const userProgress = Math.floor(
     (stopsCompleted / exploration.locations.length) * 100,
   );

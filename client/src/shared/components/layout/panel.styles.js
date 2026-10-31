@@ -11,16 +11,10 @@ export const StyledPanel = styled.div`
   border-radius: var(--border-radius-lg);
   transition: all 0.3s ease-in;
 
-  /* background: ${({ $theme }) => $theme.panelBackground};
-  background-repeat: ${({ $isOpen }) => $isOpen && `round`}; 
-
-   background-size: auto; 
-  background-repeat: repeat;  */
-
   background: ${({ $theme }) => $theme.panelBackground};
   background-size: auto;
   background-repeat: repeat;
-  /* background-position: center; */
+
   background-position: ${({ $index }) =>
     $index % 2 === 0 ? " bottom" : "top"};
 
@@ -38,10 +32,6 @@ export const StyledPanel = styled.div`
     text-shadow: ${({ $theme }) =>
       `var(--text-shadow-offset-md) ${$theme.panelHeadingHoverShadow}`};
   }
-
-  /* @media (max-width: 800px) {
-    width: 100%;
-  } */
 
   @media (max-width: 400px) {
     padding: 1rem;
@@ -117,7 +107,6 @@ export const ClosePanel = styled(BiMinus)`
 `;
 
 export const StyledContent = styled.div`
-  /* overflow: hidden; */
   max-width: inherit;
   max-height: 0;
   line-height: var(--line-height-md);

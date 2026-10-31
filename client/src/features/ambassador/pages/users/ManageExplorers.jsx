@@ -134,33 +134,6 @@ const sortCategories = [
 const ITEMS_PER_PAGE = 10;
 
 function ManageExplorers() {
-  // const [search, setSearch] = useState("");
-  // const [sortBy, setSortBy] = useState("createdAt");
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const explorersData = useLoaderData();
-
-  // const queriedUsers = [...explorersData].filter((explorer) =>
-  //   search
-  //     ? explorer.name.toLowerCase().startsWith(search.toLowerCase())
-  //     : true,
-  // );
-
-  // const sortedUsers = queriedUsers.sort((a, b) => {
-  //   if (sortBy === "name") return a.name.localeCompare(b.name);
-  //   else return new Date(b.createdAt) - new Date(a.createdAt);
-  // });
-
-  // const totalPages = Math.ceil(sortedUsers.length / ITEMS_PER_PAGE);
-  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  // const paginatedUsers = sortedUsers.slice(
-  //   startIndex,
-  //   startIndex + ITEMS_PER_PAGE,
-  // );
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [sortBy, search]);
-
   const { users, total } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 

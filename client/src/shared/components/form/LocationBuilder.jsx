@@ -3,7 +3,7 @@ import Row from "../layout/Row";
 import Button from "../ui/Button";
 import Heading from "../typography/Heading";
 import Modal from "../modal/Modal";
-// import LocationForm from "./LocationForm";
+
 import styled from "styled-components";
 import Bold from "../typography/Bold";
 import CreateLocationCard from "../../../features/locations/components/CreateLocationCard";

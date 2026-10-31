@@ -160,13 +160,6 @@ const FiltersAdminTogglesRow = styled(Row)`
 `;
 
 const ExplorationCards = styled.div`
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: var(--gap-xl);
-  justify-content: center;
-  align-items: stretch; */
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   gap: var(--gap-xl);
@@ -202,8 +195,7 @@ function ManageExplorations() {
 
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
-  // const sortBy = searchParams.get("sort") ?? "createdAt";
-  // const filterBy = searchParams.get("tag") ?? "All";
+
   const showFeatured = searchParams.get("featured") === "true";
   const showMyExplorations = searchParams.get("createdBy") === user.id;
   const isLoading = navigation.state === "loading";

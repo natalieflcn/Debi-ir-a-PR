@@ -125,25 +125,6 @@ function ExplorationLocationCard({
             </MapRow>
           </StyledRow>
 
-          {/* <Carousel
-            autoPlay={true}
-            showArrows={true}
-            wrapMode="wrap"
-            afterSlide={(slide) => console.log(slide)}
-          >
-            {location.images.slice(0, 3).map((image, i) => (
-              <Image
-                src={image?.url}
-                $align="center"
-                $width="100%"
-                $height="23rem"
-                $objectFit="cover"
-                key={i}
-                $borderRadius="none"
-              />
-            ))}
-          </Carousel> */}
-
           <ImageCarousel images={location.images} />
 
           <ExplorationLocationFooter $cardColor="var(--color-light-100)">

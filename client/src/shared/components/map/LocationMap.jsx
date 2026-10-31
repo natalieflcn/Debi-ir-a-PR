@@ -9,7 +9,6 @@ import CustomPin from "./CustomPin";
 
 const StyledMap = styled.div`
   height: 25rem;
-  /* width: 50%; */
 
   @media (max-width: 700px) {
     height: 20rem;

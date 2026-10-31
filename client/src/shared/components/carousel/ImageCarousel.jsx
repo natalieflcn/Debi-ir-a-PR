@@ -21,10 +21,6 @@ const CarouselSlide = styled.div`
   flex: 0 0 auto;
   min-width: 0;
   height: 23rem;
-  /* 
-  @media (max-width: 700px) {
-    height: 15rem;
-  }*/
 
   @media (max-width: 450px) {
     height: 18rem;
@@ -46,7 +42,6 @@ const CarouselButton = styled(Button)`
 `;
 
 function ImageCarousel({ images }) {
-  console.log(images);
   const autoplay = useRef(
     Autoplay({
       delay: 4000,

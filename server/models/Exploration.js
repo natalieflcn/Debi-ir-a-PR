@@ -62,7 +62,7 @@ const explorationSchema = new mongoose.Schema(
 
       required: [true, "A header image is required."],
     },
-    // numStops: { type: Number },
+
     tags: {
       type: [String],
       enum: constants.EXPLORATION_TAGS,
@@ -96,13 +96,12 @@ const explorationSchema = new mongoose.Schema(
       ],
     },
     numStops: { type: Number, index: true },
-    // images: { type: [imageSchema], default: [] },
-    // createdAt: { type: Date, default: Date.now },
+
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    // updatedAt: { type: Date },
+
     updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   {
@@ -111,65 +110,17 @@ const explorationSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
-// explorationSchema.virtual("numStops").get(function () {
-//   return this.locations ? this.locations.length : undefined;
-// });
 
 // Middlewares
 explorationSchema.pre("save", function () {
   this.slug = slugify(this.name, { lower: true });
 
   this.cities = [...new Set(this.locations.map((loc) => loc.address.city))];
-  // this.numStops = this.locations.length;
 });
-
-// explorationSchema.pre("save", function () {
-//   this.numStops = this.locations.length;
-// });
 
 explorationSchema.pre("save", function (next) {
   this.numStops = this.locations.length;
-  // next();
 });
-
-// explorationSchema.post(/^find/, function (docs, next) {
-//   if (!docs) return next();
-
-//   if (!Array.isArray(docs)) {
-//     docs.numStops = docs.locations.length;
-//   } else {
-//     docs.forEach((doc) => {
-//       doc.numStops = doc.locations.length;
-//     });
-//   }
-
-//   // console.log(docs);
-//   next();
-// });
-
-// explorationSchema.post("find", function (docs, next) {
-//   if (!docs) return next();
-
-//   if (!Array.isArray(docs)) {
-//     docs.numStops = docs.locations.length;
-//   } else {
-//     docs.forEach((doc) => {
-//       doc.numStops = doc.locations.length;
-//       doc.locations = undefined;
-//     });
-//   }
-
-//   // console.log(docs);
-//   next();
-// });
-
-// explorationSchema.pre(/^find/, function () {
-//   console.log(this);
-//   this.populate({
-//     path: "badge",
-//     select: "-description -type",
-//   });
-// });
 
 const Exploration = mongoose.model("Exploration", explorationSchema);
 

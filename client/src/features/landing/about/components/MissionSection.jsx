@@ -16,13 +16,11 @@ const sectionItems = [
     id: "for-tourists",
     heading: "For Tourists",
     body: "By turning tourism into a game, it highlights overlooked destinations—beyond the usual beaches and resorts—encouraging users to create lasting memories through cultural landmarks, small businesses, and natural wonders.",
-    // photo: "src/assets/images/content/TEMP.png",
   },
   {
     id: "for-puerto-ricans",
     heading: "For Puerto Ricans",
     body: " The app also empowers a team of Ambassadors to continue designing and uploading more scavenger hunts for users. By curating new challenges around favorite spots, cultural traditions, or unique local experiences, these creators can showcase the Puerto Rico they love most. This not only helps promote hidden treasures across the island but also gives users a more authentic, community-driven way to explore.",
-    // photo: "src/assets/images/content/TEMP.png",
   },
 ];
 

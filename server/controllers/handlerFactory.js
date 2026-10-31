@@ -7,15 +7,6 @@ const User = require("../models/User");
 
 exports.getAll = (Model, filter = {}) =>
   catchAsync(async (req, res, next) => {
-    // const queryFilter = typeof filter === "function" ? filter(req) : filter;
-
-    // // EXECUTE QUERY
-    // const features = new APIFeatures(Model.find(queryFilter), req.query)
-    //   .filter()
-    //   .sort()
-    //   .limitFields()
-    //   .paginate();
-
     const queryFilter = typeof filter === "function" ? filter(req) : filter;
 
     const features = new APIFeatures(Model.find(queryFilter), req.query)
@@ -28,8 +19,6 @@ exports.getAll = (Model, filter = {}) =>
     features.paginate();
 
     const doc = await features.query;
-
-    // const total = await Model.countDocuments(queryFilter);
 
     // SEND RESPONSE
     res.status(200).json({
@@ -73,7 +62,6 @@ exports.updateOne = (Model, filter = {}) =>
       typeof filter === "function" ? filter(req) : { _id: req.params.id };
 
     const doc = await Model.findOneAndUpdate(queryFilter, req.body, {
-      // new: true,
       returnDocument: "after",
       runValidators: true,
     });

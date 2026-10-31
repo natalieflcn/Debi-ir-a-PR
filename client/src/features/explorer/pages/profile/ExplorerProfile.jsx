@@ -29,19 +29,13 @@ function getBadgeCollection(badges, userHistory) {
 }
 
 function ExplorerProfile() {
-  // const { user, userHistory } = useLoaderData();
   const { user, userHistory, badges } = useLoaderData();
 
   const badgeCollection = getBadgeCollection(badges, userHistory);
 
   return (
     <StyledExplorerProfile>
-      <ProfileHeader
-        // userName={profileData.name}
-        // userTitle={profileData.title}
-        title={user.title}
-        user={user}
-      />
+      <ProfileHeader title={user.title} user={user} />
       <ProfileInformation user={user} />
       <ProfileBadgeCollection earnedBadges={badgeCollection} badges={badges} />
     </StyledExplorerProfile>

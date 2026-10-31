@@ -86,7 +86,6 @@ function RouteError() {
   if (error?.status === 401) return <Navigate to="/login" replace />;
 
   if (error?.status === 403) {
-    console.log("forbidden ");
     return <Navigate to={`${rolePrefix(user)}/unauthorized`} replace />;
   }
 
@@ -109,7 +108,7 @@ function RouteError() {
     }
   }
 
-  console.log(error);
+  // console.log(error);
   return (
     <ErrorWrapper>
       <Background />
@@ -119,11 +118,7 @@ function RouteError() {
         </Heading>
 
         <ImageContainer>
-          <Image
-            src={Chairs}
-            $width="100%"
-            // $height="23rem"
-          />
+          <Image src={Chairs} $width="100%" />
         </ImageContainer>
         <StyledParagraph>
           {error?.message || "An unexpected error occurred."}

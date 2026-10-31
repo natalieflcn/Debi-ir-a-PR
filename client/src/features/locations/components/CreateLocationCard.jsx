@@ -95,8 +95,7 @@ function CreateLocationCard({
   });
 
   const { blocker, allowNavigation } = useUnsavedChangesWarning(isDirty);
-  //   const [pendingAddress, setPendingAddress] = useState(null);
-  //   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [isUploadingModalOpen, setIsUploadingModalOpen] = useState(false);
@@ -171,7 +170,6 @@ function CreateLocationCard({
         await defaultSubmit(formData);
       }
     } catch (err) {
-      console.log(err);
       setError("root.serverError", {
         type: "server",
         message: err.message,

@@ -5,14 +5,6 @@ import Card from "../layout/Card";
 import Heading from "../typography/Heading";
 import styled from "styled-components";
 
-// function Form({ formValues }) {
-//   <Row $gap="var(--gap-md)">
-//     {formValues.map((input) => (
-//       <Input placeholder={input.placeholder} key={input.id} />
-//     ))}
-//   </Row>;
-// }
-
 const StyledHeading = styled(Heading)`
   text-align: center;
 
@@ -27,8 +19,6 @@ const StyledForm = styled(Form)`
 
 function AppForm({
   formTitle,
-  // action,
-  // method,
 
   children,
   $height,

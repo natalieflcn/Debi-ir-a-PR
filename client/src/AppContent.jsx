@@ -24,7 +24,6 @@ const themeVariants = {
 
 function AppContent() {
   const { role } = useAuth();
-  //   const role = "ambassador";
   const currentTheme =
     themeVariants[role === "ambassador" || role === "admin" ? "red" : "blue"];
   return (

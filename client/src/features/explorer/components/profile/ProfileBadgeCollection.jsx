@@ -54,7 +54,6 @@ const TitleRow = styled(Row)`
 `;
 
 const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
-  // console.log(userHistory);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentBadgeDetails, setCurrentBadgeDetails] = useState(null);
 
@@ -64,8 +63,6 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
     const { badge } = badges.find((badge) => badge._id === badgeId);
     const { name, description } = badge;
     const image = optimize(badge?.image[0]?.url) ?? diapr;
-
-    console.log(badge);
 
     setCurrentBadgeDetails({ name, description, image, isEarned });
   }
@@ -81,7 +78,6 @@ const ProfileBadgeCollection = function ({ earnedBadges, badges = [] }) {
         </Heading>
       </TitleRow>
       <Card $cardColor="var(--color-light-100)" $cardShadow="insetMd">
-        {/* replace later with badge info */}
         <BadgesRow $direction="horizontal" $wrap="wrap">
           {badges.map((badge, i) => {
             const isEarned = earnedBadges.some(
