@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     getMe()
-      .then((data) => setUser(data.data.user))
+      .then((data) => setUser(data.data))
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
   }, []);
@@ -57,6 +57,8 @@ export function AuthProvider({ children }) {
     clearUser,
     updateUser,
   };
+
+  if (loading) return <Spinner />;
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
