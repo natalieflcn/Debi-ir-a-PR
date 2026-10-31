@@ -13,7 +13,7 @@ const connectDB = require("./config/db");
 
 connectDB();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 const server = app.listen(port, () => {
   console.log(`Server is now running on port ${port}...`);
