@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const { Resend } = require("Resend");
+const { Resend } = require("resend");
 
 // HTML EMAIL TEMPLATES
 
