@@ -17,5 +17,5 @@ export async function rootLoader() {
   // } catch (err) {
   //   // 401 / not logged in: fall through and show the landing page
   // }
-  // return null;
+  return null;
 }
