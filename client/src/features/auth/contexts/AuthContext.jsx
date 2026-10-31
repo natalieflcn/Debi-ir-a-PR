@@ -58,8 +58,6 @@ export function AuthProvider({ children }) {
     updateUser,
   };
 
-  if (loading) return <Spinner />;
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
