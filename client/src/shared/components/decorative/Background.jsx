@@ -17,7 +17,7 @@ const StyledBackground = styled.div`
 function Background({ children }) {
   return (
     <StyledBackground>
-      <Bubbles numBubbles={150} />
+      <Bubbles numBubbles={250} />
       {children}
     </StyledBackground>
   );

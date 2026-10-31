@@ -741,7 +741,10 @@
   - [x] Fix Footer line height and link gaps
 - [ ] DEPLOY PROJECT TODO 6
   - [ ] Front-end: Netlify
-  - [ ] Back-end: Bonto.dev
+  - [ ] Back-end: Render
+    - [x] Deploy server on Render
+    - [x] Connect production deployment to MongoDB Atlas
+    - [ ] Create cron job to consistently ping website during working hours
 - Miscellaneous Tasks
   - [ ] Keep being redirected to Login page before AuthContext can retrieve /me (see if this issue persist during production, may not.)
   - [ ] Redirect users to dashboard when logged-in users try to access /signup or /login
@@ -759,8 +762,8 @@
     - Donate to Puerto Rican Groups ✅
     - End Act 20-22-60 ✅
     - Keep Up with Puerto Rican News ✅
-  - [ ] Compress Images
-    - [ ] ui images
+  - [x] Compress Images
+    - [x] ui images
       - BlueOverlay (500kb) ✅ ✅
       - PRHeroSection (1MB)
       - PRSun (100kb) ✅ ✅

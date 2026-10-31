@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5173/api/v1";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4173/api/v1";
 
 export class APIError extends Error {
   constructor(message, status, data) {

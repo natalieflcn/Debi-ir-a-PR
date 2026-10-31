@@ -16,7 +16,7 @@ function MainLayout() {
   return (
     <ResetLayout>
       <ScrollToTop />
-      {/* <Background /> */}
+      <Background />
       <NavBar type="main" menuItems={menuItems} />
       <StyledLayout>
         <MainContent />
