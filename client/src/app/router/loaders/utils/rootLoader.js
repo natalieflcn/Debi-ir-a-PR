@@ -9,15 +9,15 @@ const ROLE_HOME = {
 };
 
 export async function rootLoader() {
-  // const { data } = await getMe();
+  const { data } = await getMe();
 
-  // try {
-  //   const home = ROLE_HOME[data?.data?.role] || null;
+  try {
+    const home = ROLE_HOME[data?.data?.role] || null;
 
-  //   console.log(home);
-  //   if (home) return redirect(home);
-  // } catch (err) {
-  //   // 401 / not logged in: fall through and show the landing page
-  // }
+    console.log(home);
+    if (home) return redirect(home);
+  } catch (err) {
+    // 401 / not logged in: fall through and show the landing page
+  }
   return null;
 }

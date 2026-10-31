@@ -29,26 +29,25 @@ const PublicRoutes = [
   {
     index: true,
     element: <HomePage />,
-    // loader: rootLoader
+    loader: rootLoader,
   },
-  { path: "how-it-works", element: <Workflow /> },
-  { path: "about", element: <About /> },
-  { path: "resources", element: <Resources /> },
-  { path: "create-account", element: <Resources /> },
+  { path: "how-it-works", element: <Workflow />, loader: rootLoader },
+  { path: "about", element: <About />, loader: rootLoader },
+  { path: "resources", element: <Resources />, loader: rootLoader },
   {
     path: "login",
     element: <Login />,
-    // loader: rootLoader,
+    loader: rootLoader,
   },
   {
     path: "signup/explorer",
     element: <ExplorerSignup />,
-    // loader: rootLoader,
+    loader: rootLoader,
   },
   {
     path: "signup/ambassador",
     element: <AmbassadorSignup />,
-    // loader: rootLoader,
+    loader: rootLoader,
   },
   {
     path: "forgot-password",
