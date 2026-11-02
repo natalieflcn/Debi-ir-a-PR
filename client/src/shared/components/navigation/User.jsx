@@ -3,7 +3,10 @@ import { useAuth } from "../../../features/auth/contexts/AuthContext";
 import RouterLink from "../routing/RouterLink";
 import { useNavigate } from "react-router-dom";
 
-const StyledUser = styled.div``;
+const StyledUser = styled.div`
+  &:hover {
+  }
+`;
 
 function User() {
   const { isAuthenticated, loading, user, logoutUser, clearUser } = useAuth();

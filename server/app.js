@@ -14,11 +14,21 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-app.get("/health", (req, res) => {
+const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  }),
+);
+
+app.get("/api/v1/health", (req, res) => {
+  console.log("hit");
   res.status(200).send("ok");
 });
 
-app.set("trust proxy", 1);
+http: app.set("trust proxy", 1);
 
 const limiter = rateLimit({
   max: 10000,
@@ -33,15 +43,6 @@ const limiter = rateLimit({
     });
   },
 });
-
-const allowedOrigin = process.env.CLIENT_URL || "http://localhost:5173";
-
-app.use(
-  cors({
-    origin: allowedOrigin,
-    credentials: true,
-  }),
-);
 
 app.use(helmet());
 

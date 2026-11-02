@@ -789,3 +789,4 @@
       - default_Avatar (300kb) ✅ ✅
       - diapr.gif (300kb) ✅ ✅ ✅
     - [x] Cloudinary images
+- [ ] Prevent users from logging in until server wakes up

@@ -4,6 +4,11 @@ import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
 import Bubbles from "../decorative/Bubbles";
 import BlueOverlay from "../../../assets/images/ui/BlueOverlay.webp";
+import Bold from "../typography/Bold";
+import BouncingLoader from "../decorative/BouncingLoader";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../features/auth/contexts/AuthContext";
+import Row from "../layout/Row";
 
 const StyledNavWrapper = styled.div`
   position: sticky;
@@ -14,6 +19,26 @@ const StyledNavWrapper = styled.div`
 
   background-color: ${({ theme }) => theme.backgroundColor};
   background-image: ${({ theme }) => theme.backgroundImage};
+`;
+
+const SleepingBanner = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: var(--color-dark-200);
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: var(--color-light-100);
+  border-bottom: 3px solid var(--color-red-200);
+  text-align: center;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+
+    div {
+      align-self: center;
+      top: 3px;
+    }
+  }
 `;
 
 const StyledNavBar = styled.nav`
@@ -42,8 +67,21 @@ const StyledNavBar = styled.nav`
 `;
 
 function NavBar({ menuItems }) {
+  const { isServerSleeping } = useAuth();
+
   return (
     <StyledNavWrapper>
+      {isServerSleeping && (
+        <SleepingBanner>
+          This app is running on a free instance of Render.
+          <Row $direction="horizontal" $align="center" $gap="var(--gap-xs)">
+            <Bold $color="var(--color-dark-100)">
+              Please wait 1 minute for the server to wake up
+            </Bold>
+            <BouncingLoader />
+          </Row>
+        </SleepingBanner>
+      )}
       <StyledNavBar>
         <Bubbles numBubbles={25} />
         <Logo />

@@ -14,6 +14,7 @@ import { login } from "../../../services/auth";
 import { useAuth } from "../contexts/AuthContext";
 import SmallText from "../../../shared/components/typography/SmallText";
 import loginBg from "../../../assets/images/about/login.webp";
+import BouncingLoader from "../../../shared/components/decorative/BouncingLoader";
 
 const StyledLoginBackground = styled.div`
   position: relative;
@@ -119,7 +120,7 @@ function Login() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { loginUser } = useAuth();
+  const { loginUser, isServerSleeping } = useAuth();
 
   const navigate = useNavigate();
 
@@ -217,8 +218,24 @@ function Login() {
                   </StyledRow>
                 </FormField>
 
-                <Button $variation="darkRed" $size="small" type="submit">
-                  {isSubmitting ? "Logging In..." : "Login"}
+                <Button
+                  $variation={isServerSleeping ? "disabled" : "darkRed"}
+                  $size="small"
+                  type="submit"
+                  disabled={isServerSleeping}
+                >
+                  {isServerSleeping && (
+                    <Row
+                      $direction="horizontal"
+                      $align="center"
+                      $gap="var(--gap-xs)"
+                    >
+                      <p>Waking up server</p>
+                      <BouncingLoader />
+                    </Row>
+                  )}
+                  {!isServerSleeping &&
+                    (isSubmitting ? "Logging In..." : "Login")}
                 </Button>
                 {formErrors.submit && <Bold>{formErrors.submit}</Bold>}
               </Row>

@@ -9,9 +9,24 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isServerSleeping, setIsServerSleeping] = useState(true);
 
   const queryClient = useQueryClient();
 
+  // Pings Render Server to wake up upon opening app
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/health`).then((res) => {
+      if (!res.ok) {
+        throw new Error(
+          `Render Server Error. Server returned status: ${res.status}`,
+        );
+      }
+
+      setIsServerSleeping(false);
+    });
+  }, []);
+
+  // Retrieves User if User is Logged in
   useEffect(() => {
     getMe()
       .then((data) => setUser(data.data.data))
@@ -47,6 +62,7 @@ export function AuthProvider({ children }) {
   }
 
   const value = {
+    isServerSleeping,
     user,
     loading,
     isAuthenticated: Boolean(user),

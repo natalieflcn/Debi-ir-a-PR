@@ -14,6 +14,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import explorer from "../../../assets/images/about/explorerSignup.webp";
 import ambassador from "../../../assets/images/about/ambassadorSignup.webp";
+import BouncingLoader from "../../../shared/components/decorative/BouncingLoader";
 
 const StyledSignupBackground = styled.div`
   position: relative;
@@ -99,7 +100,7 @@ const LoginRow = styled(Row)`
 `;
 
 function Signup({ $variant }) {
-  const { registerUser } = useAuth();
+  const { registerUser, isServerSleeping } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -222,11 +223,28 @@ function Signup({ $variant }) {
               </FormField>
 
               <Button
-                $variation={$variant === "explorer" ? "secondary" : "primary"}
+                $variation={
+                  isServerSleeping
+                    ? "disabled"
+                    : $variant === "explorer"
+                      ? "secondary"
+                      : "primary"
+                }
                 $size="small"
                 type="submit"
               >
-                {isSubmitting ? "Signing Up..." : "Sign Up"}
+                {isServerSleeping && (
+                  <Row
+                    $direction="horizontal"
+                    $align="center"
+                    $gap="var(--gap-xs)"
+                  >
+                    <p>Waking up server</p>
+                    <BouncingLoader />
+                  </Row>
+                )}
+                {!isServerSleeping &&
+                  (isSubmitting ? "Signing Up..." : "Sign Up")}
               </Button>
               {isSubmitted && Object.keys(errors).length > 0 && (
                 <Bold>Please review your form submission and try again.</Bold>
