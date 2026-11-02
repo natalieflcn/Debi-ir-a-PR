@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledUser = styled.div`
   &:hover {
+    cursor: pointer;
   }
 `;
 
