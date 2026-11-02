@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import Background from "../components/decorative/Background";
 import { ResetLayout, StyledLayout } from "./layout.styles";
 import ScrollToTop from "../components/ui/ScrollToTop";
+import { useAuth } from "../../features/auth/contexts/AuthContext";
 
 const menuItems = [
   { label: "Home", link: "/" },
@@ -13,16 +14,22 @@ const menuItems = [
 ];
 
 function MainLayout() {
+  const { user } = useAuth();
+
   return (
-    <ResetLayout>
-      <ScrollToTop />
-      <Background />
-      <NavBar type="main" menuItems={menuItems} />
-      <StyledLayout>
-        <MainContent />
-        <Footer />
-      </StyledLayout>
-    </ResetLayout>
+    <>
+      {!user && (
+        <ResetLayout>
+          <ScrollToTop />
+          <Background />
+          <NavBar type="main" menuItems={menuItems} />
+          <StyledLayout>
+            <MainContent />
+            <Footer />
+          </StyledLayout>
+        </ResetLayout>
+      )}
+    </>
   );
 }
 
