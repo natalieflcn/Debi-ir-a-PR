@@ -25,7 +25,7 @@ app.use(
 
 app.get("/api/v1/health", (req, res) => {
   console.log("hit");
-  res.status(200).send("ok");
+  res.status(200).json({ status: "success", data: null });
 });
 
 http: app.set("trust proxy", 1);
