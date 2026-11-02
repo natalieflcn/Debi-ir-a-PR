@@ -20,7 +20,7 @@ function MainLayout() {
     <ResetLayout>
       <ScrollToTop />
       <Background />
-      <NavBar type="main" menuItems={!user ? menuItems : []} />
+      <NavBar type="main" menuItems={menuItems} />
       <StyledLayout>
         <MainContent />
         <Footer />
