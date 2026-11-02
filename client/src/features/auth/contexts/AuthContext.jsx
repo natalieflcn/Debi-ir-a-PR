@@ -15,15 +15,19 @@ export function AuthProvider({ children }) {
 
   // Pings Render Server to wake up upon opening app
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/health`).then((res) => {
-      if (!res.ok) {
-        throw new Error(
-          `Render Server Error. Server returned status: ${res.status}`,
-        );
-      }
+    fetch(`${import.meta.env.VITE_API_URL}/health`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Render Server Error. Server returned status: ${res.status}`,
+          );
+        }
 
-      setIsServerSleeping(false);
-    });
+        setIsServerSleeping(false);
+      })
+      .catch((err) => {
+        console.error("Render Server ping failed:", err);
+      });
   }, []);
 
   // Retrieves User if User is Logged in
