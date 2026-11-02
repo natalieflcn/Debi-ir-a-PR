@@ -17,19 +17,15 @@ function MainLayout() {
   const { user } = useAuth();
 
   return (
-    <>
-      {!user && (
-        <ResetLayout>
-          <ScrollToTop />
-          <Background />
-          <NavBar type="main" menuItems={menuItems} />
-          <StyledLayout>
-            <MainContent />
-            <Footer />
-          </StyledLayout>
-        </ResetLayout>
-      )}
-    </>
+    <ResetLayout>
+      <ScrollToTop />
+      <Background />
+      <NavBar type="main" menuItems={!user ? menuItems : []} />
+      <StyledLayout>
+        <MainContent />
+        <Footer />
+      </StyledLayout>
+    </ResetLayout>
   );
 }
 
