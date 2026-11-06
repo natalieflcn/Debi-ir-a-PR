@@ -114,7 +114,7 @@ function Footer() {
           <StyledLinkedIn />
         </ExternalLink>
 
-        <ExternalLink href="https://www.instagram/indyvox/">
+        <ExternalLink href="https://natalieflcn.com/">
           <StyledPortfolio />
         </ExternalLink>
       </Row>
