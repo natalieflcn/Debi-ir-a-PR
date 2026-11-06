@@ -34,8 +34,11 @@ const NumTotalExplorations = function ({ numExplorations }) {
             # of Total Explorations
           </Heading>
           <SmallText>
-            (The total number of explorations created by Ambassadors in Debí ir
-            a PR)
+            (The total number of explorations created by Ambassadors in{" "}
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </Row>
         <InsetSpan>{numExplorations}</InsetSpan>
@@ -54,7 +57,10 @@ const NumExplorationsCompleted = function ({ numExplorationsCompleted }) {
           </Heading>
           <SmallText>
             (The total number of explorations all Explorers have completed in
-            Debí ir a PR)
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </Row>
         <InsetSpan>{numExplorationsCompleted}</InsetSpan>

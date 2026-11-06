@@ -41,7 +41,11 @@ const NumTotalExplorers = function ({ numExplorers }) {
             # of Total Explorers
           </Heading>
           <SmallText>
-            (The total number of Explorers enrolled in Debí ir a PR)
+            (The total number of Explorers enrolled in{" "}
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </DashboardItemLabelRow>
         <InsetSpan>{numExplorers}</InsetSpan>
@@ -56,7 +60,9 @@ const NumTotalAmbassadors = function ({ numAmbassadors }) {
       <DashboardItemContentRow $direction="horizontal" $gap="var(--gap-xl)">
         <DashboardItemLabelRow $gap="var(--gap-xs)">
           <Heading as="h4" $color="var(--color-red-400)">
-            # of Total Ambassadors
+            <span translate="no" className="notranslate">
+              # of Total Ambassadors
+            </span>
           </Heading>
           <SmallText>
             (The total number of Ambassadors enrolled in Debí ir a PR)

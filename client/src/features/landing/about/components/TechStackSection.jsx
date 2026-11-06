@@ -39,25 +39,75 @@ const sectionItems = [
   },
   {
     id: "third-party",
-    heading: "Third Party Libraries and Services",
+    heading: "Libraries, Services, and Tools",
     items: [
       { id: 0, content: "React Router" },
-      { id: 1, content: "React Icons" },
-      { id: 2, content: "Mongoose" },
+      { id: 1, content: "React Hook Form" },
+      { id: 2, content: "React Query" },
+      { id: 3, content: "React Icons" },
+      { id: 4, content: "Embla Carousel" },
+      { id: 5, content: "Mongoose" },
+      { id: 6, content: "Bcrypt" },
+      { id: 7, content: "Google Maps API" },
+      { id: 8, content: "Geocoding API" },
+      { id: 9, content: "Cloudinary" },
+      { id: 10, content: "Resend" },
     ],
   },
   {
     id: "architecture",
     heading: "Architecture and Engineering Focus",
     items: [
-      { id: 0, content: "MVC System Architecture" },
+      {
+        id: 0,
+        content:
+          "MVC back-end architecture (models, controllers, routes) paired with a feature-driven file structure on the front-end",
+      },
       {
         id: 1,
         content:
-          "Google Maps API Integration (Interactive Map, Dynamic Markers, InfoWindows, event handling)",
+          "RESTful Express/Mongoose API with full CRUD operations and a React Router structure mirroring the API's CRUD routes",
       },
-      { id: 2, content: "Modular code structure" },
-      { id: 3, content: "Feature-driven file structure" },
+      {
+        id: 2,
+        content:
+          "Embedded-document schemas enabling single-query reads for 35+ explorations and their 190+ locations",
+      },
+      {
+        id: 3,
+        content:
+          "React Hook Form validation on the client and server-side validation to keep malformed data out of MongoDB",
+      },
+      {
+        id: 4,
+        content:
+          "React Query with user-scoped query keys, refetching exploration data when exploration progress updates to maintain a consistent UI for explorers",
+      },
+      {
+        id: 5,
+        content:
+          "Geocoding API and Google Maps API Integration to power an interactive map with editable markers that are the source of truth for locations, accounting for Puerto Rico's inconsistent postal address system",
+      },
+      {
+        id: 6,
+        content:
+          "Server-signed image uploads from the client to Cloudinary to authenticate uploads while keeping image files out of the server's memory for embedded documents",
+      },
+      {
+        id: 7,
+        content:
+          "JWT authentication with bcrypt password hashing and httpOnly, secure, SameSite cookies, with protected routes on both the API and React Router",
+      },
+      {
+        id: 8,
+        content:
+          "Role-based UI handled by React Context API that globally exposes user role via auth provider",
+      },
+      {
+        id: 9,
+        content:
+          "Render cold-start fix: a /health wake-up check upon app load that disables login/signup until the server responds, preventing bad auth requests",
+      },
     ],
   },
 ];

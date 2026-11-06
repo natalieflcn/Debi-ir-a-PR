@@ -18,13 +18,22 @@ const spanishVocab = {
           <AudioButton onClick={() => playSpanishAudio(row.audio)}>
             <IoVolumeHigh />
           </AudioButton>
-          <span>{row.spanish}</span>
+          <span translate="no" className="notranslate">
+            {row.spanish}
+          </span>
         </SpanishCell>
       ),
     },
     {
       id: "english",
       heading: "English",
+      render: (row) => (
+        <SpanishCell>
+          <span translate="no" className="notranslate">
+            {row.english}
+          </span>
+        </SpanishCell>
+      ),
     },
   ],
   rows: [

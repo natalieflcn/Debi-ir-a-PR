@@ -26,7 +26,10 @@ const StyledLogo = styled.h1`
   }
 `;
 
-const Debi = styled.p`
+const Debi = styled.p.attrs({
+  translate: "no",
+  className: "notranslate",
+})`
   font-size: 3rem;
 
   @media (max-width: 1200px) {
@@ -38,7 +41,10 @@ const Debi = styled.p`
   }
 `;
 
-const IrAPR = styled.p`
+const IrAPR = styled.p.attrs({
+  translate: "no",
+  className: "notranslate",
+})`
   font-size: 1.85rem;
 
   @media (max-width: 1200px) {
@@ -77,8 +83,12 @@ function Logo() {
     <div>
       <StyledLogo $logoTheme={logoTheme}>
         <NavLink to={`/${prefix}`}>
-          <Debi>DeBÍ</Debi>
-          <IrAPR>iR a PR</IrAPR>
+          <Debi translate="no" lang="es" className="notranslate">
+            DeBÍ
+          </Debi>
+          <IrAPR translate="no" lang="es" className="notranslate">
+            iR a PR
+          </IrAPR>
         </NavLink>
       </StyledLogo>
     </div>

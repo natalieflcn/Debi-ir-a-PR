@@ -41,7 +41,11 @@ const NumTotalUsers = function ({ numExplorers }) {
             # of Total Explorers
           </Heading>
           <SmallText>
-            (The total number of Explorers enrolled in Debí ir a PR)
+            (The total number of Explorers enrolled in{" "}
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </DashboardItemLabelRow>
         <InsetSpan>{numExplorers}</InsetSpan>

@@ -39,8 +39,11 @@ const NumTotalLocations = function ({ explorations }) {
             # of Total Locations
           </Heading>
           <SmallText>
-            (The total number of locations across all explorations in Debí ir a
-            PR)
+            (The total number of locations across all explorations in{" "}
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </Row>
         <InsetSpan>{numLocations}</InsetSpan>
@@ -66,8 +69,11 @@ const NumLocationsExplored = function ({ explorationProgress }) {
             # of Locations Explored
           </Heading>
           <SmallText>
-            (The total number of locations completed by Explorers in Debí ir a
-            PR)
+            (The total number of locations completed by Explorers in{" "}
+            <span translate="no" className="notranslate">
+              Debí ir a PR
+            </span>
+            )
           </SmallText>
         </Row>
         <InsetSpan>{locationsExplored}</InsetSpan>
