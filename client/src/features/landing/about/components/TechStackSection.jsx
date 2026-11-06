@@ -52,6 +52,7 @@ const sectionItems = [
       { id: 8, content: "Geocoding API" },
       { id: 9, content: "Cloudinary" },
       { id: 10, content: "Resend" },
+      { id: 10, content: "Styled Components" },
     ],
   },
   {
@@ -125,6 +126,7 @@ const StyledTechStackSection = styled(Row)`
     }
   }
 `;
+
 export default function TechStackSection() {
   return (
     <StyledTechStackSection>
